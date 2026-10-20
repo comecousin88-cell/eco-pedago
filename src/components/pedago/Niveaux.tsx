@@ -1,14 +1,18 @@
 import type { ReactNode } from "react";
+import { Depliable } from "./Depliable";
 
 /**
- * Les trois niveaux de lecture d'une notion. « L'essentiel » est ouvert par
- * défaut, les deux autres se déplient. Usage en MDX :
+ * Les trois niveaux de lecture d'une notion. Usage en MDX :
  *
  * <Niveaux>
  *   <Essentiel>…</Essentiel>
  *   <Mecanisme>…</Mecanisme>
  *   <PlusLoin>…</PlusLoin>
  * </Niveaux>
+ *
+ * « L'essentiel » et « Le mécanisme » sont ouverts dans les deux modes de
+ * lecture ; « Pour aller plus loin » est replié en mode Simple. Chacun reste
+ * dépliable à la main.
  */
 export function Niveaux({ children }: { children: ReactNode }) {
   return <div className="my-8 space-y-3">{children}</div>;
@@ -18,50 +22,44 @@ function Niveau({
   numero,
   titre,
   sousTitre,
-  ouvert = false,
+  suitLeMode = false,
   children,
 }: {
   numero: number;
   titre: string;
   sousTitre: string;
-  ouvert?: boolean;
+  suitLeMode?: boolean;
   children: ReactNode;
 }) {
   return (
-    <details
-      open={ouvert}
-      className="group rounded-2xl border border-line bg-surface open:border-accent-line"
+    <Depliable
+      suitLeMode={suitLeMode}
+      className="rounded-2xl border border-line bg-surface"
+      classeEntete="rounded-2xl px-5 py-4 hover:bg-subtle"
+      classeContenu="prose-eco max-w-none px-5 pt-1 pb-6"
+      entete={
+        <span className="flex items-center gap-4">
+          <span
+            aria-hidden="true"
+            className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-accent-soft font-serif text-base font-semibold text-accent"
+          >
+            {numero}
+          </span>
+          <span>
+            <span className="block font-semibold text-ink">{titre}</span>
+            <span className="block text-sm text-muted">{sousTitre}</span>
+          </span>
+        </span>
+      }
     >
-      <summary className="flex cursor-pointer list-none items-center gap-4 rounded-2xl px-5 py-4 select-none hover:bg-subtle [&::-webkit-details-marker]:hidden">
-        <span
-          aria-hidden="true"
-          className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-accent-soft font-serif text-base font-semibold text-accent"
-        >
-          {numero}
-        </span>
-        <span className="flex-1">
-          <span className="block font-semibold text-ink">{titre}</span>
-          <span className="block text-sm text-muted">{sousTitre}</span>
-        </span>
-        <svg
-          aria-hidden="true"
-          viewBox="0 0 20 20"
-          className="h-5 w-5 shrink-0 text-muted transition-transform group-open:rotate-180"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth={2}
-        >
-          <path d="M5 8l5 5 5-5" />
-        </svg>
-      </summary>
-      <div className="prose-eco max-w-none px-5 pt-1 pb-6">{children}</div>
-    </details>
+      {children}
+    </Depliable>
   );
 }
 
 export function Essentiel({ children }: { children: ReactNode }) {
   return (
-    <Niveau numero={1} titre="L'essentiel" sousTitre="En deux minutes, avec une image du quotidien" ouvert>
+    <Niveau numero={1} titre="L'essentiel" sousTitre="En deux minutes, avec une image du quotidien">
       {children}
     </Niveau>
   );
@@ -77,7 +75,7 @@ export function Mecanisme({ children }: { children: ReactNode }) {
 
 export function PlusLoin({ children }: { children: ReactNode }) {
   return (
-    <Niveau numero={3} titre="Pour aller plus loin" sousTitre="Formules, nuances, débats et sources">
+    <Niveau numero={3} titre="Pour aller plus loin" sousTitre="Formules, nuances, débats et sources" suitLeMode>
       {children}
     </Niveau>
   );

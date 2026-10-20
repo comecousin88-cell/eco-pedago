@@ -48,11 +48,17 @@ export interface FichierDonnees {
 // Chaque nouveau fichier de données s'ajoute ici.
 import aft from "../../data/aft.json";
 import dette from "../../data/dette.json";
+import europe from "../../data/europe.json";
+import financesPubliques from "../../data/finances-publiques.json";
+import macro from "../../data/macro.json";
 import retraites from "../../data/retraites.json";
 
 export const fichiers: Record<string, FichierDonnees> = {
   aft: aft as FichierDonnees,
   dette: dette as FichierDonnees,
+  europe: europe as FichierDonnees,
+  "finances-publiques": financesPubliques as FichierDonnees,
+  macro: macro as FichierDonnees,
   retraites: retraites as FichierDonnees,
 };
 

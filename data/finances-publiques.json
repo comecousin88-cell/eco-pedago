@@ -1,0 +1,272 @@
+{
+  "description": "Recettes et dépenses de l'ensemble des administrations publiques (comptabilité nationale).",
+  "donnees": [
+    {
+      "id": "fp.depenses",
+      "label": "Dépenses publiques",
+      "valeur": 1714.1,
+      "unite": "Md€",
+      "date": "2025",
+      "source": {
+        "nom": "Insee, Dépenses et recettes des administrations publiques (comptes nationaux, base 2020, août 2026)",
+        "url": "https://www.insee.fr/fr/statistiques/8988845"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-20",
+      "note": "Tableau 3.201, mis à jour le 28/08/2026."
+    },
+    {
+      "id": "fp.depenses-pib",
+      "label": "Dépenses publiques en % du PIB",
+      "valeur": 57.3,
+      "unite": "% du PIB",
+      "date": "2025",
+      "source": {
+        "nom": "Insee, Finances publiques en 2025 (principaux agrégats en points de PIB)",
+        "url": "https://www.insee.fr/fr/statistiques/8988841"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-20"
+    },
+    {
+      "id": "fp.recettes",
+      "label": "Recettes publiques",
+      "valeur": 1562.5,
+      "unite": "Md€",
+      "date": "2025",
+      "source": {
+        "nom": "Insee, Dépenses et recettes des administrations publiques (comptes nationaux, base 2020, août 2026)",
+        "url": "https://www.insee.fr/fr/statistiques/8988845"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-20",
+      "note": "Tableau 3.201, mis à jour le 28/08/2026."
+    },
+    {
+      "id": "fp.recettes-pib",
+      "label": "Recettes publiques en % du PIB",
+      "valeur": 52.2,
+      "unite": "% du PIB",
+      "date": "2025",
+      "source": {
+        "nom": "Insee, Finances publiques en 2025 (principaux agrégats en points de PIB)",
+        "url": "https://www.insee.fr/fr/statistiques/8988841"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-20"
+    },
+    {
+      "id": "fp.prelevements-obligatoires",
+      "label": "Prélèvements obligatoires (impôts et cotisations sociales)",
+      "valeur": 1305.1,
+      "unite": "Md€",
+      "date": "2025",
+      "source": {
+        "nom": "Insee, Dépenses et recettes des administrations publiques (comptes nationaux, base 2020, août 2026)",
+        "url": "https://www.insee.fr/fr/statistiques/8988845"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-20",
+      "note": "Tableau 3.216."
+    },
+    {
+      "id": "fp.prelevements-obligatoires-pib",
+      "label": "Taux de prélèvements obligatoires",
+      "valeur": 43.6,
+      "unite": "% du PIB",
+      "date": "2025",
+      "source": {
+        "nom": "Insee, Dépenses et recettes des administrations publiques (comptes nationaux, base 2020, août 2026)",
+        "url": "https://www.insee.fr/fr/statistiques/8988845"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-20",
+      "note": "Tableau 3.216."
+    },
+    {
+      "id": "fp.interets",
+      "label": "Intérêts versés par les administrations publiques",
+      "valeur": 65.7,
+      "unite": "Md€",
+      "date": "2025",
+      "source": {
+        "nom": "Insee, Dépenses et recettes des administrations publiques (comptes nationaux, base 2020, août 2026)",
+        "url": "https://www.insee.fr/fr/statistiques/8988845"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-20",
+      "note": "Tableau 3.201, ligne « Intérêts (D41) ». Hors correction des services d'intermédiation financière : 64,7 Md€."
+    },
+    {
+      "id": "fp.depenses-par-sous-secteur",
+      "label": "Dépenses par sous-secteur (chacun compté avec les transferts qu'il verse aux autres)",
+      "serie": [
+        {
+          "x": "État",
+          "y": 607.7
+        },
+        {
+          "x": "Organismes divers d'administration centrale",
+          "y": 142.3
+        },
+        {
+          "x": "Administrations publiques locales",
+          "y": 335.5
+        },
+        {
+          "x": "Sécurité sociale",
+          "y": 803.2
+        }
+      ],
+      "unite": "Md€",
+      "date": "2025",
+      "source": {
+        "nom": "Insee, Dépenses et recettes des administrations publiques (comptes nationaux, base 2020, août 2026)",
+        "url": "https://www.insee.fr/fr/statistiques/8988845"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-20",
+      "note": "Tableau 3.215. La somme (1 888,7 Md€) dépasse le total consolidé (1 714,1 Md€) : un euro versé par l'État à une collectivité est compté chez les deux."
+    },
+    {
+      "id": "fp.depenses-2024",
+      "label": "Dépenses publiques",
+      "valeur": 1672.6,
+      "unite": "Md€",
+      "date": "2024",
+      "source": {
+        "nom": "Insee, Dépenses et recettes des administrations publiques (comptes nationaux, base 2020, août 2026)",
+        "url": "https://www.insee.fr/fr/statistiques/8988845"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-20"
+    },
+    {
+      "id": "fp.recettes-2024",
+      "label": "Recettes publiques",
+      "valeur": 1503.5,
+      "unite": "Md€",
+      "date": "2024",
+      "source": {
+        "nom": "Insee, Dépenses et recettes des administrations publiques (comptes nationaux, base 2020, août 2026)",
+        "url": "https://www.insee.fr/fr/statistiques/8988845"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-20"
+    },
+    {
+      "id": "fp.recettes-2024-par-type",
+      "label": "Recettes publiques par grande catégorie",
+      "serie": [
+        {
+          "x": "Cotisations sociales",
+          "y": 483.6
+        },
+        {
+          "x": "TVA",
+          "y": 207.8
+        },
+        {
+          "x": "CSG et CRDS",
+          "y": 162.2
+        },
+        {
+          "x": "Impôt sur le revenu",
+          "y": 96.0
+        },
+        {
+          "x": "Impôt sur les sociétés",
+          "y": 68.0
+        },
+        {
+          "x": "Taxe foncière",
+          "y": 42.9
+        },
+        {
+          "x": "Taxes sur l'énergie",
+          "y": 39.2
+        },
+        {
+          "x": "Autres impôts",
+          "y": 222.6
+        },
+        {
+          "x": "Autres recettes (ventes, revenus du patrimoine, transferts)",
+          "y": 181.1
+        }
+      ],
+      "unite": "Md€",
+      "date": "2024",
+      "source": {
+        "nom": "Insee, Dépenses et recettes des administrations publiques (comptes nationaux, base 2020, août 2026)",
+        "url": "https://www.insee.fr/fr/statistiques/8988845"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-20",
+      "note": "Tableaux 3.201 et 3.217. Impôt sur le revenu et impôt sur les sociétés avant crédits d'impôt. « Autres impôts » est calculé par différence."
+    },
+    {
+      "id": "fp.depenses-2024-par-fonction",
+      "label": "Dépenses publiques par fonction",
+      "serie": [
+        {
+          "x": "Retraites (vieillesse et survivants)",
+          "y": 432.6
+        },
+        {
+          "x": "Santé",
+          "y": 261.2
+        },
+        {
+          "x": "Famille et enfants",
+          "y": 66.7
+        },
+        {
+          "x": "Chômage",
+          "y": 48.5
+        },
+        {
+          "x": "Autres prestations sociales (invalidité, logement, exclusion…)",
+          "y": 145.2
+        },
+        {
+          "x": "Enseignement",
+          "y": 148.6
+        },
+        {
+          "x": "Affaires économiques (transports, énergie, aides…)",
+          "y": 166.1
+        },
+        {
+          "x": "Défense",
+          "y": 54.2
+        },
+        {
+          "x": "Ordre et sécurité publics",
+          "y": 52.1
+        },
+        {
+          "x": "Intérêts de la dette",
+          "y": 58.9
+        },
+        {
+          "x": "Fonctionnement des administrations, recherche",
+          "y": 122.2
+        },
+        {
+          "x": "Logement, environnement, culture",
+          "y": 115.5
+        }
+      ],
+      "unite": "Md€",
+      "date": "2024",
+      "source": {
+        "nom": "Insee, Dépenses des administrations publiques ventilées par fonction en 2024 (mars 2026)",
+        "url": "https://www.insee.fr/fr/statistiques/8574707"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-20",
+      "note": "Classification des fonctions des administrations publiques (CFAP). Total 1 671,8 Md€ ; le tableau des recettes, révisé en août 2026, donne 1 672,6 Md€ de dépenses."
+    }
+  ]
+}

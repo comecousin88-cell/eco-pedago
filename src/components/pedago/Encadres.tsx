@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { Depliable } from "./Depliable";
 
 /** Encadré « Exemple » : chaque notion a au moins un exemple chiffré. */
 export function Exemple({ titre = "Exemple", children }: { titre?: string; children: ReactNode }) {
@@ -23,6 +24,8 @@ export function ARetenir({ children }: { children: ReactNode }) {
 /**
  * « Ce que disent les uns / ce que disent les autres ». Chaque côté présente
  * ses meilleurs arguments et les chiffres sur lesquels il s'appuie.
+ * Comme « Pour aller plus loin », il est replié en mode de lecture Simple
+ * (la question reste visible) et ouvert en mode Approfondi.
  */
 export function Debat({
   question,
@@ -41,10 +44,19 @@ export function Debat({
   children?: ReactNode;
 }) {
   return (
-    <section className="my-8 rounded-2xl border border-line bg-surface p-5 sm:p-6">
-      <p className="text-xs font-semibold tracking-wide text-muted uppercase">Débat</p>
-      <h3 className="mt-1 font-serif text-xl font-semibold text-ink">{question}</h3>
-      <div className="mt-5 grid gap-4 md:grid-cols-2">
+    <Depliable
+      suitLeMode
+      className="my-8 rounded-2xl border border-line bg-surface"
+      classeEntete="rounded-2xl p-5 hover:bg-subtle sm:px-6"
+      classeContenu="px-5 pb-5 sm:px-6 sm:pb-6"
+      entete={
+        <>
+          <span className="block text-xs font-semibold tracking-wide text-muted uppercase">Débat</span>
+          <span className="mt-1 block font-serif text-xl font-semibold text-ink">{question}</span>
+        </>
+      }
+    >
+      <div className="grid gap-4 md:grid-cols-2">
         <div className="rounded-xl bg-subtle p-4">
           <p className="font-semibold text-ink">{titrePour}</p>
           <div className="prose-eco mt-2 max-w-none text-base">{pour}</div>
@@ -55,7 +67,7 @@ export function Debat({
         </div>
       </div>
       {children && <div className="prose-eco mt-5 max-w-none text-base">{children}</div>}
-    </section>
+    </Depliable>
   );
 }
 

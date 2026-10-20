@@ -1,35 +1,1000 @@
 {
-  "description": "Dette publique, déficit et charge de la dette (ensemble des administrations publiques, au sens de Maastricht).",
+  "description": "Dette publique, déficit et soldes (ensemble des administrations publiques, au sens de Maastricht).",
   "donnees": [
     {
       "id": "dette.stock",
       "label": "Dette publique au sens de Maastricht",
-      "valeur": 3500,
+      "valeur": 3595.5,
       "unite": "Md€",
-      "date": "2026-03-31",
-      "source": { "nom": "Insee, dette trimestrielle de Maastricht des administrations publiques", "url": "https://www.insee.fr" },
-      "statut": "a_verifier",
-      "note": "Ordre de grandeur du cahier des charges (« ≈ 3 500 Md€, T1 2026 »). Valeur exacte et URL de la publication à relever."
+      "date": "2026-06-30",
+      "source": {
+        "nom": "Insee, Informations rapides n° 239 : dette de Maastricht au 2e trimestre 2026",
+        "url": "https://www.insee.fr/fr/statistiques/9053525"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-20",
+      "note": "Fin du 2e trimestre 2026."
     },
     {
       "id": "dette.ratio-pib",
       "label": "Dette publique en % du PIB",
-      "valeur": 117,
+      "valeur": 119.0,
       "unite": "% du PIB",
-      "date": "2026-03-31",
-      "source": { "nom": "Insee, dette trimestrielle de Maastricht des administrations publiques", "url": "https://www.insee.fr" },
-      "statut": "a_verifier",
-      "note": "Ordre de grandeur du cahier des charges (« ≈ 117 % du PIB, T1 2026 »)."
+      "date": "2026-06-30",
+      "source": {
+        "nom": "Insee, Informations rapides n° 239 : dette de Maastricht au 2e trimestre 2026",
+        "url": "https://www.insee.fr/fr/statistiques/9053525"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-20",
+      "note": "Fin du 2e trimestre 2026."
+    },
+    {
+      "id": "dette.nette",
+      "label": "Dette publique nette",
+      "valeur": 3366.8,
+      "unite": "Md€",
+      "date": "2026-06-30",
+      "source": {
+        "nom": "Insee, Informations rapides n° 239 : dette de Maastricht au 2e trimestre 2026",
+        "url": "https://www.insee.fr/fr/statistiques/9053525"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-20",
+      "note": "Dette brute moins la trésorerie et certains actifs financiers."
+    },
+    {
+      "id": "dette.par-sous-secteur",
+      "label": "Dette publique par sous-secteur",
+      "serie": [
+        {
+          "x": "État",
+          "y": 2942.1
+        },
+        {
+          "x": "Organismes divers d'administration centrale",
+          "y": 69.2
+        },
+        {
+          "x": "Administrations publiques locales",
+          "y": 274.9
+        },
+        {
+          "x": "Sécurité sociale",
+          "y": 309.4
+        }
+      ],
+      "unite": "Md€",
+      "date": "2026-06-30",
+      "source": {
+        "nom": "Insee, Informations rapides n° 239 : dette de Maastricht au 2e trimestre 2026",
+        "url": "https://www.insee.fr/fr/statistiques/9053525"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-20",
+      "note": "Contributions consolidées à la dette ; somme 3 595,6 Md€ (arrondis)."
+    },
+    {
+      "id": "dette.fin-annee",
+      "label": "Dette publique au 31 décembre",
+      "valeur": 3460.1,
+      "unite": "Md€",
+      "date": "2025",
+      "source": {
+        "nom": "Insee, Dette des administrations publiques au sens de Maastricht par sous-secteur (données annuelles 1978-2025, août 2026)",
+        "url": "https://www.insee.fr/fr/statistiques/2830192"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-20",
+      "note": "Donnée provisoire."
+    },
+    {
+      "id": "dette.fin-annee-pib",
+      "label": "Dette publique au 31 décembre en % du PIB",
+      "valeur": 115.7,
+      "unite": "% du PIB",
+      "date": "2025",
+      "source": {
+        "nom": "Insee, Dette des administrations publiques au sens de Maastricht par sous-secteur (données annuelles 1978-2025, août 2026)",
+        "url": "https://www.insee.fr/fr/statistiques/2830192"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-20",
+      "note": "Donnée provisoire."
+    },
+    {
+      "id": "dette.historique-pib",
+      "label": "Dette publique en % du PIB, au 31 décembre",
+      "serie": [
+        {
+          "x": "1978",
+          "y": 21.6
+        },
+        {
+          "x": "1979",
+          "y": 21.6
+        },
+        {
+          "x": "1980",
+          "y": 21.3
+        },
+        {
+          "x": "1981",
+          "y": 22.6
+        },
+        {
+          "x": "1982",
+          "y": 26.2
+        },
+        {
+          "x": "1983",
+          "y": 27.7
+        },
+        {
+          "x": "1984",
+          "y": 30.2
+        },
+        {
+          "x": "1985",
+          "y": 31.9
+        },
+        {
+          "x": "1986",
+          "y": 32.4
+        },
+        {
+          "x": "1987",
+          "y": 34.8
+        },
+        {
+          "x": "1988",
+          "y": 34.7
+        },
+        {
+          "x": "1989",
+          "y": 35.5
+        },
+        {
+          "x": "1990",
+          "y": 36.8
+        },
+        {
+          "x": "1991",
+          "y": 37.8
+        },
+        {
+          "x": "1992",
+          "y": 41.7
+        },
+        {
+          "x": "1993",
+          "y": 48.2
+        },
+        {
+          "x": "1994",
+          "y": 51.6
+        },
+        {
+          "x": "1995",
+          "y": 57.8
+        },
+        {
+          "x": "1996",
+          "y": 60.6
+        },
+        {
+          "x": "1997",
+          "y": 62.0
+        },
+        {
+          "x": "1998",
+          "y": 62.1
+        },
+        {
+          "x": "1999",
+          "y": 61.4
+        },
+        {
+          "x": "2000",
+          "y": 59.7
+        },
+        {
+          "x": "2001",
+          "y": 59.3
+        },
+        {
+          "x": "2002",
+          "y": 61.3
+        },
+        {
+          "x": "2003",
+          "y": 65.4
+        },
+        {
+          "x": "2004",
+          "y": 66.9
+        },
+        {
+          "x": "2005",
+          "y": 68.2
+        },
+        {
+          "x": "2006",
+          "y": 65.4
+        },
+        {
+          "x": "2007",
+          "y": 65.5
+        },
+        {
+          "x": "2008",
+          "y": 69.8
+        },
+        {
+          "x": "2009",
+          "y": 84.1
+        },
+        {
+          "x": "2010",
+          "y": 86.3
+        },
+        {
+          "x": "2011",
+          "y": 88.7
+        },
+        {
+          "x": "2012",
+          "y": 91.7
+        },
+        {
+          "x": "2013",
+          "y": 94.6
+        },
+        {
+          "x": "2014",
+          "y": 96.2
+        },
+        {
+          "x": "2015",
+          "y": 97.0
+        },
+        {
+          "x": "2016",
+          "y": 98.2
+        },
+        {
+          "x": "2017",
+          "y": 98.8
+        },
+        {
+          "x": "2018",
+          "y": 98.5
+        },
+        {
+          "x": "2019",
+          "y": 98.2
+        },
+        {
+          "x": "2020",
+          "y": 114.9
+        },
+        {
+          "x": "2021",
+          "y": 112.8
+        },
+        {
+          "x": "2022",
+          "y": 111.4
+        },
+        {
+          "x": "2023",
+          "y": 109.5
+        },
+        {
+          "x": "2024",
+          "y": 112.6
+        },
+        {
+          "x": "2025",
+          "y": 115.7
+        }
+      ],
+      "unite": "% du PIB",
+      "date": "2025",
+      "source": {
+        "nom": "Insee, Dette des administrations publiques au sens de Maastricht par sous-secteur (données annuelles 1978-2025, août 2026)",
+        "url": "https://www.insee.fr/fr/statistiques/2830192"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-20"
+    },
+    {
+      "id": "dette.historique-md",
+      "label": "Dette publique au 31 décembre",
+      "serie": [
+        {
+          "x": "1978",
+          "y": 74.5
+        },
+        {
+          "x": "1979",
+          "y": 85.1
+        },
+        {
+          "x": "1980",
+          "y": 95.3
+        },
+        {
+          "x": "1981",
+          "y": 114.3
+        },
+        {
+          "x": "1982",
+          "y": 151.8
+        },
+        {
+          "x": "1983",
+          "y": 178.3
+        },
+        {
+          "x": "1984",
+          "y": 211.2
+        },
+        {
+          "x": "1985",
+          "y": 238.8
+        },
+        {
+          "x": "1986",
+          "y": 261.7
+        },
+        {
+          "x": "1987",
+          "y": 295.0
+        },
+        {
+          "x": "1988",
+          "y": 318.2
+        },
+        {
+          "x": "1989",
+          "y": 351.3
+        },
+        {
+          "x": "1990",
+          "y": 384.1
+        },
+        {
+          "x": "1991",
+          "y": 409.0
+        },
+        {
+          "x": "1992",
+          "y": 467.7
+        },
+        {
+          "x": "1993",
+          "y": 546.5
+        },
+        {
+          "x": "1994",
+          "y": 605.0
+        },
+        {
+          "x": "1995",
+          "y": 701.6
+        },
+        {
+          "x": "1996",
+          "y": 755.6
+        },
+        {
+          "x": "1997",
+          "y": 799.4
+        },
+        {
+          "x": "1998",
+          "y": 836.1
+        },
+        {
+          "x": "1999",
+          "y": 856.9
+        },
+        {
+          "x": "2000",
+          "y": 880.0
+        },
+        {
+          "x": "2001",
+          "y": 907.7
+        },
+        {
+          "x": "2002",
+          "y": 966.8
+        },
+        {
+          "x": "2003",
+          "y": 1060.4
+        },
+        {
+          "x": "2004",
+          "y": 1134.3
+        },
+        {
+          "x": "2005",
+          "y": 1201.5
+        },
+        {
+          "x": "2006",
+          "y": 1207.3
+        },
+        {
+          "x": "2007",
+          "y": 1268.9
+        },
+        {
+          "x": "2008",
+          "y": 1389.4
+        },
+        {
+          "x": "2009",
+          "y": 1627.2
+        },
+        {
+          "x": "2010",
+          "y": 1722.2
+        },
+        {
+          "x": "2011",
+          "y": 1830.1
+        },
+        {
+          "x": "2012",
+          "y": 1915.8
+        },
+        {
+          "x": "2013",
+          "y": 2005.0
+        },
+        {
+          "x": "2014",
+          "y": 2071.1
+        },
+        {
+          "x": "2015",
+          "y": 2134.9
+        },
+        {
+          "x": "2016",
+          "y": 2190.5
+        },
+        {
+          "x": "2017",
+          "y": 2263.3
+        },
+        {
+          "x": "2018",
+          "y": 2320.7
+        },
+        {
+          "x": "2019",
+          "y": 2387.4
+        },
+        {
+          "x": "2020",
+          "y": 2663.9
+        },
+        {
+          "x": "2021",
+          "y": 2828.8
+        },
+        {
+          "x": "2022",
+          "y": 2955.6
+        },
+        {
+          "x": "2023",
+          "y": 3103.2
+        },
+        {
+          "x": "2024",
+          "y": 3306.1
+        },
+        {
+          "x": "2025",
+          "y": 3460.1
+        }
+      ],
+      "unite": "Md€",
+      "date": "2025",
+      "source": {
+        "nom": "Insee, Dette des administrations publiques au sens de Maastricht par sous-secteur (données annuelles 1978-2025, août 2026)",
+        "url": "https://www.insee.fr/fr/statistiques/2830192"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-20"
+    },
+    {
+      "id": "deficit.montant",
+      "label": "Déficit public",
+      "valeur": 151.6,
+      "unite": "Md€",
+      "date": "2025",
+      "source": {
+        "nom": "Insee, Dépenses et recettes des administrations publiques (comptes nationaux, base 2020, août 2026)",
+        "url": "https://www.insee.fr/fr/statistiques/8988845"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-20",
+      "note": "Besoin de financement des administrations publiques (tableau 3.201, août 2026 ; 152,5 Md€ dans la version de mai 2026)."
     },
     {
       "id": "deficit.ratio-pib",
-      "label": "Déficit public",
+      "label": "Déficit public en % du PIB",
       "valeur": 5.1,
       "unite": "% du PIB",
       "date": "2025",
-      "source": { "nom": "Insee, comptes de la Nation (compte provisoire des administrations publiques)", "url": "https://www.insee.fr" },
+      "source": {
+        "nom": "Insee, Finances publiques en 2025 (principaux agrégats en points de PIB)",
+        "url": "https://www.insee.fr/fr/statistiques/8988841"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-20"
+    },
+    {
+      "id": "deficit.historique-md",
+      "label": "Solde public (négatif = déficit)",
+      "serie": [
+        {
+          "x": "1978",
+          "y": -6.3
+        },
+        {
+          "x": "1979",
+          "y": -1.9
+        },
+        {
+          "x": "1980",
+          "y": -1.9
+        },
+        {
+          "x": "1981",
+          "y": -12.3
+        },
+        {
+          "x": "1982",
+          "y": -16.6
+        },
+        {
+          "x": "1983",
+          "y": -16.5
+        },
+        {
+          "x": "1984",
+          "y": -19.3
+        },
+        {
+          "x": "1985",
+          "y": -22.5
+        },
+        {
+          "x": "1986",
+          "y": -26.0
+        },
+        {
+          "x": "1987",
+          "y": -17.2
+        },
+        {
+          "x": "1988",
+          "y": -23.7
+        },
+        {
+          "x": "1989",
+          "y": -17.8
+        },
+        {
+          "x": "1990",
+          "y": -25.6
+        },
+        {
+          "x": "1991",
+          "y": -31.3
+        },
+        {
+          "x": "1992",
+          "y": -52.0
+        },
+        {
+          "x": "1993",
+          "y": -72.6
+        },
+        {
+          "x": "1994",
+          "y": -64.0
+        },
+        {
+          "x": "1995",
+          "y": -62.0
+        },
+        {
+          "x": "1996",
+          "y": -48.6
+        },
+        {
+          "x": "1997",
+          "y": -47.9
+        },
+        {
+          "x": "1998",
+          "y": -32.2
+        },
+        {
+          "x": "1999",
+          "y": -21.5
+        },
+        {
+          "x": "2000",
+          "y": -19.3
+        },
+        {
+          "x": "2001",
+          "y": -21.7
+        },
+        {
+          "x": "2002",
+          "y": -50.1
+        },
+        {
+          "x": "2003",
+          "y": -66.3
+        },
+        {
+          "x": "2004",
+          "y": -60.3
+        },
+        {
+          "x": "2005",
+          "y": -61.8
+        },
+        {
+          "x": "2006",
+          "y": -49.1
+        },
+        {
+          "x": "2007",
+          "y": -57.9
+        },
+        {
+          "x": "2008",
+          "y": -69.7
+        },
+        {
+          "x": "2009",
+          "y": -142.8
+        },
+        {
+          "x": "2010",
+          "y": -142.8
+        },
+        {
+          "x": "2011",
+          "y": -109.4
+        },
+        {
+          "x": "2012",
+          "y": -108.0
+        },
+        {
+          "x": "2013",
+          "y": -104.7
+        },
+        {
+          "x": "2014",
+          "y": -98.5
+        },
+        {
+          "x": "2015",
+          "y": -85.7
+        },
+        {
+          "x": "2016",
+          "y": -84.0
+        },
+        {
+          "x": "2017",
+          "y": -77.1
+        },
+        {
+          "x": "2018",
+          "y": -54.6
+        },
+        {
+          "x": "2019",
+          "y": -58.2
+        },
+        {
+          "x": "2020",
+          "y": -207.1
+        },
+        {
+          "x": "2021",
+          "y": -165.1
+        },
+        {
+          "x": "2022",
+          "y": -125.9
+        },
+        {
+          "x": "2023",
+          "y": -151.9
+        },
+        {
+          "x": "2024",
+          "y": -169.1
+        },
+        {
+          "x": "2025",
+          "y": -151.6
+        }
+      ],
+      "unite": "Md€",
+      "date": "2025",
+      "source": {
+        "nom": "Insee, Dépenses et recettes des administrations publiques (comptes nationaux, base 2020, août 2026)",
+        "url": "https://www.insee.fr/fr/statistiques/8988845"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-20",
+      "note": "Tableau 3.201, ligne B9NF."
+    },
+    {
+      "id": "deficit.historique-pib",
+      "label": "Solde public en % du PIB (négatif = déficit)",
+      "serie": [
+        {
+          "x": "1978",
+          "y": -1.8
+        },
+        {
+          "x": "1979",
+          "y": -0.5
+        },
+        {
+          "x": "1980",
+          "y": -0.4
+        },
+        {
+          "x": "1981",
+          "y": -2.4
+        },
+        {
+          "x": "1982",
+          "y": -2.9
+        },
+        {
+          "x": "1983",
+          "y": -2.6
+        },
+        {
+          "x": "1984",
+          "y": -2.8
+        },
+        {
+          "x": "1985",
+          "y": -3.0
+        },
+        {
+          "x": "1986",
+          "y": -3.2
+        },
+        {
+          "x": "1987",
+          "y": -2.0
+        },
+        {
+          "x": "1988",
+          "y": -2.6
+        },
+        {
+          "x": "1989",
+          "y": -1.8
+        },
+        {
+          "x": "1990",
+          "y": -2.5
+        },
+        {
+          "x": "1991",
+          "y": -2.9
+        },
+        {
+          "x": "1992",
+          "y": -4.6
+        },
+        {
+          "x": "1993",
+          "y": -6.4
+        },
+        {
+          "x": "1994",
+          "y": -5.5
+        },
+        {
+          "x": "1995",
+          "y": -5.1
+        },
+        {
+          "x": "1996",
+          "y": -3.9
+        },
+        {
+          "x": "1997",
+          "y": -3.7
+        },
+        {
+          "x": "1998",
+          "y": -2.4
+        },
+        {
+          "x": "1999",
+          "y": -1.5
+        },
+        {
+          "x": "2000",
+          "y": -1.3
+        },
+        {
+          "x": "2001",
+          "y": -1.4
+        },
+        {
+          "x": "2002",
+          "y": -3.2
+        },
+        {
+          "x": "2003",
+          "y": -4.1
+        },
+        {
+          "x": "2004",
+          "y": -3.6
+        },
+        {
+          "x": "2005",
+          "y": -3.5
+        },
+        {
+          "x": "2006",
+          "y": -2.7
+        },
+        {
+          "x": "2007",
+          "y": -3.0
+        },
+        {
+          "x": "2008",
+          "y": -3.5
+        },
+        {
+          "x": "2009",
+          "y": -7.4
+        },
+        {
+          "x": "2010",
+          "y": -7.2
+        },
+        {
+          "x": "2011",
+          "y": -5.3
+        },
+        {
+          "x": "2012",
+          "y": -5.2
+        },
+        {
+          "x": "2013",
+          "y": -4.9
+        },
+        {
+          "x": "2014",
+          "y": -4.6
+        },
+        {
+          "x": "2015",
+          "y": -3.9
+        },
+        {
+          "x": "2016",
+          "y": -3.8
+        },
+        {
+          "x": "2017",
+          "y": -3.4
+        },
+        {
+          "x": "2018",
+          "y": -2.3
+        },
+        {
+          "x": "2019",
+          "y": -2.4
+        },
+        {
+          "x": "2020",
+          "y": -8.9
+        },
+        {
+          "x": "2021",
+          "y": -6.6
+        },
+        {
+          "x": "2022",
+          "y": -4.7
+        },
+        {
+          "x": "2023",
+          "y": -5.4
+        },
+        {
+          "x": "2024",
+          "y": -5.8
+        },
+        {
+          "x": "2025",
+          "y": -5.1
+        }
+      ],
+      "unite": "% du PIB",
+      "date": "2025",
+      "source": {
+        "nom": "Insee, Dépenses et recettes des administrations publiques (comptes nationaux, base 2020, août 2026)",
+        "url": "https://www.insee.fr/fr/statistiques/8988845"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-20",
+      "note": "Calculé : solde (tableau 3.201) divisé par le PIB implicite de la série de dette (Insee). Précision ± 0,1 point."
+    },
+    {
+      "id": "deficit.dernier-excedent",
+      "label": "Dernière année où les administrations publiques ont été en excédent",
+      "valeur": 1974,
+      "unite": "année",
+      "date": "2025",
+      "source": {
+        "nom": "Insee, Dépenses et recettes des administrations publiques (comptes nationaux, base 2020, août 2026)",
+        "url": "https://www.insee.fr/fr/statistiques/8988845"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-20",
+      "note": "Série du solde public depuis 1959 (tableau 3.201) : excédents en 1959-1966, 1972 et 1974, déficit chaque année depuis 1975."
+    },
+    {
+      "id": "deficit.stabilisant",
+      "label": "Déficit qui aurait stabilisé la dette en 2025",
+      "valeur": 2.2,
+      "unite": "% du PIB",
+      "date": "2025",
+      "source": {
+        "nom": "Haut Conseil des finances publiques, avis n° HCFP-2026-2 du 16 avril 2026",
+        "url": "https://www.assemblee-nationale.fr/dyn/contenu/visualisation/1109784/file/Avis%20HCFP%20PLRG%202025-Final.pdf"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-20",
+      "note": "« Le déficit stabilisant la dette en 2025 se situait à 2,2 points de PIB, soit 2,9 points de moins que le déficit constaté. »"
+    },
+    {
+      "id": "deficit.structurel",
+      "label": "Déficit structurel",
+      "valeur": 5.0,
+      "unite": "% du PIB",
+      "date": "2025",
+      "source": {
+        "nom": "Haut Conseil des finances publiques, avis n° HCFP-2026-2 du 16 avril 2026",
+        "url": "https://www.assemblee-nationale.fr/dyn/contenu/visualisation/1109784/file/Avis%20HCFP%20PLRG%202025-Final.pdf"
+      },
       "statut": "a_verifier",
-      "note": "Chiffre du cahier des charges pour l'année 2025."
+      "note": "L'avis indique une composante structurelle « proche de 5 points de PIB » après une baisse de 0,8 point en 2025 : valeur exacte à relever."
     },
     {
       "id": "dette.charge",
@@ -37,7 +1002,10 @@
       "valeur": 77,
       "unite": "Md€",
       "date": "2026",
-      "source": { "nom": "Cour des comptes", "url": "https://www.ccomptes.fr" },
+      "source": {
+        "nom": "Cour des comptes",
+        "url": "https://www.ccomptes.fr"
+      },
       "statut": "a_verifier",
       "note": "Ordre de grandeur du cahier des charges (« ≈ 77 Md€ en 2026 »). Préciser le périmètre : État seul ou ensemble des administrations publiques."
     }

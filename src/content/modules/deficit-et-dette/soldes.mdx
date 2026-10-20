@@ -1,0 +1,78 @@
+import { SoldesDecomposes } from "@/components/graphiques/SoldesDecomposes";
+
+<Niveaux>
+<Essentiel>
+
+Le **solde public**, c'est recettes moins dépenses. Négatif, c'est un déficit ; positif, un excédent.
+
+On le découpe souvent en deux morceaux :
+
+- les **intérêts de la dette**, le prix à payer pour les emprunts passés ;
+- tout le reste, appelé le <Terme id="solde-primaire">solde primaire</Terme> : les dépenses courantes (écoles,
+  hôpitaux, retraites…) comparées aux recettes.
+
+C'est comme un ménage qui regarderait d'abord si son salaire couvre ses courses, son loyer et ses factures,
+avant de compter les mensualités de ses anciens crédits.
+
+</Essentiel>
+<Mecanisme>
+
+<Figure
+  titre="Le déficit, intérêts compris et hors intérêts"
+  resume="Le solde public se décompose en solde primaire, c'est-à-dire les dépenses hors intérêts non couvertes par les recettes, et en intérêts de la dette. Les deux sont négatifs : même sans intérêts à payer, les comptes seraient en déficit."
+  donnees={["deficit.montant", "fp.interets", "macro.pib"]}
+>
+  <SoldesDecomposes />
+</Figure>
+
+**Ce que montre le solde primaire.** Il indique si l'État finance ses politiques actuelles avec ses recettes
+actuelles. Un pays peut avoir un excédent primaire et rester en déficit à cause de ses intérêts : l'Italie a
+connu cette situation presque chaque année du début des années 1990 à 2019. La France, elle, est en déficit
+**même hors intérêts** : une
+partie des dépenses courantes est financée par l'emprunt.
+
+<Exemple titre="Exemple : deux ménages">
+Deux ménages gagnent chacun 3 000 € par mois. Le premier dépense 2 700 € pour vivre et rembourse 500 € de
+crédits : il est à −200 € par mois, mais sa vie courante est financée (solde primaire de +300 €). Le second
+dépense 3 100 € pour vivre et rembourse 100 € : il est aussi à −200 €, mais c'est sa vie courante elle-même qui
+n'est pas financée (solde primaire de −100 €). Même déficit, situations très différentes.
+</Exemple>
+
+**Le solde structurel** corrige le solde des effets de la conjoncture. En <Terme id="recession">récession</Terme>,
+les recettes baissent et les dépenses de chômage montent, sans qu'aucune décision n'ait été prise ; en période
+faste, c'est l'inverse. Le solde structurel tente de retirer ces effets pour mesurer le déficit « de fond ».
+Pour <DateDonnee id="deficit.structurel" />, le Haut Conseil des finances publiques l'estime à
+environ <Chiffre id="deficit.structurel" decimales={0} />.
+
+</Mecanisme>
+<PlusLoin>
+
+**Les formules.**
+
+$$
+\text{solde public} = \text{recettes} - \text{dépenses} = \text{solde primaire} - \text{intérêts}
+$$
+
+$$
+\text{solde public} = \text{solde structurel} + \text{composante conjoncturelle} + \text{mesures ponctuelles}
+$$
+
+**Pourquoi le solde structurel est fragile.** Il repose sur la « croissance potentielle », le rythme que
+l'économie pourrait tenir sans tensions, et sur « l'écart de production », la distance entre la production
+réelle et ce potentiel. Aucun des deux ne s'observe : ils s'estiment, et leurs estimations sont souvent
+révisées après coup, parfois de plusieurs dixièmes de point de PIB. C'est une des raisons pour lesquelles les
+règles budgétaires européennes, réformées en 2024, s'appuient désormais surtout sur l'évolution des dépenses
+(module 6 bis).
+
+**Quelle mesure des intérêts ?** Les intérêts retenus ici sont ceux de la comptabilité nationale
+(<Chiffre id="fp.interets" />), versés par l'ensemble des administrations publiques. La « charge de la dette »
+du budget de l'État, souvent citée dans le débat public, est un autre périmètre (État seul, comptabilité
+budgétaire) : les deux chiffres ne se comparent pas directement (module 2).
+
+</PlusLoin>
+</Niveaux>
+
+<ARetenir>
+Solde public = solde primaire − intérêts. La France est en déficit même hors intérêts. Le solde structurel
+retire l'effet de la conjoncture, mais il repose sur des estimations fragiles.
+</ARetenir>

@@ -2,6 +2,7 @@ import type { MDXComponents } from "mdx/types";
 import Link from "next/link";
 import type { ComponentPropsWithoutRef } from "react";
 import { Chiffre } from "@/components/pedago/Chiffre";
+import { DateDonnee } from "@/components/pedago/DateDonnee";
 import { ARetenir, BadgeVerdict, Debat, Exemple, Verdict } from "@/components/pedago/Encadres";
 import { Figure } from "@/components/pedago/Figure";
 import { Essentiel, Mecanisme, Niveaux, PlusLoin } from "@/components/pedago/Niveaux";
@@ -23,6 +24,7 @@ const components: MDXComponents = {
   ARetenir,
   BadgeVerdict,
   Chiffre,
+  DateDonnee,
   Debat,
   Essentiel,
   Exemple,

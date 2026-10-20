@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { navItems, type NavItem } from "@/content/navigation";
+import { ModeLecture } from "@/components/lecture/ModeLecture";
 import { SoonBadge } from "@/components/ui/SoonBadge";
 
 // Les adresses finissent par « / » (trailingSlash) : on compare sans.
@@ -47,8 +48,8 @@ export function MainNav() {
 
   return (
     <nav aria-label="Navigation principale">
-      {/* Écrans moyens et grands : liens en ligne */}
-      <ul className="hidden items-center gap-1 md:flex">
+      {/* Grands écrans : liens en ligne */}
+      <ul className="hidden items-center gap-1 lg:flex">
         {navItems.map((item) => (
           <li key={item.href}>
             <NavLink
@@ -63,7 +64,7 @@ export function MainNav() {
       {/* Mobile : bouton menu */}
       <button
         type="button"
-        className="rounded-md p-2 text-body hover:bg-subtle md:hidden"
+        className="rounded-md p-2 text-body hover:bg-subtle lg:hidden"
         aria-expanded={open}
         aria-controls="menu-mobile"
         onClick={() => setOpen((o) => !o)}
@@ -89,7 +90,7 @@ export function MainNav() {
       {open && (
         <ul
           id="menu-mobile"
-          className="absolute inset-x-0 top-full space-y-1 border-b border-line bg-surface px-4 py-3 shadow-sm md:hidden"
+          className="absolute inset-x-0 top-full space-y-1 border-b border-line bg-surface px-4 py-3 shadow-sm lg:hidden"
         >
           {navItems.map((item) => (
             <li key={item.href}>
@@ -101,6 +102,10 @@ export function MainNav() {
               />
             </li>
           ))}
+          <li className="flex flex-wrap items-center justify-between gap-2 border-t border-line px-3 pt-3">
+            <span className="text-sm text-muted">Niveau de lecture</span>
+            <ModeLecture />
+          </li>
         </ul>
       )}
     </nav>

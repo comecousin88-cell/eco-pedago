@@ -63,10 +63,10 @@ export function FigureCadre({
     <figure
       ref={ref}
       aria-labelledby={titreId}
-      className="my-8 rounded-2xl border border-line bg-surface p-4 sm:p-6"
+      className="my-8 -mx-2 rounded-2xl border border-line bg-surface p-3 sm:mx-0 sm:p-6"
     >
-      <div className="flex items-start justify-between gap-3">
-        <h3 id={titreId} className="font-serif text-lg font-semibold text-ink sm:text-xl">
+      <div className="flex flex-wrap items-start justify-between gap-x-3 gap-y-2">
+        <h3 id={titreId} className="min-w-0 flex-1 basis-56 font-serif text-lg font-semibold text-ink sm:text-xl">
           {titre}
         </h3>
         <button

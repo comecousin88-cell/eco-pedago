@@ -1,0 +1,60 @@
+import { Baignoire } from "@/components/simulators/Baignoire";
+
+<Niveaux>
+<Essentiel>
+
+Imaginez une baignoire. Le **robinet**, c'est le <Terme id="deficit-public">déficit</Terme> : ce qui manque
+chaque année, et qu'il faut emprunter. Le **niveau de l'eau**, c'est la <Terme id="dette-publique">dette</Terme> :
+tout ce qui a été emprunté au fil des années et pas encore remboursé.
+
+Tant que le robinet coule, même un peu, le niveau monte. Réduire le déficit, c'est fermer un peu le robinet :
+la dette monte **moins vite**, mais elle monte encore. Pour que le niveau baisse, il faudrait ouvrir la bonde,
+c'est-à-dire dégager un excédent.
+
+En <DateDonnee id="deficit.montant" />, le déficit public a été de <Chiffre id="deficit.montant" />
+(<Chiffre id="deficit.ratio-pib" />). Au <DateDonnee id="dette.stock" format="jour" />, la dette atteint
+<Chiffre id="dette.stock" />.
+
+</Essentiel>
+<Mecanisme>
+
+Réglez le robinet et faites avancer le temps. Le point de départ est la dette réelle au 31 décembre
+<DateDonnee id="dette.fin-annee" />.
+
+<Figure
+  titre="La baignoire : le déficit remplit la dette"
+  resume="Simulateur : le curseur règle le déficit annuel (ou l'excédent). Chaque année simulée ajoute le déficit à la dette, en partant de la dette réelle de la dernière fin d'année connue."
+  donnees={["dette.fin-annee", "deficit.montant"]}
+>
+  <Baignoire />
+</Figure>
+
+<Exemple titre="Exemple : un déficit qui baisse, une dette qui monte">
+Partons d'une dette de **1 000 €**. Trois années de suite, le déficit vaut **100 €**, puis **100 €**, puis
+**50 €**. La dette passe à **1 100 €**, puis **1 200 €**, puis **1 250 €**. La troisième année, le déficit a
+été divisé par deux… et la dette a quand même augmenté de 50 €.
+</Exemple>
+
+**Un flux se mesure sur une période, un stock à une date.** On dit « le déficit **de** 2025 » (sur toute
+l'année) mais « la dette **au** 31 décembre 2025 » (à un instant). C'est la même différence qu'entre votre
+salaire du mois et le solde de votre compte en banque.
+
+</Mecanisme>
+<PlusLoin>
+
+**La dette ne bouge pas exactement du montant du déficit.** D'autres opérations la font varier : l'État peut
+emprunter davantage pour garnir sa trésorerie, accorder des prêts, acheter des actifs financiers ou en vendre.
+Les statisticiens appellent « ajustement stock-flux » l'écart entre la variation de la dette et le déficit.
+Il est en général petit devant le déficit, mais il existe chaque année.
+
+**Les deux se lisent aussi en % du PIB, et c'est là que tout se complique.** Le ratio dette/PIB peut baisser
+même avec un déficit, si le PIB augmente plus vite que la dette. C'est tout l'enjeu du module 3, sur l'effet
+« boule de neige » : la comparaison entre le taux d'intérêt payé sur la dette et la croissance de l'économie.
+
+</PlusLoin>
+</Niveaux>
+
+<ARetenir>
+Le déficit est un flux (ce qui manque pendant une année), la dette un stock (le total accumulé à une date).
+Tant qu'il y a un déficit, la dette augmente, même si le déficit baisse.
+</ARetenir>

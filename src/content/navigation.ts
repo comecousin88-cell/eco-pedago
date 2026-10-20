@@ -28,9 +28,9 @@ export const navItems: NavItem[] = [
   },
   {
     href: "/jeu-budget/",
-    label: "Ministre des Finances",
+    label: "Jeux",
     description:
-      "Tenez le budget de l'État pendant un mandat : dépenses, impôts, retraites… et leurs conséquences.",
+      "Redresser les comptes de l'État en choisissant parmi des mesures chiffrées, puis tenir le budget pendant un mandat.",
     status: "soon",
   },
   {

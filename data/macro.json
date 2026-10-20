@@ -1,0 +1,77 @@
+{
+  "description": "Agrégats macroéconomiques : PIB, croissance, inflation.",
+  "donnees": [
+    {
+      "id": "macro.pib",
+      "label": "Produit intérieur brut (PIB) en valeur",
+      "valeur": 2991.1,
+      "unite": "Md€",
+      "date": "2025",
+      "source": {
+        "nom": "Insee Première n° 2105, Les comptes de la Nation en 2025 (mai 2026)",
+        "url": "https://www.insee.fr/fr/statistiques/8996855"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-20",
+      "note": "Compte provisoire publié le 29/05/2026."
+    },
+    {
+      "id": "macro.croissance-volume",
+      "label": "Croissance du PIB en volume",
+      "valeur": 0.8,
+      "unite": "%",
+      "date": "2025",
+      "source": {
+        "nom": "Insee Première n° 2105, Les comptes de la Nation en 2025 (mai 2026)",
+        "url": "https://www.insee.fr/fr/statistiques/8996855"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-20"
+    },
+    {
+      "id": "macro.croissance-valeur",
+      "label": "Croissance du PIB en valeur (croissance nominale)",
+      "valeur": 1.9,
+      "unite": "%",
+      "date": "2025",
+      "source": {
+        "nom": "Insee Première n° 2105, Les comptes de la Nation en 2025 (mai 2026)",
+        "url": "https://www.insee.fr/fr/statistiques/8996855"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-20",
+      "note": "Volume +0,8 % et prix (déflateur du PIB) +1,1 %."
+    },
+    {
+      "id": "macro.inflation",
+      "label": "Inflation (indice des prix à la consommation, moyenne annuelle)",
+      "serie": [
+        {
+          "x": "2022",
+          "y": 5.2
+        },
+        {
+          "x": "2023",
+          "y": 4.9
+        },
+        {
+          "x": "2024",
+          "y": 2.0
+        },
+        {
+          "x": "2025",
+          "y": 0.9
+        }
+      ],
+      "unite": "%",
+      "date": "2025",
+      "source": {
+        "nom": "Insee, Informations rapides n° 8 : indice des prix à la consommation, résultats annuels 2025",
+        "url": "https://www.insee.fr/fr/statistiques/8726461"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-20",
+      "note": "Publication du 15/01/2026."
+    }
+  ]
+}

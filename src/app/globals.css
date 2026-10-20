@@ -129,6 +129,34 @@ body {
   @apply bg-page font-sans text-body;
 }
 
+/*
+ * Blocs dépliables (<Depliable>). État par défaut appliqué en CSS, selon le
+ * mode de lecture posé sur <html data-lecture> avant le premier affichage ;
+ * data-ouvert="true|false" traduit un choix manuel du lecteur.
+ */
+[data-depliable][data-ouvert="false"] > [data-contenu],
+[data-lecture="simple"] [data-depliable="mode"]:not([data-ouvert="true"]) > [data-contenu] {
+  display: none;
+}
+[data-depliable][data-ouvert="false"] > :first-child .depliable-chevron,
+[data-lecture="simple"] [data-depliable="mode"]:not([data-ouvert="true"]) > :first-child .depliable-chevron {
+  transform: rotate(0deg);
+}
+[data-depliable] > :first-child .depliable-chevron {
+  transform: rotate(180deg);
+}
+
+/* Interrupteur « Simple / Approfondi » (<ModeLecture>) et textes propres à un mode. */
+[data-lecture="simple"] .bouton-lecture[data-valeur="simple"],
+[data-lecture="approfondi"] .bouton-lecture[data-valeur="approfondi"] {
+  background: var(--ink);
+  color: var(--page);
+}
+[data-lecture="simple"] .lecture-si-approfondi,
+[data-lecture="approfondi"] .lecture-si-simple {
+  display: none;
+}
+
 /* Focus clavier bien visible partout */
 :focus-visible {
   outline: 2px solid var(--accent);

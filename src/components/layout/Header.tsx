@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { site } from "@/content/site";
+import { ModeLecture } from "@/components/lecture/ModeLecture";
 import { ThemeToggle } from "@/components/theme/ThemeToggle";
 import { MainNav } from "./MainNav";
 
@@ -15,6 +16,7 @@ export function Header() {
         </Link>
         <div className="flex items-center gap-1">
           <MainNav />
+          <ModeLecture className="ml-2 hidden lg:block" />
           <ThemeToggle />
         </div>
       </div>

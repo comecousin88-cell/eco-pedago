@@ -3,6 +3,7 @@ import { Inter, Source_Serif_4 } from "next/font/google";
 import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
 import { themeScript } from "@/components/theme/theme-script";
+import { lectureScript } from "@/lib/lecture-script";
 import { site } from "@/content/site";
 import "./globals.css";
 
@@ -29,17 +30,18 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html
       lang="fr"
       data-theme="light"
+      data-lecture="simple"
       suppressHydrationWarning
       className={`${inter.variable} ${sourceSerif.variable} h-full antialiased`}
     >
       <head>
-        {/* Applique le thème clair/sombre avant le premier affichage. */}
+        {/* Applique le thème et le mode de lecture avant le premier affichage. */}
         {/* type « text/plain » côté client : React ne réexécute pas ce script
             et ne signale plus de balise script dans un composant. */}
         <script
           type={typeof window === "undefined" ? "text/javascript" : "text/plain"}
           suppressHydrationWarning
-          dangerouslySetInnerHTML={{ __html: themeScript }}
+          dangerouslySetInnerHTML={{ __html: `${themeScript};${lectureScript}` }}
         />
       </head>
       <body className="flex min-h-full flex-col">

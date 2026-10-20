@@ -1,0 +1,63 @@
+<Niveaux>
+<Essentiel>
+
+Le <Terme id="pib">PIB</Terme> (produit intérieur brut) mesure la valeur de tout ce qui est produit en France
+en un an : pains, voitures, consultations médicales, cours donnés à l'école, logiciels… En
+<DateDonnee id="macro.pib" />, il atteint <Chiffre id="macro.pib" />.
+
+On s'en sert comme d'une **règle graduée** pour mesurer le reste. Dire que la dette publique atteint
+<Chiffre id="dette.stock" /> ne dit pas grand-chose ; dire qu'elle représente <Chiffre id="dette.ratio-pib" />,
+c'est la comparer à la richesse produite en un an, comme on compare un crédit immobilier à son salaire annuel.
+
+</Essentiel>
+<Mecanisme>
+
+Le PIB additionne la <Terme id="valeur-ajoutee">valeur ajoutée</Terme> de chaque producteur : ce qu'il vend,
+moins ce qu'il a acheté pour produire. On évite ainsi de compter plusieurs fois la même chose.
+
+<Exemple titre="Exemple : la baguette">
+Un agriculteur vend du blé au meunier pour **30 €**. Le meunier en fait de la farine qu'il vend
+**50 €** au boulanger. Le boulanger vend le pain **100 €**.
+
+- Valeur ajoutée de l'agriculteur : 30 €
+- Valeur ajoutée du meunier : 50 − 30 = 20 €
+- Valeur ajoutée du boulanger : 100 − 50 = 50 €
+
+Total : 30 + 20 + 50 = **100 €**, exactement le prix du pain vendu au client. Si l'on avait additionné les
+chiffres d'affaires (30 + 50 + 100 = 180 €), on aurait compté le blé trois fois.
+</Exemple>
+
+**En volume ou en valeur ?** Le PIB peut augmenter parce qu'on produit davantage (croissance « en volume »)
+ou parce que les prix montent. En <DateDonnee id="macro.croissance-volume" />, le PIB a progressé de <Chiffre id="macro.croissance-volume" /> en volume
+et de <Chiffre id="macro.croissance-valeur" /> en euros courants, la différence venant de la hausse des prix.
+Cette croissance en euros courants s'appelle la <Terme id="croissance-nominale">croissance nominale</Terme> :
+c'est elle qui compte pour le ratio dette/PIB, car la dette est elle aussi en euros courants.
+
+</Mecanisme>
+<PlusLoin>
+
+**Trois façons de calculer le même chiffre.** Par la production (somme des valeurs ajoutées), par les
+dépenses (consommation + investissement + dépenses des administrations + exportations − importations) et par
+les revenus (salaires, profits, impôts sur la production). Les trois doivent coïncider ; l'Insee les réconcilie.
+
+$$
+\text{PIB} = C + I + G + (X - M)
+$$
+
+**Ce que le PIB ne mesure pas.** Le travail domestique et le bénévolat, la répartition des revenus (un PIB
+qui monte peut aller avec des inégalités qui se creusent), l'usure du capital naturel (pollution, ressources
+épuisées) ou le bien-être. Ce débat a donné lieu à des indicateurs complémentaires, comme ceux proposés en 2009
+par la commission Stiglitz-Sen-Fitoussi.
+
+**Un ratio entre un stock et un flux.** Rapporter la dette (un stock) au PIB (un flux annuel) ne signifie pas
+que la dette devrait être remboursée en un an : c'est une mesure de taille relative, qui permet de comparer
+les pays et les époques. Elle ne dit pas tout de la capacité à payer, qui dépend aussi des taux d'intérêt et
+de la durée des emprunts (modules 2 et 3).
+
+</PlusLoin>
+</Niveaux>
+
+<ARetenir>
+Le PIB est la valeur produite en un an, sans double comptage. Il sert d'étalon : on exprime la dette, le
+déficit ou les dépenses publiques « en % du PIB » pour pouvoir les comparer.
+</ARetenir>

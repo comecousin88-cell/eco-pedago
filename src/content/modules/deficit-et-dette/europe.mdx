@@ -1,0 +1,65 @@
+import { BarresHorizontales } from "@/components/graphiques/BarresHorizontales";
+
+<Niveaux>
+<Essentiel>
+
+Fin <DateDonnee id="europe.dette-pib" />, la France fait partie des pays les plus endettés de l'Union européenne
+en proportion de leur PIB, derrière la Grèce et l'Italie. Surtout, son déficit est l'un des plus élevés de la
+zone euro : <Chiffre id="europe.solde-pib" x="France" /> du PIB, contre <Chiffre id="europe.solde-pib" x="Zone euro (20 pays)" />
+en moyenne.
+
+<Figure
+  titre="La dette publique en Europe"
+  resume="Dette publique en pourcentage du PIB fin 2025 : la Grèce et l'Italie dépassent la France, l'Espagne et la Belgique la suivent ; l'Allemagne, les Pays-Bas et les pays nordiques sont bien en dessous."
+  donnees={["europe.dette-pib"]}
+>
+  <BarresHorizontales serie="europe.dette-pib" enAvant={["France", "Zone euro (20 pays)"]} />
+</Figure>
+
+</Essentiel>
+<Mecanisme>
+
+Le niveau de la dette résulte du passé ; le solde de l'année montre la direction actuelle.
+
+<Figure
+  titre="Le solde public en Europe"
+  resume="Solde public en pourcentage du PIB en 2025 : la France a l'un des déficits les plus élevés. La Grèce, le Portugal et le Danemark sont en excédent."
+  donnees={["europe.solde-pib"]}
+>
+  <BarresHorizontales serie="europe.solde-pib" enAvant={["France", "Zone euro (20 pays)"]} />
+</Figure>
+
+**Une trajectoire inverse de celle de pays très endettés.** La Grèce et le Portugal, durement frappés par la crise
+de la zone euro au début des années 2010, dégagent aujourd'hui des excédents et réduisent leur dette en
+proportion du PIB. La France, partie de plus bas, a un déficit plus élevé que la moyenne et une dette qui
+continue d'augmenter.
+
+<Exemple titre="Exemple : lire un écart de déficit">
+Un écart de 2 points de PIB de déficit entre deux pays, c'est beaucoup. Avec un PIB de <Chiffre id="macro.pib" />,
+2 points représentent environ 60 milliards d'euros par an : un peu plus que l'ensemble des dépenses publiques de
+défense (<Chiffre id="fp.depenses-2024-par-fonction" x="Défense" decimales={0} /> en
+<DateDonnee id="fp.depenses-2024-par-fonction" />).
+</Exemple>
+
+</Mecanisme>
+<PlusLoin>
+
+**Une même méthode pour tous.** Les chiffres viennent d'Eurostat, qui collecte les données de chaque pays selon
+les règles de la dette de Maastricht. Le chiffre de la France peut différer d'un dixième de point de celui de
+l'Insee, publié à une autre date (révisions).
+
+**Ce que la comparaison ne dit pas.** Un même ratio de dette n'a pas la même portée selon la durée des
+emprunts, les taux payés, la part détenue par des investisseurs étrangers, la croissance attendue ou le fait
+d'avoir sa propre monnaie. Le module 6 quater explique pourquoi le Japon vit avec une dette de plus de deux fois
+son PIB, alors que la Grèce a perdu l'accès aux marchés avec beaucoup moins.
+
+**Les repères européens.** Les traités fixent deux valeurs de référence : 3 % du PIB pour le déficit, 60 % pour
+la dette. Elles datent du traité de Maastricht (1992) ; leur application a été réformée en 2024 (module 6 bis).
+
+</PlusLoin>
+</Niveaux>
+
+<ARetenir>
+La France est l'un des pays les plus endettés de l'Union européenne et l'un de ceux dont le déficit est le plus
+élevé. Certains pays plus endettés, comme la Grèce, sont aujourd'hui en excédent.
+</ARetenir>

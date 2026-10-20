@@ -3,6 +3,7 @@ import {
   cumulDette,
   fluxObligation,
   pouvoirAchat,
+  repartir100,
   prixBTF,
   prixObligation,
   rendementActuariel,
@@ -179,5 +180,19 @@ describe("dette et boule de neige", () => {
     });
     const exacte = t[1].dette - t[0].dette;
     expect(variationDetteApprochee(1.15, 0.025, 0.03, -0.02)).toBeCloseTo(exacte, 3);
+  });
+});
+
+describe("répartition sur 100 €", () => {
+  it("la somme fait toujours exactement 100", () => {
+    expect(repartir100([1, 1, 1]).reduce((a, b) => a + b, 0)).toBe(100);
+    expect(repartir100([432.6, 261.2, 148.6, 58.9, 7]).reduce((a, b) => a + b, 0)).toBe(100);
+  });
+
+  it("donne l'euro restant aux plus forts restes", () => {
+    // 1/3 chacun = 33,33… : un des trois reçoit 34
+    expect(repartir100([1, 1, 1]).sort()).toEqual([33, 33, 34]);
+    // 25,6 / 74,4 → 26 / 74
+    expect(repartir100([25.6, 74.4])).toEqual([26, 74]);
   });
 });

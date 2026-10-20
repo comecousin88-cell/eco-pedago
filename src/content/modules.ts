@@ -39,7 +39,7 @@ export const modules: ModuleInfo[] = [
       { slug: "administrations", title: "Les quatre administrations publiques" },
       { slug: "inflation-taux-reels", title: "Inflation et taux réels" },
     ],
-    status: "soon",
+    status: "available",
   },
   {
     slug: "deficit-et-dette",
@@ -57,7 +57,7 @@ export const modules: ModuleInfo[] = [
       { slug: "histoire", title: "La dette depuis 1978" },
       { slug: "europe", title: "La France et ses voisins" },
     ],
-    status: "soon",
+    status: "available",
   },
   {
     slug: "emprunt-etat",

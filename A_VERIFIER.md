@@ -2,7 +2,7 @@
 
 Fichier généré par `npm test` à partir des données marquées `"statut": "a_verifier"` dans `data/*.json`. Ne pas modifier à la main : corriger la donnée dans son fichier JSON, passer son statut à `verifie`, puis relancer `npm test`.
 
-10 chiffres en attente de vérification.
+8 chiffres en attente de vérification.
 
 ## data/aft.json
 
@@ -16,9 +16,7 @@ Fichier généré par `npm test` à partir des données marquées `"statut": "a_
 
 | Identifiant | Donnée | Valeur actuelle | Date | Source à consulter | Remarque |
 |---|---|---|---|---|---|
-| `dette.stock` | Dette publique au sens de Maastricht | 3500 Md€ | 2026-03-31 | [Insee, dette trimestrielle de Maastricht des administrations publiques](https://www.insee.fr) | Ordre de grandeur du cahier des charges (« ≈ 3 500 Md€, T1 2026 »). Valeur exacte et URL de la publication à relever. |
-| `dette.ratio-pib` | Dette publique en % du PIB | 117 % du PIB | 2026-03-31 | [Insee, dette trimestrielle de Maastricht des administrations publiques](https://www.insee.fr) | Ordre de grandeur du cahier des charges (« ≈ 117 % du PIB, T1 2026 »). |
-| `deficit.ratio-pib` | Déficit public | 5.1 % du PIB | 2025 | [Insee, comptes de la Nation (compte provisoire des administrations publiques)](https://www.insee.fr) | Chiffre du cahier des charges pour l'année 2025. |
+| `deficit.structurel` | Déficit structurel | 5 % du PIB | 2025 | [Haut Conseil des finances publiques, avis n° HCFP-2026-2 du 16 avril 2026](https://www.assemblee-nationale.fr/dyn/contenu/visualisation/1109784/file/Avis%20HCFP%20PLRG%202025-Final.pdf) | L'avis indique une composante structurelle « proche de 5 points de PIB » après une baisse de 0,8 point en 2025 : valeur exacte à relever. |
 | `dette.charge` | Charge de la dette | 77 Md€ | 2026 | [Cour des comptes](https://www.ccomptes.fr) | Ordre de grandeur du cahier des charges (« ≈ 77 Md€ en 2026 »). Préciser le périmètre : État seul ou ensemble des administrations publiques. |
 
 ## data/retraites.json

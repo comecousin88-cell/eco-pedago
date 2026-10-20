@@ -1,13 +1,12 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect } from "react";
 import { moduleHref, type ModuleSection } from "@/content/modules";
-import { marquerLue, useProgression } from "@/lib/progression";
+import { useProgression } from "@/lib/progression";
 
 /**
  * Barre de progression d'un module et liste de ses sections, avec une coche
- * pour chaque section déjà lue. Marque la page courante comme lue.
+ * pour chaque section déjà lue.
  */
 export function ProgressionModule({
   module,
@@ -20,10 +19,6 @@ export function ProgressionModule({
   courante?: string;
 }) {
   const { lues, quiz } = useProgression();
-
-  useEffect(() => {
-    marquerLue(moduleHref(module, courante));
-  }, [module, courante]);
 
   const faites = sections.filter((s) => lues.includes(moduleHref(module, s.slug))).length;
   const pourcent = sections.length ? Math.round((faites / sections.length) * 100) : 0;

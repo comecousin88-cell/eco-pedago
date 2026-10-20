@@ -1,28 +1,8 @@
 import Link from "next/link";
 import { ModuleCard } from "@/components/modules/ModuleCard";
+import { CartesParcours } from "@/components/lecture/CartesParcours";
 import { SoonBadge } from "@/components/ui/SoonBadge";
 import { modules } from "@/content/modules";
-
-const PORTES = [
-  {
-    titre: "Comprendre la dette en 10 minutes",
-    texte: "Le parcours guidé pour grands débutants : déficit, dette, taux, en sept étapes.",
-    href: "/parcours/",
-    disponible: false,
-  },
-  {
-    titre: "La France en 10 chiffres",
-    texte: "La situation des finances publiques en un coup d'œil, chiffres sourcés et datés.",
-    href: "/la-france-en-10-chiffres/",
-    disponible: false,
-  },
-  {
-    titre: "Tous les modules",
-    texte: "Treize modules, de la définition du PIB aux grandes sorties de crise de la dette.",
-    href: "/modules/",
-    disponible: true,
-  },
-];
 
 export default function Home() {
   return (
@@ -39,7 +19,7 @@ export default function Home() {
           sujet fait débat, vous avez les arguments des deux côtés.
         </p>
         <Link
-          href="/modules/"
+          href="#parcours"
           className="mt-8 inline-flex items-center gap-2 rounded-full bg-ink px-6 py-3 font-medium text-page transition hover:opacity-85"
         >
           Commencer
@@ -47,35 +27,26 @@ export default function Home() {
         </Link>
       </section>
 
-      <section aria-labelledby="portes" className="border-t border-line py-12">
-        <h2 id="portes" className="font-serif text-2xl font-semibold text-ink">
-          Par où commencer ?
+      <section aria-labelledby="parcours" className="border-t border-line py-12">
+        <h2 id="parcours" className="font-serif text-2xl font-semibold text-ink">
+          Choisissez votre parcours
         </h2>
-        <ul className="mt-6 grid gap-4 md:grid-cols-3">
-          {PORTES.map((p) => {
-            const contenu = (
-              <>
-                <div className="flex items-start justify-between gap-2">
-                  <h3 className="text-lg font-semibold text-ink">{p.titre}</h3>
-                  {!p.disponible && <SoonBadge />}
-                </div>
-                <p className="mt-2 text-muted">{p.texte}</p>
-              </>
-            );
-            const classes = "flex h-full flex-col rounded-2xl border border-line bg-surface p-6";
-            return (
-              <li key={p.href}>
-                {p.disponible ? (
-                  <Link href={p.href} className={`${classes} transition hover:shadow-md`}>
-                    {contenu}
-                  </Link>
-                ) : (
-                  <div className={classes}>{contenu}</div>
-                )}
-              </li>
-            );
-          })}
-        </ul>
+        <p className="mt-2 max-w-2xl text-muted">
+          Deux façons de lire le site. Vous pouvez passer de l&apos;une à l&apos;autre à tout moment avec
+          l&apos;interrupteur « Simple / Approfondi ».
+        </p>
+        <div className="mt-6">
+          <CartesParcours />
+        </div>
+        <div className="mt-4 flex items-start justify-between gap-3 rounded-2xl border border-line bg-surface p-5">
+          <div>
+            <h3 className="font-semibold text-ink">La France en 10 chiffres</h3>
+            <p className="mt-1 text-sm text-muted">
+              La situation des finances publiques en un coup d&apos;œil, chiffres sourcés et datés.
+            </p>
+          </div>
+          <SoonBadge />
+        </div>
       </section>
 
       <section aria-labelledby="premiers" className="border-t border-line py-12">

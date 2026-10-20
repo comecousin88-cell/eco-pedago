@@ -1,0 +1,86 @@
+import { SankeyFinances } from "@/components/graphiques/SankeyFinances";
+import { Pour100Euros } from "@/components/graphiques/Pour100Euros";
+
+<Niveaux>
+<Essentiel>
+
+En <DateDonnee id="fp.depenses" />, les administrations publiques ont dépensé <Chiffre id="fp.depenses" />, soit
+<Chiffre id="fp.depenses-pib" />. Elles ont encaissé <Chiffre id="fp.recettes" /> de recettes
+(<Chiffre id="fp.recettes-pib" />). La différence, <Chiffre id="deficit.montant" />, est le
+<Terme id="deficit-public">déficit</Terme> : elle a été empruntée.
+
+Comme un foyer : d'un côté les revenus (pour l'État, surtout les impôts et les cotisations), de l'autre les
+dépenses (pensions, soins, salaires des enseignants…). Quand les dépenses dépassent les revenus, il faut
+emprunter la différence.
+
+</Essentiel>
+<Mecanisme>
+
+Le schéma ci-dessous suit chaque euro : à gauche ce qui entre, à droite ce que cela finance. Il porte sur
+<DateDonnee id="fp.depenses-2024-par-fonction" />, dernière année pour laquelle l'Insee a publié le détail des
+dépenses par grande fonction.
+
+<Figure
+  titre="D'où vient l'argent public, et où il va"
+  resume="En 2024, les recettes publiques (cotisations sociales, TVA, CSG, impôts sur le revenu et les sociétés, autres impôts et recettes) et l'emprunt financent les dépenses. Les retraites sont le premier poste, devant la santé ; les intérêts de la dette pèsent environ autant que la défense."
+  donnees={["fp.recettes-2024-par-type", "fp.depenses-2024-par-fonction", "fp.recettes-2024", "fp.depenses-2024"]}
+>
+  <SankeyFinances />
+</Figure>
+
+**Ce qui entre.** Les <Terme id="cotisations-sociales">cotisations sociales</Terme> (retenues sur les salaires
+pour la retraite, la maladie, le chômage…) sont la première ressource. Vient ensuite la
+<Terme id="tva">TVA</Terme>, payée sur presque tous les achats, puis la <Terme id="csg">CSG</Terme>, l'impôt sur
+le revenu et l'impôt sur les sociétés. Impôts et cotisations forment les
+<Terme id="prelevements-obligatoires">prélèvements obligatoires</Terme> : <Chiffre id="fp.prelevements-obligatoires-pib" />
+en <DateDonnee id="fp.prelevements-obligatoires-pib" />.
+
+**Ce qui sort.** La plus grosse part va aux <Terme id="prestations-sociales">prestations sociales</Terme>,
+retraites en tête. C'est de l'argent redistribué aux ménages, pas dépensé par l'administration pour
+elle-même.
+
+<Figure
+  titre="Pour 100 € de dépense publique"
+  resume="Chaque ligne indique combien d'euros, sur 100 euros de dépense publique, vont à chaque grande fonction. Les retraites arrivent nettement en tête, devant la santé, puis les affaires économiques et l'enseignement."
+  donnees={["fp.depenses-2024-par-fonction"]}
+>
+  <Pour100Euros />
+</Figure>
+
+</Mecanisme>
+<PlusLoin>
+
+**Une « dépense publique » à 57 % du PIB ne veut pas dire que l'État « consomme » 57 % de la richesse.** Une
+grande partie est redistribuée : pensions, allocations, remboursements de soins. L'argent passe par les
+administrations, mais il est ensuite dépensé par les ménages. De plus, certaines dépenses, comme les
+intérêts versés à des prêteurs, ne correspondent pas à une production. Le ratio rapporte donc des dépenses à
+un PIB qui ne les contient pas toutes : c'est une mesure de poids, pas une part du gâteau.
+
+**Pourquoi les comparaisons entre pays demandent de la prudence.** Quand un pays finance les retraites ou la
+santé surtout par des régimes publics, ces dépenses apparaissent dans la dépense publique ; quand il passe par
+des fonds de pension ou des assurances privées obligatoires, elles n'y apparaissent pas, alors que les ménages
+paient aussi. Le module 6 quater revient sur ces comparaisons.
+
+**Détails de méthode.** Les montants sont ceux de la comptabilité nationale (ensemble des administrations
+publiques, consolidé). L'impôt sur le revenu et l'impôt sur les sociétés sont comptés avant crédits d'impôt ;
+« Autres impôts » regroupe par différence la taxe sur les salaires, les droits de mutation, les accises sur le
+tabac, la taxe d'habitation sur les résidences secondaires, etc.
+
+<Debat
+  question="La France dépense-t-elle trop ?"
+  titrePour="Ceux qui jugent la dépense trop élevée"
+  titreContre="Ceux qui jugent ce niveau justifié"
+  pour={<p>La France est l'un des pays d'Europe où la dépense publique pèse le plus lourd par rapport au PIB, ce qui impose des prélèvements obligatoires parmi les plus élevés (<Chiffre id="fp.prelevements-obligatoires-pib" />). Sans baisse de la dépense, le déficit ne se résorbe qu'en augmentant encore les impôts, ce qui peut peser sur l'activité et l'emploi.</p>}
+  contre={<p>Ce niveau reflète des choix collectifs : retraites et santé largement publiques, éducation gratuite. Ailleurs, les ménages paient une partie de ces services directement ou par des assurances privées. Comparer seulement la dépense publique oublie ce que les ménages dépensent en plus dans d'autres pays.</p>}
+>
+Les deux positions s'accordent sur un point : à recettes inchangées, le déficit actuel suppose soit de dépenser
+moins, soit de prélever plus, soit une croissance plus forte. Le désaccord porte sur la combinaison à choisir.
+</Debat>
+
+</PlusLoin>
+</Niveaux>
+
+<ARetenir>
+Les cotisations sociales et la TVA sont les deux premières ressources publiques ; les retraites et la santé,
+les deux premières dépenses. Ce qui manque est emprunté : c'est le déficit.
+</ARetenir>

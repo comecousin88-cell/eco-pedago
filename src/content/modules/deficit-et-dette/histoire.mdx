@@ -1,0 +1,91 @@
+import { HistoriqueDette } from "@/components/graphiques/HistoriqueDette";
+import { HistoriqueSolde } from "@/components/graphiques/HistoriqueSolde";
+
+<Niveaux>
+<Essentiel>
+
+Fin 1978, la dette publique représentait <Chiffre id="dette.historique-pib" x="1978" /> du PIB. Fin
+<DateDonnee id="dette.historique-pib" />, elle atteint <Chiffre id="dette.historique-pib" x="2025" />. Elle n'a
+pas grimpé de façon régulière : elle a surtout bondi lors de trois crises, puis ne
+s'est jamais vraiment résorbée entre deux crises.
+
+Les administrations publiques n'ont plus été en excédent depuis <Chiffre id="deficit.dernier-excedent" /> :
+chaque année depuis, il a fallu emprunter.
+
+<Figure
+  titre="La dette publique depuis 1978"
+  resume="La dette passe d'environ un cinquième du PIB à la fin des années 1970 à plus d'une année de PIB aujourd'hui. Les trois plus fortes hausses ont lieu lors de la récession de 1993, de la crise financière de 2008-2009 et de la crise sanitaire de 2020."
+  donnees={["dette.historique-pib", "dette.historique-md"]}
+>
+  <HistoriqueDette
+    chocs={[
+      { annee: "1993", libelle: "récession" },
+      { annee: "2009", libelle: "crise financière" },
+      { annee: "2020", libelle: "crise sanitaire" },
+    ]}
+  />
+</Figure>
+
+</Essentiel>
+<Mecanisme>
+
+**Pourquoi les crises font bondir le ratio.** Lors d'une crise, deux effets s'additionnent. Le numérateur
+grossit : les recettes chutent, les dépenses de soutien augmentent, le déficit se creuse. Et le dénominateur
+rétrécit : le PIB recule. Entre fin 2019 et fin 2020, la dette est ainsi passée de
+<Chiffre id="dette.historique-pib" x="2019" /> à <Chiffre id="dette.historique-pib" x="2020" /> du PIB.
+
+**Pourquoi elle ne redescend pas.** Après chaque crise, le déficit se réduit, mais il ne disparaît pas. Tant
+que la dette augmente presque aussi vite que le PIB, le ratio reste à peu près au même niveau. Pour qu'il
+baisse, il faut que la dette progresse moins vite que l'économie (module 3).
+
+<Figure
+  titre="Le solde public chaque année depuis 1978"
+  resume="Le solde public est négatif chaque année depuis 1978. Le déficit se creuse fortement en 1993, en 2009 et en 2020. Inférieur à 3 % du PIB la plupart des années 1980, il ne repasse sous ce seuil que trois fois entre 2002 et 2025."
+  donnees={["deficit.historique-pib", "deficit.historique-md"]}
+>
+  <HistoriqueSolde />
+</Figure>
+
+<Exemple titre="Exemple : l'effet de cliquet">
+Un ménage gagne 30 000 € par an et doit 20 000 €. Une mauvaise année, il perd 10 % de ses revenus (27 000 €)
+et doit emprunter 5 000 € de plus (25 000 €) : sa dette passe de 67 % à 93 % de son revenu annuel. L'année
+suivante, ses revenus reviennent à 30 000 €, mais il emprunte encore 1 000 € : sa dette atteint 26 000 €, soit
+87 % de ses revenus. La crise est passée, le ratio ne revient pas à son niveau d'avant.
+</Exemple>
+
+</Mecanisme>
+<PlusLoin>
+
+**Les grandes périodes.**
+
+- **1978-1992** : déficits modérés mais constants ; la dette monte progressivement.
+- **1993-1997** : la récession creuse le déficit ; la préparation de l'euro conduit ensuite à le réduire.
+- **1998-2007** : la dette oscille entre 59 et 68 % du PIB, sans baisser durablement. Le déficit passe sous 3 % du
+  PIB de 1998 à 2001, puis en 2006.
+- **2008-2019** : la crise financière fait bondir la dette ; elle continue ensuite de monter lentement, jusqu'à
+  frôler 100 % du PIB. Le déficit ne repasse sous 3 % du PIB qu'en 2018 et 2019.
+- **Depuis 2020** : la crise sanitaire porte la dette au-delà de 110 % du PIB ; après un léger recul en 2021-2023
+  grâce à la forte croissance nominale, elle remonte.
+
+**« Aucun excédent depuis 1974 », précisément.** Ce constat porte sur le solde de l'ensemble des
+administrations publiques en comptabilité nationale (série de l'Insee depuis 1959). On entend aussi « aucun
+budget de l'État voté à l'équilibre depuis 1974 », qui porte sur un autre périmètre, le budget de l'État.
+
+<Debat
+  question="Faut-il s'inquiéter du niveau de la dette ?"
+  titrePour="Ceux qui s'en inquiètent"
+  titreContre="Ceux qui relativisent"
+  pour={<p>La dette ne cesse de monter depuis cinquante ans, et chaque crise la fait passer à un palier plus élevé. Avec la remontée des taux, les intérêts versés augmentent (<Chiffre id="fp.interets" /> en <DateDonnee id="fp.interets" />) et réduisent les marges pour faire face à la prochaine crise ou financer d'autres priorités.</p>}
+  contre={<p>Le niveau seul ne dit pas tout : d'autres pays vivent avec des ratios plus élevés, la dette française est longue et prisée des investisseurs, et ce qui compte surtout, c'est l'écart entre le taux d'intérêt payé et la croissance de l'économie. Réduire trop vite le déficit peut freiner la croissance et ralentir la baisse du ratio.</p>}
+>
+Les deux camps s'accordent sur l'arithmétique (module 3) : la question porte sur le rythme de réduction du
+déficit et sur la manière d'y parvenir.
+</Debat>
+
+</PlusLoin>
+</Niveaux>
+
+<ARetenir>
+La dette a bondi lors des crises de 1993, 2009 et 2020, sans jamais revenir à son niveau d'avant. Les comptes
+publics sont en déficit chaque année depuis 1975.
+</ARetenir>

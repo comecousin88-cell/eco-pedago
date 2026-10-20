@@ -1,0 +1,59 @@
+import { BarresHorizontales } from "@/components/graphiques/BarresHorizontales";
+
+<Niveaux>
+<Essentiel>
+
+La dette publique n'est pas seulement celle de l'État. Mais c'est lui qui en porte l'essentiel : un peu plus de
+quatre euros sur cinq. Le reste se partage entre la Sécurité sociale, les collectivités locales et les
+organismes divers.
+
+<Figure
+  titre="Qui porte la dette publique ?"
+  resume="La dette de l'État représente l'essentiel de la dette publique. La Sécurité sociale et les collectivités locales en portent chacune une part bien plus petite, les organismes divers une part minime."
+  donnees={["dette.par-sous-secteur"]}
+>
+  <BarresHorizontales serie="dette.par-sous-secteur" enAvant={["État"]} part />
+</Figure>
+
+</Essentiel>
+<Mecanisme>
+
+**L'État** emprunte sur les marchés financiers, surtout en émettant des <Terme id="oat">OAT</Terme> (pour 2 à
+50 ans) et des <Terme id="btf">BTF</Terme> (pour moins d'un an), gérés par l'<Terme id="aft">Agence France Trésor</Terme>.
+C'est lui qui finance l'essentiel des déficits, y compris lors des crises (2009, 2020).
+
+**La Sécurité sociale** a accumulé des déficits depuis les années 1990. Une grande partie de cette dette a été
+confiée à un organisme créé en 1996 pour la rembourser, la Caisse d'amortissement de la dette sociale (Cades),
+financée par un impôt dédié, la CRDS. C'est l'un des rares cas où une dette publique est réellement
+remboursée selon un calendrier.
+
+**Les collectivités locales** n'empruntent que pour investir : la loi leur impose d'équilibrer leur budget de
+fonctionnement (module 0). Leur dette finance des écoles, des routes, des transports, des réseaux.
+
+<Exemple titre="Exemple : la dette n'est jamais « remboursée » d'un coup">
+Une OAT de 10 milliards d'euros arrive à échéance. L'État rembourse les 10 milliards aux détenteurs… et, le même
+mois, il émet de nouveaux titres pour se procurer cette somme. La dette de l'État ne diminue pas : elle est
+« refinancée », c'est-à-dire remplacée par une nouvelle dette, au taux d'intérêt du moment. C'est pourquoi une
+hausse des taux finit toujours par se répercuter (module 2).
+</Exemple>
+
+</Mecanisme>
+<PlusLoin>
+
+**Une ventilation « consolidée ».** Chaque barre est la contribution du sous-secteur à la dette de l'ensemble
+des administrations, une fois retirées les dettes entre administrations. Les montants additionnés donnent le
+total, aux arrondis près.
+
+**Des transferts qui brouillent la lecture.** Le solde de chaque administration dépend aussi de ce que les
+autres lui versent ou lui reprennent. Quand l'État transfère une recette fiscale à la Sécurité sociale, le
+déficit de la Sécurité sociale baisse et celui de l'État monte d'autant, sans changer le total. À l'inverse,
+des transferts de dette sont possibles : entre 2020 et 2024, une partie de la dette de l'assurance maladie et
+des hôpitaux a été transférée à la Cades.
+
+</PlusLoin>
+</Niveaux>
+
+<ARetenir>
+L'État porte plus de 80 % de la dette publique. La dette de la Sécurité sociale est en partie logée dans la
+Cades, qui la rembourse grâce à la CRDS. Les collectivités n'empruntent que pour investir.
+</ARetenir>

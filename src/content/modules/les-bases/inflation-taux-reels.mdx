@@ -1,0 +1,65 @@
+import { TauxReel } from "@/components/simulators/TauxReel";
+
+<Niveaux>
+<Essentiel>
+
+L'<Terme id="inflation">inflation</Terme>, c'est la hausse générale des prix : avec le même billet de 10 €, on
+achète un peu moins qu'avant. En France, elle a été de <Chiffre id="macro.inflation" x="2025" /> en 2025, après
+<Chiffre id="macro.inflation" x="2022" /> en 2022 et <Chiffre id="macro.inflation" x="2023" /> en 2023.
+
+Un taux d'intérêt de 3 % ne vous enrichit donc pas forcément de 3 % : si les prix ont monté de 2 % dans le même
+temps, vous ne gagnez qu'environ 1 % en pouvoir d'achat. Ce gain réel s'appelle le
+<Terme id="taux-reel">taux réel</Terme>.
+
+</Essentiel>
+<Mecanisme>
+
+Réglez le taux d'intérêt et l'inflation, et regardez ce que deviennent 100 € prêtés pendant un an.
+
+<Figure
+  titre="Taux nominal, inflation, taux réel"
+  resume="Simulateur : on choisit un taux d'intérêt et une inflation. Le résultat montre ce que valent, en pouvoir d'achat, les 100 euros prêtés au bout d'un an."
+  source="Calcul : relation de Fisher, taux réel = (1 + taux nominal) / (1 + inflation) − 1. Valeurs d'exemple."
+>
+  <TauxReel />
+</Figure>
+
+<Exemple>
+Vous prêtez **100 €** à **3 %** pendant un an, et l'inflation est de **2 %**. On vous rend **103 €**. Mais
+ce qui coûtait 100 € coûte maintenant 102 € : vos 103 € n'achètent que 103 / 1,02 ≈ **100,98 €** de
+marchandises d'il y a un an. Votre gain réel est d'environ **0,98 %**, pas 3 %.
+</Exemple>
+
+**Pourquoi c'est important pour la dette publique.** L'État emprunte surtout à taux fixe. Quand l'inflation est
+élevée, ses recettes (TVA, impôts) augmentent avec les prix, mais les intérêts de ses anciens emprunts ne
+bougent pas : l'inflation allège le poids de la dette passée. À l'inverse, quand l'inflation baisse alors que
+les taux restent élevés, le poids réel de la dette s'alourdit.
+
+</Mecanisme>
+<PlusLoin>
+
+**La formule exacte (relation de Fisher).** Avec $i$ le taux nominal et $\pi$ l'inflation :
+
+$$
+1 + r = \frac{1 + i}{1 + \pi} \quad\Longleftrightarrow\quad r = \frac{i - \pi}{1 + \pi} \approx i - \pi
+$$
+
+L'approximation $r \approx i - \pi$ est très bonne quand les taux sont faibles ; l'écart grandit avec
+l'inflation (à 10 % d'intérêt et 8 % d'inflation, le taux réel exact est 1,85 %, pas 2 %).
+
+**Taux réel « ex ante » et « ex post ».** Au moment d'emprunter, on ne connaît pas l'inflation future : on
+raisonne avec l'inflation anticipée. Le taux réel effectivement obtenu n'est connu qu'après coup.
+
+**Les OAT indexées.** Une partie de la dette de l'État est indexée sur l'inflation : le capital remboursé suit
+les prix. Pour ces titres, l'État ne profite pas de l'inflation, il la paie (module 2).
+
+**L'objectif de la BCE.** La <Terme id="bce">Banque centrale européenne</Terme> vise une inflation de 2 % par an
+à moyen terme dans la zone euro. Elle agit pour cela sur les taux d'intérêt (module 4).
+
+</PlusLoin>
+</Niveaux>
+
+<ARetenir>
+Taux réel ≈ taux nominal − inflation. L'inflation allège le poids des dettes anciennes à taux fixe ; une
+inflation faible avec des taux élevés l'alourdit.
+</ARetenir>

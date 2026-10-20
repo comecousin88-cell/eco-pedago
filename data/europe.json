@@ -1,0 +1,138 @@
+{
+  "description": "Comparaisons européennes (Eurostat, notification d'avril 2026).",
+  "donnees": [
+    {
+      "id": "europe.dette-pib",
+      "label": "Dette publique en % du PIB, fin 2025",
+      "serie": [
+        {
+          "x": "France",
+          "y": 115.6
+        },
+        {
+          "x": "Allemagne",
+          "y": 63.5
+        },
+        {
+          "x": "Italie",
+          "y": 137.1
+        },
+        {
+          "x": "Espagne",
+          "y": 100.7
+        },
+        {
+          "x": "Grèce",
+          "y": 146.1
+        },
+        {
+          "x": "Belgique",
+          "y": 107.9
+        },
+        {
+          "x": "Portugal",
+          "y": 89.7
+        },
+        {
+          "x": "Pays-Bas",
+          "y": 44.4
+        },
+        {
+          "x": "Finlande",
+          "y": 88.5
+        },
+        {
+          "x": "Suède",
+          "y": 35.1
+        },
+        {
+          "x": "Danemark",
+          "y": 27.9
+        },
+        {
+          "x": "Zone euro (20 pays)",
+          "y": 87.8
+        },
+        {
+          "x": "Union européenne (27)",
+          "y": 81.7
+        }
+      ],
+      "unite": "% du PIB",
+      "date": "2025",
+      "source": {
+        "nom": "Eurostat, notification des déficits et dettes publics (22 avril 2026), table gov_10dd_edpt1",
+        "url": "https://ec.europa.eu/eurostat/databrowser/view/gov_10dd_edpt1/default/table"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-20",
+      "note": "France : 115,6 % dans la notification d'avril 2026, révisé à 115,7 % par l'Insee en mai 2026."
+    },
+    {
+      "id": "europe.solde-pib",
+      "label": "Solde public en % du PIB, 2025 (négatif = déficit)",
+      "serie": [
+        {
+          "x": "France",
+          "y": -5.1
+        },
+        {
+          "x": "Allemagne",
+          "y": -2.7
+        },
+        {
+          "x": "Italie",
+          "y": -3.1
+        },
+        {
+          "x": "Espagne",
+          "y": -2.4
+        },
+        {
+          "x": "Grèce",
+          "y": 1.7
+        },
+        {
+          "x": "Belgique",
+          "y": -5.2
+        },
+        {
+          "x": "Portugal",
+          "y": 0.7
+        },
+        {
+          "x": "Pays-Bas",
+          "y": -1.6
+        },
+        {
+          "x": "Finlande",
+          "y": -3.4
+        },
+        {
+          "x": "Suède",
+          "y": -1.3
+        },
+        {
+          "x": "Danemark",
+          "y": 2.9
+        },
+        {
+          "x": "Zone euro (20 pays)",
+          "y": -2.9
+        },
+        {
+          "x": "Union européenne (27)",
+          "y": -3.1
+        }
+      ],
+      "unite": "% du PIB",
+      "date": "2025",
+      "source": {
+        "nom": "Eurostat, notification des déficits et dettes publics (22 avril 2026), table gov_10dd_edpt1",
+        "url": "https://ec.europa.eu/eurostat/databrowser/view/gov_10dd_edpt1/default/table"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-20"
+    }
+  ]
+}

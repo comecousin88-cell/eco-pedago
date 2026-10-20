@@ -27,6 +27,28 @@ export function pouvoirAchat(montant: number, inflation: number, annees: number)
 }
 
 /* ------------------------------------------------------------------------ */
+/* Répartitions                                                             */
+/* ------------------------------------------------------------------------ */
+
+/**
+ * Répartit 100 € entiers selon des parts, par la méthode des plus forts
+ * restes : la somme fait toujours exactement 100.
+ */
+export function repartir100(valeurs: number[]): number[] {
+  const total = valeurs.reduce((s, v) => s + v, 0);
+  const exactes = valeurs.map((v) => (v / total) * 100);
+  const entieres = exactes.map(Math.floor);
+  let reste = 100 - entieres.reduce((s, v) => s + v, 0);
+  const ordre = exactes.map((v, i) => ({ i, r: v - Math.floor(v) })).sort((a, b) => b.r - a.r);
+  for (const { i } of ordre) {
+    if (reste <= 0) break;
+    entieres[i] += 1;
+    reste -= 1;
+  }
+  return entieres;
+}
+
+/* ------------------------------------------------------------------------ */
 /* Obligations (OAT) et bons du Trésor (BTF)                                */
 /* ------------------------------------------------------------------------ */
 

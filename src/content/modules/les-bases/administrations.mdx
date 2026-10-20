@@ -1,0 +1,70 @@
+import { BarresHorizontales } from "@/components/graphiques/BarresHorizontales";
+
+<Niveaux>
+<Essentiel>
+
+Quand on parle de « dépense publique » ou de « dette publique », on ne parle pas seulement de l'État. Les
+statisticiens regroupent quatre familles d'<Terme id="administrations-publiques">administrations publiques</Terme> :
+
+- **l'État** : ministères, armée, justice, police, enseignants ;
+- **la Sécurité sociale** : retraites de base et complémentaires, assurance maladie, allocations familiales, assurance chômage ;
+- **les collectivités locales** : communes, départements, régions ;
+- **les organismes divers d'administration centrale** : des opérateurs de l'État, comme les universités ou les agences publiques.
+
+Comme une famille où chacun a son propre compte : pour savoir ce que dépense la famille, on additionne, mais
+sans compter deux fois l'argent que les parents versent sur le compte des enfants.
+
+</Essentiel>
+<Mecanisme>
+
+<Figure
+  titre="Qui dépense quoi ?"
+  resume="La Sécurité sociale est le premier dépensier public, devant l'État, puis les collectivités locales et les organismes divers. La somme des quatre dépasse le total, car les versements entre administrations sont comptés deux fois."
+  donnees={["fp.depenses-par-sous-secteur", "fp.depenses"]}
+>
+  <BarresHorizontales serie="fp.depenses-par-sous-secteur" decimales={1} />
+</Figure>
+
+**La Sécurité sociale dépense plus que l'État.** Elle verse les retraites, rembourse les soins et paie les
+allocations familiales et chômage. L'État, lui, paie les enseignants, les militaires, les juges, les policiers,
+les intérêts de sa dette, et verse beaucoup d'argent aux autres administrations.
+
+<Exemple titre="Exemple : pourquoi la somme dépasse le total">
+L'État verse chaque année des dotations aux communes. Imaginons 100 € versés à une commune, qui les dépense
+pour entretenir une école :
+
+- dans les comptes de l'État : 100 € de dépense (la dotation) ;
+- dans les comptes de la commune : 100 € de dépense (l'entretien).
+
+Additionner les deux donnerait 200 €, alors que seuls 100 € sont réellement sortis des caisses publiques. Le total des administrations retire ces flux internes : on dit qu'il est
+<Terme id="consolidation">consolidé</Terme>. C'est pourquoi la somme des quatre barres dépasse les
+<Chiffre id="fp.depenses" /> de dépense publique totale.
+</Exemple>
+
+**Les collectivités ne peuvent pas emprunter pour leurs dépenses courantes.** La loi leur impose de voter un
+budget de fonctionnement en équilibre : elles n'empruntent que pour investir (écoles, routes, transports). C'est
+une des raisons pour lesquelles leur dette reste bien plus faible que celle de l'État (module 1).
+
+</Mecanisme>
+<PlusLoin>
+
+**Une classification statistique, pas juridique.** Le classement suit les règles européennes de comptabilité
+nationale : une entité est une « administration publique » si elle est contrôlée par la puissance publique et
+financée surtout par des prélèvements obligatoires ou des dotations, plutôt que par la vente de ses produits.
+Ainsi, l'assurance chômage et les retraites complémentaires des salariés du privé, gérées par les partenaires
+sociaux, sont classées avec la Sécurité sociale. À l'inverse, une entreprise publique qui vit de ses ventes
+n'en fait pas partie, et sa dette ne compte pas dans la dette publique.
+
+**Qui finance qui ?** Les recettes de chaque sous-secteur ne viennent pas toutes de ses propres impôts : l'État
+reverse aux collectivités et à la Sécurité sociale une partie de la TVA et d'autres impôts. Ces transferts
+rendent les débats sur « le déficit de la Sécurité sociale » ou « la dette des collectivités » plus délicats :
+le solde d'une administration dépend aussi de ce que les autres lui reversent.
+
+</PlusLoin>
+</Niveaux>
+
+<ARetenir>
+Les administrations publiques, ce sont quatre familles : l'État, la Sécurité sociale, les collectivités locales
+et les organismes divers. La Sécurité sociale est la plus grosse en dépenses ; l'État porte l'essentiel de la
+dette.
+</ARetenir>
