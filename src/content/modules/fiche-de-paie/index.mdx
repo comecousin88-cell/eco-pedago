@@ -1,0 +1,82 @@
+import { FicheDePaie } from "@/components/simulators/FicheDePaie";
+import { PanierConsommation } from "@/components/simulators/PanierConsommation";
+
+Entre ce que votre employeur dépense pour vous et ce qui arrive sur votre compte, il y a un écart important. Il ne
+disparaît pas : il finance votre retraite, votre assurance maladie, le chômage, les allocations familiales… Ce
+module suit chaque euro, de la fiche de paie jusqu'au caddie.
+
+<Niveaux>
+<Essentiel>
+
+Trois montants figurent sur une fiche de paie :
+
+- le **coût employeur** : tout ce que l'entreprise paie, cotisations patronales comprises ;
+- le **salaire brut** : le salaire de référence du contrat ;
+- le **salaire net** : ce qui est versé, une fois retirées les cotisations du salarié, la <Terme id="csg">CSG</Terme> et la
+  CRDS, puis l'impôt sur le revenu prélevé à la source.
+
+Entrez un salaire brut et suivez la cascade :
+
+<Figure
+  titre="Ma fiche de paie, du coût employeur à ce qui reste en poche"
+  resume="Simulateur : à partir d'un salaire brut mensuel, la cascade montre le coût total pour l'employeur, le brut, le net avant impôt et le net après impôt, puis la répartition des cotisations par destination : retraites, maladie, CSG, chômage, famille…"
+  donnees={["paie.pmss", "paie.smic-mensuel", "paie.sal.vieillesse-plafonnee", "paie.emp.maladie", "paie.sal.agirc-t1", "paie.rgdu.tdelta-petite", "ir.bareme", "ir.decote-seul", "ir.abattement-min"]}
+>
+  <FicheDePaie />
+</Figure>
+
+</Essentiel>
+<Mecanisme>
+
+**Où va l'argent ?** La plus grosse part des cotisations finance les retraites (régime de base et complémentaire) :
+c'est la conséquence directe de la répartition (module 5). Viennent ensuite l'assurance maladie, la CSG (qui finance
+surtout la Sécurité sociale), le chômage et la famille.
+
+<Exemple titre="Exemple : au Smic">
+Au Smic à temps plein (<Chiffre id="paie.smic-mensuel" /> bruts par mois), le salarié touche environ
+<Chiffre id="paie.smic-mensuel-net" /> nets avant impôt, et ne paie généralement pas d'impôt sur le revenu s'il vit
+seul. Mais l'employeur bénéficie au niveau du Smic de l'allègement maximal de cotisations : son coût total dépasse
+à peine le brut.
+</Exemple>
+
+**Pourquoi le coût du travail n'est pas proportionnel au salaire.** Depuis 2026, la
+<Terme id="allegements-cotisations">réduction générale dégressive</Terme> réduit fortement les cotisations patronales
+au niveau du Smic, puis de moins en moins, jusqu'à disparaître à 3 Smic. Résultat : faire passer un salarié du Smic
+à un salaire un peu plus élevé coûte à l'employeur bien plus que la hausse du brut, car l'allègement diminue en
+même temps. C'est l'une des explications du « tassement » des salaires autour du Smic.
+
+**Le lien avec la démographie.** Quand le nombre de cotisants par retraité baisse (module 5), il faut, à pension
+égale, plus de cotisations par actif : l'écart entre le coût employeur et le net a tendance à se creuser, sauf à
+jouer sur l'âge ou le niveau des pensions.
+
+</Mecanisme>
+<PlusLoin>
+
+**Et quand on dépense son salaire ?** La TVA et les taxes sur le carburant s'ajoutent aux cotisations et à
+l'impôt. Réglez un budget mensuel d'exemple :
+
+<Figure
+  titre="Les taxes cachées dans le panier de consommation"
+  resume="Simulateur : un budget mensuel réglable (loyer, alimentation, restaurants, biens et services, énergie, carburant). Le résultat montre la TVA et l'accise sur le carburant payées chaque mois, et leur part dans les dépenses."
+  donnees={["tva.taux", "accise.gazole"]}
+>
+  <PanierConsommation />
+</Figure>
+
+**Ce que le simulateur simplifie.** Les cadres paient quelques contributions en plus ; la mutuelle et la prévoyance
+d'entreprise, le versement mobilité (dans les entreprises de 11 salariés et plus, selon la commune) et le taux
+accidents du travail réel de l'entreprise changent le résultat. L'impôt dépend de toute la situation du foyer
+(couple, enfants, autres revenus) : le simulateur retient une personne seule sans autre revenu.
+
+**Cotisations ou impôts ?** Les cotisations ouvrent des droits (une pension, des indemnités chômage proportionnelles
+au salaire) ; la CSG et l'impôt sur le revenu n'en ouvrent pas directement. Ce n'est donc pas « de l'argent
+perdu » : une partie revient au salarié sous forme de retraite, de soins ou d'indemnités. Mais il n'en choisit ni
+le montant ni l'usage.
+
+</PlusLoin>
+</Niveaux>
+
+<ARetenir>
+Entre le coût employeur et le net après impôt, l'écart finance surtout la retraite, la santé et le chômage. Les
+allègements sur les bas salaires rendent le coût du travail moins que proportionnel au salaire.
+</ARetenir>

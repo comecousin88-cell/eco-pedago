@@ -1,5 +1,5 @@
 {
-  "description": "Retraites : dépenses, démographie, projections du Conseil d'orientation des retraites.",
+  "description": "Retraites : dépenses, démographie, projections du Conseil d'orientation des retraites (COR).",
   "donnees": [
     {
       "id": "retraites.depenses-pib",
@@ -7,32 +7,399 @@
       "valeur": 14.1,
       "unite": "% du PIB",
       "date": "2025",
-      "source": { "nom": "Conseil d'orientation des retraites, rapport annuel", "url": "https://www.cor-retraites.fr" },
-      "statut": "a_verifier",
-      "note": "Chiffre du cahier des charges (14,1 % du PIB en 2025)."
+      "source": {
+        "nom": "Conseil d'orientation des retraites, synthèse du rapport annuel (juin 2026)",
+        "url": "https://www.cor-retraites.fr/sites/default/files/2026-06/Synth%C3%A8se_RA_2026_0.pdf"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-20"
     },
     {
       "id": "retraites.depenses-montant",
-      "label": "Dépenses de retraite",
-      "valeur": 422,
+      "label": "Dépenses de retraite (régimes de base et complémentaires)",
+      "valeur": 422.2,
       "unite": "Md€",
       "date": "2025",
-      "source": { "nom": "Conseil d'orientation des retraites, rapport annuel", "url": "https://www.cor-retraites.fr" },
-      "statut": "a_verifier",
-      "note": "Chiffre du cahier des charges (422 Md€ en 2025)."
+      "source": {
+        "nom": "Conseil d'orientation des retraites, rapport annuel « Évolutions et perspectives des retraites en France » (juin 2026)",
+        "url": "https://www.cor-retraites.fr/sites/default/files/2026-07/RA_2026_def_0.pdf"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-20",
+      "note": "Dépenses brutes du système de retraite, dont 401 Md€ de prestations."
+    },
+    {
+      "id": "retraites.depenses-projection",
+      "label": "Dépenses de retraite, scénario de référence du COR",
+      "serie": [
+        {
+          "x": "2025",
+          "y": 14.1
+        },
+        {
+          "x": "2045",
+          "y": 14.2
+        },
+        {
+          "x": "2070",
+          "y": 15.3
+        }
+      ],
+      "unite": "% du PIB",
+      "date": "2026",
+      "source": {
+        "nom": "Conseil d'orientation des retraites, synthèse du rapport annuel (juin 2026)",
+        "url": "https://www.cor-retraites.fr/sites/default/files/2026-06/Synth%C3%A8se_RA_2026_0.pdf"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-20"
+    },
+    {
+      "id": "retraites.ressources-projection",
+      "label": "Ressources du système de retraite, scénario de référence du COR",
+      "serie": [
+        {
+          "x": "2025",
+          "y": 13.9
+        },
+        {
+          "x": "2070",
+          "y": 12.9
+        }
+      ],
+      "unite": "% du PIB",
+      "date": "2026",
+      "source": {
+        "nom": "Conseil d'orientation des retraites, synthèse du rapport annuel (juin 2026)",
+        "url": "https://www.cor-retraites.fr/sites/default/files/2026-06/Synth%C3%A8se_RA_2026_0.pdf"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-20"
+    },
+    {
+      "id": "retraites.solde-projection",
+      "label": "Solde du système de retraite, scénario de référence du COR",
+      "serie": [
+        {
+          "x": "2025",
+          "y": -0.2
+        },
+        {
+          "x": "2045",
+          "y": -0.9
+        },
+        {
+          "x": "2070",
+          "y": -2.4
+        }
+      ],
+      "unite": "% du PIB",
+      "date": "2026",
+      "source": {
+        "nom": "Conseil d'orientation des retraites, synthèse du rapport annuel (juin 2026)",
+        "url": "https://www.cor-retraites.fr/sites/default/files/2026-06/Synth%C3%A8se_RA_2026_0.pdf"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-20",
+      "note": "2025 : déficit de 5,1 Md€."
+    },
+    {
+      "id": "retraites.solde-2025",
+      "label": "Solde du système de retraite",
+      "valeur": -5.1,
+      "unite": "Md€",
+      "date": "2025",
+      "source": {
+        "nom": "Conseil d'orientation des retraites, synthèse du rapport annuel (juin 2026)",
+        "url": "https://www.cor-retraites.fr/sites/default/files/2026-06/Synth%C3%A8se_RA_2026_0.pdf"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-20"
     },
     {
       "id": "retraites.rapport-demographique",
       "label": "Personnes de 20 à 64 ans pour une personne de 65 ans ou plus",
       "serie": [
-        { "x": "2025", "y": 2.5 },
-        { "x": "2070", "y": 1.6 }
+        {
+          "x": "2009",
+          "y": 3.6
+        },
+        {
+          "x": "2025",
+          "y": 2.5
+        },
+        {
+          "x": "2070",
+          "y": 1.62
+        }
       ],
       "unite": "personnes",
       "date": "2026",
-      "source": { "nom": "Conseil d'orientation des retraites, rapport annuel 2026", "url": "https://www.cor-retraites.fr" },
-      "statut": "a_verifier",
-      "note": "Deux points du cahier des charges (2,5 en 2025, ≈ 1,6 en 2070). Série complète 1960-2070 à relever."
+      "source": {
+        "nom": "Conseil d'orientation des retraites, rapport annuel « Évolutions et perspectives des retraites en France » (juin 2026)",
+        "url": "https://www.cor-retraites.fr/sites/default/files/2026-07/RA_2026_def_0.pdf"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-20",
+      "note": "2025 : données provisoires ; 2070 : scénario de référence (fécondité de 1,45 enfant par femme)."
+    },
+    {
+      "id": "retraites.cotisants-par-retraite",
+      "label": "Cotisants pour un retraité",
+      "serie": [
+        {
+          "x": "2002",
+          "y": 2.1
+        },
+        {
+          "x": "2025",
+          "y": 1.8
+        },
+        {
+          "x": "2070",
+          "y": 1.3
+        }
+      ],
+      "unite": "cotisants",
+      "date": "2026",
+      "source": {
+        "nom": "Conseil d'orientation des retraites, rapport annuel « Évolutions et perspectives des retraites en France » (juin 2026)",
+        "url": "https://www.cor-retraites.fr/sites/default/files/2026-07/RA_2026_def_0.pdf"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-20"
+    },
+    {
+      "id": "retraites.cotisants",
+      "label": "Nombre de cotisants",
+      "serie": [
+        {
+          "x": "2025",
+          "y": 30.6
+        },
+        {
+          "x": "2070",
+          "y": 28.9
+        }
+      ],
+      "unite": "millions",
+      "date": "2026",
+      "source": {
+        "nom": "Conseil d'orientation des retraites, rapport annuel « Évolutions et perspectives des retraites en France » (juin 2026)",
+        "url": "https://www.cor-retraites.fr/sites/default/files/2026-07/RA_2026_def_0.pdf"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-20"
+    },
+    {
+      "id": "retraites.retraites",
+      "label": "Nombre de retraités de droit direct",
+      "serie": [
+        {
+          "x": "2025",
+          "y": 17.4
+        },
+        {
+          "x": "2070",
+          "y": 22.1
+        }
+      ],
+      "unite": "millions",
+      "date": "2026",
+      "source": {
+        "nom": "Conseil d'orientation des retraites, rapport annuel « Évolutions et perspectives des retraites en France » (juin 2026)",
+        "url": "https://www.cor-retraites.fr/sites/default/files/2026-07/RA_2026_def_0.pdf"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-20"
+    },
+    {
+      "id": "retraites.pension-relative",
+      "label": "Pension moyenne rapportée au revenu d'activité moyen",
+      "serie": [
+        {
+          "x": "2025",
+          "y": 54.6
+        },
+        {
+          "x": "2070",
+          "y": 45.3
+        }
+      ],
+      "unite": "%",
+      "date": "2026",
+      "source": {
+        "nom": "Conseil d'orientation des retraites, rapport annuel « Évolutions et perspectives des retraites en France » (juin 2026)",
+        "url": "https://www.cor-retraites.fr/sites/default/files/2026-07/RA_2026_def_0.pdf"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-20",
+      "note": "Scénario de référence, à législation inchangée."
+    },
+    {
+      "id": "retraites.pension-moyenne",
+      "label": "Pension brute moyenne de droit direct (tous retraités)",
+      "valeur": 1750,
+      "unite": "€ par mois",
+      "date": "2024-12-31",
+      "source": {
+        "nom": "Conseil d'orientation des retraites, rapport annuel « Évolutions et perspectives des retraites en France » (juin 2026)",
+        "url": "https://www.cor-retraites.fr/sites/default/files/2026-07/RA_2026_def_0.pdf"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-20",
+      "note": "Y compris majoration pour 3 enfants ou plus. Femmes : 1 380 € ; hommes : 2 190 €. Retraités à carrière complète : 2 100 €."
+    },
+    {
+      "id": "retraites.pension-moyenne-femmes",
+      "label": "Pension brute moyenne de droit direct des femmes",
+      "valeur": 1380,
+      "unite": "€ par mois",
+      "date": "2024-12-31",
+      "source": {
+        "nom": "Conseil d'orientation des retraites, rapport annuel « Évolutions et perspectives des retraites en France » (juin 2026)",
+        "url": "https://www.cor-retraites.fr/sites/default/files/2026-07/RA_2026_def_0.pdf"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-20"
+    },
+    {
+      "id": "retraites.pension-moyenne-hommes",
+      "label": "Pension brute moyenne de droit direct des hommes",
+      "valeur": 2190,
+      "unite": "€ par mois",
+      "date": "2024-12-31",
+      "source": {
+        "nom": "Conseil d'orientation des retraites, rapport annuel « Évolutions et perspectives des retraites en France » (juin 2026)",
+        "url": "https://www.cor-retraites.fr/sites/default/files/2026-07/RA_2026_def_0.pdf"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-20"
+    },
+    {
+      "id": "retraites.age-depart",
+      "label": "Âge conjoncturel de départ à la retraite",
+      "valeur": 63.1,
+      "unite": "ans",
+      "date": "2025",
+      "source": {
+        "nom": "Conseil d'orientation des retraites, rapport annuel « Évolutions et perspectives des retraites en France » (juin 2026)",
+        "url": "https://www.cor-retraites.fr/sites/default/files/2026-07/RA_2026_def_0.pdf"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-20",
+      "note": "Il atteindrait environ 64,6 ans à terme."
+    },
+    {
+      "id": "retraites.equilibre-age-2070",
+      "label": "Âge moyen de départ qui équilibrerait seul le système en 2070",
+      "valeur": 67.6,
+      "unite": "ans",
+      "date": "2070",
+      "source": {
+        "nom": "Conseil d'orientation des retraites, rapport annuel « Évolutions et perspectives des retraites en France » (juin 2026)",
+        "url": "https://www.cor-retraites.fr/sites/default/files/2026-07/RA_2026_def_0.pdf"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-20",
+      "note": "Simulation pédagogique du COR : 3,0 ans au-dessus de l'évolution spontanée. Alternatives : pension moyenne relative −7,4 points, ou prélèvements +5,6 points."
+    },
+    {
+      "id": "retraites.equilibre-pension-2070",
+      "label": "Baisse de la pension moyenne relative qui équilibrerait seule le système en 2070",
+      "valeur": 7.4,
+      "unite": "points",
+      "date": "2070",
+      "source": {
+        "nom": "Conseil d'orientation des retraites, rapport annuel « Évolutions et perspectives des retraites en France » (juin 2026)",
+        "url": "https://www.cor-retraites.fr/sites/default/files/2026-07/RA_2026_def_0.pdf"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-20"
+    },
+    {
+      "id": "retraites.equilibre-prelevements-2070",
+      "label": "Hausse du taux de prélèvement qui équilibrerait seule le système en 2070",
+      "valeur": 5.6,
+      "unite": "points",
+      "date": "2070",
+      "source": {
+        "nom": "Conseil d'orientation des retraites, rapport annuel « Évolutions et perspectives des retraites en France » (juin 2026)",
+        "url": "https://www.cor-retraites.fr/sites/default/files/2026-07/RA_2026_def_0.pdf"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-20"
+    },
+    {
+      "id": "retraites.europe",
+      "label": "Dépenses publiques de vieillesse en % du PIB (2024)",
+      "serie": [
+        {
+          "x": "France",
+          "y": 13.4
+        },
+        {
+          "x": "Allemagne",
+          "y": 9.9
+        },
+        {
+          "x": "Italie",
+          "y": 13.9
+        },
+        {
+          "x": "Espagne",
+          "y": 10.4
+        },
+        {
+          "x": "Grèce",
+          "y": 11.8
+        },
+        {
+          "x": "Belgique",
+          "y": 10.2
+        },
+        {
+          "x": "Portugal",
+          "y": 10.8
+        },
+        {
+          "x": "Pays-Bas",
+          "y": 6.1
+        },
+        {
+          "x": "Finlande",
+          "y": 15.5
+        },
+        {
+          "x": "Suède",
+          "y": 11.0
+        },
+        {
+          "x": "Danemark",
+          "y": 7.2
+        },
+        {
+          "x": "Autriche",
+          "y": 14.3
+        },
+        {
+          "x": "Zone euro (20 pays)",
+          "y": 10.9
+        },
+        {
+          "x": "Union européenne (27)",
+          "y": 10.7
+        }
+      ],
+      "unite": "% du PIB",
+      "date": "2024",
+      "source": {
+        "nom": "Eurostat, dépenses des administrations publiques par fonction (gov_10a_exp), fonction « vieillesse »",
+        "url": "https://ec.europa.eu/eurostat/databrowser/view/gov_10a_exp/default/table"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-20",
+      "note": "Fonction « vieillesse » de la classification des dépenses publiques : hors pensions de réversion et hors retraites privées ; la définition diffère de celle du COR (14,1 % pour la France)."
     }
   ]
 }

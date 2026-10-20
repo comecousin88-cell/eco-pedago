@@ -128,7 +128,7 @@ export const modules: ModuleInfo[] = [
       { slug: "notions", title: "Trimestres, décote, taux de remplacement" },
       { slug: "transition", title: "Le coût d'une transition" },
     ],
-    status: "soon",
+    status: "available",
   },
   {
     slug: "fiche-de-paie",
@@ -139,7 +139,7 @@ export const modules: ModuleInfo[] = [
       "Entrez un salaire brut et suivez chaque euro : cotisations, CSG, impôt, TVA, et ce qui finance les retraites.",
     color: { light: "#0f766e", dark: "#5eead4" },
     sections: [],
-    status: "soon",
+    status: "available",
   },
   {
     slug: "fiscalite",

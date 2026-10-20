@@ -1,0 +1,642 @@
+{
+  "description": "Paramètres de la fiche de paie et de l'impôt sur le revenu, année 2026 (salarié du secteur privé).",
+  "donnees": [
+    {
+      "id": "paie.pmss",
+      "label": "Plafond mensuel de la Sécurité sociale",
+      "valeur": 4005,
+      "unite": "€",
+      "date": "2026",
+      "source": {
+        "nom": "Urssaf, Plafonds de la Sécurité sociale 2026",
+        "url": "https://www.urssaf.fr/accueil/outils-documentation/taux-baremes/plafonds-securite-sociale.html"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-20"
+    },
+    {
+      "id": "paie.smic-mensuel",
+      "label": "Smic mensuel brut (35 heures)",
+      "valeur": 1867.02,
+      "unite": "€",
+      "date": "2026-06-01",
+      "source": {
+        "nom": "Service-public.gouv.fr, Le Smic augmentera le 1er juin 2026 (18/05/2026)",
+        "url": "https://www.service-public.gouv.fr/particuliers/actualites/A18916"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-20",
+      "note": "1 823,03 € du 1er janvier au 31 mai 2026."
+    },
+    {
+      "id": "paie.smic-mensuel-net",
+      "label": "Smic mensuel net (35 heures)",
+      "valeur": 1477.93,
+      "unite": "€",
+      "date": "2026-06-01",
+      "source": {
+        "nom": "Service-public.gouv.fr, Le Smic augmentera le 1er juin 2026 (18/05/2026)",
+        "url": "https://www.service-public.gouv.fr/particuliers/actualites/A18916"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-20"
+    },
+    {
+      "id": "paie.smic-annuel-rgdu",
+      "label": "Smic annuel retenu pour la réduction générale dégressive (RGDU)",
+      "valeur": 21876.4,
+      "unite": "€",
+      "date": "2026",
+      "source": {
+        "nom": "Service-public.gouv.fr (Entreprendre), Réduction générale dégressive unique (vérifié le 15/06/2026)",
+        "url": "https://entreprendre.service-public.gouv.fr/vosdroits/F24542"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-20",
+      "note": "Valeur du Smic au 1er janvier 2026, conservée dans la formule pour toute l'année."
+    },
+    {
+      "id": "paie.sal.vieillesse-plafonnee",
+      "label": "Assurance vieillesse plafonnée (salarié)",
+      "valeur": 6.9,
+      "unite": "%",
+      "date": "2026",
+      "source": {
+        "nom": "Urssaf, Taux de cotisations – secteur privé (mis à jour le 01/01/2026)",
+        "url": "https://www.urssaf.fr/accueil/outils-documentation/taux-baremes/taux-cotisations-secteur-prive.html"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-20",
+      "note": "Dans la limite du plafond."
+    },
+    {
+      "id": "paie.sal.vieillesse-deplafonnee",
+      "label": "Assurance vieillesse déplafonnée (salarié)",
+      "valeur": 0.4,
+      "unite": "%",
+      "date": "2026",
+      "source": {
+        "nom": "Urssaf, Taux de cotisations – secteur privé (mis à jour le 01/01/2026)",
+        "url": "https://www.urssaf.fr/accueil/outils-documentation/taux-baremes/taux-cotisations-secteur-prive.html"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-20"
+    },
+    {
+      "id": "paie.sal.csg-deductible",
+      "label": "CSG déductible",
+      "valeur": 6.8,
+      "unite": "%",
+      "date": "2026",
+      "source": {
+        "nom": "Urssaf, Taux de cotisations – secteur privé (mis à jour le 01/01/2026)",
+        "url": "https://www.urssaf.fr/accueil/outils-documentation/taux-baremes/taux-cotisations-secteur-prive.html"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-20",
+      "note": "Sur 98,25 % du brut."
+    },
+    {
+      "id": "paie.sal.csg-non-deductible",
+      "label": "CSG non déductible",
+      "valeur": 2.4,
+      "unite": "%",
+      "date": "2026",
+      "source": {
+        "nom": "Urssaf, Taux de cotisations – secteur privé (mis à jour le 01/01/2026)",
+        "url": "https://www.urssaf.fr/accueil/outils-documentation/taux-baremes/taux-cotisations-secteur-prive.html"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-20",
+      "note": "Sur 98,25 % du brut."
+    },
+    {
+      "id": "paie.sal.crds",
+      "label": "CRDS",
+      "valeur": 0.5,
+      "unite": "%",
+      "date": "2026",
+      "source": {
+        "nom": "Urssaf, Taux de cotisations – secteur privé (mis à jour le 01/01/2026)",
+        "url": "https://www.urssaf.fr/accueil/outils-documentation/taux-baremes/taux-cotisations-secteur-prive.html"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-20",
+      "note": "Sur 98,25 % du brut."
+    },
+    {
+      "id": "paie.assiette-csg",
+      "label": "Part du brut soumise à la CSG et à la CRDS",
+      "valeur": 98.25,
+      "unite": "%",
+      "date": "2026",
+      "source": {
+        "nom": "Urssaf, Taux de cotisations – secteur privé (mis à jour le 01/01/2026)",
+        "url": "https://www.urssaf.fr/accueil/outils-documentation/taux-baremes/taux-cotisations-secteur-prive.html"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-20",
+      "note": "Abattement de 1,75 % pour frais professionnels."
+    },
+    {
+      "id": "paie.sal.agirc-t1",
+      "label": "Retraite complémentaire Agirc-Arrco, tranche 1 (salarié)",
+      "valeur": 3.15,
+      "unite": "%",
+      "date": "2026",
+      "source": {
+        "nom": "Agirc-Arrco, Cotisations au régime Agirc-Arrco en 2026",
+        "url": "https://reglementation.agirc-arrco.fr/home/baremes/listes-area/baremes-1/cotisations-au-regime-agirc-arrco-en-2026.html"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-20"
+    },
+    {
+      "id": "paie.sal.agirc-t2",
+      "label": "Retraite complémentaire Agirc-Arrco, tranche 2 (salarié)",
+      "valeur": 8.64,
+      "unite": "%",
+      "date": "2026",
+      "source": {
+        "nom": "Agirc-Arrco, Cotisations au régime Agirc-Arrco en 2026",
+        "url": "https://reglementation.agirc-arrco.fr/home/baremes/listes-area/baremes-1/cotisations-au-regime-agirc-arrco-en-2026.html"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-20"
+    },
+    {
+      "id": "paie.sal.ceg-t1",
+      "label": "Contribution d'équilibre général, tranche 1 (salarié)",
+      "valeur": 0.86,
+      "unite": "%",
+      "date": "2026",
+      "source": {
+        "nom": "Agirc-Arrco, Cotisations au régime Agirc-Arrco en 2026",
+        "url": "https://reglementation.agirc-arrco.fr/home/baremes/listes-area/baremes-1/cotisations-au-regime-agirc-arrco-en-2026.html"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-20"
+    },
+    {
+      "id": "paie.sal.ceg-t2",
+      "label": "Contribution d'équilibre général, tranche 2 (salarié)",
+      "valeur": 1.08,
+      "unite": "%",
+      "date": "2026",
+      "source": {
+        "nom": "Agirc-Arrco, Cotisations au régime Agirc-Arrco en 2026",
+        "url": "https://reglementation.agirc-arrco.fr/home/baremes/listes-area/baremes-1/cotisations-au-regime-agirc-arrco-en-2026.html"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-20"
+    },
+    {
+      "id": "paie.sal.cet",
+      "label": "Contribution d'équilibre technique (salarié)",
+      "valeur": 0.14,
+      "unite": "%",
+      "date": "2026",
+      "source": {
+        "nom": "Agirc-Arrco, Cotisations au régime Agirc-Arrco en 2026",
+        "url": "https://reglementation.agirc-arrco.fr/home/baremes/listes-area/baremes-1/cotisations-au-regime-agirc-arrco-en-2026.html"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-20",
+      "note": "Due seulement si le salaire dépasse le plafond."
+    },
+    {
+      "id": "paie.emp.maladie",
+      "label": "Assurance maladie, maternité, invalidité, décès (employeur, taux plein)",
+      "valeur": 13.0,
+      "unite": "%",
+      "date": "2026",
+      "source": {
+        "nom": "Urssaf, Taux de cotisations – secteur privé (mis à jour le 01/01/2026)",
+        "url": "https://www.urssaf.fr/accueil/outils-documentation/taux-baremes/taux-cotisations-secteur-prive.html"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-20"
+    },
+    {
+      "id": "paie.emp.csa",
+      "label": "Contribution solidarité autonomie (employeur)",
+      "valeur": 0.3,
+      "unite": "%",
+      "date": "2026",
+      "source": {
+        "nom": "Urssaf, Taux de cotisations – secteur privé (mis à jour le 01/01/2026)",
+        "url": "https://www.urssaf.fr/accueil/outils-documentation/taux-baremes/taux-cotisations-secteur-prive.html"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-20"
+    },
+    {
+      "id": "paie.emp.vieillesse-plafonnee",
+      "label": "Assurance vieillesse plafonnée (employeur)",
+      "valeur": 8.55,
+      "unite": "%",
+      "date": "2026",
+      "source": {
+        "nom": "Urssaf, Taux de cotisations – secteur privé (mis à jour le 01/01/2026)",
+        "url": "https://www.urssaf.fr/accueil/outils-documentation/taux-baremes/taux-cotisations-secteur-prive.html"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-20"
+    },
+    {
+      "id": "paie.emp.vieillesse-deplafonnee",
+      "label": "Assurance vieillesse déplafonnée (employeur)",
+      "valeur": 2.11,
+      "unite": "%",
+      "date": "2026",
+      "source": {
+        "nom": "Urssaf, Taux de cotisations – secteur privé (mis à jour le 01/01/2026)",
+        "url": "https://www.urssaf.fr/accueil/outils-documentation/taux-baremes/taux-cotisations-secteur-prive.html"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-20"
+    },
+    {
+      "id": "paie.emp.famille",
+      "label": "Allocations familiales (employeur, taux plein)",
+      "valeur": 5.25,
+      "unite": "%",
+      "date": "2026",
+      "source": {
+        "nom": "Urssaf, Taux de cotisations – secteur privé (mis à jour le 01/01/2026)",
+        "url": "https://www.urssaf.fr/accueil/outils-documentation/taux-baremes/taux-cotisations-secteur-prive.html"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-20"
+    },
+    {
+      "id": "paie.emp.dialogue-social",
+      "label": "Contribution au dialogue social (employeur)",
+      "valeur": 0.016,
+      "unite": "%",
+      "date": "2026",
+      "source": {
+        "nom": "Urssaf, Taux de cotisations – secteur privé (mis à jour le 01/01/2026)",
+        "url": "https://www.urssaf.fr/accueil/outils-documentation/taux-baremes/taux-cotisations-secteur-prive.html"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-20"
+    },
+    {
+      "id": "paie.emp.chomage",
+      "label": "Assurance chômage (employeur)",
+      "valeur": 4.0,
+      "unite": "%",
+      "date": "2026",
+      "source": {
+        "nom": "Urssaf, Taux de cotisations – secteur privé (mis à jour le 01/01/2026)",
+        "url": "https://www.urssaf.fr/accueil/outils-documentation/taux-baremes/taux-cotisations-secteur-prive.html"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-20"
+    },
+    {
+      "id": "paie.emp.ags",
+      "label": "Garantie des salaires AGS (employeur)",
+      "valeur": 0.25,
+      "unite": "%",
+      "date": "2026",
+      "source": {
+        "nom": "Urssaf, Taux de cotisations – secteur privé (mis à jour le 01/01/2026)",
+        "url": "https://www.urssaf.fr/accueil/outils-documentation/taux-baremes/taux-cotisations-secteur-prive.html"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-20"
+    },
+    {
+      "id": "paie.emp.fnal-petite",
+      "label": "Fnal, moins de 50 salariés (dans la limite du plafond)",
+      "valeur": 0.1,
+      "unite": "%",
+      "date": "2026",
+      "source": {
+        "nom": "Urssaf, Taux de cotisations – secteur privé (mis à jour le 01/01/2026)",
+        "url": "https://www.urssaf.fr/accueil/outils-documentation/taux-baremes/taux-cotisations-secteur-prive.html"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-20"
+    },
+    {
+      "id": "paie.emp.fnal-grande",
+      "label": "Fnal, 50 salariés et plus",
+      "valeur": 0.5,
+      "unite": "%",
+      "date": "2026",
+      "source": {
+        "nom": "Urssaf, Taux de cotisations – secteur privé (mis à jour le 01/01/2026)",
+        "url": "https://www.urssaf.fr/accueil/outils-documentation/taux-baremes/taux-cotisations-secteur-prive.html"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-20"
+    },
+    {
+      "id": "paie.emp.formation-petite",
+      "label": "Formation professionnelle, moins de 11 salariés",
+      "valeur": 0.55,
+      "unite": "%",
+      "date": "2026",
+      "source": {
+        "nom": "Urssaf, Taux de cotisations – secteur privé (mis à jour le 01/01/2026)",
+        "url": "https://www.urssaf.fr/accueil/outils-documentation/taux-baremes/taux-cotisations-secteur-prive.html"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-20"
+    },
+    {
+      "id": "paie.emp.formation-grande",
+      "label": "Formation professionnelle, 11 salariés et plus",
+      "valeur": 1.0,
+      "unite": "%",
+      "date": "2026",
+      "source": {
+        "nom": "Urssaf, Taux de cotisations – secteur privé (mis à jour le 01/01/2026)",
+        "url": "https://www.urssaf.fr/accueil/outils-documentation/taux-baremes/taux-cotisations-secteur-prive.html"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-20"
+    },
+    {
+      "id": "paie.emp.apprentissage",
+      "label": "Taxe d'apprentissage (part principale + solde)",
+      "valeur": 0.68,
+      "unite": "%",
+      "date": "2026",
+      "source": {
+        "nom": "Urssaf, Taux de cotisations – secteur privé (mis à jour le 01/01/2026)",
+        "url": "https://www.urssaf.fr/accueil/outils-documentation/taux-baremes/taux-cotisations-secteur-prive.html"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-20",
+      "note": "0,59 % + 0,09 %."
+    },
+    {
+      "id": "paie.emp.agirc-t1",
+      "label": "Retraite complémentaire Agirc-Arrco, tranche 1 (employeur)",
+      "valeur": 4.72,
+      "unite": "%",
+      "date": "2026",
+      "source": {
+        "nom": "Agirc-Arrco, Cotisations au régime Agirc-Arrco en 2026",
+        "url": "https://reglementation.agirc-arrco.fr/home/baremes/listes-area/baremes-1/cotisations-au-regime-agirc-arrco-en-2026.html"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-20"
+    },
+    {
+      "id": "paie.emp.agirc-t2",
+      "label": "Retraite complémentaire Agirc-Arrco, tranche 2 (employeur)",
+      "valeur": 12.95,
+      "unite": "%",
+      "date": "2026",
+      "source": {
+        "nom": "Agirc-Arrco, Cotisations au régime Agirc-Arrco en 2026",
+        "url": "https://reglementation.agirc-arrco.fr/home/baremes/listes-area/baremes-1/cotisations-au-regime-agirc-arrco-en-2026.html"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-20"
+    },
+    {
+      "id": "paie.emp.ceg-t1",
+      "label": "Contribution d'équilibre général, tranche 1 (employeur)",
+      "valeur": 1.29,
+      "unite": "%",
+      "date": "2026",
+      "source": {
+        "nom": "Agirc-Arrco, Cotisations au régime Agirc-Arrco en 2026",
+        "url": "https://reglementation.agirc-arrco.fr/home/baremes/listes-area/baremes-1/cotisations-au-regime-agirc-arrco-en-2026.html"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-20"
+    },
+    {
+      "id": "paie.emp.ceg-t2",
+      "label": "Contribution d'équilibre général, tranche 2 (employeur)",
+      "valeur": 1.62,
+      "unite": "%",
+      "date": "2026",
+      "source": {
+        "nom": "Agirc-Arrco, Cotisations au régime Agirc-Arrco en 2026",
+        "url": "https://reglementation.agirc-arrco.fr/home/baremes/listes-area/baremes-1/cotisations-au-regime-agirc-arrco-en-2026.html"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-20"
+    },
+    {
+      "id": "paie.emp.cet",
+      "label": "Contribution d'équilibre technique (employeur)",
+      "valeur": 0.21,
+      "unite": "%",
+      "date": "2026",
+      "source": {
+        "nom": "Agirc-Arrco, Cotisations au régime Agirc-Arrco en 2026",
+        "url": "https://reglementation.agirc-arrco.fr/home/baremes/listes-area/baremes-1/cotisations-au-regime-agirc-arrco-en-2026.html"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-20",
+      "note": "Due seulement si le salaire dépasse le plafond."
+    },
+    {
+      "id": "paie.rgdu.tmin",
+      "label": "RGDU : coefficient minimal (Tmin)",
+      "valeur": 0.02,
+      "unite": "coefficient",
+      "date": "2026",
+      "source": {
+        "nom": "Service-public.gouv.fr (Entreprendre), Réduction générale dégressive unique (vérifié le 15/06/2026)",
+        "url": "https://entreprendre.service-public.gouv.fr/vosdroits/F24542"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-20"
+    },
+    {
+      "id": "paie.rgdu.tdelta-petite",
+      "label": "RGDU : Tdelta, moins de 50 salariés",
+      "valeur": 0.3781,
+      "unite": "coefficient",
+      "date": "2026",
+      "source": {
+        "nom": "Service-public.gouv.fr (Entreprendre), Réduction générale dégressive unique (vérifié le 15/06/2026)",
+        "url": "https://entreprendre.service-public.gouv.fr/vosdroits/F24542"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-20"
+    },
+    {
+      "id": "paie.rgdu.tdelta-grande",
+      "label": "RGDU : Tdelta, 50 salariés et plus",
+      "valeur": 0.3821,
+      "unite": "coefficient",
+      "date": "2026",
+      "source": {
+        "nom": "Service-public.gouv.fr (Entreprendre), Réduction générale dégressive unique (vérifié le 15/06/2026)",
+        "url": "https://entreprendre.service-public.gouv.fr/vosdroits/F24542"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-20"
+    },
+    {
+      "id": "paie.rgdu.exposant",
+      "label": "RGDU : exposant P",
+      "valeur": 1.75,
+      "unite": "coefficient",
+      "date": "2026",
+      "source": {
+        "nom": "Service-public.gouv.fr (Entreprendre), Réduction générale dégressive unique (vérifié le 15/06/2026)",
+        "url": "https://entreprendre.service-public.gouv.fr/vosdroits/F24542"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-20"
+    },
+    {
+      "id": "ir.bareme",
+      "label": "Barème de l'impôt sur le revenu 2026 (revenus 2025), par part : taux applicable au-delà de chaque seuil",
+      "serie": [
+        {
+          "x": "0",
+          "y": 0
+        },
+        {
+          "x": "11600",
+          "y": 11
+        },
+        {
+          "x": "29579",
+          "y": 30
+        },
+        {
+          "x": "84577",
+          "y": 41
+        },
+        {
+          "x": "181917",
+          "y": 45
+        }
+      ],
+      "unite": "%",
+      "date": "2026",
+      "source": {
+        "nom": "Service-public.gouv.fr, Barème de l'impôt sur le revenu (vérifié le 15/04/2026)",
+        "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F1419"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-20",
+      "note": "x = seuil annuel en euros à partir duquel le taux s'applique."
+    },
+    {
+      "id": "ir.decote-seul",
+      "label": "Décote : plafond pour une personne seule",
+      "valeur": 897,
+      "unite": "€",
+      "date": "2026",
+      "source": {
+        "nom": "economie.gouv.fr, Pouvez-vous bénéficier de la décote de l'impôt sur le revenu ?",
+        "url": "https://www.economie.gouv.fr/particuliers/impots-et-fiscalite/gerer-mon-impot-sur-le-revenu/pouvez-vous-beneficier-de-la-decote-de-limpot-sur-le-revenu"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-20",
+      "note": "Décote = 897 € − 45,25 % de l'impôt brut."
+    },
+    {
+      "id": "ir.decote-taux",
+      "label": "Décote : taux appliqué à l'impôt brut",
+      "valeur": 45.25,
+      "unite": "%",
+      "date": "2026",
+      "source": {
+        "nom": "economie.gouv.fr, Pouvez-vous bénéficier de la décote de l'impôt sur le revenu ?",
+        "url": "https://www.economie.gouv.fr/particuliers/impots-et-fiscalite/gerer-mon-impot-sur-le-revenu/pouvez-vous-beneficier-de-la-decote-de-limpot-sur-le-revenu"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-20"
+    },
+    {
+      "id": "ir.abattement-min",
+      "label": "Abattement de 10 % pour frais professionnels : minimum",
+      "valeur": 509,
+      "unite": "€",
+      "date": "2026",
+      "source": {
+        "nom": "Weblex, Déduction forfaitaire de 10 % pour frais professionnels (déclaration 2026)",
+        "url": "https://www.weblex.fr/chiffres-cles/deduction-forfaitaire-de-10-pour-frais-professionnels-declaration-2026"
+      },
+      "statut": "a_verifier",
+      "note": "Revenus 2025. Montant concordant dans plusieurs sources, à confirmer sur impots.gouv.fr."
+    },
+    {
+      "id": "ir.abattement-max",
+      "label": "Abattement de 10 % pour frais professionnels : maximum",
+      "valeur": 14555,
+      "unite": "€",
+      "date": "2026",
+      "source": {
+        "nom": "Weblex, Déduction forfaitaire de 10 % pour frais professionnels (déclaration 2026)",
+        "url": "https://www.weblex.fr/chiffres-cles/deduction-forfaitaire-de-10-pour-frais-professionnels-declaration-2026"
+      },
+      "statut": "a_verifier",
+      "note": "Revenus 2025. Montant concordant dans plusieurs sources, à confirmer sur impots.gouv.fr."
+    },
+    {
+      "id": "tva.taux",
+      "label": "Taux de TVA en France métropolitaine",
+      "serie": [
+        {
+          "x": "Normal",
+          "y": 20
+        },
+        {
+          "x": "Intermédiaire",
+          "y": 10
+        },
+        {
+          "x": "Réduit",
+          "y": 5.5
+        },
+        {
+          "x": "Particulier",
+          "y": 2.1
+        }
+      ],
+      "unite": "%",
+      "date": "2026",
+      "source": {
+        "nom": "Service-public.gouv.fr (Entreprendre), Taux de TVA",
+        "url": "https://entreprendre.service-public.gouv.fr/vosdroits/F23567"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-20"
+    },
+    {
+      "id": "accise.gazole",
+      "label": "Accise sur le gazole",
+      "valeur": 0.6075,
+      "unite": "€ par litre",
+      "date": "2026-03-01",
+      "source": {
+        "nom": "Légifrance, arrêté du 24 décembre 2025 constatant les tarifs de certaines impositions sur les biens et services pour 2026",
+        "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000053229989"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-20",
+      "note": "60,75 € par hectolitre."
+    },
+    {
+      "id": "accise.sp95-e10",
+      "label": "Accise sur le SP95-E10",
+      "valeur": 0.6702,
+      "unite": "€ par litre",
+      "date": "2026-03-01",
+      "source": {
+        "nom": "Légifrance, arrêté du 24 décembre 2025 constatant les tarifs de certaines impositions sur les biens et services pour 2026",
+        "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000053229989"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-20",
+      "note": "67,02 € par hectolitre."
+    }
+  ]
+}

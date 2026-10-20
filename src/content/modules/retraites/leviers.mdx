@@ -1,0 +1,76 @@
+import { LeviersRetraites } from "@/components/simulators/LeviersRetraites";
+
+<Niveaux>
+<Essentiel>
+
+Pour équilibrer un système par répartition, il n'existe que trois leviers :
+
+- **l'âge de départ** (ou la durée de cotisation) : partir plus tard, c'est cotiser plus longtemps et toucher sa
+  pension moins longtemps ;
+- **le taux de cotisation** : prélever davantage sur les revenus d'activité ;
+- **le niveau des pensions** : les augmenter moins vite que les salaires, ou les baisser.
+
+Chacun a un coût, pour des personnes différentes : les futurs retraités, les actifs, ou les retraités actuels.
+Tout le débat sur les retraites porte sur le dosage entre ces trois leviers.
+
+</Essentiel>
+<Mecanisme>
+
+<Figure
+  titre="Simulateur : les trois leviers d'équilibre"
+  resume="Simulateur : à partir de la situation de 2025 ou de la projection du COR pour 2070, on règle l'âge moyen de départ, le taux de cotisation et le niveau des pensions. Le résultat montre le solde du système en % du PIB et l'effet sur un salarié et sur un retraité types."
+  donnees={["retraites.cotisants-par-retraite", "retraites.pension-relative", "retraites.depenses-projection", "retraites.ressources-projection", "retraites.pension-moyenne", "retraites.equilibre-age-2070"]}
+>
+  <LeviersRetraites />
+</Figure>
+
+<Exemple titre="Exemple : trois façons de combler le même trou">
+Selon le COR, pour équilibrer le système chaque année jusqu'en 2070 avec un seul levier, il faudrait au choix
+porter l'âge moyen de départ à <Chiffre id="retraites.equilibre-age-2070" /> en 2070, ou baisser la pension moyenne
+relative de <Chiffre id="retraites.equilibre-pension-2070" />, ou augmenter le taux de prélèvement de
+<Chiffre id="retraites.equilibre-prelevements-2070" />. Le COR insiste : ce sont des illustrations, pas des propositions.
+</Exemple>
+
+</Mecanisme>
+<PlusLoin>
+
+**La relation d'équilibre.** En notant $\tau$ le taux de prélèvement, $R/C$ le nombre de retraités par cotisant et
+$P/W$ la pension moyenne rapportée au revenu d'activité moyen, un régime par répartition est à l'équilibre quand :
+
+$$
+\tau = \frac{R}{C} \times \frac{P}{W}
+$$
+
+Le simulateur utilise cette relation, calée sur les projections du COR. L'effet de l'âge y est simplifié : reculer
+l'âge moyen d'un an fait passer environ 1/30 des retraités du côté des cotisants (ce calage retrouve l'ordre de
+grandeur du COR en 2070).
+
+**Ce que le simulateur ne dit pas.** Un recul de l'âge augmente un peu les pensions futures (plus de trimestres),
+peut accroître le chômage ou l'invalidité des seniors à court terme, et ne pèse pas de la même façon selon les
+métiers et l'espérance de vie. Une hausse des cotisations renchérit le coût du travail. Une baisse des pensions
+touche d'abord les plus modestes si elle n'est pas ciblée.
+
+<Debat
+  question="Quel levier privilégier ?"
+  titrePour="Ceux qui privilégient l'âge ou la durée de travail"
+  titreContre="Ceux qui privilégient les cotisations ou d'autres recettes"
+  pour={<p>L'espérance de vie a beaucoup augmenté ; travailler un peu plus longtemps maintient le niveau des pensions sans alourdir le coût du travail, déjà élevé en France. Le taux d'emploi des 60-64 ans y est plus faible que chez beaucoup de voisins, ce qui laisse une marge. Dans le simulateur, un an de plus suffit à combler une bonne partie de l'écart.</p>}
+  contre={<p>Reculer l'âge pénalise surtout ceux qui ont commencé tôt, exercent des métiers pénibles ou ont une espérance de vie plus courte, et beaucoup de seniors sont sans emploi avant leur retraite. Une hausse modérée des cotisations, ou des recettes nouvelles (sur le capital, par exemple), répartirait l'effort autrement, au prix d'un coût du travail plus élevé.</p>}
+>
+L'arithmétique est commune à tous : un déficit se comble avec un ou plusieurs des trois leviers, ou avec des
+recettes venues d'ailleurs (impôts, transferts de l'État), qui pèsent alors sur le reste du budget.
+</Debat>
+
+**La réforme de 2023 et sa suspension.** La loi du 14 avril 2023 portait progressivement l'âge légal de 62 à 64 ans.
+La loi de financement de la sécurité sociale pour 2026 (30 décembre 2025) a suspendu sa montée en charge pour la
+génération 1964 et le début de la génération 1965 ; elle reprend ensuite, de sorte que l'âge de 64 ans serait
+atteint pour la génération 1969 au lieu de 1968 (source : rapport du COR de juin 2026). Les projections présentées ici
+en tiennent compte.
+
+</PlusLoin>
+</Niveaux>
+
+<ARetenir>
+Trois leviers seulement : l'âge, les cotisations, le niveau des pensions. Le choix entre eux détermine qui supporte
+l'effort : futurs retraités, actifs ou retraités actuels.
+</ARetenir>

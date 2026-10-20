@@ -1,0 +1,70 @@
+import { RepartitionCapitalisation } from "@/components/graphiques/RepartitionCapitalisation";
+
+<Niveaux>
+<Essentiel>
+
+Il existe deux grandes façons de financer les retraites :
+
+- la **répartition** : ce que les actifs cotisent cette année paie les pensions des retraités de cette année. Rien
+  n'est mis de côté : c'est un contrat entre générations ;
+- la **capitalisation** : chacun épargne pour lui-même pendant sa vie active ; l'argent est placé, puis récupéré à
+  la retraite, avec les gains (ou les pertes) des placements.
+
+<Figure
+  titre="Répartition et capitalisation, côte à côte"
+  resume="Animation : en répartition, l'argent des actifs va aux retraités la même année ; en capitalisation, il est placé et revient à la même personne des décennies plus tard."
+  source="Animation explicative, montants fictifs."
+>
+  <RepartitionCapitalisation />
+</Figure>
+
+</Essentiel>
+<Mecanisme>
+
+| | Répartition | Capitalisation |
+|---|---|---|
+| D'où vient la pension ? | Des cotisations des actifs du moment | De votre propre épargne et de son rendement |
+| Ce qui la menace | La baisse du nombre de cotisants par retraité, le chômage | Les krachs boursiers, l'inflation, des rendements faibles |
+| Ce qui la fait progresser | La hausse des salaires et de l'emploi | Le rendement des placements |
+| Démarrage | Immédiat : les premiers retraités sont payés tout de suite | Lent : il faut des décennies d'épargne |
+
+<Exemple titre="Exemple : deux mauvaises nouvelles différentes">
+En répartition, si le nombre de cotisants par retraité baisse de 2 à 1,5, il faut, à pension égale, augmenter les
+cotisations d'un tiers, ou baisser les pensions, ou faire travailler plus longtemps. En capitalisation, si la
+Bourse perd 30 % l'année avant votre départ, votre capital perd 30 % : c'est ce qui est arrivé à de nombreux
+épargnants américains en 2008.
+</Exemple>
+
+**Aucun des deux n'échappe à la démographie.** C'est un point souvent mal compris : dans les deux cas, les
+pensions sont payées avec la production des actifs du moment. En capitalisation, les retraités revendent leurs
+actions et leurs obligations aux actifs ; si ceux-ci sont moins nombreux, les acheteurs se font rares et les prix
+peuvent en souffrir. La capitalisation permet toutefois d'investir à l'étranger, dans des pays dont la population
+est plus jeune.
+
+</Mecanisme>
+<PlusLoin>
+
+**Rendement comparé.** En répartition, le « rendement » implicite des cotisations est à long terme proche de la
+croissance de la masse salariale (emploi + salaires). En capitalisation, c'est le rendement des placements, qui a
+historiquement dépassé la croissance de la masse salariale sur longue période dans les grandes économies, mais avec
+des risques et des frais de gestion.
+
+<Debat
+  question="Faut-il introduire davantage de capitalisation ?"
+  titrePour="Ceux qui y sont favorables"
+  titreContre="Ceux qui y sont opposés"
+  pour={<p>Une part de capitalisation diversifierait les risques, alors que la répartition dépend entièrement de la démographie et de l'emploi en France. Les rendements financiers de long terme ont souvent dépassé la croissance des salaires. Plusieurs pays (Pays-Bas, Suède, Danemark) combinent les deux. Et l'épargne retraite pourrait financer les entreprises françaises.</p>}
+  contre={<p>La capitalisation reporte le risque sur chaque épargnant (krach, inflation, longévité), avec des frais de gestion, et elle creuse les inégalités entre ceux qui peuvent épargner et les autres. Surtout, la transition coûterait très cher : il faudrait continuer à payer les pensions actuelles tout en épargnant (la « double charge », section 6).</p>}
+>
+Les deux camps s'accordent sur un point : quel que soit le mode de financement, les retraites sont payées par la
+production des actifs du moment. Le débat porte sur la répartition des risques, le rendement attendu et le coût de
+la transition.
+</Debat>
+
+</PlusLoin>
+</Niveaux>
+
+<ARetenir>
+En répartition, les actifs paient les retraités d'aujourd'hui ; en capitalisation, chacun épargne pour lui-même.
+L'une dépend de la démographie et de l'emploi, l'autre des marchés financiers.
+</ARetenir>

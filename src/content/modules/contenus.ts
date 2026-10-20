@@ -5,6 +5,8 @@ import { quiz as quizDette } from "./deficit-et-dette/quiz";
 import { quiz as quizEmprunt } from "./emprunt-etat/quiz";
 import { quiz as quizBoule } from "./boule-de-neige/quiz";
 import { quiz as quizBanque } from "./banque-centrale/quiz";
+import { quiz as quizRetraites } from "./retraites/quiz";
+import { quiz as quizPaie } from "./fiche-de-paie/quiz";
 
 /**
  * Les textes de chaque module rédigé : introduction, une page par section,
@@ -78,5 +80,23 @@ export const contenus: Record<string, ContenuModule> = {
       grece: () => import("./banque-centrale/grece.mdx"),
     },
     quiz: quizBanque,
+  },
+  retraites: {
+    intro: () => import("./retraites/index.mdx"),
+    sections: {
+      "trois-etages": () => import("./retraites/trois-etages.mdx"),
+      "repartition-capitalisation": () =>
+        import("./retraites/repartition-capitalisation.mdx"),
+      demographie: () => import("./retraites/demographie.mdx"),
+      leviers: () => import("./retraites/leviers.mdx"),
+      notions: () => import("./retraites/notions.mdx"),
+      transition: () => import("./retraites/transition.mdx"),
+    },
+    quiz: quizRetraites,
+  },
+  "fiche-de-paie": {
+    intro: () => import("./fiche-de-paie/index.mdx"),
+    sections: {},
+    quiz: quizPaie,
   },
 };

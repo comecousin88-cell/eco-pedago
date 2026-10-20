@@ -334,3 +334,293 @@ export function annulerTitres(b: BilanBanqueCentrale): ResultatBilan & { perte: 
     perte,
   };
 }
+
+/* ------------------------------------------------------------------------ */
+/* Retraites : l'équilibre d'un régime par répartition                      */
+/* ------------------------------------------------------------------------ */
+
+export interface ParametresRetraites {
+  /** Assiette des cotisations (masse des revenus d'activité soumis), en % du PIB. */
+  assiettePib: number;
+  /** Taux de prélèvement moyen sur cette assiette (0,30 = 30 %). */
+  tauxPrelevement: number;
+  /** Retraités par cotisant (l'inverse du rapport cotisants / retraités). */
+  retraitesParCotisant: number;
+  /** Pension moyenne rapportée au revenu d'activité moyen (0,546 = 54,6 %). */
+  pensionRelative: number;
+}
+
+/**
+ * Solde d'un régime par répartition, en % du PIB :
+ * ressources = assiette × taux ; dépenses = assiette × (retraités / cotisants) × pension relative.
+ * C'est la relation d'équilibre utilisée par le COR (« l'abaque »).
+ */
+export function soldeRetraites(p: ParametresRetraites): { ressources: number; depenses: number; solde: number } {
+  const ressources = p.assiettePib * p.tauxPrelevement;
+  const depenses = p.assiettePib * p.retraitesParCotisant * p.pensionRelative;
+  return { ressources, depenses, solde: ressources - depenses };
+}
+
+/**
+ * Effet d'un recul de l'âge moyen de départ de `annees` : une fraction
+ * annees / dureeRetraite des retraités reste en activité un peu plus longtemps.
+ * Renvoie les nouveaux paramètres (plus de cotisants, moins de retraités).
+ */
+export function reculerAgeDepart(p: ParametresRetraites, annees: number, dureeRetraite: number): ParametresRetraites {
+  const x = annees / dureeRetraite;
+  const rpc = p.retraitesParCotisant;
+  const cotisantsRelatifs = 1 + x * rpc; // C' / C
+  return {
+    ...p,
+    assiettePib: p.assiettePib * cotisantsRelatifs,
+    retraitesParCotisant: ((1 - x) * rpc) / cotisantsRelatifs,
+  };
+}
+
+/* ------------------------------------------------------------------------ */
+/* Fiche de paie et impôt sur le revenu                                     */
+/* ------------------------------------------------------------------------ */
+
+export type Destination =
+  | "Retraite de base"
+  | "Retraite complémentaire"
+  | "Maladie"
+  | "Famille"
+  | "Chômage"
+  | "Autonomie"
+  | "Accidents du travail"
+  | "CSG et CRDS"
+  | "Logement, formation et autres"
+  | "Allègement de cotisations";
+
+export interface LignePaie {
+  libelle: string;
+  payeur: "salarié" | "employeur";
+  destination: Destination;
+  montant: number;
+}
+
+export interface ParametresPaie {
+  pmss: number;
+  smicAnnuelRgdu: number;
+  sal: {
+    vieillessePlafonnee: number;
+    vieillesseDeplafonnee: number;
+    agircT1: number;
+    agircT2: number;
+    cegT1: number;
+    cegT2: number;
+    cet: number;
+    csgDeductible: number;
+    csgNonDeductible: number;
+    crds: number;
+    assietteCsg: number;
+  };
+  emp: {
+    maladie: number;
+    csa: number;
+    vieillessePlafonnee: number;
+    vieillesseDeplafonnee: number;
+    famille: number;
+    dialogueSocial: number;
+    chomage: number;
+    ags: number;
+    fnalPetite: number;
+    fnalGrande: number;
+    formationPetite: number;
+    formationGrande: number;
+    apprentissage: number;
+    agircT1: number;
+    agircT2: number;
+    cegT1: number;
+    cegT2: number;
+    cet: number;
+  };
+  rgdu: { tmin: number; tdeltaPetite: number; tdeltaGrande: number; exposant: number };
+}
+
+export interface OptionsPaie {
+  /** Taille de l'entreprise : change le Fnal, la formation et la RGDU. */
+  taille: "moins-11" | "11-49" | "50-plus";
+  /** Taux accidents du travail (notifié à chaque entreprise) : une hypothèse, en %. */
+  tauxAT: number;
+}
+
+/** Coefficient de la réduction générale dégressive unique (RGDU), sur salaires annuels. */
+export function coefficientRgdu(
+  brutAnnuel: number,
+  smicAnnuel: number,
+  r: { tmin: number; tdelta: number; exposant: number },
+): number {
+  if (brutAnnuel <= 0 || brutAnnuel >= 3 * smicAnnuel) return 0;
+  const base = Math.max(0, 0.5 * ((3 * smicAnnuel) / brutAnnuel - 1));
+  const c = r.tmin + r.tdelta * base ** r.exposant;
+  return Math.round(Math.min(c, r.tmin + r.tdelta) * 10000) / 10000;
+}
+
+export interface FichePaie {
+  brut: number;
+  lignes: LignePaie[];
+  cotisationsSalariales: number;
+  cotisationsEmployeur: number;
+  coutEmployeur: number;
+  netImposable: number;
+  netAvantImpot: number;
+}
+
+/**
+ * Fiche de paie mensuelle simplifiée d'un salarié non cadre du secteur privé.
+ * Taux en % (6,9 = 6,9 %). Les tranches suivent le plafond mensuel (T1 jusqu'au
+ * plafond, T2 de 1 à 8 plafonds).
+ */
+export function ficheDePaie(brut: number, p: ParametresPaie, o: OptionsPaie): FichePaie {
+  const t1 = Math.min(brut, p.pmss);
+  const t2 = Math.max(0, Math.min(brut, 8 * p.pmss) - p.pmss);
+  const auDessusPlafond = brut > p.pmss;
+  const assietteCsg = (brut * p.sal.assietteCsg) / 100;
+  const pct = (base: number, taux: number) => (base * taux) / 100;
+  const petite = o.taille === "moins-11";
+  const grande = o.taille === "50-plus";
+  const S = "salarié" as const;
+  const E = "employeur" as const;
+
+  const lignes: LignePaie[] = [
+    { libelle: "Vieillesse plafonnée", payeur: S, destination: "Retraite de base", montant: pct(t1, p.sal.vieillessePlafonnee) },
+    { libelle: "Vieillesse déplafonnée", payeur: S, destination: "Retraite de base", montant: pct(brut, p.sal.vieillesseDeplafonnee) },
+    { libelle: "Agirc-Arrco tranche 1", payeur: S, destination: "Retraite complémentaire", montant: pct(t1, p.sal.agircT1) },
+    { libelle: "Agirc-Arrco tranche 2", payeur: S, destination: "Retraite complémentaire", montant: pct(t2, p.sal.agircT2) },
+    {
+      libelle: "Contribution d'équilibre général",
+      payeur: S,
+      destination: "Retraite complémentaire",
+      montant: pct(t1, p.sal.cegT1) + pct(t2, p.sal.cegT2),
+    },
+    {
+      libelle: "Contribution d'équilibre technique",
+      payeur: S,
+      destination: "Retraite complémentaire",
+      montant: auDessusPlafond ? pct(t1 + t2, p.sal.cet) : 0,
+    },
+    { libelle: "CSG déductible", payeur: S, destination: "CSG et CRDS", montant: pct(assietteCsg, p.sal.csgDeductible) },
+    { libelle: "CSG non déductible", payeur: S, destination: "CSG et CRDS", montant: pct(assietteCsg, p.sal.csgNonDeductible) },
+    { libelle: "CRDS", payeur: S, destination: "CSG et CRDS", montant: pct(assietteCsg, p.sal.crds) },
+
+    { libelle: "Maladie, maternité, invalidité, décès", payeur: E, destination: "Maladie", montant: pct(brut, p.emp.maladie) },
+    { libelle: "Contribution solidarité autonomie", payeur: E, destination: "Autonomie", montant: pct(brut, p.emp.csa) },
+    { libelle: "Vieillesse plafonnée", payeur: E, destination: "Retraite de base", montant: pct(t1, p.emp.vieillessePlafonnee) },
+    { libelle: "Vieillesse déplafonnée", payeur: E, destination: "Retraite de base", montant: pct(brut, p.emp.vieillesseDeplafonnee) },
+    { libelle: "Allocations familiales", payeur: E, destination: "Famille", montant: pct(brut, p.emp.famille) },
+    { libelle: "Accidents du travail (hypothèse)", payeur: E, destination: "Accidents du travail", montant: pct(brut, o.tauxAT) },
+    { libelle: "Assurance chômage", payeur: E, destination: "Chômage", montant: pct(brut, p.emp.chomage) },
+    { libelle: "Garantie des salaires (AGS)", payeur: E, destination: "Chômage", montant: pct(brut, p.emp.ags) },
+    { libelle: "Agirc-Arrco tranche 1", payeur: E, destination: "Retraite complémentaire", montant: pct(t1, p.emp.agircT1) },
+    { libelle: "Agirc-Arrco tranche 2", payeur: E, destination: "Retraite complémentaire", montant: pct(t2, p.emp.agircT2) },
+    {
+      libelle: "Contribution d'équilibre général",
+      payeur: E,
+      destination: "Retraite complémentaire",
+      montant: pct(t1, p.emp.cegT1) + pct(t2, p.emp.cegT2),
+    },
+    {
+      libelle: "Contribution d'équilibre technique",
+      payeur: E,
+      destination: "Retraite complémentaire",
+      montant: auDessusPlafond ? pct(t1 + t2, p.emp.cet) : 0,
+    },
+    {
+      libelle: "Aide au logement (Fnal)",
+      payeur: E,
+      destination: "Logement, formation et autres",
+      montant: grande ? pct(brut, p.emp.fnalGrande) : pct(t1, p.emp.fnalPetite),
+    },
+    {
+      libelle: "Formation professionnelle",
+      payeur: E,
+      destination: "Logement, formation et autres",
+      montant: pct(brut, petite ? p.emp.formationPetite : p.emp.formationGrande),
+    },
+    { libelle: "Taxe d'apprentissage", payeur: E, destination: "Logement, formation et autres", montant: pct(brut, p.emp.apprentissage) },
+    { libelle: "Dialogue social", payeur: E, destination: "Logement, formation et autres", montant: pct(brut, p.emp.dialogueSocial) },
+  ];
+
+  const coef = coefficientRgdu(brut * 12, p.smicAnnuelRgdu, {
+    tmin: p.rgdu.tmin,
+    tdelta: grande ? p.rgdu.tdeltaGrande : p.rgdu.tdeltaPetite,
+    exposant: p.rgdu.exposant,
+  });
+  if (coef > 0) {
+    lignes.push({
+      libelle: "Réduction générale dégressive (RGDU)",
+      payeur: E,
+      destination: "Allègement de cotisations",
+      montant: -coef * brut,
+    });
+  }
+
+  const somme = (f: (l: LignePaie) => boolean) => lignes.filter(f).reduce((s, l) => s + l.montant, 0);
+  const cotisationsSalariales = somme((l) => l.payeur === S);
+  const cotisationsEmployeur = somme((l) => l.payeur === E);
+  const csgNonDeductibleEtCrds = pct(assietteCsg, p.sal.csgNonDeductible + p.sal.crds);
+  const netAvantImpot = brut - cotisationsSalariales;
+  return {
+    brut,
+    lignes,
+    cotisationsSalariales,
+    cotisationsEmployeur,
+    coutEmployeur: brut + cotisationsEmployeur,
+    netImposable: netAvantImpot + csgNonDeductibleEtCrds,
+    netAvantImpot,
+  };
+}
+
+export interface Tranche {
+  /** Seuil (par part) à partir duquel le taux s'applique. */
+  seuil: number;
+  /** Taux en % (11 = 11 %). */
+  taux: number;
+}
+
+export interface ParametresImpot {
+  bareme: Tranche[];
+  decotePlafond: number;
+  decoteTaux: number;
+  abattementMin: number;
+  abattementMax: number;
+}
+
+/** Impôt brut selon le barème progressif, pour un revenu imposable et un nombre de parts. */
+export function impotBareme(revenuImposable: number, parts: number, bareme: Tranche[]): number {
+  const q = revenuImposable / parts;
+  let impot = 0;
+  for (let i = 0; i < bareme.length; i++) {
+    const bas = bareme[i].seuil;
+    const haut = i + 1 < bareme.length ? bareme[i + 1].seuil : Infinity;
+    if (q > bas) impot += ((Math.min(q, haut) - bas) * bareme[i].taux) / 100;
+  }
+  return impot * parts;
+}
+
+/**
+ * Impôt sur le revenu d'une personne seule (1 part) sur ses salaires annuels
+ * nets imposables : abattement de 10 % (borné), barème, décote.
+ */
+export function impotSurLeRevenu(salairesNetsImposables: number, p: ParametresImpot) {
+  const abattement = Math.min(p.abattementMax, Math.max(p.abattementMin, salairesNetsImposables * 0.1), salairesNetsImposables);
+  const revenuImposable = Math.max(0, salairesNetsImposables - abattement);
+  const impotBrut = impotBareme(revenuImposable, 1, p.bareme);
+  const decote = Math.max(0, Math.min(impotBrut, p.decotePlafond - (impotBrut * p.decoteTaux) / 100));
+  const impot = Math.max(0, impotBrut - decote);
+  return {
+    abattement,
+    revenuImposable,
+    impotBrut,
+    decote,
+    impot,
+    tauxMoyen: salairesNetsImposables > 0 ? impot / salairesNetsImposables : 0,
+  };
+}
+
+/** TVA contenue dans un prix toutes taxes comprises (taux en %). */
+export function tvaContenue(prixTtc: number, taux: number): number {
+  return (prixTtc * taux) / (100 + taux);
+}

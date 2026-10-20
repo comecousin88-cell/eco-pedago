@@ -1,0 +1,69 @@
+import { Personnages } from "@/components/graphiques/Personnages";
+
+<Niveaux>
+<Essentiel>
+
+Dans un système par répartition, tout dépend du nombre de cotisants pour chaque retraité. Or ce nombre baisse :
+<Chiffre id="retraites.cotisants-par-retraite" x="2002" /> pour un retraité en 2002,
+<Chiffre id="retraites.cotisants-par-retraite" x="2025" /> en 2025, et environ
+<Chiffre id="retraites.cotisants-par-retraite" x="2070" /> en 2070 selon le Conseil d'orientation des retraites.
+
+<Figure
+  titre="Combien d'actifs pour un retraité ?"
+  resume="Des silhouettes montrent, pour chaque année, combien d'actifs il y a pour un retraité. Le nombre baisse nettement entre le début des années 2000 et aujourd'hui, et continuerait de baisser d'ici 2070, que l'on compte les cotisants ou simplement les personnes d'âge actif."
+  donnees={["retraites.cotisants-par-retraite", "retraites.rapport-demographique"]}
+>
+  <Personnages />
+</Figure>
+
+</Essentiel>
+<Mecanisme>
+
+**Trois causes.** L'arrivée à la retraite des générations nombreuses du baby-boom (nées de 1946 au milieu des
+années 1960) ; l'allongement de la vie, qui allonge la durée de retraite ; et la baisse de la natalité, qui réduit
+le nombre de futurs actifs. Le COR retient désormais une fécondité de 1,45 enfant par femme, contre 1,8 dans ses
+projections précédentes.
+
+**Ce que cela change.** Le nombre de cotisants passerait de <Chiffre id="retraites.cotisants" x="2025" /> en 2025 à
+<Chiffre id="retraites.cotisants" x="2070" /> en 2070, celui des retraités de <Chiffre id="retraites.retraites" x="2025" /> à
+<Chiffre id="retraites.retraites" x="2070" />.
+
+<Exemple titre="Exemple : la règle de trois de la répartition">
+Avec 2 cotisants par retraité, une pension de 1 500 € demande 750 € de cotisations à chaque actif. Avec 1,5
+cotisant, il en faut 1 000 € ; avec 1,3, environ 1 150 €. À cotisations inchangées, c'est la pension qui doit
+baisser, ou l'âge de départ qui doit reculer pour qu'il y ait davantage de cotisants.
+</Exemple>
+
+**Pourquoi la dépense ne s'envole pas pour autant.** Selon le COR, les dépenses de retraite resteraient proches de
+<Chiffre id="retraites.depenses-projection" x="2045" /> du PIB en 2045, puis atteindraient
+<Chiffre id="retraites.depenses-projection" x="2070" /> en 2070. Deux raisons : le recul de l'âge de départ décidé par
+les réformes passées, et surtout la baisse relative des pensions par rapport aux salaires (de
+<Chiffre id="retraites.pension-relative" x="2025" /> du revenu d'activité moyen en 2025 à
+<Chiffre id="retraites.pension-relative" x="2070" /> en 2070), parce que les pensions sont indexées sur les prix et non
+sur les salaires. Mais les ressources baisseraient aussi : le solde du système passerait de
+<Chiffre id="retraites.solde-projection" x="2025" /> du PIB en 2025 à <Chiffre id="retraites.solde-projection" x="2070" /> en 2070.
+
+</Mecanisme>
+<PlusLoin>
+
+**Deux indicateurs différents.** Le rapport « 20-64 ans / 65 ans et plus » ne dépend que de la démographie. Le
+rapport « cotisants / retraités » dépend aussi de l'emploi (chômage, taux d'activité des jeunes et des seniors) et
+des règles de départ. Améliorer le taux d'emploi des seniors ou des jeunes augmente le nombre de cotisants sans
+toucher à la démographie.
+
+**Les projections sont des scénarios.** Elles reposent sur des hypothèses de fécondité, de migrations, de
+productivité et de chômage. Le COR publie plusieurs variantes : une fécondité plus basse ou une productivité plus
+faible dégradent le solde, des hypothèses plus favorables l'améliorent. Le sens de l'évolution du rapport
+démographique, lui, fait consensus.
+
+**Une baisse relative, pas absolue.** La pension moyenne continuerait d'augmenter en euros constants ; elle augmenterait
+seulement moins vite que les salaires. Le niveau de vie des retraités, aujourd'hui proche de celui de l'ensemble de
+la population, baisserait donc en relatif.
+
+</PlusLoin>
+</Niveaux>
+
+<ARetenir>
+Le nombre de cotisants par retraité baisse durablement. Pour équilibrer un système par répartition, il faut alors
+jouer sur l'âge, les cotisations ou le niveau des pensions.
+</ARetenir>

@@ -49,6 +49,7 @@ export interface FichierDonnees {
 import aft from "../../data/aft.json";
 import banqueCentrale from "../../data/banque-centrale.json";
 import budgets from "../../data/budgets.json";
+import cotisations from "../../data/cotisations.json";
 import dette from "../../data/dette.json";
 import europe from "../../data/europe.json";
 import financesPubliques from "../../data/finances-publiques.json";
@@ -61,6 +62,7 @@ export const fichiers: Record<string, FichierDonnees> = {
   aft: aft as FichierDonnees,
   "banque-centrale": banqueCentrale as FichierDonnees,
   budgets: budgets as FichierDonnees,
+  cotisations: cotisations as FichierDonnees,
   dette: dette as FichierDonnees,
   europe: europe as FichierDonnees,
   "finances-publiques": financesPubliques as FichierDonnees,
