@@ -1,0 +1,48 @@
+{
+  "description": "Crédits du budget de l'État par mission (crédits de paiement).",
+  "donnees": [
+    {
+      "id": "budgets.missions",
+      "label": "Crédits de paiement de quelques missions du budget de l'État",
+      "serie": [
+        {
+          "x": "Enseignement scolaire",
+          "y": 89.6
+        },
+        {
+          "x": "Défense",
+          "y": 66.7
+        },
+        {
+          "x": "Charge de la dette de l'État",
+          "y": 58.6
+        },
+        {
+          "x": "Recherche et enseignement supérieur",
+          "y": 31.5
+        },
+        {
+          "x": "Sécurités (police, gendarmerie)",
+          "y": 25.9
+        },
+        {
+          "x": "Écologie, développement et mobilité durables",
+          "y": 22.9
+        },
+        {
+          "x": "Justice",
+          "y": 13.1
+        }
+      ],
+      "unite": "Md€",
+      "date": "2026",
+      "source": {
+        "nom": "Sénat, PLF 2026 : crédits des missions adoptés en première délibération (15 décembre 2025)",
+        "url": "https://www.senat.fr/leg/annexes/pjlf2026_credits_senat_partiel.html"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-20",
+      "note": "Projet de loi de finances 2026 tel qu'adopté par le Sénat en première lecture (15/12/2025), avant la loi promulguée. Crédits y compris dépenses de personnel. « Charge de la dette » : programme 117, crédits évaluatifs."
+    }
+  ]
+}

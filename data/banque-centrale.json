@@ -1,0 +1,254 @@
+{
+  "description": "Politique monétaire de la BCE et bilan de la Banque de France.",
+  "donnees": [
+    {
+      "id": "bce.taux-depot",
+      "label": "Taux de la facilité de dépôt de la BCE (date d'entrée en vigueur)",
+      "serie": [
+        {
+          "x": "2008-07-09",
+          "y": 3.25
+        },
+        {
+          "x": "2008-10-08",
+          "y": 2.75
+        },
+        {
+          "x": "2008-10-09",
+          "y": 3.25
+        },
+        {
+          "x": "2008-11-12",
+          "y": 2.75
+        },
+        {
+          "x": "2008-12-10",
+          "y": 2.0
+        },
+        {
+          "x": "2009-01-21",
+          "y": 1.0
+        },
+        {
+          "x": "2009-03-11",
+          "y": 0.5
+        },
+        {
+          "x": "2009-04-08",
+          "y": 0.25
+        },
+        {
+          "x": "2011-04-13",
+          "y": 0.5
+        },
+        {
+          "x": "2011-07-13",
+          "y": 0.75
+        },
+        {
+          "x": "2011-11-09",
+          "y": 0.5
+        },
+        {
+          "x": "2011-12-14",
+          "y": 0.25
+        },
+        {
+          "x": "2012-07-11",
+          "y": 0.0
+        },
+        {
+          "x": "2014-06-11",
+          "y": -0.1
+        },
+        {
+          "x": "2014-09-10",
+          "y": -0.2
+        },
+        {
+          "x": "2015-12-09",
+          "y": -0.3
+        },
+        {
+          "x": "2016-03-16",
+          "y": -0.4
+        },
+        {
+          "x": "2019-09-18",
+          "y": -0.5
+        },
+        {
+          "x": "2022-07-27",
+          "y": 0.0
+        },
+        {
+          "x": "2022-09-14",
+          "y": 0.75
+        },
+        {
+          "x": "2022-11-02",
+          "y": 1.5
+        },
+        {
+          "x": "2022-12-21",
+          "y": 2.0
+        },
+        {
+          "x": "2023-02-08",
+          "y": 2.5
+        },
+        {
+          "x": "2023-03-22",
+          "y": 3.0
+        },
+        {
+          "x": "2023-05-10",
+          "y": 3.25
+        },
+        {
+          "x": "2023-06-21",
+          "y": 3.5
+        },
+        {
+          "x": "2023-08-02",
+          "y": 3.75
+        },
+        {
+          "x": "2023-09-20",
+          "y": 4.0
+        },
+        {
+          "x": "2024-06-12",
+          "y": 3.75
+        },
+        {
+          "x": "2024-09-18",
+          "y": 3.5
+        },
+        {
+          "x": "2024-10-23",
+          "y": 3.25
+        },
+        {
+          "x": "2024-12-18",
+          "y": 3.0
+        },
+        {
+          "x": "2025-02-05",
+          "y": 2.75
+        },
+        {
+          "x": "2025-03-12",
+          "y": 2.5
+        },
+        {
+          "x": "2025-04-23",
+          "y": 2.25
+        },
+        {
+          "x": "2025-06-11",
+          "y": 2.0
+        },
+        {
+          "x": "2026-06-17",
+          "y": 2.25
+        },
+        {
+          "x": "2026-09-16",
+          "y": 2.5
+        }
+      ],
+      "unite": "%",
+      "date": "2026-09-16",
+      "source": {
+        "nom": "Banque centrale européenne, taux d'intérêt directeurs",
+        "url": "https://www.ecb.europa.eu/stats/policy_and_exchange_rates/key_ecb_interest_rates/html/index.en.html"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-20"
+    },
+    {
+      "id": "bce.taux-depot-actuel",
+      "label": "Taux de la facilité de dépôt de la BCE",
+      "valeur": 2.5,
+      "unite": "%",
+      "date": "2026-09-16",
+      "source": {
+        "nom": "Banque centrale européenne, taux d'intérêt directeurs",
+        "url": "https://www.ecb.europa.eu/stats/policy_and_exchange_rates/key_ecb_interest_rates/html/index.en.html"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-20",
+      "note": "En vigueur depuis le 16/09/2026."
+    },
+    {
+      "id": "bce.taux-refi-actuel",
+      "label": "Taux des opérations principales de refinancement de la BCE",
+      "valeur": 2.65,
+      "unite": "%",
+      "date": "2026-09-16",
+      "source": {
+        "nom": "Banque centrale européenne, taux d'intérêt directeurs",
+        "url": "https://www.ecb.europa.eu/stats/policy_and_exchange_rates/key_ecb_interest_rates/html/index.en.html"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-20"
+    },
+    {
+      "id": "bdf.titres-politique-monetaire",
+      "label": "Titres publics détenus par la Banque de France au titre des programmes APP et PEPP",
+      "valeur": 488,
+      "unite": "Md€",
+      "date": "2026-06-30",
+      "source": {
+        "nom": "Banque de France, Précisions sur le programme de détention de la dette publique (12 septembre 2026)",
+        "url": "https://www.banque-france.fr/fr/communiques-de-presse/precisions-sur-le-programme-de-detention-de-la-dette-publique-par-la-banque-de-france"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-20",
+      "note": "En coût amorti. 546 Md€ au 31/12/2025 ; baisse due uniquement aux titres arrivés à échéance, aucune vente."
+    },
+    {
+      "id": "bdf.titres-politique-monetaire-2025",
+      "label": "Titres publics détenus par la Banque de France (APP et PEPP)",
+      "valeur": 546,
+      "unite": "Md€",
+      "date": "2025-12-31",
+      "source": {
+        "nom": "Banque de France, Précisions sur le programme de détention de la dette publique (12 septembre 2026)",
+        "url": "https://www.banque-france.fr/fr/communiques-de-presse/precisions-sur-le-programme-de-detention-de-la-dette-publique-par-la-banque-de-france"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-20",
+      "note": "En coût amorti."
+    },
+    {
+      "id": "bdf.resultat-2024",
+      "label": "Résultat net de la Banque de France",
+      "valeur": -7.7,
+      "unite": "Md€",
+      "date": "2024",
+      "source": {
+        "nom": "Banque de France, Résultats 2025 de la Banque de France (mars 2026)",
+        "url": "https://www.banque-france.fr/fr/actualites/resultats-2025-de-la-banque-de-france"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-20",
+      "note": "Première perte de son histoire."
+    },
+    {
+      "id": "bdf.resultat-2025",
+      "label": "Résultat net de la Banque de France",
+      "valeur": 8.1,
+      "unite": "Md€",
+      "date": "2025",
+      "source": {
+        "nom": "Banque de France, Résultats 2025 de la Banque de France (mars 2026)",
+        "url": "https://www.banque-france.fr/fr/actualites/resultats-2025-de-la-banque-de-france"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-20",
+      "note": "Retour au bénéfice, dont une plus-value exceptionnelle de 11 Md€ sur la mise aux normes d'une partie de son or."
+    }
+  ]
+}

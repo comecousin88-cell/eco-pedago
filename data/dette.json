@@ -995,19 +995,6 @@
       },
       "statut": "a_verifier",
       "note": "L'avis indique une composante structurelle « proche de 5 points de PIB » après une baisse de 0,8 point en 2025 : valeur exacte à relever."
-    },
-    {
-      "id": "dette.charge",
-      "label": "Charge de la dette",
-      "valeur": 77,
-      "unite": "Md€",
-      "date": "2026",
-      "source": {
-        "nom": "Cour des comptes",
-        "url": "https://www.ccomptes.fr"
-      },
-      "statut": "a_verifier",
-      "note": "Ordre de grandeur du cahier des charges (« ≈ 77 Md€ en 2026 »). Préciser le périmètre : État seul ou ensemble des administrations publiques."
     }
   ]
 }

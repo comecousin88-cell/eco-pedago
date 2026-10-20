@@ -47,18 +47,26 @@ export interface FichierDonnees {
 
 // Chaque nouveau fichier de données s'ajoute ici.
 import aft from "../../data/aft.json";
+import banqueCentrale from "../../data/banque-centrale.json";
+import budgets from "../../data/budgets.json";
 import dette from "../../data/dette.json";
 import europe from "../../data/europe.json";
 import financesPubliques from "../../data/finances-publiques.json";
+import grece from "../../data/grece.json";
 import macro from "../../data/macro.json";
+import marches from "../../data/marches.json";
 import retraites from "../../data/retraites.json";
 
 export const fichiers: Record<string, FichierDonnees> = {
   aft: aft as FichierDonnees,
+  "banque-centrale": banqueCentrale as FichierDonnees,
+  budgets: budgets as FichierDonnees,
   dette: dette as FichierDonnees,
   europe: europe as FichierDonnees,
   "finances-publiques": financesPubliques as FichierDonnees,
+  grece: grece as FichierDonnees,
   macro: macro as FichierDonnees,
+  marches: marches as FichierDonnees,
   retraites: retraites as FichierDonnees,
 };
 

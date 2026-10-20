@@ -1,35 +1,197 @@
 {
-  "description": "Dette négociable de l'État, gérée par l'Agence France Trésor : encours, maturité, détenteurs.",
+  "description": "Dette négociable de l'État et son financement (Agence France Trésor, budget de l'État).",
   "donnees": [
     {
       "id": "aft.dette-negociable",
       "label": "Dette négociable de l'État",
-      "valeur": 2800,
+      "valeur": 2858,
       "unite": "Md€",
-      "date": "2026",
-      "source": { "nom": "Agence France Trésor, bulletin mensuel", "url": "https://www.aft.gouv.fr" },
+      "date": "2026-06-30",
+      "source": {
+        "nom": "Agence France Trésor, bulletin mensuel n° 434 (juillet 2026)",
+        "url": "https://www.aft.gouv.fr/files/medias-aft/7_Publications/7.2_BM/434_Bulletin%20mensuel%20juillet%202026.pdf"
+      },
       "statut": "a_verifier",
-      "note": "Ordre de grandeur du cahier des charges. Relever la date exacte du bulletin."
+      "note": "Chiffre lu dans l'extrait publié du bulletin ; le PDF de l'AFT refuse les téléchargements automatisés (erreur 403), il reste à le confirmer en ouvrant le bulletin."
+    },
+    {
+      "id": "aft.dette-negociable-indexee",
+      "label": "dont titres indexés sur l'inflation",
+      "valeur": 311,
+      "unite": "Md€",
+      "date": "2026-06-30",
+      "source": {
+        "nom": "Agence France Trésor, bulletin mensuel n° 434 (juillet 2026)",
+        "url": "https://www.aft.gouv.fr/files/medias-aft/7_Publications/7.2_BM/434_Bulletin%20mensuel%20juillet%202026.pdf"
+      },
+      "statut": "a_verifier",
+      "note": "Chiffre lu dans l'extrait publié du bulletin ; le PDF de l'AFT refuse les téléchargements automatisés (erreur 403), il reste à le confirmer en ouvrant le bulletin."
+    },
+    {
+      "id": "aft.dette-court-terme",
+      "label": "dont dette à court terme (BTF)",
+      "valeur": 221,
+      "unite": "Md€",
+      "date": "2026-06-30",
+      "source": {
+        "nom": "Agence France Trésor, bulletin mensuel n° 434 (juillet 2026)",
+        "url": "https://www.aft.gouv.fr/files/medias-aft/7_Publications/7.2_BM/434_Bulletin%20mensuel%20juillet%202026.pdf"
+      },
+      "statut": "a_verifier",
+      "note": "Chiffre lu dans l'extrait publié du bulletin ; le PDF de l'AFT refuse les téléchargements automatisés (erreur 403), il reste à le confirmer en ouvrant le bulletin."
     },
     {
       "id": "aft.maturite-moyenne",
-      "label": "Maturité moyenne de la dette négociable",
+      "label": "Durée de vie moyenne de la dette négociable",
       "valeur": 8.5,
       "unite": "ans",
-      "date": "2026",
-      "source": { "nom": "Agence France Trésor, bulletin mensuel", "url": "https://www.aft.gouv.fr" },
+      "date": "2026-06-30",
+      "source": {
+        "nom": "Agence France Trésor, bulletin mensuel n° 434 (juillet 2026)",
+        "url": "https://www.aft.gouv.fr/files/medias-aft/7_Publications/7.2_BM/434_Bulletin%20mensuel%20juillet%202026.pdf"
+      },
       "statut": "a_verifier",
-      "note": "Ordre de grandeur du cahier des charges (≈ 8,5 ans)."
+      "note": "8 ans et 180 jours. Chiffre lu dans l'extrait publié du bulletin ; le PDF de l'AFT refuse les téléchargements automatisés (erreur 403), il reste à le confirmer en ouvrant le bulletin."
     },
     {
-      "id": "aft.part-eurosysteme",
-      "label": "Part de la dette détenue par l'Eurosystème",
-      "valeur": 18,
+      "id": "aft.detenteurs",
+      "label": "Détenteurs de la dette négociable de l'État",
+      "serie": [
+        {
+          "x": "Non-résidents",
+          "y": 56.0
+        },
+        {
+          "x": "Banques françaises",
+          "y": 11.1
+        },
+        {
+          "x": "Assurances françaises",
+          "y": 10.1
+        },
+        {
+          "x": "Autres résidents (fonds, Banque de France…)",
+          "y": 22.8
+        }
+      ],
       "unite": "%",
-      "date": "2026",
-      "source": { "nom": "Banque de France / Agence France Trésor", "url": "https://www.banque-france.fr" },
+      "date": "2025-12-31",
+      "source": {
+        "nom": "Agence France Trésor, bulletin mensuel n° 433 (juin 2026), données Banque de France",
+        "url": "https://www.aft.gouv.fr/files/medias-aft/7_Publications/7.2_BM/433_Bulletin%20mensuel%20juin%202026.pdf"
+      },
       "statut": "a_verifier",
-      "note": "Ordre de grandeur du cahier des charges (≈ 18 %). Préciser le dénominateur : dette négociable de l'État ou dette de Maastricht."
+      "note": "« Autres résidents » calculé par différence. Les titres achetés par la Banque de France pour l'Eurosystème sont comptés parmi les résidents. Chiffre lu dans l'extrait publié du bulletin ; le PDF de l'AFT refuse les téléchargements automatisés (erreur 403), il reste à le confirmer en ouvrant le bulletin."
+    },
+    {
+      "id": "aft.programme-emissions",
+      "label": "Émissions de dette à moyen et long terme prévues (nettes des rachats)",
+      "valeur": 310.0,
+      "unite": "Md€",
+      "date": "2026",
+      "source": {
+        "nom": "Sénat, rapport général sur le PLF 2026, Engagements financiers de l'État (24 novembre 2025)",
+        "url": "https://www.senat.fr/rap/l25-139-312/l25-139-312_mono.html"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-20"
+    },
+    {
+      "id": "aft.besoin-financement",
+      "label": "Besoin de financement de l'État",
+      "valeur": 305.7,
+      "unite": "Md€",
+      "date": "2026",
+      "source": {
+        "nom": "Sénat, rapport général sur le PLF 2026, Engagements financiers de l'État (24 novembre 2025)",
+        "url": "https://www.senat.fr/rap/l25-139-312/l25-139-312_mono.html"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-20",
+      "note": "Prévision du projet de loi de finances 2026."
+    },
+    {
+      "id": "aft.amortissements",
+      "label": "Dette à moyen et long terme arrivant à échéance (amortissements)",
+      "valeur": 175.8,
+      "unite": "Md€",
+      "date": "2026",
+      "source": {
+        "nom": "Sénat, rapport général sur le PLF 2026, Engagements financiers de l'État (24 novembre 2025)",
+        "url": "https://www.senat.fr/rap/l25-139-312/l25-139-312_mono.html"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-20",
+      "note": "Prévision du projet de loi de finances 2026."
+    },
+    {
+      "id": "aft.deficit-budgetaire",
+      "label": "Déficit du budget de l'État à financer",
+      "valeur": 124.4,
+      "unite": "Md€",
+      "date": "2026",
+      "source": {
+        "nom": "Sénat, rapport général sur le PLF 2026, Engagements financiers de l'État (24 novembre 2025)",
+        "url": "https://www.senat.fr/rap/l25-139-312/l25-139-312_mono.html"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-20",
+      "note": "Prévision du projet de loi de finances 2026 (comptabilité budgétaire de l'État, différente du déficit public de Maastricht)."
+    },
+    {
+      "id": "etat.charge-dette",
+      "label": "Charge de la dette de l'État (budget de l'État)",
+      "valeur": 58.0,
+      "unite": "Md€",
+      "date": "2026",
+      "source": {
+        "nom": "Sénat, rapport général sur le PLF 2026, Engagements financiers de l'État (24 novembre 2025)",
+        "url": "https://www.senat.fr/rap/l25-139-312/l25-139-312_mono.html"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-20",
+      "note": "Prévision du PLF 2026 en comptabilité budgétaire, contre 53,5 Md€ en loi de finances initiale 2025."
+    },
+    {
+      "id": "etat.charge-dette-2025",
+      "label": "Charge de la dette de l'État (budget de l'État)",
+      "valeur": 53.5,
+      "unite": "Md€",
+      "date": "2025",
+      "source": {
+        "nom": "Sénat, rapport général sur le PLF 2026, Engagements financiers de l'État (24 novembre 2025)",
+        "url": "https://www.senat.fr/rap/l25-139-312/l25-139-312_mono.html"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-20",
+      "note": "Loi de finances initiale 2025."
+    },
+    {
+      "id": "etat.sensibilite-taux",
+      "label": "Hausse de la charge de la dette de l'État si tous les taux montent durablement de 1 point",
+      "serie": [
+        {
+          "x": "Après 1 an",
+          "y": 3.2
+        },
+        {
+          "x": "Après 5 ans",
+          "y": 23.5
+        },
+        {
+          "x": "Après 9 ans",
+          "y": 33.5
+        }
+      ],
+      "unite": "Md€",
+      "date": "2026",
+      "source": {
+        "nom": "Sénat, rapport général sur le PLF 2026, Engagements financiers de l'État (24 novembre 2025)",
+        "url": "https://www.senat.fr/rap/l25-139-312/l25-139-312_mono.html"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-20",
+      "note": "Estimation de l'AFT reprise par le rapport du Sénat."
     }
   ]
 }
