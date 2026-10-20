@@ -75,7 +75,7 @@ export const modules: ModuleInfo[] = [
       { slug: "detenteurs", title: "Qui détient la dette ?" },
       { slug: "spread-notation", title: "Spread, notation, courbe des taux" },
     ],
-    status: "soon",
+    status: "available",
   },
   {
     slug: "boule-de-neige",
@@ -92,7 +92,7 @@ export const modules: ModuleInfo[] = [
       { slug: "cout-opportunite", title: "Ce que coûtent les intérêts" },
       { slug: "chiffrage", title: "Chiffrer un programme" },
     ],
-    status: "soon",
+    status: "available",
   },
   {
     slug: "banque-centrale",
@@ -110,7 +110,7 @@ export const modules: ModuleInfo[] = [
       { slug: "signal-marches", title: "Le signal envoyé aux marchés" },
       { slug: "grece", title: "La crise grecque" },
     ],
-    status: "soon",
+    status: "available",
   },
   {
     slug: "retraites",

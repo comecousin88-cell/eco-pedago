@@ -1,0 +1,65 @@
+import { BarresHorizontales } from "@/components/graphiques/BarresHorizontales";
+
+<Niveaux>
+<Essentiel>
+
+Qui prête à l'État français ? Plus de la moitié de sa dette négociable est détenue par des investisseurs
+**non-résidents** : assureurs, fonds de pension, banques et banques centrales étrangers. Le reste est détenu en
+France, notamment par les banques, les assureurs (via l'assurance-vie des Français) et la Banque de France.
+
+<Figure
+  titre="Qui détient la dette négociable de l'État ?"
+  resume="Répartition des détenteurs de la dette négociable de l'État fin 2025 : plus de la moitié par des non-résidents, puis des banques et des assureurs français, et d'autres résidents dont la Banque de France."
+  donnees={["aft.detenteurs"]}
+>
+  <BarresHorizontales serie="aft.detenteurs" enAvant={["Non-résidents"]} suffixe="%" />
+</Figure>
+
+</Essentiel>
+<Mecanisme>
+
+**Les non-résidents.** Ce sont des investisseurs dont le siège est hors de France : fonds de pension
+néerlandais, assureurs allemands, banques centrales d'Asie, fonds d'investissement… Les OAT les intéressent
+parce qu'elles sont sûres, abondantes et faciles à revendre. Une partie de ces investisseurs gère d'ailleurs
+l'épargne de ménages… français, via des fonds domiciliés au Luxembourg ou en Irlande : « non-résident » ne
+veut pas dire « étranger » au sens où on l'entend d'habitude.
+
+**Les assureurs français.** L'assurance-vie, placement préféré des Français, est investie pour une bonne part en
+obligations, dont des OAT. Indirectement, beaucoup de ménages prêtent donc à l'État.
+
+**La Banque de France.** Dans le cadre des programmes de rachats de l'Eurosystème (module 4), elle a acheté de
+grandes quantités d'OAT. Elle en détenait encore <Chiffre id="bdf.titres-politique-monetaire" /> au
+<DateDonnee id="bdf.titres-politique-monetaire" format="jour" />, un montant qui baisse à mesure que les titres
+arrivent à échéance, car ils ne sont plus remplacés.
+
+<Exemple titre="Exemple : une épargnante, un fonds, l'État">
+Une épargnante place 10 000 € sur un contrat d'assurance-vie en fonds en euros. Son assureur investit cet
+argent, avec celui de millions d'autres épargnants, dans un portefeuille où figurent des OAT. Les coupons versés
+par l'État reviennent en partie à l'épargnante, sous forme d'intérêts sur son contrat.
+</Exemple>
+
+</Mecanisme>
+<PlusLoin>
+
+**Une mesure à lire avec précaution.** La répartition vient de la Banque de France, publiée par l'Agence France
+Trésor. Elle classe les détenteurs selon leur résidence, pas selon la nationalité de l'épargne finale : les
+titres logés dans des fonds étrangers sont « non-résidents » même si ces fonds gèrent de l'épargne française.
+
+<Debat
+  question="Faut-il s'inquiéter de la part des non-résidents ?"
+  titrePour="Ceux qui y voient un risque"
+  titreContre="Ceux qui y voient un atout"
+  pour={<p>Des investisseurs étrangers peuvent se détourner plus vite que des épargnants nationaux en cas de doute : la demande d'OAT deviendrait plus volatile et les taux pourraient monter brutalement. Les intérêts versés à l'étranger sont aussi une richesse qui quitte le pays. Le contraste avec le Japon, dont la dette est surtout détenue par des résidents, est souvent cité (module 6 quater).</p>}
+  contre={<p>Une large base d'investisseurs variés, dans le monde entier, fait baisser le coût de l'emprunt et rend la demande plus profonde : une adjudication trouve toujours preneur. Dans une union monétaire où l'épargne circule librement, détenir des titres d'un autre pays de la zone euro est courant ; la France détient aussi beaucoup de titres étrangers.</p>}
+>
+Les deux analyses s'accordent sur l'essentiel : ce qui compte surtout, c'est la confiance des investisseurs dans
+la trajectoire des finances publiques, quelle que soit leur résidence.
+</Debat>
+
+</PlusLoin>
+</Niveaux>
+
+<ARetenir>
+Plus de la moitié de la dette négociable de l'État est détenue par des non-résidents. Les ménages français la
+financent aussi, indirectement, via l'assurance-vie.
+</ARetenir>

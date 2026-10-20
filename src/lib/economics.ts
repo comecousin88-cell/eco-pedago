@@ -138,8 +138,8 @@ export function cumulDette(detteInitiale: number, deficits: number[]): number[] 
 export interface HypothesesDette {
   /** Dette / PIB de départ (1.15 = 115 %). */
   detteInitiale: number;
-  /** Taux d'intérêt apparent moyen sur la dette (nominal). */
-  taux: number;
+  /** Taux d'intérêt apparent moyen sur la dette (nominal), constant ou année par année. */
+  taux: number | number[];
   /** Croissance nominale du PIB (croissance réelle + inflation). */
   croissance: number;
   /** Solde primaire en % du PIB : positif = excédent, négatif = déficit. */
@@ -163,18 +163,18 @@ export interface PointTrajectoire {
  * L'année 0 est le point de départ.
  */
 export function trajectoireDette(h: HypothesesDette): PointTrajectoire[] {
-  const sp = (t: number) =>
-    Array.isArray(h.soldePrimaire)
-      ? (h.soldePrimaire[t - 1] ?? h.soldePrimaire[h.soldePrimaire.length - 1])
-      : h.soldePrimaire;
+  // Une valeur par année ; au-delà de la liste, la dernière valeur se prolonge.
+  const annuel = (v: number | number[], t: number) => (Array.isArray(v) ? (v[t - 1] ?? v[v.length - 1]) : v);
+  const sp = (t: number) => annuel(h.soldePrimaire, t);
+  const r = (t: number) => annuel(h.taux, t);
 
   const points: PointTrajectoire[] = [
     { annee: 0, dette: h.detteInitiale, interets: 0, soldePublic: 0 },
   ];
   let d = h.detteInitiale;
   for (let t = 1; t <= h.annees; t++) {
-    const interets = (d * h.taux) / (1 + h.croissance);
-    d = (d * (1 + h.taux)) / (1 + h.croissance) - sp(t);
+    const interets = (d * r(t)) / (1 + h.croissance);
+    d = (d * (1 + r(t))) / (1 + h.croissance) - sp(t);
     points.push({ annee: t, dette: d, interets, soldePublic: sp(t) - interets });
   }
   return points;
@@ -199,4 +199,138 @@ export function variationDetteApprochee(
  */
 export function soldePrimaireStabilisant(dette: number, taux: number, croissance: number): number {
   return (dette * (taux - croissance)) / (1 + croissance);
+}
+
+/* ------------------------------------------------------------------------ */
+/* Taux apparent et refinancement de la dette                               */
+/* ------------------------------------------------------------------------ */
+
+/** Taux apparent : intérêts de l'année rapportés à la dette moyenne de l'année. */
+export function tauxApparent(interets: number, detteDebut: number, detteFin: number): number {
+  return interets / ((detteDebut + detteFin) / 2);
+}
+
+/**
+ * Évolution du taux apparent quand le taux de marché change : la dette est vue
+ * comme des « couches » de même taille qui arrivent à échéance régulièrement
+ * (une fraction 1/maturité chaque année) et sont refinancées au taux du
+ * marché. Après t années, une part min(1, t / maturité) de la dette a été
+ * refinancée. Renvoie le taux apparent des années 1 à `annees`.
+ */
+export function trajectoireTauxApparent(
+  tauxInitial: number,
+  tauxMarche: number,
+  maturiteMoyenne: number,
+  annees: number,
+): number[] {
+  return Array.from({ length: annees }, (_, k) => {
+    const part = Math.min(1, (k + 1) / maturiteMoyenne);
+    return tauxInitial + (tauxMarche - tauxInitial) * part;
+  });
+}
+
+/** Intérêts supplémentaires chaque année, pour une dette donnée, par rapport au taux initial. */
+export function surcoutInterets(dette: number, tauxInitial: number, trajectoire: number[]): number[] {
+  return trajectoire.map((r) => dette * (r - tauxInitial));
+}
+
+/* ------------------------------------------------------------------------ */
+/* Adjudication (enchère de titres d'État)                                  */
+/* ------------------------------------------------------------------------ */
+
+export interface Offre {
+  id: string;
+  /** Prix proposé pour 100 € de valeur nominale. */
+  prix: number;
+  /** Montant demandé (valeur nominale). */
+  montant: number;
+}
+
+export interface ResultatAdjudication {
+  servies: (Offre & { servi: number })[];
+  /** Prix le plus bas accepté. */
+  prixLimite: number | null;
+  /** Prix moyen payé, pondéré par les montants servis. */
+  prixMoyen: number | null;
+  totalServi: number;
+  totalDemande: number;
+}
+
+/**
+ * Adjudication « à prix demandé » (dite à la hollandaise en France) : l'État
+ * sert d'abord les offres les plus chères, jusqu'au montant qu'il veut
+ * emprunter ; chaque acheteur servi paie le prix qu'il a lui-même proposé.
+ * Au prix limite, si la demande dépasse le reste, les offres sont servies au
+ * prorata.
+ */
+export function adjudication(offres: Offre[], montantCherche: number): ResultatAdjudication {
+  const totalDemande = offres.reduce((s, o) => s + o.montant, 0);
+  const prixDecroissants = [...new Set(offres.map((o) => o.prix))].sort((a, b) => b - a);
+  const servi = new Map<string, number>();
+  let reste = montantCherche;
+  let prixLimite: number | null = null;
+
+  for (const prix of prixDecroissants) {
+    if (reste <= 0) break;
+    const auPrix = offres.filter((o) => o.prix === prix);
+    const demande = auPrix.reduce((s, o) => s + o.montant, 0);
+    const ratio = Math.min(1, reste / demande);
+    for (const o of auPrix) servi.set(o.id, o.montant * ratio);
+    reste -= demande * ratio;
+    prixLimite = prix;
+  }
+
+  const servies = offres.map((o) => ({ ...o, servi: servi.get(o.id) ?? 0 }));
+  const totalServi = servies.reduce((s, o) => s + o.servi, 0);
+  const prixMoyen = totalServi > 0 ? servies.reduce((s, o) => s + o.prix * o.servi, 0) / totalServi : null;
+  return { servies, prixLimite, prixMoyen, totalServi, totalDemande };
+}
+
+/* ------------------------------------------------------------------------ */
+/* Bilan simplifié d'une banque centrale                                    */
+/* ------------------------------------------------------------------------ */
+
+export interface BilanBanqueCentrale {
+  /** Titres d'État détenus (actif). */
+  titres: number;
+  /** Taux de coupon moyen des titres, fixe. */
+  coupon: number;
+  /** Réserves des banques déposées à la banque centrale (passif). */
+  reserves: number;
+  /** Taux de rémunération des réserves (taux de dépôt), variable. */
+  tauxDepot: number;
+  /** Fonds propres (passif). */
+  fondsPropres: number;
+}
+
+export interface ResultatBilan {
+  revenus: number;
+  charges: number;
+  resultat: number;
+  /** Fonds propres après l'opération (et le résultat de l'année). */
+  fondsPropresApres: number;
+}
+
+/** Résultat annuel : intérêts reçus sur les titres moins intérêts versés sur les réserves. */
+export function resultatBanqueCentrale(b: BilanBanqueCentrale): ResultatBilan {
+  const revenus = b.titres * b.coupon;
+  const charges = b.reserves * b.tauxDepot;
+  const resultat = revenus - charges;
+  return { revenus, charges, resultat, fondsPropresApres: b.fondsPropres + resultat };
+}
+
+/**
+ * Annulation des titres : l'actif disparaît, le passif (les réserves des
+ * banques) reste dû. La perte s'impute sur les fonds propres.
+ */
+export function annulerTitres(b: BilanBanqueCentrale): ResultatBilan & { perte: number } {
+  const charges = b.reserves * b.tauxDepot;
+  const perte = b.titres;
+  return {
+    revenus: 0,
+    charges,
+    resultat: -perte - charges,
+    fondsPropresApres: b.fondsPropres - perte - charges,
+    perte,
+  };
 }

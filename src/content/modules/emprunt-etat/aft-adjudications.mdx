@@ -1,0 +1,70 @@
+import { SimulateurAdjudication } from "@/components/simulators/SimulateurAdjudication";
+
+<Niveaux>
+<Essentiel>
+
+L'État n'emprunte pas à une banque comme un particulier. Il vend des **titres de dette** à des investisseurs
+(banques, assureurs, fonds, banques centrales étrangères…), qui lui prêtent de l'argent en échange d'intérêts.
+C'est l'<Terme id="aft">Agence France Trésor</Terme> (AFT), un service du ministère de l'Économie, qui organise
+ces ventes.
+
+Pour <DateDonnee id="aft.besoin-financement" />, l'État prévoyait d'avoir besoin de <Chiffre id="aft.besoin-financement" />.
+Le plus gros morceau n'est pas le déficit de l'année (<Chiffre id="aft.deficit-budgetaire" />) mais le
+remboursement des emprunts passés qui arrivent à échéance (<Chiffre id="aft.amortissements" />) : l'État
+emprunte pour rembourser ce qu'il a emprunté.
+
+</Essentiel>
+<Mecanisme>
+
+**Les ventes se font aux enchères**, qu'on appelle des <Terme id="adjudication">adjudications</Terme>. Plusieurs
+fois par mois, l'AFT annonce un montant à placer. Une quinzaine de grandes banques, les « spécialistes en valeurs
+du Trésor », remettent des offres : un prix et une quantité. L'AFT sert d'abord les offres les plus chères,
+jusqu'à atteindre le montant voulu. Chaque acheteur servi paie **le prix qu'il a lui-même proposé**.
+
+Mettez-vous à la place d'un investisseur :
+
+<Figure
+  titre="Jouez une adjudication"
+  resume="Simulateur : l'État veut placer 10 milliards d'euros d'OAT à 10 ans. Vous choisissez un prix ; les offres sont classées du prix le plus élevé au plus bas, et servies jusqu'à 10 milliards."
+  source="Adjudication fictive. Règle de l'AFT : adjudication « à prix demandé », chaque soumissionnaire servi paie son prix."
+>
+  <SimulateurAdjudication />
+</Figure>
+
+<Exemple titre="Exemple : prix et rendement">
+Une OAT à 10 ans verse 3 € par an pour 100 € et rembourse 100 € à la fin. Si vous la payez **100 €**, elle vous
+rapporte 3 % par an. Si vous la payez **99 €**, vous recevez les mêmes 3 € par an plus 1 € de gain à l'échéance :
+votre rendement monte à environ **3,12 %**. Proposer un prix plus bas, c'est demander un taux plus élevé à l'État.
+</Exemple>
+
+Le calendrier est publié à l'avance : les OAT à long terme le premier jeudi du mois, les OAT à moyen terme et les
+titres indexés sur l'inflation le troisième jeudi, les <Terme id="btf">BTF</Terme> chaque lundi. Cette
+régularité rassure les investisseurs et fait partie de la crédibilité de l'émetteur.
+
+</Mecanisme>
+<PlusLoin>
+
+**Le tableau de financement.** Chaque automne, avec le projet de loi de finances, l'État publie son besoin de
+financement (déficit à financer + titres à rembourser + autres opérations) et la façon de le couvrir. Pour
+<DateDonnee id="aft.programme-emissions" />, le programme prévoyait <Chiffre id="aft.programme-emissions" /> d'émissions
+de titres à moyen et long terme, nettes des rachats.
+
+**Pourquoi « à prix demandé ».** Dans une enchère où chacun paie son prix, un acheteur qui propose trop cher paie
+cher : chacun est incité à proposer un prix proche de ce qu'il pense être le prix du marché. Certains pays
+utilisent l'enchère « à prix unique », où tous les servis paient le prix limite. Les deux formules coexistent.
+
+**Les syndications.** Pour lancer une nouvelle ligne très longue (30 ou 50 ans), l'AFT passe parfois par un
+groupe de banques qui placent les titres auprès des investisseurs : c'est une syndication, plus adaptée aux
+gros montants d'un coup.
+
+**Le déficit budgétaire n'est pas le déficit public.** Le déficit à financer cité ici est celui du budget de
+l'État, en comptabilité budgétaire. Le déficit public « de Maastricht » (module 1) porte sur toutes les
+administrations publiques, en comptabilité nationale.
+
+</PlusLoin>
+</Niveaux>
+
+<ARetenir>
+L'État emprunte en vendant des titres aux enchères, organisées par l'Agence France Trésor. Chaque année, il
+emprunte bien plus que son déficit : il doit aussi rembourser les emprunts passés, en en contractant de nouveaux.
+</ARetenir>

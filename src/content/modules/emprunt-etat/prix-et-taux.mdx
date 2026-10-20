@@ -1,0 +1,67 @@
+import { PrixTaux } from "@/components/simulators/PrixTaux";
+
+<Niveaux>
+<Essentiel>
+
+C'est **la** règle à retenir sur les obligations : **quand les taux d'intérêt montent, le prix des obligations
+déjà émises baisse**, et inversement.
+
+Imaginez que vous détenez une OAT qui rapporte 2 % par an. Les taux montent, et l'État émet maintenant des OAT
+qui rapportent 4 %. Personne ne voudra racheter votre titre à 2 % au même prix qu'un titre neuf à 4 % : pour le
+revendre, vous devrez baisser votre prix. C'est comme une voiture d'occasion quand un modèle neuf, bien mieux
+équipé, sort au même tarif.
+
+</Essentiel>
+<Mecanisme>
+
+Réglez le coupon de l'obligation, sa durée restante et le taux du marché :
+
+<Figure
+  titre="Le prix d'une obligation selon le taux du marché"
+  resume="Simulateur : on choisit le coupon, la durée restante et le taux du marché. Le prix de l'obligation se recalcule ; la courbe montre que le prix baisse toujours quand le taux monte, et d'autant plus que l'obligation est longue."
+  source="Calcul : somme des flux futurs actualisés au taux du marché (voir « Pour aller plus loin »)."
+>
+  <PrixTaux />
+</Figure>
+
+<Exemple titre="Exemple : l'OAT à 2 % quand les taux passent à 4 %">
+Une OAT de 100 € à coupon 2 % a encore **10 ans** à courir. Les taux du marché passent à **4 %**. Son prix tombe à
+environ **83,78 €** : l'acheteur reçoit 2 € par an au lieu de 4, et cette perte est compensée par un prix plus
+bas. Avec **30 ans** à courir, le prix tomberait à **65,42 €** ; avec **2 ans**, à **96,23 €**. Plus une obligation
+est longue, plus son prix réagit aux taux.
+</Exemple>
+
+**Et pour l'État ?** Le prix de ses anciennes OAT sur le marché ne change rien à ce qu'il doit : il remboursera
+100 € à l'échéance et paiera le coupon prévu (c'est pour cela que la dette de Maastricht est en valeur nominale,
+module 1). Ce qui change, c'est le coût de ses **nouveaux** emprunts : il emprunte désormais au taux du marché.
+
+</Mecanisme>
+<PlusLoin>
+
+**La formule d'actualisation.** Un euro reçu dans $t$ années vaut aujourd'hui $1/(1+y)^t$, où $y$ est le taux du
+marché. Le prix d'une obligation de nominal $N$, de coupon $C$ et de maturité $T$ est la somme de ses flux
+actualisés :
+
+$$
+P = \sum_{t=1}^{T} \frac{C}{(1+y)^t} + \frac{N}{(1+y)^T}
+$$
+
+Le taux $y$ qui égalise ce prix au prix de marché s'appelle le <Terme id="rendement">rendement actuariel</Terme>.
+
+**La duration.** La sensibilité du prix aux taux se mesure par la duration, qui est à peu près la durée moyenne
+d'attente des flux, pondérée par leur poids. Pour une petite variation de taux, la baisse du prix en % vaut à
+peu près la duration modifiée multipliée par la hausse du taux. Une OAT à 30 ans a une duration bien plus longue
+qu'une OAT à 2 ans : c'est pourquoi son prix bouge beaucoup plus.
+
+**Des taux négatifs.** En 2019-2020, le taux à 10 ans de la France est passé sous zéro
+(<Chiffre id="marches.taux10-france" x="2019-08" /> en moyenne en août 2019) : des investisseurs acceptaient de
+payer plus de 100 € pour récupérer 100 € dix ans plus tard, parce que garder leurs liquidités ailleurs leur
+coûtait encore plus cher (module 4).
+
+</PlusLoin>
+</Niveaux>
+
+<ARetenir>
+Le prix d'une obligation et le taux du marché évoluent en sens inverse. Pour l'État, une hausse des taux ne
+change pas ses anciennes dettes, mais renchérit tous ses nouveaux emprunts.
+</ARetenir>

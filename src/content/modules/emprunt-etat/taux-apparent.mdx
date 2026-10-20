@@ -1,0 +1,83 @@
+import { CouchesDette } from "@/components/simulators/CouchesDette";
+import { BarresHorizontales } from "@/components/graphiques/BarresHorizontales";
+
+<Niveaux>
+<Essentiel>
+
+Il y a deux taux à ne pas confondre :
+
+- le **taux de marché** : ce que coûte un emprunt **neuf** aujourd'hui. L'OAT à 10 ans était à
+  <Chiffre id="marches.taux10-france-dernier" /> en moyenne en
+  <DateDonnee id="marches.taux10-france-dernier" format="jour" /> ;
+- le <Terme id="taux-apparent">taux apparent</Terme> : le taux **moyen** payé sur toute la dette, qui mélange des
+  emprunts anciens contractés à des taux très bas et des emprunts récents, plus chers.
+
+Le second rattrape le premier lentement, au fil du <Terme id="refinancement">refinancement</Terme> : chaque année,
+seule une partie de la dette arrive à échéance et doit être réempruntée au taux du jour. C'est comme un
+mille-feuille d'emprunts, dont on remplace une couche par an.
+
+</Essentiel>
+<Mecanisme>
+
+Réglez le nouveau taux d'emprunt et la durée moyenne des emprunts, et regardez les couches se renouveler :
+
+<Figure
+  titre="La dette en couches : le refinancement au nouveau taux"
+  resume="Simulateur : chaque année, une couche de la dette est refinancée au nouveau taux. Le taux moyen payé rejoint le taux de marché en une durée moyenne d'emprunt ; les intérêts annuels augmentent d'autant."
+  donnees={["fp.interets", "dette.historique-md", "marches.taux10-france-dernier", "aft.maturite-moyenne"]}
+>
+  <CouchesDette />
+</Figure>
+
+**Une hausse des taux coûte peu la première année, et beaucoup ensuite.** Selon l'estimation de l'Agence France
+Trésor reprise par le Sénat, si tous les taux montaient durablement de 1 point, la charge de la dette de l'État
+augmenterait de <Chiffre id="etat.sensibilite-taux" x="Après 1 an" /> la première année, de
+<Chiffre id="etat.sensibilite-taux" x="Après 5 ans" /> au bout de cinq ans et de
+<Chiffre id="etat.sensibilite-taux" x="Après 9 ans" /> au bout de neuf ans.
+
+<Figure
+  titre="Ce que coûterait une hausse durable de 1 point de tous les taux"
+  resume="Hausse de la charge de la dette de l'État si tous les taux montent durablement de 1 point : faible la première année, elle grossit à mesure que la dette est refinancée."
+  donnees={["etat.sensibilite-taux"]}
+>
+  <BarresHorizontales serie="etat.sensibilite-taux" trier={false} enAvant={["Après 9 ans"]} />
+</Figure>
+
+<Exemple titre="Exemple : une dette de 1 000 € à 8 ans en moyenne">
+Un État doit 1 000 €, empruntés en moyenne à 2 %, soit 20 € d'intérêts par an. Ses emprunts durent 8 ans en
+moyenne : chaque année, environ 125 € arrivent à échéance. Les taux passent à 4 %. La première année, il
+refinance 125 € à 4 % au lieu de 2 % : 2,50 € d'intérêts en plus. Au bout de 4 ans, la moitié de la dette est
+refinancée (10 € de plus) ; au bout de 8 ans, toute la dette coûte 4 % : 40 € par an, le double.
+</Exemple>
+
+</Mecanisme>
+<PlusLoin>
+
+**Le calcul du taux apparent.** Il se calcule en rapportant les intérêts de l'année à la dette moyenne de
+l'année. Pour l'ensemble des administrations publiques, avec <Chiffre id="fp.interets" /> d'intérêts versés en
+<DateDonnee id="fp.interets" />, il se situe autour de 2 %, bien en dessous du taux de marché actuel : la
+charge d'intérêts va donc continuer à monter, même si les taux de marché se stabilisent.
+
+**Un modèle simple.** Le simulateur suppose des échéances régulières (la même part de la dette chaque année)
+et une dette constante. Dans la réalité, le calendrier des échéances est irrégulier, les BTF se refinancent en
+moins d'un an (ils transmettent les hausses de taux presque immédiatement), les OAT indexées réagissent à
+l'inflation, et les nouveaux déficits s'empruntent eux aussi au taux du jour.
+
+**Allonger la durée de la dette ?** Emprunter long protège contre une hausse future des taux, mais coûte
+généralement plus cher aujourd'hui (la courbe des taux monte avec la durée, voir plus loin). Les gestionnaires
+de dette arbitrent entre coût et risque. La durée de vie moyenne de la dette de l'État est d'environ
+<Chiffre id="aft.maturite-moyenne" />.
+
+**Charge de la dette budgétaire et intérêts en comptabilité nationale.** La « charge de la dette » du budget de
+l'État (<Chiffre id="etat.charge-dette" /> prévus pour <DateDonnee id="etat.charge-dette" />) ne porte que sur l'État
+et suit des règles budgétaires (par exemple sur le traitement des primes et décotes à l'émission). Les intérêts
+de la comptabilité nationale portent sur toutes les administrations publiques. Les deux chiffres ne se
+comparent pas directement.
+
+</PlusLoin>
+</Niveaux>
+
+<ARetenir>
+Le taux moyen payé sur la dette rattrape le taux de marché au rythme du refinancement, en une huitaine
+d'années. Une hausse des taux coûte peu au début, puis de plus en plus chaque année.
+</ARetenir>

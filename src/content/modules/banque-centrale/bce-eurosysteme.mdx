@@ -1,0 +1,63 @@
+import { TauxBCE } from "@/components/graphiques/TauxBCE";
+
+<Niveaux>
+<Essentiel>
+
+Depuis l'euro, la politique monétaire de la France ne se décide plus à Paris mais à Francfort, au sein de la
+<Terme id="bce">Banque centrale européenne</Terme>. Avec les banques centrales nationales des pays de la zone
+euro, dont la Banque de France, elle forme l'<Terme id="eurosysteme">Eurosystème</Terme>.
+
+Sa mission principale : la **stabilité des prix**, définie comme une inflation de 2 % par an à moyen terme. Son
+principal outil : les <Terme id="taux-directeur">taux directeurs</Terme>. Depuis le
+<DateDonnee id="bce.taux-depot-actuel" format="jour" />, le taux de dépôt est de <Chiffre id="bce.taux-depot-actuel" />.
+
+</Essentiel>
+<Mecanisme>
+
+**Comment agit un taux directeur.** Les banques déposent leurs liquidités à la banque centrale et y empruntent.
+Quand la BCE relève ses taux, l'argent devient plus cher pour les banques, qui prêtent plus cher aux ménages et
+aux entreprises : le crédit ralentit, la demande aussi, et l'inflation finit par baisser. Quand elle les abaisse,
+c'est l'inverse.
+
+<Figure
+  titre="Le taux de dépôt de la BCE depuis 2008"
+  resume="Le taux de dépôt de la BCE baisse fortement après la crise de 2008, devient négatif de 2014 à 2022, remonte brutalement en 2022-2023 face à l'inflation, puis redescend avant de remonter en 2026."
+  donnees={["bce.taux-depot"]}
+>
+  <TauxBCE />
+</Figure>
+
+**Trois grandes périodes.** Après la crise financière de 2008, puis la crise de la zone euro, la BCE baisse ses
+taux jusqu'à les rendre **négatifs** en 2014 : les banques paient pour déposer leur argent chez elle, pour les
+pousser à prêter. En 2022, l'inflation s'envole (énergie, sortie de la crise sanitaire) : la BCE relève ses taux
+de 4,5 points en un peu plus d'un an. Ils redescendent ensuite à partir de 2024, avant de remonter en 2026.
+
+<Exemple titre="Exemple : un crédit immobilier">
+Un ménage emprunte 200 000 € sur 20 ans. À 1,5 %, il rembourse environ 965 € par mois ; à 4 %, environ 1 212 €.
+Une hausse des taux de la BCE se transmet ainsi, avec retard, aux conditions de crédit des ménages… et à celles
+de l'État.
+</Exemple>
+
+</Mecanisme>
+<PlusLoin>
+
+**Qui décide ?** Le Conseil des gouverneurs de la BCE réunit les six membres du directoire et les gouverneurs des
+banques centrales nationales de la zone euro, dont celui de la Banque de France. Il se réunit toutes les six
+semaines pour décider des taux. Le gouverneur de la Banque de France y siège, mais ne vote pas « pour la
+France » : chaque membre agit pour l'ensemble de la zone euro.
+
+**Les trois taux.** Le taux de la facilité de dépôt (ce que rapportent les dépôts des banques), le taux des
+opérations principales de refinancement (le prix des prêts à une semaine, <Chiffre id="bce.taux-refi-actuel" />
+aujourd'hui) et le taux de la facilité de prêt marginal (le prix d'un prêt d'urgence au jour le jour). Depuis que
+les banques disposent de réserves abondantes, c'est le taux de dépôt qui guide le marché.
+
+**Une stratégie revue en 2021.** La BCE a précisé que son objectif de 2 % est symétrique : une inflation trop
+basse est aussi indésirable qu'une inflation trop haute.
+
+</PlusLoin>
+</Niveaux>
+
+<ARetenir>
+La BCE fixe les taux directeurs pour toute la zone euro, avec pour mission de maintenir l'inflation autour de 2 %.
+La Banque de France fait partie de l'Eurosystème et applique ses décisions.
+</ARetenir>

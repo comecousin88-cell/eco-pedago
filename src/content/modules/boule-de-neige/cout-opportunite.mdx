@@ -1,0 +1,68 @@
+import { BarresHorizontales } from "@/components/graphiques/BarresHorizontales";
+
+<Niveaux>
+<Essentiel>
+
+Chaque euro d'intérêts est un euro qui ne finance ni une école, ni un hôpital, ni une baisse d'impôt. C'est ce
+que les économistes appellent le **coût d'opportunité** : ce à quoi on renonce.
+
+Pour <DateDonnee id="etat.charge-dette" />, la charge de la dette prévue au budget de l'État atteint
+<Chiffre id="etat.charge-dette" /> (<Chiffre id="etat.charge-dette-2025" /> en <DateDonnee id="etat.charge-dette-2025" />).
+C'est plus que le budget de la Recherche et de l'enseignement supérieur, plus de quatre fois celui de la Justice,
+et presque autant que celui de la Défense.
+
+<Figure
+  titre="La charge de la dette face aux budgets des ministères"
+  resume="Crédits de quelques missions du budget de l'État : la charge de la dette dépasse les budgets de la recherche et de l'enseignement supérieur, de la sécurité, de l'écologie et de la justice, et se rapproche de celui de la défense."
+  donnees={["budgets.missions"]}
+>
+  <BarresHorizontales serie="budgets.missions" enAvant={["Charge de la dette de l'État"]} />
+</Figure>
+
+</Essentiel>
+<Mecanisme>
+
+**Une dépense qui ne se pilote pas.** On peut décider d'augmenter ou de baisser le budget d'un ministère ; on ne
+décide pas de la charge de la dette, qui dépend des taux de marché et des emprunts passés. Les crédits sont
+d'ailleurs « évaluatifs » : le Parlement vote une estimation, et l'État paie ce qu'il doit, quoi qu'il arrive.
+
+<Exemple titre="Exemple : ce que représente 1 milliard d'euros">
+Calcul d'ordre de grandeur : si un emploi public coûte 50 000 € par an (salaire et cotisations), 1 milliard
+d'euros finance 1 000 000 000 / 50 000 = **20 000 emplois** pendant un an. Chaque milliard d'intérêts en plus est
+un milliard qui ne peut pas servir à cela, ni à autre chose.
+</Exemple>
+
+**Une charge qui monte.** La charge de la dette progresse parce que la dette augmente et parce que le taux moyen
+payé remonte au fil du refinancement (module 2). Le rapport du Sénat sur le budget 2026 évoquait la possibilité,
+à politique inchangée, qu'elle atteigne à terme 100 milliards d'euros par an.
+
+</Mecanisme>
+<PlusLoin>
+
+**Des chiffres à manier avec précaution.** Les montants viennent du projet de loi de finances pour 2026 tel
+qu'adopté en première lecture par le Sénat, avant le vote définitif de la loi ; les montants finaux peuvent
+différer légèrement. Les crédits des missions incluent les dépenses de personnel, pensions comprises. La charge
+de la dette ne porte que sur l'État : les intérêts de toutes les administrations publiques sont plus élevés
+(<Chiffre id="fp.interets" /> en <DateDonnee id="fp.interets" />, en comptabilité nationale).
+
+**Intérêts et inflation.** Une partie de la hausse de la charge de la dette en 2022-2023 venait des OAT indexées,
+dont le capital suit l'inflation. Ce surcoût baisse quand l'inflation ralentit.
+
+<Debat
+  question="La charge de la dette est-elle déjà trop lourde ?"
+  titrePour="Ceux qui s'en alarment"
+  titreContre="Ceux qui la relativisent"
+  pour={<p>La charge de la dette est en passe de devenir l'un des premiers postes du budget de l'État, devant la plupart des ministères. Elle augmente mécaniquement chaque année avec le refinancement à des taux plus élevés, et réduit d'autant la marge pour financer la transition écologique, la défense ou l'éducation.</p>}
+  contre={<p>Rapportés au PIB, les intérêts restent inférieurs à leur niveau des années 1990 ; la dette française est longue, ce qui étale la hausse dans le temps. Une partie de la hausse récente tient à l'inflation, qui gonfle aussi les recettes. Ce qui compte est la tendance, plus que le niveau d'une année.</p>}
+>
+Le constat d'une charge en hausse fait consensus ; le désaccord porte sur l'urgence à réagir et sur la manière de
+le faire.
+</Debat>
+
+</PlusLoin>
+</Niveaux>
+
+<ARetenir>
+Les intérêts de la dette sont une dépense subie, qui grossit à mesure que la dette est refinancée. La charge de
+la dette de l'État dépasse déjà le budget de la plupart des ministères.
+</ARetenir>

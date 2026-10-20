@@ -1,0 +1,106 @@
+import { Frise } from "@/components/graphiques/Frise";
+import { GreceChiffres } from "@/components/graphiques/GreceChiffres";
+
+<Niveaux>
+<Essentiel>
+
+Entre 2010 et 2018, la Grèce a vécu la plus grave crise de dette publique d'un pays européen depuis la guerre.
+Privée d'accès aux marchés, elle a dû emprunter auprès des autres pays de la zone euro et du FMI
+(<Chiffre id="grece.aide-totale" /> au total), en échange de mesures très dures : baisses de dépenses et de pensions,
+hausses d'impôts, réformes. Son économie s'est effondrée : à son point bas, le PIB avait reculé de plus d'un
+quart par rapport à 2008, et le chômage a dépassé 27 %.
+
+<Figure
+  titre="La crise grecque, étape par étape"
+  resume="Frise de la crise grecque, de la révélation du déficit en 2009 à la sortie du dernier programme d'aide en 2018, puis le retour à l'excédent."
+  donnees={["grece.aide-totale", "grece.psi-decote", "grece.taux10-max", "grece.dette-pib"]}
+>
+  <Frise
+    etapes={[
+      {
+        date: "Octobre 2009",
+        titre: "Le déficit révélé",
+        texte: <p>Le nouveau gouvernement annonce que le déficit de l'année sera plus de deux fois supérieur à ce qui avait été annoncé. Il atteindra finalement <Chiffre id="grece.dette-pib" x="2009" /> de dette fin 2009 et un déficit de plus de 15 % du PIB. Les agences de notation dégradent la Grèce, les taux commencent à monter.</p>,
+      },
+      {
+        date: "Mai 2010",
+        titre: "Premier plan d'aide",
+        texte: <p>La Grèce ne peut plus emprunter à un taux supportable. Les pays de la zone euro et le FMI lui prêtent, en échange d'un programme de réduction du déficit négocié et surveillé par la <Terme id="troika">troïka</Terme> (Commission européenne, BCE, FMI).</p>,
+      },
+      {
+        date: "Mars 2012",
+        titre: "Restructuration et deuxième plan",
+        texte: <p>La dette reste insoutenable. Les créanciers privés acceptent une perte de <Chiffre id="grece.psi-decote" /> sur leurs titres : c'est la plus grande <Terme id="restructuration">restructuration</Terme> de dette souveraine de l'histoire, qui réduit la dette d'environ <Chiffre id="grece.psi-reduction" />. Un deuxième plan d'aide suit. Le taux grec à 10 ans atteint <Chiffre id="grece.taux10-max" /> en moyenne en février 2012.</p>,
+      },
+      {
+        date: "2013",
+        titre: "Le fond de la crise",
+        texte: <p>Le chômage culmine à <Chiffre id="grece.chomage" x="2013" />. Le PIB est inférieur d'environ un quart à son niveau de 2008. La dette atteint <Chiffre id="grece.dette-pib" x="2013" /> du PIB, malgré la restructuration, car le PIB s'est effondré.</p>,
+      },
+      {
+        date: "Juillet 2015",
+        titre: "Référendum et troisième plan",
+        texte: <p>Le gouvernement rejette les conditions des créanciers et organise un référendum. Les banques ferment et les retraits d'argent sont limités. La Grèce accepte finalement un troisième programme, financé par le <Terme id="mes">Mécanisme européen de stabilité</Terme>, en août 2015.</p>,
+      },
+      {
+        date: "Août 2018",
+        titre: "Fin des programmes",
+        texte: <p>La Grèce sort du dernier programme d'aide. En contrepartie d'allègements (durées de remboursement allongées jusqu'aux années 2050-2060, taux réduits), elle s'engage à dégager un excédent primaire de 3,5 % du PIB jusqu'en 2022.</p>,
+      },
+      {
+        date: "Aujourd'hui",
+        titre: "Le retour à l'excédent",
+        texte: <p>La Grèce dégage un excédent public, sa dette baisse rapidement (<Chiffre id="grece.dette-pib" x="2025" /> du PIB fin 2025) et elle emprunte à 10 ans à un taux proche de celui de la France. Mais son PIB n'a toujours pas retrouvé son niveau de 2008.</p>,
+      },
+    ]}
+  />
+</Figure>
+
+</Essentiel>
+<Mecanisme>
+
+<Figure
+  titre="La crise grecque en trois courbes"
+  resume="Le taux grec à 10 ans dépasse 29 % en février 2012 puis redescend ; il est aujourd'hui proche du taux français. Le PIB grec recule de plus d'un quart entre 2008 et 2013 et n'a pas retrouvé son niveau d'avant-crise ; le chômage culmine en 2013."
+  donnees={["grece.taux10", "marches.taux10-france", "grece.pib-indice", "grece.chomage"]}
+>
+  <GreceChiffres />
+</Figure>
+
+**Pourquoi la Grèce n'a pas pu faire comme d'autres pays.** Membre de la zone euro, elle ne pouvait ni dévaluer sa
+monnaie pour regagner en compétitivité, ni compter sur sa propre banque centrale pour acheter sa dette. Sa dette
+était en grande partie détenue par des étrangers. Et ses comptes publics avaient été mal présentés, ce qui a
+détruit la confiance d'un coup.
+
+<Exemple titre="Exemple : pourquoi l'austérité a fait monter le ratio">
+Imaginons une dette de 150 et un PIB de 100 (ratio 150 %). Un plan d'économies réduit le déficit, mais fait
+chuter l'activité : le PIB tombe à 80, la dette monte un peu, à 155. Le ratio passe à 155 / 80 = **194 %**. C'est,
+en simplifiant, ce qui s'est produit : malgré la restructuration, la dette grecque rapportée au PIB a monté
+jusqu'en 2013 parce que le PIB s'effondrait.
+</Exemple>
+
+</Mecanisme>
+<PlusLoin>
+
+**Ce qui est transposable à la France.** La force du lien entre confiance et taux, et la vitesse à laquelle elle
+peut se retourner ; le fait qu'un pays de la zone euro ne contrôle pas sa banque centrale ; l'importance de comptes
+publics fiables.
+
+**Ce qui ne l'est pas.** La France est une économie bien plus grande et plus diversifiée, sa dette est longue
+(<Chiffre id="aft.maturite-moyenne" /> en moyenne) et prisée des investisseurs, ses statistiques sont jugées
+fiables, et la zone euro dispose aujourd'hui d'outils qui n'existaient pas en 2010 : le Mécanisme européen de
+stabilité et l'instrument de protection de la transmission de la BCE (module 6 bis). Une crise « à la grecque »
+n'est donc pas le scénario central, ce qui ne veut pas dire qu'une hausse durable des taux serait sans coût.
+
+**Le débat sur la troïka.** Les institutions ont reconnu par la suite certaines erreurs, notamment la sous-estimation
+de l'effet des mesures d'économies sur l'activité (le « multiplicateur », module 3). Les défenseurs des programmes
+rappellent que l'alternative, une sortie désordonnée de l'euro ou un défaut total, aurait sans doute été plus
+coûteuse encore pour la population grecque.
+
+</PlusLoin>
+</Niveaux>
+
+<ARetenir>
+Privée de la confiance des marchés, la Grèce a dû accepter des plans d'aide très exigeants et une restructuration
+de sa dette ; son économie a perdu plus d'un quart de sa taille. La crédibilité perdue se reconstruit lentement.
+</ARetenir>

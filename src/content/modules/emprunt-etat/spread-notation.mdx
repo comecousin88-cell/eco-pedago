@@ -1,0 +1,80 @@
+import { Taux10Ans } from "@/components/graphiques/Taux10Ans";
+import { CourbeTaux } from "@/components/graphiques/CourbeTaux";
+
+<Niveaux>
+<Essentiel>
+
+Tous les États de la zone euro empruntent dans la même monnaie, mais pas au même prix. L'Allemagne, jugée
+l'emprunteur le plus sûr, sert de référence. L'écart entre le taux d'un pays et le taux allemand s'appelle le
+<Terme id="spread">spread</Terme> : c'est la <Terme id="prime-de-risque">prime de risque</Terme> que les
+investisseurs demandent pour prêter à ce pays plutôt qu'à l'Allemagne.
+
+En <DateDonnee id="marches.spread-dernier" format="jour" />, l'État français empruntait à 10 ans à
+<Chiffre id="marches.taux10-france-dernier" />, contre <Chiffre id="marches.taux10-allemagne-dernier" /> pour l'Allemagne :
+un spread de <Chiffre id="marches.spread-dernier" />. La France empruntait même un peu plus cher que l'Italie
+(<Chiffre id="marches.taux10-italie-dernier" />) : en moyenne mensuelle, ce n'était jamais arrivé entre 2000 et la
+fin de l'année 2025.
+
+</Essentiel>
+<Mecanisme>
+
+<Figure
+  titre="Les taux à 10 ans depuis 2000, et l'écart avec l'Allemagne"
+  resume="Taux à 10 ans de la France, de l'Allemagne, de l'Italie et de l'Espagne depuis 2000. Les taux convergent jusqu'en 2008, divergent fortement pendant la crise de la zone euro, tombent près de zéro en 2016-2021, puis remontent. L'écart France-Allemagne culmine fin 2011, puis s'élargit de nouveau à partir de 2024."
+  donnees={["marches.taux10-france", "marches.taux10-allemagne", "marches.taux10-italie", "marches.taux10-espagne", "marches.spread-france-allemagne"]}
+>
+  <Taux10Ans
+    reperes={[
+      { mois: "2011-11", libelle: "crise de la zone euro" },
+      { mois: "2024-06", libelle: "législatives anticipées" },
+    ]}
+  />
+</Figure>
+
+**Ce qui fait bouger le spread.** La confiance dans la trajectoire des finances publiques (déficit, dette,
+capacité à voter un budget), les décisions des agences de notation, la facilité à revendre les titres, et le
+climat général : en période de crise, les investisseurs se réfugient vers les titres jugés les plus sûrs.
+
+<Exemple titre="Exemple : ce que coûte un spread">
+Un spread de 1 point (100 points de base) appliqué à 300 milliards d'euros d'emprunts nouveaux, c'est
+3 milliards d'euros d'intérêts en plus **chaque année**, pendant toute la durée de ces emprunts. Et l'écart se
+propage peu à peu à toute la dette, au fil des refinancements.
+</Exemple>
+
+**La notation.** Trois grandes agences privées (S&P, Moody's, Fitch) donnent une
+<Terme id="notation">note</Terme> à chaque emprunteur, de AAA (la meilleure) à D (défaut de paiement). La France a
+perdu son AAA en 2012 et a été dégradée plusieurs fois depuis ; l'histoire détaillée est au module 6 bis. Une
+note plus basse peut renchérir l'emprunt, surtout si elle fait passer un seuil en dessous duquel certains
+investisseurs n'ont plus le droit d'acheter.
+
+</Mecanisme>
+<PlusLoin>
+
+**La courbe des taux.** On n'emprunte pas au même taux à 3 mois et à 30 ans. La courbe des taux relie la durée de
+l'emprunt et son taux. En temps normal, elle monte : prêter longtemps est plus risqué (inflation, taux futurs
+incertains), le prêteur demande donc une prime. Ci-dessous, la courbe estimée par la BCE pour les États de la zone
+euro notés AAA ; celle de la France a une forme proche, décalée vers le haut par la prime de risque.
+
+<Figure
+  titre="La courbe des taux de la zone euro"
+  resume="Taux d'emprunt des États de la zone euro notés AAA selon la durée, de 3 mois à 30 ans : la courbe monte avec la durée."
+  donnees={["marches.courbe-zone-euro"]}
+>
+  <CourbeTaux />
+</Figure>
+
+**Une courbe inversée** (taux courts plus élevés que les taux longs) signale souvent que les marchés anticipent
+une baisse future des taux directeurs, par exemple parce qu'ils craignent un ralentissement. Ce fut le cas en
+zone euro en 2023.
+
+**Notation et réalité.** Les agences ont été critiquées pour avoir mal anticipé certaines crises (2008) et, à
+l'inverse, pour accélérer les crises en dégradant au pire moment. Leurs notes restent pourtant intégrées dans
+les règles de nombreux investisseurs et dans celles de la banque centrale (les titres acceptés en garantie).
+
+</PlusLoin>
+</Niveaux>
+
+<ARetenir>
+Le spread mesure le supplément de taux qu'un pays paie par rapport à l'Allemagne. Il reflète la confiance des
+investisseurs, et il se répercute peu à peu sur toute la dette.
+</ARetenir>

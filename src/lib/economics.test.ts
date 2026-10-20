@@ -1,5 +1,11 @@
 import { describe, expect, it } from "vitest";
 import {
+  adjudication,
+  annulerTitres,
+  resultatBanqueCentrale,
+  surcoutInterets,
+  tauxApparent,
+  trajectoireTauxApparent,
   cumulDette,
   fluxObligation,
   pouvoirAchat,
@@ -194,5 +200,85 @@ describe("répartition sur 100 €", () => {
     expect(repartir100([1, 1, 1]).sort()).toEqual([33, 33, 34]);
     // 25,6 / 74,4 → 26 / 74
     expect(repartir100([25.6, 74.4])).toEqual([26, 74]);
+  });
+});
+
+describe("taux apparent et refinancement", () => {
+  it("taux apparent = intérêts / dette moyenne de l'année", () => {
+    expect(tauxApparent(65.7, 3306.1, 3460.1)).toBeCloseTo(65.7 / 3383.1, 10);
+  });
+
+  it("le taux apparent rejoint le taux de marché en une maturité moyenne", () => {
+    const t = trajectoireTauxApparent(0.02, 0.04, 8, 10);
+    expect(t[0]).toBeCloseTo(0.0225, 10); // 1/8 de la dette refinancée
+    expect(t[3]).toBeCloseTo(0.03, 10); // la moitié après 4 ans
+    expect(t[7]).toBeCloseTo(0.04, 10); // toute la dette après 8 ans
+    expect(t[9]).toBeCloseTo(0.04, 10);
+  });
+
+  it("le surcoût d'intérêts suit la hausse du taux apparent", () => {
+    expect(surcoutInterets(1000, 0.02, [0.0225, 0.03])).toEqual([expect.closeTo(2.5, 10), expect.closeTo(10, 10)]);
+  });
+
+  it("la trajectoire de dette accepte un taux différent chaque année", () => {
+    const t = trajectoireDette({ detteInitiale: 1, taux: [0.01, 0.02], croissance: 0, soldePrimaire: 0, annees: 3 });
+    expect(t[2].dette).toBeCloseTo(1.01 * 1.02, 10);
+    expect(t[3].dette).toBeCloseTo(1.01 * 1.02 * 1.02, 10); // le dernier taux se prolonge
+  });
+});
+
+describe("adjudication à prix demandé", () => {
+  it("sert les offres les plus chères d'abord, chacun paie son prix", () => {
+    const r = adjudication(
+      [
+        { id: "A", prix: 99.5, montant: 4 },
+        { id: "B", prix: 99.2, montant: 3 },
+        { id: "C", prix: 99.0, montant: 5 },
+      ],
+      6,
+    );
+    expect(r.servies.map((o) => o.servi)).toEqual([4, 2, 0]);
+    expect(r.prixLimite).toBe(99.2);
+    expect(r.prixMoyen).toBeCloseTo((99.5 * 4 + 99.2 * 2) / 6, 10);
+    expect(r.totalServi).toBe(6);
+    expect(r.totalDemande).toBe(12);
+  });
+
+  it("au prix limite, les offres à égalité sont servies au prorata", () => {
+    const r = adjudication(
+      [
+        { id: "A", prix: 99.5, montant: 4 },
+        { id: "B1", prix: 99.2, montant: 2 },
+        { id: "B2", prix: 99.2, montant: 2 },
+      ],
+      6,
+    );
+    expect(r.servies.map((o) => o.servi)).toEqual([4, 1, 1]);
+  });
+
+  it("si la demande est insuffisante, tout est servi et l'État lève moins", () => {
+    const r = adjudication([{ id: "A", prix: 98, montant: 3 }], 10);
+    expect(r.totalServi).toBe(3);
+    expect(r.prixLimite).toBe(98);
+  });
+});
+
+describe("bilan de la banque centrale", () => {
+  const base = { titres: 100, coupon: 0.01, reserves: 100, tauxDepot: 0, fondsPropres: 5 };
+
+  it("taux de dépôt nul : le coupon est un bénéfice", () => {
+    expect(resultatBanqueCentrale(base)).toMatchObject({ revenus: 1, charges: 0, resultat: 1, fondsPropresApres: 6 });
+  });
+
+  it("taux de dépôt au-dessus du coupon : la banque centrale perd de l'argent", () => {
+    const r = resultatBanqueCentrale({ ...base, tauxDepot: 0.03 });
+    expect(r.resultat).toBeCloseTo(-2, 10);
+    expect(r.fondsPropresApres).toBeCloseTo(3, 10);
+  });
+
+  it("annuler les titres efface l'actif mais pas le passif : fonds propres très négatifs", () => {
+    const r = annulerTitres(base);
+    expect(r.perte).toBe(100);
+    expect(r.fondsPropresApres).toBe(-95);
   });
 });

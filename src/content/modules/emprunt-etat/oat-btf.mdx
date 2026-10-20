@@ -1,0 +1,66 @@
+<Niveaux>
+<Essentiel>
+
+L'État emprunte avec deux grands types de titres :
+
+- les <Terme id="oat">OAT</Terme> (obligations assimilables du Trésor) : des prêts de **2 à 50 ans**. Le prêteur
+  touche chaque année un intérêt fixe, le <Terme id="coupon">coupon</Terme>, puis récupère sa mise à la fin ;
+- les <Terme id="btf">BTF</Terme> (bons du Trésor à taux fixe) : des prêts de **moins d'un an**, sans coupon.
+  On les achète un peu moins cher que ce qui sera remboursé ; la différence, c'est l'intérêt.
+
+Les OAT financent l'essentiel de la dette : au <DateDonnee id="aft.dette-negociable" format="jour" />, sur
+<Chiffre id="aft.dette-negociable" /> de dette
+négociable de l'État, seuls <Chiffre id="aft.dette-court-terme" /> étaient des titres à court terme.
+
+</Essentiel>
+<Mecanisme>
+
+<Exemple titre="Exemple : une OAT de 100 € à 10 ans, coupon 2 %">
+Vous achetez **100 €** d'OAT à l'émission. Chaque année pendant dix ans, l'État vous verse **2 €**. La dixième
+année, il vous verse les 2 € du dernier coupon **et** vous rembourse les **100 €** : c'est le remboursement
+« in fine ». Au total, vous aurez reçu 120 € pour 100 € prêtés.
+</Exemple>
+
+<Exemple titre="Exemple : un BTF à 1 an">
+Un BTF rembourse **100 €** dans un an. Le taux du marché est de **3 %**. Vous le payez donc
+100 / 1,03 ≈ **97,09 €** : dans un an, vous récupérez 100 €, soit 2,91 € de gain, ou 3 % de 97,09 €. Pour un BTF
+à 6 mois (182 jours) au taux de 2,5 %, le prix serait 100 / (1 + 2,5 % × 182/360) ≈ **98,75 €**.
+</Exemple>
+
+**À quoi servent les BTF ?** Les recettes de l'État ne tombent pas au même rythme que ses dépenses : les impôts
+arrivent à certaines dates, les salaires et les pensions se paient chaque mois. Les BTF servent à combler ces
+décalages de trésorerie, un peu comme un découvert autorisé.
+
+**Pourquoi « assimilables » ?** L'État peut émettre plusieurs fois la même OAT, avec le même coupon et la même
+échéance, à des dates différentes. Les nouveaux titres sont « assimilés » aux anciens : il existe ainsi de très
+grosses lignes, faciles à acheter et à revendre, ce que les investisseurs apprécient.
+
+</Mecanisme>
+<PlusLoin>
+
+**Les OAT indexées sur l'inflation.** Une partie de la dette (<Chiffre id="aft.dette-negociable-indexee" /> au
+<DateDonnee id="aft.dette-negociable-indexee" format="jour" />) est faite d'<Terme id="oat-indexee">OAT indexées</Terme> : leur capital suit les prix, en France (OATi) ou
+dans la zone euro (OAT€i). Leur coupon est plus faible, mais quand l'inflation grimpe, leur coût pour l'État
+grimpe aussi. C'est ce qui s'est produit en 2022-2023.
+
+**Les OAT vertes.** Depuis 2017, l'État émet des OAT dont le montant est rattaché à des dépenses favorables à
+l'environnement (rénovation énergétique, transports, recherche…). Ce sont des OAT comme les autres pour le
+remboursement ; l'État publie chaque année l'usage des fonds.
+
+**Les OAT démembrées (« strips »).** Les investisseurs peuvent séparer chaque coupon et le capital d'une OAT, et
+les échanger comme autant de titres sans coupon. Cela permet, par exemple, à un assureur d'acheter exactement un
+flux qui tombera dans vingt ans.
+
+**La formule du prix d'un BTF.** Avec $N$ le nominal, $r$ le taux monétaire et $j$ le nombre de jours :
+
+$$
+P = \frac{N}{1 + r \cdot \dfrac{j}{360}}
+$$
+
+</PlusLoin>
+</Niveaux>
+
+<ARetenir>
+Les OAT (2 à 50 ans) versent un coupon fixe chaque année et sont remboursées à l'échéance. Les BTF (moins d'un
+an) n'ont pas de coupon : on les achète sous leur valeur de remboursement.
+</ARetenir>
