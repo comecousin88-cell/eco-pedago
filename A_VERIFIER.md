@@ -2,7 +2,7 @@
 
 Fichier généré par `npm test` à partir des données marquées `"statut": "a_verifier"` dans `data/*.json`. Ne pas modifier à la main : corriger la donnée dans son fichier JSON, passer son statut à `verifie`, puis relancer `npm test`.
 
-9 chiffres en attente de vérification.
+8 chiffres en attente de vérification.
 
 ## data/aft.json
 
@@ -26,9 +26,3 @@ Fichier généré par `npm test` à partir des données marquées `"statut": "a_
 | Identifiant | Donnée | Valeur actuelle | Date | Source à consulter | Remarque |
 |---|---|---|---|---|---|
 | `deficit.structurel` | Déficit structurel | 5 % du PIB | 2025 | [Haut Conseil des finances publiques, avis n° HCFP-2026-2 du 16 avril 2026](https://www.assemblee-nationale.fr/dyn/contenu/visualisation/1109784/file/Avis%20HCFP%20PLRG%202025-Final.pdf) | L'avis indique une composante structurelle « proche de 5 points de PIB » après une baisse de 0,8 point en 2025 : valeur exacte à relever. |
-
-## data/propositions.json
-
-| Identifiant | Donnée | Valeur actuelle | Date | Source à consulter | Remarque |
-|---|---|---|---|---|---|
-| `prop.tva-point` | Rendement d'un point de taux normal de TVA (ordre de grandeur) | 9 Md€ par an | 2025 | [Ordre de grandeur souvent cité dans le débat budgétaire ; à confirmer dans l'annexe « Voies et moyens » du PLF](https://www.budget.gouv.fr) | Aucune estimation officielle récente trouvée ; le CESE citait 6,5 Md€ par point il y a une dizaine d'années, avec une TVA moins élevée. |

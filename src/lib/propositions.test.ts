@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { anneesDeCouverture, effetsAnnulation, fondsPropresApresAnnulation, rendementImpotFortunes } from "./economics";
+import { anneesDeCouverture, effetsAnnulation, effortStabilisation, fondsPropresApresAnnulation, rendementImpotFortunes } from "./economics";
 
 describe("annulation de la dette détenue par la banque centrale", () => {
   const base = { montant: 500, coupon: 0.01, tauxDepot: 0.025, prime: 0, empruntsAnnuels: 300, annees: 3 };
@@ -41,5 +41,15 @@ describe("impôt sur les très grandes fortunes", () => {
 
   it("1 228 Md€ couvriraient un besoin de 300 Md€ pendant un peu plus de 4 ans", () => {
     expect(anneesDeCouverture(1228, 300)).toBeCloseTo(4.093, 3);
+  });
+});
+
+describe("effort pour stabiliser la dette", () => {
+  it("5,1 % de déficit contre 2,2 % stabilisant, sur 2 991 Md€ de PIB : près de 87 Md€", () => {
+    expect(effortStabilisation(5.1, 2.2, 2991.1)).toBeCloseTo(86.74, 2);
+  });
+
+  it("aucun effort si le déficit est déjà sous le niveau stabilisant", () => {
+    expect(effortStabilisation(2, 2.2, 3000)).toBe(0);
   });
 });

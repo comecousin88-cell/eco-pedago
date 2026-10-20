@@ -7,7 +7,10 @@
       "valeur": 1228,
       "unite": "Md€",
       "date": "2024",
-      "source": { "nom": "Sénat, rapport n° 689 (2024-2025) sur l'impôt plancher de 2 % sur les très hauts patrimoines (4 juin 2025)", "url": "https://www.senat.fr/rap/l24-689/l24-6891.html" },
+      "source": {
+        "nom": "Sénat, rapport n° 689 (2024-2025) sur l'impôt plancher de 2 % sur les très hauts patrimoines (4 juin 2025)",
+        "url": "https://www.senat.fr/rap/l24-689/l24-6891.html"
+      },
       "statut": "verifie",
       "consulte_le": "2026-10-20",
       "note": "Estimation d'un magazine, reprise par le rapport du Sénat, qui en souligne les incertitudes de méthode."
@@ -18,7 +21,10 @@
       "valeur": 0.3,
       "unite": "% du patrimoine",
       "date": "2025",
-      "source": { "nom": "Sénat, rapport n° 689 (2024-2025)", "url": "https://www.senat.fr/rap/l24-689/l24-6891.html" },
+      "source": {
+        "nom": "Sénat, rapport n° 689 (2024-2025)",
+        "url": "https://www.senat.fr/rap/l24-689/l24-6891.html"
+      },
       "statut": "verifie",
       "consulte_le": "2026-10-20",
       "note": "Ordre de grandeur utilisé par le rapporteur pour reconstituer le rendement d'un impôt plancher de 2 %."
@@ -26,10 +32,22 @@
     {
       "id": "prop.foyers-concernes",
       "label": "Foyers dont le patrimoine dépasse 100 millions d'euros (estimation)",
-      "serie": [{ "x": "bas", "y": 1600 }, { "x": "haut", "y": 1800 }],
+      "serie": [
+        {
+          "x": "bas",
+          "y": 1600
+        },
+        {
+          "x": "haut",
+          "y": 1800
+        }
+      ],
       "unite": "foyers",
       "date": "2025",
-      "source": { "nom": "Sénat, rapport n° 689 (2024-2025), citant les estimations de G. Zucman", "url": "https://www.senat.fr/rap/l24-689/l24-6891.html" },
+      "source": {
+        "nom": "Sénat, rapport n° 689 (2024-2025), citant les estimations de G. Zucman",
+        "url": "https://www.senat.fr/rap/l24-689/l24-6891.html"
+      },
       "statut": "verifie",
       "consulte_le": "2026-10-20"
     },
@@ -37,15 +55,33 @@
       "id": "prop.impot-plancher-rendements",
       "label": "Rendement annuel estimé d'un impôt plancher de 2 % sur les patrimoines de plus de 100 M€",
       "serie": [
-        { "x": "Estimation de ses promoteurs (bas)", "y": 15 },
-        { "x": "Reconstitution du rapporteur du Sénat", "y": 20 },
-        { "x": "Estimation de ses promoteurs (haut)", "y": 25 },
-        { "x": "Estimation critique, impôt sur les sociétés déduit (bas)", "y": 2 },
-        { "x": "Estimation critique, impôt sur les sociétés déduit (haut)", "y": 3 }
+        {
+          "x": "Estimation de ses promoteurs (bas)",
+          "y": 15
+        },
+        {
+          "x": "Reconstitution du rapporteur du Sénat",
+          "y": 20
+        },
+        {
+          "x": "Estimation de ses promoteurs (haut)",
+          "y": 25
+        },
+        {
+          "x": "Estimation critique, impôt sur les sociétés déduit (bas)",
+          "y": 2
+        },
+        {
+          "x": "Estimation critique, impôt sur les sociétés déduit (haut)",
+          "y": 3
+        }
       ],
       "unite": "Md€ par an",
       "date": "2025",
-      "source": { "nom": "Sénat, rapport n° 689 (2024-2025)", "url": "https://www.senat.fr/rap/l24-689/l24-6891.html" },
+      "source": {
+        "nom": "Sénat, rapport n° 689 (2024-2025)",
+        "url": "https://www.senat.fr/rap/l24-689/l24-6891.html"
+      },
       "statut": "verifie",
       "consulte_le": "2026-10-20",
       "note": "15 à 25 Md€ : estimation de G. Zucman ; 2 à 3 Md€ : calcul d'A. Levy si l'impôt sur les sociétés payé par les entreprises détenues est déduit."
@@ -56,7 +92,10 @@
       "valeur": 2,
       "unite": "%",
       "date": "2025",
-      "source": { "nom": "Sénat, rapport n° 689 (2024-2025), citant les travaux de G. Zucman", "url": "https://www.senat.fr/rap/l24-689/l24-6891.html" },
+      "source": {
+        "nom": "Sénat, rapport n° 689 (2024-2025), citant les travaux de G. Zucman",
+        "url": "https://www.senat.fr/rap/l24-689/l24-6891.html"
+      },
       "statut": "verifie",
       "consulte_le": "2026-10-20",
       "note": "Le rapporteur souligne que ces études excluaient les biens professionnels, inclus dans l'impôt proposé."
@@ -67,30 +106,118 @@
       "valeur": 26,
       "unite": "%",
       "date": "2016",
-      "source": { "nom": "Sénat, rapport n° 689 (2024-2025), citant l'étude de l'Institut des politiques publiques (2023)", "url": "https://www.senat.fr/rap/l24-689/l24-6891.html" },
+      "source": {
+        "nom": "Sénat, rapport n° 689 (2024-2025), citant l'étude de l'Institut des politiques publiques (2023)",
+        "url": "https://www.senat.fr/rap/l24-689/l24-6891.html"
+      },
       "statut": "verifie",
       "consulte_le": "2026-10-20",
       "note": "Contre 59 % si leur revenu économique était imposé au barème. Le calcul attribue les bénéfices non distribués des sociétés à leur actionnaire de contrôle."
     },
     {
+      "id": "prop.ultra-riches-part-pib-mondial",
+      "label": "Patrimoine des 0,0001 % les plus riches du monde, en part du PIB mondial",
+      "serie": [
+        {
+          "x": "1987",
+          "y": 3
+        },
+        {
+          "x": "2024",
+          "y": 13
+        }
+      ],
+      "unite": "% du PIB mondial",
+      "date": "2024",
+      "source": {
+        "nom": "Sénat, rapport n° 689 (2024-2025), citant les travaux de G. Zucman",
+        "url": "https://www.senat.fr/rap/l24-689/l24-6891.html"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-21",
+      "note": "Soit une croissance moyenne d'environ 7 % par an au-delà de l'inflation. Calcul mondial, pas propre à la France ; le rapporteur souligne qu'une moyenne sur 40 ans n'exclut pas des années de pertes."
+    },
+    {
       "id": "prop.isf-cout-suppression",
       "label": "Coût de la transformation de l'ISF en impôt sur la fortune immobilière (IFI)",
-      "serie": [{ "x": "2018", "y": 2.9 }, { "x": "2022", "y": 4.5 }],
+      "serie": [
+        {
+          "x": "2018",
+          "y": 2.9
+        },
+        {
+          "x": "2022",
+          "y": 4.5
+        }
+      ],
       "unite": "Md€",
       "date": "2022",
-      "source": { "nom": "Sénat, rapport n° 689 (2024-2025), citant le rapport sénatorial de 2019 (2,9 Md€ en 2018) et France Stratégie (4,5 Md€ en 2022)", "url": "https://www.senat.fr/rap/l24-689/l24-6891.html" },
+      "source": {
+        "nom": "Sénat, rapport n° 689 (2024-2025), citant le rapport sénatorial de 2019 (2,9 Md€ en 2018) et France Stratégie (4,5 Md€ en 2022)",
+        "url": "https://www.senat.fr/rap/l24-689/l24-6891.html"
+      },
       "statut": "verifie",
       "consulte_le": "2026-10-20"
     },
     {
       "id": "prop.tva-point",
-      "label": "Rendement d'un point de taux normal de TVA (ordre de grandeur)",
-      "valeur": 9,
+      "label": "Rendement d'une hausse d'un point du taux normal de TVA (20 %)",
+      "valeur": 8.9,
       "unite": "Md€ par an",
       "date": "2025",
-      "source": { "nom": "Ordre de grandeur souvent cité dans le débat budgétaire ; à confirmer dans l'annexe « Voies et moyens » du PLF", "url": "https://www.budget.gouv.fr" },
-      "statut": "a_verifier",
-      "note": "Aucune estimation officielle récente trouvée ; le CESE citait 6,5 Md€ par point il y a une dizaine d'années, avec une TVA moins élevée."
+      "source": {
+        "nom": "Fipeco, fiche « La taxe sur la valeur ajoutée » (version du 15 juin 2026), citant une étude de la direction générale du Trésor (2025). Fipeco est le site de François Ecalle, ancien magistrat de la Cour des comptes.",
+        "url": "https://www.fipeco.fr/pdf/TVA.pdf"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-20",
+      "note": "Environ 8,9 Md€ pour le taux normal ; près de 14 Md€ si tous les taux sont relevés d'un point (11,5 Md€ net de la TVA payée par les administrations elles-mêmes). Une version antérieure de la fiche (mai 2025) indiquait 8,2 Md€."
+    },
+    {
+      "id": "prop.tva-point-tous-taux",
+      "label": "Rendement d'une hausse d'un point de tous les taux de TVA",
+      "serie": [
+        {
+          "x": "brut",
+          "y": 14
+        },
+        {
+          "x": "net pour les administrations",
+          "y": 11.5
+        }
+      ],
+      "unite": "Md€ par an",
+      "date": "2025",
+      "source": {
+        "nom": "Fipeco, fiche « La taxe sur la valeur ajoutée » (version du 15 juin 2026), citant une étude de la direction générale du Trésor (2025). Fipeco est le site de François Ecalle, ancien magistrat de la Cour des comptes.",
+        "url": "https://www.fipeco.fr/pdf/TVA.pdf"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-20",
+      "note": "« Près de 14 Md€ » brut ; 11,5 Md€ net, une partie de la TVA étant payée par les administrations publiques."
+    },
+    {
+      "id": "prop.tva-rendement-total",
+      "label": "Rendement total de la TVA, net des remboursements (toutes administrations publiques)",
+      "serie": [
+        {
+          "x": "2024",
+          "y": 208
+        },
+        {
+          "x": "2025",
+          "y": 209
+        }
+      ],
+      "unite": "Md€",
+      "date": "2025",
+      "source": {
+        "nom": "Fipeco, fiche « La taxe sur la valeur ajoutée » (version du 15 juin 2026), citant une étude de la direction générale du Trésor (2025). Fipeco est le site de François Ecalle, ancien magistrat de la Cour des comptes.",
+        "url": "https://www.fipeco.fr/pdf/TVA.pdf"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-20",
+      "note": "Comptabilité nationale. Une version antérieure de la fiche (mai 2025) indiquait 206 Md€ pour 2024."
     },
     {
       "id": "prop.lettre-bce-2021",
@@ -98,10 +225,25 @@
       "valeur": 2021,
       "unite": "année",
       "date": "2021-02-05",
-      "source": { "nom": "BCE, lettre de la présidente de la BCE à une membre du Parlement européen (5 février 2021)", "url": "https://www.ecb.europa.eu/ecb/access_to_documents/document/correspondence/shared/data/ecb.dr.cor20210205Aubry.fr.pdf" },
+      "source": {
+        "nom": "BCE, lettre de la présidente de la BCE à une membre du Parlement européen (5 février 2021)",
+        "url": "https://www.ecb.europa.eu/ecb/access_to_documents/document/correspondence/shared/data/ecb.dr.cor20210205Aubry.fr.pdf"
+      },
       "statut": "verifie",
       "consulte_le": "2026-10-20",
       "note": "La lettre juge l'annulation incompatible avec les traités, au titre de l'interdiction du financement monétaire (article 123 du traité sur le fonctionnement de l'Union européenne)."
+    },
+    {
+      "id": "prop.programme-depenses",
+      "label": "Programme de dépenses nouvelles (hypothèse d'illustration)",
+      "valeur": 300,
+      "unite": "Md€ par an",
+      "date": "2026",
+      "source": {
+        "nom": "montant retenu par Éco en clair pour l'illustration, ordre de grandeur des programmes de dépenses nouvelles évoqués dans le débat public, sans référence à un programme particulier"
+      },
+      "statut": "hypothese",
+      "note": "Ce n'est pas une donnée observée : c'est un montant de comparaison."
     }
   ]
 }

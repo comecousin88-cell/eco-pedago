@@ -8,6 +8,8 @@ export interface LigneSource {
   url?: string;
   date: string;
   aVerifier: boolean;
+  /** Montant de comparaison choisi pour l'illustration, pas une donnée observée. */
+  hypothese?: boolean;
 }
 
 function nomDeFichier(titre: string) {
@@ -84,24 +86,30 @@ export function FigureCadre({
       <div className="mt-5">{children}</div>
 
       <figcaption className="mt-5 border-t border-line pt-3 text-xs leading-relaxed text-muted">
-        {sources.map((s) => (
-          <span key={s.nom} className="block">
-            Source :{" "}
-            {s.url ? (
-              <a href={s.url} className="underline underline-offset-2 hover:text-ink" rel="noopener" target="_blank">
-                {s.nom}
-              </a>
-            ) : (
-              s.nom
-            )}{" "}
-            — données {s.date}
-            {s.aVerifier && (
-              <span className="ml-1.5 rounded bg-warn-soft px-1.5 py-0.5 font-semibold text-warn">
-                chiffre à vérifier
-              </span>
-            )}
-          </span>
-        ))}
+        {sources.map((s) =>
+          s.hypothese ? (
+            <span key={s.nom} className="block">
+              Hypothèse : {s.nom}
+            </span>
+          ) : (
+            <span key={s.nom} className="block">
+              Source :{" "}
+              {s.url ? (
+                <a href={s.url} className="underline underline-offset-2 hover:text-ink" rel="noopener" target="_blank">
+                  {s.nom}
+                </a>
+              ) : (
+                s.nom
+              )}{" "}
+              — données {s.date}
+              {s.aVerifier && (
+                <span className="ml-1.5 rounded bg-warn-soft px-1.5 py-0.5 font-semibold text-warn">
+                  chiffre à vérifier
+                </span>
+              )}
+            </span>
+          ),
+        )}
         {sourceLibre && <span className="block">{sourceLibre}</span>}
         <span className="mt-1 block font-serif font-semibold text-body">{site.name}</span>
       </figcaption>

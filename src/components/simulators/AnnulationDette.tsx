@@ -20,10 +20,11 @@ export function AnnulationDette() {
   const emprunts = getValeur("aft.programme-emissions");
   const dette = getValeur("dette.stock");
   const ratio = getValeur("dette.ratio-pib");
+  const rendement = getValeur("bdf.rendement-titres-pm");
   const pib = (dette.valeur / ratio.valeur) * 100;
 
   const [montant, setMontant] = useState(titres.valeur);
-  const [coupon, setCoupon] = useState(1);
+  const [coupon, setCoupon] = useState(rendement.valeur);
   const [prime, setPrime] = useState(0.5);
 
   const r = effetsAnnulation({
@@ -57,14 +58,14 @@ export function AnnulationDette() {
           aide={`Détenus par la Banque de France au ${titres.date.split("-").reverse().join("/")} : ${formatNombre(titres.valeur)} Md€`}
         />
         <Curseur
-          libelle="Coupon moyen de ces titres (hypothèse)"
+          libelle="Coupon moyen de ces titres"
           valeur={coupon}
           min={0}
           max={3}
-          pas={0.25}
+          pas={0.01}
           onChange={setCoupon}
           affichage={`${formatNombre(coupon, 2)} %`}
-          aide="Titres achetés surtout entre 2015 et 2021, quand les taux étaient bas."
+          aide={`Selon la Banque de France, ${formatNombre(rendement.valeur, 2)} % en moyenne en ${rendement.date} sur l'ensemble de ses titres APP et PEPP, achetés surtout entre 2015 et 2021, quand les taux étaient bas.`}
         />
         <Curseur
           libelle="Prime de risque exigée ensuite par les marchés"

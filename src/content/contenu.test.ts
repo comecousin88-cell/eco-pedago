@@ -97,9 +97,9 @@ describe("contenus des modules", () => {
 });
 
 describe("propositions passées au crible", () => {
-  it("15 fiches, identifiants uniques", () => {
-    expect(propositions).toHaveLength(15);
-    expect(new Set(propositions.map((p) => p.slug)).size).toBe(15);
+  it("16 fiches, identifiants uniques", () => {
+    expect(propositions).toHaveLength(16);
+    expect(new Set(propositions.map((p) => p.slug)).size).toBe(16);
   });
 
   it("une fiche rédigée a un verdict, et suit les six parties dans l'ordre", () => {

@@ -30,6 +30,7 @@ export function Chiffre({
     valeur = point.y;
   }
   const aVerifier = d.statut === "a_verifier";
+  const hypothese = d.statut === "hypothese";
   // Une année s'écrit sans séparateur de milliers.
   const texte =
     d.unite === "année"
@@ -40,7 +41,7 @@ export function Chiffre({
 
   return (
     <span
-      title={`${d.label}${x ? ` (${x})` : ""} — ${formatSource(d)}${aVerifier ? " (chiffre à vérifier)" : ""}`}
+      title={`${d.label}${x ? ` (${x})` : ""} — ${formatSource(d)}${aVerifier ? " (chiffre à vérifier)" : ""}${hypothese ? " (hypothèse, pas une donnée observée)" : ""}`}
       className={`font-semibold whitespace-nowrap text-ink ${
         aVerifier ? "decoration-warn underline decoration-wavy decoration-1 underline-offset-4" : ""
       }`}

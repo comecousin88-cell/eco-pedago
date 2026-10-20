@@ -24,7 +24,7 @@ export function Figure({
   source?: string;
   children: ReactNode;
 }) {
-  const lignes = new Map<string, { url?: string; date: string; aVerifier: boolean }>();
+  const lignes = new Map<string, { url?: string; date: string; aVerifier: boolean; hypothese: boolean }>();
   for (const id of donnees) {
     const d = getDonnee(id);
     const deja = lignes.get(d.source.nom);
@@ -34,6 +34,7 @@ export function Figure({
         url: d.source.url,
         date: d.date,
         aVerifier: (deja?.aVerifier ?? false) || d.statut === "a_verifier",
+        hypothese: d.statut === "hypothese",
       });
     } else if (d.statut === "a_verifier") {
       deja.aVerifier = true;
@@ -44,6 +45,7 @@ export function Figure({
     url: l.url,
     date: formatDateDonnee(l.date),
     aVerifier: l.aVerifier,
+    hypothese: l.hypothese,
   }));
 
   return (

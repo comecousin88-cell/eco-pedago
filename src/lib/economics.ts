@@ -710,3 +710,12 @@ export function rendementImpotFortunes(h: HypothesesImpotFortunes): { theorique:
 export function anneesDeCouverture(stock: number, besoinAnnuel: number): number {
   return besoinAnnuel > 0 ? stock / besoinAnnuel : Infinity;
 }
+
+/**
+ * Effort annuel, en milliards, pour ramener le déficit au niveau qui
+ * stabilise la dette : (déficit − déficit stabilisant), en points de PIB,
+ * appliqué au PIB.
+ */
+export function effortStabilisation(deficitPctPib: number, deficitStabilisantPctPib: number, pib: number): number {
+  return Math.max(0, deficitPctPib - deficitStabilisantPctPib) * pib / 100;
+}

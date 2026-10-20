@@ -263,6 +263,182 @@
       "statut": "verifie",
       "consulte_le": "2026-10-20",
       "note": "Montant cité par la Banque de France dans la présentation de ses résultats 2025, sans détail de composition."
+    },
+    {
+      "id": "bdf.resultat-ordinaire-2024",
+      "label": "Résultat ordinaire avant impôt de la Banque de France",
+      "valeur": -17.4,
+      "unite": "Md€",
+      "date": "2024",
+      "source": {
+        "nom": "Banque de France, blog : « Comptes des banques centrales : le corollaire du succès », A. Bénassy-Quéré (26 mars 2025)",
+        "url": "https://www.banque-france.fr/system/files/2025-03/Blog-ABQ-pertes-2025.pdf"
+      },
+      "note": "Avant reprise sur le fonds pour risques généraux ; le résultat net, après cette reprise, est de −7,7 Md€.",
+      "statut": "verifie",
+      "consulte_le": "2026-10-21"
+    },
+    {
+      "id": "bce.taux-depot-moyen-2024",
+      "label": "Taux moyen de la facilité de dépôt de la BCE sur l'année",
+      "valeur": 3.73,
+      "unite": "%",
+      "date": "2024",
+      "source": {
+        "nom": "Banque de France, blog : « Comptes des banques centrales : le corollaire du succès », A. Bénassy-Quéré (26 mars 2025)",
+        "url": "https://www.banque-france.fr/system/files/2025-03/Blog-ABQ-pertes-2025.pdf"
+      },
+      "note": "Taux auquel est rémunérée l'essentiel du passif de la Banque de France (réserves excédentaires des banques).",
+      "statut": "verifie",
+      "consulte_le": "2026-10-21"
+    },
+    {
+      "id": "bdf.pertes-ordinaires",
+      "label": "Résultat ordinaire de la Banque de France absorbé par ses réserves",
+      "serie": [
+        {
+          "x": "2023",
+          "y": -12.4
+        },
+        {
+          "x": "2024",
+          "y": -17.4
+        }
+      ],
+      "unite": "Md€",
+      "date": "2024",
+      "source": {
+        "nom": "Banque de France, blog : « Comptes des banques centrales : le corollaire du succès », A. Bénassy-Quéré (26 mars 2025)",
+        "url": "https://www.banque-france.fr/system/files/2025-03/Blog-ABQ-pertes-2025.pdf"
+      },
+      "note": "La perte de 2023 a été entièrement absorbée par le fonds pour risques généraux, celle de 2024 en grande partie.",
+      "statut": "verifie",
+      "consulte_le": "2026-10-21"
+    },
+    {
+      "id": "bdf.resultat-cumule-2015-2022",
+      "label": "Résultat ordinaire avant impôt cumulé de la Banque de France, 2015 à 2022",
+      "valeur": 45.8,
+      "unite": "Md€",
+      "date": "2022",
+      "source": {
+        "nom": "Banque de France, blog : « Comptes des banques centrales : le corollaire du succès », A. Bénassy-Quéré (26 mars 2025)",
+        "url": "https://www.banque-france.fr/system/files/2025-03/Blog-ABQ-pertes-2025.pdf"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-21"
+    },
+    {
+      "id": "bdf.verse-etat-2015-2022",
+      "label": "Sommes versées à l'État par la Banque de France, 2015 à 2022",
+      "serie": [
+        {
+          "x": "impôt sur les sociétés",
+          "y": 16.3
+        },
+        {
+          "x": "dividendes",
+          "y": 15.5
+        }
+      ],
+      "unite": "Md€",
+      "date": "2022",
+      "source": {
+        "nom": "Banque de France, blog : « Comptes des banques centrales : le corollaire du succès », A. Bénassy-Quéré (26 mars 2025)",
+        "url": "https://www.banque-france.fr/system/files/2025-03/Blog-ABQ-pertes-2025.pdf"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-21"
+    },
+    {
+      "id": "bc.resultats-2024",
+      "label": "Résultat 2024 de quelques banques centrales de l'Eurosystème, avant reprise sur provisions",
+      "serie": [
+        {
+          "x": "Bundesbank (Allemagne)",
+          "y": -19.8
+        },
+        {
+          "x": "Banque de France",
+          "y": -17.8
+        },
+        {
+          "x": "BCE",
+          "y": -7.9
+        },
+        {
+          "x": "Banque des Pays-Bas",
+          "y": -3.2
+        }
+      ],
+      "unite": "Md€",
+      "date": "2024",
+      "source": {
+        "nom": "Banque de France, blog : « Comptes des banques centrales : le corollaire du succès », A. Bénassy-Quéré (26 mars 2025)",
+        "url": "https://www.banque-france.fr/system/files/2025-03/Blog-ABQ-pertes-2025.pdf"
+      },
+      "note": "Après reprise sur provisions : Bundesbank −19,2 ; Banque de France −7,7 ; BCE −7,9 ; Pays-Bas 0.",
+      "statut": "verifie",
+      "consulte_le": "2026-10-21"
+    },
+    {
+      "id": "bdf.rendement-titres-pm",
+      "label": "Rendement moyen des titres de politique monétaire (APP et PEPP) de la Banque de France",
+      "valeur": 0.68,
+      "unite": "%",
+      "date": "2025",
+      "source": {
+        "nom": "Banque de France, Comprendre les comptes annuels et les équilibres financiers 2025 (mars 2026)",
+        "url": "https://www.banque-france.fr/system/files/2026-03/Comprendre-les-comptes-2025.pdf"
+      },
+      "note": "Titres principalement à taux fixe. Moyenne de l'ensemble du portefeuille APP et PEPP, pas uniquement des titres de l'État français.",
+      "statut": "verifie",
+      "consulte_le": "2026-10-21"
+    },
+    {
+      "id": "bdf.cout-refinancement-titres-pm",
+      "label": "Coût moyen de refinancement de ces titres (taux de la facilité de dépôt)",
+      "serie": [
+        {
+          "x": "2024",
+          "y": 4.2
+        },
+        {
+          "x": "2025",
+          "y": 2.26
+        }
+      ],
+      "unite": "%",
+      "date": "2025",
+      "source": {
+        "nom": "Banque de France, Comprendre les comptes annuels et les équilibres financiers 2025 (mars 2026)",
+        "url": "https://www.banque-france.fr/system/files/2026-03/Comprendre-les-comptes-2025.pdf"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-21"
+    },
+    {
+      "id": "bdf.marge-titres-pm",
+      "label": "Marge de la Banque de France sur ses titres de politique monétaire (APP et PEPP)",
+      "serie": [
+        {
+          "x": "2024",
+          "y": -31.1
+        },
+        {
+          "x": "2025",
+          "y": -12.6
+        }
+      ],
+      "unite": "Md€",
+      "date": "2025",
+      "source": {
+        "nom": "Banque de France, Comprendre les comptes annuels et les équilibres financiers 2025 (mars 2026)",
+        "url": "https://www.banque-france.fr/system/files/2026-03/Comprendre-les-comptes-2025.pdf"
+      },
+      "note": "Rendement des titres moins leur coût de refinancement au taux de la facilité de dépôt.",
+      "statut": "verifie",
+      "consulte_le": "2026-10-21"
     }
   ]
 }

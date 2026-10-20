@@ -4,11 +4,16 @@
  * getDonnee() : aucun chiffre n'est écrit en dur dans le code.
  */
 
-export type Statut = "verifie" | "a_verifier";
+/**
+ * « hypothese » : un montant de comparaison choisi pour illustrer un calcul,
+ * pas une donnée observée. Il est toujours présenté comme tel.
+ */
+export type Statut = "verifie" | "a_verifier" | "hypothese";
 
 export interface Source {
   nom: string;
-  url: string;
+  /** Absente seulement pour une hypothèse. */
+  url?: string;
 }
 
 interface DonneeBase {

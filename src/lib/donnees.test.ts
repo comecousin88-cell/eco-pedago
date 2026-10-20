@@ -37,8 +37,10 @@ describe("données", () => {
       expect(d.unite.trim()).not.toBe("");
       expect(d.date).toMatch(DATE);
       expect(d.source.nom.trim()).not.toBe("");
-      expect(d.source.url).toMatch(/^https:\/\//);
-      expect(["verifie", "a_verifier"]).toContain(d.statut);
+      expect(["verifie", "a_verifier", "hypothese"]).toContain(d.statut);
+      // Seule une hypothèse peut se passer d'adresse, et elle le dit dans sa note.
+      if (d.statut === "hypothese") expect(d.note?.trim()).toBeTruthy();
+      else expect(d.source.url).toMatch(/^https:\/\//);
 
       if ("valeur" in d) {
         expect(Number.isFinite(d.valeur)).toBe(true);
@@ -49,7 +51,7 @@ describe("données", () => {
 
       // Une donnée « vérifiée » cite la page exacte et sa date de consultation.
       if (d.statut === "verifie") {
-        expect(new URL(d.source.url).pathname.length, "URL précise attendue").toBeGreaterThan(1);
+        expect(new URL(d.source.url!).pathname.length, "URL précise attendue").toBeGreaterThan(1);
         expect(d.consulte_le).toMatch(JOUR);
       }
     },

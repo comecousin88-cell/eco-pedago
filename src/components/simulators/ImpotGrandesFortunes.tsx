@@ -70,7 +70,7 @@ export function ImpotGrandesFortunes() {
           { l: "Après départs et optimisation (hypothèse centrale)", v: r.apresComportements, c: "var(--series-3)", n: `${formatNombre(elasticite.valeur)} % de redevables en moins par point de taux` },
           { l: "Hypothèse prudente", v: prudent, c: "var(--series-2)", n: "calée sur l'estimation critique publiée (impôt sur les sociétés déduit)" },
           { l: "Pour comparer : 1 point de CSG", v: pointCsg, c: "var(--series-7)", n: `ordre de grandeur calculé : CSG et CRDS (${formatNombre(csg.y)} Md€) divisées par leur taux sur les salaires (9,7 %)` },
-          { l: "Pour comparer : 1 point de TVA (taux normal)", v: tva.valeur, c: "var(--series-4)", n: "ordre de grandeur, à vérifier" },
+          { l: "Pour comparer : 1 point de TVA (taux normal)", v: tva.valeur, c: "var(--series-4)", n: "selon Fipeco, d'après une étude de la direction générale du Trésor (2025)" },
         ].map((x) => (
           <li key={x.l}>
             <div className="flex items-baseline justify-between gap-3 text-sm">
