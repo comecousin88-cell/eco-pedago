@@ -624,3 +624,89 @@ export function impotSurLeRevenu(salairesNetsImposables: number, p: ParametresIm
 export function tvaContenue(prixTtc: number, taux: number): number {
   return (prixTtc * taux) / (100 + taux);
 }
+
+/* ------------------------------------------------------------------------ */
+/* Propositions : annulation de dette, impôt sur les grandes fortunes       */
+/* ------------------------------------------------------------------------ */
+
+export interface HypothesesAnnulation {
+  /** Titres d'État détenus par la banque centrale et annulés (Md€). */
+  montant: number;
+  /** Coupon moyen de ces titres (0,01 = 1 %). */
+  coupon: number;
+  /** Taux versé sur les réserves des banques (0,025 = 2,5 %). */
+  tauxDepot: number;
+  /** Prime de risque supplémentaire exigée par les marchés (0,005 = 50 points de base). */
+  prime: number;
+  /** Montant emprunté chaque année sur les marchés, refinancé au nouveau taux (Md€). */
+  empruntsAnnuels: number;
+  annees: number;
+}
+
+export interface AnneeAnnulation {
+  annee: number;
+  /** Intérêts que l'État ne verse plus à la banque centrale (gain pour l'État). */
+  interetsEconomises: number;
+  /** Ce que la banque centrale perd en plus chaque année (elle ne touche plus ces intérêts). */
+  perteBanqueCentrale: number;
+  /** Surcoût d'intérêts sur les emprunts de marché, dû à la prime de risque. */
+  surcoutMarche: number;
+  /** Effet net pour l'ensemble État + banque centrale (négatif = perte). */
+  netConsolide: number;
+}
+
+/**
+ * Effets d'une annulation de titres détenus par la banque centrale, année par
+ * année. Pour l'État, les intérêts disparaissent ; pour la banque centrale, la
+ * même recette disparaît, alors que les réserves restent à rémunérer : en
+ * consolidé, les deux s'annulent. Seule reste la prime de risque, qui
+ * s'applique à une part croissante de la dette à mesure qu'elle se refinance.
+ */
+export function effetsAnnulation(h: HypothesesAnnulation): AnneeAnnulation[] {
+  return Array.from({ length: h.annees }, (_, k) => {
+    const annee = k + 1;
+    const interetsEconomises = h.montant * h.coupon;
+    const perteBanqueCentrale = h.montant * h.coupon;
+    const surcoutMarche = h.empruntsAnnuels * annee * h.prime;
+    return {
+      annee,
+      interetsEconomises,
+      perteBanqueCentrale,
+      surcoutMarche,
+      netConsolide: interetsEconomises - perteBanqueCentrale - surcoutMarche,
+    };
+  });
+}
+
+/** Fonds propres de la banque centrale après l'annulation (Md€). */
+export function fondsPropresApresAnnulation(fondsPropres: number, montant: number): number {
+  return fondsPropres - montant;
+}
+
+export interface HypothesesImpotFortunes {
+  /** Patrimoine taxable (Md€). */
+  assiette: number;
+  /** Taux de l'impôt (0,02 = 2 %). */
+  taux: number;
+  /** Impôts déjà payés, déduits dans un impôt « plancher » (en part du patrimoine, 0,003 = 0,3 %). */
+  impotsDejaPayes: number;
+  /** Baisse de l'assiette pour 1 point de taux (0,02 = 2 % par point), effets de comportement. */
+  elasticite: number;
+}
+
+/**
+ * Rendement annuel d'un impôt « plancher » sur le patrimoine : taux moins
+ * impôts déjà payés, appliqué à l'assiette ; avec effets de comportement,
+ * l'assiette se réduit de (élasticité × taux en points).
+ */
+export function rendementImpotFortunes(h: HypothesesImpotFortunes): { theorique: number; apresComportements: number } {
+  const tauxNet = Math.max(0, h.taux - h.impotsDejaPayes);
+  const theorique = h.assiette * tauxNet;
+  const reduction = Math.min(1, h.elasticite * h.taux * 100);
+  return { theorique, apresComportements: theorique * (1 - reduction) };
+}
+
+/** Années pendant lesquelles un stock couvrirait un besoin annuel, s'il était entièrement prélevé. */
+export function anneesDeCouverture(stock: number, besoinAnnuel: number): number {
+  return besoinAnnuel > 0 ? stock / besoinAnnuel : Infinity;
+}

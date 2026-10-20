@@ -1,6 +1,9 @@
 import { describe, expect, it } from "vitest";
 import { glossaire } from "./glossaire";
 import { contenus } from "./modules/contenus";
+import { PARTIES, propositions } from "./propositions";
+import { readFileSync } from "node:fs";
+import { fileURLToPath } from "node:url";
 import { modules, neighbours } from "./modules";
 import { avancement, getParcours, parcours, positionDans } from "./parcours";
 
@@ -89,6 +92,30 @@ describe("contenus des modules", () => {
       expect(Object.keys(c.sections).sort(), slug).toEqual(m.sections.map((s) => s.slug).sort());
       expect(c.quiz, slug).toHaveLength(5);
       for (const q of c.quiz) expect(q.bonne).toBeLessThan(q.choix.length);
+    }
+  });
+});
+
+describe("propositions passées au crible", () => {
+  it("15 fiches, identifiants uniques", () => {
+    expect(propositions).toHaveLength(15);
+    expect(new Set(propositions.map((p) => p.slug)).size).toBe(15);
+  });
+
+  it("une fiche rédigée a un verdict, et suit les six parties dans l'ordre", () => {
+    for (const p of propositions.filter((x) => x.contenu)) {
+      expect(p.verdict, p.slug).toBeDefined();
+      const texte = readFileSync(fileURLToPath(new URL(`./propositions/${p.slug}.mdx`, import.meta.url)), "utf8");
+      const titres = [...texte.matchAll(/^## (.+)$/gm)].map((m) => m[1].trim());
+      expect(titres, p.slug).toEqual([...PARTIES]);
+    }
+  });
+
+  it("aucune fiche ne nomme un parti politique", () => {
+    const partis = /(LFI|France insoumise|Rassemblement national|Renaissance|Parti socialiste|Les Républicains|Écologistes|EELV|PCF|Reconquête|Horizons|MoDem)/i;
+    for (const p of propositions.filter((x) => x.contenu)) {
+      const texte = readFileSync(fileURLToPath(new URL(`./propositions/${p.slug}.mdx`, import.meta.url)), "utf8");
+      expect(partis.test(texte), p.slug).toBe(false);
     }
   });
 });

@@ -249,6 +249,20 @@
       "statut": "verifie",
       "consulte_le": "2026-10-20",
       "note": "Retour au bénéfice, dont une plus-value exceptionnelle de 11 Md€ sur la mise aux normes d'une partie de son or."
+    },
+    {
+      "id": "bdf.situation-nette",
+      "label": "Situation financière nette de la Banque de France",
+      "valeur": 283,
+      "unite": "Md€",
+      "date": "2025",
+      "source": {
+        "nom": "Banque de France, Résultats 2025 de la Banque de France (mars 2026)",
+        "url": "https://www.banque-france.fr/fr/actualites/resultats-2025-de-la-banque-de-france"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-20",
+      "note": "Montant cité par la Banque de France dans la présentation de ses résultats 2025, sans détail de composition."
     }
   ]
 }

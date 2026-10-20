@@ -1,0 +1,44 @@
+import type { Metadata } from "next";
+import { FilAriane } from "@/components/modules/FilAriane";
+import { MarquerLue } from "@/components/modules/MarquerLue";
+import { ModuleTheme } from "@/components/modules/ModuleTheme";
+import { ListePropositions } from "@/components/propositions/ListePropositions";
+import { rubriqueColors } from "@/content/modules";
+import { propositions } from "@/content/propositions";
+
+export const metadata: Metadata = {
+  title: "Propositions passées au crible",
+  description:
+    "Annuler la dette, taxer les plus riches, sortir de l'euro, retraite à 60 ans… Chaque proposition analysée avec ses meilleurs arguments, ses chiffres et un verdict sur le mécanisme.",
+};
+
+export default function PropositionsPage() {
+  return (
+    <ModuleTheme color={rubriqueColors.propositions}>
+      <MarquerLue href="/propositions/" />
+      <div className="mx-auto max-w-5xl px-4 py-10 sm:px-6 sm:py-14">
+        <FilAriane etapes={[{ label: "Propositions passées au crible" }]} />
+        <h1 className="mt-6 font-serif text-3xl font-semibold tracking-tight text-ink sm:text-4xl">
+          Propositions passées au crible
+        </h1>
+        <p className="mt-4 max-w-2xl text-lg leading-relaxed text-muted">
+          Des idées qui reviennent dans le débat public, analysées une par une, toujours de la même façon : l&apos;idée et
+          ce qu&apos;elle veut résoudre, présentée sous son meilleur jour ; comment elle marcherait ; ce qu&apos;en disent
+          les économistes ; les ordres de grandeur ; et un verdict.
+        </p>
+        <div className="mt-6 rounded-2xl border border-line bg-surface p-5 text-sm leading-relaxed text-body">
+          <p className="font-semibold text-ink">La règle du jeu</p>
+          <p className="mt-1">
+            Aucun parti ni aucun responsable politique n&apos;est nommé : les fiches analysent des mécanismes, pas ceux qui
+            les portent. Le verdict porte sur la proposition et ses chiffres. Il distingue ce qui est démontrable
+            (comptabilité, arithmétique, droit) de ce qui reste un débat d&apos;économistes. Trois niveaux :
+            « mécanisme solide », « débattu », « ne tient pas en l&apos;état ».
+          </p>
+        </div>
+        <ListePropositions
+          propositions={propositions.map((p) => ({ slug: p.slug, titre: p.titre, theme: p.theme, verdict: p.verdict, redigee: !!p.contenu }))}
+        />
+      </div>
+    </ModuleTheme>
+  );
+}

@@ -1,0 +1,112 @@
+import { ImpotGrandesFortunes } from "@/components/simulators/ImpotGrandesFortunes";
+
+## 1. La proposition
+
+Créer un impôt annuel sur les plus grands patrimoines, par exemple un impôt minimal de 2 % par an sur les
+patrimoines de plus de 100 millions d'euros, pour financer de nouvelles dépenses publiques.
+
+C'est la forme la plus discutée aujourd'hui : un impôt « plancher », qui ne s'ajoute pas aux impôts existants mais
+complète ce que paient déjà ces contribuables pour atteindre 2 % de leur patrimoine. Une proposition de ce type a
+été adoptée par l'Assemblée nationale en février 2025, puis écartée par la commission des finances du Sénat en
+juin 2025.
+
+## 2. L'idée derrière
+
+Le point de départ est un constat chiffré : **les plus grandes fortunes paient, en proportion de leurs revenus
+réels, moins d'impôts que le reste des contribuables aisés**. Une étude de l'Institut des politiques publiques
+estime que les 0,0002 % de foyers les plus riches acquittaient environ <Chiffre id="prop.ipp-taux-effectif" /> de leur
+revenu économique en impôts, contre bien davantage s'ils étaient imposés au barème. La raison : l'essentiel de leur
+richesse est fait de parts d'entreprises, dont les bénéfices peuvent rester dans des sociétés holding sans être
+imposés à l'impôt sur le revenu.
+
+Pour ses défenseurs, un impôt plancher corrige cette anomalie sans pénaliser l'investissement : les très grands
+patrimoines rapportent en moyenne bien plus de 2 % par an (des travaux les évaluent entre 7 % et 10 %), si bien
+qu'un impôt de 2 % ralentirait leur croissance sans les entamer. Il ne concernerait qu'environ
+<Chiffre id="prop.foyers-concernes" x="haut" /> au plus. Ils y voient aussi une question de justice et de consentement à
+l'impôt : demander des efforts à tous suppose que les plus fortunés contribuent à proportion de leurs moyens. Enfin,
+le sujet progresse au niveau international, où l'idée d'un impôt minimal sur les milliardaires est discutée entre
+grandes économies.
+
+## 3. Comment ça marcherait concrètement
+
+Chaque année, on calcule 2 % du patrimoine net du foyer (y compris les parts d'entreprises), on en retire les
+impôts déjà payés (impôt sur le revenu, impôt sur la fortune immobilière, CSG…), et le foyer paie la différence si
+elle est positive. Pour limiter l'exil fiscal, la proposition prévoit que les contribuables qui quittent la France
+restent redevables pendant plusieurs années.
+
+<Figure
+  titre="Combien rapporte de taxer les plus grandes fortunes ?"
+  resume="Simulateur : on choisit le taux de l'impôt et le montant de dépenses nouvelles à financer. Le résultat compare le rendement théorique, le rendement après départs et optimisation, une hypothèse prudente, et le rendement d'un point de CSG ou de TVA."
+  donnees={["prop.grandes-fortunes-patrimoine", "prop.grandes-fortunes-impots", "prop.elasticite-zucman", "prop.impot-plancher-rendements", "prop.tva-point", "fp.recettes-2024-par-type"]}
+>
+  <ImpotGrandesFortunes />
+</Figure>
+
+<Niveaux>
+<PlusLoin>
+
+**Taxer un stock ou un flux.** Un impôt sur le revenu prélève une part de ce qui est gagné chaque année ; un impôt
+sur le patrimoine prélève une part de ce qui est possédé, même si cela n'a rien rapporté cette année-là. Taxer le
+patrimoine à 2 % revient à taxer à 100 % un placement qui rapporte 2 %, à 20 % un placement qui rapporte 10 %. Pour un
+patrimoine fait de parts d'une entreprise non cotée, il faut aussi lui donner une valeur, et trouver de quoi payer :
+vendre des parts, s'endetter, ou se faire verser des dividendes.
+
+**L'expérience de l'ISF.** L'impôt de solidarité sur la fortune, transformé en 2018 en impôt sur la fortune
+immobilière, exonérait les biens professionnels. Sa transformation a coûté environ
+<Chiffre id="prop.isf-cout-suppression" x="2018" /> la première année selon le Sénat, et
+<Chiffre id="prop.isf-cout-suppression" x="2022" /> en 2022 selon France Stratégie. L'impôt proposé est différent : il
+inclut les parts d'entreprises et ne vise que quelques centaines de foyers.
+
+</PlusLoin>
+</Niveaux>
+
+## 4. Ce que disent les économistes
+
+<ArgumentsFiche
+  pour={
+    <ul>
+      <li><strong>Un taux d'imposition effectif anormalement bas.</strong> Au sommet de la distribution, la part des revenus réels payée en impôts diminue, parce que les bénéfices restent dans les sociétés ; un impôt plancher rétablit une contribution minimale.</li>
+      <li><strong>Un rendement potentiellement important.</strong> Selon ses promoteurs, de l'ordre de <Chiffre id="prop.impot-plancher-rendements" x="Estimation de ses promoteurs (bas)" decimales={0} unite={false} /> à <Chiffre id="prop.impot-plancher-rendements" x="Estimation de ses promoteurs (haut)" decimales={0} />, soit autant qu'un point de CSG, payé par moins de deux mille foyers.</li>
+      <li><strong>Un exil limité.</strong> Les travaux de ses promoteurs estiment qu'un point de taxe en plus réduit à long terme le nombre de redevables d'environ <Chiffre id="prop.elasticite-zucman" /> ; la clause de suivi des contribuables qui partent réduit encore ce risque.</li>
+      <li><strong>Sans entamer les fortunes.</strong> Avec des rendements moyens supérieurs à 2 %, les grands patrimoines continueraient de croître.</li>
+      <li><strong>Une question de consentement.</strong> Demander des efforts budgétaires aux ménages ordinaires est plus difficile quand les plus fortunés contribuent proportionnellement moins.</li>
+    </ul>
+  }
+  contre={
+    <ul>
+      <li><strong>Un rendement très incertain.</strong> Si l'on tient compte de l'impôt sur les sociétés déjà payé par les entreprises détenues, une estimation critique tombe à <Chiffre id="prop.impot-plancher-rendements" x="Estimation critique, impôt sur les sociétés déduit (bas)" decimales={0} unite={false} /> à <Chiffre id="prop.impot-plancher-rendements" x="Estimation critique, impôt sur les sociétés déduit (haut)" decimales={0} />.</li>
+      <li><strong>Une assiette très concentrée.</strong> Selon le Sénat, les dix plus grandes fortunes représentent environ 70 % du patrimoine du classement : un ou deux départs suffiraient à faire chuter le rendement.</li>
+      <li><strong>Valoriser et payer.</strong> Les grands patrimoines sont surtout des entreprises, souvent non cotées : il faut les évaluer chaque année, et payer l'impôt peut obliger à vendre des parts, au risque de perdre le contrôle d'entreprises françaises.</li>
+      <li><strong>Un risque constitutionnel.</strong> Un taux de 2 % sans plafonnement en fonction des revenus pourrait être jugé confiscatoire ; le rapporteur du Sénat jugeait probable une censure.</li>
+      <li><strong>Une goutte d'eau face aux besoins.</strong> Même dans l'hypothèse la plus favorable, le rendement ne couvre qu'une petite partie du déficit public, et ne peut pas financer à lui seul un programme de dépenses de grande ampleur.</li>
+    </ul>
+  }
+/>
+
+## 5. Ordres de grandeur
+
+| | Montant |
+|---|---|
+| Patrimoine des 500 plus grandes fortunes (estimation de presse) | <Chiffre id="prop.grandes-fortunes-patrimoine" /> |
+| Foyers dont le patrimoine dépasse 100 M€ | <Chiffre id="prop.foyers-concernes" x="bas" unite={false} /> à <Chiffre id="prop.foyers-concernes" x="haut" /> |
+| Rendement estimé d'un impôt plancher de 2 % | de <Chiffre id="prop.impot-plancher-rendements" x="Estimation critique, impôt sur les sociétés déduit (bas)" decimales={0} unite={false} /> à <Chiffre id="prop.impot-plancher-rendements" x="Estimation de ses promoteurs (haut)" decimales={0} /> selon les hypothèses |
+| Reconstitution du rapporteur du Sénat | environ <Chiffre id="prop.impot-plancher-rendements" x="Reconstitution du rapporteur du Sénat" decimales={0} />, avant effets de comportement |
+| Déficit public (pour comparer) | <Chiffre id="deficit.montant" /> en <DateDonnee id="deficit.montant" /> |
+| Si l'on confisquait la totalité du patrimoine des 500 plus grandes fortunes | de quoi couvrir le déficit public environ huit ans, une seule fois |
+
+## 6. Verdict
+
+<Verdict niveau="debattu">
+Un impôt sur les très grands patrimoines peut corriger des taux d'imposition effectifs anormalement bas et
+rapporter de quelques milliards à une vingtaine de milliards d'euros par an : son rendement réel est sincèrement
+débattu, car il dépend des départs, de l'optimisation, de la valorisation des entreprises et de sa validité
+constitutionnelle. En revanche, l'idée de financer ainsi de nouvelles dépenses de grande ampleur ne tient pas :
+même l'estimation la plus haute reste loin des besoins, et un stock taxé chaque année ne se reconstitue pas
+indéfiniment.
+</Verdict>
+
+<GrilleVerdict
+  tient={<p>Les plus grandes fortunes ont des taux d'imposition effectifs plus faibles que les autres contribuables aisés. Un impôt plancher bien conçu peut rapporter une somme non négligeable, de l'ordre d'un point de CSG dans l'hypothèse haute.</p>}
+  tientPas={<p>L'idée qu'il suffirait de taxer les plus riches pour financer un programme de dépenses de plusieurs dizaines ou centaines de milliards : l'assiette entière ne couvrirait que quelques années de besoins, une seule fois.</p>}
+  debattu={<p>Le rendement réel (de 2 à 25 milliards selon les hypothèses), l'ampleur de l'exil fiscal, les effets sur l'investissement et le contrôle des entreprises, et la conformité à la Constitution.</p>}
+/>

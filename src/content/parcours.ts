@@ -74,7 +74,7 @@ export const parcours: Parcours[] = [
         href: "/propositions/",
         titre: "Propositions passées au crible",
         groupe: "Propositions passées au crible",
-        disponible: false,
+        disponible: true,
       },
     ],
   },

@@ -8,6 +8,8 @@ import { Figure } from "@/components/pedago/Figure";
 import { Essentiel, Mecanisme, Niveaux, PlusLoin } from "@/components/pedago/Niveaux";
 import { Quiz } from "@/components/pedago/Quiz";
 import { Terme } from "@/components/pedago/Terme";
+import { ArgumentsFiche, GrilleVerdict } from "@/components/propositions/ArgumentsFiche";
+import { ancre, texteDe } from "@/lib/ancre";
 
 /**
  * Composants disponibles dans tous les fichiers .mdx, sans import :
@@ -21,7 +23,14 @@ const components: MDXComponents = {
     ) : (
       <a href={href} target="_blank" rel="noopener" {...props} />
     ),
+  // Les titres de niveau 2 reçoivent une ancre (plan des fiches, liens directs).
+  h2: ({ children, ...props }: ComponentPropsWithoutRef<"h2">) => (
+    <h2 id={ancre(texteDe(children))} className="scroll-mt-24" {...props}>
+      {children}
+    </h2>
+  ),
   ARetenir,
+  ArgumentsFiche,
   BadgeVerdict,
   Chiffre,
   DateDonnee,
@@ -29,6 +38,7 @@ const components: MDXComponents = {
   Essentiel,
   Exemple,
   Figure,
+  GrilleVerdict,
   Mecanisme,
   Niveaux,
   PlusLoin,

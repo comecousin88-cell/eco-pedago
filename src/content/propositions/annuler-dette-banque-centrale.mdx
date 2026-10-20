@@ -1,0 +1,121 @@
+import { AnnulationDette } from "@/components/simulators/AnnulationDette";
+
+## 1. La proposition
+
+Effacer les titres de dette publique française que la Banque de France a achetés ces dernières années dans le
+cadre des programmes de rachat de l'Eurosystème, pour alléger d'autant la dette de l'État.
+
+Au <DateDonnee id="bdf.titres-politique-monetaire" format="jour" />, ces titres représentaient
+<Chiffre id="bdf.titres-politique-monetaire" />, pour une dette publique totale de <Chiffre id="dette.stock" />. Une variante,
+transformer ces titres en dette perpétuelle à taux zéro, fait l'objet de sa propre fiche (« mettre la dette au
+frigo »).
+
+## 2. L'idée derrière
+
+L'idée part d'un constat juste : **une partie de la dette publique est détenue par une institution publique**. La
+Banque de France appartient à l'État, et ses bénéfices lui reviennent en grande partie. Pour ses défenseurs, une
+dette que le secteur public se doit à lui-même n'est pas une vraie dette : l'effacer ne lèserait aucun épargnant,
+aucune banque, aucun fonds de pension.
+
+L'enjeu, selon eux, est de **retrouver des marges d'action**. Une dette affichée plus basse desserrerait les règles
+européennes et éloignerait la menace des marchés. Les sommes ainsi « libérées » pourraient financer la transition
+écologique, les hôpitaux ou l'école, au lieu d'imposer des années d'économies. Ils rappellent que la monnaie qui a
+servi à acheter ces titres a déjà été créée : l'annulation n'en créerait pas de nouvelle. Ils citent aussi l'histoire,
+qui compte de nombreuses annulations de dettes, comme l'accord de Londres de 1953, qui a allégé la dette
+allemande.
+
+En février 2021, une tribune signée par plus d'une centaine d'économistes européens a défendu une version de
+cette idée à l'échelle de la zone euro : annuler les dettes détenues par la BCE en échange d'un engagement des États
+à investir autant dans la reconstruction écologique et sociale.
+
+## 3. Comment ça marcherait concrètement
+
+Pour acheter ces titres, la Banque de France a créé des <Terme id="reserves-bancaires">réserves</Terme> sur le compte
+des banques qui les lui ont vendus. Son bilan porte donc les titres à l'actif et, en face, ces réserves au passif :
+une dette envers les banques, qu'elle rémunère au taux de dépôt de la BCE
+(<Chiffre id="bce.taux-depot-actuel" /> depuis le <DateDonnee id="bce.taux-depot-actuel" format="jour" />).
+
+Annuler les titres supprime l'actif, **pas le passif** : les réserves restent dues aux banques. La Banque de France
+perd le montant annulé sur ses fonds propres et ne touche plus les intérêts de ces titres. Le simulateur suit les
+trois acteurs : l'État, la Banque de France et les marchés.
+
+<Figure
+  titre="Ce que change l'annulation, pour qui"
+  resume="Simulateur : on choisit le montant annulé, le coupon moyen des titres et la réaction des marchés. Le gain d'intérêts de l'État est exactement compensé par la perte de la Banque de France ; seule reste, en net, la prime de risque éventuelle, qui coûte de plus en plus au fil du refinancement."
+  donnees={["bdf.titres-politique-monetaire", "bce.taux-depot-actuel", "aft.programme-emissions", "dette.stock", "dette.ratio-pib"]}
+>
+  <AnnulationDette />
+</Figure>
+
+<Niveaux>
+<PlusLoin>
+
+**Et si la Banque de France ne rémunérait plus les réserves ?** C'est la réponse la plus sérieuse des partisans à
+l'argument comptable : une banque centrale ne perd de l'argent sur ses réserves que parce qu'elle choisit de les
+rémunérer. Des économistes ont proposé, indépendamment de toute annulation, de ne plus rémunérer une partie des
+réserves (en relevant les réserves obligatoires non rémunérées), pour réduire les pertes des banques centrales. Ce
+choix a toutefois un coût : il revient à taxer les banques, qui le répercutent sur leurs clients, et il oblige à
+revoir la façon dont la BCE pilote les taux du marché. Il relève d'une décision de l'Eurosystème, pas de la France.
+
+**Le bilan de la Banque de France.** Elle a enregistré une perte de <Chiffre id="bdf.resultat-2024" /> en
+<DateDonnee id="bdf.resultat-2024" />, puis un bénéfice de <Chiffre id="bdf.resultat-2025" /> en
+<DateDonnee id="bdf.resultat-2025" />. Elle met en avant une situation financière nette de
+<Chiffre id="bdf.situation-nette" />, inférieure au montant des titres détenus : une annulation totale ferait passer ses
+fonds propres nettement sous zéro.
+
+</PlusLoin>
+</Niveaux>
+
+## 4. Ce que disent les économistes
+
+<ArgumentsFiche
+  pour={
+    <ul>
+      <li><strong>C'est une dette du public envers le public.</strong> Vu de l'ensemble « État + banque centrale », les titres détenus par la Banque de France ne sont pas une dette envers des tiers : l'annulation se borne à en tirer les conséquences dans les comptes.</li>
+      <li><strong>Une banque centrale peut vivre avec des fonds propres négatifs.</strong> Elle crée la monnaie et ne peut pas faire faillite dans sa propre monnaie ; plusieurs banques centrales (au Chili, en République tchèque, en Israël) ont fonctionné des années avec des fonds propres négatifs sans perdre le contrôle de l'inflation.</li>
+      <li><strong>Les pertes viennent d'un choix.</strong> Elles tiennent à la rémunération des réserves des banques, qui pourrait être réduite : l'argument comptable dépend d'une règle qui peut changer.</li>
+      <li><strong>Pas d'inflation supplémentaire.</strong> La monnaie a été créée lors des achats ; l'annulation ne met pas un euro de plus en circulation.</li>
+      <li><strong>Les traités ne sont pas éternels.</strong> Ils ont déjà été modifiés ou interprétés largement pendant les crises ; ce qui est interdit aujourd'hui peut être décidé demain, collectivement.</li>
+    </ul>
+  }
+  contre={
+    <ul>
+      <li><strong>Le gain est une illusion comptable.</strong> Ce que l'État ne paie plus, la Banque de France ne le touche plus, alors qu'elle doit toujours rémunérer les réserves. Ses bénéfices reviennent à l'État : en net, l'État n'économise rien, il transfère un trou dans les comptes de sa banque centrale.</li>
+      <li><strong>C'est interdit par les traités.</strong> L'article 123 interdit aux banques centrales de financer les États ; la présidence de la BCE a écrit en <Chiffre id="prop.lettre-bce-2021" /> que l'annulation enfreindrait cette interdiction. La Banque de France agit pour le compte de l'Eurosystème et ne peut pas décider seule.</li>
+      <li><strong>La confiance a un prix.</strong> Une annulation, même de titres publics, signale que l'État peut revenir sur ses engagements. Une prime de risque, même faible, appliquée à toute la dette qui se refinance coûterait vite plus que l'économie espérée.</li>
+      <li><strong>Ne plus rémunérer les réserves n'est pas gratuit.</strong> C'est un impôt sur les banques, répercuté sur les crédits et l'épargne, et cela compliquerait la conduite de la politique monétaire.</li>
+      <li><strong>Le stock baisse déjà.</strong> Les titres arrivent à échéance sans être remplacés : le portefeuille de la Banque de France diminue chaque trimestre.</li>
+    </ul>
+  }
+/>
+
+## 5. Ordres de grandeur
+
+| | Montant |
+|---|---|
+| Titres publics détenus par la Banque de France (programmes de rachat, coût amorti) | <Chiffre id="bdf.titres-politique-monetaire" /> |
+| Dette publique totale à la même date | <Chiffre id="dette.stock" /> |
+| Situation financière nette de la Banque de France | <Chiffre id="bdf.situation-nette" /> |
+| Intérêts que l'État ne paierait plus | de l'ordre de 2 à 7 Md€ par an (coupon moyen de 0,5 % à 1,5 %, hypothèse) |
+| Recettes perdues par la Banque de France | le même montant, chaque année |
+| Coût d'une prime de risque de 0,5 point sur les emprunts de l'État | environ 1,5 Md€ la première année, puis davantage chaque année au fil du refinancement |
+| Baisse de la dette publique affichée | environ 16 points de PIB (près de 14 % de la dette), sans enrichissement de l'ensemble État + banque centrale |
+
+Pour situer : la charge de la dette prévue au budget de l'État pour <DateDonnee id="etat.charge-dette" /> est de
+<Chiffre id="etat.charge-dette" />.
+
+## 6. Verdict
+
+<Verdict niveau="ne-tient-pas">
+L'annulation de la dette détenue par la banque centrale ne libère pas de marges budgétaires durables : ce que
+l'État gagne, sa banque centrale le perd, puisque les réserves créées pour acheter les titres restent dues. Elle est
+en outre contraire à l'article 123 du traité, et la France ne peut pas la décider seule. Ce qui reste discutable,
+c'est l'ampleur de la réaction des marchés et la question de la rémunération des réserves, qui relève de
+l'Eurosystème.
+</Verdict>
+
+<GrilleVerdict
+  tient={<p>La dette détenue par la Banque de France n'est pas une dette ordinaire : ses intérêts reviennent en grande partie à l'État, tant que la banque centrale fait des bénéfices. Une banque centrale peut fonctionner un temps avec des fonds propres négatifs.</p>}
+  tientPas={<p>L'idée d'un gain budgétaire : l'économie d'intérêts de l'État est compensée par la perte de la Banque de France. L'idée qu'un pays puisse l'imposer seul : c'est contraire aux traités et cela relève de l'Eurosystème.</p>}
+  debattu={<p>La réaction des investisseurs (de faible à forte), la viabilité durable d'une banque centrale aux fonds propres négatifs, et l'opportunité de rémunérer moins les réserves des banques.</p>}
+/>

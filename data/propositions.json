@@ -1,0 +1,107 @@
+{
+  "description": "Chiffres utilisés dans les fiches « Propositions passées au crible ».",
+  "donnees": [
+    {
+      "id": "prop.grandes-fortunes-patrimoine",
+      "label": "Patrimoine des 500 plus grandes fortunes professionnelles (classement Challenges 2024)",
+      "valeur": 1228,
+      "unite": "Md€",
+      "date": "2024",
+      "source": { "nom": "Sénat, rapport n° 689 (2024-2025) sur l'impôt plancher de 2 % sur les très hauts patrimoines (4 juin 2025)", "url": "https://www.senat.fr/rap/l24-689/l24-6891.html" },
+      "statut": "verifie",
+      "consulte_le": "2026-10-20",
+      "note": "Estimation d'un magazine, reprise par le rapport du Sénat, qui en souligne les incertitudes de méthode."
+    },
+    {
+      "id": "prop.grandes-fortunes-impots",
+      "label": "Impôts directs déjà payés par ces fortunes, rapportés à leur patrimoine (reconstitution du Sénat)",
+      "valeur": 0.3,
+      "unite": "% du patrimoine",
+      "date": "2025",
+      "source": { "nom": "Sénat, rapport n° 689 (2024-2025)", "url": "https://www.senat.fr/rap/l24-689/l24-6891.html" },
+      "statut": "verifie",
+      "consulte_le": "2026-10-20",
+      "note": "Ordre de grandeur utilisé par le rapporteur pour reconstituer le rendement d'un impôt plancher de 2 %."
+    },
+    {
+      "id": "prop.foyers-concernes",
+      "label": "Foyers dont le patrimoine dépasse 100 millions d'euros (estimation)",
+      "serie": [{ "x": "bas", "y": 1600 }, { "x": "haut", "y": 1800 }],
+      "unite": "foyers",
+      "date": "2025",
+      "source": { "nom": "Sénat, rapport n° 689 (2024-2025), citant les estimations de G. Zucman", "url": "https://www.senat.fr/rap/l24-689/l24-6891.html" },
+      "statut": "verifie",
+      "consulte_le": "2026-10-20"
+    },
+    {
+      "id": "prop.impot-plancher-rendements",
+      "label": "Rendement annuel estimé d'un impôt plancher de 2 % sur les patrimoines de plus de 100 M€",
+      "serie": [
+        { "x": "Estimation de ses promoteurs (bas)", "y": 15 },
+        { "x": "Reconstitution du rapporteur du Sénat", "y": 20 },
+        { "x": "Estimation de ses promoteurs (haut)", "y": 25 },
+        { "x": "Estimation critique, impôt sur les sociétés déduit (bas)", "y": 2 },
+        { "x": "Estimation critique, impôt sur les sociétés déduit (haut)", "y": 3 }
+      ],
+      "unite": "Md€ par an",
+      "date": "2025",
+      "source": { "nom": "Sénat, rapport n° 689 (2024-2025)", "url": "https://www.senat.fr/rap/l24-689/l24-6891.html" },
+      "statut": "verifie",
+      "consulte_le": "2026-10-20",
+      "note": "15 à 25 Md€ : estimation de G. Zucman ; 2 à 3 Md€ : calcul d'A. Levy si l'impôt sur les sociétés payé par les entreprises détenues est déduit."
+    },
+    {
+      "id": "prop.elasticite-zucman",
+      "label": "Baisse à long terme du nombre de redevables pour 1 point de taxe supplémentaire sur les grandes fortunes",
+      "valeur": 2,
+      "unite": "%",
+      "date": "2025",
+      "source": { "nom": "Sénat, rapport n° 689 (2024-2025), citant les travaux de G. Zucman", "url": "https://www.senat.fr/rap/l24-689/l24-6891.html" },
+      "statut": "verifie",
+      "consulte_le": "2026-10-20",
+      "note": "Le rapporteur souligne que ces études excluaient les biens professionnels, inclus dans l'impôt proposé."
+    },
+    {
+      "id": "prop.ipp-taux-effectif",
+      "label": "Taux d'imposition effectif des 0,0002 % de foyers les plus riches (revenu économique, données 2016)",
+      "valeur": 26,
+      "unite": "%",
+      "date": "2016",
+      "source": { "nom": "Sénat, rapport n° 689 (2024-2025), citant l'étude de l'Institut des politiques publiques (2023)", "url": "https://www.senat.fr/rap/l24-689/l24-6891.html" },
+      "statut": "verifie",
+      "consulte_le": "2026-10-20",
+      "note": "Contre 59 % si leur revenu économique était imposé au barème. Le calcul attribue les bénéfices non distribués des sociétés à leur actionnaire de contrôle."
+    },
+    {
+      "id": "prop.isf-cout-suppression",
+      "label": "Coût de la transformation de l'ISF en impôt sur la fortune immobilière (IFI)",
+      "serie": [{ "x": "2018", "y": 2.9 }, { "x": "2022", "y": 4.5 }],
+      "unite": "Md€",
+      "date": "2022",
+      "source": { "nom": "Sénat, rapport n° 689 (2024-2025), citant le rapport sénatorial de 2019 (2,9 Md€ en 2018) et France Stratégie (4,5 Md€ en 2022)", "url": "https://www.senat.fr/rap/l24-689/l24-6891.html" },
+      "statut": "verifie",
+      "consulte_le": "2026-10-20"
+    },
+    {
+      "id": "prop.tva-point",
+      "label": "Rendement d'un point de taux normal de TVA (ordre de grandeur)",
+      "valeur": 9,
+      "unite": "Md€ par an",
+      "date": "2025",
+      "source": { "nom": "Ordre de grandeur souvent cité dans le débat budgétaire ; à confirmer dans l'annexe « Voies et moyens » du PLF", "url": "https://www.budget.gouv.fr" },
+      "statut": "a_verifier",
+      "note": "Aucune estimation officielle récente trouvée ; le CESE citait 6,5 Md€ par point il y a une dizaine d'années, avec une TVA moins élevée."
+    },
+    {
+      "id": "prop.lettre-bce-2021",
+      "label": "Date de la lettre de la présidence de la BCE jugeant l'annulation incompatible avec les traités",
+      "valeur": 2021,
+      "unite": "année",
+      "date": "2021-02-05",
+      "source": { "nom": "BCE, lettre de la présidente de la BCE à une membre du Parlement européen (5 février 2021)", "url": "https://www.ecb.europa.eu/ecb/access_to_documents/document/correspondence/shared/data/ecb.dr.cor20210205Aubry.fr.pdf" },
+      "statut": "verifie",
+      "consulte_le": "2026-10-20",
+      "note": "La lettre juge l'annulation incompatible avec les traités, au titre de l'interdiction du financement monétaire (article 123 du traité sur le fonctionnement de l'Union européenne)."
+    }
+  ]
+}
