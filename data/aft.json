@@ -1,0 +1,35 @@
+{
+  "description": "Dette négociable de l'État, gérée par l'Agence France Trésor : encours, maturité, détenteurs.",
+  "donnees": [
+    {
+      "id": "aft.dette-negociable",
+      "label": "Dette négociable de l'État",
+      "valeur": 2800,
+      "unite": "Md€",
+      "date": "2026",
+      "source": { "nom": "Agence France Trésor, bulletin mensuel", "url": "https://www.aft.gouv.fr" },
+      "statut": "a_verifier",
+      "note": "Ordre de grandeur du cahier des charges. Relever la date exacte du bulletin."
+    },
+    {
+      "id": "aft.maturite-moyenne",
+      "label": "Maturité moyenne de la dette négociable",
+      "valeur": 8.5,
+      "unite": "ans",
+      "date": "2026",
+      "source": { "nom": "Agence France Trésor, bulletin mensuel", "url": "https://www.aft.gouv.fr" },
+      "statut": "a_verifier",
+      "note": "Ordre de grandeur du cahier des charges (≈ 8,5 ans)."
+    },
+    {
+      "id": "aft.part-eurosysteme",
+      "label": "Part de la dette détenue par l'Eurosystème",
+      "valeur": 18,
+      "unite": "%",
+      "date": "2026",
+      "source": { "nom": "Banque de France / Agence France Trésor", "url": "https://www.banque-france.fr" },
+      "statut": "a_verifier",
+      "note": "Ordre de grandeur du cahier des charges (≈ 18 %). Préciser le dénominateur : dette négociable de l'État ou dette de Maastricht."
+    }
+  ]
+}

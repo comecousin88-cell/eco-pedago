@@ -1,6 +1,6 @@
 # Plan : « Éco en clair », comprendre l'économie publique française
 
-Statut : **proposition, en attente de validation**.
+Statut : **validé le 20/10/2026** (plan et 5 décisions). La mise à jour automatique des indicateurs (décision 5) est repoussée à la fin, une fois le site en ligne : d'ici là, le tableau de bord lit des JSON datés, mis à jour à la main.
 
 ---
 
@@ -139,7 +139,7 @@ Séries (historiques, projections) : même en-tête, avec `"serie": [{ "x": "197
 
 ### Calculs : `src/lib/economics.ts` (+ `economics.test.ts`)
 `prixObligation`, `rendementActuariel`, `prixBTF`, `tauxReel` (exact et approché), `trajectoireDette` (boule de neige), `soldePrimaireStabilisant`, `tauxApparentParCouches`, `soldeRetraites` (3 leviers), `ficheDePaie`, `impotSurLeRevenu`, `rendementTaxePatrimoine` (avec élasticité), `bilanBanqueCentrale`, `modeleJeuMinistre`.
-Chaque fonction est testée sur des cas calculables à la main. Exemple : une OAT de 100 € à 10 ans avec un coupon de 2 % vaut 100 € si le taux de marché est de 2 % et 91,98 € s'il est de 3 %.
+Chaque fonction est testée sur des cas calculables à la main. Exemple : une OAT de 100 € à 10 ans avec un coupon de 2 % vaut 100 € si le taux de marché est de 2 % et 91,47 € s'il est de 3 %.
 
 ---
 

@@ -6,8 +6,11 @@ import { useState } from "react";
 import { navItems, type NavItem } from "@/content/navigation";
 import { SoonBadge } from "@/components/ui/SoonBadge";
 
+// Les adresses finissent par « / » (trailingSlash) : on compare sans.
 function isActive(pathname: string, href: string) {
-  return pathname === href || pathname.startsWith(`${href}/`);
+  const p = pathname.replace(/\/$/, "");
+  const h = href.replace(/\/$/, "");
+  return p === h || p.startsWith(`${h}/`);
 }
 
 function NavLink({
@@ -28,8 +31,8 @@ function NavLink({
       aria-current={active ? "page" : undefined}
       className={`${className} ${
         active
-          ? "bg-stone-900 text-white"
-          : "text-stone-700 hover:bg-stone-100 hover:text-stone-900"
+          ? "bg-ink text-page"
+          : "text-body hover:bg-subtle hover:text-ink"
       }`}
     >
       {item.label}
@@ -60,7 +63,7 @@ export function MainNav() {
       {/* Mobile : bouton menu */}
       <button
         type="button"
-        className="rounded-md p-2 text-stone-700 hover:bg-stone-100 md:hidden"
+        className="rounded-md p-2 text-body hover:bg-subtle md:hidden"
         aria-expanded={open}
         aria-controls="menu-mobile"
         onClick={() => setOpen((o) => !o)}
@@ -86,7 +89,7 @@ export function MainNav() {
       {open && (
         <ul
           id="menu-mobile"
-          className="absolute inset-x-0 top-full space-y-1 border-b border-stone-200 bg-white px-4 py-3 shadow-sm md:hidden"
+          className="absolute inset-x-0 top-full space-y-1 border-b border-line bg-surface px-4 py-3 shadow-sm md:hidden"
         >
           {navItems.map((item) => (
             <li key={item.href}>

@@ -1,0 +1,109 @@
+export const metadata = {
+  title: "Atelier",
+  robots: { index: false },
+};
+
+# Atelier : les briques pédagogiques
+
+Cette page de travail montre chaque brique dans un vrai fichier MDX, avec la couleur du Module 1.
+Elle n'est pas dans le menu. Les textes ci-dessous sont des exemples : la rédaction définitive
+viendra avec les modules.
+
+## Les trois niveaux
+
+<Niveaux>
+<Essentiel>
+
+Le <Terme id="deficit-public">déficit</Terme> est ce qui manque **sur une année**. La
+<Terme id="dette-publique">dette</Terme> est le total de tout ce qui a été emprunté **au fil des
+années** et pas encore remboursé.
+
+Pensez à une baignoire : le robinet, c'est le déficit ; le niveau de l'eau, c'est la dette. Tant
+que le robinet coule, même un peu, le niveau monte.
+
+</Essentiel>
+<Mecanisme>
+
+Chaque année, le déficit s'ajoute à la dette.
+
+<Exemple>
+Une dette de 1 000 € et trois années de déficit de 100 €, 100 € puis 50 € : la dette passe à
+1 100 €, puis 1 200 €, puis 1 250 €. Le déficit a baissé de moitié la troisième année, mais la
+dette a **quand même** augmenté.
+</Exemple>
+
+</Mecanisme>
+<PlusLoin>
+
+En proportion du PIB, la variation de la dette s'écrit approximativement :
+
+$$
+\Delta d \approx (r - g)\,d - sp
+$$
+
+où $d$ est la dette rapportée au PIB, $r$ le taux d'intérêt moyen, $g$ la
+<Terme id="croissance-nominale">croissance nominale</Terme> et $sp$ le
+<Terme id="solde-primaire">solde primaire</Terme>.
+
+</PlusLoin>
+</Niveaux>
+
+## Un chiffre sourcé
+
+La dette publique atteint environ <Chiffre id="dette.stock" />, soit <Chiffre id="dette.ratio-pib" />.
+Au survol, chaque chiffre indique sa source et sa date. Ceux-ci sont soulignés d'une vague
+orange : ils viennent du cahier des charges et n'ont pas encore été vérifiés à la source.
+
+## Une figure
+
+<Figure
+  titre="La dette publique en un chiffre"
+  resume="La dette publique de la France représente environ 117 % de la richesse produite en un an (chiffre à vérifier)."
+  donnees={["dette.stock", "dette.ratio-pib"]}
+>
+  <p className="font-serif text-5xl font-semibold text-ink"><Chiffre id="dette.ratio-pib" /></p>
+  <p className="mt-1 text-muted">soit <Chiffre id="dette.stock" /></p>
+</Figure>
+
+## Un débat
+
+<Debat
+  question="Faut-il réduire vite la dette ?"
+  pour={<p>Réduire vite rassure les prêteurs et limite la charge des intérêts futurs, surtout quand les taux montent.</p>}
+  contre={<p>Réduire trop vite peut freiner la croissance, ce qui fait baisser les recettes et peut, au bout du compte, ralentir la baisse du ratio dette/PIB.</p>}
+>
+Les deux camps s'accordent sur l'arithmétique ; ils divergent sur le rythme et sur l'effet des
+économies sur la croissance (le « multiplicateur »).
+</Debat>
+
+## Un verdict
+
+<Verdict niveau="ne-tient-pas">
+Exemple de mise en forme : le verdict porte sur une proposition et ses chiffres, jamais sur ceux
+qui la portent.
+</Verdict>
+
+<ARetenir>
+Le déficit est un flux (par an), la dette est un stock (à une date). Un déficit qui baisse
+n'empêche pas la dette de monter.
+</ARetenir>
+
+## Un quiz
+
+<Quiz
+  module="atelier"
+  questions={[
+    {
+      question: "Le déficit baisse de 100 € à 50 €. Que fait la dette ?",
+      choix: ["Elle baisse", "Elle augmente moins vite", "Elle ne bouge pas"],
+      bonne: 1,
+      explication: "Tant qu'il y a un déficit, la dette augmente : elle augmente simplement de 50 € au lieu de 100 €.",
+    },
+    {
+      question: "Que mesure le solde primaire ?",
+      choix: ["Le solde public sans les intérêts de la dette", "Le solde de l'État seul", "Le solde corrigé de la conjoncture"],
+      bonne: 0,
+      explication: "Le solde primaire retire les intérêts : il montre si les politiques courantes sont financées par les recettes courantes.",
+    },
+  ]}
+/>

@@ -7,27 +7,36 @@ export interface NavItem {
   status: SectionStatus;
 }
 
-/** Les trois grandes parties du site, dans l'ordre du menu. */
+/**
+ * Entrées du menu principal, dans l'ordre. Les rubriques « Idées reçues » et
+ * « La France en 10 chiffres » s'ajouteront quand elles existeront.
+ */
 export const navItems: NavItem[] = [
   {
-    href: "/concepts",
-    label: "Comprendre",
+    href: "/modules/",
+    label: "Modules",
     description:
-      "Une page par notion, expliquée sans jargon, avec un simulateur pour tester par vous-même.",
+      "Déficit, dette, emprunt, retraites, impôts : chaque notion expliquée en trois niveaux, avec des simulateurs.",
     status: "available",
   },
   {
-    href: "/tableau-de-bord",
+    href: "/tableau-de-bord/",
     label: "Tableau de bord",
     description:
-      "Les vrais chiffres de l'économie (taux BCE, inflation, chômage, dette) mis à jour automatiquement.",
+      "Les principaux indicateurs (taux, inflation, chômage, dette), avec leur source et leur date.",
     status: "soon",
   },
   {
-    href: "/jeu-budget",
-    label: "Gère le budget",
+    href: "/jeu-budget/",
+    label: "Ministre des Finances",
     description:
-      "Prenez les commandes de l'État : fixez dépenses, impôts et taux, puis regardez l'année défiler.",
+      "Tenez le budget de l'État pendant un mandat : dépenses, impôts, retraites… et leurs conséquences.",
     status: "soon",
+  },
+  {
+    href: "/glossaire/",
+    label: "Glossaire",
+    description: "Tous les termes techniques du site, expliqués simplement.",
+    status: "available",
   },
 ];

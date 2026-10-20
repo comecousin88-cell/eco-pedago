@@ -1,0 +1,45 @@
+{
+  "description": "Dette publique, déficit et charge de la dette (ensemble des administrations publiques, au sens de Maastricht).",
+  "donnees": [
+    {
+      "id": "dette.stock",
+      "label": "Dette publique au sens de Maastricht",
+      "valeur": 3500,
+      "unite": "Md€",
+      "date": "2026-03-31",
+      "source": { "nom": "Insee, dette trimestrielle de Maastricht des administrations publiques", "url": "https://www.insee.fr" },
+      "statut": "a_verifier",
+      "note": "Ordre de grandeur du cahier des charges (« ≈ 3 500 Md€, T1 2026 »). Valeur exacte et URL de la publication à relever."
+    },
+    {
+      "id": "dette.ratio-pib",
+      "label": "Dette publique en % du PIB",
+      "valeur": 117,
+      "unite": "% du PIB",
+      "date": "2026-03-31",
+      "source": { "nom": "Insee, dette trimestrielle de Maastricht des administrations publiques", "url": "https://www.insee.fr" },
+      "statut": "a_verifier",
+      "note": "Ordre de grandeur du cahier des charges (« ≈ 117 % du PIB, T1 2026 »)."
+    },
+    {
+      "id": "deficit.ratio-pib",
+      "label": "Déficit public",
+      "valeur": 5.1,
+      "unite": "% du PIB",
+      "date": "2025",
+      "source": { "nom": "Insee, comptes de la Nation (compte provisoire des administrations publiques)", "url": "https://www.insee.fr" },
+      "statut": "a_verifier",
+      "note": "Chiffre du cahier des charges pour l'année 2025."
+    },
+    {
+      "id": "dette.charge",
+      "label": "Charge de la dette",
+      "valeur": 77,
+      "unite": "Md€",
+      "date": "2026",
+      "source": { "nom": "Cour des comptes", "url": "https://www.ccomptes.fr" },
+      "statut": "a_verifier",
+      "note": "Ordre de grandeur du cahier des charges (« ≈ 77 Md€ en 2026 »). Préciser le périmètre : État seul ou ensemble des administrations publiques."
+    }
+  ]
+}

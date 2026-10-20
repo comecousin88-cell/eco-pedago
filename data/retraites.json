@@ -1,0 +1,38 @@
+{
+  "description": "Retraites : dépenses, démographie, projections du Conseil d'orientation des retraites.",
+  "donnees": [
+    {
+      "id": "retraites.depenses-pib",
+      "label": "Dépenses de retraite",
+      "valeur": 14.1,
+      "unite": "% du PIB",
+      "date": "2025",
+      "source": { "nom": "Conseil d'orientation des retraites, rapport annuel", "url": "https://www.cor-retraites.fr" },
+      "statut": "a_verifier",
+      "note": "Chiffre du cahier des charges (14,1 % du PIB en 2025)."
+    },
+    {
+      "id": "retraites.depenses-montant",
+      "label": "Dépenses de retraite",
+      "valeur": 422,
+      "unite": "Md€",
+      "date": "2025",
+      "source": { "nom": "Conseil d'orientation des retraites, rapport annuel", "url": "https://www.cor-retraites.fr" },
+      "statut": "a_verifier",
+      "note": "Chiffre du cahier des charges (422 Md€ en 2025)."
+    },
+    {
+      "id": "retraites.rapport-demographique",
+      "label": "Personnes de 20 à 64 ans pour une personne de 65 ans ou plus",
+      "serie": [
+        { "x": "2025", "y": 2.5 },
+        { "x": "2070", "y": 1.6 }
+      ],
+      "unite": "personnes",
+      "date": "2026",
+      "source": { "nom": "Conseil d'orientation des retraites, rapport annuel 2026", "url": "https://www.cor-retraites.fr" },
+      "statut": "a_verifier",
+      "note": "Deux points du cahier des charges (2,5 en 2025, ≈ 1,6 en 2070). Série complète 1960-2070 à relever."
+    }
+  ]
+}

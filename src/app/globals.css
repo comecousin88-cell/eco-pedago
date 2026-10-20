@@ -1,14 +1,190 @@
 @import "tailwindcss";
+@import "katex/dist/katex.min.css";
 
+/* Le mode sombre suit l'attribut data-theme posé sur <html> par le script
+   de layout.tsx (avant le premier affichage, donc sans flash). */
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+/*
+ * Couleurs nommées par rôle. Les composants n'utilisent que ces noms
+ * (bg-page, text-ink, border-line…) : le mode sombre se règle ici, une fois.
+ */
 @theme inline {
   --font-sans: var(--font-inter);
   --font-serif: var(--font-source-serif);
+
+  --color-page: var(--page);
+  --color-surface: var(--surface);
+  --color-subtle: var(--subtle);
+  --color-ink: var(--ink);
+  --color-body: var(--body);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+
+  /* Couleur du module courant, posée par <ModuleTheme> (voir modules.ts). */
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+  --color-accent-line: var(--accent-line);
+
+  /* Couleurs fonctionnelles (verdicts, hausses/baisses) */
+  --color-ok: var(--ok);
+  --color-ok-soft: var(--ok-soft);
+  --color-warn: var(--warn);
+  --color-warn-soft: var(--warn-soft);
+  --color-bad: var(--bad);
+  --color-bad-soft: var(--bad-soft);
+
+  /* Séries des graphiques : ordre fixe, jamais réordonné (palette validée
+     pour les daltonismes, voir docs de data-viz). */
+  --color-series-1: var(--series-1);
+  --color-series-2: var(--series-2);
+  --color-series-3: var(--series-3);
+  --color-series-4: var(--series-4);
+  --color-series-5: var(--series-5);
+  --color-series-6: var(--series-6);
+  --color-series-7: var(--series-7);
+  --color-series-8: var(--series-8);
 }
 
-:root {
+:root,
+[data-theme="light"] {
   color-scheme: light;
+  --page: #fafaf9;
+  --surface: #ffffff;
+  --subtle: #f5f5f4;
+  --ink: #1c1917;
+  --body: #292524;
+  --muted: #57534e;
+  --line: #e7e5e4;
+  --line-strong: #d6d3d1;
+
+  --accent: #0369a1;
+
+  --ok: #15803d;
+  --ok-soft: #f0fdf4;
+  --warn: #b45309;
+  --warn-soft: #fffbeb;
+  --bad: #b91c1c;
+  --bad-soft: #fef2f2;
+
+  --series-1: #2a78d6;
+  --series-2: #eb6834;
+  --series-3: #1baf7a;
+  --series-4: #eda100;
+  --series-5: #e87ba4;
+  --series-6: #008300;
+  --series-7: #6250d6;
+  --series-8: #e34948;
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
+  --page: #121212;
+  --surface: #1c1b1a;
+  --subtle: #262524;
+  --ink: #f5f5f4;
+  --body: #e7e5e4;
+  --muted: #a8a29e;
+  --line: #34322f;
+  --line-strong: #4a4744;
+
+  --accent: #7dd3fc;
+
+  --ok: #4ade80;
+  --ok-soft: #12261a;
+  --warn: #fbbf24;
+  --warn-soft: #2b2110;
+  --bad: #f87171;
+  --bad-soft: #2d1515;
+
+  --series-1: #3987e5;
+  --series-2: #d95926;
+  --series-3: #199e70;
+  --series-4: #c98500;
+  --series-5: #d55181;
+  --series-6: #008300;
+  --series-7: #9085e9;
+  --series-8: #e66767;
+}
+
+/*
+ * Couleur d'accent d'un module : <ModuleTheme> pose --accent-l (clair) et
+ * --accent-d (sombre) ; les nuances douces se déduisent par mélange, il n'y a
+ * donc qu'une couleur à choisir par module et par thème.
+ */
+.module-theme {
+  --accent: var(--accent-l);
+}
+[data-theme="dark"] .module-theme {
+  --accent: var(--accent-d);
+}
+:root,
+.module-theme {
+  --accent-soft: color-mix(in oklab, var(--accent) 8%, var(--surface));
+  --accent-line: color-mix(in oklab, var(--accent) 35%, var(--surface));
 }
 
 body {
-  @apply bg-stone-50 font-sans text-stone-800;
+  @apply bg-page font-sans text-body;
+}
+
+/* Focus clavier bien visible partout */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Texte des pages MDX (dans la couche components : les classes utilitaires
+   comme text-base ou my-8 restent prioritaires). Les blocs ne sont stylés
+   qu'en enfants directs, pour ne pas déteindre sur les composants intégrés
+   (quiz, figures…). */
+@layer components {
+  .prose-eco {
+    @apply max-w-[68ch] text-[1.0625rem] leading-relaxed text-body;
+  }
+  .prose-eco > * + * {
+    @apply mt-5;
+  }
+  .prose-eco > h1 {
+    @apply font-serif text-3xl leading-tight font-semibold tracking-tight text-ink sm:text-4xl;
+  }
+  .prose-eco > h2 {
+    @apply mt-12 font-serif text-2xl font-semibold text-ink sm:text-3xl;
+  }
+  .prose-eco > h3 {
+    @apply mt-8 text-lg font-semibold text-ink;
+  }
+  .prose-eco a {
+    @apply font-medium text-accent underline underline-offset-4;
+  }
+  .prose-eco > ul {
+    @apply list-disc space-y-2 pl-6;
+  }
+  .prose-eco > ol {
+    @apply list-decimal space-y-2 pl-6;
+  }
+  .prose-eco strong {
+    @apply font-semibold text-ink;
+  }
+  .prose-eco > table {
+    @apply w-full border-collapse text-sm;
+  }
+  .prose-eco > table th,
+  .prose-eco > table td {
+    @apply border-b border-line px-2 py-2 text-left;
+  }
+  .prose-eco .katex-display {
+    @apply overflow-x-auto overflow-y-hidden py-2;
+  }
 }

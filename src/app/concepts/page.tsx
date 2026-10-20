@@ -1,31 +1,25 @@
 import type { Metadata } from "next";
-import { ConceptCard } from "@/components/concepts/ConceptCard";
-import { concepts } from "@/content/concepts";
+import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Comprendre",
-  description:
-    "Taux d'intérêt, inflation, dette publique, retraites : une page par notion, avec un simulateur.",
+  title: "Page déplacée",
+  robots: { index: false },
 };
 
+// Ancienne adresse : les notions sont désormais dans les modules. L'export est
+// statique (pas de redirection côté serveur) : une balise meta refresh suffit,
+// avec un lien pour qui l'aurait désactivée.
 export default function ConceptsPage() {
   return (
-    <div className="mx-auto max-w-5xl px-4 py-12 sm:px-6 sm:py-16">
-      <h1 className="font-serif text-3xl font-semibold tracking-tight text-stone-900 sm:text-4xl">
-        Comprendre les notions clés
-      </h1>
-      <p className="mt-4 max-w-2xl text-lg leading-relaxed text-stone-600">
-        Quatre notions qui reviennent sans cesse dans l&apos;actualité. Pour
-        chacune : une explication courte, sans jargon, et un simulateur pour
-        voir par vous-même ce qui se passe quand on change les paramètres.
+    <div className="mx-auto max-w-3xl px-4 py-14 sm:px-6">
+      <meta httpEquiv="refresh" content="0; url=/modules/" />
+      <p className="text-lg text-muted">
+        Cette page a déménagé :{" "}
+        <Link href="/modules/" className="font-medium text-accent underline underline-offset-4">
+          les notions sont maintenant dans les modules
+        </Link>
+        .
       </p>
-      <ul className="mt-10 grid gap-5 sm:grid-cols-2">
-        {concepts.map((concept) => (
-          <li key={concept.slug}>
-            <ConceptCard concept={concept} />
-          </li>
-        ))}
-      </ul>
     </div>
   );
 }
