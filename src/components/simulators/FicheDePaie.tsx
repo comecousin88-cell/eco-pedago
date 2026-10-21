@@ -1,12 +1,12 @@
 "use client";
 
-import { useState } from "react";
 import { VueTableau } from "@/components/graphiques/commun";
 import { getValeur } from "@/lib/data";
 import { ficheDePaie, impotSurLeRevenu, type Destination, type OptionsPaie } from "@/lib/economics";
 import { formatEuros, formatNombre } from "@/lib/format";
 import { parametresImpot, parametresPaie } from "@/lib/parametres";
 import { BoutonSimu, Curseur } from "./Curseur";
+import { BarreScenario, MarqueModifie, useScenario } from "./Scenario";
 
 /**
  * Du coût employeur à ce qui reste en poche : cascade, puis ventilation des
@@ -34,8 +34,9 @@ const TAUX_AT = 2; // % : hypothèse, le taux réel est notifié à chaque entre
 
 export function FicheDePaie() {
   const smic = getValeur("paie.smic-mensuel");
-  const [brut, setBrut] = useState(3500);
-  const [taille, setTaille] = useState<OptionsPaie["taille"]>("11-49");
+  const s = useScenario({ brut: 3500, taille: "11-49" as OptionsPaie["taille"] });
+  const brut = s.valeurs.brut;
+  const taille = s.valeurs.taille;
 
   const f = ficheDePaie(brut, parametresPaie(), { taille, tauxAT: TAUX_AT });
   const ir = impotSurLeRevenu(f.netImposable * 12, parametresImpot());
@@ -63,29 +64,34 @@ export function FicheDePaie() {
 
   return (
     <div className="space-y-6">
+      <BarreScenario scenario={s} libelleReference="valeurs de départ" />
       <div className="grid gap-5 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-end">
         <Curseur
           libelle="Salaire brut mensuel"
           valeur={brut}
+          reference={s.reference.brut}
+          affichageReference={formatEuros(s.reference.brut, Number.isInteger(s.reference.brut) ? 0 : 2)}
           min={Math.ceil(smic.valeur / 50) * 50}
           max={10000}
           pas={50}
-          onChange={setBrut}
+          onChange={s.regler("brut")}
           affichage={formatEuros(brut, Number.isInteger(brut) ? 0 : 2)}
           aide={
             <>
               Smic au {smic.date.split("-").reverse().join("/")} : {formatEuros(smic.valeur)} bruts pour 35 heures.{" "}
-              <button type="button" onClick={() => setBrut(smic.valeur)} className="font-medium text-accent underline underline-offset-4">
+              <button type="button" onClick={() => s.regler("brut")(smic.valeur)} className="font-medium text-accent underline underline-offset-4">
                 Calculer au Smic
               </button>
             </>
           }
         />
         <div>
-          <p className="text-sm font-semibold text-ink">Taille de l&apos;entreprise</p>
+          <p className="text-sm font-semibold text-ink">
+            Taille de l&apos;entreprise <MarqueModifie actif={s.estModifiee("taille")} />
+          </p>
           <div className="mt-2 flex flex-wrap gap-1.5">
             {TAILLES.map((t) => (
-              <BoutonSimu key={t.v} actif={taille === t.v} onClick={() => setTaille(t.v)}>
+              <BoutonSimu key={t.v} actif={taille === t.v} onClick={() => s.regler("taille")(t.v)}>
                 {t.l}
               </BoutonSimu>
             ))}

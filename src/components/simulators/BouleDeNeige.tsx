@@ -1,12 +1,12 @@
 "use client";
 
-import { useState } from "react";
 import { CartesianGrid, Line, LineChart, ReferenceLine, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 import { AXE, GRILLE, Infobulle, Legende } from "@/components/graphiques/commun";
 import { getSerie, getValeur } from "@/lib/data";
 import { soldePrimaireStabilisant, tauxApparent, trajectoireDette, trajectoireTauxApparent } from "@/lib/economics";
 import { formatNombre } from "@/lib/format";
 import { BoutonSimu, Curseur } from "./Curseur";
+import { BarreScenario, MarqueModifie, useScenario } from "./Scenario";
 
 /**
  * Simulateur de l'effet boule de neige : trajectoire de la dette/PIB selon le
@@ -33,11 +33,17 @@ export function BouleDeNeige() {
     sp: Math.round(sp0 * 10) / 10,
   };
 
-  const [r, setR] = useState(depart.r);
-  const [g, setG] = useState(depart.g);
-  const [sp, setSp] = useState(depart.sp);
-  const [horizon, setHorizon] = useState(20);
-  const [progressif, setProgressif] = useState(false);
+  const s = useScenario({ r: depart.r, g: depart.g, sp: depart.sp, horizon: 20, progressif: false as boolean });
+
+  const r = s.valeurs.r;
+
+  const g = s.valeurs.g;
+
+  const sp = s.valeurs.sp;
+
+  const horizon = s.valeurs.horizon;
+
+  const progressif = s.valeurs.progressif;
 
   const taux = progressif ? trajectoireTauxApparent(r / 100, oat.valeur / 100, maturite.valeur, horizon) : r / 100;
   // Calculs légers (au plus 30 années) : refaits à chaque rendu.
@@ -63,25 +69,28 @@ export function BouleDeNeige() {
   const sensRG = ecartRG > 0.05 ? "contre" : ecartRG < -0.05 ? "pour" : "neutre";
 
   function appliquer(nouveau: { r?: number; g?: number; sp?: number }, garderProgressif = false) {
-    if (!garderProgressif) setProgressif(false);
-    if (nouveau.r !== undefined) setR(Math.round(nouveau.r * 10) / 10);
-    if (nouveau.g !== undefined) setG(Math.round(nouveau.g * 10) / 10);
+    if (!garderProgressif) s.regler("progressif")(false);
+    if (nouveau.r !== undefined) s.regler("r")(Math.round(nouveau.r * 10) / 10);
+    if (nouveau.g !== undefined) s.regler("g")(Math.round(nouveau.g * 10) / 10);
     // Le solde stabilisant est gardé exact (pas d'arrondi), pour que la dette reste vraiment stable.
-    if (nouveau.sp !== undefined) setSp(nouveau.sp);
+    if (nouveau.sp !== undefined) s.regler("sp")(nouveau.sp);
   }
 
   return (
     <div className="space-y-5">
+      <BarreScenario scenario={s} />
       <div className="grid gap-5 sm:grid-cols-3">
         <Curseur
           libelle="Taux d'intérêt moyen (r)"
           valeur={r}
+          reference={s.reference.r}
+          affichageReference={`${formatNombre(s.reference.r, 1)} %`}
           min={0}
           max={7}
           pas={0.1}
           onChange={(v) => {
-            setR(v);
-            setProgressif(false);
+            s.regler("r")(v);
+            s.regler("progressif")(false);
           }}
           affichage={`${formatNombre(r, 1)} %`}
           aide={`Taux apparent ${fin.x} : ${formatNombre(r0, 2)} %`}
@@ -89,20 +98,24 @@ export function BouleDeNeige() {
         <Curseur
           libelle="Croissance nominale (g)"
           valeur={g}
+          reference={s.reference.g}
+          affichageReference={`${formatNombre(s.reference.g, 1)} %`}
           min={-2}
           max={7}
           pas={0.1}
-          onChange={setG}
+          onChange={s.regler("g")}
           affichage={`${formatNombre(g, 1)} %`}
           aide={`${croissance.date} : ${formatNombre(croissance.valeur, 1)} % (volume + prix)`}
         />
         <Curseur
           libelle="Solde primaire (% du PIB)"
           valeur={sp}
+          reference={s.reference.sp}
+          affichageReference={`${s.reference.sp > 0 ? "+" : ""}${formatNombre(s.reference.sp, 1)} %`}
           min={-6}
           max={4}
           pas={0.1}
-          onChange={setSp}
+          onChange={s.regler("sp")}
           affichage={`${sp > 0 ? "+" : ""}${formatNombre(sp, 1)} %`}
           aide={`${deficit.date} : ${formatNombre(sp0, 1)} % (négatif = déficit hors intérêts)`}
         />
@@ -111,10 +124,11 @@ export function BouleDeNeige() {
       <div className="flex flex-wrap items-center gap-2">
         <span className="text-sm text-muted">Horizon :</span>
         {[10, 20, 30].map((h) => (
-          <BoutonSimu key={h} onClick={() => setHorizon(h)} actif={horizon === h}>
+          <BoutonSimu key={h} onClick={() => s.regler("horizon")(h)} actif={horizon === h}>
             {h} ans
           </BoutonSimu>
         ))}
+        <MarqueModifie actif={s.estModifiee("horizon")} />
       </div>
 
       <div className="flex flex-wrap gap-2">
@@ -123,14 +137,14 @@ export function BouleDeNeige() {
         <BoutonSimu onClick={() => appliquer({ g: depart.g - 1 })}>La croissance ralentit de 1 point</BoutonSimu>
         <BoutonSimu
           onClick={() => {
-            setR(depart.r);
-            setProgressif((p) => !p);
+            s.regler("r")(depart.r);
+            s.regler("progressif")(!progressif);
           }}
           actif={progressif}
         >
           Le taux moyen rejoint peu à peu le taux de marché ({formatNombre(oat.valeur, 2)} %)
         </BoutonSimu>
-        <BoutonSimu onClick={() => appliquer({ ...depart, sp: Math.round(depart.sp * 10) / 10 })}>Revenir au point de départ</BoutonSimu>
+        <MarqueModifie actif={s.estModifiee("progressif")} />
       </div>
 
       <Legende

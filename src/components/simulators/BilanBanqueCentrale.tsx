@@ -1,9 +1,9 @@
 "use client";
 
-import { useState } from "react";
 import { annulerTitres, resultatBanqueCentrale } from "@/lib/economics";
 import { formatEuros, formatNombre } from "@/lib/format";
 import { BoutonSimu, Curseur } from "./Curseur";
+import { BarreScenario, MarqueModifie, useScenario } from "./Scenario";
 
 /**
  * Le bilan simplifié d'une banque centrale, avec 100 € fictifs : elle a acheté
@@ -33,8 +33,9 @@ const SCENARIOS: Record<Scenario, { titre: string; texte: string }> = {
 const BASE = { titres: 100, coupon: 0.01, reserves: 95, fondsPropres: 5 };
 
 export function BilanBanqueCentrale() {
-  const [scenario, setScenario] = useState<Scenario>("normal");
-  const [tauxDepot, setTauxDepot] = useState(3);
+  const s = useScenario({ scenario: "normal" as Scenario, tauxDepot: 3 });
+  const scenario = s.valeurs.scenario;
+  const tauxDepot = s.valeurs.tauxDepot;
 
   const bilan = { ...BASE, tauxDepot: scenario === "normal" ? 0 : tauxDepot / 100 };
   const res = scenario === "annulation" ? annulerTitres({ ...bilan, tauxDepot: 0 }) : resultatBanqueCentrale(bilan);
@@ -45,22 +46,26 @@ export function BilanBanqueCentrale() {
 
   return (
     <div className="space-y-5">
-      <div className="flex flex-wrap gap-2">
-        {(Object.keys(SCENARIOS) as Scenario[]).map((s) => (
-          <BoutonSimu key={s} onClick={() => setScenario(s)} actif={scenario === s}>
-            {SCENARIOS[s].titre}
+      <BarreScenario scenario={s} libelleReference="valeurs de départ" />
+      <div className="flex flex-wrap items-center gap-2">
+        {(Object.keys(SCENARIOS) as Scenario[]).map((sc) => (
+          <BoutonSimu key={sc} onClick={() => s.regler("scenario")(sc)} actif={scenario === sc}>
+            {SCENARIOS[sc].titre}
           </BoutonSimu>
         ))}
+        <MarqueModifie actif={s.estModifiee("scenario")} />
       </div>
 
       {scenario === "hausse" && (
         <Curseur
           libelle="Taux versé sur les réserves (taux de dépôt)"
           valeur={tauxDepot}
+          reference={s.reference.tauxDepot}
+          affichageReference={`${formatNombre(s.reference.tauxDepot, 2)} %`}
           min={0}
           max={5}
           pas={0.25}
-          onChange={setTauxDepot}
+          onChange={s.regler("tauxDepot")}
           affichage={`${formatNombre(tauxDepot, 2)} %`}
           aide="Les titres rapportent toujours 1 % (coupon fixé à l'achat)."
         />

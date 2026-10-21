@@ -1,17 +1,24 @@
 "use client";
 
-import { useId, useState } from "react";
+import { getSerie, getValeur } from "@/lib/data";
 import { pouvoirAchat, tauxReel, tauxReelApproche } from "@/lib/economics";
 import { formatEuros, formatNombre, formatPourcent } from "@/lib/format";
+import { libellePeriode } from "@/lib/indicateurs";
+import { Curseur } from "./Curseur";
+import { BarreScenario, useScenario } from "./Scenario";
 
 /**
  * Taux nominal, inflation, taux réel : on place 100 € pendant un an et l'on
- * regarde ce qu'ils permettent d'acheter à la fin.
+ * regarde ce qu'ils permettent d'acheter à la fin. Les valeurs de départ sont
+ * les chiffres actuels : taux de l'État à 10 ans et inflation sur un an.
  */
 export function TauxReel() {
-  const [nominal, setNominal] = useState(3);
-  const [inflation, setInflation] = useState(2);
-  const id = useId();
+  const oat = getValeur("marches.taux10-france-dernier");
+  const inflationSerie = getSerie("ind.inflation-fr").serie;
+  const inflationActuelle = inflationSerie[inflationSerie.length - 1];
+  const s = useScenario({ nominal: oat.valeur, inflation: inflationActuelle.y });
+  const nominal = s.valeurs.nominal;
+  const inflation = s.valeurs.inflation;
 
   const i = nominal / 100;
   const pi = inflation / 100;
@@ -20,33 +27,34 @@ export function TauxReel() {
   const final = 100 * (1 + i);
   const enEurosDuDebut = pouvoirAchat(final, pi, 1);
 
-  const curseurs = [
-    { cle: "n", libelle: "Taux d'intérêt nominal", valeur: nominal, set: setNominal },
-    { cle: "p", libelle: "Inflation sur l'année", valeur: inflation, set: setInflation },
-  ];
-
   return (
     <div className="grid gap-6 md:grid-cols-2">
       <div className="space-y-5">
-        {curseurs.map((c) => (
-          <div key={c.cle}>
-            <label htmlFor={`${id}-${c.cle}`} className="flex justify-between text-sm font-semibold text-ink">
-              {c.libelle}
-              <span className="tabular-nums">{formatNombre(c.valeur, 1)} %</span>
-            </label>
-            <input
-              id={`${id}-${c.cle}`}
-              type="range"
-              min={0}
-              max={10}
-              step={0.5}
-              value={c.valeur}
-              onChange={(e) => c.set(Number(e.target.value))}
-              className="mt-2 w-full accent-[var(--accent)]"
-            />
-          </div>
-        ))}
-        <p className="text-xs text-muted">Valeurs d&apos;exemple, à régler librement.</p>
+        <BarreScenario scenario={s} />
+        <Curseur
+          libelle="Taux d'intérêt nominal"
+          valeur={nominal}
+          reference={s.reference.nominal}
+          affichageReference={`${formatNombre(s.reference.nominal, 2)} %`}
+          min={0}
+          max={10}
+          pas={0.01}
+          onChange={s.regler("nominal")}
+          affichage={`${formatNombre(nominal, 2)} %`}
+          aide={`Valeur actuelle : taux de l'État à 10 ans, ${libellePeriode(oat.date, "mensuelle")}.`}
+        />
+        <Curseur
+          libelle="Inflation sur l'année"
+          valeur={inflation}
+          reference={s.reference.inflation}
+          affichageReference={`${formatNombre(s.reference.inflation, 1)} %`}
+          min={0}
+          max={10}
+          pas={0.1}
+          onChange={s.regler("inflation")}
+          affichage={`${formatNombre(inflation, 1)} %`}
+          aide={`Valeur actuelle : inflation sur un an en ${libellePeriode(inflationActuelle.x, "mensuelle")} (indice harmonisé).`}
+        />
       </div>
 
       <div className="space-y-3" aria-live="polite">

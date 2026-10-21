@@ -4,6 +4,7 @@ import { useState } from "react";
 import { adjudication, rendementActuariel, type Offre } from "@/lib/economics";
 import { formatNombre, formatPourcent } from "@/lib/format";
 import { BoutonSimu, Curseur } from "./Curseur";
+import { BarreScenario, useScenario } from "./Scenario";
 
 /**
  * Mini-adjudication : l'État veut placer 10 Md€ d'OAT à 10 ans (coupon 3 %).
@@ -21,8 +22,9 @@ const AUTRES: Offre[] = [
 ];
 
 export function SimulateurAdjudication() {
-  const [prix, setPrix] = useState(99.5);
-  const [montant, setMontant] = useState(2);
+  const s = useScenario({ prix: 99.5, montant: 2 });
+  const prix = s.valeurs.prix;
+  const montant = s.valeurs.montant;
   const [lance, setLance] = useState(false);
 
   const offres = [...AUTRES, { id: "Vous", prix, montant }];
@@ -33,6 +35,7 @@ export function SimulateurAdjudication() {
 
   return (
     <div className="space-y-5">
+      <BarreScenario scenario={s} libelleReference="valeurs de départ" />
       <p className="text-sm text-body">
         L&apos;État veut emprunter <strong>{MONTANT} Md€</strong> en vendant des OAT à 10 ans qui rapportent un coupon de{" "}
         <strong>3 % par an</strong>. Les offres s&apos;expriment en prix pour 100 € remboursés à l&apos;échéance. Plus vous
@@ -43,11 +46,13 @@ export function SimulateurAdjudication() {
         <Curseur
           libelle="Votre prix pour 100 €"
           valeur={prix}
+          reference={s.reference.prix}
+          affichageReference={`${formatNombre(s.reference.prix, 2)} €`}
           min={98}
           max={100.5}
           pas={0.05}
           onChange={(v) => {
-            setPrix(Math.round(v * 100) / 100);
+            s.regler("prix")(Math.round(v * 100) / 100);
             setLance(false);
           }}
           affichage={`${formatNombre(prix, 2)} €`}
@@ -56,11 +61,13 @@ export function SimulateurAdjudication() {
         <Curseur
           libelle="Montant demandé"
           valeur={montant}
+          reference={s.reference.montant}
+          affichageReference={`${s.reference.montant} Md€`}
           min={1}
           max={5}
           pas={1}
           onChange={(v) => {
-            setMontant(v);
+            s.regler("montant")(v);
             setLance(false);
           }}
           affichage={`${montant} Md€`}

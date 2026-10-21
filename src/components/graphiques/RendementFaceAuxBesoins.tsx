@@ -1,11 +1,11 @@
 "use client";
 
-import { useState } from "react";
 import { Curseur } from "@/components/simulators/Curseur";
 import { getSerie, getValeur } from "@/lib/data";
 import { deficitStabilisant, effortStabilisation } from "@/lib/economics";
 import { formatNombre } from "@/lib/format";
 import { VueTableau } from "./commun";
+import { BarreScenario, useScenario } from "@/components/simulators/Scenario";
 
 /**
  * Le rendement estimé d'un impôt sur les très grandes fortunes (fourchette
@@ -21,7 +21,8 @@ export function RendementFaceAuxBesoins() {
   const deficit = getValeur("deficit.montant");
   const dette = getValeur("dette.fin-annee-pib");
   const croissanceObservee = getValeur("macro.croissance-valeur");
-  const [croissance, setCroissance] = useState(croissanceObservee.valeur);
+  const s = useScenario({ croissance: croissanceObservee.valeur });
+  const croissance = s.valeurs.croissance;
   const stabilisant = deficitStabilisant(dette.valeur, croissance / 100);
   const effort = effortStabilisation(getValeur("deficit.ratio-pib").valeur, stabilisant, getValeur("macro.pib").valeur);
   const programme = getValeur("prop.programme-depenses");
@@ -41,14 +42,17 @@ export function RendementFaceAuxBesoins() {
 
   return (
     <div>
+      <BarreScenario scenario={s} />
       <div className="mb-6 rounded-xl bg-subtle p-4">
         <Curseur
           libelle="Croissance nominale retenue pour stabiliser la dette"
           valeur={croissance}
+          reference={s.reference.croissance}
+          affichageReference={`${formatNombre(s.reference.croissance, 1)} %`}
           min={0}
           max={5}
           pas={0.1}
-          onChange={setCroissance}
+          onChange={s.regler("croissance")}
           affichage={`${formatNombre(croissance, 1)} %`}
           aide={`Croissance du PIB en valeur (volume + prix) : ${formatNombre(croissanceObservee.valeur, 1)} % en ${croissanceObservee.date} selon l'Insee. Avec une dette de ${formatNombre(dette.valeur, 1)} % du PIB, le déficit qui la stabilise vaut dette × g / (1 + g).`}
         />

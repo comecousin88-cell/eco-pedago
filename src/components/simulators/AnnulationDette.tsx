@@ -1,12 +1,12 @@
 "use client";
 
-import { useState } from "react";
 import { CartesianGrid, Line, LineChart, ReferenceLine, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 import { AXE, GRILLE, Infobulle, Legende } from "@/components/graphiques/commun";
 import { getValeur } from "@/lib/data";
 import { effetsAnnulation } from "@/lib/economics";
 import { formatNombre } from "@/lib/format";
 import { Curseur } from "./Curseur";
+import { BarreScenario, useScenario } from "./Scenario";
 
 /**
  * Ce que changerait l'annulation des titres détenus par la Banque de France,
@@ -23,9 +23,10 @@ export function AnnulationDette() {
   const rendement = getValeur("bdf.rendement-titres-pm");
   const pib = (dette.valeur / ratio.valeur) * 100;
 
-  const [montant, setMontant] = useState(titres.valeur);
-  const [coupon, setCoupon] = useState(rendement.valeur);
-  const [prime, setPrime] = useState(0.5);
+  const s = useScenario({ montant: titres.valeur, coupon: rendement.valeur, prime: 0.5 });
+  const montant = s.valeurs.montant;
+  const coupon = s.valeurs.coupon;
+  const prime = s.valeurs.prime;
 
   const r = effetsAnnulation({
     montant,
@@ -47,34 +48,41 @@ export function AnnulationDette() {
 
   return (
     <div className="space-y-5">
+      <BarreScenario scenario={s} />
       <div className="grid gap-5 sm:grid-cols-3">
         <Curseur
           libelle="Titres annulés"
           valeur={montant}
+          reference={s.reference.montant}
+          affichageReference={`${formatNombre(s.reference.montant)} Md€`}
           min={0}
           max={600}
           pas={10}
-          onChange={setMontant}
+          onChange={s.regler("montant")}
           affichage={`${formatNombre(montant)} Md€`}
           aide={`Détenus par la Banque de France au ${titres.date.split("-").reverse().join("/")} : ${formatNombre(titres.valeur)} Md€`}
         />
         <Curseur
           libelle="Coupon moyen de ces titres"
           valeur={coupon}
+          reference={s.reference.coupon}
+          affichageReference={`${formatNombre(s.reference.coupon, 2)} %`}
           min={0}
           max={3}
           pas={0.01}
-          onChange={setCoupon}
+          onChange={s.regler("coupon")}
           affichage={`${formatNombre(coupon, 2)} %`}
           aide={`Selon la Banque de France, ${formatNombre(rendement.valeur, 2)} % en moyenne en ${rendement.date} sur l'ensemble de ses titres APP et PEPP, achetés surtout entre 2015 et 2021, quand les taux étaient bas.`}
         />
         <Curseur
           libelle="Prime de risque exigée ensuite par les marchés"
           valeur={prime}
+          reference={s.reference.prime}
+          affichageReference={`${formatNombre(s.reference.prime * 100)} points de base`}
           min={0}
           max={2}
           pas={0.1}
-          onChange={setPrime}
+          onChange={s.regler("prime")}
           affichage={`${formatNombre(prime * 100)} points de base`}
           aide="0 = les marchés ne réagissent pas. Hypothèse à faire varier."
         />

@@ -1,10 +1,10 @@
 "use client";
 
-import { useState } from "react";
 import { getSerie, getValeur } from "@/lib/data";
 import { anneesDeCouverture, rendementImpotFortunes } from "@/lib/economics";
 import { formatNombre } from "@/lib/format";
 import { Curseur } from "./Curseur";
+import { BarreScenario, useScenario } from "./Scenario";
 
 /**
  * « Combien rapporte de taxer les plus riches ? » Un impôt plancher sur les
@@ -19,8 +19,11 @@ export function ImpotGrandesFortunes() {
   const tva = getValeur("prop.tva-point");
   const csg = getSerie("fp.recettes-2024-par-type").serie.find((p) => p.x === "CSG et CRDS")!;
 
-  const [taux, setTaux] = useState(2);
-  const [besoin, setBesoin] = useState(100);
+  const s = useScenario({ taux: 2, besoin: 100 });
+
+  const taux = s.valeurs.taux;
+
+  const besoin = s.valeurs.besoin;
 
   const r = rendementImpotFortunes({
     assiette: assiette.valeur,
@@ -41,24 +44,29 @@ export function ImpotGrandesFortunes() {
 
   return (
     <div className="space-y-5">
+      <BarreScenario scenario={s} libelleReference="valeurs de départ" />
       <div className="grid gap-5 sm:grid-cols-2">
         <Curseur
           libelle="Taux de l'impôt sur les plus grandes fortunes"
           valeur={taux}
+          reference={s.reference.taux}
+          affichageReference={`${formatNombre(s.reference.taux, 1)} % par an`}
           min={0.5}
           max={5}
           pas={0.5}
-          onChange={setTaux}
+          onChange={s.regler("taux")}
           affichage={`${formatNombre(taux, 1)} % par an`}
           aide={`Assiette : ${formatNombre(assiette.valeur)} Md€, patrimoine des 500 plus grandes fortunes (estimation de presse).`}
         />
         <Curseur
           libelle="Nouvelles dépenses à financer chaque année"
           valeur={besoin}
+          reference={s.reference.besoin}
+          affichageReference={`${formatNombre(s.reference.besoin)} Md€`}
           min={10}
           max={300}
           pas={10}
-          onChange={setBesoin}
+          onChange={s.regler("besoin")}
           affichage={`${formatNombre(besoin)} Md€`}
         />
       </div>

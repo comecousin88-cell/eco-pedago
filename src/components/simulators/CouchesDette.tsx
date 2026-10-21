@@ -1,10 +1,10 @@
 "use client";
 
-import { useState } from "react";
 import { getSerie, getValeur } from "@/lib/data";
 import { surcoutInterets, tauxApparent, trajectoireTauxApparent } from "@/lib/economics";
 import { formatNombre, formatPourcent } from "@/lib/format";
 import { Curseur } from "./Curseur";
+import { BarreScenario, useScenario } from "./Scenario";
 
 /**
  * La dette en « couches » : chaque année, une partie des emprunts arrive à
@@ -22,8 +22,11 @@ export function CouchesDette() {
   const oat = getValeur("marches.taux10-france-dernier");
   const maturiteReelle = getValeur("aft.maturite-moyenne");
 
-  const [marche, setMarche] = useState(Math.round(oat.valeur * 4) / 4);
-  const [maturite, setMaturite] = useState(Math.round(maturiteReelle.valeur));
+  const s = useScenario({ marche: Math.round(oat.valeur * 4) / 4, maturite: Math.round(maturiteReelle.valeur) });
+
+  const marche = s.valeurs.marche;
+
+  const maturite = s.valeurs.maturite;
 
   const trajectoire = trajectoireTauxApparent(r0, marche / 100, maturite, ANNEES);
   const surcout = surcoutInterets(fin.y, r0, trajectoire);
@@ -31,24 +34,29 @@ export function CouchesDette() {
 
   return (
     <div className="space-y-6">
+      <BarreScenario scenario={s} />
       <div className="grid gap-5 sm:grid-cols-2">
         <Curseur
           libelle="Taux auquel l'État emprunte désormais"
           valeur={marche}
+          reference={s.reference.marche}
+          affichageReference={`${formatNombre(s.reference.marche, 2)} %`}
           min={0}
           max={7}
           pas={0.25}
-          onChange={setMarche}
+          onChange={s.regler("marche")}
           affichage={`${formatNombre(marche, 2)} %`}
           aide={`Taux de l'OAT à 10 ans en ${oat.date.slice(5)}/${oat.date.slice(0, 4)} : ${formatNombre(oat.valeur, 2)} %`}
         />
         <Curseur
           libelle="Durée moyenne des emprunts"
           valeur={maturite}
+          reference={s.reference.maturite}
+          affichageReference={`${s.reference.maturite} ans`}
           min={2}
           max={15}
           pas={1}
-          onChange={setMaturite}
+          onChange={s.regler("maturite")}
           affichage={`${maturite} ans`}
           aide={`Durée de vie moyenne réelle de la dette de l'État : environ ${formatNombre(maturiteReelle.valeur, 1)} ans`}
         />

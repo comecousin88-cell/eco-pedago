@@ -1,10 +1,10 @@
 "use client";
 
-import { useState } from "react";
 import { getSerie, getValeur } from "@/lib/data";
 import { tvaContenue } from "@/lib/economics";
 import { formatEuros, formatNombre } from "@/lib/format";
 import { Curseur } from "./Curseur";
+import { BarreScenario, useScenario } from "./Scenario";
 
 /**
  * Les taxes payées en consommant : un budget mensuel d'exemple, réglable,
@@ -14,13 +14,21 @@ export function PanierConsommation() {
   const taux = Object.fromEntries(getSerie("tva.taux").serie.map((p) => [p.x, p.y]));
   const accise = getValeur("accise.gazole");
 
-  const [alimentation, setAlimentation] = useState(450);
-  const [restaurant, setRestaurant] = useState(100);
-  const [biens, setBiens] = useState(400);
-  const [energie, setEnergie] = useState(120);
-  const [litres, setLitres] = useState(60);
-  const [prixLitre, setPrixLitre] = useState(1.75);
-  const [loyer, setLoyer] = useState(700);
+  const s = useScenario({ alimentation: 450, restaurant: 100, biens: 400, energie: 120, litres: 60, prixLitre: 1.75, loyer: 700 });
+
+  const alimentation = s.valeurs.alimentation;
+
+  const restaurant = s.valeurs.restaurant;
+
+  const biens = s.valeurs.biens;
+
+  const energie = s.valeurs.energie;
+
+  const litres = s.valeurs.litres;
+
+  const prixLitre = s.valeurs.prixLitre;
+
+  const loyer = s.valeurs.loyer;
 
   const carburant = litres * prixLitre;
   const postes = [
@@ -41,20 +49,29 @@ export function PanierConsommation() {
 
   return (
     <div className="space-y-5">
+      <BarreScenario scenario={s} libelleReference="valeurs de départ" />
       <div className="grid gap-4 sm:grid-cols-2">
-        <Curseur libelle="Loyer" valeur={loyer} min={0} max={1500} pas={25} onChange={setLoyer} affichage={formatEuros(loyer, 0)} />
-        <Curseur libelle="Alimentation" valeur={alimentation} min={0} max={1000} pas={10} onChange={setAlimentation} affichage={formatEuros(alimentation, 0)} />
-        <Curseur libelle="Restaurants, transports en commun" valeur={restaurant} min={0} max={500} pas={10} onChange={setRestaurant} affichage={formatEuros(restaurant, 0)} />
-        <Curseur libelle="Vêtements, équipement, loisirs, services" valeur={biens} min={0} max={1500} pas={10} onChange={setBiens} affichage={formatEuros(biens, 0)} />
-        <Curseur libelle="Électricité, gaz" valeur={energie} min={0} max={400} pas={10} onChange={setEnergie} affichage={formatEuros(energie, 0)} />
-        <Curseur libelle="Gazole (litres par mois)" valeur={litres} min={0} max={200} pas={5} onChange={setLitres} affichage={`${litres} L`} />
+        <Curseur libelle="Loyer" valeur={loyer}
+          reference={s.reference.loyer} min={0} max={1500} pas={25} onChange={s.regler("loyer")} affichage={formatEuros(loyer, 0)} />
+        <Curseur libelle="Alimentation" valeur={alimentation}
+          reference={s.reference.alimentation} min={0} max={1000} pas={10} onChange={s.regler("alimentation")} affichage={formatEuros(alimentation, 0)} />
+        <Curseur libelle="Restaurants, transports en commun" valeur={restaurant}
+          reference={s.reference.restaurant} min={0} max={500} pas={10} onChange={s.regler("restaurant")} affichage={formatEuros(restaurant, 0)} />
+        <Curseur libelle="Vêtements, équipement, loisirs, services" valeur={biens}
+          reference={s.reference.biens} min={0} max={1500} pas={10} onChange={s.regler("biens")} affichage={formatEuros(biens, 0)} />
+        <Curseur libelle="Électricité, gaz" valeur={energie}
+          reference={s.reference.energie} min={0} max={400} pas={10} onChange={s.regler("energie")} affichage={formatEuros(energie, 0)} />
+        <Curseur libelle="Gazole (litres par mois)" valeur={litres}
+          reference={s.reference.litres} min={0} max={200} pas={5} onChange={s.regler("litres")} affichage={`${litres} L`} />
         <Curseur
           libelle="Prix du gazole à la pompe (hypothèse)"
           valeur={prixLitre}
+          reference={s.reference.prixLitre}
+          affichageReference={`${formatNombre(s.reference.prixLitre, 2)} € / L`}
           min={1.2}
           max={2.5}
           pas={0.05}
-          onChange={setPrixLitre}
+          onChange={s.regler("prixLitre")}
           affichage={`${formatNombre(prixLitre, 2)} € / L`}
         />
       </div>

@@ -6,6 +6,7 @@ import { CartesianGrid, Line, LineChart, ReferenceLine, ResponsiveContainer, Too
 import { AXE, GRILLE, Infobulle, Legende, nombreAxe } from "@/components/graphiques/commun";
 import { Figure } from "@/components/pedago/Figure";
 import { Curseur } from "@/components/simulators/Curseur";
+import { BarreScenario, useScenario } from "@/components/simulators/Scenario";
 import { getValeur } from "@/lib/data";
 import { objectifsJeu, trajectoireRatioDette } from "@/lib/economics";
 import { formatNombre } from "@/lib/format";
@@ -131,7 +132,8 @@ export function RedresserLesComptes() {
   const croissanceObservee = getValeur("macro.croissance-valeur");
   const effortMinimal = getValeur("ue.effort-structurel-minimal");
 
-  const [croissance, setCroissance] = useState(croissanceObservee.valeur);
+  const sc = useScenario({ croissance: croissanceObservee.valeur });
+  const croissance = sc.valeurs.croissance;
   const [niveau, setNiveau] = useState<Niveau | null>(null);
   const [ecran, setEcran] = useState<"choix" | "jeu" | "fin">("choix");
   const [scenario, setScenario] = useState<Scenario>("central");
@@ -166,14 +168,17 @@ export function RedresserLesComptes() {
             compense. <strong>Supprimer le déficit</strong>, c&apos;est aller plus loin : la dette cesse d&apos;augmenter en euros et
             baisse en proportion du PIB.
           </p>
-          <div className="mt-4 max-w-md">
+          <div className="mt-4 max-w-md space-y-3">
+            <BarreScenario scenario={sc} />
             <Curseur
               libelle="Croissance nominale retenue"
               valeur={croissance}
               min={0}
               max={5}
               pas={0.1}
-              onChange={setCroissance}
+              onChange={sc.regler("croissance")}
+              reference={sc.reference.croissance}
+              affichageReference={`${formatNombre(sc.reference.croissance, 1)} %`}
               affichage={`${formatNombre(croissance, 1)} %`}
               aide={`Volume et prix : ${formatNombre(croissanceObservee.valeur, 1)} % en ${croissanceObservee.date} selon l'Insee. Elle détermine le déficit qui stabilise la dette : ${formatNombre((dette.valeur * g) / (1 + g), 1)} % du PIB.`}
             />

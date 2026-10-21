@@ -4,6 +4,7 @@ import { useState } from "react";
 import { CartesianGrid, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 import { AXE, GRILLE, Infobulle, Legende, nombreAxe, VueTableau } from "@/components/graphiques/commun";
 import { Curseur } from "@/components/simulators/Curseur";
+import { BarreScenario, useScenario } from "@/components/simulators/Scenario";
 import { evenements } from "@/content/jeu-ministre";
 import { getSerie, getValeur, toutesLesDonnees } from "@/lib/data";
 import { formatNombre } from "@/lib/format";
@@ -201,7 +202,8 @@ export function JeuMinistre() {
   const [graine, setGraine] = useState(2026);
   const [historique, setHistorique] = useState<EtatMinistre[]>([]);
   const [derniersEvenements, setDerniersEvenements] = useState<Evenement[]>([]);
-  const [decision, setDecision] = useState<DecisionBudget>({ economies: 10, impots: 5, investissement: 0 });
+  const s = useScenario({ economies: 10, impots: 5, investissement: 0 });
+  const decision: DecisionBudget = s.valeurs;
 
   const tirage = tirerEvenements(evenements, DUREE, graine);
   const courant = historique.length ? historique[historique.length - 1] : depart;
@@ -233,14 +235,19 @@ export function JeuMinistre() {
             <Indicateurs e={courant} h={h} titre={historique.length ? `Situation fin ${annee0 + historique.length}` : `Situation de départ, fin ${annee0}`} />
           </div>
 
-          <div className="mt-5 grid gap-5 md:grid-cols-3">
+          <div className="mt-5">
+            <BarreScenario scenario={s} libelleReference="réglages de départ" />
+          </div>
+          <div className="mt-3 grid gap-5 md:grid-cols-3">
             <Curseur
               libelle="Économies sur les dépenses"
               valeur={decision.economies}
               min={0}
               max={40}
               pas={1}
-              onChange={(v) => setDecision((d) => ({ ...d, economies: v }))}
+              onChange={s.regler("economies")}
+              reference={s.reference.economies}
+              affichageReference={`${s.reference.economies} Md€`}
               affichage={`${decision.economies} Md€`}
               aide="Moins de dépenses publiques : améliore le solde, freine un peu la croissance."
             />
@@ -250,7 +257,9 @@ export function JeuMinistre() {
               min={0}
               max={40}
               pas={1}
-              onChange={(v) => setDecision((d) => ({ ...d, impots: v }))}
+              onChange={s.regler("impots")}
+              reference={s.reference.impots}
+              affichageReference={`${s.reference.impots} Md€`}
               affichage={`${decision.impots} Md€`}
               aide="Plus de recettes : améliore le solde, freine un peu la croissance."
             />
@@ -260,7 +269,9 @@ export function JeuMinistre() {
               min={0}
               max={30}
               pas={1}
-              onChange={(v) => setDecision((d) => ({ ...d, investissement: v }))}
+              onChange={s.regler("investissement")}
+              reference={s.reference.investissement}
+              affichageReference={`${s.reference.investissement} Md€`}
               affichage={`${decision.investissement} Md€`}
               aide="Soutient l'activité à court terme, mais creuse le déficit."
             />

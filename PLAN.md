@@ -82,6 +82,7 @@ Chaque module : une page d'intro (objectifs, plan, durée de lecture), des sous-
 | `<Figure source=… date=…>` | Cadre de tout graphique : titre, **résumé textuel accessible**, « Source : … — données au JJ/MM/AAAA », bouton **Partager (PNG avec la source incrustée)** |
 | `<Chiffre id="dette.stock">` | Affiche une valeur tirée de `data/`, mise en forme en français (« 3 482 Md€ »). Aucun chiffre écrit en dur |
 | `<Quiz>` | 5 questions, explication après chaque réponse, score |
+| `useScenario` + `<BarreScenario>` + `<Curseur reference>` | **Obligatoire dans tout simulateur ou schéma interactif** : valeurs de départ = chiffres actuels de `data/*.json` (ou valeurs de départ d'un exemple), repère de la valeur actuelle sur chaque curseur, mention « Scénario modifié », réglages modifiés mis en évidence, bouton « Revenir aux chiffres actuels ». Un test refuse tout simulateur qui ne les utilise pas |
 | `<FilAriane>`, `<ProgressionModule>`, `<NavModule>` (précédent / suivant) | Navigation |
 | `<ThemeToggle>` | Clair / sombre / système |
 | `<ModeLecture>` | Interrupteur « Simple / Approfondi » (en haut de chaque module et dans le menu) |

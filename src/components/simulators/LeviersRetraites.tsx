@@ -1,10 +1,10 @@
 "use client";
 
-import { useState } from "react";
 import { getSerie, getValeur } from "@/lib/data";
 import { reculerAgeDepart, soldeRetraites } from "@/lib/economics";
 import { formatEuros, formatNombre } from "@/lib/format";
 import { BoutonSimu, Curseur } from "./Curseur";
+import { BarreScenario, MarqueModifie, useScenario } from "./Scenario";
 
 /**
  * Les trois leviers d'un régime par répartition, sur la relation d'équilibre
@@ -17,10 +17,11 @@ const SALAIRE_EXEMPLE = 3000; // € bruts par mois
 export function LeviersRetraites() {
   const point = (id: string, x: string) => getSerie(id).serie.find((p) => p.x === x)!.y;
   const pension = getValeur("retraites.pension-moyenne");
-  const [annee, setAnnee] = useState<"2025" | "2070">("2070");
-  const [age, setAge] = useState(0);
-  const [taux, setTaux] = useState(0);
-  const [pensionDelta, setPensionDelta] = useState(0);
+  const s = useScenario({ annee: "2070", age: 0, taux: 0, pensionDelta: 0 });
+  const annee = s.valeurs.annee;
+  const age = s.valeurs.age;
+  const taux = s.valeurs.taux;
+  const pensionDelta = s.valeurs.pensionDelta;
 
   const rpc = 1 / point("retraites.cotisants-par-retraite", annee);
   const pr = point("retraites.pension-relative", annee) / 100;
@@ -40,17 +41,20 @@ export function LeviersRetraites() {
 
   return (
     <div className="space-y-5">
+      <BarreScenario scenario={s} />
       <div className="flex flex-wrap items-center gap-2">
-        <span className="text-sm text-muted">Situation de départ :</span>
+        <span className="text-sm text-muted">
+          Situation de départ <MarqueModifie actif={s.estModifiee("annee")} /> :
+        </span>
         {(["2025", "2070"] as const).map((a) => (
           <BoutonSimu
             key={a}
             actif={annee === a}
             onClick={() => {
-              setAnnee(a);
-              setAge(0);
-              setTaux(0);
-              setPensionDelta(0);
+              s.regler("annee")(a);
+              s.regler("age")(0);
+              s.regler("taux")(0);
+              s.regler("pensionDelta")(0);
             }}
           >
             {a === "2025" ? "Aujourd'hui (2025)" : "En 2070 (projection du COR)"}
@@ -67,28 +71,34 @@ export function LeviersRetraites() {
         <Curseur
           libelle="Âge moyen de départ"
           valeur={age}
+          reference={s.reference.age}
+          affichageReference={`${s.reference.age > 0 ? "+" : ""}${formatNombre(s.reference.age, 1)} an${Math.abs(s.reference.age) > 1 ? "s" : ""}`}
           min={-2}
           max={5}
           pas={0.5}
-          onChange={setAge}
+          onChange={s.regler("age")}
           affichage={`${age > 0 ? "+" : ""}${formatNombre(age, 1)} an${Math.abs(age) > 1 ? "s" : ""}`}
         />
         <Curseur
           libelle="Taux de cotisation"
           valeur={taux}
+          reference={s.reference.taux}
+          affichageReference={`${s.reference.taux > 0 ? "+" : ""}${formatNombre(s.reference.taux, 1)} point${Math.abs(s.reference.taux) > 1 ? "s" : ""}`}
           min={-3}
           max={8}
           pas={0.5}
-          onChange={setTaux}
+          onChange={s.regler("taux")}
           affichage={`${taux > 0 ? "+" : ""}${formatNombre(taux, 1)} point${Math.abs(taux) > 1 ? "s" : ""}`}
         />
         <Curseur
           libelle="Niveau des pensions (relatif aux salaires)"
           valeur={pensionDelta}
+          reference={s.reference.pensionDelta}
+          affichageReference={`${s.reference.pensionDelta > 0 ? "+" : ""}${formatNombre(s.reference.pensionDelta, 1)} point${Math.abs(s.reference.pensionDelta) > 1 ? "s" : ""}`}
           min={-12}
           max={5}
           pas={0.5}
-          onChange={setPensionDelta}
+          onChange={s.regler("pensionDelta")}
           affichage={`${pensionDelta > 0 ? "+" : ""}${formatNombre(pensionDelta, 1)} point${Math.abs(pensionDelta) > 1 ? "s" : ""}`}
         />
       </div>

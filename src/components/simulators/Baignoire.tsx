@@ -4,6 +4,8 @@ import { useEffect, useId, useRef, useState } from "react";
 import { getValeur } from "@/lib/data";
 import { cumulDette } from "@/lib/economics";
 import { formatNombre } from "@/lib/format";
+import { Curseur } from "./Curseur";
+import { BarreScenario, useScenario } from "./Scenario";
 
 /**
  * La baignoire : le robinet est le déficit de l'année (un flux), le niveau de
@@ -23,11 +25,12 @@ export function Baignoire() {
   const deficitReel = getValeur("deficit.montant");
   const anneeDepart = Number(depart.date.slice(0, 4));
 
-  const [deficit, setDeficit] = useState(Math.round(deficitReel.valeur / 10) * 10);
+  const s = useScenario({ deficit: Math.round(deficitReel.valeur / 10) * 10 });
+  const deficit = s.valeurs.deficit;
+  const curseurId = useId();
   const [historique, setHistorique] = useState<number[]>([]); // dette après chaque année simulée
   const [enCours, setEnCours] = useState(false);
   const minuterie = useRef<ReturnType<typeof setInterval> | null>(null);
-  const curseurId = useId();
 
   const dette = historique.length ? historique[historique.length - 1] : depart.valeur;
   const annee = anneeDepart + historique.length;
@@ -154,28 +157,27 @@ export function Baignoire() {
 
         <div className="space-y-4">
           <div>
-            <label htmlFor={curseurId} className="block text-sm font-semibold text-ink">
-              {deficit >= 0 ? "Déficit" : "Excédent"} chaque année :{" "}
-              <span className="tabular-nums">{formatNombre(Math.abs(deficit))} Md€</span>
-            </label>
-            <input
-              id={curseurId}
-              type="range"
-              min={-100}
-              max={300}
-              step={10}
-              value={deficit}
-              onChange={(e) => setDeficit(Number(e.target.value))}
-              aria-valuetext={`${deficit >= 0 ? "déficit" : "excédent"} de ${Math.abs(deficit)} milliards d'euros par an`}
-              className="mt-2 w-full accent-[var(--accent)]"
-            />
+            <BarreScenario scenario={s} />
+            <div className="mt-3">
+              <Curseur
+                libelle={deficit >= 0 ? "Déficit chaque année" : "Excédent chaque année"}
+                valeur={deficit}
+                reference={s.reference.deficit}
+                affichageReference={`déficit de ${formatNombre(s.reference.deficit)} Md€`}
+                min={-100}
+                max={300}
+                pas={10}
+                onChange={s.regler("deficit")}
+                affichage={`${formatNombre(Math.abs(deficit))} Md€`}
+              />
+            </div>
             <div className="mt-1 flex justify-between text-xs text-muted">
               <span>excédent</span>
               <span>équilibre</span>
               <span>gros déficit</span>
             </div>
             <p className="mt-1 text-xs text-muted">
-              Déficit réel {deficitReel.date} : {formatNombre(deficitReel.valeur, 1)} Md€
+              Déficit réel {deficitReel.date} : {formatNombre(deficitReel.valeur, 1)} Md€ (arrondi à la dizaine sur le curseur)
             </p>
           </div>
 

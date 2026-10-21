@@ -1,10 +1,10 @@
 "use client";
 
-import { useState } from "react";
 import { Area, AreaChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 import { Curseur } from "@/components/simulators/Curseur";
 import { formatNombre } from "@/lib/format";
 import { AXE, GRILLE, Infobulle, Legende } from "./commun";
+import { BarreScenario, useScenario } from "@/components/simulators/Scenario";
 
 /**
  * La « double charge » d'un passage à la capitalisation (modèle illustratif) :
@@ -15,7 +15,8 @@ const COUT_REPARTITION = 28; // % des salaires consacrés aux retraites, valeur 
 const DUREE = 60; // années pour que les droits acquis en répartition s'éteignent
 
 export function DoubleCharge() {
-  const [part, setPart] = useState(50);
+  const s = useScenario({ part: 50 });
+  const part = s.valeurs.part;
   const donnees = Array.from({ length: DUREE + 1 }, (_, t) => {
     // Les pensions déjà promises diminuent progressivement : nouvelles générations en capitalisation pour la part choisie.
     const anciennes = COUT_REPARTITION * (1 - (part / 100) * Math.min(1, t / DUREE) ** 1.2);
@@ -27,13 +28,16 @@ export function DoubleCharge() {
 
   return (
     <div className="space-y-4">
+      <BarreScenario scenario={s} libelleReference="valeurs de départ" />
       <Curseur
         libelle="Part de la retraite qui passe en capitalisation"
         valeur={part}
+          reference={s.reference.part}
+          affichageReference={`${s.reference.part} %`}
         min={0}
         max={100}
         pas={10}
-        onChange={setPart}
+        onChange={s.regler("part")}
         affichage={`${part} %`}
       />
       <Legende

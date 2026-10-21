@@ -6,15 +6,17 @@ import { AXE, GRILLE, Infobulle } from "@/components/graphiques/commun";
 import { fluxObligation, prixObligation } from "@/lib/economics";
 import { formatEuros, formatNombre } from "@/lib/format";
 import { BoutonSimu, Curseur } from "./Curseur";
+import { BarreScenario, useScenario } from "./Scenario";
 
 /**
  * Prix d'une obligation selon le taux du marché : le coupon est fixé à
  * l'émission, c'est le prix qui s'ajuste quand les taux bougent.
  */
 export function PrixTaux() {
-  const [coupon, setCoupon] = useState(2);
-  const [maturite, setMaturite] = useState(10);
-  const [marche, setMarche] = useState(3);
+  const s = useScenario({ coupon: 2, maturite: 10, marche: 3 });
+  const coupon = s.valeurs.coupon;
+  const maturite = s.valeurs.maturite;
+  const marche = s.valeurs.marche;
   const [voirFlux, setVoirFlux] = useState(false);
 
   const obligation = { nominal: 100, coupon: coupon / 100, maturite };
@@ -29,10 +31,14 @@ export function PrixTaux() {
 
   return (
     <div className="space-y-6">
+      <BarreScenario scenario={s} libelleReference="valeurs de départ" />
       <div className="grid gap-5 sm:grid-cols-3">
-        <Curseur libelle="Coupon (fixé à l'émission)" valeur={coupon} min={0} max={6} pas={0.25} onChange={setCoupon} affichage={`${formatNombre(coupon, 2)} %`} />
-        <Curseur libelle="Années restant à courir" valeur={maturite} min={1} max={30} pas={1} onChange={setMaturite} affichage={`${maturite} an${maturite > 1 ? "s" : ""}`} />
-        <Curseur libelle="Taux du marché aujourd'hui" valeur={marche} min={0} max={8} pas={0.25} onChange={setMarche} affichage={`${formatNombre(marche, 2)} %`} />
+        <Curseur libelle="Coupon (fixé à l'émission)" valeur={coupon}
+          reference={s.reference.coupon} min={0} max={6} pas={0.25} onChange={s.regler("coupon")} affichage={`${formatNombre(coupon, 2)} %`} />
+        <Curseur libelle="Années restant à courir" valeur={maturite}
+          reference={s.reference.maturite} min={1} max={30} pas={1} onChange={s.regler("maturite")} affichage={`${maturite} an${maturite > 1 ? "s" : ""}`} />
+        <Curseur libelle="Taux du marché aujourd'hui" valeur={marche}
+          reference={s.reference.marche} min={0} max={8} pas={0.25} onChange={s.regler("marche")} affichage={`${formatNombre(marche, 2)} %`} />
       </div>
 
       <div className="rounded-xl bg-accent-soft p-4" aria-live="polite">
