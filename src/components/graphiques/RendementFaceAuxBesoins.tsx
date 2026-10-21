@@ -1,7 +1,9 @@
 "use client";
 
+import { useState } from "react";
+import { Curseur } from "@/components/simulators/Curseur";
 import { getSerie, getValeur } from "@/lib/data";
-import { effortStabilisation } from "@/lib/economics";
+import { deficitStabilisant, effortStabilisation } from "@/lib/economics";
 import { formatNombre } from "@/lib/format";
 import { VueTableau } from "./commun";
 
@@ -9,30 +11,48 @@ import { VueTableau } from "./commun";
  * Le rendement estimé d'un impôt sur les très grandes fortunes (fourchette
  * basse / haute) face à trois besoins : l'effort pour stabiliser la dette,
  * le déficit public et un programme de dépenses (hypothèse d'illustration).
- * Tous les montants viennent de data/*.json ; l'effort est calculé.
+ * Tous les montants viennent de data/*.json ; l'effort est calculé à partir
+ * d'une croissance nominale réglable (par défaut, celle de la dernière année).
  */
 export function RendementFaceAuxBesoins() {
   const rendements = getSerie("prop.impot-plancher-rendements").serie;
   const bas = rendements.find((p) => p.x === "Estimation critique, impôt sur les sociétés déduit (bas)")!.y;
   const haut = rendements.find((p) => p.x === "Estimation de ses promoteurs (haut)")!.y;
   const deficit = getValeur("deficit.montant");
-  const effort = effortStabilisation(
-    getValeur("deficit.ratio-pib").valeur,
-    getValeur("deficit.stabilisant").valeur,
-    getValeur("macro.pib").valeur,
-  );
+  const dette = getValeur("dette.fin-annee-pib");
+  const croissanceObservee = getValeur("macro.croissance-valeur");
+  const [croissance, setCroissance] = useState(croissanceObservee.valeur);
+  const stabilisant = deficitStabilisant(dette.valeur, croissance / 100);
+  const effort = effortStabilisation(getValeur("deficit.ratio-pib").valeur, stabilisant, getValeur("macro.pib").valeur);
   const programme = getValeur("prop.programme-depenses");
 
   const besoins = [
-    { libelle: `Effort pour stabiliser la dette (${deficit.date})`, valeur: effort, aide: "calculé : déficit moins déficit stabilisant, en points de PIB" },
+    {
+      libelle: `Effort pour stabiliser la dette (${deficit.date})`,
+      valeur: effort,
+      aide: `calculé avec ${formatNombre(croissance, 1)} % de croissance nominale : déficit moins ${formatNombre(stabilisant, 1)} points de PIB`,
+    },
     { libelle: `Déficit public (${deficit.date})`, valeur: deficit.valeur },
     { libelle: "Programme de dépenses nouvelles", valeur: programme.valeur, aide: "hypothèse d'illustration" },
   ];
-  const max = Math.max(haut, ...besoins.map((b) => b.valeur));
+  // Échelle fixe : seule la barre de l'effort bouge avec le curseur.
+  const max = Math.max(haut, deficit.valeur, programme.valeur);
   const pct = (v: number) => (v / max) * 100;
 
   return (
     <div>
+      <div className="mb-6 rounded-xl bg-subtle p-4">
+        <Curseur
+          libelle="Croissance nominale retenue pour stabiliser la dette"
+          valeur={croissance}
+          min={0}
+          max={5}
+          pas={0.1}
+          onChange={setCroissance}
+          affichage={`${formatNombre(croissance, 1)} %`}
+          aide={`Croissance du PIB en valeur (volume + prix) : ${formatNombre(croissanceObservee.valeur, 1)} % en ${croissanceObservee.date} selon l'Insee. Avec une dette de ${formatNombre(dette.valeur, 1)} % du PIB, le déficit qui la stabilise vaut dette × g / (1 + g).`}
+        />
+      </div>
       <ul className="space-y-4">
         <li>
           <div className="flex items-baseline justify-between gap-3 text-sm">
@@ -54,8 +74,9 @@ export function RendementFaceAuxBesoins() {
             <span className="absolute top-[-3px] bottom-[-3px] w-0.5 rounded bg-accent" style={{ left: `${pct(haut)}%` }} />
           </div>
           <p className="mt-1 text-xs text-muted">
-            Fourchette basse : estimation critique, impôt sur les sociétés déduit. Fourchette haute : estimation de ses
-            promoteurs, avant départs et optimisation.
+            Fourchette basse : calcul de l&apos;économiste Antoine Levy, qui déduit l&apos;impôt sur les sociétés déjà payé
+            par les entreprises détenues (cité par le rapport du Sénat). Fourchette haute : estimation de ses promoteurs,
+            avant départs et optimisation.
           </p>
         </li>
         {besoins.map((b) => (

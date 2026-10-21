@@ -719,3 +719,11 @@ export function anneesDeCouverture(stock: number, besoinAnnuel: number): number 
 export function effortStabilisation(deficitPctPib: number, deficitStabilisantPctPib: number, pib: number): number {
   return Math.max(0, deficitPctPib - deficitStabilisantPctPib) * pib / 100;
 }
+
+/**
+ * Déficit (en points de PIB) qui stabilise le ratio de dette, pour une
+ * croissance nominale g : d × g / (1 + g).
+ */
+export function deficitStabilisant(dettePctPib: number, croissanceNominale: number): number {
+  return (dettePctPib * croissanceNominale) / (1 + croissanceNominale);
+}

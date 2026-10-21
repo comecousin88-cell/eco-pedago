@@ -43,6 +43,7 @@ export function AnnulationDette() {
     net: Math.round(x.netConsolide * 10) / 10,
   }));
   const cumulNet = r.reduce((s, x) => s + x.netConsolide, 0);
+  const interets = (montant * coupon) / 100;
 
   return (
     <div className="space-y-5">
@@ -81,15 +82,15 @@ export function AnnulationDette() {
 
       <dl className="grid gap-3 sm:grid-cols-3" aria-live="polite">
         <div className="rounded-xl bg-ok-soft p-3">
-          <dt className="text-sm text-muted">Ce que l&apos;État ne paie plus, chaque année</dt>
-          <dd className="font-serif text-2xl font-semibold text-ok">+{formatNombre(montant * coupon / 100, 1)} Md€</dd>
+          <dt className="text-sm text-muted">Ce que l&apos;État ne paie plus, chaque année (gain brut)</dt>
+          <dd className="font-serif text-2xl font-semibold text-ok">+{formatNombre(interets, 1)} Md€</dd>
           <dd className="text-sm text-muted">intérêts qui allaient à la Banque de France</dd>
         </div>
         <div className="rounded-xl bg-bad-soft p-3">
           <dt className="text-sm text-muted">Ce que la Banque de France perd</dt>
           <dd className="font-serif text-2xl font-semibold text-bad">−{formatNombre(montant)} Md€ de fonds propres</dd>
           <dd className="text-sm text-muted">
-            puis −{formatNombre(montant * coupon / 100, 1)} Md€ par an : les réserves restent à rémunérer à{" "}
+            puis −{formatNombre(interets, 1)} Md€ par an : les réserves restent à rémunérer à{" "}
             {formatNombre(tauxDepot.valeur, 2)} %
           </dd>
         </div>
@@ -104,6 +105,46 @@ export function AnnulationDette() {
           </dd>
         </div>
       </dl>
+
+      <div className="rounded-xl border border-line p-4">
+        <p className="text-sm font-semibold text-ink">Le calcul consolidé, État + Banque de France, chaque année</p>
+        <table className="mt-3 w-full text-sm">
+          <caption className="sr-only">Calcul consolidé de l&apos;annulation pour l&apos;État et la Banque de France</caption>
+          <tbody className="divide-y divide-line">
+            <tr>
+              <th scope="row" className="py-2 pr-3 text-left font-normal text-body">
+                Intérêts que l&apos;État ne verse plus (gain brut de l&apos;État)
+              </th>
+              <td className="py-2 text-right font-semibold whitespace-nowrap text-ok tabular-nums">+{formatNombre(interets, 1)} Md€</td>
+            </tr>
+            <tr>
+              <th scope="row" className="py-2 pr-3 text-left font-normal text-body">
+                Recette perdue par la Banque de France, donc autant de bénéfices (impôt et dividendes) en moins pour
+                l&apos;État
+              </th>
+              <td className="py-2 text-right font-semibold whitespace-nowrap text-bad tabular-nums">−{formatNombre(interets, 1)} Md€</td>
+            </tr>
+            <tr>
+              <th scope="row" className="py-2 pr-3 text-left font-semibold text-ink">Économie nette pour l&apos;ensemble</th>
+              <td className="py-2 text-right font-semibold whitespace-nowrap text-ink tabular-nums">0 Md€</td>
+            </tr>
+            <tr>
+              <th scope="row" className="py-2 pr-3 text-left font-normal text-body">
+                Il reste, une fois : la perte de fonds propres de la Banque de France
+              </th>
+              <td className="py-2 text-right font-semibold whitespace-nowrap text-bad tabular-nums">−{formatNombre(montant)} Md€</td>
+            </tr>
+            <tr>
+              <th scope="row" className="py-2 pr-3 text-left font-normal text-body">
+                Et, si les marchés réagissent, le surcoût d&apos;emprunt la première année (croissant ensuite)
+              </th>
+              <td className="py-2 text-right font-semibold whitespace-nowrap text-bad tabular-nums">
+                {r[0].surcoutMarche > 0 ? `−${formatNombre(r[0].surcoutMarche, 1)}` : "0"} Md€
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
 
       <Legende
         elements={[

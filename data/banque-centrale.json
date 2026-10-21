@@ -439,6 +439,51 @@
       "note": "Rendement des titres moins leur coût de refinancement au taux de la facilité de dépôt.",
       "statut": "verifie",
       "consulte_le": "2026-10-21"
+    },
+    {
+      "id": "bce.pspp-france",
+      "label": "Titres publics français détenus par l'Eurosystème au titre du programme PSPP (achats nets cumulés)",
+      "serie": [
+        {
+          "x": "2021-12",
+          "y": 516.0
+        },
+        {
+          "x": "2022-09",
+          "y": 537.4
+        },
+        {
+          "x": "2025-12",
+          "y": 401.1
+        },
+        {
+          "x": "2026-09",
+          "y": 359.6
+        }
+      ],
+      "unite": "Md€",
+      "date": "2026-09-30",
+      "source": {
+        "nom": "Banque centrale européenne, ventilation par juridiction des achats du programme PSPP (historique mensuel)",
+        "url": "https://www.ecb.europa.eu/mopo/pdf/PSPP_breakdown_history.csv"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-21",
+      "note": "Cumul des achats nets mensuels pour la juridiction France (titres de l'État et des autres émetteurs publics français), en valeur comptable. Pic en septembre 2022. Comprend les titres détenus par la Banque de France et ceux détenus par la BCE elle-même."
+    },
+    {
+      "id": "bce.pepp-france",
+      "label": "Titres publics français détenus par l'Eurosystème au titre du programme PEPP (achats nets cumulés)",
+      "valeur": 237.5,
+      "unite": "Md€",
+      "date": "2026-09-30",
+      "source": {
+        "nom": "Banque centrale européenne, programme d'achats d'urgence face à la pandémie (PEPP), ventilation par juridiction",
+        "url": "https://www.ecb.europa.eu/mopo/implement/pepp/html/index.en.html"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-21",
+      "note": "Valeur comptable au coût amorti, fin septembre 2026."
     }
   ]
 }

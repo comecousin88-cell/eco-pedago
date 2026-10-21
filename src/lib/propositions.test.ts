@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { anneesDeCouverture, effetsAnnulation, effortStabilisation, fondsPropresApresAnnulation, rendementImpotFortunes } from "./economics";
+import { anneesDeCouverture, deficitStabilisant, effetsAnnulation, effortStabilisation, fondsPropresApresAnnulation, rendementImpotFortunes } from "./economics";
 
 describe("annulation de la dette détenue par la banque centrale", () => {
   const base = { montant: 500, coupon: 0.01, tauxDepot: 0.025, prime: 0, empruntsAnnuels: 300, annees: 3 };
@@ -51,5 +51,15 @@ describe("effort pour stabiliser la dette", () => {
 
   it("aucun effort si le déficit est déjà sous le niveau stabilisant", () => {
     expect(effortStabilisation(2, 2.2, 3000)).toBe(0);
+  });
+});
+
+describe("déficit stabilisant", () => {
+  it("115,7 % de dette et 1,9 % de croissance nominale : environ 2,2 points, comme le HCFP", () => {
+    expect(deficitStabilisant(115.7, 0.019)).toBeCloseTo(2.157, 3);
+  });
+
+  it("sans croissance nominale, seul un budget à l'équilibre stabilise la dette", () => {
+    expect(deficitStabilisant(115.7, 0)).toBe(0);
   });
 });

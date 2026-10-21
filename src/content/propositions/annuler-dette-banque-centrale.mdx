@@ -10,6 +10,24 @@ Au <DateDonnee id="bdf.titres-politique-monetaire" format="jour" />, ces titres 
 transformer ces titres en dette perpétuelle à taux zéro, fait l'objet de sa propre fiche (« mettre la dette au
 frigo »).
 
+**488 milliards, ou plus de 600 ? Une question de périmètre et de date.** Le débat cite souvent des montants plus
+élevés, de l'ordre de 600 milliards, soit près d'un cinquième de la dette. Les chiffres ne se contredisent pas :
+
+- **La Banque de France seule** : <Chiffre id="bdf.titres-politique-monetaire" /> au
+  <DateDonnee id="bdf.titres-politique-monetaire" format="jour" />, au coût amorti (<Chiffre id="bdf.titres-politique-monetaire-2025" />
+  fin 2025). C'est ce montant que la France pourrait, en théorie, viser, et celui du simulateur.
+- **Tout l'Eurosystème** : la BCE recense <Chiffre id="bce.pspp-france" x="2026-09" /> de titres publics français
+  au titre du programme PSPP et <Chiffre id="bce.pepp-france" /> au titre du PEPP fin septembre 2026, soit près de
+  600 milliards. Ce total inclut les titres français détenus par la BCE elle-même, qui ne sont pas au bilan de la
+  Banque de France et sur lesquels la France n'a aucune prise.
+- **Une date plus ancienne** : les portefeuilles fondent depuis l'arrêt des réinvestissements. Fin 2021, les seuls
+  achats du PSPP atteignaient déjà <Chiffre id="bce.pspp-france" x="2021-12" />, soit environ 18 % d'une dette publique
+  de <Chiffre id="dette.historique-md" x="2021" /> ; ils ont culminé à <Chiffre id="bce.pspp-france" x="2022-09" /> en
+  septembre 2022. Les parts de 18 à 20 % de la dette souvent citées datent de cette période.
+
+Aujourd'hui, les titres de la Banque de France représentent environ 14 % de la dette publique, et ceux de tout
+l'Eurosystème environ 17 %.
+
 ## 2. L'idée derrière
 
 L'idée part d'un constat juste : **une partie de la dette publique est détenue par une institution publique**. La
@@ -61,7 +79,7 @@ rien toucher en face.
 <Figure
   titre="Ce que change l'annulation, pour qui"
   resume="Simulateur : on choisit le montant annulé, le coupon moyen des titres et la réaction des marchés. Le gain d'intérêts de l'État est exactement compensé par la perte de la Banque de France ; seule reste, en net, la prime de risque éventuelle, qui coûte de plus en plus au fil du refinancement."
-  donnees={["bdf.titres-politique-monetaire", "bdf.rendement-titres-pm", "bce.taux-depot-actuel", "aft.programme-emissions", "dette.stock", "dette.ratio-pib"]}
+  donnees={["bdf.titres-politique-monetaire", "bdf.rendement-titres-pm", "bdf.resultat-cumule-2015-2022", "bce.taux-depot-actuel", "aft.programme-emissions", "dette.stock", "dette.ratio-pib"]}
 >
   <AnnulationDette />
 </Figure>
@@ -130,8 +148,11 @@ fonds propres nettement sous zéro.
 | Dette publique totale à la même date | <Chiffre id="dette.stock" /> |
 | Situation financière nette de la Banque de France | <Chiffre id="bdf.situation-nette" /> |
 | Rendement moyen des titres de politique monétaire de la Banque de France | <Chiffre id="bdf.rendement-titres-pm" decimales={2} /> en <DateDonnee id="bdf.rendement-titres-pm" /> |
-| Intérêts que l'État ne paierait plus | environ 3,3 Md€ par an (488 Md€ × 0,68 %, calcul ; ordre de grandeur, ce rendement moyen couvre aussi des titres autres que ceux de l'État français) |
+| Intérêts que l'État ne paierait plus (gain brut) | environ 3,3 Md€ par an (488 Md€ × 0,68 %, calcul ; ordre de grandeur, ce rendement moyen couvre aussi des titres autres que ceux de l'État français) |
+| Bénéfices en moins reversés par la Banque de France à l'État | le même montant : économie nette nulle pour l'ensemble État + Banque de France |
 | Recettes perdues par la Banque de France | le même montant, chaque année |
+| Perte de fonds propres de la Banque de France | le montant annulé, une fois |
+| Titres publics français détenus par tout l'Eurosystème (PSPP et PEPP) | près de 600 Md€ fin septembre 2026, dont ceux détenus par la BCE elle-même |
 | Résultat ordinaire avant impôt de la Banque de France | <Chiffre id="bdf.resultat-ordinaire-2024" /> en <DateDonnee id="bdf.resultat-ordinaire-2024" /> |
 | Taux moyen auquel elle a rémunéré les réserves | <Chiffre id="bce.taux-depot-moyen-2024" decimales={2} /> en <DateDonnee id="bce.taux-depot-moyen-2024" /> |
 | Coût d'une prime de risque de 0,5 point sur les emprunts de l'État | environ 1,5 Md€ la première année, puis davantage chaque année au fil du refinancement |
