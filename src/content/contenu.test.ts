@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { glossaire } from "./glossaire";
 import { contenus } from "./modules/contenus";
-import { PARTIES, propositions } from "./propositions";
+import { PARTIES, THEMES, propositionHref, propositions, propositionsPhares } from "./propositions";
 import { readFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { modules, neighbours } from "./modules";
@@ -57,8 +57,14 @@ describe("parcours", () => {
       "Comment l'État emprunte",
       "Les retraites",
       "Ma fiche de paie",
-      "Propositions passées au crible",
+      "Les propositions au crible",
     ]);
+  });
+
+  it("« Je découvre » se termine sur la rubrique puis les quatre fiches phares", () => {
+    const etapes = getParcours("decouvrir").etapes;
+    const fin = etapes.slice(-5).map((e) => e.href);
+    expect(fin).toEqual(["/propositions/", ...propositionsPhares.map((p) => propositionHref(p.slug))]);
   });
 
   it("l'avancement ne compte que les étapes disponibles", () => {
@@ -108,6 +114,27 @@ describe("propositions passées au crible", () => {
       const texte = readFileSync(fileURLToPath(new URL(`./propositions/${p.slug}.mdx`, import.meta.url)), "utf8");
       const titres = [...texte.matchAll(/^## (.+)$/gm)].map((m) => m[1].trim());
       expect(titres, p.slug).toEqual([...PARTIES]);
+    }
+  });
+
+  it("quatre fiches phares : annulation, taxer les riches pour financer, retraite à 60 ans, planche à billets", () => {
+    expect(propositionsPhares.map((p) => p.slug).sort()).toEqual(
+      ["annuler-dette-banque-centrale", "financer-les-depenses-en-taxant-les-riches", "planche-a-billets", "retraite-a-60-ans"].sort(),
+    );
+  });
+
+  it("chaque fiche a un résumé, au moins un thème connu, et des liens vers des pages de modules qui existent", () => {
+    for (const p of propositions) {
+      expect(p.resume.trim(), p.slug).not.toBe("");
+      expect(p.themes.length, p.slug).toBeGreaterThan(0);
+      for (const t of p.themes) expect(THEMES, p.slug).toContain(t);
+      expect(p.liens.length, p.slug).toBeGreaterThan(0);
+      for (const l of p.liens) {
+        const m = modules.find((x) => x.slug === l.module);
+        expect(m, `${p.slug} → ${l.module}`).toBeDefined();
+        if (l.section) expect(m!.sections.map((s) => s.slug), `${p.slug} → ${l.section}`).toContain(l.section);
+        else expect(m!.sections, `${p.slug} → ${l.module} : un module à sections se lie par section`).toHaveLength(0);
+      }
     }
   });
 

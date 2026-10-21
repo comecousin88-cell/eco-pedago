@@ -1,4 +1,5 @@
 import { moduleHref, modules, type ModuleInfo } from "./modules";
+import { propositionHref, propositionsPhares } from "./propositions";
 import type { ModeLecture } from "@/lib/lecture";
 
 /**
@@ -44,6 +45,8 @@ function mod(slug: string): ModuleInfo {
   return m;
 }
 
+const GROUPE_PROPOSITIONS = "Les propositions au crible";
+
 /** Sélection des sections essentielles, dans l'ordre du fil conducteur. */
 const DECOUVRIR: [string, string?][] = [
   ["les-bases", "recettes-depenses"],
@@ -66,16 +69,18 @@ export const parcours: Parcours[] = [
     titre: "Je découvre",
     accroche:
       "L'essentiel en une demi-heure : d'où vient l'argent public, pourquoi la dette monte, comment l'État emprunte, qui paie les retraites, ce qui reste sur la fiche de paie, et ce que valent les solutions qu'on entend.",
-    duree: "≈ 30 min",
+    duree: "≈ 45 min",
     mode: "simple",
+    // Le parcours se termine sur les fiches : la rubrique, puis les fiches phares.
     etapes: [
       ...DECOUVRIR.map(([m, s]) => etapeModule(mod(m), s)),
-      {
-        href: "/propositions/",
-        titre: "Propositions passées au crible",
-        groupe: "Propositions passées au crible",
-        disponible: true,
-      },
+      { href: "/propositions/", titre: "Les propositions au crible", groupe: GROUPE_PROPOSITIONS, disponible: true },
+      ...propositionsPhares.map((p) => ({
+        href: propositionHref(p.slug),
+        titre: p.titre,
+        groupe: GROUPE_PROPOSITIONS,
+        disponible: !!p.contenu,
+      })),
     ],
   },
   {

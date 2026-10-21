@@ -1,71 +1,81 @@
 "use client";
 
-import Link from "next/link";
 import { useState } from "react";
-import { BadgeVerdict, type NiveauVerdict } from "@/components/pedago/Encadres";
-import { SoonBadge } from "@/components/ui/SoonBadge";
+import type { NiveauVerdict } from "@/components/pedago/Encadres";
+import { CarteProposition, type CarteFiche } from "./CarteProposition";
 
-interface Carte {
-  slug: string;
-  titre: string;
-  theme: string;
-  verdict?: NiveauVerdict;
-  redigee: boolean;
-}
-
-const FILTRES: { v: NiveauVerdict | "toutes"; l: string }[] = [
-  { v: "toutes", l: "Toutes" },
+const VERDICTS: { v: NiveauVerdict | "tous"; l: string }[] = [
+  { v: "tous", l: "Tous les verdicts" },
   { v: "solide", l: "Mécanisme solide" },
   { v: "debattu", l: "Débattu" },
   { v: "ne-tient-pas", l: "Ne tient pas en l'état" },
 ];
 
-/** Grille des fiches, filtrable par verdict. Les fiches pas encore rédigées sont listées comme « bientôt ». */
-export function ListePropositions({ propositions }: { propositions: Carte[] }) {
-  const [filtre, setFiltre] = useState<NiveauVerdict | "toutes">("toutes");
-  const visibles = propositions.filter((p) => filtre === "toutes" || p.verdict === filtre);
+function Filtre<T extends string>({
+  libelle,
+  options,
+  valeur,
+  onChange,
+}: {
+  libelle: string;
+  options: { v: T; l: string }[];
+  valeur: T;
+  onChange: (v: T) => void;
+}) {
+  return (
+    <div role="group" aria-label={libelle} className="flex flex-wrap items-center gap-2">
+      <span className="mr-1 text-sm font-semibold text-ink">{libelle}</span>
+      {options.map((o) => (
+        <button
+          key={o.v}
+          type="button"
+          aria-pressed={valeur === o.v}
+          onClick={() => onChange(o.v)}
+          className={`rounded-full border px-3 py-1.5 text-sm font-medium ${
+            valeur === o.v ? "border-ink bg-ink text-page" : "border-line text-muted hover:text-ink"
+          }`}
+        >
+          {o.l}
+        </button>
+      ))}
+    </div>
+  );
+}
+
+/**
+ * Toutes les fiches en cartes, filtrables par thème et par verdict. Les fiches
+ * pas encore rédigées sont listées comme « bientôt » (sans verdict, elles
+ * disparaissent dès qu'on filtre par verdict).
+ */
+export function ListePropositions({ propositions, themes }: { propositions: CarteFiche[]; themes: readonly string[] }) {
+  const [theme, setTheme] = useState("tous");
+  const [verdict, setVerdict] = useState<NiveauVerdict | "tous">("tous");
+  const visibles = propositions.filter(
+    (p) => (theme === "tous" || p.themes.includes(theme)) && (verdict === "tous" || (p.redigee && p.verdict === verdict)),
+  );
 
   return (
     <div className="mt-8">
-      <div role="group" aria-label="Filtrer par verdict" className="flex flex-wrap gap-2">
-        {FILTRES.map((f) => (
-          <button
-            key={f.v}
-            type="button"
-            aria-pressed={filtre === f.v}
-            onClick={() => setFiltre(f.v)}
-            className={`rounded-full border px-3 py-1.5 text-sm font-medium ${
-              filtre === f.v ? "border-ink bg-ink text-page" : "border-line text-muted hover:text-ink"
-            }`}
-          >
-            {f.l}
-          </button>
-        ))}
+      <div className="space-y-3">
+        <Filtre
+          libelle="Thème"
+          options={[{ v: "tous", l: "Tous les thèmes" }, ...themes.map((t) => ({ v: t, l: t }))]}
+          valeur={theme}
+          onChange={setTheme}
+        />
+        <Filtre libelle="Verdict" options={VERDICTS} valeur={verdict} onChange={setVerdict} />
       </div>
-      <ul className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {visibles.map((p) => {
-          const contenu = (
-            <>
-              <p className="text-xs font-semibold tracking-wide text-accent uppercase">{p.theme}</p>
-              <h2 className="mt-2 font-serif text-lg leading-snug font-semibold text-ink">{p.titre}</h2>
-              <div className="mt-auto pt-4">{p.verdict && p.redigee ? <BadgeVerdict niveau={p.verdict} /> : <SoonBadge />}</div>
-            </>
-          );
-          const classes = "flex h-full flex-col rounded-2xl border border-line border-t-4 border-t-accent bg-surface p-5";
-          return (
-            <li key={p.slug}>
-              {p.redigee ? (
-                <Link href={`/propositions/${p.slug}/`} className={`${classes} transition hover:-translate-y-0.5 hover:shadow-md`}>
-                  {contenu}
-                </Link>
-              ) : (
-                <div className={`${classes} opacity-80`}>{contenu}</div>
-              )}
-            </li>
-          );
-        })}
+      <p className="mt-4 text-sm text-muted" aria-live="polite">
+        {visibles.length} fiche{visibles.length > 1 ? "s" : ""}
+      </p>
+      <ul className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {visibles.map((p) => (
+          <li key={p.slug}>
+            <CarteProposition fiche={p} titreNiveau="h2" />
+          </li>
+        ))}
       </ul>
-      {visibles.length === 0 && <p className="mt-6 text-muted">Aucune fiche rédigée avec ce verdict pour l&apos;instant.</p>}
+      {visibles.length === 0 && <p className="mt-6 text-muted">Aucune fiche rédigée ne correspond à ces filtres pour l&apos;instant.</p>}
     </div>
   );
 }

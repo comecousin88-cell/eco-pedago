@@ -2,12 +2,13 @@ import type { Metadata } from "next";
 import { FilAriane } from "@/components/modules/FilAriane";
 import { MarquerLue } from "@/components/modules/MarquerLue";
 import { ModuleTheme } from "@/components/modules/ModuleTheme";
+import { versCarte } from "@/components/propositions/CarteProposition";
 import { ListePropositions } from "@/components/propositions/ListePropositions";
 import { rubriqueColors } from "@/content/modules";
-import { propositions } from "@/content/propositions";
+import { THEMES, propositions } from "@/content/propositions";
 
 export const metadata: Metadata = {
-  title: "Propositions passées au crible",
+  title: "Les propositions au crible",
   description:
     "Annuler la dette, taxer les plus riches, sortir de l'euro, retraite à 60 ans… Chaque proposition analysée avec ses meilleurs arguments, ses chiffres et un verdict sur le mécanisme.",
 };
@@ -17,9 +18,9 @@ export default function PropositionsPage() {
     <ModuleTheme color={rubriqueColors.propositions}>
       <MarquerLue href="/propositions/" />
       <div className="mx-auto max-w-5xl px-4 py-10 sm:px-6 sm:py-14">
-        <FilAriane etapes={[{ label: "Propositions passées au crible" }]} />
+        <FilAriane etapes={[{ label: "Les propositions au crible" }]} />
         <h1 className="mt-6 font-serif text-3xl font-semibold tracking-tight text-ink sm:text-4xl">
-          Propositions passées au crible
+          Les propositions au crible
         </h1>
         <p className="mt-4 max-w-2xl text-lg leading-relaxed text-muted">
           Des idées qui reviennent dans le débat public, analysées une par une, toujours de la même façon : l&apos;idée et
@@ -35,9 +36,7 @@ export default function PropositionsPage() {
             « mécanisme solide », « débattu », « ne tient pas en l&apos;état ».
           </p>
         </div>
-        <ListePropositions
-          propositions={propositions.map((p) => ({ slug: p.slug, titre: p.titre, theme: p.theme, verdict: p.verdict, redigee: !!p.contenu }))}
-        />
+        <ListePropositions propositions={propositions.map(versCarte)} themes={THEMES} />
       </div>
     </ModuleTheme>
   );

@@ -35,11 +35,11 @@ export default async function PagePropositionFiche({ params }: PageProps<"/propo
     <ModuleTheme color={rubriqueColors.propositions}>
       <MarquerLue href={href} />
       <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6 sm:py-12">
-        <FilAriane etapes={[{ label: "Propositions passées au crible", href: "/propositions/" }, { label: p.titre }]} />
+        <FilAriane etapes={[{ label: "Les propositions au crible", href: "/propositions/" }, { label: p.titre }]} />
         <div className="mt-6 grid gap-8 lg:grid-cols-[minmax(0,1fr)_16rem]">
           <div className="min-w-0">
             <header className="border-b border-line pb-6">
-              <p className="text-sm font-semibold text-accent">Proposition passée au crible · {p.theme}</p>
+              <p className="text-sm font-semibold text-accent">Proposition passée au crible · {p.themes.join(" · ")}</p>
               <h1 className="mt-2 font-serif text-3xl leading-tight font-semibold tracking-tight text-ink sm:text-4xl">{p.titre}</h1>
               {p.verdict && (
                 <p className="mt-4 flex flex-wrap items-center gap-3 text-sm text-muted">
@@ -52,7 +52,7 @@ export default async function PagePropositionFiche({ params }: PageProps<"/propo
               <ModeLecture detaille className="mt-5" />
             </header>
             <div className="mt-6">
-              <BarreParcours href="/propositions/" />
+              <BarreParcours href={href} />
             </div>
             <article className="prose-eco fiche-proposition mt-8 max-w-none">
               <Texte />

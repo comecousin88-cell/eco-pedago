@@ -2,6 +2,7 @@ import type { ReactNode } from "react";
 import { BarreParcours } from "@/components/lecture/BarreParcours";
 import { ModeLecture } from "@/components/lecture/ModeLecture";
 import { Quiz, type QuestionQuiz } from "@/components/pedago/Quiz";
+import { PropositionsLiees } from "@/components/propositions/PropositionsLiees";
 import { moduleHref, type ModuleInfo } from "@/content/modules";
 import { FilAriane } from "./FilAriane";
 import { MarquerLue } from "./MarquerLue";
@@ -70,6 +71,8 @@ export function PageModule({
             </div>
 
             <article className="prose-eco mt-8 max-w-none">{children}</article>
+
+            <PropositionsLiees module={module.slug} section={section} />
 
             {derniere && quiz && quiz.length > 0 && <Quiz module={module.slug} questions={quiz} />}
 

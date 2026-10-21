@@ -1,8 +1,11 @@
 import Link from "next/link";
 import { ModuleCard } from "@/components/modules/ModuleCard";
 import { CartesParcours } from "@/components/lecture/CartesParcours";
+import { ModuleTheme } from "@/components/modules/ModuleTheme";
+import { CarteProposition, versCarte } from "@/components/propositions/CarteProposition";
 import { SoonBadge } from "@/components/ui/SoonBadge";
-import { modules } from "@/content/modules";
+import { modules, rubriqueColors } from "@/content/modules";
+import { propositions, propositionsPhares } from "@/content/propositions";
 
 export default function Home() {
   return (
@@ -48,6 +51,30 @@ export default function Home() {
           <SoonBadge />
         </div>
       </section>
+
+      <ModuleTheme color={rubriqueColors.propositions}>
+        <section aria-labelledby="propositions" className="border-t border-line py-12">
+          <div className="flex flex-wrap items-baseline justify-between gap-2">
+            <h2 id="propositions" className="font-serif text-2xl font-semibold text-ink">
+              Les propositions au crible
+            </h2>
+            <Link href="/propositions/" className="text-sm font-medium text-accent underline underline-offset-4">
+              Voir les {propositions.length} fiches
+            </Link>
+          </div>
+          <p className="mt-2 max-w-2xl text-muted">
+            Les idées qui reviennent dans le débat, présentées sous leur meilleur jour, chiffrées, puis jugées sur leur
+            mécanisme. Aucun parti n&apos;est nommé.
+          </p>
+          <ul className="mt-6 grid gap-4 sm:grid-cols-2">
+            {propositionsPhares.map((p) => (
+              <li key={p.slug}>
+                <CarteProposition fiche={versCarte(p)} />
+              </li>
+            ))}
+          </ul>
+        </section>
+      </ModuleTheme>
 
       <section aria-labelledby="premiers" className="border-t border-line py-12">
         <div className="flex flex-wrap items-baseline justify-between gap-2">

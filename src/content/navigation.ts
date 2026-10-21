@@ -20,6 +20,13 @@ export const navItems: NavItem[] = [
     status: "available",
   },
   {
+    href: "/propositions/",
+    label: "Les propositions au crible",
+    description:
+      "Annuler la dette, taxer les plus riches, retraite à 60 ans… Chaque proposition analysée, avec ses meilleurs arguments et un verdict.",
+    status: "available",
+  },
+  {
     href: "/tableau-de-bord/",
     label: "Tableau de bord",
     description:

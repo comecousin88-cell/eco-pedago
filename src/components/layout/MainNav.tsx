@@ -49,13 +49,13 @@ export function MainNav() {
   return (
     <nav aria-label="Navigation principale">
       {/* Grands écrans : liens en ligne */}
-      <ul className="hidden items-center gap-1 lg:flex">
+      <ul className="hidden items-center gap-1 xl:flex">
         {navItems.map((item) => (
           <li key={item.href}>
             <NavLink
               item={item}
               active={isActive(pathname, item.href)}
-              className="flex items-center gap-2 rounded-full px-3 py-1.5 text-sm font-medium transition-colors"
+              className="flex items-center gap-2 rounded-full px-3 py-1.5 text-sm font-medium whitespace-nowrap transition-colors"
             />
           </li>
         ))}
@@ -64,7 +64,7 @@ export function MainNav() {
       {/* Mobile : bouton menu */}
       <button
         type="button"
-        className="rounded-md p-2 text-body hover:bg-subtle lg:hidden"
+        className="rounded-md p-2 text-body hover:bg-subtle xl:hidden"
         aria-expanded={open}
         aria-controls="menu-mobile"
         onClick={() => setOpen((o) => !o)}
@@ -90,7 +90,7 @@ export function MainNav() {
       {open && (
         <ul
           id="menu-mobile"
-          className="absolute inset-x-0 top-full space-y-1 border-b border-line bg-surface px-4 py-3 shadow-sm lg:hidden"
+          className="absolute inset-x-0 top-full space-y-1 border-b border-line bg-surface px-4 py-3 shadow-sm xl:hidden"
         >
           {navItems.map((item) => (
             <li key={item.href}>
