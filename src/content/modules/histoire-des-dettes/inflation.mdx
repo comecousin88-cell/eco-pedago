@@ -10,14 +10,14 @@ pouvoir d'achat de ce qui leur est remboursé.
 La France l'a vécu après les deux guerres. Sa dette, qui dépassait <Chiffre id="histo.dette-fra" x="1921" /> en
 1921, a fortement baissé dans les années 1920 avec l'inflation et la dévaluation du franc. Après 1945, une inflation
 très forte l'a ramenée à <Chiffre id="histo.dette-fra" x="1950" /> dès 1950. Au Japon, l'inflation de l'après-guerre a fait
-passer la dette de plus de 200 % du PIB en 1944 à <Chiffre id="histo.dette-jpn" x="1950" /> en 1950.
+passer la dette de <Chiffre id="histo.dette-jpn" x="1944" decimales={0} /> en 1944 à <Chiffre id="histo.dette-jpn" x="1950" /> en 1950.
 
 <Figure
   titre="La dette de la France et du Japon depuis 1880"
-  resume="Courbes de la dette publique en % du PIB de la France et du Japon depuis 1880 : la dette française culmine au-dessus de 230 % au début des années 1920, puis baisse ; après la Seconde Guerre mondiale, elle passe sous 50 % en quelques années. La dette japonaise s'effondre de plus de 200 % en 1944 à moins de 20 % en 1950."
-  donnees={["histo.dette-fra", "histo.dette-jpn"]}
+  resume="Courbes de la dette publique en % du PIB de la France et du Japon depuis 1880 : la dette française culmine au-dessus de 230 % au début des années 1920, puis baisse ; après la Seconde Guerre mondiale, elle passe sous 50 % en quelques années. La dette japonaise s'effondre de plus de 200 % en 1944 à moins de 20 % en 1950. Les deux guerres mondiales sont grisées : la série française n'a pas de donnée de 1914 à 1919 ni de 1933 à 1945 (1933-1938 complétés en pointillés par une autre source), la série japonaise pas de donnée pour 1945."
+  donnees={["histo.dette-fra", "histo.dette-jpn", "histo.dette-fra-jst"]}
 >
-  <DetteLongue initiaux={["fra", "jpn"]} />
+  <DetteLongue initiaux={["fra", "jpn"]} lienHistoire={false} />
 </Figure>
 
 </Essentiel>
