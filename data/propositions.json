@@ -587,12 +587,12 @@
     },
     {
       "id": "prop.retraite-60-chiffrage-auteurs",
-      "label": "Coût d'un retour à la retraite à 60 ans avec 40 annuités, selon les auteurs d'un amendement de 2023",
+      "label": "Coût d'un retour à la retraite à 60 ans avec 40 annuités, selon l'amendement de députés La France insoumise (2023)",
       "valeur": 27,
       "unite": "Md€",
       "date": "2027",
       "source": {
-        "nom": "Assemblée nationale, amendement n° 4435 au projet de loi de financement rectificative de la sécurité sociale pour 2023 (1er février 2023), exposé sommaire",
+        "nom": "Assemblée nationale, amendement n° 4435 au projet de loi de financement rectificative de la sécurité sociale pour 2023, déposé par Mme Obono, M. Bompard et plusieurs députés La France insoumise (1er février 2023), exposé sommaire",
         "url": "https://www.assemblee-nationale.fr/dyn/16/amendements/0760/AN/4435.pdf"
       },
       "note": "Chiffrage présenté par les auteurs de l'amendement, pour l'année 2027, avec des économies attendues de 3,6 Md€ sur le chômage et les prestations sociales.",
@@ -612,6 +612,34 @@
       "note": "Soit 42 ans et demi ; 40 annuités correspondent à 160 trimestres.",
       "statut": "verifie",
       "consulte_le": "2026-10-21"
+    },
+    {
+      "id": "prop.retraite-rn-chiffrage",
+      "label": "Coût annoncé du départ à 60 ans avec 40 annuités pour les carrières commencées avant 20 ans (Rassemblement national)",
+      "valeur": 1.6,
+      "unite": "Md€",
+      "date": "2024-06-26",
+      "source": {
+        "nom": "LCP, « Législatives 2024 : le Rassemblement national et le Nouveau Front populaire précisent leurs projets sur les retraites » (26 juin 2024)",
+        "url": "https://lcp.fr/actualites/legislatives-2024-le-rassemblement-national-et-le-nouveau-front-populaire-precisent"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-21",
+      "note": "Chiffrage annoncé par Jordan Bardella pour la seule mesure « carrières longues » ; pour les autres actifs, le projet évoquait un âge pivot de 62 ans et 42 annuités."
+    },
+    {
+      "id": "prop.cdhr-rendement",
+      "label": "Rendement attendu de la contribution différentielle sur les hauts revenus (taux minimal de 20 %)",
+      "valeur": 2,
+      "unite": "Md€",
+      "date": "2025",
+      "source": {
+        "nom": "Sénat, rapport n° 689 (2024-2025), sur l'article 10 de la loi de finances pour 2025",
+        "url": "https://www.senat.fr/rap/l24-689/l24-6891.html"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-21",
+      "note": "Rendement prévu par le gouvernement ; le rapporteur juge qu'il a « de fortes chances de ne pas être atteint »."
     }
   ]
 }

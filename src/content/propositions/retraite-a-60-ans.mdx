@@ -10,6 +10,24 @@ sociale pour 2026 a suspendu ce relèvement jusqu'en janvier 2028 : l'âge léga
 personnes nées en 1963 et 1964, et la cible de 64 ans ne vaut plus qu'à partir de la génération 1969. L'âge moyen
 effectif de départ était de <Chiffre id="retraites.age-depart" decimales={1} /> en <DateDonnee id="retraites.age-depart" />.
 
+**Qui propose quoi sur l'âge de départ.** Les positions des principales forces politiques sont présentées ici avec leur
+source, sur le même pied :
+
+- **La France insoumise** propose un retour à 60 ans avec 40 annuités pour tous. Un amendement de ses députés, déposé en
+  février 2023 (n° 4435), en chiffrait le coût à <Chiffre id="prop.retraite-60-chiffrage-auteurs" /> pour
+  <DateDonnee id="prop.retraite-60-chiffrage-auteurs" /> ; en juin 2024, son coordinateur Manuel Bompard annonçait une
+  proposition de loi en ce sens au nom du Nouveau Front populaire (LCP, 26 juin 2024).
+- **Le Rassemblement national** propose un départ à 60 ans avec 40 annuités pour ceux qui ont commencé à travailler
+  avant 20 ans, mesure chiffrée à <Chiffre id="prop.retraite-rn-chiffrage" /> par Jordan Bardella, et pour les autres
+  un âge pivot de 62 ans avec 42 annuités (LCP, 26 juin 2024 ; proposition de loi d'abrogation de la réforme de 2023
+  déposée en septembre 2024).
+- **Le gouvernement** a fait adopter en 2023 le relèvement progressif de l'âge légal de 62 à 64 ans, avec 43 annuités
+  pour les générations les plus jeunes (loi n° 2023-270 du 14 avril 2023), dont l'effet est estimé par la Cour des
+  comptes à environ <Chiffre id="prop.retraites-reforme-2023" /> en 2030. En 2025, un nouveau gouvernement a fait voter
+  la suspension de ce relèvement jusqu'en 2028, dans la loi de financement de la sécurité sociale pour 2026.
+
+La suite de la fiche examine la proposition d'un retour général à 60 ans, quel qu'en soit le porteur.
+
 ## 2. L'idée derrière
 
 L'âge de 60 ans a été la règle de 1982 à 2010. Ses défenseurs y voient d'abord une **question de justice** : ceux qui
@@ -42,11 +60,13 @@ cotisants : il faut alors compenser par l'un des deux autres leviers.
   (160 trimestres) réduit les décotes et augmente certaines pensions, ce qui ajoute plusieurs milliards au coût.
 
 Au total, on aboutit à une **fourchette de l'ordre de 15 à 30 milliards d'euros par an**, environ 0,5 à 1 point de
-PIB, selon l'horizon et la durée de cotisation retenus. Les partisans de la mesure l'ont eux-mêmes chiffrée : un
-amendement déposé à l'Assemblée nationale lors de l'examen de la réforme de 2023 (n° 4435) estimait un retour à
-60 ans avec 40 annuités à <Chiffre id="prop.retraite-60-chiffrage-auteurs" /> pour l'année
-<DateDonnee id="prop.retraite-60-chiffrage-auteurs" />, en partie compensés, selon ses auteurs, par 3,6 milliards
-d'économies sur le chômage et les prestations sociales et par la suppression de certains allègements de cotisations.
+PIB, selon l'horizon et la durée de cotisation retenus. Les partisans de la mesure l'ont eux-mêmes chiffrée : l'amendement
+de députés La France insoumise (n° 4435) estimait un retour à 60 ans avec 40 annuités à
+<Chiffre id="prop.retraite-60-chiffrage-auteurs" /> pour l'année <DateDonnee id="prop.retraite-60-chiffrage-auteurs" />, en
+partie compensés, selon ses auteurs, par 3,6 milliards d'économies sur le chômage et les prestations sociales et par la
+suppression de certains allègements de cotisations. La variante limitée aux carrières commencées avant 20 ans, défendue
+par le Rassemblement national, coûte beaucoup moins (<Chiffre id="prop.retraite-rn-chiffrage" /> selon son porteur), mais
+s'accompagne pour les autres actifs d'un âge pivot de 62 ans.
 
 **Et ce coût s'ajoute à un déficit existant.** Sans changement de règles, la Cour des comptes prévoit un déficit de
 <Chiffre id="prop.retraites-deficit-cour" x="2025" /> en 2025, près de
@@ -92,7 +112,7 @@ dispositifs, pour un coût bien inférieur à un retour général à 60 ans : c'
   }
   contre={
     <ul>
-      <li><strong>Un coût élevé et durable.</strong> De l'ordre de 15 à 30 milliards d'euros par an selon l'horizon et la durée de cotisation, 27 milliards pour 2027 selon les partisans eux-mêmes, qui s'ajoutent à un déficit déjà prévu.</li>
+      <li><strong>Un coût élevé et durable.</strong> De l'ordre de 15 à 30 milliards d'euros par an selon l'horizon et la durée de cotisation, 27 milliards pour 2027 selon ses partisans, qui s'ajoutent à un déficit déjà prévu.</li>
       <li><strong>Une démographie défavorable.</strong> Le nombre de cotisants par retraité baisse : chaque année de retraite en plus pèse sur moins d'actifs.</li>
       <li><strong>Des contreparties lourdes.</strong> Il faudrait relever nettement les cotisations, ce qui pèse sur les salaires nets et le coût du travail, ou baisser les pensions.</li>
       <li><strong>Moins d'activité.</strong> Un départ plus précoce réduit le nombre de personnes en emploi, donc la production et les recettes fiscales.</li>
@@ -109,7 +129,8 @@ dispositifs, pour un coût bien inférieur à un retour général à 60 ans : c'
 | Coût d'un départ un an plus tôt (63 ans au lieu de 64) | <Chiffre id="prop.retraites-un-an-plus-tot" /> en 2035 (Cour des comptes) |
 | Coût d'un retour à 60 ans (âge seul, 3 à 4 ans d'avance) | de l'ordre de 16 à 23 Md€ par an en 2035 (calcul simplifié) |
 | Avec 40 annuités, fourchette retenue | de l'ordre de 15 à 30 Md€ par an |
-| Chiffrage des auteurs d'un amendement de 2023 (n° 4435) | <Chiffre id="prop.retraite-60-chiffrage-auteurs" /> pour <DateDonnee id="prop.retraite-60-chiffrage-auteurs" /> |
+| Chiffrage de députés La France insoumise (amendement n° 4435, 2023), 60 ans et 40 annuités pour tous | <Chiffre id="prop.retraite-60-chiffrage-auteurs" /> pour <DateDonnee id="prop.retraite-60-chiffrage-auteurs" /> |
+| Chiffrage du Rassemblement national (2024), 60 ans pour les carrières commencées avant 20 ans | <Chiffre id="prop.retraite-rn-chiffrage" /> |
 | Âge légal actuel (générations 1963 et 1964) | 62 ans et 9 mois |
 | Déficit prévu du système sans changement | <Chiffre id="prop.retraites-deficit-cour" x="2035" /> en 2035, <Chiffre id="prop.retraites-deficit-cour" x="2045" /> en 2045 |
 | Effet de la réforme de 2023 | environ <Chiffre id="prop.retraites-reforme-2023" /> en 2030 |
@@ -119,8 +140,7 @@ dispositifs, pour un coût bien inférieur à un retour général à 60 ans : c'
 
 <Verdict niveau="debattu">
 Revenir à la retraite à 60 ans est finançable, mais pas gratuitement : il faudrait trouver de l'ordre de 15 à
-30 milliards d'euros par an selon la durée de cotisation retenue (27 milliards pour 2027 selon les partisans
-eux-mêmes), en plus du déficit déjà prévu, par des cotisations nettement plus élevées, d'autres prélèvements ou des
+30 milliards d'euros par an selon la durée de cotisation retenue (27 milliards pour 2027 selon ses partisans), en plus du déficit déjà prévu, par des cotisations nettement plus élevées, d'autres prélèvements ou des
 pensions plus basses. Le choix entre ces leviers relève de la décision politique. Ce qui ne tient pas, c'est l'idée
 qu'on pourrait avancer l'âge sans toucher ni aux prélèvements ni aux pensions.
 </Verdict>

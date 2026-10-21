@@ -30,8 +30,9 @@ export default function PropositionsPage() {
         <div className="mt-6 rounded-2xl border border-line bg-surface p-5 text-sm leading-relaxed text-body">
           <p className="font-semibold text-ink">La règle du jeu</p>
           <p className="mt-1">
-            Aucun parti ni aucun responsable politique n&apos;est nommé : les fiches analysent des mécanismes, pas ceux qui
-            les portent. Le verdict porte sur la proposition et ses chiffres. Il distingue ce qui est démontrable
+            Les fiches analysent des mécanismes. Quand une proposition est attribuée à un parti ou à un gouvernement, c&apos;est
+            avec sa source, et les porteurs des propositions comparables ou opposées sur le même sujet sont nommés de la
+            même façon. Le verdict porte sur la proposition et ses chiffres, jamais sur le parti. Il distingue ce qui est démontrable
             (comptabilité, arithmétique, droit) de ce qui reste un débat d&apos;économistes. Trois niveaux :
             « mécanisme solide », « débattu », « ne tient pas en l&apos;état ».
           </p>

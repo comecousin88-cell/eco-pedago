@@ -3,8 +3,11 @@ import type { NiveauVerdict } from "@/components/pedago/Encadres";
 
 /**
  * Rubrique « Propositions passées au crible » : une fiche par proposition,
- * toujours dans le même ordre (voir PARTIES). Aucun parti ni candidat n'est
- * nommé ; le verdict porte sur le mécanisme et ses chiffres.
+ * toujours dans le même ordre (voir PARTIES). Un parti ou un gouvernement n'est
+ * nommé que pour lui attribuer, source à l'appui, une proposition ou un
+ * chiffrage, et alors les porteurs des propositions comparables ou opposées
+ * le sont aussi (règle de neutralité, PLAN.md). Le verdict porte sur le
+ * mécanisme et ses chiffres, jamais sur le parti.
  */
 
 export const PARTIES = [

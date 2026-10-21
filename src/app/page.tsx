@@ -74,7 +74,7 @@ export default function Home() {
           </div>
           <p className="mt-2 max-w-2xl text-muted">
             Les idées qui reviennent dans le débat, présentées sous leur meilleur jour, chiffrées, puis jugées sur leur
-            mécanisme. Aucun parti n&apos;est nommé.
+            mécanisme, jamais sur ceux qui les portent.
           </p>
           <ul className="mt-6 grid gap-4 sm:grid-cols-2">
             {propositionsPhares.map((p) => (

@@ -173,7 +173,12 @@ Chaque fonction est testée sur des cas calculables à la main. Exemple : une OA
 
 - **Vérification des chiffres** : je consulte chaque source officielle en ligne au fil des modules. Les ordres de grandeur du prompt sont des points de départ, pas des valeurs acquises. Ce que je ne peux pas confirmer reste `a_verifier`.
 - **Fiche de paie** : les taux changent chaque année et dépendent du statut (cadre ou non) et de la taille de l'entreprise. Le simulateur le signale clairement.
-- **Neutralité** : aucun parti ni candidat nommé, même dans les sources (je cite les instituts : OFCE, IPP, Institut Montaigne, Rexecode…, pas les programmes). Les verdicts portent sur les mécanismes et les chiffres.
+- **Neutralité** (règle mise à jour le 21/10/2026) :
+  - Par défaut, les analyses portent sur des mécanismes, sans nommer de parti ni de responsable politique.
+  - **Exception** : on peut nommer un parti ou un gouvernement quand on lui attribue factuellement une proposition ou un chiffrage, **avec la source** (texte déposé au Parlement, loi, programme, déclaration rapportée par un média ou une institution).
+  - **Égalité de traitement obligatoire** : quand une fiche nomme les porteurs d'une proposition, elle nomme aussi, avec le même niveau de détail et de source, ceux des propositions comparables ou opposées sur le même sujet (par exemple, pour les retraites : La France insoumise pour 60 ans et 40 annuités, le Rassemblement national pour 60 ans et 40 annuités pour les carrières commencées avant 20 ans, la réforme de 2023 du gouvernement pour 64 ans).
+  - **Les verdicts portent sur la proposition, jamais sur le parti** : aucun nom de parti dans un encadré de verdict.
+  - Un test vérifie que toute fiche qui nomme un parti en nomme au moins un autre (ou un gouvernement), et qu'aucun verdict ne nomme de parti.
 - **Volume** : c'est un gros projet (une vingtaine de simulateurs, des centaines de chiffres sourcés). Chaque étape aboutit à un site fonctionnel. Rien n'est laissé à moitié branché.
 
 ---

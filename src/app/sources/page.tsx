@@ -113,9 +113,11 @@ export default function PageSources() {
             ondulé. « Hypothèse » : valeur choisie pour un calcul ou un jeu, présentée comme telle.
           </p>
           <p>
-            <strong className="text-ink">Neutralité.</strong> Le site explique des mécanismes et ne soutient aucun parti : aucun
-            parti ni responsable politique n&apos;est nommé dans les analyses. Quand un sujet fait débat, les meilleurs
-            arguments des deux côtés sont présentés. Les verdicts des propositions portent sur le mécanisme et ses chiffres :
+            <strong className="text-ink">Neutralité.</strong> Le site explique des mécanismes et ne soutient aucun parti. Un parti
+            ou un gouvernement n&apos;est nommé que lorsqu&apos;on lui attribue factuellement une proposition ou un
+            chiffrage, avec la source ; les porteurs des propositions comparables ou opposées sur le même sujet sont alors
+            nommés de la même façon. Quand un sujet fait débat, les meilleurs
+            arguments des deux côtés sont présentés. Les verdicts des propositions portent sur le mécanisme et ses chiffres, jamais sur un parti :
             « mécanisme solide », « débattu », « ne tient pas en l&apos;état ».
           </p>
           <p>

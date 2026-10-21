@@ -140,11 +140,36 @@ describe("propositions passées au crible", () => {
     }
   });
 
-  it("aucune fiche ne nomme un parti politique", () => {
-    const partis = /(LFI|France insoumise|Rassemblement national|Renaissance|Parti socialiste|Les Républicains|Écologistes|EELV|PCF|Reconquête|Horizons|MoDem)/i;
-    for (const p of propositions.filter((x) => x.contenu)) {
-      const texte = readFileSync(fileURLToPath(new URL(`./propositions/${p.slug}.mdx`, import.meta.url)), "utf8");
-      expect(partis.test(texte), p.slug).toBe(false);
-    }
-  });
+  // Règle de neutralité (PLAN.md) : un parti n'est nommé que pour lui attribuer une proposition, et alors les
+  // porteurs des propositions comparables ou opposées le sont aussi ; aucun verdict ne nomme de parti.
+  const PORTEURS: [string, RegExp][] = [
+    ["La France insoumise", /La France insoumise|\bLFI\b/],
+    ["Rassemblement national", /Rassemblement national|\bRN\b/],
+    ["Parti socialiste", /Parti socialiste/],
+    ["Les Républicains", /Les Républicains/],
+    ["Écologistes", /groupe écologiste|Les Écologistes|\bEELV\b/i],
+    ["Renaissance", /\bRenaissance\b/],
+    ["Horizons", /\bHorizons\b/],
+    ["MoDem", /\bMoDem\b/],
+    ["Reconquête", /\bReconquête\b/],
+    ["PCF", /\bPCF\b|Parti communiste/],
+    ["gouvernement", /\bgouvernement\b/i],
+  ];
+  const PARTIS = PORTEURS.filter(([nom]) => nom !== "gouvernement");
+
+  for (const p of propositions.filter((x) => x.contenu)) {
+    const texte = readFileSync(fileURLToPath(new URL(`./propositions/${p.slug}.mdx`, import.meta.url)), "utf8");
+
+    it(`${p.slug} : si un parti est nommé, d'autres porteurs le sont aussi`, () => {
+      const partis = PARTIS.filter(([, re]) => re.test(texte)).map(([nom]) => nom);
+      if (partis.length === 0) return;
+      const porteurs = PORTEURS.filter(([, re]) => re.test(texte)).map(([nom]) => nom);
+      expect(porteurs.length, `${p.slug} ne nomme que : ${porteurs.join(", ")}`).toBeGreaterThanOrEqual(2);
+    });
+
+    it(`${p.slug} : le verdict ne nomme aucun parti`, () => {
+      const verdicts = [...texte.matchAll(/<Verdict[\s\S]*?<\/Verdict>|<GrilleVerdict[\s\S]*?\/>/g)].map((m) => m[0]).join(" ");
+      for (const [nom, re] of PARTIS) expect(re.test(verdicts), `${p.slug} : ${nom} dans le verdict`).toBe(false);
+    });
+  }
 });
