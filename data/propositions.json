@@ -584,6 +584,34 @@
       },
       "statut": "verifie",
       "consulte_le": "2026-10-21"
+    },
+    {
+      "id": "prop.retraite-60-chiffrage-auteurs",
+      "label": "Coût d'un retour à la retraite à 60 ans avec 40 annuités, selon les auteurs d'un amendement de 2023",
+      "valeur": 27,
+      "unite": "Md€",
+      "date": "2027",
+      "source": {
+        "nom": "Assemblée nationale, amendement n° 4435 au projet de loi de financement rectificative de la sécurité sociale pour 2023 (1er février 2023), exposé sommaire",
+        "url": "https://www.assemblee-nationale.fr/dyn/16/amendements/0760/AN/4435.pdf"
+      },
+      "note": "Chiffrage présenté par les auteurs de l'amendement, pour l'année 2027, avec des économies attendues de 3,6 Md€ sur le chômage et les prestations sociales.",
+      "statut": "verifie",
+      "consulte_le": "2026-10-21"
+    },
+    {
+      "id": "prop.duree-assurance-1964",
+      "label": "Durée d'assurance requise pour une pension à taux plein, génération 1964 (après la suspension de la réforme)",
+      "valeur": 170,
+      "unite": "trimestres",
+      "date": "2026-09-01",
+      "source": {
+        "nom": "Service-public.fr, Suspension de la réforme des retraites : qui est concerné ?",
+        "url": "https://www.service-public.gouv.fr/particuliers/actualites/A18825"
+      },
+      "note": "Soit 42 ans et demi ; 40 annuités correspondent à 160 trimestres.",
+      "statut": "verifie",
+      "consulte_le": "2026-10-21"
     }
   ]
 }

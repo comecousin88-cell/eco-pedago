@@ -1,0 +1,1120 @@
+{
+  "description": "Comparaisons internationales (FMI, World Economic Outlook). Les définitions du FMI peuvent différer légèrement de celles de l'Insee et d'Eurostat.",
+  "donnees": [
+    {
+      "id": "intl.dette-pib-japon",
+      "label": "Dette publique brute du Japon",
+      "valeur": 204.8,
+      "unite": "% du PIB",
+      "date": "2025",
+      "source": {
+        "nom": "FMI, World Economic Outlook (octobre 2026), dette brute des administrations publiques",
+        "url": "https://www.imf.org/external/datamapper/GGXWDG_NGDP@WEO/JPN/FRA/ITA/DEU/USA/GBR"
+      },
+      "note": "Dette brute des administrations publiques. Une large part est détenue par des résidents et par la Banque du Japon.",
+      "statut": "verifie",
+      "consulte_le": "2026-10-21"
+    },
+    {
+      "id": "intl.dette-pib-2025",
+      "label": "Dette publique brute en % du PIB, 2025",
+      "serie": [
+        {
+          "x": "France",
+          "y": 115.5
+        },
+        {
+          "x": "Allemagne",
+          "y": 62.7
+        },
+        {
+          "x": "Italie",
+          "y": 137.1
+        },
+        {
+          "x": "Espagne",
+          "y": 100.5
+        },
+        {
+          "x": "Royaume-Uni",
+          "y": 102.1
+        },
+        {
+          "x": "États-Unis",
+          "y": 124.4
+        },
+        {
+          "x": "Japon",
+          "y": 204.8
+        },
+        {
+          "x": "Canada",
+          "y": 113.6
+        },
+        {
+          "x": "Grèce",
+          "y": 146.6
+        },
+        {
+          "x": "Pays-Bas",
+          "y": 44.7
+        },
+        {
+          "x": "Suède",
+          "y": 34.5
+        },
+        {
+          "x": "Belgique",
+          "y": 107.9
+        },
+        {
+          "x": "Portugal",
+          "y": 89.7
+        },
+        {
+          "x": "Zone euro",
+          "y": 87.3
+        },
+        {
+          "x": "Économies avancées",
+          "y": 108.2
+        }
+      ],
+      "unite": "% du PIB",
+      "date": "2025",
+      "source": {
+        "nom": "FMI, World Economic Outlook (octobre 2026), dette brute des administrations publiques",
+        "url": "https://www.imf.org/external/datamapper/GGXWDG_NGDP@WEO/JPN/FRA/ITA/DEU/USA/GBR"
+      },
+      "note": "Définition du FMI (dette brute des administrations publiques), proche mais pas identique à la dette au sens de Maastricht.",
+      "statut": "verifie",
+      "consulte_le": "2026-10-21"
+    },
+    {
+      "id": "intl.solde-pib-2025",
+      "label": "Solde des administrations publiques en % du PIB, 2025 (négatif = déficit)",
+      "serie": [
+        {
+          "x": "France",
+          "y": -5.1
+        },
+        {
+          "x": "Allemagne",
+          "y": -2.9
+        },
+        {
+          "x": "Italie",
+          "y": -3.1
+        },
+        {
+          "x": "Espagne",
+          "y": -2.4
+        },
+        {
+          "x": "Royaume-Uni",
+          "y": -5.3
+        },
+        {
+          "x": "États-Unis",
+          "y": -7.1
+        },
+        {
+          "x": "Japon",
+          "y": -0.7
+        },
+        {
+          "x": "Canada",
+          "y": -1.7
+        },
+        {
+          "x": "Grèce",
+          "y": 1.7
+        },
+        {
+          "x": "Pays-Bas",
+          "y": -1.6
+        },
+        {
+          "x": "Suède",
+          "y": -1.3
+        },
+        {
+          "x": "Belgique",
+          "y": -5.2
+        },
+        {
+          "x": "Portugal",
+          "y": 0.7
+        },
+        {
+          "x": "Zone euro",
+          "y": -3
+        },
+        {
+          "x": "Économies avancées",
+          "y": -4.4
+        }
+      ],
+      "unite": "% du PIB",
+      "date": "2025",
+      "source": {
+        "nom": "FMI, World Economic Outlook (octobre 2026), solde des administrations publiques",
+        "url": "https://www.imf.org/external/datamapper/GGXCNL_NGDP@WEO/JPN/FRA/ITA/DEU/USA/GBR"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-21"
+    },
+    {
+      "id": "intl.chomage-2025",
+      "label": "Taux de chômage, 2025",
+      "serie": [
+        {
+          "x": "France",
+          "y": 7.7
+        },
+        {
+          "x": "Allemagne",
+          "y": 3.8
+        },
+        {
+          "x": "Italie",
+          "y": 6.1
+        },
+        {
+          "x": "Espagne",
+          "y": 10.5
+        },
+        {
+          "x": "Royaume-Uni",
+          "y": 4.9
+        },
+        {
+          "x": "États-Unis",
+          "y": 4.3
+        },
+        {
+          "x": "Japon",
+          "y": 2.5
+        },
+        {
+          "x": "Canada",
+          "y": 6.9
+        },
+        {
+          "x": "Grèce",
+          "y": 8.9
+        },
+        {
+          "x": "Pays-Bas",
+          "y": 3.9
+        },
+        {
+          "x": "Suède",
+          "y": 8.9
+        },
+        {
+          "x": "Belgique",
+          "y": 6.2
+        },
+        {
+          "x": "Portugal",
+          "y": 6
+        },
+        {
+          "x": "Zone euro",
+          "y": 6.3
+        },
+        {
+          "x": "Économies avancées",
+          "y": 4.7
+        }
+      ],
+      "unite": "% de la population active",
+      "date": "2025",
+      "source": {
+        "nom": "FMI, World Economic Outlook (octobre 2026), taux de chômage",
+        "url": "https://www.imf.org/external/datamapper/LUR@WEO/JPN/FRA/ITA/DEU/USA/GBR"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-21"
+    },
+    {
+      "id": "intl.croissance-2025",
+      "label": "Croissance du PIB en volume, 2025",
+      "serie": [
+        {
+          "x": "France",
+          "y": 0.9
+        },
+        {
+          "x": "Allemagne",
+          "y": 0.2
+        },
+        {
+          "x": "Italie",
+          "y": 0.5
+        },
+        {
+          "x": "Espagne",
+          "y": 2.6
+        },
+        {
+          "x": "Royaume-Uni",
+          "y": 1.2
+        },
+        {
+          "x": "États-Unis",
+          "y": 2.3
+        },
+        {
+          "x": "Japon",
+          "y": 1.2
+        },
+        {
+          "x": "Canada",
+          "y": 1.9
+        },
+        {
+          "x": "Grèce",
+          "y": 2.1
+        },
+        {
+          "x": "Pays-Bas",
+          "y": 1.6
+        },
+        {
+          "x": "Suède",
+          "y": 1.4
+        },
+        {
+          "x": "Belgique",
+          "y": 1
+        },
+        {
+          "x": "Portugal",
+          "y": 1.9
+        },
+        {
+          "x": "Zone euro",
+          "y": 1.2
+        },
+        {
+          "x": "Économies avancées",
+          "y": 2
+        }
+      ],
+      "unite": "%",
+      "date": "2025",
+      "source": {
+        "nom": "FMI, World Economic Outlook (octobre 2026), croissance du PIB en volume",
+        "url": "https://www.imf.org/external/datamapper/NGDP_RPCH@WEO/JPN/FRA/ITA/DEU/USA/GBR"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-21"
+    },
+    {
+      "id": "intl.dette-historique-fra",
+      "label": "Dette publique brute en % du PIB : France",
+      "serie": [
+        {
+          "x": "1995",
+          "y": 57.8
+        },
+        {
+          "x": "1996",
+          "y": 60.6
+        },
+        {
+          "x": "1997",
+          "y": 62
+        },
+        {
+          "x": "1998",
+          "y": 62.1
+        },
+        {
+          "x": "1999",
+          "y": 61.4
+        },
+        {
+          "x": "2000",
+          "y": 59.7
+        },
+        {
+          "x": "2001",
+          "y": 59.3
+        },
+        {
+          "x": "2002",
+          "y": 61.3
+        },
+        {
+          "x": "2003",
+          "y": 65.4
+        },
+        {
+          "x": "2004",
+          "y": 66.9
+        },
+        {
+          "x": "2005",
+          "y": 68.2
+        },
+        {
+          "x": "2006",
+          "y": 65.4
+        },
+        {
+          "x": "2007",
+          "y": 65.5
+        },
+        {
+          "x": "2008",
+          "y": 69.8
+        },
+        {
+          "x": "2009",
+          "y": 84.1
+        },
+        {
+          "x": "2010",
+          "y": 86.3
+        },
+        {
+          "x": "2011",
+          "y": 88.7
+        },
+        {
+          "x": "2012",
+          "y": 91.7
+        },
+        {
+          "x": "2013",
+          "y": 94.6
+        },
+        {
+          "x": "2014",
+          "y": 96.2
+        },
+        {
+          "x": "2015",
+          "y": 97
+        },
+        {
+          "x": "2016",
+          "y": 98.1
+        },
+        {
+          "x": "2017",
+          "y": 98.8
+        },
+        {
+          "x": "2018",
+          "y": 98.5
+        },
+        {
+          "x": "2019",
+          "y": 98.2
+        },
+        {
+          "x": "2020",
+          "y": 114.9
+        },
+        {
+          "x": "2021",
+          "y": 112.8
+        },
+        {
+          "x": "2022",
+          "y": 111.4
+        },
+        {
+          "x": "2023",
+          "y": 109.5
+        },
+        {
+          "x": "2024",
+          "y": 112.6
+        },
+        {
+          "x": "2025",
+          "y": 115.5
+        }
+      ],
+      "unite": "% du PIB",
+      "date": "2025",
+      "source": {
+        "nom": "FMI, World Economic Outlook (octobre 2026), dette brute des administrations publiques",
+        "url": "https://www.imf.org/external/datamapper/GGXWDG_NGDP@WEO/JPN/FRA/ITA/DEU/USA/GBR"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-21"
+    },
+    {
+      "id": "intl.dette-historique-deu",
+      "label": "Dette publique brute en % du PIB : Allemagne",
+      "serie": [
+        {
+          "x": "1995",
+          "y": 54.9
+        },
+        {
+          "x": "1996",
+          "y": 57.7
+        },
+        {
+          "x": "1997",
+          "y": 58.8
+        },
+        {
+          "x": "1998",
+          "y": 59.4
+        },
+        {
+          "x": "1999",
+          "y": 60.3
+        },
+        {
+          "x": "2000",
+          "y": 59.2
+        },
+        {
+          "x": "2001",
+          "y": 58.1
+        },
+        {
+          "x": "2002",
+          "y": 59.8
+        },
+        {
+          "x": "2003",
+          "y": 63.3
+        },
+        {
+          "x": "2004",
+          "y": 65
+        },
+        {
+          "x": "2005",
+          "y": 67.1
+        },
+        {
+          "x": "2006",
+          "y": 66.4
+        },
+        {
+          "x": "2007",
+          "y": 63.7
+        },
+        {
+          "x": "2008",
+          "y": 65.2
+        },
+        {
+          "x": "2009",
+          "y": 72.4
+        },
+        {
+          "x": "2010",
+          "y": 81
+        },
+        {
+          "x": "2011",
+          "y": 78.5
+        },
+        {
+          "x": "2012",
+          "y": 79.8
+        },
+        {
+          "x": "2013",
+          "y": 77.4
+        },
+        {
+          "x": "2014",
+          "y": 74.4
+        },
+        {
+          "x": "2015",
+          "y": 71
+        },
+        {
+          "x": "2016",
+          "y": 68.1
+        },
+        {
+          "x": "2017",
+          "y": 63.7
+        },
+        {
+          "x": "2018",
+          "y": 60.5
+        },
+        {
+          "x": "2019",
+          "y": 58.3
+        },
+        {
+          "x": "2020",
+          "y": 67.5
+        },
+        {
+          "x": "2021",
+          "y": 67.4
+        },
+        {
+          "x": "2022",
+          "y": 64.1
+        },
+        {
+          "x": "2023",
+          "y": 61.8
+        },
+        {
+          "x": "2024",
+          "y": 61.4
+        },
+        {
+          "x": "2025",
+          "y": 62.7
+        }
+      ],
+      "unite": "% du PIB",
+      "date": "2025",
+      "source": {
+        "nom": "FMI, World Economic Outlook (octobre 2026), dette brute des administrations publiques",
+        "url": "https://www.imf.org/external/datamapper/GGXWDG_NGDP@WEO/JPN/FRA/ITA/DEU/USA/GBR"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-21"
+    },
+    {
+      "id": "intl.dette-historique-ita",
+      "label": "Dette publique brute en % du PIB : Italie",
+      "serie": [
+        {
+          "x": "1995",
+          "y": 119.1
+        },
+        {
+          "x": "1996",
+          "y": 118.9
+        },
+        {
+          "x": "1997",
+          "y": 116.5
+        },
+        {
+          "x": "1998",
+          "y": 113.9
+        },
+        {
+          "x": "1999",
+          "y": 113.1
+        },
+        {
+          "x": "2000",
+          "y": 108.7
+        },
+        {
+          "x": "2001",
+          "y": 108.5
+        },
+        {
+          "x": "2002",
+          "y": 105.9
+        },
+        {
+          "x": "2003",
+          "y": 105.1
+        },
+        {
+          "x": "2004",
+          "y": 104.7
+        },
+        {
+          "x": "2005",
+          "y": 106.2
+        },
+        {
+          "x": "2006",
+          "y": 106.3
+        },
+        {
+          "x": "2007",
+          "y": 103.5
+        },
+        {
+          "x": "2008",
+          "y": 105.8
+        },
+        {
+          "x": "2009",
+          "y": 116.1
+        },
+        {
+          "x": "2010",
+          "y": 118.8
+        },
+        {
+          "x": "2011",
+          "y": 119.1
+        },
+        {
+          "x": "2012",
+          "y": 125.9
+        },
+        {
+          "x": "2013",
+          "y": 131.9
+        },
+        {
+          "x": "2014",
+          "y": 134.8
+        },
+        {
+          "x": "2015",
+          "y": 134.8
+        },
+        {
+          "x": "2016",
+          "y": 134.2
+        },
+        {
+          "x": "2017",
+          "y": 133.7
+        },
+        {
+          "x": "2018",
+          "y": 134.2
+        },
+        {
+          "x": "2019",
+          "y": 133.9
+        },
+        {
+          "x": "2020",
+          "y": 154.4
+        },
+        {
+          "x": "2021",
+          "y": 145.8
+        },
+        {
+          "x": "2022",
+          "y": 138.4
+        },
+        {
+          "x": "2023",
+          "y": 133.9
+        },
+        {
+          "x": "2024",
+          "y": 134.7
+        },
+        {
+          "x": "2025",
+          "y": 137.1
+        }
+      ],
+      "unite": "% du PIB",
+      "date": "2025",
+      "source": {
+        "nom": "FMI, World Economic Outlook (octobre 2026), dette brute des administrations publiques",
+        "url": "https://www.imf.org/external/datamapper/GGXWDG_NGDP@WEO/JPN/FRA/ITA/DEU/USA/GBR"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-21"
+    },
+    {
+      "id": "intl.dette-historique-gbr",
+      "label": "Dette publique brute en % du PIB : Royaume-Uni",
+      "serie": [
+        {
+          "x": "1995",
+          "y": 43.7
+        },
+        {
+          "x": "1996",
+          "y": 43.7
+        },
+        {
+          "x": "1997",
+          "y": 44.1
+        },
+        {
+          "x": "1998",
+          "y": 42
+        },
+        {
+          "x": "1999",
+          "y": 40.4
+        },
+        {
+          "x": "2000",
+          "y": 37.7
+        },
+        {
+          "x": "2001",
+          "y": 35
+        },
+        {
+          "x": "2002",
+          "y": 35.5
+        },
+        {
+          "x": "2003",
+          "y": 36.8
+        },
+        {
+          "x": "2004",
+          "y": 39.8
+        },
+        {
+          "x": "2005",
+          "y": 41
+        },
+        {
+          "x": "2006",
+          "y": 42.1
+        },
+        {
+          "x": "2007",
+          "y": 43.1
+        },
+        {
+          "x": "2008",
+          "y": 50.7
+        },
+        {
+          "x": "2009",
+          "y": 64.6
+        },
+        {
+          "x": "2010",
+          "y": 75.5
+        },
+        {
+          "x": "2011",
+          "y": 81
+        },
+        {
+          "x": "2012",
+          "y": 84
+        },
+        {
+          "x": "2013",
+          "y": 84.8
+        },
+        {
+          "x": "2014",
+          "y": 86.4
+        },
+        {
+          "x": "2015",
+          "y": 87.3
+        },
+        {
+          "x": "2016",
+          "y": 87.2
+        },
+        {
+          "x": "2017",
+          "y": 85.9
+        },
+        {
+          "x": "2018",
+          "y": 85.3
+        },
+        {
+          "x": "2019",
+          "y": 84.5
+        },
+        {
+          "x": "2020",
+          "y": 104.4
+        },
+        {
+          "x": "2021",
+          "y": 103
+        },
+        {
+          "x": "2022",
+          "y": 97.1
+        },
+        {
+          "x": "2023",
+          "y": 98.3
+        },
+        {
+          "x": "2024",
+          "y": 99.4
+        },
+        {
+          "x": "2025",
+          "y": 102.1
+        }
+      ],
+      "unite": "% du PIB",
+      "date": "2025",
+      "source": {
+        "nom": "FMI, World Economic Outlook (octobre 2026), dette brute des administrations publiques",
+        "url": "https://www.imf.org/external/datamapper/GGXWDG_NGDP@WEO/JPN/FRA/ITA/DEU/USA/GBR"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-21"
+    },
+    {
+      "id": "intl.dette-historique-usa",
+      "label": "Dette publique brute en % du PIB : États-Unis",
+      "serie": [
+        {
+          "x": "2001",
+          "y": 53.5
+        },
+        {
+          "x": "2002",
+          "y": 55.9
+        },
+        {
+          "x": "2003",
+          "y": 59
+        },
+        {
+          "x": "2004",
+          "y": 66.4
+        },
+        {
+          "x": "2005",
+          "y": 65.8
+        },
+        {
+          "x": "2006",
+          "y": 64.5
+        },
+        {
+          "x": "2007",
+          "y": 65
+        },
+        {
+          "x": "2008",
+          "y": 73.9
+        },
+        {
+          "x": "2009",
+          "y": 87.1
+        },
+        {
+          "x": "2010",
+          "y": 95.7
+        },
+        {
+          "x": "2011",
+          "y": 100
+        },
+        {
+          "x": "2012",
+          "y": 103.7
+        },
+        {
+          "x": "2013",
+          "y": 105
+        },
+        {
+          "x": "2014",
+          "y": 105
+        },
+        {
+          "x": "2015",
+          "y": 105.5
+        },
+        {
+          "x": "2016",
+          "y": 107.5
+        },
+        {
+          "x": "2017",
+          "y": 106.5
+        },
+        {
+          "x": "2018",
+          "y": 107.7
+        },
+        {
+          "x": "2019",
+          "y": 108.8
+        },
+        {
+          "x": "2020",
+          "y": 132.6
+        },
+        {
+          "x": "2021",
+          "y": 125
+        },
+        {
+          "x": "2022",
+          "y": 119.2
+        },
+        {
+          "x": "2023",
+          "y": 120
+        },
+        {
+          "x": "2024",
+          "y": 122.3
+        },
+        {
+          "x": "2025",
+          "y": 124.4
+        }
+      ],
+      "unite": "% du PIB",
+      "date": "2025",
+      "source": {
+        "nom": "FMI, World Economic Outlook (octobre 2026), dette brute des administrations publiques",
+        "url": "https://www.imf.org/external/datamapper/GGXWDG_NGDP@WEO/JPN/FRA/ITA/DEU/USA/GBR"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-21"
+    },
+    {
+      "id": "intl.dette-historique-jpn",
+      "label": "Dette publique brute en % du PIB : Japon",
+      "serie": [
+        {
+          "x": "1995",
+          "y": 80.7
+        },
+        {
+          "x": "1996",
+          "y": 85.3
+        },
+        {
+          "x": "1997",
+          "y": 91.3
+        },
+        {
+          "x": "1998",
+          "y": 101.6
+        },
+        {
+          "x": "1999",
+          "y": 113.5
+        },
+        {
+          "x": "2000",
+          "y": 118.5
+        },
+        {
+          "x": "2001",
+          "y": 126.8
+        },
+        {
+          "x": "2002",
+          "y": 134.6
+        },
+        {
+          "x": "2003",
+          "y": 140.2
+        },
+        {
+          "x": "2004",
+          "y": 148.8
+        },
+        {
+          "x": "2005",
+          "y": 153.4
+        },
+        {
+          "x": "2006",
+          "y": 152.1
+        },
+        {
+          "x": "2007",
+          "y": 150.4
+        },
+        {
+          "x": "2008",
+          "y": 153.6
+        },
+        {
+          "x": "2009",
+          "y": 172.9
+        },
+        {
+          "x": "2010",
+          "y": 178.6
+        },
+        {
+          "x": "2011",
+          "y": 190.6
+        },
+        {
+          "x": "2012",
+          "y": 197.1
+        },
+        {
+          "x": "2013",
+          "y": 201.2
+        },
+        {
+          "x": "2014",
+          "y": 203.6
+        },
+        {
+          "x": "2015",
+          "y": 200.1
+        },
+        {
+          "x": "2016",
+          "y": 202.1
+        },
+        {
+          "x": "2017",
+          "y": 203.1
+        },
+        {
+          "x": "2018",
+          "y": 203.7
+        },
+        {
+          "x": "2019",
+          "y": 206.3
+        },
+        {
+          "x": "2020",
+          "y": 228.8
+        },
+        {
+          "x": "2021",
+          "y": 222.6
+        },
+        {
+          "x": "2022",
+          "y": 228
+        },
+        {
+          "x": "2023",
+          "y": 220.1
+        },
+        {
+          "x": "2024",
+          "y": 213.6
+        },
+        {
+          "x": "2025",
+          "y": 204.8
+        }
+      ],
+      "unite": "% du PIB",
+      "date": "2025",
+      "source": {
+        "nom": "FMI, World Economic Outlook (octobre 2026), dette brute des administrations publiques",
+        "url": "https://www.imf.org/external/datamapper/GGXWDG_NGDP@WEO/JPN/FRA/ITA/DEU/USA/GBR"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-21"
+    }
+  ]
+}

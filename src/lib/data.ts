@@ -59,6 +59,7 @@ import dette from "../../data/dette.json";
 import europe from "../../data/europe.json";
 import financesPubliques from "../../data/finances-publiques.json";
 import grece from "../../data/grece.json";
+import international from "../../data/international.json";
 import macro from "../../data/macro.json";
 import marches from "../../data/marches.json";
 import propositions from "../../data/propositions.json";
@@ -73,6 +74,7 @@ export const fichiers: Record<string, FichierDonnees> = {
   europe: europe as FichierDonnees,
   "finances-publiques": financesPubliques as FichierDonnees,
   grece: grece as FichierDonnees,
+  international: international as FichierDonnees,
   macro: macro as FichierDonnees,
   marches: marches as FichierDonnees,
   propositions: propositions as FichierDonnees,

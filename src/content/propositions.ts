@@ -133,8 +133,8 @@ export const propositions: Proposition[] = [
   },
   {
     slug: "passage-capitalisation",
-    titre: "Passer à la retraite par capitalisation",
-    resume: "Faire épargner chacun pour sa propre retraite : rendements espérés, risques, et le problème de la double charge.",
+    titre: "Basculer vers la retraite par capitalisation",
+    resume: "Bascule complète ou part introduite progressivement : rendements espérés, risques, et le problème de la double charge.",
     themes: ["Retraites"],
     module: "retraites",
     liens: [
@@ -211,7 +211,7 @@ export const propositions: Proposition[] = [
     themes: ["Dette"],
     module: "boule-de-neige",
     liens: [{ module: "boule-de-neige", section: "formule" }],
-    verdict: "ne-tient-pas",
+    verdict: "debattu",
     contenu: () => import("./propositions/relance-pour-reduire-la-dette.mdx"),
   },
   {
