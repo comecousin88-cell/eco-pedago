@@ -120,10 +120,11 @@ export const chiffresCles: ChiffreCle[] = [
     id: "inflation",
     donnee: "ind.inflation-fr",
     titre: "L'inflation",
-    valeur: <Chiffre id="ind.inflation-fr" x="2026-09" />,
+    valeur: <Chiffre id="ind.inflation-fr" />,
     phrase: (
       <>
-        Sur un an en septembre 2026 (indice harmonisé), contre <Chiffre id="ind.inflation-za" x="2026-09" /> dans la zone euro.
+        Sur un an en <DateDonnee id="ind.inflation-fr" format="jour" /> (indice harmonisé), contre{" "}
+        <Chiffre id="ind.inflation-za" /> dans la zone euro.
       </>
     ),
     lien: { href: "/tableau-de-bord/", libelle: "Le tableau de bord" },
@@ -132,8 +133,18 @@ export const chiffresCles: ChiffreCle[] = [
     id: "chomage",
     donnee: "ind.chomage",
     titre: "Le chômage",
-    valeur: <Chiffre id="ind.chomage" x="2026-T2" />,
-    phrase: <>de la population active au 2e trimestre 2026, au sens du Bureau international du travail.</>,
+    // L'unité longue (« % de la population active ») déborderait en gros caractères : elle passe dans la phrase.
+    valeur: (
+      <>
+        <Chiffre id="ind.chomage" unite={false} /> %
+      </>
+    ),
+    phrase: (
+      <>
+        de la population active, en moyenne sur le trimestre achevé le <DateDonnee id="ind.chomage" format="jour" />, au
+        sens du Bureau international du travail.
+      </>
+    ),
     lien: { href: "/modules/comparaisons/emploi-croissance/", libelle: "Croissance et chômage" },
   },
 ];

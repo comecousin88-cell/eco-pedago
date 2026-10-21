@@ -11,6 +11,8 @@ import { SoonBadge } from "@/components/ui/SoonBadge";
 function isActive(pathname: string, href: string) {
   const p = pathname.replace(/\/$/, "");
   const h = href.replace(/\/$/, "");
+  // L'accueil n'est actif que sur l'accueil lui-même.
+  if (h === "") return p === "";
   return p === h || p.startsWith(`${h}/`);
 }
 
@@ -19,16 +21,22 @@ function NavLink({
   active,
   onNavigate,
   className,
+  court = false,
 }: {
   item: NavItem;
   active: boolean;
   onNavigate?: () => void;
   className: string;
+  /** Intitulé court (menu sur une ligne), nom complet au survol. */
+  court?: boolean;
 }) {
+  const abrege = court && item.court;
   return (
     <Link
       href={item.href}
       onClick={onNavigate}
+      title={abrege ? item.label : undefined}
+      aria-label={abrege ? item.label : undefined}
       aria-current={active ? "page" : undefined}
       className={`${className} ${
         active
@@ -36,7 +44,7 @@ function NavLink({
           : "text-body hover:bg-subtle hover:text-ink"
       }`}
     >
-      {item.label}
+      {abrege ? item.court : item.label}
       {item.status === "soon" && <SoonBadge inverted={active} />}
     </Link>
   );
@@ -55,6 +63,7 @@ export function MainNav() {
             <NavLink
               item={item}
               active={isActive(pathname, item.href)}
+              court
               className="flex items-center gap-2 rounded-full px-3 py-1.5 text-sm font-medium whitespace-nowrap transition-colors"
             />
           </li>

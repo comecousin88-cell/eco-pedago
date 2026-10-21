@@ -3,15 +3,31 @@ export type SectionStatus = "available" | "soon";
 export interface NavItem {
   href: string;
   label: string;
+  /** Intitulé court du menu sur ordinateur ; le nom complet reste au survol et pour les lecteurs d'écran. */
+  court?: string;
   description: string;
   status: SectionStatus;
 }
 
 /**
- * Entrées du menu principal, dans l'ordre. « La France en 10 chiffres » et
- * « Sources et méthode » sont accessibles depuis l'accueil et le pied de page.
+ * Entrées du menu principal, dans l'ordre. Sur ordinateur, le menu tient sur
+ * une ligne grâce aux intitulés courts ; le menu mobile affiche les noms
+ * complets. « Sources et méthode » est accessible depuis le pied de page.
  */
 export const navItems: NavItem[] = [
+  {
+    href: "/",
+    label: "Accueil",
+    description: "La page d'accueil : parcours, propositions phares et raccourcis.",
+    status: "available",
+  },
+  {
+    href: "/la-france-en-10-chiffres/",
+    label: "La France en 10 chiffres",
+    court: "10 chiffres",
+    description: "La situation des finances publiques en un coup d'œil, chiffres sourcés et datés.",
+    status: "available",
+  },
   {
     href: "/modules/",
     label: "Modules",
@@ -22,6 +38,7 @@ export const navItems: NavItem[] = [
   {
     href: "/propositions/",
     label: "Les propositions au crible",
+    court: "Au crible",
     description:
       "Annuler la dette, taxer les plus riches, retraite à 60 ans… Chaque proposition analysée, avec ses meilleurs arguments et un verdict.",
     status: "available",
