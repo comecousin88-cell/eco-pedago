@@ -49,6 +49,13 @@ describe("data/agenda.json", () => {
     for (const p of e.pages) expect(pageExiste(p), `page inconnue : ${p}`).toBe(true);
   });
 
+  it.each(agenda.surveillance.map((s) => [s.id, s] as const))("page surveillée %s : adresse, données et pages valides", (_, s) => {
+    expect(s.url).toMatch(/^https:\/\/[^/]+\/./);
+    expect(s.empreinte === null || /^[0-9a-f]{16}$/.test(s.empreinte)).toBe(true);
+    for (const id of s.donnees) expect(ids, `donnée inconnue : ${id}`).toContain(id);
+    for (const p of s.pages) expect(pageExiste(p), `page inconnue : ${p}`).toBe(true);
+  });
+
   it("la revue de Moody's du 23 octobre 2026 est inscrite", () => {
     const moodys = agenda.evenements.find((e) => e.id === "moodys-2026-10");
     expect(moodys).toMatchObject({ date: "2026-10-23", categorie: "notation", mise_a_jour: "validation" });

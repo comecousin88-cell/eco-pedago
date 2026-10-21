@@ -1,68 +1,12 @@
 import agendaJson from "../../data/agenda.json";
+import type { Agenda } from "./echeances.ts";
 
 /**
  * Agenda des échéances (data/agenda.json) : notes des agences, budget, BCE,
- * publications de l'Insee et du COR. Fonctions pures, utilisées par le
- * tableau de bord et par la tâche de veille (scripts/veille-agenda.ts).
+ * publications de l'Insee et du COR. Utilisé par le tableau de bord ; la tâche
+ * de veille (scripts/veille-agenda.ts) en compare les dates aux calendriers
+ * officiels.
  */
-
-export const CATEGORIES = { notation: "Notation", budget: "Budget", bce: "BCE", publication: "Publication" } as const;
-export type Categorie = keyof typeof CATEGORIES;
-
-export interface Evenement {
-  id: string;
-  titre: string;
-  categorie: Categorie;
-  /** AAAA-MM-JJ, ou AAAA-MM quand seul le mois est connu. */
-  date: string;
-  precision: "jour" | "mois";
-  statut: "confirme" | "a_confirmer";
-  /** « automatique » : les chiffres concernés suivent seuls ; « validation » : demande de mise à jour à valider. */
-  mise_a_jour: "automatique" | "validation";
-  /** Situation avant l'échéance (par exemple la note actuelle). */
-  situation?: string;
-  description: string;
-  /** Identifiants des données de data/*.json concernées. */
-  donnees: string[];
-  /** Pages du site à relire après l'échéance. */
-  pages: string[];
-  source: { nom: string; url: string };
-  consulte_le: string;
-  note?: string;
-}
-
-export interface Agenda {
-  description: string;
-  evenements: Evenement[];
-}
+export * from "./echeances.ts";
 
 export const agenda = agendaJson as Agenda;
-
-/** Dernier jour où l'échéance peut tomber : la date elle-même, ou la fin du mois. */
-export function finEcheance(e: Pick<Evenement, "date" | "precision">): string {
-  if (e.precision === "jour") return e.date;
-  const [a, m] = e.date.split("-").map(Number);
-  return new Date(Date.UTC(a, m, 0)).toISOString().slice(0, 10);
-}
-
-/** Échéances à venir (ou en cours ce mois-ci), dans l'ordre chronologique. */
-export function prochainesEcheances(evenements: Evenement[], aujourdhui: string, nombre = Infinity): Evenement[] {
-  return evenements
-    .filter((e) => finEcheance(e) >= aujourdhui)
-    .sort((a, b) => (finEcheance(a) < finEcheance(b) ? -1 : finEcheance(a) > finEcheance(b) ? 1 : 0))
-    .slice(0, nombre);
-}
-
-/** Échéances passées (strictement avant aujourd'hui), les plus récentes d'abord. */
-export function echeancesPassees(evenements: Evenement[], aujourdhui: string): Evenement[] {
-  return evenements.filter((e) => finEcheance(e) < aujourdhui).sort((a, b) => (finEcheance(a) < finEcheance(b) ? 1 : -1));
-}
-
-const MOIS = ["janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août", "septembre", "octobre", "novembre", "décembre"];
-
-/** « 23 octobre 2026 », « 1er décembre 2026 » ou « décembre 2026 ». */
-export function dateEcheance(e: Pick<Evenement, "date" | "precision">): string {
-  const [a, m, j] = e.date.split("-").map(Number);
-  const mois = `${MOIS[m - 1]} ${a}`;
-  return e.precision === "mois" ? mois : `${j === 1 ? "1er" : j} ${mois}`;
-}

@@ -1,5 +1,5 @@
 {
-  "description": "Échéances connues qui peuvent changer les chiffres ou les textes du site : notes des agences, calendrier budgétaire, réunions de la BCE, publications de l'Insee et du COR. Chaque jour ouvré, la tâche « Veille de l'agenda » (scripts/veille-agenda.ts) repère les échéances passées et les pages officielles modifiées. Pour les échéances à validation, elle ouvre une demande de mise à jour sur GitHub : rien n'est publié sans validation. Les échéances « automatique » concernent des chiffres déjà mis à jour par scripts/maj-indicateurs.ts.",
+  "description": "Échéances connues qui peuvent changer les chiffres ou les textes du site : notes des agences, calendrier budgétaire, réunions de la BCE, publications de l'Insee et du COR. Chaque jour ouvré, la tâche « Veille de l'agenda » (scripts/veille-agenda.ts) repère les échéances passées, compare les dates aux calendriers officiels de la BCE et de l'Insee (champ calendrier_insee : mots qui identifient la publication) et surveille les pages listées dans « surveillance ». Pour les échéances à validation, elle ouvre une demande de mise à jour sur GitHub : rien n'est publié sans validation. Les échéances « automatique » concernent des chiffres déjà mis à jour par scripts/maj-indicateurs.ts.",
   "evenements": [
     {
       "id": "moodys-2026-10",
@@ -72,9 +72,9 @@
       "categorie": "publication",
       "date": "2026-10-30",
       "precision": "jour",
-      "statut": "a_confirmer",
+      "statut": "confirme",
       "mise_a_jour": "validation",
-      "description": "Première estimation du PIB trimestriel. Les chiffres annuels du site ne changent pas, mais les textes qui parlent de la conjoncture peuvent devoir être relus.",
+      "description": "Première estimation du PIB trimestriel, à 7 h 30. Les chiffres annuels du site ne changent pas, mais les textes qui parlent de la conjoncture peuvent devoir être relus.",
       "donnees": [],
       "pages": [
         "/la-france-en-10-chiffres/"
@@ -84,7 +84,11 @@
         "url": "https://www.insee.fr/fr/information/5235017"
       },
       "consulte_le": "2026-10-21",
-      "note": "Date relevée dans un calendrier de presse ; à confirmer sur le calendrier de l'Insee."
+      "calendrier_insee": [
+        "Comptes nationaux trimestriels",
+        "Première estimation",
+        "3e trimestre 2026"
+      ]
     },
     {
       "id": "insee-chomage-2026-t3",
@@ -106,7 +110,11 @@
         "url": "https://www.insee.fr/fr/information/5235017"
       },
       "consulte_le": "2026-10-21",
-      "note": "Date relevée dans un calendrier de presse ; à confirmer sur le calendrier de l'Insee."
+      "note": "Date relevée dans un calendrier de presse ; à confirmer sur le calendrier de l'Insee.",
+      "calendrier_insee": [
+        "chômage",
+        "3e trimestre 2026"
+      ]
     },
     {
       "id": "sp-2026-11",
@@ -177,7 +185,11 @@
         "nom": "Insee, calendrier des publications",
         "url": "https://www.insee.fr/fr/information/5235017"
       },
-      "consulte_le": "2026-10-21"
+      "consulte_le": "2026-10-21",
+      "calendrier_insee": [
+        "Dette",
+        "3e trimestre 2026"
+      ]
     },
     {
       "id": "plf-2027-delai",
@@ -305,7 +317,11 @@
         "url": "https://www.insee.fr/fr/information/5235017"
       },
       "consulte_le": "2026-10-21",
-      "note": "Publication habituellement à la fin mars ; date exacte à confirmer."
+      "note": "Publication habituellement à la fin mars ; date exacte à confirmer.",
+      "calendrier_insee": [
+        "Comptes nationaux des administrations publiques",
+        "2026"
+      ]
     },
     {
       "id": "bce-2027-04-29",
@@ -382,6 +398,297 @@
       },
       "consulte_le": "2026-10-21",
       "note": "Le rapport annuel paraît habituellement en juin ; date exacte à confirmer."
+    },
+    {
+      "id": "bce-2027-07-22",
+      "titre": "Réunion de politique monétaire de la BCE",
+      "categorie": "bce",
+      "date": "2027-07-22",
+      "precision": "jour",
+      "statut": "confirme",
+      "mise_a_jour": "automatique",
+      "description": "Le Conseil des gouverneurs décide des taux directeurs.",
+      "donnees": [
+        "bce.taux-depot",
+        "bce.taux-depot-actuel",
+        "bce.taux-refi-actuel"
+      ],
+      "pages": [
+        "/tableau-de-bord/"
+      ],
+      "source": {
+        "nom": "BCE, calendrier des réunions du Conseil des gouverneurs",
+        "url": "https://www.ecb.europa.eu/press/calendars/mgcgc/html/index.fr.html"
+      },
+      "consulte_le": "2026-10-21"
+    },
+    {
+      "id": "bce-2027-09-09",
+      "titre": "Réunion de politique monétaire de la BCE",
+      "categorie": "bce",
+      "date": "2027-09-09",
+      "precision": "jour",
+      "statut": "confirme",
+      "mise_a_jour": "automatique",
+      "description": "Le Conseil des gouverneurs décide des taux directeurs.",
+      "donnees": [
+        "bce.taux-depot",
+        "bce.taux-depot-actuel",
+        "bce.taux-refi-actuel"
+      ],
+      "pages": [
+        "/tableau-de-bord/"
+      ],
+      "source": {
+        "nom": "BCE, calendrier des réunions du Conseil des gouverneurs",
+        "url": "https://www.ecb.europa.eu/press/calendars/mgcgc/html/index.fr.html"
+      },
+      "consulte_le": "2026-10-21"
+    },
+    {
+      "id": "bce-2027-10-28",
+      "titre": "Réunion de politique monétaire de la BCE",
+      "categorie": "bce",
+      "date": "2027-10-28",
+      "precision": "jour",
+      "statut": "confirme",
+      "mise_a_jour": "automatique",
+      "description": "Le Conseil des gouverneurs décide des taux directeurs.",
+      "donnees": [
+        "bce.taux-depot",
+        "bce.taux-depot-actuel",
+        "bce.taux-refi-actuel"
+      ],
+      "pages": [
+        "/tableau-de-bord/"
+      ],
+      "source": {
+        "nom": "BCE, calendrier des réunions du Conseil des gouverneurs",
+        "url": "https://www.ecb.europa.eu/press/calendars/mgcgc/html/index.fr.html"
+      },
+      "consulte_le": "2026-10-21"
+    },
+    {
+      "id": "bce-2027-12-16",
+      "titre": "Réunion de politique monétaire de la BCE",
+      "categorie": "bce",
+      "date": "2027-12-16",
+      "precision": "jour",
+      "statut": "confirme",
+      "mise_a_jour": "automatique",
+      "description": "Le Conseil des gouverneurs décide des taux directeurs.",
+      "donnees": [
+        "bce.taux-depot",
+        "bce.taux-depot-actuel",
+        "bce.taux-refi-actuel"
+      ],
+      "pages": [
+        "/tableau-de-bord/"
+      ],
+      "source": {
+        "nom": "BCE, calendrier des réunions du Conseil des gouverneurs",
+        "url": "https://www.ecb.europa.eu/press/calendars/mgcgc/html/index.fr.html"
+      },
+      "consulte_le": "2026-10-21"
+    },
+    {
+      "id": "bce-2028-02-03",
+      "titre": "Réunion de politique monétaire de la BCE",
+      "categorie": "bce",
+      "date": "2028-02-03",
+      "precision": "jour",
+      "statut": "confirme",
+      "mise_a_jour": "automatique",
+      "description": "Le Conseil des gouverneurs décide des taux directeurs.",
+      "donnees": [
+        "bce.taux-depot",
+        "bce.taux-depot-actuel",
+        "bce.taux-refi-actuel"
+      ],
+      "pages": [
+        "/tableau-de-bord/"
+      ],
+      "source": {
+        "nom": "BCE, calendrier des réunions du Conseil des gouverneurs",
+        "url": "https://www.ecb.europa.eu/press/calendars/mgcgc/html/index.fr.html"
+      },
+      "consulte_le": "2026-10-21"
+    },
+    {
+      "id": "bce-2028-03-23",
+      "titre": "Réunion de politique monétaire de la BCE",
+      "categorie": "bce",
+      "date": "2028-03-23",
+      "precision": "jour",
+      "statut": "confirme",
+      "mise_a_jour": "automatique",
+      "description": "Le Conseil des gouverneurs décide des taux directeurs.",
+      "donnees": [
+        "bce.taux-depot",
+        "bce.taux-depot-actuel",
+        "bce.taux-refi-actuel"
+      ],
+      "pages": [
+        "/tableau-de-bord/"
+      ],
+      "source": {
+        "nom": "BCE, calendrier des réunions du Conseil des gouverneurs",
+        "url": "https://www.ecb.europa.eu/press/calendars/mgcgc/html/index.fr.html"
+      },
+      "consulte_le": "2026-10-21"
+    },
+    {
+      "id": "bce-2028-05-04",
+      "titre": "Réunion de politique monétaire de la BCE",
+      "categorie": "bce",
+      "date": "2028-05-04",
+      "precision": "jour",
+      "statut": "confirme",
+      "mise_a_jour": "automatique",
+      "description": "Le Conseil des gouverneurs décide des taux directeurs.",
+      "donnees": [
+        "bce.taux-depot",
+        "bce.taux-depot-actuel",
+        "bce.taux-refi-actuel"
+      ],
+      "pages": [
+        "/tableau-de-bord/"
+      ],
+      "source": {
+        "nom": "BCE, calendrier des réunions du Conseil des gouverneurs",
+        "url": "https://www.ecb.europa.eu/press/calendars/mgcgc/html/index.fr.html"
+      },
+      "consulte_le": "2026-10-21"
+    },
+    {
+      "id": "bce-2028-06-08",
+      "titre": "Réunion de politique monétaire de la BCE",
+      "categorie": "bce",
+      "date": "2028-06-08",
+      "precision": "jour",
+      "statut": "confirme",
+      "mise_a_jour": "automatique",
+      "description": "Le Conseil des gouverneurs décide des taux directeurs.",
+      "donnees": [
+        "bce.taux-depot",
+        "bce.taux-depot-actuel",
+        "bce.taux-refi-actuel"
+      ],
+      "pages": [
+        "/tableau-de-bord/"
+      ],
+      "source": {
+        "nom": "BCE, calendrier des réunions du Conseil des gouverneurs",
+        "url": "https://www.ecb.europa.eu/press/calendars/mgcgc/html/index.fr.html"
+      },
+      "consulte_le": "2026-10-21"
+    },
+    {
+      "id": "bce-2028-07-20",
+      "titre": "Réunion de politique monétaire de la BCE",
+      "categorie": "bce",
+      "date": "2028-07-20",
+      "precision": "jour",
+      "statut": "confirme",
+      "mise_a_jour": "automatique",
+      "description": "Le Conseil des gouverneurs décide des taux directeurs.",
+      "donnees": [
+        "bce.taux-depot",
+        "bce.taux-depot-actuel",
+        "bce.taux-refi-actuel"
+      ],
+      "pages": [
+        "/tableau-de-bord/"
+      ],
+      "source": {
+        "nom": "BCE, calendrier des réunions du Conseil des gouverneurs",
+        "url": "https://www.ecb.europa.eu/press/calendars/mgcgc/html/index.fr.html"
+      },
+      "consulte_le": "2026-10-21"
+    },
+    {
+      "id": "bce-2028-09-07",
+      "titre": "Réunion de politique monétaire de la BCE",
+      "categorie": "bce",
+      "date": "2028-09-07",
+      "precision": "jour",
+      "statut": "confirme",
+      "mise_a_jour": "automatique",
+      "description": "Le Conseil des gouverneurs décide des taux directeurs.",
+      "donnees": [
+        "bce.taux-depot",
+        "bce.taux-depot-actuel",
+        "bce.taux-refi-actuel"
+      ],
+      "pages": [
+        "/tableau-de-bord/"
+      ],
+      "source": {
+        "nom": "BCE, calendrier des réunions du Conseil des gouverneurs",
+        "url": "https://www.ecb.europa.eu/press/calendars/mgcgc/html/index.fr.html"
+      },
+      "consulte_le": "2026-10-21"
+    },
+    {
+      "id": "bce-2028-10-12",
+      "titre": "Réunion de politique monétaire de la BCE",
+      "categorie": "bce",
+      "date": "2028-10-12",
+      "precision": "jour",
+      "statut": "confirme",
+      "mise_a_jour": "automatique",
+      "description": "Le Conseil des gouverneurs décide des taux directeurs.",
+      "donnees": [
+        "bce.taux-depot",
+        "bce.taux-depot-actuel",
+        "bce.taux-refi-actuel"
+      ],
+      "pages": [
+        "/tableau-de-bord/"
+      ],
+      "source": {
+        "nom": "BCE, calendrier des réunions du Conseil des gouverneurs",
+        "url": "https://www.ecb.europa.eu/press/calendars/mgcgc/html/index.fr.html"
+      },
+      "consulte_le": "2026-10-21"
+    },
+    {
+      "id": "bce-2028-12-07",
+      "titre": "Réunion de politique monétaire de la BCE",
+      "categorie": "bce",
+      "date": "2028-12-07",
+      "precision": "jour",
+      "statut": "confirme",
+      "mise_a_jour": "automatique",
+      "description": "Le Conseil des gouverneurs décide des taux directeurs.",
+      "donnees": [
+        "bce.taux-depot",
+        "bce.taux-depot-actuel",
+        "bce.taux-refi-actuel"
+      ],
+      "pages": [
+        "/tableau-de-bord/"
+      ],
+      "source": {
+        "nom": "BCE, calendrier des réunions du Conseil des gouverneurs",
+        "url": "https://www.ecb.europa.eu/press/calendars/mgcgc/html/index.fr.html"
+      },
+      "consulte_le": "2026-10-21"
+    }
+  ],
+  "surveillance": [
+    {
+      "id": "cor-rapports",
+      "titre": "Rapports annuels du Conseil d'orientation des retraites",
+      "url": "https://www.cor-retraites.fr/rapports-annuels-du-cor",
+      "donnees": [
+        "retraites.solde-projection",
+        "retraites.depenses-projection"
+      ],
+      "pages": [
+        "/modules/retraites/"
+      ],
+      "empreinte": null
     }
   ]
 }

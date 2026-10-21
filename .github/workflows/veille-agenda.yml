@@ -1,0 +1,43 @@
+# Chaque jour ouvré en fin de journée : veille de l'agenda (data/agenda.json).
+# Repère les échéances passées (notes des agences, budget…), compare les dates
+# aux calendriers de l'Insee et de la BCE, surveille les pages officielles, et
+# ouvre une demande de mise à jour (pull request) par changement, assignée au
+# propriétaire du dépôt (qui reçoit une notification). Cette tâche ne publie
+# jamais rien : seule la fusion de la demande modifie le site.
+name: Veille de l'agenda
+
+on:
+  schedule:
+    - cron: "0 18 * * 1-5" # 18 h UTC du lundi au vendredi, soit 19 h ou 20 h à Paris
+  workflow_dispatch: # bouton « Run workflow » pour lancer à la main
+
+permissions:
+  contents: write # pousser les branches veille/…, jamais main
+  pull-requests: write # ouvrir les demandes de mise à jour
+  issues: write # étiquette « veille »
+
+concurrency:
+  group: veille-agenda
+  cancel-in-progress: false
+
+jobs:
+  veille:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Installer les dépendances
+        run: npm ci
+
+      - name: Veille et demandes de mise à jour
+        run: npm run veille:agenda
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
