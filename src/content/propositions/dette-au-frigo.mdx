@@ -35,7 +35,7 @@ France paierait donc toujours ses réserves, sans plus rien toucher sur ces titr
 l'annulation, sous un autre nom.
 
 Les ordres de grandeur sont les mêmes : un rendement moyen de <Chiffre id="bdf.rendement-titres-pm" decimales={2} />
-sur ces titres en <DateDonnee id="bdf.rendement-titres-pm" />, soit environ 3,3 Md€ d'intérêts que l'État ne paierait
+sur ces titres en <DateDonnee id="bdf.rendement-titres-pm" />, soit environ <Calcul id="calc.frigo-gain-brut" /> d'intérêts que l'État ne paierait
 plus, et autant de recettes en moins pour la Banque de France, donc de bénéfices en moins reversés à l'État. Le
 simulateur de la fiche sur l'annulation s'applique tel quel.
 
@@ -81,7 +81,7 @@ gratuit tombe sous le même raisonnement.
 |---|---|
 | Titres publics détenus par la Banque de France | <Chiffre id="bdf.titres-politique-monetaire" /> au <DateDonnee id="bdf.titres-politique-monetaire" format="jour" /> |
 | Rendement moyen de ces titres | <Chiffre id="bdf.rendement-titres-pm" decimales={2} /> en <DateDonnee id="bdf.rendement-titres-pm" /> |
-| Intérêts que l'État ne paierait plus (gain brut) | environ 3,3 Md€ par an (calcul : 488 Md€ × 0,68 %) |
+| Intérêts que l'État ne paierait plus (gain brut) | environ <Calcul id="calc.frigo-gain-brut" /> par an (calcul : <Chiffre id="bdf.titres-politique-monetaire" /> × <Chiffre id="bdf.rendement-titres-pm" />) |
 | Recettes perdues par la Banque de France | le même montant : économie nette nulle pour l'ensemble |
 | Taux auquel elle rémunère les réserves | <Chiffre id="bce.taux-depot-actuel" /> depuis le <DateDonnee id="bce.taux-depot-actuel" format="jour" /> |
 

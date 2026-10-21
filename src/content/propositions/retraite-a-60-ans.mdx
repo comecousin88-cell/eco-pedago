@@ -51,19 +51,21 @@ cotisants : il faut alors compenser par l'un des deux autres leviers.
 
 - **L'âge.** Selon la Cour des comptes, avancer l'âge légal d'un an coûte environ
   <Chiffre id="prop.retraites-un-an-plus-tot" /> au système de retraite à l'horizon
-  <DateDonnee id="prop.retraites-un-an-plus-tot" />. Par rapport à l'âge légal actuel de 62 ans et 9 mois, revenir à
-  60 ans représente près de **trois ans** d'avance, soit de l'ordre de 16 à 17 milliards d'euros par an ; par
-  rapport à la cible de 64 ans, qui doit s'appliquer après la suspension aux générations nées à partir de 1969,
-  quatre ans, soit environ 23 milliards (calcul simplifié : l'effet de chaque année n'est pas exactement le même).
+  <DateDonnee id="prop.retraites-un-an-plus-tot" />. Par rapport à l'âge légal actuel de <Chiffre id="prop.age-legal-suspendu" />, revenir à
+  60 ans représente **<Calcul id="calc.retraite60-ecart-age" />** d'avance, soit de l'ordre de
+  <Calcul id="calc.retraite60-cout-age-actuel" /> par an ; par rapport à la cible de 64 ans, qui doit s'appliquer après
+  la suspension aux générations nées à partir de 1969, quatre ans, soit environ
+  <Calcul id="calc.retraite60-cout-age-64" /> (calcul simplifié : l'effet de chaque année n'est pas exactement le même).
 - **La durée de cotisation.** Une pension complète demande aujourd'hui
-  <Chiffre id="prop.duree-assurance-1964" /> pour la génération 1964, soit 42 ans et demi. La ramener à 40 annuités
+  <Chiffre id="prop.duree-assurance-1964" /> pour la génération 1964, soit <Calcul id="calc.duree-assurance-annees" />. La ramener à 40 annuités
   (160 trimestres) réduit les décotes et augmente certaines pensions, ce qui ajoute plusieurs milliards au coût.
 
-Au total, on aboutit à une **fourchette de l'ordre de 15 à 30 milliards d'euros par an**, environ 0,5 à 1 point de
-PIB, selon l'horizon et la durée de cotisation retenus. Les partisans de la mesure l'ont eux-mêmes chiffrée : l'amendement
+Au total, on aboutit à une **fourchette de l'ordre de <Chiffre id="prop.retraite-60-fourchette" x="bas" unite={false} /> à
+<Chiffre id="prop.retraite-60-fourchette" x="haut" />**, environ
+<Calcul id="calc.retraite60-fourchette-pib-bas" unite={false} /> à <Calcul id="calc.retraite60-fourchette-pib-haut" />, selon l'horizon et la durée de cotisation retenus. Les partisans de la mesure l'ont eux-mêmes chiffrée : l'amendement
 de députés La France insoumise (n° 4435) estimait un retour à 60 ans avec 40 annuités à
 <Chiffre id="prop.retraite-60-chiffrage-auteurs" /> pour l'année <DateDonnee id="prop.retraite-60-chiffrage-auteurs" />, en
-partie compensés, selon ses auteurs, par 3,6 milliards d'économies sur le chômage et les prestations sociales et par la
+partie compensés, selon ses auteurs, par <Chiffre id="prop.retraite-60-economies-auteurs" /> d'économies sur le chômage et les prestations sociales et par la
 suppression de certains allègements de cotisations. La variante limitée aux carrières commencées avant 20 ans, défendue
 par le Rassemblement national, coûte beaucoup moins (<Chiffre id="prop.retraite-rn-chiffrage" /> selon son porteur), mais
 s'accompagne pour les autres actifs d'un âge pivot de 62 ans.
@@ -112,7 +114,7 @@ dispositifs, pour un coût bien inférieur à un retour général à 60 ans : c'
   }
   contre={
     <ul>
-      <li><strong>Un coût élevé et durable.</strong> De l'ordre de 15 à 30 milliards d'euros par an selon l'horizon et la durée de cotisation, 27 milliards pour 2027 selon ses partisans, qui s'ajoutent à un déficit déjà prévu.</li>
+      <li><strong>Un coût élevé et durable.</strong> De l'ordre de <Chiffre id="prop.retraite-60-fourchette" x="bas" unite={false} /> à <Chiffre id="prop.retraite-60-fourchette" x="haut" /> selon l'horizon et la durée de cotisation, <Chiffre id="prop.retraite-60-chiffrage-auteurs" /> pour <DateDonnee id="prop.retraite-60-chiffrage-auteurs" /> selon ses partisans, qui s'ajoutent à un déficit déjà prévu.</li>
       <li><strong>Une démographie défavorable.</strong> Le nombre de cotisants par retraité baisse : chaque année de retraite en plus pèse sur moins d'actifs.</li>
       <li><strong>Des contreparties lourdes.</strong> Il faudrait relever nettement les cotisations, ce qui pèse sur les salaires nets et le coût du travail, ou baisser les pensions.</li>
       <li><strong>Moins d'activité.</strong> Un départ plus précoce réduit le nombre de personnes en emploi, donc la production et les recettes fiscales.</li>
@@ -127,8 +129,8 @@ dispositifs, pour un coût bien inférieur à un retour général à 60 ans : c'
 |---|---|
 | Dépenses de retraite | <Chiffre id="retraites.depenses-montant" /> en <DateDonnee id="retraites.depenses-montant" />, soit <Chiffre id="retraites.depenses-pib" /> |
 | Coût d'un départ un an plus tôt (63 ans au lieu de 64) | <Chiffre id="prop.retraites-un-an-plus-tot" /> en 2035 (Cour des comptes) |
-| Coût d'un retour à 60 ans (âge seul, 3 à 4 ans d'avance) | de l'ordre de 16 à 23 Md€ par an en 2035 (calcul simplifié) |
-| Avec 40 annuités, fourchette retenue | de l'ordre de 15 à 30 Md€ par an |
+| Coût d'un retour à 60 ans (âge seul) | de l'ordre de <Calcul id="calc.retraite60-cout-age-actuel" unite={false} /> à <Calcul id="calc.retraite60-cout-age-64" /> par an en <DateDonnee id="prop.retraites-un-an-plus-tot" /> (calcul simplifié) |
+| Avec 40 annuités, fourchette retenue | de l'ordre de <Chiffre id="prop.retraite-60-fourchette" x="bas" unite={false} /> à <Chiffre id="prop.retraite-60-fourchette" x="haut" /> |
 | Chiffrage de députés La France insoumise (amendement n° 4435, 2023), 60 ans et 40 annuités pour tous | <Chiffre id="prop.retraite-60-chiffrage-auteurs" /> pour <DateDonnee id="prop.retraite-60-chiffrage-auteurs" /> |
 | Chiffrage du Rassemblement national (2024), 60 ans pour les carrières commencées avant 20 ans | <Chiffre id="prop.retraite-rn-chiffrage" /> |
 | Âge légal actuel (générations 1963 et 1964) | 62 ans et 9 mois |
@@ -139,8 +141,9 @@ dispositifs, pour un coût bien inférieur à un retour général à 60 ans : c'
 ## 6. Verdict
 
 <Verdict niveau="debattu">
-Revenir à la retraite à 60 ans est finançable, mais pas gratuitement : il faudrait trouver de l'ordre de 15 à
-30 milliards d'euros par an selon la durée de cotisation retenue (27 milliards pour 2027 selon ses partisans), en plus du déficit déjà prévu, par des cotisations nettement plus élevées, d'autres prélèvements ou des
+Revenir à la retraite à 60 ans est finançable, mais pas gratuitement : il faudrait trouver de l'ordre de <Chiffre id="prop.retraite-60-fourchette" x="bas" unite={false} /> à
+<Chiffre id="prop.retraite-60-fourchette" x="haut" /> selon la durée de cotisation retenue
+(<Chiffre id="prop.retraite-60-chiffrage-auteurs" /> pour <DateDonnee id="prop.retraite-60-chiffrage-auteurs" /> selon ses partisans), en plus du déficit déjà prévu, par des cotisations nettement plus élevées, d'autres prélèvements ou des
 pensions plus basses. Le choix entre ces leviers relève de la décision politique. Ce qui ne tient pas, c'est l'idée
 qu'on pourrait avancer l'âge sans toucher ni aux prélèvements ni aux pensions.
 </Verdict>

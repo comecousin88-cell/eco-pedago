@@ -7,6 +7,7 @@ import { formatAvecUnite, formatSource } from "@/lib/format";
  *
  * <Chiffre id="dette.stock" />                       une valeur
  * <Chiffre id="macro.inflation" x="2025" />          un point d'une série
+ * <Chiffre id="bce.pspp-france" />                  le dernier point d'une série (suit les mises à jour)
  * <Chiffre id="dette.stock" unite={false} />         sans l'unité
  */
 export function Chiffre({
@@ -25,7 +26,7 @@ export function Chiffre({
   if ("valeur" in d) {
     valeur = d.valeur;
   } else {
-    const point = d.serie.find((p) => p.x === x);
+    const point = x === undefined ? d.serie[d.serie.length - 1] : d.serie.find((p) => p.x === x);
     if (!point) throw new Error(`${id} : point « ${x} » absent de la série`);
     valeur = point.y;
   }
@@ -41,7 +42,7 @@ export function Chiffre({
 
   return (
     <span
-      title={`${d.label}${x ? ` (${x})` : ""} — ${formatSource(d)}${aVerifier ? " (chiffre à vérifier)" : ""}${hypothese ? " (hypothèse, pas une donnée observée)" : ""}`}
+      title={`${d.label}${x ? ` (${x})` : "serie" in d ? ` (${d.serie[d.serie.length - 1].x})` : ""} — ${formatSource(d)}${aVerifier ? " (chiffre à vérifier)" : ""}${hypothese ? " (hypothèse, pas une donnée observée)" : ""}`}
       className={`font-semibold whitespace-nowrap text-ink ${
         aVerifier ? "decoration-warn underline decoration-wavy decoration-1 underline-offset-4" : ""
       }`}

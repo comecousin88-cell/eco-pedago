@@ -1,14 +1,15 @@
 import { DetteAEchelle } from "@/components/graphiques/DetteAEchelle";
+import { texteCalcul } from "@/content/calculs";
 
 <Niveaux>
 <Essentiel>
 
-Divisée entre les <Chiffre id="pop.france" /> au 1er janvier 2026, la dette publique représente plus de
-50 000 euros par habitant. On peut aussi la mesurer en années de recettes publiques, ou en mois de production du pays.
+Divisée entre les <Chiffre id="pop.france" /> au <DateDonnee id="pop.france" format="jour" />, la dette publique représente environ
+<Calcul id="calc.dette-par-habitant" arrondi={1000} /> par habitant. On peut aussi la mesurer en années de recettes publiques, ou en mois de production du pays.
 
 <Figure
   titre="La dette, remise à l'échelle"
-  resume="Quatre repères calculés à partir des données : la dette publique par habitant (environ 52 000 euros), les intérêts par habitant et par an (environ 950 euros), la dette en années de recettes publiques (un peu plus de deux ans) et en mois de production du pays (environ quatorze mois)."
+  resume={`Quatre repères calculés à partir des données : la dette publique par habitant (environ ${texteCalcul("calc.dette-par-habitant", { arrondi: 1000 })}), les intérêts par habitant et par an (environ ${texteCalcul("calc.interets-par-habitant", { arrondi: 10 })}), la dette en années de recettes publiques (${texteCalcul("calc.dette-annees-recettes")}) et en mois de production du pays (environ ${texteCalcul("calc.dette-mois-pib")}).`}
   donnees={["dette.stock", "pop.france", "fp.recettes", "macro.pib", "fp.interets"]}
 >
   <DetteAEchelle />
@@ -28,7 +29,7 @@ ou aux recettes publiques : c'est la capacité à payer les intérêts et à sta
 
 <Exemple titre="Exemple : un ménage endetté sur vingt ans">
 Un ménage qui emprunte 250 000 euros pour son logement, avec 50 000 euros de revenus par an, doit cinq années de
-revenus. L'État doit un peu plus de deux années de recettes. La comparaison a ses limites : l'État ne meurt pas, il peut
+revenus. L'État doit <Calcul id="calc.dette-annees-recettes" /> de recettes. La comparaison a ses limites : l'État ne meurt pas, il peut
 refinancer sa dette indéfiniment tant que les prêteurs ont confiance, et il fixe lui-même une partie de ses recettes.
 </Exemple>
 
@@ -36,8 +37,8 @@ refinancer sa dette indéfiniment tant que les prêteurs ont confiance, et il fi
 <PlusLoin>
 
 **À qui doit-on ?** Une partie de la dette est détenue par des Français, directement ou via leur assurance-vie, leur
-banque ou la Banque de France : les intérêts qui leur sont versés restent dans le pays. Une autre partie, un peu plus
-de la moitié, est détenue par des non-résidents
+banque ou la Banque de France : les intérêts qui leur sont versés restent dans le pays. Une autre partie, la plus
+grande, est détenue par des non-résidents
 (<Chiffre id="prop.dette-non-residents" x="2025" /> des titres de long terme des administrations publiques fin 2025).
 Ce sont des revenus qui sortent du pays, et une dépendance à la confiance d'investisseurs étrangers.
 
@@ -48,7 +49,8 @@ dette, ils donnent une dette nette de <Chiffre id="dette.nette" /> à la même d
 </Niveaux>
 
 <ARetenir>
-La dette représente plus de 50 000 euros par habitant, un peu plus de deux années de recettes publiques. Mais un État
+La dette représente environ <Calcul id="calc.dette-par-habitant" arrondi={1000} /> par habitant, soit
+<Calcul id="calc.dette-annees-recettes" /> de recettes publiques. Mais un État
 ne rembourse pas sa dette d'un coup : il la refinance. Ce qui compte, ce sont les intérêts et la trajectoire de la
 dette rapportée aux revenus du pays.
 </ARetenir>

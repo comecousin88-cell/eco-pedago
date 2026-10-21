@@ -1,4 +1,5 @@
 import { RendementFaceAuxBesoins } from "@/components/graphiques/RendementFaceAuxBesoins";
+import { texteCalcul, texteDonnee } from "@/content/calculs";
 
 ## 1. La proposition
 
@@ -12,7 +13,7 @@ autre fiche, où le débat reste ouvert. Elle est de savoir si les sommes en jeu
 
 L'argent existe, rappellent les défenseurs de cette idée. Le patrimoine des 500 plus grandes fortunes françaises
 atteint environ <Chiffre id="prop.grandes-fortunes-patrimoine" /> selon une estimation de presse reprise par le Sénat,
-soit l'équivalent de plus de 40 % de la production annuelle du pays. Ces fortunes progressent plus vite que
+soit l'équivalent de <Calcul id="calc.grandes-fortunes-part-pib" /> de la production annuelle du pays. Ces fortunes progressent plus vite que
 l'économie et sont proportionnellement peu imposées : les foyers les plus riches acquittent environ
 <Chiffre id="prop.ipp-taux-effectif" /> de leur revenu économique en impôts, selon l'Institut des politiques publiques.
 
@@ -30,7 +31,7 @@ peut rapporter chaque année un impôt sur les plus grandes fortunes.
 
 <Figure
   titre="Ce que rapporterait l'impôt, face aux besoins"
-  resume="Barres comparant, en milliards d'euros par an, le rendement estimé d'un impôt de 2 % sur les patrimoines de plus de 100 millions d'euros (de 2 milliards dans l'estimation critique à 25 milliards dans l'estimation haute de ses promoteurs) à l'effort annuel pour stabiliser la dette (environ 88 milliards avec la croissance nominale de 2025, réglable par un curseur), au déficit public de 2025 (152 milliards) et à un programme de 300 milliards de dépenses nouvelles, retenu comme hypothèse d'illustration. Même la fourchette haute ne couvre qu'environ un sixième du déficit."
+  resume={`Barres comparant, en milliards d'euros par an, le rendement estimé d'un impôt de 2 % sur les patrimoines de plus de 100 millions d'euros (de ${texteDonnee("prop.impot-plancher-rendements", "Estimation critique, impôt sur les sociétés déduit (bas)")} dans l'estimation critique à ${texteDonnee("prop.impot-plancher-rendements", "Estimation de ses promoteurs (haut)")} dans l'estimation haute de ses promoteurs) à l'effort annuel pour stabiliser la dette (environ ${texteCalcul("calc.effort-stabilisation-md")}, réglable par un curseur), au déficit public (${texteDonnee("deficit.montant", undefined, { arrondi: 1 })}) et à un programme de ${texteDonnee("prop.programme-depenses")} de dépenses nouvelles, retenu comme hypothèse d'illustration. Même la fourchette haute ne couvre qu'environ ${texteCalcul("calc.impot-plancher-part-deficit")} du déficit.`}
   donnees={["prop.impot-plancher-rendements", "deficit.montant", "deficit.ratio-pib", "dette.fin-annee-pib", "macro.croissance-valeur", "macro.pib", "prop.programme-depenses"]}
 >
   <RendementFaceAuxBesoins />
@@ -40,7 +41,7 @@ L'effort pour stabiliser la dette est calculé : c'est l'écart entre le défici
 (<Chiffre id="deficit.ratio-pib" />) et le déficit qui stabilise la dette, appliqué au PIB. Ce déficit stabilisant
 dépend de la croissance nominale (volume et prix) : avec <Chiffre id="macro.croissance-valeur" /> en
 <DateDonnee id="macro.croissance-valeur" /> et une dette de <Chiffre id="dette.fin-annee-pib" />, il vaut environ
-2,2 points de PIB, comme l'a calculé le Haut Conseil des finances publiques
+<Calcul id="calc.deficit-stabilisant" />, proche du calcul du Haut Conseil des finances publiques
 (<Chiffre id="deficit.stabilisant" />). Plus la croissance nominale est forte, plus l'effort est faible : le curseur
 permet de le vérifier.
 
@@ -48,10 +49,11 @@ Les deux bornes du rendement viennent du rapport du Sénat : la fourchette haute
 l'impôt, avant départs et optimisation ; la fourchette basse, le calcul de l'économiste Antoine Levy, qui déduit
 l'impôt sur les sociétés déjà payé par les entreprises que ces fortunes détiennent.
 
-**Un stock n'est pas un revenu.** Pour trouver chaque année 300 milliards dans un patrimoine de 1 228 milliards, il
-faudrait en prélever près d'un quart par an : au bout de quatre ans environ, il n'en resterait rien, et donc plus rien
-à taxer. Même en confisquant la totalité de ce patrimoine, on couvrirait le déficit public environ huit ans, une
-seule fois. Un impôt durable doit porter sur une assiette qui se reconstitue, ce qui limite son taux à quelques
+**Un stock n'est pas un revenu.** Pour trouver chaque année <Chiffre id="prop.programme-depenses" unite={false} /> milliards dans un patrimoine de
+<Chiffre id="prop.grandes-fortunes-patrimoine" unite={false} /> milliards, il faudrait en prélever
+<Calcul id="calc.programme-part-patrimoine" /> par an : au bout de <Calcul id="calc.programme-annees-epuisement" /> environ,
+il n'en resterait rien, et donc plus rien à taxer. Même en confisquant la totalité de ce patrimoine, on couvrirait le
+déficit public environ <Calcul id="calc.patrimoine-annees-deficit" />, une seule fois. Un impôt durable doit porter sur une assiette qui se reconstitue, ce qui limite son taux à quelques
 pour cent.
 
 <Niveaux>
@@ -86,7 +88,7 @@ réduirait d'autant ce qu'il rapporte.
   contre={
     <ul>
       <li><strong>L'arithmétique.</strong> Même l'estimation la plus haute d'un impôt sur les très grandes fortunes, environ <Chiffre id="prop.impot-plancher-rendements" x="Estimation de ses promoteurs (haut)" decimales={0} />, ne couvre qu'environ un sixième du déficit et moins d'un tiers de l'effort pour stabiliser la dette.</li>
-      <li><strong>Un stock s'épuise.</strong> Prélever chaque année des sommes de l'ordre du déficit sur un patrimoine d'environ 1 200 milliards le viderait en quelques années.</li>
+      <li><strong>Un stock s'épuise.</strong> Prélever chaque année des sommes de l'ordre du déficit sur un patrimoine d'environ <Chiffre id="prop.grandes-fortunes-patrimoine" /> le viderait en quelques années.</li>
       <li><strong>Élargir, c'est taxer les classes moyennes.</strong> Les autres leviers évoqués rapportent davantage justement parce qu'ils touchent bien plus de ménages que les seuls plus riches.</li>
       <li><strong>Les comportements.</strong> Plus le prélèvement est lourd, plus les départs et l'optimisation réduisent ce qu'il rapporte.</li>
       <li><strong>Un effet sur la croissance incertain.</strong> L'ampleur de l'effet des dépenses publiques sur l'activité fait débat ; une dépense permanente appelle une recette permanente.</li>
@@ -100,7 +102,7 @@ réduirait d'autant ce qu'il rapporte.
 |---|---|
 | Rendement estimé d'un impôt plancher de 2 % sur les patrimoines de plus de 100 M€ | de <Chiffre id="prop.impot-plancher-rendements" x="Estimation critique, impôt sur les sociétés déduit (bas)" decimales={0} unite={false} /> à <Chiffre id="prop.impot-plancher-rendements" x="Estimation de ses promoteurs (haut)" decimales={0} /> |
 | Déficit public | <Chiffre id="deficit.montant" /> en <DateDonnee id="deficit.montant" /> |
-| Effort annuel pour stabiliser la dette | environ 88 Md€ (calcul : <Chiffre id="deficit.ratio-pib" /> moins environ 2,2 points, avec <Chiffre id="macro.croissance-valeur" /> de croissance nominale, appliqué au PIB) |
+| Effort annuel pour stabiliser la dette | environ <Calcul id="calc.effort-stabilisation-md" /> (calcul : <Chiffre id="deficit.ratio-pib" /> moins environ <Calcul id="calc.deficit-stabilisant" unite={false} /> points, avec <Chiffre id="macro.croissance-valeur" /> de croissance nominale, appliqué au PIB) |
 | Programme de dépenses nouvelles | <Chiffre id="prop.programme-depenses" /> (hypothèse d'illustration) |
 | Patrimoine des 500 plus grandes fortunes | <Chiffre id="prop.grandes-fortunes-patrimoine" />, à ne prélever qu'une fois |
 | Un point de taux normal de TVA, pour comparer | environ <Chiffre id="prop.tva-point" /> (Fipeco) |

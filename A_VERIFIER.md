@@ -2,7 +2,7 @@
 
 Fichier généré par `npm test` à partir des données marquées `"statut": "a_verifier"` dans `data/*.json`. Ne pas modifier à la main : corriger la donnée dans son fichier JSON, passer son statut à `verifie`, puis relancer `npm test`.
 
-7 chiffres en attente de vérification, et 26 mesures du jeu « Redresser les comptes ».
+8 chiffres en attente de vérification, et 26 mesures du jeu « Redresser les comptes ».
 
 ## data/aft.json
 
@@ -35,6 +35,12 @@ Fichier généré par `npm test` à partir des données marquées `"statut": "a_
 | Identifiant | Donnée | Valeur actuelle | Date | Source à consulter | Remarque |
 |---|---|---|---|---|---|
 | `is.taux-normal` | Taux normal de l'impôt sur les sociétés | 25 % | 2026 | [Service-public.fr (entreprendre), Impôt sur les sociétés : taux](https://entreprendre.service-public.gouv.fr/vosdroits/F23575) | Taux normal depuis 2022 ; taux réduit de 15 % pour une partie du bénéfice des PME. Une contribution exceptionnelle s'applique aux plus grandes entreprises : à vérifier pour 2026. |
+
+## data/propositions.json
+
+| Identifiant | Donnée | Valeur actuelle | Date | Source à consulter | Remarque |
+|---|---|---|---|---|---|
+| `prop.dix-premieres-fortunes-part` | Part des dix plus grandes fortunes dans le patrimoine du classement des 500 plus grandes fortunes | 70 % | 2024 | [Sénat, rapport n° 689 (2024-2025) sur l'impôt plancher de 2 % sur les très hauts patrimoines (4 juin 2025)](https://www.senat.fr/rap/l24-689/l24-6891.html) | Ordre de grandeur cité par le rapport du Sénat (« environ 70 % ») ; le passage exact du rapport reste à relever. |
 
 ## data/mesures-budget.json (jeu « Redresser les comptes »)
 

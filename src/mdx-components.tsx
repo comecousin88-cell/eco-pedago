@@ -1,6 +1,7 @@
 import type { MDXComponents } from "mdx/types";
 import Link from "next/link";
 import type { ComponentPropsWithoutRef } from "react";
+import { Calcul } from "@/components/pedago/Calcul";
 import { Chiffre } from "@/components/pedago/Chiffre";
 import { DateDonnee } from "@/components/pedago/DateDonnee";
 import { ARetenir, BadgeVerdict, Debat, Exemple, Verdict } from "@/components/pedago/Encadres";
@@ -13,7 +14,7 @@ import { ancre, texteDe } from "@/lib/ancre";
 
 /**
  * Composants disponibles dans tous les fichiers .mdx, sans import :
- * <Niveaux>, <Terme>, <Chiffre>, <Figure>, <Exemple>, <Debat>, <Verdict>…
+ * <Niveaux>, <Terme>, <Chiffre>, <Calcul>, <Figure>, <Exemple>, <Debat>, <Verdict>…
  * Les simulateurs propres à un module s'importent dans son fichier MDX.
  */
 const components: MDXComponents = {
@@ -32,6 +33,7 @@ const components: MDXComponents = {
   ARetenir,
   ArgumentsFiche,
   BadgeVerdict,
+  Calcul,
   Chiffre,
   DateDonnee,
   Debat,

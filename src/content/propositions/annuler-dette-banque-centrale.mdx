@@ -10,23 +10,23 @@ Au <DateDonnee id="bdf.titres-politique-monetaire" format="jour" />, ces titres 
 transformer ces titres en dette perpétuelle à taux zéro, fait l'objet de sa propre fiche (« mettre la dette au
 frigo »).
 
-**488 milliards, ou plus de 600 ? Une question de périmètre et de date.** Le débat cite souvent des montants plus
-élevés, de l'ordre de 600 milliards, soit près d'un cinquième de la dette. Les chiffres ne se contredisent pas :
+**<Chiffre id="bdf.titres-politique-monetaire" />, ou près de <Calcul id="calc.eurosysteme-titres-france" arrondi={10} /> ? Une question de périmètre et de date.** Le débat cite souvent des montants plus
+élevés, voire une part de la dette proche d'un cinquième. Les chiffres ne se contredisent pas :
 
 - **La Banque de France seule** : <Chiffre id="bdf.titres-politique-monetaire" /> au
   <DateDonnee id="bdf.titres-politique-monetaire" format="jour" />, au coût amorti (<Chiffre id="bdf.titres-politique-monetaire-2025" />
   fin 2025). C'est ce montant que la France pourrait, en théorie, viser, et celui du simulateur.
-- **Tout l'Eurosystème** : la BCE recense <Chiffre id="bce.pspp-france" x="2026-09" /> de titres publics français
-  au titre du programme PSPP et <Chiffre id="bce.pepp-france" /> au titre du PEPP fin septembre 2026, soit près de
-  600 milliards. Ce total inclut les titres français détenus par la BCE elle-même, qui ne sont pas au bilan de la
+- **Tout l'Eurosystème** : la BCE recense <Chiffre id="bce.pspp-france" /> de titres publics français
+  au titre du programme PSPP et <Chiffre id="bce.pepp-france" /> au titre du PEPP fin <DateDonnee id="bce.pspp-france" format="jour" />, soit
+  <Calcul id="calc.eurosysteme-titres-france" />. Ce total inclut les titres français détenus par la BCE elle-même, qui ne sont pas au bilan de la
   Banque de France et sur lesquels la France n'a aucune prise.
 - **Une date plus ancienne** : les portefeuilles fondent depuis l'arrêt des réinvestissements. Fin 2021, les seuls
-  achats du PSPP atteignaient déjà <Chiffre id="bce.pspp-france" x="2021-12" />, soit environ 18 % d'une dette publique
+  achats du PSPP atteignaient déjà <Chiffre id="bce.pspp-france" x="2021-12" />, soit environ <Calcul id="calc.pspp-part-dette-2021" /> d'une dette publique
   de <Chiffre id="dette.historique-md" x="2021" /> ; ils ont culminé à <Chiffre id="bce.pspp-france" x="2022-09" /> en
   septembre 2022. Les parts de 18 à 20 % de la dette souvent citées datent de cette période.
 
-Aujourd'hui, les titres de la Banque de France représentent environ 14 % de la dette publique, et ceux de tout
-l'Eurosystème environ 17 %.
+Aujourd'hui, les titres de la Banque de France représentent environ <Calcul id="calc.bdf-part-dette" /> de la dette
+publique, et ceux de tout l'Eurosystème environ <Calcul id="calc.eurosysteme-part-dette" />.
 
 ## 2. L'idée derrière
 
@@ -120,7 +120,7 @@ fonds propres nettement sous zéro.
       <li><strong>C'est une dette du public envers le public.</strong> Vu de l'ensemble « État + banque centrale », les titres détenus par la Banque de France ne sont pas une dette envers des tiers : l'annulation se borne à en tirer les conséquences dans les comptes.</li>
       <li><strong>Une banque centrale peut vivre avec des fonds propres négatifs.</strong> Elle crée la monnaie et ne peut pas faire faillite dans sa propre monnaie ; plusieurs banques centrales (au Chili, en République tchèque, en Israël) ont fonctionné des années avec des fonds propres négatifs sans perdre le contrôle de l'inflation.</li>
       <li><strong>Les pertes viennent d'un choix.</strong> Elles tiennent à la rémunération des réserves des banques, qui pourrait être réduite : l'argument comptable dépend d'une règle qui peut changer.</li>
-      <li><strong>Les banques centrales absorbent déjà des pertes.</strong> En <DateDonnee id="bc.resultats-2024" />, la Bundesbank, la BCE et la Banque de France ont enregistré ensemble plus de 40 milliards d'euros de pertes avant reprise sur provisions, sans crise monétaire. La recette annuelle perdue en cas d'annulation, de l'ordre de quelques milliards, serait selon eux bien moindre ; la perte de fonds propres, elle, ne se paie pas en argent.</li>
+      <li><strong>Les banques centrales absorbent déjà des pertes.</strong> En <DateDonnee id="bc.resultats-2024" />, la Bundesbank, la BCE et la Banque de France ont enregistré ensemble plus de <Calcul id="calc.pertes-banques-centrales-2024" arrondi={10} sens="bas" /> de pertes avant reprise sur provisions, sans crise monétaire. La recette annuelle perdue en cas d'annulation, de l'ordre de quelques milliards, serait selon eux bien moindre ; la perte de fonds propres, elle, ne se paie pas en argent.</li>
       <li><strong>Une dette soustraite aux marchés.</strong> Les titres détenus par la banque centrale ne sont plus exposés à la défiance des investisseurs ; les garder définitivement, plutôt que de les laisser arriver à échéance et d'être refinancés sur les marchés, réduirait la dette à placer chaque année.</li>
       <li><strong>Une option plus douce : la dette perpétuelle à taux nul.</strong> Sans rien effacer, on pourrait échanger ces titres contre une dette sans échéance ni intérêt, ce qui revient au même pour le budget, sans annulation au sens juridique (voir la fiche « mettre la dette au frigo »).</li>
       <li><strong>Pas d'inflation supplémentaire.</strong> La monnaie a été créée lors des achats ; l'annulation ne met pas un euro de plus en circulation.</li>
@@ -148,15 +148,15 @@ fonds propres nettement sous zéro.
 | Dette publique totale à la même date | <Chiffre id="dette.stock" /> |
 | Situation financière nette de la Banque de France | <Chiffre id="bdf.situation-nette" /> |
 | Rendement moyen des titres de politique monétaire de la Banque de France | <Chiffre id="bdf.rendement-titres-pm" decimales={2} /> en <DateDonnee id="bdf.rendement-titres-pm" /> |
-| Intérêts que l'État ne paierait plus (gain brut) | environ 3,3 Md€ par an (488 Md€ × 0,68 %, calcul ; ordre de grandeur, ce rendement moyen couvre aussi des titres autres que ceux de l'État français) |
+| Intérêts que l'État ne paierait plus (gain brut) | environ <Calcul id="calc.frigo-gain-brut" /> par an (<Chiffre id="bdf.titres-politique-monetaire" /> × <Chiffre id="bdf.rendement-titres-pm" />, calcul ; ordre de grandeur, ce rendement moyen couvre aussi des titres autres que ceux de l'État français) |
 | Bénéfices en moins reversés par la Banque de France à l'État | le même montant : économie nette nulle pour l'ensemble État + Banque de France |
 | Recettes perdues par la Banque de France | le même montant, chaque année |
 | Perte de fonds propres de la Banque de France | le montant annulé, une fois |
-| Titres publics français détenus par tout l'Eurosystème (PSPP et PEPP) | près de 600 Md€ fin septembre 2026, dont ceux détenus par la BCE elle-même |
+| Titres publics français détenus par tout l'Eurosystème (PSPP et PEPP) | <Calcul id="calc.eurosysteme-titres-france" /> fin <DateDonnee id="bce.pspp-france" format="jour" />, dont ceux détenus par la BCE elle-même |
 | Résultat ordinaire avant impôt de la Banque de France | <Chiffre id="bdf.resultat-ordinaire-2024" /> en <DateDonnee id="bdf.resultat-ordinaire-2024" /> |
 | Taux moyen auquel elle a rémunéré les réserves | <Chiffre id="bce.taux-depot-moyen-2024" decimales={2} /> en <DateDonnee id="bce.taux-depot-moyen-2024" /> |
-| Coût d'une prime de risque de 0,5 point sur les emprunts de l'État | environ 1,5 Md€ la première année, puis davantage chaque année au fil du refinancement |
-| Baisse de la dette publique affichée | environ 16 points de PIB (près de 14 % de la dette), sans enrichissement de l'ensemble État + banque centrale |
+| Coût d'une prime de risque de 0,5 point sur les emprunts de l'État | environ <Calcul id="calc.prime-risque-premiere-annee" /> la première année, puis davantage chaque année au fil du refinancement |
+| Baisse de la dette publique affichée | environ <Calcul id="calc.bdf-part-pib" /> (<Calcul id="calc.bdf-part-dette" /> de la dette), sans enrichissement de l'ensemble État + banque centrale |
 
 Pour situer : la charge de la dette prévue au budget de l'État pour <DateDonnee id="etat.charge-dette" /> est de
 <Chiffre id="etat.charge-dette" />.

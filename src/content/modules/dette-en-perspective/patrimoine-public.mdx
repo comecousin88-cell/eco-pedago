@@ -1,4 +1,5 @@
 import { BarresHorizontales } from "@/components/graphiques/BarresHorizontales";
+import { texteDonnee } from "@/content/calculs";
 
 <Niveaux>
 <Essentiel>
@@ -10,7 +11,7 @@ Une fois les dettes déduites, leur **patrimoine net** restait positif, à <Chif
 
 <Figure
   titre="Ce que possèdent et doivent les administrations publiques"
-  resume="Barres du patrimoine des administrations publiques fin 2024 : des actifs non financiers (bâtiments, terrains, routes) d'environ 2 800 milliards d'euros, un patrimoine financier net négatif d'environ 2 100 milliards (les dettes dépassent les actifs financiers), et un patrimoine net positif d'environ 700 milliards."
+  resume={`Barres du patrimoine des administrations publiques fin 2024 : des actifs non financiers (bâtiments, terrains, routes) d'environ ${texteDonnee("apu.patrimoine", "actifs non financiers", { arrondi: 100 })}, un patrimoine financier net négatif d'environ ${texteDonnee("apu.patrimoine", "patrimoine financier net", { arrondi: 100 })} (les dettes dépassent les actifs financiers), et un patrimoine net positif d'environ ${texteDonnee("apu.patrimoine", "patrimoine net", { arrondi: 10 })}.`}
   donnees={["apu.patrimoine"]}
 >
   <BarresHorizontales serie="apu.patrimoine" trier={false} decimales={0} />

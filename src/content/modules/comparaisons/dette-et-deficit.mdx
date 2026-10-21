@@ -1,4 +1,5 @@
 import { BarresHorizontales } from "@/components/graphiques/BarresHorizontales";
+import { texteDonnee } from "@/content/calculs";
 
 <Niveaux>
 <Essentiel>
@@ -10,7 +11,7 @@ comme les États-Unis ou le Japon, sont plus endettées encore.
 
 <Figure
   titre="La dette publique dans quelques grandes économies"
-  resume="Barres de la dette publique brute en % du PIB en 2025, selon le FMI : le Japon arrive très loin devant, suivi de la Grèce, de l'Italie, des États-Unis et de la France, autour de 115 %. L'Allemagne, les Pays-Bas et la Suède sont bien en dessous."
+  resume={`Barres de la dette publique brute en % du PIB en 2025, selon le FMI : le Japon arrive très loin devant, suivi de la Grèce, de l'Italie, des États-Unis et de la France (${texteDonnee("intl.dette-pib-2025", "France")}). L'Allemagne, les Pays-Bas et la Suède sont bien en dessous.`}
   donnees={["intl.dette-pib-2025"]}
 >
   <BarresHorizontales serie="intl.dette-pib-2025" enAvant={["France"]} decimales={0} />

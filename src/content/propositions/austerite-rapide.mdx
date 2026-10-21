@@ -20,9 +20,10 @@ les dépenses pouvait même relancer l'activité, en restaurant la confiance des
 
 ## 3. Comment ça marcherait concrètement
 
-Ramener le déficit de <Chiffre id="deficit.ratio-pib" /> à 3 % du PIB représente un effort d'environ 2 points de PIB,
-soit de l'ordre de 60 milliards d'euros ; le ramener au niveau qui stabilise la dette, environ 2,2 % du PIB, près de
-90 milliards. En deux ou trois ans, cela suppose de baisser les dépenses de 3 à 5 % en volume, alors que les dépenses
+Ramener le déficit de <Chiffre id="deficit.ratio-pib" /> à 3 % du PIB représente un effort d'environ
+<Calcul id="calc.effort-3pct-points" />, soit de l'ordre de <Calcul id="calc.effort-3pct-md" arrondi={10} /> ; le ramener
+au niveau qui stabilise la dette, environ <Calcul id="calc.deficit-stabilisant" />, près de
+<Calcul id="calc.effort-stabilisation-md" arrondi={5} />. En deux ou trois ans, cela suppose de baisser les dépenses de 3 à 5 % en volume, alors que les dépenses
 de retraite, de santé et les intérêts augmentent spontanément.
 
 Le point clé est l'**effet en retour sur l'activité**. Une dépense publique en moins, c'est aussi un revenu en moins
@@ -63,7 +64,7 @@ années.
 <ArgumentsFiche
   pour={
     <ul>
-      <li><strong>Un niveau de dépense très élevé.</strong> Avec plus de 57 % du PIB, la France a des marges d'économies que d'autres pays n'ont pas.</li>
+      <li><strong>Un niveau de dépense très élevé.</strong> Avec <Chiffre id="fp.depenses-pib" decimales={0} />, la France a des marges d'économies que d'autres pays n'ont pas.</li>
       <li><strong>La crédibilité.</strong> Un effort rapide et net rassure les investisseurs et peut faire baisser les taux d'intérêt.</li>
       <li><strong>Des précédents.</strong> Le Canada et la Suède ont redressé leurs comptes en quelques années dans les années 1990, puis renoué avec la croissance.</li>
       <li><strong>Les impôts sont déjà élevés.</strong> Réduire le déficit par les dépenses évite d'alourdir encore les prélèvements.</li>
@@ -85,8 +86,8 @@ années.
 |---|---|
 | Dépenses publiques | <Chiffre id="fp.depenses" /> en <DateDonnee id="fp.depenses" />, soit <Chiffre id="fp.depenses-pib" /> |
 | Déficit public | <Chiffre id="deficit.montant" />, soit <Chiffre id="deficit.ratio-pib" /> |
-| Revenir à 3 % du PIB | environ 2 points de PIB, de l'ordre de 60 Md€ (calcul) |
-| Stabiliser la dette | près de 90 Md€ par an (calcul, avec la croissance nominale de 2025) |
+| Revenir à 3 % du PIB | environ <Calcul id="calc.effort-3pct-points" />, de l'ordre de <Calcul id="calc.effort-3pct-md" arrondi={10} /> (calcul) |
+| Stabiliser la dette | près de <Calcul id="calc.effort-stabilisation-md" arrondi={5} /> par an (calcul, avec la croissance nominale de <DateDonnee id="macro.croissance-valeur" />) |
 | Effet d'un point de PIB de consolidation sur la croissance (Europe, 2010-2011) | environ <Chiffre id="prop.multiplicateur-blanchard-leigh" /> en moins que prévu |
 
 ## 6. Verdict

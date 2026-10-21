@@ -1,4 +1,5 @@
 import { BarresHorizontales } from "@/components/graphiques/BarresHorizontales";
+import { texteDonnee } from "@/content/calculs";
 
 <Niveaux>
 <Essentiel>
@@ -27,7 +28,7 @@ quand les recettes baissent. Une règle sur les dépenses, que le gouvernement m
 
 <Figure
   titre="La trajectoire de dépenses fixée à la France"
-  resume="Barres de la croissance maximale des dépenses primaires nettes de la France, en valeur, fixée par le Conseil de l'Union en janvier 2025 : 0,8 % en 2025, 1,2 % de 2026 à 2028, et 1,1 % en 2029, soit nettement moins que la croissance nominale attendue de l'économie."
+  resume={`Barres de la croissance maximale des dépenses primaires nettes de la France, en valeur, fixée par le Conseil de l'Union en janvier 2025 : ${texteDonnee("ue.trajectoire-depenses-france", "2025")} en 2025, ${texteDonnee("ue.trajectoire-depenses-france", "2026")} de 2026 à 2028, et ${texteDonnee("ue.trajectoire-depenses-france", "2029")} en 2029, soit nettement moins que la croissance nominale attendue de l'économie.`}
   donnees={["ue.trajectoire-depenses-france"]}
 >
   <BarresHorizontales serie="ue.trajectoire-depenses-france" trier={false} decimales={1} suffixe="% par an" />
