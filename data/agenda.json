@@ -1,0 +1,387 @@
+{
+  "description": "Échéances connues qui peuvent changer les chiffres ou les textes du site : notes des agences, calendrier budgétaire, réunions de la BCE, publications de l'Insee et du COR. Chaque jour ouvré, la tâche « Veille de l'agenda » (scripts/veille-agenda.ts) repère les échéances passées et les pages officielles modifiées. Pour les échéances à validation, elle ouvre une demande de mise à jour sur GitHub : rien n'est publié sans validation. Les échéances « automatique » concernent des chiffres déjà mis à jour par scripts/maj-indicateurs.ts.",
+  "evenements": [
+    {
+      "id": "moodys-2026-10",
+      "titre": "Revue de la note de la France par Moody's",
+      "categorie": "notation",
+      "date": "2026-10-23",
+      "precision": "jour",
+      "statut": "confirme",
+      "mise_a_jour": "validation",
+      "situation": "Aa3, perspective négative",
+      "description": "Moody's publie sa décision après la clôture des marchés : maintien, changement de perspective ou abaissement de la note.",
+      "donnees": [
+        "notation.france"
+      ],
+      "pages": [
+        "/modules/cadre-europeen/notation/",
+        "/modules/emprunt-etat/spread-notation/"
+      ],
+      "source": {
+        "nom": "Agence France Trésor, notations souveraines de la France",
+        "url": "https://www.aft.gouv.fr/fr/notations-souveraines"
+      },
+      "consulte_le": "2026-10-21"
+    },
+    {
+      "id": "plfss-2027-vote",
+      "titre": "Vote solennel de l'Assemblée nationale sur le budget de la Sécurité sociale pour 2027",
+      "categorie": "budget",
+      "date": "2026-10-27",
+      "precision": "jour",
+      "statut": "confirme",
+      "mise_a_jour": "validation",
+      "description": "Vote en première lecture sur le projet de loi de financement de la Sécurité sociale ; l'examen de la seconde partie du projet de loi de finances commence le même jour.",
+      "donnees": [],
+      "pages": [
+        "/modules/deficit-et-dette/soldes/"
+      ],
+      "source": {
+        "nom": "Assemblée nationale, organisation de la discussion budgétaire (15 juillet 2026)",
+        "url": "https://www.assemblee-nationale.fr/dyn/contenu/visualisation/1119828/file/organisation_discussion_budgetaire.pdf"
+      },
+      "consulte_le": "2026-10-21"
+    },
+    {
+      "id": "bce-2026-10-29",
+      "titre": "Réunion de politique monétaire de la BCE",
+      "categorie": "bce",
+      "date": "2026-10-29",
+      "precision": "jour",
+      "statut": "confirme",
+      "mise_a_jour": "automatique",
+      "description": "Le Conseil des gouverneurs décide des taux directeurs. Un changement de taux est repris automatiquement le soir même.",
+      "donnees": [
+        "bce.taux-depot",
+        "bce.taux-depot-actuel",
+        "bce.taux-refi-actuel"
+      ],
+      "pages": [
+        "/tableau-de-bord/"
+      ],
+      "source": {
+        "nom": "BCE, calendrier des réunions du Conseil des gouverneurs",
+        "url": "https://www.ecb.europa.eu/press/calendars/mgcgc/html/index.fr.html"
+      },
+      "consulte_le": "2026-10-21"
+    },
+    {
+      "id": "insee-pib-2026-t3",
+      "titre": "Insee : première estimation de la croissance du 3e trimestre 2026",
+      "categorie": "publication",
+      "date": "2026-10-30",
+      "precision": "jour",
+      "statut": "a_confirmer",
+      "mise_a_jour": "validation",
+      "description": "Première estimation du PIB trimestriel. Les chiffres annuels du site ne changent pas, mais les textes qui parlent de la conjoncture peuvent devoir être relus.",
+      "donnees": [],
+      "pages": [
+        "/la-france-en-10-chiffres/"
+      ],
+      "source": {
+        "nom": "Insee, calendrier des publications",
+        "url": "https://www.insee.fr/fr/information/5235017"
+      },
+      "consulte_le": "2026-10-21",
+      "note": "Date relevée dans un calendrier de presse ; à confirmer sur le calendrier de l'Insee."
+    },
+    {
+      "id": "insee-chomage-2026-t3",
+      "titre": "Insee : taux de chômage du 3e trimestre 2026",
+      "categorie": "publication",
+      "date": "2026-11-10",
+      "precision": "jour",
+      "statut": "a_confirmer",
+      "mise_a_jour": "automatique",
+      "description": "Taux de chômage au sens du Bureau international du travail, repris automatiquement par le tableau de bord.",
+      "donnees": [
+        "ind.chomage"
+      ],
+      "pages": [
+        "/tableau-de-bord/"
+      ],
+      "source": {
+        "nom": "Insee, calendrier des publications",
+        "url": "https://www.insee.fr/fr/information/5235017"
+      },
+      "consulte_le": "2026-10-21",
+      "note": "Date relevée dans un calendrier de presse ; à confirmer sur le calendrier de l'Insee."
+    },
+    {
+      "id": "sp-2026-11",
+      "titre": "Revue de la note de la France par S&P Global",
+      "categorie": "notation",
+      "date": "2026-11-27",
+      "precision": "jour",
+      "statut": "confirme",
+      "mise_a_jour": "validation",
+      "situation": "A+, perspective stable",
+      "description": "S&P Global publie sa décision après la clôture des marchés.",
+      "donnees": [
+        "notation.france"
+      ],
+      "pages": [
+        "/modules/cadre-europeen/notation/",
+        "/modules/emprunt-etat/spread-notation/"
+      ],
+      "source": {
+        "nom": "Agence France Trésor, notations souveraines de la France",
+        "url": "https://www.aft.gouv.fr/fr/notations-souveraines"
+      },
+      "consulte_le": "2026-10-21"
+    },
+    {
+      "id": "bce-2026-12-17",
+      "titre": "Réunion de politique monétaire de la BCE",
+      "categorie": "bce",
+      "date": "2026-12-17",
+      "precision": "jour",
+      "statut": "confirme",
+      "mise_a_jour": "automatique",
+      "description": "Le Conseil des gouverneurs décide des taux directeurs et publie ses nouvelles projections économiques.",
+      "donnees": [
+        "bce.taux-depot",
+        "bce.taux-depot-actuel",
+        "bce.taux-refi-actuel"
+      ],
+      "pages": [
+        "/tableau-de-bord/"
+      ],
+      "source": {
+        "nom": "BCE, calendrier des réunions du Conseil des gouverneurs",
+        "url": "https://www.ecb.europa.eu/press/calendars/mgcgc/html/index.fr.html"
+      },
+      "consulte_le": "2026-10-21"
+    },
+    {
+      "id": "insee-dette-2026-t3",
+      "titre": "Insee : dette publique à la fin du 3e trimestre 2026",
+      "categorie": "publication",
+      "date": "2026-12-18",
+      "precision": "jour",
+      "statut": "confirme",
+      "mise_a_jour": "automatique",
+      "description": "Dette au sens de Maastricht, reprise automatiquement le soir même (montant, part du PIB, dette nette, répartition par administration).",
+      "donnees": [
+        "dette.stock",
+        "dette.ratio-pib",
+        "dette.nette",
+        "dette.par-sous-secteur"
+      ],
+      "pages": [
+        "/tableau-de-bord/",
+        "/modules/deficit-et-dette/composition/"
+      ],
+      "source": {
+        "nom": "Insee, calendrier des publications",
+        "url": "https://www.insee.fr/fr/information/5235017"
+      },
+      "consulte_le": "2026-10-21"
+    },
+    {
+      "id": "plf-2027-delai",
+      "titre": "Fin du délai d'examen du projet de loi de finances pour 2027",
+      "categorie": "budget",
+      "date": "2026-12",
+      "precision": "mois",
+      "statut": "a_confirmer",
+      "mise_a_jour": "validation",
+      "description": "Le Parlement dispose de 70 jours après le dépôt du projet (article 47 de la Constitution) ; au-delà, le gouvernement peut le mettre en vigueur par ordonnance. La loi de finances adoptée fixe le déficit prévu pour 2027.",
+      "donnees": [],
+      "pages": [
+        "/modules/deficit-et-dette/soldes/"
+      ],
+      "source": {
+        "nom": "Assemblée nationale, organisation de la discussion budgétaire (15 juillet 2026)",
+        "url": "https://www.assemblee-nationale.fr/dyn/contenu/visualisation/1119828/file/organisation_discussion_budgetaire.pdf"
+      },
+      "consulte_le": "2026-10-21",
+      "note": "La date exacte dépend de la date de dépôt (30 septembre ou 1er octobre 2026 selon les sources)."
+    },
+    {
+      "id": "agences-calendrier-2027",
+      "titre": "Calendrier 2027 des agences de notation (dont la prochaine revue de Fitch)",
+      "categorie": "notation",
+      "date": "2026-12",
+      "precision": "mois",
+      "statut": "a_confirmer",
+      "mise_a_jour": "validation",
+      "situation": "Fitch : A+, perspective stable (confirmée le 28 août 2026)",
+      "description": "Les agences publient en fin d'année les dates de leurs revues de l'année suivante. Les dates de 2027 seront ajoutées à cet agenda.",
+      "donnees": [
+        "notation.france"
+      ],
+      "pages": [
+        "/modules/cadre-europeen/notation/"
+      ],
+      "source": {
+        "nom": "Agence France Trésor, notations souveraines de la France",
+        "url": "https://www.aft.gouv.fr/fr/notations-souveraines"
+      },
+      "consulte_le": "2026-10-21"
+    },
+    {
+      "id": "bce-2027-02-04",
+      "titre": "Réunion de politique monétaire de la BCE",
+      "categorie": "bce",
+      "date": "2027-02-04",
+      "precision": "jour",
+      "statut": "confirme",
+      "mise_a_jour": "automatique",
+      "description": "Le Conseil des gouverneurs décide des taux directeurs.",
+      "donnees": [
+        "bce.taux-depot",
+        "bce.taux-depot-actuel",
+        "bce.taux-refi-actuel"
+      ],
+      "pages": [
+        "/tableau-de-bord/"
+      ],
+      "source": {
+        "nom": "BCE, calendrier des réunions du Conseil des gouverneurs",
+        "url": "https://www.ecb.europa.eu/press/calendars/mgcgc/html/index.fr.html"
+      },
+      "consulte_le": "2026-10-21"
+    },
+    {
+      "id": "bce-2027-03-18",
+      "titre": "Réunion de politique monétaire de la BCE",
+      "categorie": "bce",
+      "date": "2027-03-18",
+      "precision": "jour",
+      "statut": "confirme",
+      "mise_a_jour": "automatique",
+      "description": "Le Conseil des gouverneurs décide des taux directeurs et publie ses nouvelles projections économiques.",
+      "donnees": [
+        "bce.taux-depot",
+        "bce.taux-depot-actuel",
+        "bce.taux-refi-actuel"
+      ],
+      "pages": [
+        "/tableau-de-bord/"
+      ],
+      "source": {
+        "nom": "BCE, calendrier des réunions du Conseil des gouverneurs",
+        "url": "https://www.ecb.europa.eu/press/calendars/mgcgc/html/index.fr.html"
+      },
+      "consulte_le": "2026-10-21"
+    },
+    {
+      "id": "insee-comptes-apu-2026",
+      "titre": "Insee : déficit et dette publics de l'année 2026",
+      "categorie": "publication",
+      "date": "2027-03",
+      "precision": "mois",
+      "statut": "a_confirmer",
+      "mise_a_jour": "validation",
+      "description": "Premier compte annuel des administrations publiques : déficit, dépenses, recettes, prélèvements obligatoires et charge d'intérêts de 2026. Ces chiffres annuels sont mis à jour à la main.",
+      "donnees": [
+        "deficit.montant",
+        "deficit.ratio-pib",
+        "deficit.historique-md",
+        "deficit.historique-pib",
+        "dette.fin-annee",
+        "dette.fin-annee-pib",
+        "dette.historique-pib",
+        "dette.historique-md",
+        "fp.depenses",
+        "fp.depenses-pib",
+        "fp.recettes",
+        "fp.recettes-pib",
+        "fp.prelevements-obligatoires",
+        "fp.prelevements-obligatoires-pib",
+        "fp.interets",
+        "macro.pib",
+        "macro.croissance-volume",
+        "macro.croissance-valeur"
+      ],
+      "pages": [
+        "/tableau-de-bord/",
+        "/modules/deficit-et-dette/"
+      ],
+      "source": {
+        "nom": "Insee, calendrier des publications",
+        "url": "https://www.insee.fr/fr/information/5235017"
+      },
+      "consulte_le": "2026-10-21",
+      "note": "Publication habituellement à la fin mars ; date exacte à confirmer."
+    },
+    {
+      "id": "bce-2027-04-29",
+      "titre": "Réunion de politique monétaire de la BCE",
+      "categorie": "bce",
+      "date": "2027-04-29",
+      "precision": "jour",
+      "statut": "confirme",
+      "mise_a_jour": "automatique",
+      "description": "Le Conseil des gouverneurs décide des taux directeurs.",
+      "donnees": [
+        "bce.taux-depot",
+        "bce.taux-depot-actuel",
+        "bce.taux-refi-actuel"
+      ],
+      "pages": [
+        "/tableau-de-bord/"
+      ],
+      "source": {
+        "nom": "BCE, calendrier des réunions du Conseil des gouverneurs",
+        "url": "https://www.ecb.europa.eu/press/calendars/mgcgc/html/index.fr.html"
+      },
+      "consulte_le": "2026-10-21"
+    },
+    {
+      "id": "bce-2027-06-10",
+      "titre": "Réunion de politique monétaire de la BCE",
+      "categorie": "bce",
+      "date": "2027-06-10",
+      "precision": "jour",
+      "statut": "confirme",
+      "mise_a_jour": "automatique",
+      "description": "Le Conseil des gouverneurs décide des taux directeurs et publie ses nouvelles projections économiques.",
+      "donnees": [
+        "bce.taux-depot",
+        "bce.taux-depot-actuel",
+        "bce.taux-refi-actuel"
+      ],
+      "pages": [
+        "/tableau-de-bord/"
+      ],
+      "source": {
+        "nom": "BCE, calendrier des réunions du Conseil des gouverneurs",
+        "url": "https://www.ecb.europa.eu/press/calendars/mgcgc/html/index.fr.html"
+      },
+      "consulte_le": "2026-10-21"
+    },
+    {
+      "id": "cor-rapport-2027",
+      "titre": "Rapport annuel du Conseil d'orientation des retraites",
+      "categorie": "publication",
+      "date": "2027-06",
+      "precision": "mois",
+      "statut": "a_confirmer",
+      "mise_a_jour": "validation",
+      "description": "Nouvelles projections du système de retraite : solde, dépenses, rapport entre cotisants et retraités, âge d'équilibre.",
+      "donnees": [
+        "retraites.depenses-projection",
+        "retraites.ressources-projection",
+        "retraites.solde-projection",
+        "retraites.rapport-demographique",
+        "retraites.cotisants-par-retraite",
+        "retraites.pension-relative",
+        "retraites.equilibre-age-2070",
+        "retraites.equilibre-pension-2070",
+        "retraites.equilibre-prelevements-2070"
+      ],
+      "pages": [
+        "/modules/retraites/"
+      ],
+      "source": {
+        "nom": "Conseil d'orientation des retraites, publications",
+        "url": "https://www.cor-retraites.fr/rapports-annuels-du-cor"
+      },
+      "consulte_le": "2026-10-21",
+      "note": "Le rapport annuel paraît habituellement en juin ; date exacte à confirmer."
+    }
+  ]
+}

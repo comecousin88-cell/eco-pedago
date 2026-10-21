@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { CarteIndicateur } from "@/components/indicateurs/CarteIndicateur";
 import { DerniereVerification } from "@/components/indicateurs/DerniereVerification";
+import { ProchainesEcheances } from "@/components/indicateurs/ProchainesEcheances";
 import { FilAriane } from "@/components/modules/FilAriane";
 import { MarquerLue } from "@/components/modules/MarquerLue";
 import { ModuleTheme } from "@/components/modules/ModuleTheme";
@@ -40,6 +41,10 @@ export default function TableauDeBordPage() {
             </li>
           ))}
         </ul>
+
+        <div className="mt-12 max-w-4xl">
+          <ProchainesEcheances />
+        </div>
 
         <section aria-labelledby="methode" className="mt-12 max-w-3xl rounded-2xl border border-line bg-surface p-5 text-sm leading-relaxed text-body">
           <h2 id="methode" className="font-semibold text-ink">
