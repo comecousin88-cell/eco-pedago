@@ -68,7 +68,13 @@ for (const s of agenda.surveillance) {
     if (c) constats.push(c);
     journal.push(`✓ page surveillée « ${s.titre} » lue`);
   } catch (e) {
-    journal.push(`✗ page surveillée « ${s.titre} » : ${e instanceof Error ? e.message : e}`);
+    const message = e instanceof Error ? e.message : String(e);
+    // Un site qui refuse les robots (403) n'est pas une panne : l'échéance de l'agenda prend le relais.
+    journal.push(
+      message === "HTTP 403"
+        ? `• page surveillée « ${s.titre} » : le site refuse les robots (HTTP 403) ; suivi assuré par l'échéance de l'agenda`
+        : `✗ page surveillée « ${s.titre} » : ${message}`,
+    );
   }
 }
 
