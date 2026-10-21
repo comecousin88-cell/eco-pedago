@@ -5,7 +5,7 @@ Statut : **validé le 20/10/2026** (plan et 5 décisions). La mise à jour autom
 Ajustements du 20/10/2026, intégrés ci-dessous (section 7) : deux niveaux de lecture « Simple / Approfondi » avec deux parcours sur l'accueil (étape 2), et le jeu « Redresser les comptes », qui remplace « Trouvez 40 milliards » et passe avant « Ministre des Finances », devenu un bonus (étape 8).
 
 
-**État au 21/10/2026 :** toutes les étapes du plan sont livrées (modules 0 à 7, 16 fiches « Propositions passées au crible », jeux « Redresser les comptes » et « Ministre des Finances », glossaire de 70 termes, idées reçues, La France en 10 chiffres, Sources et méthode, deux parcours). Reste à faire : la mise à jour automatique des indicateurs une fois le site en ligne (décision 5), et la vérification des chiffres listés dans `A_VERIFIER.md`.
+**État au 21/10/2026 :** toutes les étapes du plan sont livrées (modules 0 à 7, 16 fiches « Propositions passées au crible », jeux « Redresser les comptes » et « Ministre des Finances », glossaire de 70 termes, idées reçues, La France en 10 chiffres, Sources et méthode, deux parcours). Mise à jour automatique des indicateurs (décision 5) : prête (script `scripts/maj-indicateurs.ts`, tâche GitHub Actions quotidienne, déploiement Vercel) ; mode d'emploi dans `docs/MISE-EN-LIGNE.md`. Reste à faire : la mise en ligne elle-même (comptes GitHub et Vercel), et la vérification des chiffres listés dans `A_VERIFIER.md`.
 
 ---
 

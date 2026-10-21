@@ -121,8 +121,10 @@ export default function PageSources() {
             « mécanisme solide », « débattu », « ne tient pas en l&apos;état ».
           </p>
           <p>
-            <strong className="text-ink">Mise à jour.</strong> Les données sont mises à jour à la main, à partir des
-            publications officielles. Une mise à jour automatique des indicateurs est prévue une fois le site en ligne.
+            <strong className="text-ink">Mise à jour.</strong> Les indicateurs du tableau de bord (taux, inflation, chômage)
+            sont vérifiés automatiquement chaque matin auprès de la BCE, d&apos;Eurostat et de l&apos;Insee, puis publiés
+            si les contrôles et les tests passent ; sinon, les dernières valeurs sont conservées avec leur date. Les autres
+            données sont mises à jour à la main, à partir des publications officielles.
           </p>
         </section>
 

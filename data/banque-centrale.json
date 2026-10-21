@@ -23,11 +23,11 @@
         },
         {
           "x": "2008-12-10",
-          "y": 2.0
+          "y": 2
         },
         {
           "x": "2009-01-21",
-          "y": 1.0
+          "y": 1
         },
         {
           "x": "2009-03-11",
@@ -55,7 +55,7 @@
         },
         {
           "x": "2012-07-11",
-          "y": 0.0
+          "y": 0
         },
         {
           "x": "2014-06-11",
@@ -79,7 +79,7 @@
         },
         {
           "x": "2022-07-27",
-          "y": 0.0
+          "y": 0
         },
         {
           "x": "2022-09-14",
@@ -91,7 +91,7 @@
         },
         {
           "x": "2022-12-21",
-          "y": 2.0
+          "y": 2
         },
         {
           "x": "2023-02-08",
@@ -99,7 +99,7 @@
         },
         {
           "x": "2023-03-22",
-          "y": 3.0
+          "y": 3
         },
         {
           "x": "2023-05-10",
@@ -115,7 +115,7 @@
         },
         {
           "x": "2023-09-20",
-          "y": 4.0
+          "y": 4
         },
         {
           "x": "2024-06-12",
@@ -131,7 +131,7 @@
         },
         {
           "x": "2024-12-18",
-          "y": 3.0
+          "y": 3
         },
         {
           "x": "2025-02-05",
@@ -147,7 +147,7 @@
         },
         {
           "x": "2025-06-11",
-          "y": 2.0
+          "y": 2
         },
         {
           "x": "2026-06-17",
@@ -165,7 +165,7 @@
         "url": "https://www.ecb.europa.eu/stats/policy_and_exchange_rates/key_ecb_interest_rates/html/index.en.html"
       },
       "statut": "verifie",
-      "consulte_le": "2026-10-20"
+      "consulte_le": "2026-10-21"
     },
     {
       "id": "bce.taux-depot-actuel",
@@ -178,7 +178,7 @@
         "url": "https://www.ecb.europa.eu/stats/policy_and_exchange_rates/key_ecb_interest_rates/html/index.en.html"
       },
       "statut": "verifie",
-      "consulte_le": "2026-10-20",
+      "consulte_le": "2026-10-21",
       "note": "En vigueur depuis le 16/09/2026."
     },
     {
@@ -192,7 +192,7 @@
         "url": "https://www.ecb.europa.eu/stats/policy_and_exchange_rates/key_ecb_interest_rates/html/index.en.html"
       },
       "statut": "verifie",
-      "consulte_le": "2026-10-20"
+      "consulte_le": "2026-10-21"
     },
     {
       "id": "bdf.titres-politique-monetaire",
@@ -446,7 +446,7 @@
       "serie": [
         {
           "x": "2021-12",
-          "y": 516.0
+          "y": 516
         },
         {
           "x": "2022-09",
