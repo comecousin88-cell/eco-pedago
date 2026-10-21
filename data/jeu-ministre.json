@@ -1,0 +1,77 @@
+{
+  "description": "Hypothèses du jeu « Ministre des Finances ». Ce ne sont pas des données observées : elles sont affichées dans le jeu et modifiables ici.",
+  "donnees": [
+    {
+      "id": "ministre.croissance-tendancielle",
+      "label": "Croissance nominale de référence, hors chocs et hors effet du budget",
+      "valeur": 2.8,
+      "unite": "%",
+      "date": "2026",
+      "source": {
+        "nom": "Hypothèse du jeu « Ministre des Finances », choisie par Éco en clair pour rester dans les ordres de grandeur des études"
+      },
+      "statut": "hypothese",
+      "note": "Environ 1 % de croissance en volume et 1,8 % de hausse des prix par an, proche des projections usuelles à moyen terme."
+    },
+    {
+      "id": "ministre.multiplicateur-depenses",
+      "label": "Effet sur le PIB d'un euro d'économies sur les dépenses (multiplicateur)",
+      "valeur": 0.6,
+      "unite": "euro de PIB par euro",
+      "date": "2026",
+      "source": {
+        "nom": "Hypothèse du jeu « Ministre des Finances », choisie par Éco en clair pour rester dans les ordres de grandeur des études"
+      },
+      "statut": "hypothese",
+      "note": "Les estimations vont d'environ 0,3 à plus de 1 selon la conjoncture ; plus élevé en récession (voir le module sur la baisse rapide des dépenses)."
+    },
+    {
+      "id": "ministre.multiplicateur-impots",
+      "label": "Effet sur le PIB d'un euro de hausse d'impôts (multiplicateur)",
+      "valeur": 0.4,
+      "unite": "euro de PIB par euro",
+      "date": "2026",
+      "source": {
+        "nom": "Hypothèse du jeu « Ministre des Finances », choisie par Éco en clair pour rester dans les ordres de grandeur des études"
+      },
+      "statut": "hypothese",
+      "note": "Généralement estimé un peu plus faible que celui des dépenses à court terme, avec de fortes incertitudes."
+    },
+    {
+      "id": "ministre.multiplicateur-investissement",
+      "label": "Effet sur le PIB d'un euro d'investissement public supplémentaire",
+      "valeur": 0.8,
+      "unite": "euro de PIB par euro",
+      "date": "2026",
+      "source": {
+        "nom": "Hypothèse du jeu « Ministre des Finances », choisie par Éco en clair pour rester dans les ordres de grandeur des études"
+      },
+      "statut": "hypothese",
+      "note": "Effet de court terme ; l'effet de long terme sur la croissance potentielle n'est pas modélisé."
+    },
+    {
+      "id": "ministre.stabilisateurs",
+      "label": "Sensibilité du solde public à la croissance (stabilisateurs automatiques)",
+      "valeur": 0.5,
+      "unite": "point de PIB de solde par point de croissance",
+      "date": "2026",
+      "source": {
+        "nom": "Hypothèse du jeu « Ministre des Finances », choisie par Éco en clair pour rester dans les ordres de grandeur des études"
+      },
+      "statut": "hypothese",
+      "note": "Quand la croissance ralentit d'un point, les recettes baissent et certaines dépenses augmentent : le solde se dégrade d'environ 0,5 point de PIB."
+    },
+    {
+      "id": "ministre.reaction-spread",
+      "label": "Réaction annuelle de l'écart de taux avec l'Allemagne au déficit",
+      "valeur": 15,
+      "unite": "points de base par an",
+      "date": "2026",
+      "source": {
+        "nom": "Hypothèse du jeu « Ministre des Finances », choisie par Éco en clair pour rester dans les ordres de grandeur des études"
+      },
+      "statut": "hypothese",
+      "note": "+15 pb par an quand le déficit dépasse 4 % du PIB, −10 pb quand il passe sous 3 %, sans changement entre les deux."
+    }
+  ]
+}

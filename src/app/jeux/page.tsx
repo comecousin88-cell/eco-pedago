@@ -23,7 +23,7 @@ const JEUX = [
     titre: "Ministre des Finances",
     texte:
       "Cinq ans de mandat, un budget par an, des imprévus : croissance, taux, crises. Vos choix et leurs effets sur la dette, avec toutes les hypothèses affichées.",
-    disponible: false,
+    disponible: true,
   },
 ];
 
