@@ -8,10 +8,26 @@ import {
   lireCsvBce,
   lireJsonStatEurostat,
   lireSdmxInsee,
+  lireWebstat,
   trimestreInsee,
 } from "./fonctions";
 
 describe("lecture des API", () => {
+  it("lit l'export JSON de Webstat (Banque de France), dans les deux formes", () => {
+    const lignes = [
+      { series_key: "FM.D.FR", time_period: "2026-10-20", obs_value: 3.41 },
+      { series_key: "FM.D.FR", time_period_start: "2026-10-19T00:00:00+00:00", obs_value: "3.38" },
+      { series_key: "FM.D.FR", time_period: "2026-10-21", obs_value: null },
+    ];
+    const attendu = [
+      { periode: "2026-10-19", valeur: 3.38 },
+      { periode: "2026-10-20", valeur: 3.41 },
+    ];
+    expect(lireWebstat(lignes)).toEqual(attendu);
+    expect(lireWebstat({ results: lignes })).toEqual(attendu);
+    expect(lireWebstat({ error: "dataset observations does not exist" })).toEqual([]);
+  });
+
   it("lit le CSV de la BCE", () => {
     const csv = "KEY,FREQ,TIME_PERIOD,OBS_VALUE,OBS_STATUS\nIRS.M.FR,M,2026-08,4,A\nIRS.M.FR,M,2026-09,4.44,A\nIRS.M.FR,M,2026-10,,A\n";
     expect(lireCsvBce(csv)).toEqual([

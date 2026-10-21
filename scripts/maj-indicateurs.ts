@@ -4,11 +4,13 @@
  *   npm run maj:indicateurs
  *
  * Interroge la BCE (taux directeurs, taux à 10 ans), Eurostat (inflation) et
- * l'Insee (chômage), contrôle la vraisemblance des séries, met à jour les
- * fichiers de data/ et écrit data/maj-indicateurs.json (date de la dernière
- * vérification et état de chaque source). Si une source ne répond pas ou
- * renvoie une série suspecte, ses données restent inchangées, avec leur date.
- * Aucune clé d'API n'est nécessaire.
+ * l'Insee (chômage, dette trimestrielle, dette négociable de l'État) et, si une
+ * clé est fournie, la Banque de France (taux à 10 ans quotidien) ; contrôle la
+ * vraisemblance des séries, met à jour les fichiers de data/ et écrit
+ * data/maj-indicateurs.json (date de la dernière vérification et état de chaque
+ * source). Si une source ne répond pas ou renvoie une série suspecte, ses
+ * données restent inchangées, avec leur date. Seule la Banque de France demande
+ * une clé (variable d'environnement WEBSTAT_CLIENT_ID).
  */
 import { readFileSync, writeFileSync, appendFileSync } from "node:fs";
 import {
@@ -21,6 +23,7 @@ import {
   lireCsvBce,
   lireJsonStatEurostat,
   lireSdmxInsee,
+  lireWebstat,
   trimestreInsee,
   type DonneeJson,
   type JournalMaj,
@@ -56,6 +59,12 @@ function remplacer(nom: string, nouvelle: DonneeJson) {
   const i = f.donnees.findIndex((x) => x.id === nouvelle.id);
   if (JSON.stringify(f.donnees[i]) !== JSON.stringify(nouvelle)) modifies.add(nom);
   f.donnees[i] = nouvelle;
+}
+
+function ajouterOuRemplacer(nom: string, nouvelle: DonneeJson) {
+  if (fichier(nom).donnees.some((x) => x.id === nouvelle.id)) return remplacer(nom, nouvelle);
+  fichier(nom).donnees.push(nouvelle);
+  modifies.add(nom);
 }
 
 async function telecharger(url: string, essais = 3): Promise<string> {
@@ -147,17 +156,103 @@ async function majEurostat() {
 }
 
 /* ---------------------------------------------------------------- Insee */
+const serieInsee = async (idbank: string) => lireSdmxInsee(await telecharger(`https://bdm.insee.fr/series/sdmx/data/SERIES_BDM/${idbank}`));
+const derniere = (obs: Observation[], id: string) => {
+  const o = obs.at(-1);
+  if (!o) throw new Error(`${id} : série vide`);
+  return o;
+};
+const sourceInsee = (nom: string, idbank: string) => ({ nom: `${nom} (série ${idbank})`, url: `https://www.insee.fr/fr/statistiques/serie/${idbank}` });
+
+/** Une valeur trimestrielle ou mensuelle ne doit pas reculer dans le temps ni sortir d'une fourchette. */
+function verifierValeur(ancienne: DonneeJson, periode: string, valeur: number, bornes: { min: number; max: number }) {
+  if (!Number.isFinite(valeur) || valeur < bornes.min || valeur > bornes.max) throw new Error(`${ancienne.id} : valeur aberrante (${valeur})`);
+  if (periode < ancienne.date) throw new Error(`${ancienne.id} : la nouvelle donnée (${periode}) est plus ancienne que l'actuelle (${ancienne.date})`);
+}
+
 async function majInsee() {
-  const xml = await telecharger("https://bdm.insee.fr/series/sdmx/data/SERIES_BDM/001688527");
-  const s = lireSdmxInsee(xml)
-    .map((o) => ({ x: trimestreInsee(o.periode), y: o.valeur }))
-    .filter((p) => p.x >= "2000");
+  // Chômage au sens du BIT, trimestriel
+  const s = (await serieInsee("001688527")).map((o) => ({ x: trimestreInsee(o.periode), y: o.valeur })).filter((p) => p.x >= "2000");
   verifier(donnee("indicateurs", "ind.chomage").serie, s, { min: 0, max: 30 }, "chômage");
-  const der = s.at(-1)!;
-  const d = appliquerSerie(donnee("indicateurs", "ind.chomage"), s, finDeTrimestre(der.x), aujourdhui);
-  d.note = `Données trimestrielles corrigées des variations saisonnières ; dernier trimestre : ${der.x.replace("-T", " T")}.`;
-  remplacer("indicateurs", d);
-  return `chômage jusqu'au ${der.x.replace("-T", " T")}`;
+
+  // Dette trimestrielle au sens de Maastricht (base 2020)
+  const NOM_DETTE = "Insee, dette trimestrielle des administrations publiques au sens de Maastricht";
+  const ids = { total: "010777616", ratio: "010777608", nette: "010777611", etat: "010777610", odac: "010777613", apul: "010777626", asso: "010777625" };
+  const obs: Record<string, Observation> = {};
+  for (const [cle, idbank] of Object.entries(ids)) obs[cle] = derniere(await serieInsee(idbank), idbank);
+  const trimestre = trimestreInsee(obs.total.periode);
+  if (Object.values(obs).some((o) => o.periode !== obs.total.periode)) throw new Error("dette trimestrielle : séries à des dates différentes");
+  const fin = finDeTrimestre(trimestre);
+  verifierValeur(donnee("dette", "dette.stock"), fin, obs.total.valeur, { min: 1000, max: 10000 });
+  verifierValeur(donnee("dette", "dette.ratio-pib"), fin, obs.ratio.valeur, { min: 30, max: 250 });
+
+  // Dette négociable de l'État (Agence France Trésor, reprise par l'Insee), mensuelle, en millions d'euros
+  const NOM_AFT = "Agence France Trésor, encours de la dette négociable de l'État, repris par l'Insee";
+  const negociable = derniere(await serieInsee("001711531"), "001711531");
+  const courtTerme = derniere(await serieInsee("001711532"), "001711532");
+  const indexee = derniere(await serieInsee("001738854"), "001738854");
+  const [annee, mois] = negociable.periode.split("-").map(Number);
+  const finMois = new Date(Date.UTC(annee, mois, 0)).toISOString().slice(0, 10);
+  verifierValeur(donnee("aft", "aft.dette-negociable"), finMois, negociable.valeur / 1000, { min: 1000, max: 8000 });
+
+  // Tout est contrôlé : on applique.
+  const derChomage = s.at(-1)!;
+  const chomage = appliquerSerie(donnee("indicateurs", "ind.chomage"), s, finDeTrimestre(derChomage.x), aujourdhui);
+  chomage.note = `Données trimestrielles corrigées des variations saisonnières ; dernier trimestre : ${derChomage.x.replace("-T", " T")}.`;
+  remplacer("indicateurs", chomage);
+
+  const noteTrimestre = `Fin du ${trimestre.slice(-1) === "1" ? "1er" : `${trimestre.slice(-1)}e`} trimestre ${trimestre.slice(0, 4)}.`;
+  remplacer("dette", { ...appliquerValeur(donnee("dette", "dette.stock"), obs.total.valeur, fin, aujourdhui, noteTrimestre), source: sourceInsee(NOM_DETTE, ids.total) });
+  remplacer("dette", { ...appliquerValeur(donnee("dette", "dette.ratio-pib"), obs.ratio.valeur, fin, aujourdhui, noteTrimestre), source: sourceInsee(NOM_DETTE, ids.ratio) });
+  remplacer("dette", { ...appliquerValeur(donnee("dette", "dette.nette"), obs.nette.valeur, fin, aujourdhui), source: sourceInsee("Insee, dette trimestrielle nette des administrations publiques", ids.nette) });
+  const sousSecteurs = [
+    { x: "État", y: obs.etat.valeur },
+    { x: "Organismes divers d'administration centrale", y: obs.odac.valeur },
+    { x: "Administrations publiques locales", y: obs.apul.valeur },
+    { x: "Sécurité sociale", y: obs.asso.valeur },
+  ];
+  const somme = Math.round(sousSecteurs.reduce((t, p) => t + p.y, 0) * 10) / 10;
+  remplacer("dette", {
+    ...appliquerSerie(donnee("dette", "dette.par-sous-secteur"), sousSecteurs, fin, aujourdhui),
+    source: { nom: `${NOM_DETTE}, par sous-secteur`, url: "https://www.insee.fr/fr/statistiques/2830301" },
+    note: `Contributions consolidées à la dette ; somme ${somme.toLocaleString("fr-FR")} Md€ (arrondis).`,
+  });
+
+  const sourceAft = (idbank: string) => sourceInsee(NOM_AFT, idbank);
+  const noteMois = "Valeur nominale, fin de mois.";
+  remplacer("aft", { ...appliquerValeur(donnee("aft", "aft.dette-negociable"), Math.round(negociable.valeur / 100) / 10, finMois, aujourdhui, noteMois), source: sourceAft("001711531") });
+  remplacer("aft", { ...appliquerValeur(donnee("aft", "aft.dette-court-terme"), Math.round(courtTerme.valeur / 100) / 10, finMois, aujourdhui, noteMois), source: sourceAft("001711532") });
+  remplacer("aft", { ...appliquerValeur(donnee("aft", "aft.dette-negociable-indexee"), Math.round(indexee.valeur / 100) / 10, finMois, aujourdhui, noteMois), source: sourceAft("001738854") });
+
+  return `chômage jusqu'au ${derChomage.x.replace("-T", " T")}, dette jusqu'au ${trimestre.replace("-T", " T")}, dette négociable jusqu'en ${negociable.periode}`;
+}
+
+/* ----------------------------------------------------- Banque de France */
+/**
+ * Taux de l'OAT à 10 ans au jour le jour (taux de l'échéance constante 10 ans,
+ * Banque de France, Webstat). Facultatif : il faut une clé d'API gratuite,
+ * enregistrée comme secret GitHub WEBSTAT_CLIENT_ID. Sans clé, cette source est
+ * ignorée et le site s'en tient à la moyenne mensuelle publiée par la BCE.
+ */
+async function majBanqueDeFrance(cle: string) {
+  const SERIE = "FM.D.FR.EUR.FR2.BB.FR10YT_RR.YLD";
+  const url = `https://webstat.banque-france.fr/api/explore/v2.1/catalog/datasets/observations/exports/json?where=series_key%3D%22${SERIE}%22&order_by=time_period_start%20desc&limit=30`;
+  const r = await fetch(url, { headers: { Authorization: `Apikey ${cle}` }, signal: AbortSignal.timeout(60_000) });
+  if (!r.ok) throw new Error(`Webstat : HTTP ${r.status}`);
+  const der = derniere(lireWebstat(await r.json()), SERIE);
+  const ancienne = fichier("marches").donnees.find((x) => x.id === "marches.taux10-france-jour");
+  const base: DonneeJson = ancienne ?? {
+    id: "marches.taux10-france-jour",
+    label: "Taux de l'OAT à 10 ans, dernier jour connu",
+    valeur: der.valeur,
+    unite: "%",
+    date: der.periode,
+    source: { nom: "Banque de France, Webstat : taux de l'échéance constante 10 ans (TEC10)", url: "https://webstat.banque-france.fr" },
+    statut: "verifie",
+  };
+  verifierValeur(base, der.periode, der.valeur, { min: -2, max: 40 });
+  ajouterOuRemplacer("marches", appliquerValeur(base, der.valeur, der.periode, aujourdhui, "Taux de fin de journée."));
+  return `taux à 10 ans du ${dateFr(der.periode)} : ${der.valeur} %`;
 }
 
 /* ------------------------------------------------------------- Exécution */
@@ -166,6 +261,8 @@ const sources: [string, () => Promise<string>][] = [
   ["eurostat", majEurostat],
   ["insee", majInsee],
 ];
+const cleWebstat = process.env.WEBSTAT_CLIENT_ID;
+if (cleWebstat) sources.push(["banque-de-france", () => majBanqueDeFrance(cleWebstat)]);
 const resultats: Record<string, { ok: boolean; message?: string }> = {};
 const lignes: string[] = [];
 for (const [nom, maj] of sources) {

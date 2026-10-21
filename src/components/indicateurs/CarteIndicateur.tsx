@@ -1,6 +1,6 @@
 import Link from "next/link";
 import type { Indicateur } from "@/content/indicateurs";
-import { getSerie, getValeur } from "@/lib/data";
+import { chercherValeur, getSerie } from "@/lib/data";
 import { formatDateDonnee, formatNombre } from "@/lib/format";
 import { derniersPoints, dernierPoint, libellePeriode, valeurUnAnAvant, type Point } from "@/lib/indicateurs";
 import { CourbeIndicateur } from "./CourbeIndicateur";
@@ -46,7 +46,7 @@ export function CarteIndicateur({ indicateur: ind }: { indicateur: Indicateur })
   const donnee = getSerie(ind.serie);
   const serie = donnee.serie;
   const dernier = dernierPoint(serie);
-  const recente = ind.valeurRecente ? getValeur(ind.valeurRecente) : undefined;
+  const recente = ind.valeurRecente ? chercherValeur(ind.valeurRecente) : undefined;
 
   const valeur = recente ? recente.valeur : dernier.y;
   const paliers = ind.frequence === "paliers";
@@ -54,7 +54,11 @@ export function CarteIndicateur({ indicateur: ind }: { indicateur: Indicateur })
     ? `au ${formatDateDonnee(recente.date).replace(/^au /, "")}`
     : `${paliers ? "depuis le " : ""}${libellePeriode(dernier.x, ind.frequence)}`;
   const reference = recente ? dernier.y : valeurUnAnAvant(serie, ind.frequence);
-  const libelleReference = recente ? `fin ${dernier.x}` : "un an plus tôt";
+  const libelleReference = recente
+    ? ind.frequence === "mensuelle"
+      ? `moyenne de ${libellePeriode(dernier.x, ind.frequence)}`
+      : `fin ${dernier.x}`
+    : "un an plus tôt";
 
   const comparaison = ind.comparaison ? getSerie(ind.comparaison.serie) : undefined;
   const libelles = Object.fromEntries(

@@ -1,17 +1,17 @@
 {
-  "derniere_verification": "2026-10-21T16:27:19.202Z",
+  "derniere_verification": "2026-10-21T16:38:59.788Z",
   "sources": {
     "bce": {
       "statut": "ok",
-      "derniere_reussite": "2026-10-21T16:27:19.202Z"
+      "derniere_reussite": "2026-10-21T16:38:59.788Z"
     },
     "eurostat": {
       "statut": "ok",
-      "derniere_reussite": "2026-10-21T16:27:19.202Z"
+      "derniere_reussite": "2026-10-21T16:38:59.788Z"
     },
     "insee": {
       "statut": "ok",
-      "derniere_reussite": "2026-10-21T16:27:19.202Z"
+      "derniere_reussite": "2026-10-21T16:38:59.788Z"
     }
   }
 }

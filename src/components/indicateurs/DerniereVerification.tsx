@@ -1,6 +1,11 @@
 import journal from "../../../data/maj-indicateurs.json";
 
-const NOMS: Record<string, string> = { bce: "Banque centrale européenne", eurostat: "Eurostat", insee: "Insee" };
+const NOMS: Record<string, string> = {
+  bce: "Banque centrale européenne",
+  eurostat: "Eurostat",
+  insee: "Insee",
+  "banque-de-france": "Banque de France",
+};
 
 function dateHeure(iso: string) {
   return new Intl.DateTimeFormat("fr-FR", {

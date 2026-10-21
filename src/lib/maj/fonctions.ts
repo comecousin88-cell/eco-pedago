@@ -65,6 +65,22 @@ export function lireSdmxInsee(xml: string): Observation[] {
   return res.sort((a, b) => (a.periode < b.periode ? -1 : 1));
 }
 
+/**
+ * Export JSON de Webstat (Banque de France) → observations triées. Accepte un
+ * tableau d'enregistrements ou un objet { results: [...] } ; la date est dans
+ * time_period (ou time_period_start), la valeur dans obs_value.
+ */
+export function lireWebstat(json: unknown): Observation[] {
+  const lignes = Array.isArray(json) ? json : ((json as { results?: unknown[] })?.results ?? []);
+  const res: Observation[] = [];
+  for (const l of lignes as Record<string, unknown>[]) {
+    const periode = String(l.time_period ?? l.time_period_start ?? "").slice(0, 10);
+    const valeur = Number(l.obs_value);
+    if (/^\d{4}-\d{2}-\d{2}$/.test(periode) && l.obs_value !== null && Number.isFinite(valeur)) res.push({ periode, valeur });
+  }
+  return res.sort((a, b) => (a.periode < b.periode ? -1 : 1));
+}
+
 /** Série quotidienne d'un taux → dates de changement (format des paliers de data/). */
 export function changementsDeTaux(quotidien: Observation[], depuis: string): Point[] {
   const tries = [...quotidien].sort((a, b) => (a.periode < b.periode ? -1 : 1));

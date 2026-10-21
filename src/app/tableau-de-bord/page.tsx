@@ -46,11 +46,11 @@ export default function TableauDeBordPage() {
             D&apos;où viennent ces chiffres
           </h2>
           <p className="mt-2">
-            Les taux, l&apos;inflation et le chômage sont vérifiés automatiquement chaque matin auprès de la Banque centrale
-            européenne, d&apos;Eurostat et de l&apos;Insee. Les nouvelles valeurs ne sont publiées qu&apos;après des contrôles
-            de vraisemblance et l&apos;ensemble des tests du site ; si une source ne répond pas, ses dernières valeurs sont
-            conservées avec leur date. La dette et le solde public, publiés par l&apos;Insee une fois par trimestre ou par
-            an, sont mis à jour à la main.
+            Les taux, l&apos;inflation, le chômage et la dette sont vérifiés automatiquement chaque jour ouvré, en fin de
+            journée, auprès de la Banque centrale européenne, d&apos;Eurostat et de l&apos;Insee. Les nouvelles valeurs ne
+            sont publiées qu&apos;après des contrôles de vraisemblance et l&apos;ensemble des tests du site ; si une source
+            ne répond pas, ses dernières valeurs sont conservées avec leur date. Le solde public, publié une fois par an
+            avec le compte des administrations publiques, est mis à jour à la main.
           </p>
           <p className="mt-2">
             Les indicateurs n&apos;ont pas la même fréquence : les taux sont des moyennes mensuelles, le chômage est

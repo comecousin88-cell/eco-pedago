@@ -2,15 +2,12 @@
 
 Fichier généré par `npm test` à partir des données marquées `"statut": "a_verifier"` dans `data/*.json`. Ne pas modifier à la main : corriger la donnée dans son fichier JSON, passer son statut à `verifie`, puis relancer `npm test`.
 
-10 chiffres en attente de vérification, et 26 mesures du jeu « Redresser les comptes ».
+7 chiffres en attente de vérification, et 26 mesures du jeu « Redresser les comptes ».
 
 ## data/aft.json
 
 | Identifiant | Donnée | Valeur actuelle | Date | Source à consulter | Remarque |
 |---|---|---|---|---|---|
-| `aft.dette-negociable` | Dette négociable de l'État | 2858 Md€ | 2026-06-30 | [Agence France Trésor, bulletin mensuel n° 434 (juillet 2026)](https://www.aft.gouv.fr/files/medias-aft/7_Publications/7.2_BM/434_Bulletin%20mensuel%20juillet%202026.pdf) | Chiffre lu dans l'extrait publié du bulletin ; le PDF de l'AFT refuse les téléchargements automatisés (erreur 403), il reste à le confirmer en ouvrant le bulletin. |
-| `aft.dette-negociable-indexee` | dont titres indexés sur l'inflation | 311 Md€ | 2026-06-30 | [Agence France Trésor, bulletin mensuel n° 434 (juillet 2026)](https://www.aft.gouv.fr/files/medias-aft/7_Publications/7.2_BM/434_Bulletin%20mensuel%20juillet%202026.pdf) | Chiffre lu dans l'extrait publié du bulletin ; le PDF de l'AFT refuse les téléchargements automatisés (erreur 403), il reste à le confirmer en ouvrant le bulletin. |
-| `aft.dette-court-terme` | dont dette à court terme (BTF) | 221 Md€ | 2026-06-30 | [Agence France Trésor, bulletin mensuel n° 434 (juillet 2026)](https://www.aft.gouv.fr/files/medias-aft/7_Publications/7.2_BM/434_Bulletin%20mensuel%20juillet%202026.pdf) | Chiffre lu dans l'extrait publié du bulletin ; le PDF de l'AFT refuse les téléchargements automatisés (erreur 403), il reste à le confirmer en ouvrant le bulletin. |
 | `aft.maturite-moyenne` | Durée de vie moyenne de la dette négociable | 8.5 ans | 2026-06-30 | [Agence France Trésor, bulletin mensuel n° 434 (juillet 2026)](https://www.aft.gouv.fr/files/medias-aft/7_Publications/7.2_BM/434_Bulletin%20mensuel%20juillet%202026.pdf) | 8 ans et 180 jours. Chiffre lu dans l'extrait publié du bulletin ; le PDF de l'AFT refuse les téléchargements automatisés (erreur 403), il reste à le confirmer en ouvrant le bulletin. |
 | `aft.detenteurs` | Détenteurs de la dette négociable de l'État | série (4 points, %) | 2025-12-31 | [Agence France Trésor, bulletin mensuel n° 433 (juin 2026), données Banque de France](https://www.aft.gouv.fr/files/medias-aft/7_Publications/7.2_BM/433_Bulletin%20mensuel%20juin%202026.pdf) | « Autres résidents » calculé par différence. Les titres achetés par la Banque de France pour l'Eurosystème sont comptés parmi les résidents. Chiffre lu dans l'extrait publié du bulletin ; le PDF de l'AFT refuse les téléchargements automatisés (erreur 403), il reste à le confirmer en ouvrant le bulletin. |
 

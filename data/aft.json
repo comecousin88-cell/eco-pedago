@@ -4,41 +4,44 @@
     {
       "id": "aft.dette-negociable",
       "label": "Dette négociable de l'État",
-      "valeur": 2858,
+      "valeur": 2923.8,
       "unite": "Md€",
-      "date": "2026-06-30",
+      "date": "2026-08-31",
       "source": {
-        "nom": "Agence France Trésor, bulletin mensuel n° 434 (juillet 2026)",
-        "url": "https://www.aft.gouv.fr/files/medias-aft/7_Publications/7.2_BM/434_Bulletin%20mensuel%20juillet%202026.pdf"
+        "nom": "Agence France Trésor, encours de la dette négociable de l'État, repris par l'Insee (série 001711531)",
+        "url": "https://www.insee.fr/fr/statistiques/serie/001711531"
       },
-      "statut": "a_verifier",
-      "note": "Chiffre lu dans l'extrait publié du bulletin ; le PDF de l'AFT refuse les téléchargements automatisés (erreur 403), il reste à le confirmer en ouvrant le bulletin."
+      "statut": "verifie",
+      "note": "Valeur nominale, fin de mois.",
+      "consulte_le": "2026-10-21"
     },
     {
       "id": "aft.dette-negociable-indexee",
       "label": "dont titres indexés sur l'inflation",
-      "valeur": 311,
+      "valeur": 313.9,
       "unite": "Md€",
-      "date": "2026-06-30",
+      "date": "2026-08-31",
       "source": {
-        "nom": "Agence France Trésor, bulletin mensuel n° 434 (juillet 2026)",
-        "url": "https://www.aft.gouv.fr/files/medias-aft/7_Publications/7.2_BM/434_Bulletin%20mensuel%20juillet%202026.pdf"
+        "nom": "Agence France Trésor, encours de la dette négociable de l'État, repris par l'Insee (série 001738854)",
+        "url": "https://www.insee.fr/fr/statistiques/serie/001738854"
       },
-      "statut": "a_verifier",
-      "note": "Chiffre lu dans l'extrait publié du bulletin ; le PDF de l'AFT refuse les téléchargements automatisés (erreur 403), il reste à le confirmer en ouvrant le bulletin."
+      "statut": "verifie",
+      "note": "Valeur nominale, fin de mois.",
+      "consulte_le": "2026-10-21"
     },
     {
       "id": "aft.dette-court-terme",
       "label": "dont dette à court terme (BTF)",
-      "valeur": 221,
+      "valeur": 219.2,
       "unite": "Md€",
-      "date": "2026-06-30",
+      "date": "2026-08-31",
       "source": {
-        "nom": "Agence France Trésor, bulletin mensuel n° 434 (juillet 2026)",
-        "url": "https://www.aft.gouv.fr/files/medias-aft/7_Publications/7.2_BM/434_Bulletin%20mensuel%20juillet%202026.pdf"
+        "nom": "Agence France Trésor, encours de la dette négociable de l'État, repris par l'Insee (série 001711532)",
+        "url": "https://www.insee.fr/fr/statistiques/serie/001711532"
       },
-      "statut": "a_verifier",
-      "note": "Chiffre lu dans l'extrait publié du bulletin ; le PDF de l'AFT refuse les téléchargements automatisés (erreur 403), il reste à le confirmer en ouvrant le bulletin."
+      "statut": "verifie",
+      "note": "Valeur nominale, fin de mois.",
+      "consulte_le": "2026-10-21"
     },
     {
       "id": "aft.maturite-moyenne",
@@ -59,7 +62,7 @@
       "serie": [
         {
           "x": "Non-résidents",
-          "y": 56.0
+          "y": 56
         },
         {
           "x": "Banques françaises",
@@ -86,7 +89,7 @@
     {
       "id": "aft.programme-emissions",
       "label": "Émissions de dette à moyen et long terme prévues (nettes des rachats)",
-      "valeur": 310.0,
+      "valeur": 310,
       "unite": "Md€",
       "date": "2026",
       "source": {
@@ -141,7 +144,7 @@
     {
       "id": "etat.charge-dette",
       "label": "Charge de la dette de l'État (budget de l'État)",
-      "valeur": 58.0,
+      "valeur": 58,
       "unite": "Md€",
       "date": "2026",
       "source": {

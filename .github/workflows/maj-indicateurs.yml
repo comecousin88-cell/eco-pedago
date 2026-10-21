@@ -1,13 +1,18 @@
-# Chaque matin : interroge la BCE, Eurostat et l'Insee, met à jour data/,
-# lance les tests, le contrôle du code et la construction du site, puis publie
-# (commit sur main) seulement si tout passe. Vercel redéploie à chaque commit.
+# Chaque jour ouvré en fin de journée : interroge la BCE, Eurostat, l'Insee et,
+# si la clé est enregistrée, la Banque de France ; met à jour data/, lance les
+# tests, le contrôle du code et la construction du site, puis publie (commit
+# sur main) seulement si tout passe. Vercel redéploie à chaque commit.
+# Ne concerne que les chiffres : les événements (notes, budget) passent par la
+# tâche « Veille de l'agenda », qui ouvre une demande de validation.
 # Si une source ne répond pas, ses dernières valeurs sont conservées avec leur
 # date ; si les tests échouent, rien n'est publié et GitHub envoie un courriel.
 name: Mise à jour des indicateurs
 
 on:
   schedule:
-    - cron: "15 5 * * *" # 5 h 15 UTC, soit 6 h 15 ou 7 h 15 à Paris
+    # 17 h 30 UTC du lundi au vendredi, soit 18 h 30 ou 19 h 30 à Paris : après
+    # la publication du taux du jour par la Banque de France et des taux de la BCE.
+    - cron: "30 17 * * 1-5"
   workflow_dispatch: # bouton « Run workflow » pour lancer à la main
 
 permissions:
@@ -34,6 +39,9 @@ jobs:
 
       - name: Interroger les sources et mettre à jour data/
         run: npm run maj:indicateurs
+        env:
+          # Facultatif : clé gratuite de l'API Webstat (taux à 10 ans quotidien).
+          WEBSTAT_CLIENT_ID: ${{ secrets.WEBSTAT_CLIENT_ID }}
 
       - name: Tests
         run: npm test

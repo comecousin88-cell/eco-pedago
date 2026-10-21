@@ -108,6 +108,12 @@ export function getValeur(id: string): DonneeValeur {
   return d;
 }
 
+/** Valeur facultative : absente tant que sa source n'est pas branchée (par exemple le taux quotidien). */
+export function chercherValeur(id: string): DonneeValeur | undefined {
+  const d = index.get(id);
+  return d && "valeur" in d ? d : undefined;
+}
+
 export function getSerie(id: string): DonneeSerie {
   const d = getDonnee(id);
   if (!("serie" in d)) throw new Error(`${id} est une valeur, pas une série`);

@@ -8,25 +8,25 @@
       "unite": "Md€",
       "date": "2026-06-30",
       "source": {
-        "nom": "Insee, Informations rapides n° 239 : dette de Maastricht au 2e trimestre 2026",
-        "url": "https://www.insee.fr/fr/statistiques/9053525"
+        "nom": "Insee, dette trimestrielle des administrations publiques au sens de Maastricht (série 010777616)",
+        "url": "https://www.insee.fr/fr/statistiques/serie/010777616"
       },
       "statut": "verifie",
-      "consulte_le": "2026-10-20",
+      "consulte_le": "2026-10-21",
       "note": "Fin du 2e trimestre 2026."
     },
     {
       "id": "dette.ratio-pib",
       "label": "Dette publique en % du PIB",
-      "valeur": 119.0,
+      "valeur": 119,
       "unite": "% du PIB",
       "date": "2026-06-30",
       "source": {
-        "nom": "Insee, Informations rapides n° 239 : dette de Maastricht au 2e trimestre 2026",
-        "url": "https://www.insee.fr/fr/statistiques/9053525"
+        "nom": "Insee, dette trimestrielle des administrations publiques au sens de Maastricht (série 010777608)",
+        "url": "https://www.insee.fr/fr/statistiques/serie/010777608"
       },
       "statut": "verifie",
-      "consulte_le": "2026-10-20",
+      "consulte_le": "2026-10-21",
       "note": "Fin du 2e trimestre 2026."
     },
     {
@@ -36,11 +36,11 @@
       "unite": "Md€",
       "date": "2026-06-30",
       "source": {
-        "nom": "Insee, Informations rapides n° 239 : dette de Maastricht au 2e trimestre 2026",
-        "url": "https://www.insee.fr/fr/statistiques/9053525"
+        "nom": "Insee, dette trimestrielle nette des administrations publiques (série 010777611)",
+        "url": "https://www.insee.fr/fr/statistiques/serie/010777611"
       },
       "statut": "verifie",
-      "consulte_le": "2026-10-20",
+      "consulte_le": "2026-10-21",
       "note": "Dette brute moins la trésorerie et certains actifs financiers."
     },
     {
@@ -67,12 +67,12 @@
       "unite": "Md€",
       "date": "2026-06-30",
       "source": {
-        "nom": "Insee, Informations rapides n° 239 : dette de Maastricht au 2e trimestre 2026",
-        "url": "https://www.insee.fr/fr/statistiques/9053525"
+        "nom": "Insee, dette trimestrielle des administrations publiques au sens de Maastricht, par sous-secteur",
+        "url": "https://www.insee.fr/fr/statistiques/2830301"
       },
       "statut": "verifie",
-      "consulte_le": "2026-10-20",
-      "note": "Contributions consolidées à la dette ; somme 3 595,6 Md€ (arrondis)."
+      "consulte_le": "2026-10-21",
+      "note": "Contributions consolidées à la dette ; somme 3 595,6 Md€ (arrondis)."
     },
     {
       "id": "dette.fin-annee",
@@ -184,7 +184,7 @@
         },
         {
           "x": "1997",
-          "y": 62.0
+          "y": 62
         },
         {
           "x": "1998",
@@ -256,7 +256,7 @@
         },
         {
           "x": "2015",
-          "y": 97.0
+          "y": 97
         },
         {
           "x": "2016",
@@ -350,7 +350,7 @@
         },
         {
           "x": "1987",
-          "y": 295.0
+          "y": 295
         },
         {
           "x": "1988",
@@ -366,7 +366,7 @@
         },
         {
           "x": "1991",
-          "y": 409.0
+          "y": 409
         },
         {
           "x": "1992",
@@ -378,7 +378,7 @@
         },
         {
           "x": "1994",
-          "y": 605.0
+          "y": 605
         },
         {
           "x": "1995",
@@ -402,7 +402,7 @@
         },
         {
           "x": "2000",
-          "y": 880.0
+          "y": 880
         },
         {
           "x": "2001",
@@ -454,7 +454,7 @@
         },
         {
           "x": "2013",
-          "y": 2005.0
+          "y": 2005
         },
         {
           "x": "2014",
@@ -579,7 +579,7 @@
         },
         {
           "x": "1986",
-          "y": -26.0
+          "y": -26
         },
         {
           "x": "1987",
@@ -603,7 +603,7 @@
         },
         {
           "x": "1992",
-          "y": -52.0
+          "y": -52
         },
         {
           "x": "1993",
@@ -611,11 +611,11 @@
         },
         {
           "x": "1994",
-          "y": -64.0
+          "y": -64
         },
         {
           "x": "1995",
-          "y": -62.0
+          "y": -62
         },
         {
           "x": "1996",
@@ -683,7 +683,7 @@
         },
         {
           "x": "2012",
-          "y": -108.0
+          "y": -108
         },
         {
           "x": "2013",
@@ -699,7 +699,7 @@
         },
         {
           "x": "2016",
-          "y": -84.0
+          "y": -84
         },
         {
           "x": "2017",
@@ -782,7 +782,7 @@
         },
         {
           "x": "1985",
-          "y": -3.0
+          "y": -3
         },
         {
           "x": "1986",
@@ -790,7 +790,7 @@
         },
         {
           "x": "1987",
-          "y": -2.0
+          "y": -2
         },
         {
           "x": "1988",
@@ -870,7 +870,7 @@
         },
         {
           "x": "2007",
-          "y": -3.0
+          "y": -3
         },
         {
           "x": "2008",
@@ -986,7 +986,7 @@
     {
       "id": "deficit.structurel",
       "label": "Déficit structurel",
-      "valeur": 5.0,
+      "valeur": 5,
       "unite": "% du PIB",
       "date": "2025",
       "source": {

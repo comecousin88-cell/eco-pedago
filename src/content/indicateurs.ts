@@ -4,7 +4,7 @@ import type { Frequence } from "@/lib/indicateurs";
  * Les sept indicateurs du tableau de bord (module 7). Chaque indicateur lit
  * une série de data/*.json ; le texte explique ce qu'il mesure et renvoie vers
  * la page du site qui détaille le mécanisme. Les données sont mises à jour à
- * la main pour l'instant (date affichée sur chaque carte).
+ * automatiquement (scripts/maj-indicateurs.ts) ; la date est affichée sur chaque carte.
  */
 
 export interface Indicateur {
@@ -16,7 +16,10 @@ export interface Indicateur {
   /** Unité affichée après la valeur. */
   unite: string;
   decimales: number;
-  /** Valeur plus récente que la série (donnée infra-annuelle), affichée à la place du dernier point. */
+  /**
+   * Valeur plus récente que la série (donnée infra-annuelle ou quotidienne),
+   * affichée à la place du dernier point si elle existe dans data/*.json.
+   */
   valeurRecente?: string;
   /** Série de comparaison affichée sur la courbe (par exemple la zone euro). */
   comparaison?: { serie: string; libelle: string };
@@ -42,6 +45,7 @@ export const indicateurs: Indicateur[] = [
     titre: "Taux d'emprunt de l'État à 10 ans",
     serie: "marches.taux10-france",
     frequence: "mensuelle",
+    valeurRecente: "marches.taux10-france-jour",
     unite: "%",
     decimales: 2,
     explication:
