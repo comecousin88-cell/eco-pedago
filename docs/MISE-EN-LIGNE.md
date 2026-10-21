@@ -1,24 +1,29 @@
 # Mettre « Éco en clair » en ligne, avec mise à jour automatique
 
-Solution retenue, entièrement gratuite et sans clé d'API :
+Solution retenue, entièrement gratuite (une clé d'API facultative) :
 
 ```
 GitHub (le code et les données)
-  └─ GitHub Actions, chaque matin à 6 h 15 (7 h 15 en été) :
-       1. interroge la BCE, Eurostat et l'Insee (npm run maj:indicateurs)
-       2. contrôle la vraisemblance des séries
-       3. lance les tests, le contrôle du code et la construction du site
-       4. si tout passe : enregistre les nouvelles données sur GitHub
+  ├─ « Mise à jour des indicateurs », chaque jour ouvré à 19 h 30 (18 h 30 en hiver) :
+  │    1. interroge la BCE, Eurostat, l'Insee et, si la clé est enregistrée, la Banque de France
+  │    2. contrôle la vraisemblance des séries
+  │    3. lance les tests, le contrôle du code et la construction du site
+  │    4. si tout passe : enregistre les nouvelles données sur GitHub → publication
+  └─ « Veille de l'agenda », chaque jour ouvré à 20 h (19 h en hiver) :
+       repère les échéances passées (notes des agences, budget), compare l'agenda aux
+       calendriers de l'Insee et de la BCE, et ouvre une demande de mise à jour
+       (pull request) à votre nom. Rien n'est publié tant que vous ne l'avez pas fusionnée.
 Vercel (l'hébergement)
-  └─ republie le site automatiquement à chaque enregistrement sur GitHub
+  └─ republie le site automatiquement à chaque enregistrement sur la branche main
 ```
 
 Si une source ne répond pas, ses dernières valeurs sont conservées avec leur date, et le tableau de bord l'indique. Si un
 test échoue, rien n'est publié : le site garde sa version précédente et GitHub vous envoie un courriel.
 
-Ce qui est déjà prêt dans le projet : le script `scripts/maj-indicateurs.ts`, les deux tâches
-`.github/workflows/maj-indicateurs.yml` (mise à jour quotidienne) et `.github/workflows/verifications.yml` (tests à chaque
-envoi), et l'affichage de la date de dernière vérification sur le tableau de bord.
+Ce qui est déjà prêt dans le projet : les scripts `scripts/maj-indicateurs.ts` et `scripts/veille-agenda.ts`, les trois
+tâches `.github/workflows/maj-indicateurs.yml` (chiffres), `.github/workflows/veille-agenda.yml` (événements) et
+`.github/workflows/verifications.yml` (tests à chaque envoi), l'agenda `data/agenda.json`, les alertes de seuil et la
+date de dernière vérification sur le tableau de bord.
 
 Il vous reste quatre étapes, qui demandent vos comptes. Comptez une vingtaine de minutes.
 
@@ -54,7 +59,10 @@ Il vous reste quatre étapes, qui demandent vos comptes. Comptez une vingtaine d
 3. Sur la page du dépôt, onglet **Actions** : la tâche « Vérifications » doit démarrer et passer au vert en quelques
    minutes.
 4. Vérifiez que les tâches automatiques ont le droit d'enregistrer des données : **Settings** → **Actions** → **General** →
-   section **Workflow permissions** → cochez **Read and write permissions** → **Save**.
+   section **Workflow permissions** → cochez **Read and write permissions**, puis cochez aussi **Allow GitHub Actions to
+   create and approve pull requests** (indispensable à la veille de l'agenda) → **Save**.
+5. Pour recevoir les notifications : votre avatar (en haut à droite) → **Settings** → **Notifications** → vérifiez que
+   l'envoi par **Email** est activé pour les mentions et pour les échecs des **Actions**.
 
 ## Étape 3 : publier le site sur Vercel
 
@@ -77,17 +85,32 @@ Il vous reste quatre étapes, qui demandent vos comptes. Comptez une vingtaine d
    vérification change chaque jour), et Vercel republie le site.
 4. Sur le site, le tableau de bord affiche « Dernière vérification des sources : le … ».
 
-Ensuite, la tâche tourne seule chaque matin. Vous n'avez rien à faire, sauf si GitHub vous envoie un courriel d'échec.
+5. Testez aussi la veille : **Actions** → **Veille de l'agenda** → **Run workflow**. Le résumé indique « Aucun changement
+   à proposer » ou les demandes ouvertes (onglet **Pull requests**).
+
+Ensuite, les deux tâches tournent seules chaque jour ouvré.
+
+## Valider une demande de mise à jour (note d'agence, budget…)
+
+1. Vous recevez un courriel « … : mise à jour à valider ». Ouvrez la demande (onglet **Pull requests**).
+2. Suivez la liste « À faire avant de fusionner ». Pour corriger un chiffre (par exemple la note dans
+   `data/cadre-europeen.json`), ouvrez le fichier sur la branche de la demande, cliquez sur le crayon, modifiez, puis
+   **Commit changes** sur cette branche : la tâche « Vérifications » relance les tests.
+3. Vercel publie un aperçu de la branche (lien dans la demande) : le site public n'est pas touché.
+4. Quand tout est juste : **Merge pull request**, et le site public est mis à jour. Pour écarter la demande : **Close
+   pull request** ; elle ne sera pas rouverte.
 
 ---
 
 ## Questions pratiques
 
-**Faut-il des clés d'API ?** Non. La BCE, Eurostat et l'Insee publient ces séries en accès libre. La Banque de France
-(Webstat) demande une clé gratuite, mais aucun indicateur du tableau de bord n'en a besoin aujourd'hui. Si vous voulez
-un jour en ajouter un : créez un compte sur <https://webstat.banque-france.fr>, demandez une clé d'API, puis enregistrez-la
-sur GitHub dans **Settings** → **Secrets and variables** → **Actions** → **New repository secret** (nom :
-`WEBSTAT_CLIENT_ID`). Ne la collez jamais dans le code.
+**Faut-il des clés d'API ?** Une seule, facultative. La BCE, Eurostat et l'Insee publient leurs séries en accès libre,
+mais le taux à 10 ans n'y existe qu'en moyenne mensuelle. Pour le taux du jour, il faut une clé gratuite de la Banque
+de France : créez un compte sur <https://webstat.banque-france.fr>, demandez une clé d'API, puis enregistrez-la sur
+GitHub dans **Settings** → **Secrets and variables** → **Actions** → **New repository secret** (nom :
+`WEBSTAT_CLIENT_ID`). Ne la collez jamais dans le code ni dans une conversation. Sans clé, le site affiche la moyenne
+mensuelle. Avec la clé, lancez une fois « Mise à jour des indicateurs » et vérifiez que la ligne « banque-de-france »
+du résumé est verte : ce branchement n'a pas pu être testé sans clé.
 
 **Que se passe-t-il si une source change son format ?** Les contrôles de vraisemblance (série vide, valeur aberrante,
 historique tronqué, date qui recule) rejettent la série : les anciennes valeurs restent, le tableau de bord signale la
@@ -101,8 +124,8 @@ npm run maj:indicateurs
 
 puis `npm test` avant d'enregistrer.
 
-**Ce qui reste à la main.** La dette et le déficit (publications trimestrielles et annuelles de l'Insee), les chiffres des
-modules et des fiches, et les chiffres listés dans `A_VERIFIER.md`.
+**Ce qui reste à la main.** Le déficit et les comptes annuels (fin mars), les notes des agences et les chiffres listés
+dans `A_VERIFIER.md` : la veille de l'agenda vous le rappelle par une demande de mise à jour à chaque échéance.
 
 **Une tâche planifiée peut-elle s'arrêter ?** GitHub suspend les tâches planifiées d'un dépôt public sans activité
 pendant 60 jours. Ici, la tâche enregistre chaque jour au moins la date de vérification : le dépôt reste actif. Si

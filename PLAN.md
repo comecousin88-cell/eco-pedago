@@ -228,3 +228,18 @@ Chaque fonction est testée sur des cas calculables à la main. Exemple : une OA
   - partage en PNG avec les sources.
 - **Neutralité** : aucune mesure n'est qualifiée de bonne ou de mauvaise. Le jeu montre les montants et qui paie, le joueur juge.
 - **Tests** : cas chiffrés sur les objectifs des trois niveaux et sur l'agrégation des mesures (`economics.ts`). Les mesures non vérifiées vont dans `A_VERIFIER.md`, et le générateur s'étend à `mesures-budget.json`.
+
+## 8. Site à jour en permanence (21/10/2026)
+
+- **Chiffres** : mise à jour automatique chaque jour ouvré en fin de journée (BCE, Eurostat, Insee, dont la dette
+  trimestrielle et la dette négociable de l'État ; taux quotidien de la Banque de France si la clé
+  `WEBSTAT_CLIENT_ID` est enregistrée).
+- **Aucun chiffre en dur** : les textes lisent `data/*.json` (`<Chiffre>`, `<DateDonnee>`) ou une valeur calculée
+  (`<Calcul>`, `src/content/calculs.ts`). Le test `src/content/chiffres-en-dur.test.ts` refuse tout nouveau chiffre ;
+  les exceptions (exemples, paramètres d'une proposition, règles, citations) sont déclarées avec leur raison dans
+  `src/content/chiffres-fixes.ts`.
+- **Alertes de seuil** (`src/content/alertes.ts`) : taux à 10 ans > 5 %, écart avec l'Allemagne > 100 pb, France
+  au-dessus de l'Italie, dette > 120 % du PIB, inflation > 3 %, chômage > 9 %. Bandeau daté sur l'accueil et le
+  tableau de bord.
+- **Événements** : `data/agenda.json`. La tâche « Veille de l'agenda » ouvre une pull request par changement,
+  assignée au propriétaire du dépôt. Rien n'est publié sans fusion manuelle.
