@@ -244,6 +244,346 @@
       },
       "statut": "hypothese",
       "note": "Ce n'est pas une donnée observée : c'est un montant de comparaison."
+    },
+    {
+      "id": "prop.retraites-un-an-plus-tot",
+      "label": "Dépense supplémentaire pour le système de retraite si l'âge légal était abaissé d'un an (63 ans au lieu de 64)",
+      "valeur": 5.8,
+      "unite": "Md€ par an",
+      "date": "2035",
+      "source": {
+        "nom": "Cour des comptes, Situation financière et perspectives du système de retraites (20 février 2025)",
+        "url": "https://www.ccomptes.fr/fr/publications/situation-financiere-et-perspectives-du-systeme-de-retraites"
+      },
+      "note": "Chiffrage de la Cour des comptes à l'horizon 2035, par rapport à la cible de 64 ans de la réforme de 2023.",
+      "statut": "verifie",
+      "consulte_le": "2026-10-21"
+    },
+    {
+      "id": "prop.retraites-reforme-2023",
+      "label": "Effet de la réforme des retraites de 2023 sur le solde du système",
+      "valeur": 10,
+      "unite": "Md€ par an",
+      "date": "2030",
+      "source": {
+        "nom": "Cour des comptes, Situation financière et perspectives du système de retraites (20 février 2025)",
+        "url": "https://www.ccomptes.fr/fr/publications/situation-financiere-et-perspectives-du-systeme-de-retraites"
+      },
+      "note": "Environ 10 Md€ à l'horizon 2030, effet qui se réduit ensuite selon la Cour.",
+      "statut": "verifie",
+      "consulte_le": "2026-10-21"
+    },
+    {
+      "id": "prop.retraites-deficit-cour",
+      "label": "Déficit du système de retraite, tous régimes (projection de la Cour des comptes, hors inflation)",
+      "serie": [
+        {
+          "x": "2025",
+          "y": 6.6
+        },
+        {
+          "x": "2035",
+          "y": 15
+        },
+        {
+          "x": "2045",
+          "y": 30
+        }
+      ],
+      "unite": "Md€",
+      "date": "2045",
+      "source": {
+        "nom": "Cour des comptes, Situation financière et perspectives du système de retraites (20 février 2025)",
+        "url": "https://www.ccomptes.fr/fr/publications/situation-financiere-et-perspectives-du-systeme-de-retraites"
+      },
+      "note": "« Près de 15 Md€ » en 2035 et « autour de 30 Md€ » en 2045.",
+      "statut": "verifie",
+      "consulte_le": "2026-10-21"
+    },
+    {
+      "id": "prop.age-legal-suspendu",
+      "label": "Âge légal de départ pour les générations 1963 et 1964 après la suspension de la réforme de 2023",
+      "valeur": 62.75,
+      "unite": "ans",
+      "date": "2026-09-01",
+      "source": {
+        "nom": "Service-public.fr, Suspension de la réforme des retraites : qui est concerné ? (loi n° 2025-1403 du 30 décembre 2025, article 105)",
+        "url": "https://www.service-public.gouv.fr/particuliers/actualites/A18825"
+      },
+      "note": "62 ans et 9 mois. La loi de financement de la sécurité sociale pour 2026 gèle le relèvement jusqu'en janvier 2028 ; la cible de 64 ans ne s'applique qu'à partir de la génération 1969.",
+      "statut": "verifie",
+      "consulte_le": "2026-10-21"
+    },
+    {
+      "id": "prop.smic-allegements-cout",
+      "label": "Coût des allègements généraux de cotisations patronales",
+      "valeur": 80,
+      "unite": "Md€",
+      "date": "2024",
+      "source": {
+        "nom": "Groupe d'experts sur le Smic, rapport du 28 novembre 2024",
+        "url": "https://www.tresor.economie.gouv.fr/Articles/284b121f-b187-4280-b327-05f18064c3fa/files/e5a11d8e-ca36-42b1-afaf-403257e3edfe"
+      },
+      "note": "« Près de 80 milliards d'euros en 2024 », en hausse de plus de 30 % en quatre ans sous l'effet de la dynamique du Smic.",
+      "statut": "verifie",
+      "consulte_le": "2026-10-21"
+    },
+    {
+      "id": "prop.smic-emplois-allegements",
+      "label": "Emplois qui disparaîtraient si les allègements de cotisations étaient totalement supprimés (estimation)",
+      "serie": [
+        {
+          "x": "bas",
+          "y": 1.5
+        },
+        {
+          "x": "haut",
+          "y": 2
+        }
+      ],
+      "unite": "millions d'emplois",
+      "date": "2024",
+      "source": {
+        "nom": "Groupe d'experts sur le Smic, rapport du 28 novembre 2024",
+        "url": "https://www.tresor.economie.gouv.fr/Articles/284b121f-b187-4280-b327-05f18064c3fa/files/e5a11d8e-ca36-42b1-afaf-403257e3edfe"
+      },
+      "note": "Essentiellement des emplois peu qualifiés, selon le groupe d'experts.",
+      "statut": "verifie",
+      "consulte_le": "2026-10-21"
+    },
+    {
+      "id": "prop.smic-salaries-concernes",
+      "label": "Part des salariés du privé directement concernés par la revalorisation du Smic au 1er janvier",
+      "serie": [
+        {
+          "x": "2023",
+          "y": 17.3
+        },
+        {
+          "x": "2024",
+          "y": 14.6
+        }
+      ],
+      "unite": "% des salariés",
+      "date": "2024",
+      "source": {
+        "nom": "Groupe d'experts sur le Smic, rapport du 28 novembre 2024",
+        "url": "https://www.tresor.economie.gouv.fr/Articles/284b121f-b187-4280-b327-05f18064c3fa/files/e5a11d8e-ca36-42b1-afaf-403257e3edfe"
+      },
+      "note": "Secteur privé hors agriculture ; 2,7 millions de salariés au 1er janvier 2024.",
+      "statut": "verifie",
+      "consulte_le": "2026-10-21"
+    },
+    {
+      "id": "prop.boucliers-cout",
+      "label": "Coût total des boucliers tarifaires électricité et gaz et des amortisseurs électricité gérés par la CRE",
+      "valeur": 26.1,
+      "unite": "Md€",
+      "date": "2024",
+      "source": {
+        "nom": "Commission de régulation de l'énergie, communiqué sur le fonctionnement des marchés de détail 2023-2024 (17 novembre 2025)",
+        "url": "https://www.cre.fr/fileadmin/Documents/Communiques_de_presse/2025/251117_CP_Rapport_MD_2324.pdf"
+      },
+      "note": "Période 2022-2024. Ils ont bénéficié à 30,4 millions de ménages pour l'électricité et réduit en moyenne de 40 % le prix facturé de l'électricité. Hors baisse de l'accise sur l'électricité, comptée à part.",
+      "statut": "verifie",
+      "consulte_le": "2026-10-21"
+    },
+    {
+      "id": "prop.fraude-sociale",
+      "label": "Fraude sociale estimée (périmètre évalué par les caisses de sécurité sociale)",
+      "serie": [
+        {
+          "x": "évaluation 2024",
+          "y": 13
+        },
+        {
+          "x": "évaluation 2025",
+          "y": 14
+        }
+      ],
+      "unite": "Md€ par an",
+      "date": "2025-12-04",
+      "source": {
+        "nom": "Haut Conseil du financement de la protection sociale, note annuelle de suivi et d'évaluation des fraudes sociales (4 décembre 2025)",
+        "url": "https://www.securite-sociale.fr/files/live/sites/SSFR/files/medias/HCFIPS/2026/HCFIPS%20-%20Synth%C3%A8se%20Fraude%20sociale%202025%20-%20Version%20finalis%C3%A9e.pdf"
+      },
+      "note": "Plus de la moitié correspond au travail dissimulé (cotisations éludées). Les évaluations ne couvrent pas tous les risques.",
+      "statut": "verifie",
+      "consulte_le": "2026-10-21"
+    },
+    {
+      "id": "prop.fraude-sociale-detectee",
+      "label": "Fraude sociale détectée et recouvrée",
+      "serie": [
+        {
+          "x": "détectée",
+          "y": 2.0
+        },
+        {
+          "x": "recouvrée",
+          "y": 0.68
+        }
+      ],
+      "unite": "Md€",
+      "date": "2024",
+      "source": {
+        "nom": "Haut Conseil du financement de la protection sociale, note annuelle de suivi et d'évaluation des fraudes sociales (4 décembre 2025)",
+        "url": "https://www.securite-sociale.fr/files/live/sites/SSFR/files/medias/HCFIPS/2026/HCFIPS%20-%20Synth%C3%A8se%20Fraude%20sociale%202025%20-%20Version%20finalis%C3%A9e.pdf"
+      },
+      "note": "« Plus de 2 Md€ détectés en 2024 » et 680 M€ recouvrés.",
+      "statut": "verifie",
+      "consulte_le": "2026-10-21"
+    },
+    {
+      "id": "prop.controle-fiscal",
+      "label": "Résultats du contrôle fiscal",
+      "serie": [
+        {
+          "x": "droits et pénalités notifiés",
+          "y": 17.1
+        },
+        {
+          "x": "sommes encaissées",
+          "y": 11.4
+        }
+      ],
+      "unite": "Md€",
+      "date": "2025",
+      "source": {
+        "nom": "Ministère de l'Économie, bilan 2025 du contrôle fiscal (7 avril 2026)",
+        "url": "https://www.economie.gouv.fr/actualites/lutte-contre-la-fraude-un-controle-fiscal-toujours-plus-efficace-en-2025"
+      },
+      "note": "Les montants notifiés ne sont pas tous encaissés : contestations, défaillances, délais. Le data mining a permis de recouvrer 2,8 Md€ en 2025 (2,5 Md€ en 2024).",
+      "statut": "verifie",
+      "consulte_le": "2026-10-21"
+    },
+    {
+      "id": "prop.ecart-tva",
+      "label": "Écart de conformité de TVA en France (TVA due mais non perçue : fraude, erreurs, faillites)",
+      "valeur": 12.1,
+      "unite": "Md€",
+      "date": "2023",
+      "source": {
+        "nom": "Commission européenne, VAT gap in Europe – report 2025 (11 décembre 2025)",
+        "url": "https://taxation-customs.ec.europa.eu/vat-gap_en"
+      },
+      "note": "5,6 % de la TVA théoriquement due. Seule estimation officielle et harmonisée d'une partie de la fraude fiscale ; elle comprend aussi les impayés liés aux faillites.",
+      "statut": "verifie",
+      "consulte_le": "2026-10-21"
+    },
+    {
+      "id": "prop.seigneuriage-bdf",
+      "label": "Revenu de seigneuriage de la Banque de France (placement de la monnaie émise)",
+      "valeur": 6.6,
+      "unite": "Md€",
+      "date": "2025",
+      "source": {
+        "nom": "Banque de France, Comprendre les comptes annuels et les équilibres financiers 2025 (mars 2026)",
+        "url": "https://www.banque-france.fr/system/files/2026-03/Comprendre-les-comptes-2025.pdf"
+      },
+      "note": "Part de la Banque de France dans le revenu mutualisé de l'Eurosystème ; en baisse de 5,4 Md€ par rapport à 2024 avec la baisse des taux.",
+      "statut": "verifie",
+      "consulte_le": "2026-10-21"
+    },
+    {
+      "id": "prop.tva-part-recettes",
+      "label": "Part de la TVA dans les recettes publiques",
+      "serie": [
+        {
+          "x": "France",
+          "y": 16.3
+        },
+        {
+          "x": "Union européenne",
+          "y": 18.1
+        }
+      ],
+      "unite": "% des recettes publiques",
+      "date": "2024",
+      "source": {
+        "nom": "Fipeco, fiche « La taxe sur la valeur ajoutée » (version du 15 juin 2026). Fipeco est le site de François Ecalle, ancien magistrat de la Cour des comptes.",
+        "url": "https://www.fipeco.fr/pdf/TVA.pdf"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-21"
+    },
+    {
+      "id": "prop.tva-hausse-pib",
+      "label": "Effet sur le PIB, au bout de trois ans, d'une hausse de la TVA de 1 point de PIB (environ 30 Md€) sans compensation",
+      "valeur": -0.7,
+      "unite": "%",
+      "date": "2025",
+      "source": {
+        "nom": "Fipeco, fiche « La taxe sur la valeur ajoutée » (version du 15 juin 2026). Fipeco est le site de François Ecalle, ancien magistrat de la Cour des comptes.",
+        "url": "https://www.fipeco.fr/pdf/TVA.pdf"
+      },
+      "note": "Selon le modèle macroéconomique de l'Insee et de la direction générale du Trésor, cité par Fipeco.",
+      "statut": "verifie",
+      "consulte_le": "2026-10-21"
+    },
+    {
+      "id": "prop.tva-hausse-emplois",
+      "label": "Effet sur l'emploi salarié, au bout de trois ans, d'une hausse de la TVA de 1 point de PIB sans compensation",
+      "valeur": -150000,
+      "unite": "emplois",
+      "date": "2025",
+      "source": {
+        "nom": "Fipeco, fiche « La taxe sur la valeur ajoutée » (version du 15 juin 2026). Fipeco est le site de François Ecalle, ancien magistrat de la Cour des comptes.",
+        "url": "https://www.fipeco.fr/pdf/TVA.pdf"
+      },
+      "note": "Selon le modèle macroéconomique de l'Insee et de la direction générale du Trésor, cité par Fipeco.",
+      "statut": "verifie",
+      "consulte_le": "2026-10-21"
+    },
+    {
+      "id": "prop.tva-sociale-2012",
+      "label": "Taux normal de TVA prévu par la « TVA sociale » de 2012 (contre 19,6 %)",
+      "valeur": 21.2,
+      "unite": "%",
+      "date": "2012-10-01",
+      "source": {
+        "nom": "Sénat, rapport n° 689 (2011-2012) sur le projet de loi de finances rectificative pour 2012, examen des articles",
+        "url": "https://www.senat.fr/rap/l11-689-1/l11-689-122.html"
+      },
+      "note": "Hausse votée en mars 2012 avec une baisse des cotisations patronales famille d'environ 13 Md€, puis supprimée en août 2012, avant son entrée en vigueur.",
+      "statut": "verifie",
+      "consulte_le": "2026-10-21"
+    },
+    {
+      "id": "prop.multiplicateur-blanchard-leigh",
+      "label": "Perte de PIB associée à 1 point de PIB de consolidation budgétaire supplémentaire (Europe, 2010-2011)",
+      "valeur": 1,
+      "unite": "% du PIB",
+      "date": "2013",
+      "source": {
+        "nom": "O. Blanchard et D. Leigh, Growth Forecast Errors and Fiscal Multipliers, FMI, document de travail 13/1 (janvier 2013)",
+        "url": "https://www.imf.org/external/pubs/ft/wp/2013/wp1301.pdf"
+      },
+      "note": "Perte par rapport aux prévisions, de l'ordre de 1 point (généralement au-dessus de 0,7) : les multiplicateurs étaient plus élevés que supposé au plus fort de la crise.",
+      "statut": "verifie",
+      "consulte_le": "2026-10-21"
+    },
+    {
+      "id": "prop.dette-non-residents",
+      "label": "Part des titres de dette à long terme des administrations publiques françaises détenue par des non-résidents",
+      "serie": [
+        {
+          "x": "2024",
+          "y": 52.8
+        },
+        {
+          "x": "2025",
+          "y": 54.6
+        }
+      ],
+      "unite": "%",
+      "date": "2025",
+      "source": {
+        "nom": "Banque de France, Émissions de titres par les résidents français, 4e trimestre 2025 (15 avril 2026)",
+        "url": "https://www.banque-france.fr/en/statistics/loans/securities-issues-french-residents-2025-q4"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-21"
     }
   ]
 }

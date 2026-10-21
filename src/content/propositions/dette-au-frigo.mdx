@@ -1,0 +1,101 @@
+## 1. La proposition
+
+Échanger les titres de dette publique détenus par la Banque de France contre une dette **perpétuelle** (sans date de
+remboursement) et **sans intérêt**. Rien n'est effacé sur le papier : la dette est « mise au frigo », sans échéance
+et sans coût.
+
+Au <DateDonnee id="bdf.titres-politique-monetaire" format="jour" />, ces titres représentaient
+<Chiffre id="bdf.titres-politique-monetaire" />. C'est une variante de l'annulation, présentée comme plus douce :
+elle ne heurte pas de front l'idée qu'une dette doit être honorée.
+
+## 2. L'idée derrière
+
+Ses défenseurs partent du même constat que pour l'annulation : la dette détenue par la banque centrale est une dette
+du public envers le public. Mais ils cherchent une solution qui **n'efface rien**. Une dette perpétuelle à taux nul
+reste inscrite dans les comptes ; l'État ne fait pas défaut ; aucun créancier privé n'est touché.
+
+Ils y voient trois avantages. La dette concernée n'aurait plus à être refinancée sur les marchés, ce qui réduirait
+chaque année les montants à emprunter et l'exposition à une hausse des taux. Les intérêts versés sur ces titres
+disparaîtraient. Enfin, la banque centrale garderait la monnaie créée lors des achats, au lieu de réduire son bilan
+au fil des échéances, ce qui éviterait de remettre ces titres entre les mains d'investisseurs.
+
+Ils rappellent que les dettes perpétuelles ne sont pas une curiosité : le Royaume-Uni en a émis pendant plus de deux
+siècles, et en a remboursé les dernières en 2015.
+
+## 3. Comment ça marcherait concrètement
+
+La Banque de France rendrait ses titres à l'État et recevrait en échange un titre perpétuel qui ne rapporte rien.
+Pour elle, le bilan ne change pas en apparence : un titre remplace un autre. Mais ce nouveau titre vaut, en pratique,
+**presque zéro** : un titre qui ne verse jamais rien et ne se rembourse jamais n'a pas de valeur économique. Les
+règles comptables obligeraient la banque à le déprécier.
+
+Au passif, rien ne bouge : les <Terme id="reserves-bancaires">réserves</Terme> créées pour acheter les titres restent
+dues aux banques et rémunérées au taux de dépôt de la BCE (<Chiffre id="bce.taux-depot-actuel" />). La Banque de
+France paierait donc toujours ses réserves, sans plus rien toucher sur ces titres. C'est exactement la situation de
+l'annulation, sous un autre nom.
+
+Les ordres de grandeur sont les mêmes : un rendement moyen de <Chiffre id="bdf.rendement-titres-pm" decimales={2} />
+sur ces titres en <DateDonnee id="bdf.rendement-titres-pm" />, soit environ 3,3 Md€ d'intérêts que l'État ne paierait
+plus, et autant de recettes en moins pour la Banque de France, donc de bénéfices en moins reversés à l'État. Le
+simulateur de la fiche sur l'annulation s'applique tel quel.
+
+<Niveaux>
+<PlusLoin>
+
+**Le droit européen.** L'article 123 du traité sur le fonctionnement de l'Union européenne interdit à une banque
+centrale de financer un État. Transformer des titres en prêt perpétuel gratuit revient à accorder à l'État un crédit
+sans terme et sans coût : c'est la forme la plus directe de ce que le traité interdit. La présidence de la BCE a
+écrit en <Chiffre id="prop.lettre-bce-2021" /> qu'une annulation enfreindrait cette interdiction ; un prêt perpétuel
+gratuit tombe sous le même raisonnement.
+
+**Le précédent britannique ne s'applique pas.** Les dettes perpétuelles du Royaume-Uni versaient un intérêt et
+étaient détenues par des investisseurs privés, qui pouvaient les revendre. Elles n'avaient rien de gratuit.
+
+</PlusLoin>
+</Niveaux>
+
+## 4. Ce que disent les économistes
+
+<ArgumentsFiche
+  pour={
+    <ul>
+      <li><strong>Rien n'est effacé.</strong> L'État n'est pas en défaut : la dette reste inscrite, aucun créancier privé n'est lésé.</li>
+      <li><strong>Moins de dette à refinancer.</strong> Les titres mis au frigo ne reviendraient plus sur les marchés : l'État emprunterait moins chaque année et serait moins exposé à une hausse des taux.</li>
+      <li><strong>Une dette du public envers le public.</strong> Vu de l'ensemble État + banque centrale, ces titres ne sont pas une dette envers des tiers.</li>
+      <li><strong>Une banque centrale peut supporter des pertes.</strong> Les banques centrales de la zone euro ont absorbé de lourdes pertes en 2023 et 2024 sans perdre le contrôle de l'inflation.</li>
+    </ul>
+  }
+  contre={
+    <ul>
+      <li><strong>Une annulation sous un autre nom.</strong> Un titre qui ne rapporte rien et ne se rembourse jamais vaut presque zéro : la perte de la banque centrale est la même qu'avec une annulation.</li>
+      <li><strong>Aucun gain net.</strong> Les intérêts que l'État ne paie plus sont des recettes que la Banque de France ne touche plus, alors qu'elle rémunère toujours les réserves.</li>
+      <li><strong>Interdit par les traités.</strong> Un prêt perpétuel gratuit de la banque centrale à l'État est un financement monétaire direct.</li>
+      <li><strong>Une décision qui n'appartient pas à la France.</strong> Ces titres ont été achetés dans le cadre des programmes de l'Eurosystème, décidés en commun.</li>
+    </ul>
+  }
+/>
+
+## 5. Ordres de grandeur
+
+| | Montant |
+|---|---|
+| Titres publics détenus par la Banque de France | <Chiffre id="bdf.titres-politique-monetaire" /> au <DateDonnee id="bdf.titres-politique-monetaire" format="jour" /> |
+| Rendement moyen de ces titres | <Chiffre id="bdf.rendement-titres-pm" decimales={2} /> en <DateDonnee id="bdf.rendement-titres-pm" /> |
+| Intérêts que l'État ne paierait plus (gain brut) | environ 3,3 Md€ par an (calcul : 488 Md€ × 0,68 %) |
+| Recettes perdues par la Banque de France | le même montant : économie nette nulle pour l'ensemble |
+| Taux auquel elle rémunère les réserves | <Chiffre id="bce.taux-depot-actuel" /> depuis le <DateDonnee id="bce.taux-depot-actuel" format="jour" /> |
+
+## 6. Verdict
+
+<Verdict niveau="ne-tient-pas">
+Mettre la dette « au frigo » produit les mêmes effets économiques qu'une annulation : la Banque de France détiendrait
+un titre sans valeur et continuerait de rémunérer les réserves créées pour l'acheter. L'économie d'intérêts de l'État
+est compensée par la perte de sa banque centrale, et l'opération serait contraire à l'interdiction du financement
+monétaire. Le changement de nom ne change pas le mécanisme.
+</Verdict>
+
+<GrilleVerdict
+  tient={<p>La dette détenue par la banque centrale n'est pas une dette ordinaire, et une dette perpétuelle est un instrument qui existe.</p>}
+  tientPas={<p>L'idée d'un gain budgétaire net, et celle qu'un prêt perpétuel gratuit échapperait aux règles qui interdisent l'annulation.</p>}
+  debattu={<p>La capacité d'une banque centrale à porter durablement des pertes ou des fonds propres négatifs, et la réaction des investisseurs.</p>}
+/>

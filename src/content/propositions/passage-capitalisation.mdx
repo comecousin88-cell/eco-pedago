@@ -1,0 +1,108 @@
+import { DoubleCharge } from "@/components/graphiques/DoubleCharge";
+
+## 1. La proposition
+
+Remplacer, en tout ou en partie, la retraite par <Terme id="repartition">répartition</Terme> (les cotisations des
+actifs paient les pensions des retraités du moment) par une retraite par
+<Terme id="capitalisation">capitalisation</Terme> (chacun épargne pour sa propre retraite, et cette épargne est
+placée).
+
+## 2. L'idée derrière
+
+La répartition dépend de la démographie : quand le nombre de cotisants par retraité baisse, il faut cotiser plus,
+partir plus tard ou toucher moins. On comptait <Chiffre id="retraites.cotisants-par-retraite" x="2025" decimales={1} /> pour un retraité en 2025, et le Conseil d'orientation des retraites en prévoit
+<Chiffre id="retraites.cotisants-par-retraite" x="2070" decimales={1} /> en 2070.
+
+La capitalisation, disent ses défenseurs, échappe en partie à cette contrainte : l'épargne placée rapporte le
+rendement des entreprises et des marchés, qui a été historiquement supérieur à la croissance des salaires sur longue
+période. Chacun voit ses droits s'accumuler sur un compte à son nom, ce qui renforce la confiance dans le système.
+L'épargne ainsi constituée financerait aussi les entreprises françaises, au lieu de laisser des fonds de pension
+étrangers en détenir une large part. Plusieurs pays, comme les Pays-Bas, la Suède ou la Suisse, combinent un socle
+par répartition et un étage important en capitalisation.
+
+## 3. Comment ça marcherait concrètement
+
+Le problème central est celui de la **transition**. Les pensions déjà promises aux retraités actuels, et les droits
+accumulés par les actifs, devront être payés pendant des décennies. Si une partie des cotisations va désormais vers
+l'épargne de chacun, elle ne finance plus ces pensions : une génération doit **payer deux fois**, pour les retraités
+d'aujourd'hui et pour sa propre retraite. C'est la « double charge ».
+
+Pour en mesurer l'ampleur : les dépenses de retraite représentent <Chiffre id="retraites.depenses-montant" /> par an
+(<Chiffre id="retraites.depenses-pib" />). Faire passer 10 % du système en capitalisation, c'est devoir trouver de
+l'ordre de 40 milliards d'euros par an pendant la transition, pour continuer à payer les pensions en cours tout en
+alimentant l'épargne nouvelle, et cela pendant plusieurs décennies.
+
+<Figure
+  titre="La double charge d'une transition vers la capitalisation"
+  resume="Modèle illustratif : si une part de la retraite passe en capitalisation, les pensions déjà promises s'éteignent lentement pendant que l'épargne pour soi monte vite. Pendant plusieurs décennies, l'effort total dépasse celui du système actuel."
+  source="Modèle illustratif, chiffres d'exemple. Voir les hypothèses sous le graphique."
+>
+  <DoubleCharge />
+</Figure>
+
+<Niveaux>
+<PlusLoin>
+
+**La capitalisation ne supprime pas la démographie.** Au moment de la retraite, l'épargne accumulée doit être
+vendue à quelqu'un, ou ses revenus versés par des entreprises qui emploient des actifs. Si les actifs sont moins
+nombreux, la valeur des actifs financiers et leurs rendements peuvent en pâtir. La capitalisation diversifie le
+risque, notamment vers l'étranger, sans l'effacer.
+
+**Les risques changent de mains.** En répartition, le risque démographique et le risque politique pèsent sur tous.
+En capitalisation, le risque de marché pèse sur chaque épargnant : partir à la retraite juste après un krach réduit
+durablement la pension. Les systèmes étrangers réduisent ce risque par des garanties, des placements prudents en fin
+de carrière ou des fonds collectifs.
+
+**Ce qui existe déjà en France.** Le plan d'épargne retraite, l'épargne salariale, et certains régimes de
+fonctionnaires ou de professions libérales sont déjà en capitalisation. Le débat porte surtout sur l'ampleur d'un
+étage collectif et obligatoire.
+
+</PlusLoin>
+</Niveaux>
+
+## 4. Ce que disent les économistes
+
+<ArgumentsFiche
+  pour={
+    <ul>
+      <li><strong>Moins dépendant de la démographie.</strong> L'épargne placée rapporte le rendement des entreprises et des marchés, pas seulement celui des salaires des actifs du moment.</li>
+      <li><strong>Un rendement historique supérieur.</strong> Sur longue période, les placements diversifiés ont rapporté davantage que la croissance de la masse salariale qui finance la répartition.</li>
+      <li><strong>Des droits visibles et personnels.</strong> Un compte à son nom renforce la confiance dans le système.</li>
+      <li><strong>De l'épargne pour l'économie.</strong> Des fonds de pension nationaux financeraient les entreprises françaises.</li>
+      <li><strong>Des modèles étrangers.</strong> Plusieurs pays combinent avec succès un socle par répartition et un étage important par capitalisation.</li>
+    </ul>
+  }
+  contre={
+    <ul>
+      <li><strong>La double charge.</strong> Pendant des décennies, il faut à la fois payer les pensions promises et épargner pour soi : quelques dizaines de milliards d'euros par an, même pour une transition partielle.</li>
+      <li><strong>Le risque de marché.</strong> La pension dépend des marchés au moment du départ ; un krach peut la réduire durablement.</li>
+      <li><strong>La démographie demeure.</strong> Moins d'actifs, c'est aussi moins d'acheteurs pour l'épargne des retraités et moins de production pour la rémunérer.</li>
+      <li><strong>Des frais et des inégalités.</strong> La gestion de l'épargne a un coût, et ceux qui épargnent peu ou ont des carrières hachées accumulent peu.</li>
+    </ul>
+  }
+/>
+
+## 5. Ordres de grandeur
+
+| | Montant |
+|---|---|
+| Dépenses de retraite | <Chiffre id="retraites.depenses-montant" /> en <DateDonnee id="retraites.depenses-montant" /> |
+| Part du PIB | <Chiffre id="retraites.depenses-pib" /> |
+| Faire passer 10 % du système en capitalisation | de l'ordre de 40 Md€ par an à financer en plus pendant la transition (calcul : 10 % des dépenses) |
+| Cotisants pour un retraité | <Chiffre id="retraites.cotisants-par-retraite" x="2025" decimales={1} /> en 2025, <Chiffre id="retraites.cotisants-par-retraite" x="2070" decimales={1} /> en 2070 |
+
+## 6. Verdict
+
+<Verdict niveau="ne-tient-pas">
+Remplacer la répartition par la capitalisation pour résoudre les difficultés actuelles des retraites ne tient pas en
+l'état : la transition impose de payer deux fois pendant des décennies, ce qui aggrave le besoin de financement au
+lieu de le réduire. Ajouter progressivement un étage de capitalisation à côté de la répartition est en revanche un
+choix débattu, défendu par de nombreux économistes, qui déplace une partie du risque démographique vers le risque
+de marché.
+</Verdict>
+
+<GrilleVerdict
+  tient={<p>La capitalisation diversifie les sources de financement des retraites et rapporte, sur longue période, un rendement supérieur à la croissance des salaires.</p>}
+  tientPas={<p>L'idée qu'une bascule vers la capitalisation résoudrait le déficit actuel : la double charge le creuse pendant des décennies.</p>}
+  debattu={<p>La place souhaitable d'un étage collectif en capitalisation, sa gestion, ses garanties, et le partage des risques entre générations.</p>}
+/>

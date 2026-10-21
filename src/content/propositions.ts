@@ -66,6 +66,8 @@ export const propositions: Proposition[] = [
     themes: ["Dette", "Monnaie"],
     module: "banque-centrale",
     liens: [{ module: "banque-centrale", section: "qe" }],
+    verdict: "ne-tient-pas",
+    contenu: () => import("./propositions/dette-au-frigo.mdx"),
   },
   {
     slug: "planche-a-billets",
@@ -78,6 +80,8 @@ export const propositions: Proposition[] = [
       { module: "les-bases", section: "inflation-taux-reels" },
     ],
     phare: true,
+    verdict: "ne-tient-pas",
+    contenu: () => import("./propositions/planche-a-billets.mdx"),
   },
   {
     slug: "sortir-de-l-euro",
@@ -89,6 +93,8 @@ export const propositions: Proposition[] = [
       { module: "banque-centrale", section: "grece" },
       { module: "emprunt-etat", section: "spread-notation" },
     ],
+    verdict: "debattu",
+    contenu: () => import("./propositions/sortir-de-l-euro.mdx"),
   },
   {
     slug: "taxer-les-tres-hauts-patrimoines",
@@ -122,6 +128,8 @@ export const propositions: Proposition[] = [
     module: "retraites",
     liens: [{ module: "retraites", section: "leviers" }],
     phare: true,
+    verdict: "debattu",
+    contenu: () => import("./propositions/retraite-a-60-ans.mdx"),
   },
   {
     slug: "passage-capitalisation",
@@ -133,6 +141,8 @@ export const propositions: Proposition[] = [
       { module: "retraites", section: "repartition-capitalisation" },
       { module: "retraites", section: "transition" },
     ],
+    verdict: "ne-tient-pas",
+    contenu: () => import("./propositions/passage-capitalisation.mdx"),
   },
   {
     slug: "retraite-par-points",
@@ -141,6 +151,8 @@ export const propositions: Proposition[] = [
     themes: ["Retraites"],
     module: "retraites",
     liens: [{ module: "retraites", section: "notions" }],
+    verdict: "solide",
+    contenu: () => import("./propositions/retraite-par-points.mdx"),
   },
   {
     slug: "hausse-forte-du-smic",
@@ -149,6 +161,8 @@ export const propositions: Proposition[] = [
     themes: ["Salaires et prix", "Fiscalité"],
     module: "fiche-de-paie",
     liens: [{ module: "fiche-de-paie" }],
+    verdict: "debattu",
+    contenu: () => import("./propositions/hausse-forte-du-smic.mdx"),
   },
   {
     slug: "blocage-des-prix",
@@ -157,6 +171,8 @@ export const propositions: Proposition[] = [
     themes: ["Salaires et prix"],
     module: "les-bases",
     liens: [{ module: "les-bases", section: "inflation-taux-reels" }],
+    verdict: "debattu",
+    contenu: () => import("./propositions/blocage-des-prix.mdx"),
   },
   {
     slug: "tva-sociale",
@@ -165,6 +181,8 @@ export const propositions: Proposition[] = [
     themes: ["Fiscalité", "Salaires et prix"],
     module: "fiche-de-paie",
     liens: [{ module: "fiche-de-paie" }],
+    verdict: "debattu",
+    contenu: () => import("./propositions/tva-sociale.mdx"),
   },
   {
     slug: "austerite-rapide",
@@ -173,6 +191,8 @@ export const propositions: Proposition[] = [
     themes: ["Dette"],
     module: "boule-de-neige",
     liens: [{ module: "boule-de-neige", section: "cercles" }],
+    verdict: "debattu",
+    contenu: () => import("./propositions/austerite-rapide.mdx"),
   },
   {
     slug: "lutte-contre-la-fraude",
@@ -181,6 +201,8 @@ export const propositions: Proposition[] = [
     themes: ["Fiscalité", "Dette"],
     module: "les-bases",
     liens: [{ module: "les-bases", section: "recettes-depenses" }],
+    verdict: "ne-tient-pas",
+    contenu: () => import("./propositions/lutte-contre-la-fraude.mdx"),
   },
   {
     slug: "relance-pour-reduire-la-dette",
@@ -189,6 +211,8 @@ export const propositions: Proposition[] = [
     themes: ["Dette"],
     module: "boule-de-neige",
     liens: [{ module: "boule-de-neige", section: "formule" }],
+    verdict: "ne-tient-pas",
+    contenu: () => import("./propositions/relance-pour-reduire-la-dette.mdx"),
   },
   {
     slug: "theorie-monetaire-moderne",
@@ -197,6 +221,8 @@ export const propositions: Proposition[] = [
     themes: ["Monnaie", "Dette"],
     module: "banque-centrale",
     liens: [{ module: "banque-centrale", section: "signal-marches" }],
+    verdict: "ne-tient-pas",
+    contenu: () => import("./propositions/theorie-monetaire-moderne.mdx"),
   },
 ];
 

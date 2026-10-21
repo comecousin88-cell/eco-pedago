@@ -1,0 +1,108 @@
+import { BouleDeNeige } from "@/components/simulators/BouleDeNeige";
+
+## 1. La proposition
+
+Augmenter la dépense publique ou baisser les impôts pour stimuler la croissance, en comptant sur celle-ci pour réduire
+le poids de la dette : plus de croissance, plus de recettes fiscales, et une dette plus petite rapportée au PIB.
+
+## 2. L'idée derrière
+
+Ce qui compte pour juger une dette, ce n'est pas son montant mais son **poids par rapport à la richesse produite**. La
+dette publique représente <Chiffre id="dette.ratio-pib" />. Si le PIB augmente plus vite, ce ratio baisse,
+même sans rembourser un euro : c'est ainsi que de nombreux pays ont allégé leur dette après 1945.
+
+Les défenseurs d'une relance ajoutent que l'austérité peut être contre-productive : quand l'économie tourne au
+ralenti, couper dans les dépenses réduit l'activité et les recettes, et le ratio de dette peut même augmenter. À
+l'inverse, des économistes comme Brad DeLong et Lawrence Summers ont montré qu'en période de forte sous-activité et de
+taux très bas, une relance budgétaire pouvait **se financer en partie elle-même**, en évitant que le chômage durable
+n'abîme la capacité de production. Enfin, certains investissements (recherche, éducation, transition énergétique)
+augmentent la croissance future et donc les recettes de demain.
+
+## 3. Comment ça marcherait concrètement
+
+Tout dépend de deux grandeurs, que le module sur l'effet boule de neige détaille : le **taux d'intérêt** payé sur la
+dette et la **croissance nominale** (volume et prix).
+
+- Quand la croissance nominale dépasse le taux d'intérêt, la dette tend à baisser en proportion du PIB, à condition
+  que le déficit hors intérêts reste limité.
+- Quand le taux d'intérêt dépasse la croissance, la dette augmente d'elle-même, sauf excédent hors intérêts.
+
+Aujourd'hui, la France emprunte à 10 ans à <Chiffre id="marches.taux10-france-dernier" /> en
+<DateDonnee id="marches.taux10-france-dernier" />, alors que sa croissance nominale a été de
+<Chiffre id="macro.croissance-valeur" /> en <DateDonnee id="macro.croissance-valeur" />. Pour qu'une relance réduise
+le poids de la dette, il faudrait que chaque euro dépensé produise assez de croissance, et donc de recettes, pour
+couvrir son coût et ses intérêts. Avec un multiplicateur budgétaire généralement estimé entre 0,5 et 1 en temps
+normal, et des recettes publiques d'environ la moitié du PIB, un euro de dépense rapporte de l'ordre de 25 à
+50 centimes de recettes : le reste s'ajoute à la dette.
+
+<Figure
+  titre="Simulateur : taux d'intérêt, croissance et dette"
+  resume="Simulateur : on règle le taux d'intérêt moyen, la croissance nominale et le solde hors intérêts, et l'on suit la dette en % du PIB sur plusieurs années. Quand la croissance dépasse le taux, la dette peut baisser ; dans le cas inverse, elle monte d'elle-même."
+  donnees={["dette.historique-pib", "dette.historique-md", "fp.interets", "macro.pib", "deficit.montant", "macro.croissance-valeur", "marches.taux10-france-dernier", "aft.maturite-moyenne"]}
+>
+  <BouleDeNeige />
+</Figure>
+
+<Niveaux>
+<PlusLoin>
+
+**Quand la relance se finance elle-même.** Les travaux qui concluent à une relance autofinancée supposent des
+conditions précises : une économie en forte sous-activité, des taux d'intérêt proches de zéro, une banque centrale
+qui ne réagit pas en relevant ses taux, et des effets durables du chômage sur la production. Ces conditions étaient
+réunies en 2009 ou en 2020 ; elles le sont moins aujourd'hui.
+
+**L'expérience française.** La relance de 1981-1982 a creusé le déficit extérieur et conduit à plusieurs
+dévaluations, avant le « tournant de la rigueur » de 1983 : dans une économie ouverte, une partie de la demande
+supplémentaire profite aux importations. À l'inverse, le soutien massif de 2020 a évité un effondrement de l'activité,
+au prix d'une dette passée de <Chiffre id="dette.historique-pib" x="2019" /> à
+<Chiffre id="dette.historique-pib" x="2020" /> en un an.
+
+</PlusLoin>
+</Niveaux>
+
+## 4. Ce que disent les économistes
+
+<ArgumentsFiche
+  pour={
+    <ul>
+      <li><strong>C'est le ratio qui compte.</strong> Plus de croissance réduit le poids de la dette sans rien rembourser, comme après 1945.</li>
+      <li><strong>L'austérité peut aggraver la dette.</strong> En période de faiblesse, couper les dépenses réduit l'activité et les recettes.</li>
+      <li><strong>Une relance peut se financer en partie.</strong> En forte sous-activité et à taux bas, elle évite que le chômage n'abîme durablement la production.</li>
+      <li><strong>Des investissements rentables.</strong> Recherche, éducation, transition énergétique augmentent la croissance future, donc les recettes.</li>
+    </ul>
+  }
+  contre={
+    <ul>
+      <li><strong>Un multiplicateur inférieur à ce qu'il faudrait.</strong> En temps normal, un euro de dépense rapporte de l'ordre de 25 à 50 centimes de recettes : la dette augmente.</li>
+      <li><strong>Des taux supérieurs à la croissance.</strong> Avec un taux de marché supérieur à la croissance nominale, chaque euro emprunté pèse davantage.</li>
+      <li><strong>Une économie ouverte.</strong> Une partie de la demande supplémentaire va aux importations, comme l'a montré la relance de 1981-1982.</li>
+      <li><strong>Le risque de marché.</strong> Un déficit en hausse peut élargir l'écart de taux avec l'Allemagne et renchérir toute la dette.</li>
+    </ul>
+  }
+/>
+
+## 5. Ordres de grandeur
+
+| | Montant |
+|---|---|
+| Dette publique | <Chiffre id="dette.ratio-pib" /> |
+| Taux de l'OAT à 10 ans | <Chiffre id="marches.taux10-france-dernier" /> en <DateDonnee id="marches.taux10-france-dernier" /> |
+| Croissance nominale | <Chiffre id="macro.croissance-valeur" /> en <DateDonnee id="macro.croissance-valeur" /> |
+| Intérêts versés par les administrations publiques | <Chiffre id="fp.interets" /> en <DateDonnee id="fp.interets" /> |
+| Recettes publiques | <Chiffre id="fp.recettes-pib" /> |
+
+## 6. Verdict
+
+<Verdict niveau="ne-tient-pas">
+Compter sur une relance pour réduire la dette ne tient pas dans les conditions actuelles : le taux auquel la France
+emprunte dépasse sa croissance nominale, et un euro de dépense supplémentaire ne rapporte en temps normal qu'une
+fraction de son coût en recettes. Une relance peut se justifier pour soutenir l'économie en récession, et certains
+investissements peuvent élever la croissance à long terme, mais elle augmente la dette au lieu de la réduire, sauf
+en cas de forte sous-activité avec des taux très bas.
+</Verdict>
+
+<GrilleVerdict
+  tient={<p>La croissance réduit le poids de la dette, et une relance peut s'autofinancer en partie en cas de récession profonde avec des taux très bas.</p>}
+  tientPas={<p>L'idée qu'une relance réduirait la dette aujourd'hui, avec des taux supérieurs à la croissance et une économie qui n'est pas en récession profonde.</p>}
+  debattu={<p>La taille du multiplicateur budgétaire, le rendement à long terme des investissements publics, et le niveau de sous-activité de l'économie française.</p>}
+/>

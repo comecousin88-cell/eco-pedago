@@ -1,0 +1,118 @@
+import { LeviersRetraites } from "@/components/simulators/LeviersRetraites";
+
+## 1. La proposition
+
+Ramener l'âge légal de départ à la retraite à 60 ans, généralement avec une durée de cotisation de 40 ans pour une
+pension complète.
+
+Pour situer : la réforme de 2023 relève progressivement l'âge légal vers 64 ans. La loi de financement de la sécurité
+sociale pour 2026 a suspendu ce relèvement jusqu'en janvier 2028 : l'âge légal est de 62 ans et 9 mois pour les
+personnes nées en 1963 et 1964, et la cible de 64 ans ne vaut plus qu'à partir de la génération 1969. L'âge moyen
+effectif de départ était de <Chiffre id="retraites.age-depart" decimales={1} /> en <DateDonnee id="retraites.age-depart" />.
+
+## 2. L'idée derrière
+
+L'âge de 60 ans a été la règle de 1982 à 2010. Ses défenseurs y voient d'abord une **question de justice** : ceux qui
+ont commencé à travailler tôt, souvent dans des métiers physiques, ont aussi une espérance de vie plus courte, et
+profitent moins longtemps de leur retraite. Reculer l'âge pèse surtout sur eux.
+
+Ils soulignent ensuite que **beaucoup de seniors ne sont déjà plus en emploi** quand ils atteignent l'âge de la
+retraite : chômage, invalidité, minima sociaux. Reculer l'âge déplace alors une partie de la dépense vers d'autres
+caisses plutôt que de la supprimer. Enfin, ils rappellent que la retraite est financée par la richesse produite, et
+qu'une société plus riche peut choisir d'en consacrer une part plus grande à ses retraités : relever les cotisations,
+mettre davantage à contribution les revenus du capital ou augmenter le taux d'emploi des femmes et des seniors, c'est
+selon eux un choix aussi légitime que travailler plus longtemps.
+
+## 3. Comment ça marcherait concrètement
+
+Un régime par <Terme id="repartition">répartition</Terme> s'équilibre avec trois leviers : l'âge de départ, le niveau
+des cotisations et le niveau des pensions. Avancer l'âge augmente le nombre de retraités et réduit celui des
+cotisants : il faut alors compenser par l'un des deux autres leviers.
+
+**Ce que cela coûterait.** Selon la Cour des comptes, avancer l'âge légal d'un an, à 63 ans au lieu de 64, coûterait
+<Chiffre id="prop.retraites-un-an-plus-tot" /> au système de retraite en <DateDonnee id="prop.retraites-un-an-plus-tot" />.
+Revenir à 60 ans, soit quatre ans plus tôt que la cible de 64 ans, représenterait donc un coût de l'ordre de
+**20 à 25 milliards d'euros par an** à cet horizon, environ 0,8 point de PIB (calcul simplifié : l'effet de chaque
+année n'est pas exactement le même). Ce coût dépend fortement de la durée de cotisation exigée : avec 40 ans
+seulement, ceux qui ont commencé à travailler tard partiraient à 60 ans avec une pension réduite, ce qui limite la
+dépense.
+
+**Et ce coût s'ajoute à un déficit existant.** Sans changement de règles, la Cour des comptes prévoit un déficit de
+<Chiffre id="prop.retraites-deficit-cour" x="2025" /> en 2025, près de
+<Chiffre id="prop.retraites-deficit-cour" x="2035" /> en 2035 et environ
+<Chiffre id="prop.retraites-deficit-cour" x="2045" /> en 2045. La démographie joue contre l'équilibre : on comptait
+<Chiffre id="retraites.cotisants-par-retraite" x="2025" decimales={1} /> pour un retraité en 2025, et le
+Conseil d'orientation des retraites en prévoit <Chiffre id="retraites.cotisants-par-retraite" x="2070" decimales={1} />
+en 2070.
+
+<Figure
+  titre="Simulateur : les trois leviers d'équilibre"
+  resume="Simulateur : à partir de la situation de 2025 ou de la projection du COR pour 2070, on règle l'âge moyen de départ, le taux de cotisation et le niveau des pensions. En avançant l'âge de départ, on voit le déficit se creuser et ce qu'il faudrait augmenter les cotisations ou baisser les pensions pour le combler."
+  donnees={["retraites.cotisants-par-retraite", "retraites.pension-relative", "retraites.depenses-projection", "retraites.ressources-projection", "retraites.pension-moyenne", "retraites.equilibre-age-2070"]}
+>
+  <LeviersRetraites />
+</Figure>
+
+<Niveaux>
+<PlusLoin>
+
+**Le report de dépenses vers d'autres caisses.** Quand l'âge recule, une partie des seniors sans emploi reste plus
+longtemps au chômage, en invalidité ou aux minima sociaux. Ces dépenses réduisent l'économie réalisée sur les
+retraites ; inversement, avancer l'âge en supprime une partie. Les chiffrages de la Cour portent sur le seul système
+de retraite.
+
+**Les départs anticipés existent déjà.** Le dispositif de carrière longue permet à ceux qui ont commencé à travailler
+jeunes de partir avant l'âge légal. Une partie de l'objectif de justice peut être atteinte en élargissant ces
+dispositifs, pour un coût bien inférieur à un retour général à 60 ans : c'est l'un des points du débat.
+
+</PlusLoin>
+</Niveaux>
+
+## 4. Ce que disent les économistes
+
+<ArgumentsFiche
+  pour={
+    <ul>
+      <li><strong>Une question de justice.</strong> Ceux qui ont commencé tôt et occupé des métiers pénibles vivent en moyenne moins longtemps : un âge élevé réduit surtout leur temps de retraite.</li>
+      <li><strong>Des seniors souvent déjà hors de l'emploi.</strong> Reculer l'âge reporte une partie de la dépense vers le chômage, l'invalidité et les minima sociaux.</li>
+      <li><strong>D'autres leviers existent.</strong> Hausse des cotisations, mise à contribution des revenus du capital, meilleur taux d'emploi des femmes et des seniors : financer la retraite à 60 ans est un choix de répartition de la richesse.</li>
+      <li><strong>Un acquis historique.</strong> L'âge de 60 ans a été la règle pendant près de trente ans.</li>
+    </ul>
+  }
+  contre={
+    <ul>
+      <li><strong>Un coût élevé et durable.</strong> De l'ordre de 20 à 25 milliards d'euros par an à l'horizon 2035, d'après les chiffrages de la Cour des comptes, qui s'ajoutent à un déficit déjà prévu.</li>
+      <li><strong>Une démographie défavorable.</strong> Le nombre de cotisants par retraité baisse : chaque année de retraite en plus pèse sur moins d'actifs.</li>
+      <li><strong>Des contreparties lourdes.</strong> Il faudrait relever nettement les cotisations, ce qui pèse sur les salaires nets et le coût du travail, ou baisser les pensions.</li>
+      <li><strong>Moins d'activité.</strong> Un départ plus précoce réduit le nombre de personnes en emploi, donc la production et les recettes fiscales.</li>
+      <li><strong>Une cible mieux visée existe.</strong> Les dispositifs de carrière longue et de pénibilité répondent à l'objectif de justice pour un coût bien moindre.</li>
+    </ul>
+  }
+/>
+
+## 5. Ordres de grandeur
+
+| | Montant |
+|---|---|
+| Dépenses de retraite | <Chiffre id="retraites.depenses-montant" /> en <DateDonnee id="retraites.depenses-montant" />, soit <Chiffre id="retraites.depenses-pib" /> |
+| Coût d'un départ un an plus tôt (63 ans au lieu de 64) | <Chiffre id="prop.retraites-un-an-plus-tot" /> en 2035 (Cour des comptes) |
+| Coût d'un retour à 60 ans | de l'ordre de 20 à 25 Md€ par an en 2035 (calcul simplifié) |
+| Déficit prévu du système sans changement | <Chiffre id="prop.retraites-deficit-cour" x="2035" /> en 2035, <Chiffre id="prop.retraites-deficit-cour" x="2045" /> en 2045 |
+| Effet de la réforme de 2023 | environ <Chiffre id="prop.retraites-reforme-2023" /> en 2030 |
+| Cotisants pour un retraité | <Chiffre id="retraites.cotisants-par-retraite" x="2025" decimales={1} /> en 2025, <Chiffre id="retraites.cotisants-par-retraite" x="2070" decimales={1} /> en 2070 |
+
+## 6. Verdict
+
+<Verdict niveau="debattu">
+Revenir à la retraite à 60 ans est finançable, mais pas gratuitement : il faudrait trouver de l'ordre de 20 à
+25 milliards d'euros par an de plus à l'horizon 2035, en plus du déficit déjà prévu, par des cotisations nettement
+plus élevées, d'autres impôts ou des pensions plus basses. Le choix entre ces leviers relève de la décision
+politique. Ce qui ne tient pas, c'est l'idée qu'on pourrait avancer l'âge sans toucher ni aux prélèvements ni aux
+pensions.
+</Verdict>
+
+<GrilleVerdict
+  tient={<p>L'âge de départ est un choix collectif parmi trois leviers ; un départ à 60 ans peut être financé si l'on accepte des prélèvements plus élevés ou des pensions plus basses.</p>}
+  tientPas={<p>L'idée d'un retour à 60 ans sans coût, ou financé par la seule croissance, alors que le système est déjà en déficit et que le nombre de cotisants par retraité baisse.</p>}
+  debattu={<p>Le niveau de prélèvement acceptable, l'ampleur du report de dépenses vers le chômage et l'invalidité, et le meilleur moyen de tenir compte des carrières longues et pénibles.</p>}
+/>

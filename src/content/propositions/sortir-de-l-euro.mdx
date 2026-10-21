@@ -1,0 +1,115 @@
+import { Taux10Ans } from "@/components/graphiques/Taux10Ans";
+
+## 1. La proposition
+
+Quitter la zone euro pour revenir à une monnaie nationale, avec une banque centrale française qui fixerait ses taux
+d'intérêt en fonction de la seule situation de la France.
+
+## 2. L'idée derrière
+
+Une monnaie unique impose **une seule politique monétaire** à des économies qui ne se portent pas de la même façon.
+Les taux de la BCE sont fixés pour la moyenne de la zone euro : trop bas pour un pays en surchauffe, trop hauts pour un
+pays en difficulté. Avec sa propre monnaie, un pays peut baisser ses taux quand il en a besoin, et laisser sa monnaie
+se déprécier pour rendre ses produits moins chers à l'étranger.
+
+Les défenseurs de la sortie soulignent que, dans l'euro, un pays en perte de compétitivité n'a plus que la baisse des
+salaires et des prix pour se rattraper, un ajustement lent et douloureux. Ils rappellent la crise de la zone euro de
+2010-2012 : sans banque centrale prête à soutenir sa dette, la Grèce a vu son taux à 10 ans monter jusqu'à
+<Chiffre id="grece.taux10-max" /> en <DateDonnee id="grece.taux10-max" />, quand des pays dotés de leur propre monnaie,
+comme le Royaume-Uni ou le Japon, empruntaient à bas coût malgré des dettes élevées. Des économistes de renom, comme
+le prix Nobel Joseph Stiglitz, ont jugé que l'euro, tel qu'il a été construit, aggravait les divergences entre pays
+membres.
+
+Retrouver sa monnaie, ce serait selon eux retrouver une banque centrale capable de soutenir l'État en cas de crise,
+et les marges d'une politique économique pleinement nationale.
+
+## 3. Comment ça marcherait concrètement
+
+Une sortie se déroulerait en quelques étapes, toutes délicates :
+
+- **Convertir les contrats.** Salaires, comptes bancaires, prêts et dettes de droit français seraient convertis dans
+  la nouvelle monnaie, à un taux fixé le jour de la sortie. Les contrats de droit étranger resteraient en euros.
+- **Empêcher la fuite des capitaux.** Dès que la sortie devient probable, épargnants et entreprises ont intérêt à
+  placer leur argent hors de France pour éviter la conversion et la dépréciation attendue. Cela suppose en pratique
+  des contrôles de capitaux et une limitation des retraits, comme en Grèce à l'été 2015.
+- **Laisser la monnaie se déprécier.** C'est l'effet recherché pour la compétitivité, mais il renchérit les produits
+  importés (énergie, matières premières, biens de consommation), donc le coût de la vie.
+- **Gérer la dette.** Une large part de la dette publique est détenue hors de France :
+  <Chiffre id="prop.dette-non-residents" x="2025" /> des titres de long terme des administrations publiques fin 2025,
+  selon la Banque de France. La convertir dans une monnaie dépréciée serait vu par ces créanciers comme un défaut
+  partiel, avec des conséquences sur les taux auxquels l'État emprunterait ensuite.
+
+Les traités ne prévoient pas de procédure pour quitter l'euro seul : la seule voie organisée est la sortie de l'Union
+européenne (article 50 du traité sur l'Union européenne).
+
+<Figure
+  titre="Les taux à 10 ans depuis 2000"
+  resume="Taux à 10 ans de la France, de l'Allemagne, de l'Italie et de l'Espagne depuis 2000. Les taux convergent jusqu'en 2008, divergent fortement pendant la crise de la zone euro, puis se rapprochent après l'engagement de la BCE à soutenir l'euro en 2012. L'écart France-Allemagne s'élargit de nouveau à partir de 2024."
+  donnees={["marches.taux10-france", "marches.taux10-allemagne", "marches.taux10-italie", "marches.taux10-espagne", "marches.spread-france-allemagne"]}
+>
+  <Taux10Ans reperes={[{ mois: "2011-11", libelle: "crise de la zone euro" }]} />
+</Figure>
+
+<Niveaux>
+<PlusLoin>
+
+**Ce que l'euro a apporté et retiré.** Les partisans de l'euro mettent en avant la disparition du risque de change
+entre pays membres, des taux d'intérêt longtemps bas pour la France, et le soutien de la BCE, qui depuis 2012 s'est
+dotée d'outils pour calmer les tensions sur les dettes des pays membres. Ses critiques soulignent la perte de
+l'ajustement par le taux de change et les règles budgétaires communes. Les deux constats sont vrais à la fois : la
+question est de savoir lequel pèse le plus pour la France.
+
+**Le coût de la transition.** La plupart des études concluent que le coût d'une sortie, pendant la transition,
+serait élevé (fuite des capitaux, crise bancaire possible, hausse des taux, inflation importée), mais elles divergent
+fortement sur son ampleur, faute de précédent pour une grande économie.
+
+</PlusLoin>
+</Niveaux>
+
+## 4. Ce que disent les économistes
+
+<ArgumentsFiche
+  pour={
+    <ul>
+      <li><strong>Une politique monétaire sur mesure.</strong> Des taux fixés pour la France seule, au lieu d'une moyenne de la zone euro.</li>
+      <li><strong>Un levier de compétitivité.</strong> Une monnaie qui se déprécie rend les exportations moins chères, sans attendre une longue baisse des salaires et des prix.</li>
+      <li><strong>Une banque centrale prêteuse en dernier ressort.</strong> Les pays dotés de leur monnaie ont rarement connu des crises de dette comparables à celle de la zone euro en 2010-2012.</li>
+      <li><strong>Une critique partagée par des économistes reconnus.</strong> La construction de l'euro, sans budget commun suffisant, est critiquée bien au-delà des partisans d'une sortie.</li>
+    </ul>
+  }
+  contre={
+    <ul>
+      <li><strong>Une transition très risquée.</strong> Fuite des capitaux, contrôles des retraits, crise bancaire possible : le moment de la sortie est le plus dangereux.</li>
+      <li><strong>Une dette détenue à l'étranger.</strong> Plus de la moitié des titres publics de long terme sont détenus par des non-résidents ; les convertir dans une monnaie dépréciée serait traité comme un défaut partiel.</li>
+      <li><strong>Une dévaluation qui s'use.</strong> La hausse des prix importés renchérit le coût de la vie, pousse les salaires à la hausse et réduit le gain de compétitivité.</li>
+      <li><strong>Des taux plus élevés.</strong> Une monnaie jugée moins stable exige en général une prime de risque, qui se répercute sur tous les emprunts.</li>
+      <li><strong>Aucune procédure prévue.</strong> Les traités n'organisent pas la sortie de l'euro seul, ce qui ajoute une incertitude juridique majeure.</li>
+    </ul>
+  }
+/>
+
+## 5. Ordres de grandeur
+
+| | Montant |
+|---|---|
+| Dette publique totale | <Chiffre id="dette.stock" /> au <DateDonnee id="dette.stock" format="jour" /> |
+| Part des titres de long terme des administrations publiques détenue par des non-résidents | <Chiffre id="prop.dette-non-residents" x="2025" /> fin 2025 |
+| Taux de l'OAT à 10 ans | <Chiffre id="marches.taux10-france-dernier" /> en <DateDonnee id="marches.taux10-france-dernier" /> |
+| Écart de taux avec l'Allemagne | <Chiffre id="marches.spread-dernier" /> |
+| Taux grec à 10 ans au plus fort de la crise | <Chiffre id="grece.taux10-max" /> en <DateDonnee id="grece.taux10-max" /> |
+
+## 6. Verdict
+
+<Verdict niveau="debattu">
+Sortir de l'euro rendrait à la France une politique monétaire et un taux de change propres : ce gain est réel. Mais la
+transition serait très coûteuse et risquée (fuite des capitaux, dette en grande partie détenue à l'étranger,
+inflation importée), et son bilan à long terme dépend d'hypothèses sur lesquelles les économistes divergent. C'est
+un choix de politique économique et européenne, pas une question d'arithmétique : la plupart des études jugent les
+coûts supérieurs aux gains pour la France, sans faire l'unanimité.
+</Verdict>
+
+<GrilleVerdict
+  tient={<p>Une monnaie nationale offre une politique monétaire et un taux de change adaptés au pays, et une banque centrale qui peut soutenir l'État.</p>}
+  tientPas={<p>L'idée d'une sortie sans coût de transition, ou d'une dette qui pourrait être convertie sans réaction de créanciers en majorité étrangers.</p>}
+  debattu={<p>Le bilan à long terme, l'ampleur de la dépréciation et de l'inflation importée, et la capacité d'un franc à inspirer confiance aux marchés.</p>}
+/>
