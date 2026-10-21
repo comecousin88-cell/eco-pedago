@@ -6589,20 +6589,6 @@
       "statut": "verifie",
       "consulte_le": "2026-10-20",
       "note": "Taux « au comptant » estimés par la BCE à partir des emprunts des États de la zone euro notés AAA. La courbe française est plus haute (prime de risque), avec une forme comparable."
-    },
-    {
-      "id": "marches.taux10-france-jour",
-      "label": "Taux de l'OAT à 10 ans, dernier jour connu",
-      "valeur": 3.279,
-      "unite": "%",
-      "date": "2024-07-04",
-      "source": {
-        "nom": "Banque de France, Webstat : emprunt phare à 10 ans (série ECOFI.INR.FR.FIGB_PA._Z.D)",
-        "url": "https://webstat.banque-france.fr/fr/catalogue/ecofi/ECOFI.INR.FR.FIGB_PA._Z.D"
-      },
-      "statut": "verifie",
-      "consulte_le": "2026-10-21",
-      "note": "Taux de fin de journée."
     }
   ]
 }

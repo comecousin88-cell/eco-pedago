@@ -46,7 +46,9 @@ export function CarteIndicateur({ indicateur: ind }: { indicateur: Indicateur })
   const donnee = getSerie(ind.serie);
   const serie = donnee.serie;
   const dernier = dernierPoint(serie);
-  const recente = ind.valeurRecente ? chercherValeur(ind.valeurRecente) : undefined;
+  // Une valeur « plus récente » n'est affichée que si elle l'est vraiment (postérieure au dernier point de la série).
+  const candidate = ind.valeurRecente ? chercherValeur(ind.valeurRecente) : undefined;
+  const recente = candidate && candidate.date > dernier.x && !candidate.date.startsWith(dernier.x) ? candidate : undefined;
 
   const valeur = recente ? recente.valeur : dernier.y;
   const paliers = ind.frequence === "paliers";

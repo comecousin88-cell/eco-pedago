@@ -253,6 +253,12 @@ async function majBanqueDeFrance(cle: string) {
   }
   if (!obs.length) throw new Error(`Webstat : aucune observation. ${echecs.join(" | ")}`);
   const der = derniere(obs, SERIE);
+  // Une série quotidienne qui n'a pas bougé depuis plus de 10 jours est arrêtée ou en panne : on n'écrit rien,
+  // le site garde la moyenne mensuelle de la BCE. (La série « emprunt phare » s'est arrêtée le 4 juillet 2024.)
+  const ageJours = (Date.parse(aujourdhui) - Date.parse(der.periode)) / 86_400_000;
+  if (ageJours > 10) {
+    return `pas de donnée récente (dernière observation le ${dateFr(der.periode)}) : moyenne mensuelle de la BCE conservée`;
+  }
   const ancienne = fichier("marches").donnees.find((x) => x.id === "marches.taux10-france-jour");
   const base: DonneeJson = ancienne ?? {
     id: "marches.taux10-france-jour",
