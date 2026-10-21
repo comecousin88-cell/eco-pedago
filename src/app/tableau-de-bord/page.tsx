@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { CarteIndicateur } from "@/components/indicateurs/CarteIndicateur";
+import { BandeauAlertes } from "@/components/indicateurs/BandeauAlertes";
 import { DerniereVerification } from "@/components/indicateurs/DerniereVerification";
 import { ProchainesEcheances } from "@/components/indicateurs/ProchainesEcheances";
 import { FilAriane } from "@/components/modules/FilAriane";
@@ -30,7 +31,8 @@ export default function TableauDeBordPage() {
           ce qu&apos;elle mesure et la page du site qui explique le mécanisme.
         </p>
 
-        <div className="mt-6 max-w-3xl">
+        <div className="mt-6 max-w-3xl space-y-3">
+          <BandeauAlertes lienTableau={false} />
           <DerniereVerification />
         </div>
 

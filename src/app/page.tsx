@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { BandeauAlertes } from "@/components/indicateurs/BandeauAlertes";
 import { ModuleCard } from "@/components/modules/ModuleCard";
 import { CartesParcours } from "@/components/lecture/CartesParcours";
 import { ModuleTheme } from "@/components/modules/ModuleTheme";
@@ -16,6 +17,9 @@ const RACCOURCIS = [
 export default function Home() {
   return (
     <div className="mx-auto max-w-5xl px-4 sm:px-6">
+      <div className="pt-6">
+        <BandeauAlertes />
+      </div>
       <section className="py-14 sm:py-20">
         <p className="text-sm font-semibold tracking-wide text-accent uppercase">Les finances publiques, sans le jargon</p>
         <h1 className="mt-3 max-w-3xl font-serif text-4xl leading-tight font-semibold tracking-tight text-ink sm:text-5xl">
