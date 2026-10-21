@@ -1,0 +1,58 @@
+import { BarresHorizontales } from "@/components/graphiques/BarresHorizontales";
+
+<Niveaux>
+<Essentiel>
+
+Depuis le traité de Maastricht (1992), les pays de l'Union européenne se sont fixé deux repères : un déficit public
+inférieur à <Chiffre id="ue.seuils" x="déficit" /> et une dette publique inférieure à
+<Chiffre id="ue.seuils" x="dette" />. La France les dépasse tous les deux : son déficit était de
+<Chiffre id="deficit.ratio-pib" /> en <DateDonnee id="deficit.ratio-pib" />, sa dette de
+<Chiffre id="dette.ratio-pib" />.
+
+Pourquoi des règles communes ? Dans une monnaie partagée, les difficultés budgétaires d'un pays peuvent faire monter
+les taux de tous et obliger les autres à l'aider. Les règles visent à éviter qu'un pays vive aux dépens des autres.
+
+</Essentiel>
+<Mecanisme>
+
+**Les nouvelles règles de 2024.** Après des années de critiques (règles trop rigides en crise, trop complexes, peu
+appliquées), l'Union a réformé son cadre en 2024. Chaque pays présente désormais un plan budgétaire à moyen terme, sur
+quatre à sept ans, et s'engage sur une **trajectoire de dépenses nettes** : la croissance maximale de ses dépenses
+publiques, hors intérêts et hors dépenses conjoncturelles de chômage, et corrigée des hausses ou baisses d'impôts
+décidées.
+
+**Pourquoi viser les dépenses plutôt que le déficit ?** Le déficit dépend de la conjoncture : il se creuse en récession,
+quand les recettes baissent. Une règle sur les dépenses, que le gouvernement maîtrise, laisse jouer les
+« stabilisateurs automatiques » et évite de devoir resserrer le budget en pleine crise.
+
+<Figure
+  titre="La trajectoire de dépenses fixée à la France"
+  resume="Barres de la croissance maximale des dépenses primaires nettes de la France, en valeur, fixée par le Conseil de l'Union en janvier 2025 : 0,8 % en 2025, 1,2 % de 2026 à 2028, et 1,1 % en 2029, soit nettement moins que la croissance nominale attendue de l'économie."
+  donnees={["ue.trajectoire-depenses-france"]}
+>
+  <BarresHorizontales serie="ue.trajectoire-depenses-france" trier={false} decimales={1} suffixe="% par an" />
+</Figure>
+
+Une croissance des dépenses inférieure à celle de l'économie fait baisser leur poids dans le PIB, et réduit le déficit
+année après année.
+
+</Mecanisme>
+<PlusLoin>
+
+**D'où viennent 3 % et 60 % ?** Les deux chiffres sont liés : avec une croissance nominale de 5 % par an, fréquente
+dans les années 1990, un déficit de 3 % du PIB stabilise la dette à 60 % du PIB (3 % divisé par 5 % donne 60 %). Ce
+calcul n'a pas de fondement plus profond : il reflétait la situation moyenne des pays européens au moment du traité.
+
+<Debat
+  question="Les règles européennes sont-elles utiles ?"
+  pour={<p>Leurs défenseurs estiment qu'elles évitent qu'un pays reporte sur ses partenaires le coût de ses déficits, qu'elles donnent un cap aux finances publiques et qu'elles rassurent les investisseurs, ce qui contribue à des taux plus bas.</p>}
+  contre={<p>Leurs critiques jugent les seuils arbitraires, regrettent qu'elles aient imposé des ajustements trop brutaux pendant la crise de la zone euro, et soulignent qu'elles n'ont jamais été vraiment sanctionnées. Ils plaident pour une règle protégeant l'investissement public.</p>}
+/>
+
+</PlusLoin>
+</Niveaux>
+
+<ARetenir>
+Les repères de 3 % de déficit et 60 % de dette datent de 1992. Depuis 2024, les règles européennes portent surtout sur
+la croissance des dépenses publiques, que chaque pays s'engage à contenir sur plusieurs années.
+</ARetenir>

@@ -156,7 +156,7 @@ export const modules: ModuleInfo[] = [
       { slug: "smic", title: "Salaire minimum et coût du travail" },
       { slug: "blocage-prix", title: "Le blocage des prix" },
     ],
-    status: "soon",
+    status: "available",
   },
   {
     slug: "cadre-europeen",
@@ -172,7 +172,7 @@ export const modules: ModuleInfo[] = [
       { slug: "notation", title: "Les agences de notation" },
       { slug: "solidarite", title: "Les filets de sécurité de la zone euro" },
     ],
-    status: "soon",
+    status: "available",
   },
   {
     slug: "dette-en-perspective",
@@ -182,8 +182,12 @@ export const modules: ModuleInfo[] = [
     summary:
       "Par habitant, face aux budgets des ministères, face au patrimoine public : remettre la dette à l'échelle.",
     color: { light: "#a21caf", dark: "#f0abfc" },
-    sections: [],
-    status: "soon",
+    sections: [
+      { slug: "par-habitant", title: "Par habitant, en années de recettes" },
+      { slug: "face-aux-budgets", title: "Face aux budgets de l'État" },
+      { slug: "patrimoine-public", title: "Face au patrimoine public" },
+    ],
+    status: "available",
   },
   {
     slug: "comparaisons",
@@ -193,8 +197,13 @@ export const modules: ModuleInfo[] = [
     summary:
       "Dette, dépenses, impôts, emploi : la France face à ses voisins, et pourquoi le Japon n'est pas la Grèce.",
     color: { light: "#0e7490", dark: "#67e8f9" },
-    sections: [],
-    status: "soon",
+    sections: [
+      { slug: "dette-et-deficit", title: "Dette et déficit" },
+      { slug: "depenses-et-impots", title: "Dépenses et impôts" },
+      { slug: "emploi-croissance", title: "Croissance et chômage" },
+      { slug: "japon-grece", title: "Pourquoi le Japon n'est pas la Grèce" },
+    ],
+    status: "available",
   },
   {
     slug: "histoire-des-dettes",
@@ -204,8 +213,13 @@ export const modules: ModuleInfo[] = [
     summary:
       "Croissance, inflation, rigueur, défaut, annulation : les grandes sorties de crise et ce qui vaut pour la France aujourd'hui.",
     color: { light: "#92400e", dark: "#fcd34d" },
-    sections: [],
-    status: "soon",
+    sections: [
+      { slug: "croissance", title: "Sortir par la croissance" },
+      { slug: "inflation", title: "L'inflation et la répression financière" },
+      { slug: "defauts", title: "Défauts et annulations" },
+      { slug: "lecons", title: "Ce qui vaut pour la France aujourd'hui" },
+    ],
+    status: "available",
   },
 ];
 

@@ -1,0 +1,142 @@
+{
+  "description": "Chiffres du module 6 bis (cadre européen et notation).",
+  "donnees": [
+    {
+      "id": "ue.seuils",
+      "label": "Valeurs de référence du traité : déficit et dette publics",
+      "serie": [
+        {
+          "x": "déficit",
+          "y": 3
+        },
+        {
+          "x": "dette",
+          "y": 60
+        }
+      ],
+      "unite": "% du PIB",
+      "date": "1992",
+      "source": {
+        "nom": "Traité sur le fonctionnement de l'UE, protocole n° 12 sur la procédure concernant les déficits excessifs",
+        "url": "https://eur-lex.europa.eu/legal-content/FR/TXT/?uri=CELEX:12016E/PRO/12"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-21"
+    },
+    {
+      "id": "ue.pde-france-ouverture",
+      "label": "Ouverture de la procédure de déficit excessif à l'encontre de la France",
+      "valeur": 2024,
+      "unite": "année",
+      "date": "2024-07-26",
+      "source": {
+        "nom": "Conseil de l'UE, procédure de déficit excessif",
+        "url": "https://www.consilium.europa.eu/en/policies/excessive-deficit-procedure/"
+      },
+      "note": "Décision du Conseil du 26 juillet 2024, au titre du critère de déficit.",
+      "statut": "verifie",
+      "consulte_le": "2026-10-21"
+    },
+    {
+      "id": "ue.pde-france-echeance",
+      "label": "Année fixée pour mettre fin au déficit excessif de la France",
+      "valeur": 2029,
+      "unite": "année",
+      "date": "2025-01-21",
+      "source": {
+        "nom": "Conseil de l'UE, recommandations aux pays en procédure de déficit excessif (21 janvier 2025)",
+        "url": "https://www.consilium.europa.eu/en/press/press-releases/2025/01/21/stability-and-growth-pact-council-adopts-recommendations-to-countries-under-excessive-deficit-procedure/"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-21"
+    },
+    {
+      "id": "ue.trajectoire-depenses-france",
+      "label": "Croissance maximale des dépenses primaires nettes de la France fixée par le Conseil",
+      "serie": [
+        {
+          "x": "2025",
+          "y": 0.8
+        },
+        {
+          "x": "2026",
+          "y": 1.2
+        },
+        {
+          "x": "2027",
+          "y": 1.2
+        },
+        {
+          "x": "2028",
+          "y": 1.2
+        },
+        {
+          "x": "2029",
+          "y": 1.1
+        }
+      ],
+      "unite": "% par an, en valeur",
+      "date": "2029",
+      "source": {
+        "nom": "Conseil de l'UE, recommandations aux pays en procédure de déficit excessif (21 janvier 2025)",
+        "url": "https://www.consilium.europa.eu/en/press/press-releases/2025/01/21/stability-and-growth-pact-council-adopts-recommendations-to-countries-under-excessive-deficit-procedure/"
+      },
+      "note": "Dépenses nettes : hors intérêts, hors dépenses conjoncturelles de chômage et hors effet des mesures nouvelles de recettes.",
+      "statut": "verifie",
+      "consulte_le": "2026-10-21"
+    },
+    {
+      "id": "notation.france",
+      "label": "Notes de la dette à long terme de la France (Fitch, S&P, Moody's)",
+      "serie": [
+        {
+          "x": "Fitch",
+          "y": 5
+        },
+        {
+          "x": "S&P",
+          "y": 5
+        },
+        {
+          "x": "Moody's",
+          "y": 4
+        }
+      ],
+      "unite": "rang sur l'échelle (1 = AAA)",
+      "date": "2026-10",
+      "source": {
+        "nom": "Agences de notation (communiqués de Fitch, S&P Global et Moody's)",
+        "url": "https://www.aft.gouv.fr/fr/notations-souveraines"
+      },
+      "statut": "a_verifier",
+      "note": "A+ chez Fitch (confirmée le 28 août 2026) et S&P, Aa3 perspective négative chez Moody's, revue annoncée pour le 23 octobre 2026. À confirmer sur la page de l'Agence France Trésor."
+    },
+    {
+      "id": "mes.capacite",
+      "label": "Capacité maximale de prêt du Mécanisme européen de stabilité",
+      "valeur": 500,
+      "unite": "Md€",
+      "date": "2025",
+      "source": {
+        "nom": "Mécanisme européen de stabilité, What is the ESM's lending capacity?",
+        "url": "https://www.esm.europa.eu/content/what-esm%E2%80%99s-lending-capacity"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-21"
+    },
+    {
+      "id": "frr.france",
+      "label": "Subventions européennes reçues par la France au titre de la facilité pour la reprise et la résilience (NextGenerationEU)",
+      "valeur": 40.3,
+      "unite": "Md€",
+      "date": "2026-09-29",
+      "source": {
+        "nom": "Commission européenne, représentation en France, dernière demande de paiement de la France (29 septembre 2026)",
+        "url": "https://france.representation.ec.europa.eu/informations-et-evenements/informations/la-commission-donne-son-feu-vert-la-derniere-demande-de-paiement-de-la-france-dun-montant-de-61-2026-09-29_fr"
+      },
+      "note": "Total après le dernier versement de 6,1 Md€ ; uniquement des subventions.",
+      "statut": "verifie",
+      "consulte_le": "2026-10-21"
+    }
+  ]
+}

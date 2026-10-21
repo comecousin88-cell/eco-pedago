@@ -1,0 +1,54 @@
+import { Taux10Ans } from "@/components/graphiques/Taux10Ans";
+
+<Niveaux>
+<Essentiel>
+
+Trois grandes agences privées, S&P Global, Moody's et Fitch, notent la capacité des États à rembourser leurs dettes.
+L'échelle va de AAA, la meilleure note, à D, le défaut. Une note plus basse signale un risque plus élevé.
+
+La France a longtemps été notée AAA. Elle a été dégradée par étapes depuis 2012. Elle est aujourd'hui notée A+ chez
+Fitch et S&P, et Aa3, avec une perspective négative, chez Moody's : ces notes sont à vérifier sur la page de l'Agence
+France Trésor, une revue de Moody's étant annoncée pour le 23 octobre 2026.
+
+</Essentiel>
+<Mecanisme>
+
+**Ce que regardent les agences.** Le niveau et la trajectoire de la dette, le déficit, la croissance, la capacité
+politique à voter des budgets et à mener des réformes, la solidité des institutions, et la façon dont la dette est
+financée.
+
+**Ce que change une dégradation.** Moins qu'on ne le croit souvent, et davantage qu'on ne le dit parfois :
+
+- les investisseurs suivent de près la situation des pays, et les taux réagissent souvent **avant** les agences ;
+- mais certains investisseurs (fonds de pension, assureurs) ne peuvent détenir que des titres au-dessus d'un certain
+  seuil de notation, et une dégradation peut les obliger à vendre ;
+- les banques centrales et les régulateurs utilisent aussi les notes dans leurs règles.
+
+<Figure
+  titre="Les taux à 10 ans et l'écart avec l'Allemagne"
+  resume="Taux à 10 ans de la France, de l'Allemagne, de l'Italie et de l'Espagne depuis 2000. L'écart France-Allemagne, qui mesure la prime demandée par les investisseurs pour prêter à la France plutôt qu'à l'Allemagne, s'élargit de nouveau à partir de 2024."
+  donnees={["marches.taux10-france", "marches.taux10-allemagne", "marches.taux10-italie", "marches.taux10-espagne", "marches.spread-france-allemagne"]}
+>
+  <Taux10Ans reperes={[{ mois: "2024-06", libelle: "législatives anticipées" }]} />
+</Figure>
+
+Le marché, lui, se prononce chaque jour : en <DateDonnee id="marches.spread-dernier" />, la France empruntait à 10 ans
+avec un écart de <Chiffre id="marches.spread-dernier" /> avec l'Allemagne, et à un taux proche de celui de l'Italie
+(<Chiffre id="marches.taux10-italie-dernier" /> contre <Chiffre id="marches.taux10-france-dernier" /> pour la France).
+
+</Mecanisme>
+<PlusLoin>
+
+**Le rôle contesté des agences.** On leur reproche d'avoir noté AAA des produits financiers toxiques avant la crise de
+2008, puis d'avoir aggravé la crise de la zone euro par des dégradations en cascade. Elles sont désormais encadrées
+dans l'Union européenne, qui leur impose notamment un calendrier de publication fixé à l'avance pour les notes
+souveraines.
+
+</PlusLoin>
+</Niveaux>
+
+<ARetenir>
+Les agences de notation donnent un avis sur la capacité d'un État à rembourser. Une dégradation pèse surtout par ses
+effets sur certains investisseurs ; mais c'est l'écart de taux, observé chaque jour, qui mesure le prix de la
+confiance.
+</ARetenir>

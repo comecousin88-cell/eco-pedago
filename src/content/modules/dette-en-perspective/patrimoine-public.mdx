@@ -1,0 +1,50 @@
+import { BarresHorizontales } from "@/components/graphiques/BarresHorizontales";
+
+<Niveaux>
+<Essentiel>
+
+Les administrations publiques ne font pas que devoir : elles possèdent aussi. Écoles, hôpitaux, routes, réseaux,
+terrains, mais aussi participations dans des entreprises et trésorerie. Selon l'Insee, fin
+<DateDonnee id="apu.patrimoine" />, leurs actifs non financiers valaient <Chiffre id="apu.patrimoine" x="actifs non financiers" />.
+Une fois les dettes déduites, leur **patrimoine net** restait positif, à <Chiffre id="apu.patrimoine" x="patrimoine net" />.
+
+<Figure
+  titre="Ce que possèdent et doivent les administrations publiques"
+  resume="Barres du patrimoine des administrations publiques fin 2024 : des actifs non financiers (bâtiments, terrains, routes) d'environ 2 800 milliards d'euros, un patrimoine financier net négatif d'environ 2 100 milliards (les dettes dépassent les actifs financiers), et un patrimoine net positif d'environ 700 milliards."
+  donnees={["apu.patrimoine"]}
+>
+  <BarresHorizontales serie="apu.patrimoine" trier={false} decimales={0} />
+</Figure>
+
+</Essentiel>
+<Mecanisme>
+
+**On ne peut pas tout vendre.** L'essentiel du patrimoine public est fait de constructions et de terrains bâtis :
+écoles, hôpitaux, casernes, routes. Ils servent à rendre un service public et ne trouveraient souvent pas d'acheteur, ou
+devraient être loués en retour. Les actifs vendables (participations dans des entreprises, immobilier de bureau) ne
+représentent qu'une petite partie de l'ensemble.
+
+**Un patrimoine net en baisse.** Le patrimoine net des administrations a diminué ces dernières années, parce que la
+dette augmente plus vite que la valeur des actifs. Une dette qui finance des investissements durables (une ligne de
+métro, une université) crée un actif en face ; une dette qui finance des dépenses courantes (salaires, prestations) n'en
+crée pas.
+
+</Mecanisme>
+<PlusLoin>
+
+**La « règle d'or ».** Certains économistes proposent de n'autoriser l'emprunt que pour financer des investissements,
+en équilibrant les dépenses courantes : c'est la règle d'or des finances publiques. Ses partisans y voient un moyen de
+protéger l'investissement ; ses critiques soulignent la difficulté de définir ce qui est un investissement, et le
+risque de requalifier des dépenses courantes pour échapper à la règle.
+
+**Ce que la comptabilité nationale ne compte pas.** Le patrimoine public mesuré par l'Insee n'inclut pas la valeur des
+recettes futures (le pouvoir de lever l'impôt), ni les engagements futurs (retraites des fonctionnaires, par exemple).
+Les deux pèsent lourd, dans un sens et dans l'autre.
+
+</PlusLoin>
+</Niveaux>
+
+<ARetenir>
+Les administrations publiques possèdent un patrimoine important, encore supérieur à leurs dettes, mais il est fait
+surtout d'équipements qui servent au service public et ne peuvent pas être vendus pour rembourser.
+</ARetenir>

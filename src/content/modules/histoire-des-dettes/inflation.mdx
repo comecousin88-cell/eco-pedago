@@ -1,0 +1,54 @@
+import { DetteLongue } from "@/components/graphiques/DetteLongue";
+
+<Niveaux>
+<Essentiel>
+
+Une dette fixée en monnaie perd de sa valeur quand les prix montent. L'inflation est ainsi l'une des façons les plus
+anciennes, et les plus discrètes, de réduire une dette publique : ce sont les prêteurs qui paient, par la perte de
+pouvoir d'achat de ce qui leur est remboursé.
+
+La France l'a vécu après les deux guerres. Sa dette, qui dépassait <Chiffre id="histo.dette-fra" x="1921" /> en
+1921, a fortement baissé dans les années 1920 avec l'inflation et la dévaluation du franc. Après 1945, une inflation
+très forte l'a ramenée à <Chiffre id="histo.dette-fra" x="1950" /> dès 1950. Au Japon, l'inflation de l'après-guerre a fait
+passer la dette de plus de 200 % du PIB en 1944 à <Chiffre id="histo.dette-jpn" x="1950" /> en 1950.
+
+<Figure
+  titre="La dette de la France et du Japon depuis 1880"
+  resume="Courbes de la dette publique en % du PIB de la France et du Japon depuis 1880 : la dette française culmine au-dessus de 230 % au début des années 1920, puis baisse ; après la Seconde Guerre mondiale, elle passe sous 50 % en quelques années. La dette japonaise s'effondre de plus de 200 % en 1944 à moins de 20 % en 1950."
+  donnees={["histo.dette-fra", "histo.dette-jpn"]}
+>
+  <DetteLongue initiaux={["fra", "jpn"]} />
+</Figure>
+
+</Essentiel>
+<Mecanisme>
+
+**La répression financière.** Pour que l'inflation réduise la dette, il faut que les taux d'intérêt restent inférieurs
+à l'inflation. Après 1945, de nombreux pays l'ont organisé : plafonds de taux, contrôle des mouvements de capitaux,
+obligation pour les banques de détenir des titres publics. Les épargnants ne pouvaient pas placer leur argent ailleurs
+et recevaient un taux réel négatif. C'est un impôt déguisé sur l'épargne.
+
+**Pourquoi ce n'est plus possible aujourd'hui.** Les capitaux circulent librement, la BCE a pour mandat de maintenir
+l'inflation autour de 2 %, et la France ne contrôle pas sa monnaie. Surtout, les marchés anticipent l'inflation : si
+elle monte, les taux montent aussi, et une dette qui se renouvelle vite en subit rapidement le coût.
+
+</Mecanisme>
+<PlusLoin>
+
+**Ce que l'inflation récente a montré.** En 2022-2023, l'inflation a temporairement fait baisser le ratio de dette de
+nombreux pays, car le PIB en valeur augmentait vite. Mais la remontée des taux qui a suivi alourdit la charge d'intérêts
+pour des années. Une poussée d'inflation non anticipée allège la dette ; une inflation durable et anticipée, beaucoup
+moins.
+
+**Qui paie ?** Les perdants sont les détenteurs d'épargne en monnaie (livrets, assurance-vie en euros, obligations),
+et ceux dont les revenus ne suivent pas les prix. Réduire la dette par l'inflation est un transfert des épargnants vers
+l'État, rarement assumé comme tel.
+
+</PlusLoin>
+</Niveaux>
+
+<ARetenir>
+L'inflation a fortement réduit les dettes publiques après les guerres, notamment en France et au Japon, aidée par des
+taux maintenus sous l'inflation. Avec des capitaux libres et une BCE chargée de la stabilité des prix, cet outil n'est
+plus disponible pour la France.
+</ARetenir>

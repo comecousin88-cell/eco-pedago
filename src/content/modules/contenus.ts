@@ -7,6 +7,11 @@ import { quiz as quizBoule } from "./boule-de-neige/quiz";
 import { quiz as quizBanque } from "./banque-centrale/quiz";
 import { quiz as quizRetraites } from "./retraites/quiz";
 import { quiz as quizPaie } from "./fiche-de-paie/quiz";
+import { quiz as quizFiscalite } from "./fiscalite/quiz";
+import { quiz as quizCadre } from "./cadre-europeen/quiz";
+import { quiz as quizPerspective } from "./dette-en-perspective/quiz";
+import { quiz as quizComparaisons } from "./comparaisons/quiz";
+import { quiz as quizHistoire } from "./histoire-des-dettes/quiz";
 
 /**
  * Les textes de chaque module rédigé : introduction, une page par section,
@@ -98,5 +103,55 @@ export const contenus: Record<string, ContenuModule> = {
     intro: () => import("./fiche-de-paie/index.mdx"),
     sections: {},
     quiz: quizPaie,
+  },
+  "fiscalite": {
+    intro: () => import("./fiscalite/index.mdx"),
+    sections: {
+      "qui-paie": () => import("./fiscalite/qui-paie.mdx"),
+      "assiette-rendement": () => import("./fiscalite/assiette-rendement.mdx"),
+      "taxer-les-riches": () => import("./fiscalite/taxer-les-riches.mdx"),
+      "smic": () => import("./fiscalite/smic.mdx"),
+      "blocage-prix": () => import("./fiscalite/blocage-prix.mdx"),
+    },
+    quiz: quizFiscalite,
+  },
+  "cadre-europeen": {
+    intro: () => import("./cadre-europeen/index.mdx"),
+    sections: {
+      "regles": () => import("./cadre-europeen/regles.mdx"),
+      "deficit-excessif": () => import("./cadre-europeen/deficit-excessif.mdx"),
+      "notation": () => import("./cadre-europeen/notation.mdx"),
+      "solidarite": () => import("./cadre-europeen/solidarite.mdx"),
+    },
+    quiz: quizCadre,
+  },
+  "dette-en-perspective": {
+    intro: () => import("./dette-en-perspective/index.mdx"),
+    sections: {
+      "par-habitant": () => import("./dette-en-perspective/par-habitant.mdx"),
+      "face-aux-budgets": () => import("./dette-en-perspective/face-aux-budgets.mdx"),
+      "patrimoine-public": () => import("./dette-en-perspective/patrimoine-public.mdx"),
+    },
+    quiz: quizPerspective,
+  },
+  "comparaisons": {
+    intro: () => import("./comparaisons/index.mdx"),
+    sections: {
+      "dette-et-deficit": () => import("./comparaisons/dette-et-deficit.mdx"),
+      "depenses-et-impots": () => import("./comparaisons/depenses-et-impots.mdx"),
+      "emploi-croissance": () => import("./comparaisons/emploi-croissance.mdx"),
+      "japon-grece": () => import("./comparaisons/japon-grece.mdx"),
+    },
+    quiz: quizComparaisons,
+  },
+  "histoire-des-dettes": {
+    intro: () => import("./histoire-des-dettes/index.mdx"),
+    sections: {
+      "croissance": () => import("./histoire-des-dettes/croissance.mdx"),
+      "inflation": () => import("./histoire-des-dettes/inflation.mdx"),
+      "defauts": () => import("./histoire-des-dettes/defauts.mdx"),
+      "lecons": () => import("./histoire-des-dettes/lecons.mdx"),
+    },
+    quiz: quizHistoire,
   },
 };

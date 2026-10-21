@@ -1,0 +1,66 @@
+import { BarresHorizontales } from "@/components/graphiques/BarresHorizontales";
+import { PanierConsommation } from "@/components/simulators/PanierConsommation";
+
+<Niveaux>
+<Essentiel>
+
+On entend souvent que « la moitié des Français ne paient pas d'impôts ». C'est faux. Moins de la moitié des foyers
+paient l'**impôt sur le revenu** : <Chiffre id="ir.foyers" x="foyers imposés" /> de foyers imposés sur
+<Chiffre id="ir.foyers" x="foyers fiscaux" /> pour les revenus de <DateDonnee id="ir.foyers" />. Mais l'impôt sur le
+revenu n'est qu'une petite partie des recettes publiques. Tout le monde paie la <Terme id="tva">TVA</Terme> en
+consommant, et presque tous les revenus supportent la <Terme id="csg">CSG</Terme> et des cotisations sociales.
+
+<Figure
+  titre="Les recettes publiques, par grande catégorie"
+  resume="Barres horizontales des recettes publiques de 2024 : les cotisations sociales arrivent en tête, devant les autres impôts, la TVA, les autres recettes, la CSG, puis l'impôt sur le revenu et l'impôt sur les sociétés. L'impôt sur le revenu représente une part modeste du total."
+  donnees={["fp.recettes-2024-par-type"]}
+>
+  <BarresHorizontales serie="fp.recettes-2024-par-type" enAvant={["Impôt sur le revenu"]} decimales={0} part />
+</Figure>
+
+</Essentiel>
+<Mecanisme>
+
+**Les grandes catégories.** Les <Terme id="cotisations-sociales">cotisations sociales</Terme> financent la retraite, la
+santé, le chômage : elles sont prélevées sur les salaires. La TVA est payée sur presque tous les achats. La CSG porte
+sur les salaires, les pensions et les revenus du patrimoine. L'impôt sur le revenu, progressif, ne vient qu'ensuite,
+au niveau de l'impôt sur les sociétés et des impôts locaux.
+
+**Ce que paie un ménage en consommant.** Le simulateur ci-dessous montre la TVA et les accises contenues dans un budget
+mensuel ordinaire : même sans payer l'impôt sur le revenu, un ménage verse chaque mois plusieurs dizaines, voire
+centaines d'euros de taxes sur ses achats.
+
+<Figure
+  titre="Les taxes contenues dans un budget mensuel"
+  resume="Simulateur : on règle les dépenses mensuelles d'un ménage (alimentation, restaurant, biens, énergie, carburant, loyer) et l'on voit la TVA et l'accise sur le carburant payées chaque mois."
+  donnees={["tva.taux", "accise.gazole"]}
+>
+  <PanierConsommation />
+</Figure>
+
+**Un impôt sur le revenu concentré.** Parce qu'il est progressif et qu'une majorité de foyers en sont exonérés,
+l'impôt sur le revenu repose surtout sur les revenus élevés. Pour les revenus de 2022, son produit net atteignait
+<Chiffre id="ir.produit" />, et les 10 % de foyers les plus aisés acquittaient en moyenne
+<Chiffre id="ir.impot-moyen-decile-10" /> chacun.
+
+</Mecanisme>
+<PlusLoin>
+
+**La progressivité s'apprécie globalement.** La TVA pèse plus lourd, en proportion du revenu, sur les ménages
+modestes, qui consomment l'essentiel de ce qu'ils gagnent ; l'impôt sur le revenu pèse surtout sur les ménages aisés ;
+la CSG est proportionnelle. Les études qui additionnent tous les prélèvements et toutes les prestations concluent que
+le système français, pris dans son ensemble, réduit les inégalités de revenus, essentiellement par les prestations
+sociales. Elles montrent aussi que le taux d'imposition peut baisser tout en haut de la distribution, pour les très
+grandes fortunes dont les revenus restent dans des sociétés (voir la section sur la taxation des plus riches).
+
+**Qui paie vraiment un impôt ?** Celui qui verse un impôt n'est pas toujours celui qui le supporte. Une partie des
+cotisations patronales se répercute sur les salaires, une partie de l'impôt sur les sociétés sur les salariés ou les
+clients. Les économistes parlent d'**incidence fiscale** : elle dépend de qui peut le plus facilement s'adapter.
+
+</PlusLoin>
+</Niveaux>
+
+<ARetenir>
+Tout le monde paie des impôts : la TVA, la CSG et les cotisations pèsent bien plus lourd que l'impôt sur le revenu,
+que moins de la moitié des foyers acquittent.
+</ARetenir>

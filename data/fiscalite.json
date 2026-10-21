@@ -1,0 +1,68 @@
+{
+  "description": "Chiffres du module 6 (fiscalité et financement).",
+  "donnees": [
+    {
+      "id": "ir.foyers",
+      "label": "Foyers fiscaux et foyers imposés à l'impôt sur le revenu (revenus 2022)",
+      "serie": [
+        {
+          "x": "foyers fiscaux",
+          "y": 40.7
+        },
+        {
+          "x": "foyers imposés",
+          "y": 18.2
+        }
+      ],
+      "unite": "millions",
+      "date": "2022",
+      "source": {
+        "nom": "DGFiP Statistiques, L'impôt sur les revenus perçus en 2022 (avril 2024, mis à jour mai 2025)",
+        "url": "https://www.impots.gouv.fr/dgfip-statistiques-limpot-sur-les-revenus-percus-en-2022"
+      },
+      "note": "Moins de la moitié des foyers acquittent l'impôt sur le revenu ; tous paient en revanche la TVA et, s'ils ont des revenus, la CSG.",
+      "statut": "verifie",
+      "consulte_le": "2026-10-21"
+    },
+    {
+      "id": "ir.produit",
+      "label": "Produit net de l'impôt sur le revenu (revenus 2022)",
+      "valeur": 82.1,
+      "unite": "Md€",
+      "date": "2022",
+      "source": {
+        "nom": "DGFiP Statistiques, L'impôt sur les revenus perçus en 2022 (avril 2024, mis à jour mai 2025)",
+        "url": "https://www.impots.gouv.fr/dgfip-statistiques-limpot-sur-les-revenus-percus-en-2022"
+      },
+      "note": "Après réductions et crédits d'impôt.",
+      "statut": "verifie",
+      "consulte_le": "2026-10-21"
+    },
+    {
+      "id": "ir.impot-moyen-decile-10",
+      "label": "Impôt sur le revenu moyen des 10 % de foyers les plus aisés (revenus 2022)",
+      "valeur": 15317,
+      "unite": "€",
+      "date": "2022",
+      "source": {
+        "nom": "DGFiP Statistiques, L'impôt sur les revenus perçus en 2022 (avril 2024, mis à jour mai 2025)",
+        "url": "https://www.impots.gouv.fr/dgfip-statistiques-limpot-sur-les-revenus-percus-en-2022"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-21"
+    },
+    {
+      "id": "is.taux-normal",
+      "label": "Taux normal de l'impôt sur les sociétés",
+      "valeur": 25,
+      "unite": "%",
+      "date": "2026",
+      "source": {
+        "nom": "Service-public.fr (entreprendre), Impôt sur les sociétés : taux",
+        "url": "https://entreprendre.service-public.gouv.fr/vosdroits/F23575"
+      },
+      "statut": "a_verifier",
+      "note": "Taux normal depuis 2022 ; taux réduit de 15 % pour une partie du bénéfice des PME. Une contribution exceptionnelle s'applique aux plus grandes entreprises : à vérifier pour 2026."
+    }
+  ]
+}

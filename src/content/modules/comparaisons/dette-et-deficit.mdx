@@ -1,0 +1,57 @@
+import { BarresHorizontales } from "@/components/graphiques/BarresHorizontales";
+
+<Niveaux>
+<Essentiel>
+
+Avec une dette de <Chiffre id="intl.dette-pib-2025" x="France" /> en <DateDonnee id="intl.dette-pib-2025" /> selon le
+FMI, la France est l'un des pays les plus endettés de la zone euro, derrière la Grèce et l'Italie, et nettement
+au-dessus de la moyenne de la zone (<Chiffre id="intl.dette-pib-2025" x="Zone euro" />). D'autres grandes économies,
+comme les États-Unis ou le Japon, sont plus endettées encore.
+
+<Figure
+  titre="La dette publique dans quelques grandes économies"
+  resume="Barres de la dette publique brute en % du PIB en 2025, selon le FMI : le Japon arrive très loin devant, suivi de la Grèce, de l'Italie, des États-Unis et de la France, autour de 115 %. L'Allemagne, les Pays-Bas et la Suède sont bien en dessous."
+  donnees={["intl.dette-pib-2025"]}
+>
+  <BarresHorizontales serie="intl.dette-pib-2025" enAvant={["France"]} decimales={0} />
+</Figure>
+
+</Essentiel>
+<Mecanisme>
+
+**Le déficit compte davantage que le niveau.** Une dette élevée mais stable inquiète moins qu'une dette qui continue
+de monter. Or le déficit de la France, <Chiffre id="intl.solde-pib-2025" x="France" /> en 2025, est l'un des plus
+élevés d'Europe : l'Italie, pourtant plus endettée, était à <Chiffre id="intl.solde-pib-2025" x="Italie" />, l'Espagne à
+<Chiffre id="intl.solde-pib-2025" x="Espagne" />, et la Grèce dégageait un excédent.
+
+<Figure
+  titre="Le solde public en 2025"
+  resume="Barres du solde des administrations publiques en % du PIB en 2025 : les États-Unis ont le déficit le plus élevé, suivis du Royaume-Uni, de la Belgique et de la France. La Grèce et le Portugal sont en excédent."
+  donnees={["intl.solde-pib-2025"]}
+>
+  <BarresHorizontales serie="intl.solde-pib-2025" enAvant={["France"]} decimales={1} />
+</Figure>
+
+C'est ce qui explique que les investisseurs exigent aujourd'hui de la France un taux proche de celui de l'Italie : ils
+regardent la trajectoire autant que le niveau.
+
+</Mecanisme>
+<PlusLoin>
+
+**Dette brute, dette nette.** Certains pays détiennent beaucoup d'actifs financiers : fonds de réserve des retraites,
+participations, trésorerie. Leur dette nette est alors bien plus faible que leur dette brute. Le Canada, par exemple, a
+une dette brute de <Chiffre id="intl.dette-pib-2025" x="Canada" />, mais une dette nette de
+<Chiffre id="intl.dette-nette-2025" x="Canada" /> seulement. Pour la France, l'écart est faible :
+<Chiffre id="intl.dette-nette-2025" x="France" /> de dette nette.
+
+**Les définitions varient.** Le FMI mesure la dette brute des administrations publiques avec une définition proche,
+mais pas identique, de celle de Maastricht utilisée par l'Insee et Eurostat. Les chiffres diffèrent donc légèrement de
+ceux des autres modules.
+
+</PlusLoin>
+</Niveaux>
+
+<ARetenir>
+La France est l'un des pays les plus endettés de la zone euro, et surtout l'un de ceux dont le déficit reste le plus
+élevé : c'est la trajectoire, plus que le niveau, qui inquiète les investisseurs.
+</ARetenir>

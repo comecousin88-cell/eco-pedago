@@ -54,14 +54,17 @@ export interface FichierDonnees {
 import aft from "../../data/aft.json";
 import banqueCentrale from "../../data/banque-centrale.json";
 import budgets from "../../data/budgets.json";
+import cadreEuropeen from "../../data/cadre-europeen.json";
 import cotisations from "../../data/cotisations.json";
 import dette from "../../data/dette.json";
 import europe from "../../data/europe.json";
 import financesPubliques from "../../data/finances-publiques.json";
+import fiscalite from "../../data/fiscalite.json";
 import grece from "../../data/grece.json";
 import international from "../../data/international.json";
 import macro from "../../data/macro.json";
 import marches from "../../data/marches.json";
+import perspective from "../../data/perspective.json";
 import propositions from "../../data/propositions.json";
 import retraites from "../../data/retraites.json";
 
@@ -69,14 +72,17 @@ export const fichiers: Record<string, FichierDonnees> = {
   aft: aft as FichierDonnees,
   "banque-centrale": banqueCentrale as FichierDonnees,
   budgets: budgets as FichierDonnees,
+  "cadre-europeen": cadreEuropeen as FichierDonnees,
   cotisations: cotisations as FichierDonnees,
   dette: dette as FichierDonnees,
   europe: europe as FichierDonnees,
   "finances-publiques": financesPubliques as FichierDonnees,
+  fiscalite: fiscalite as FichierDonnees,
   grece: grece as FichierDonnees,
   international: international as FichierDonnees,
   macro: macro as FichierDonnees,
   marches: marches as FichierDonnees,
+  perspective: perspective as FichierDonnees,
   propositions: propositions as FichierDonnees,
   retraites: retraites as FichierDonnees,
 };

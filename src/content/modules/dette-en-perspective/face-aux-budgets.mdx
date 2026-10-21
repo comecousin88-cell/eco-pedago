@@ -1,0 +1,45 @@
+import { BarresHorizontales } from "@/components/graphiques/BarresHorizontales";
+
+<Niveaux>
+<Essentiel>
+
+La dette se rembourse en la refinançant, mais ses **intérêts** se paient chaque année, comme n'importe quelle dépense.
+Pour l'État seul, la charge de la dette prévue au budget <DateDonnee id="budgets.missions" /> atteint
+<Chiffre id="budgets.missions" x="Charge de la dette de l'État" />, presque autant que la défense
+(<Chiffre id="budgets.missions" x="Défense" />), et bien plus que la justice ou la recherche.
+
+<Figure
+  titre="La charge de la dette face aux grands budgets de l'État"
+  resume="Barres horizontales des crédits de quelques missions du budget de l'État : l'enseignement scolaire arrive en tête, devant la défense et la charge de la dette, qui dépasse nettement la recherche et l'enseignement supérieur, la sécurité, l'écologie et la justice."
+  donnees={["budgets.missions"]}
+>
+  <BarresHorizontales serie="budgets.missions" enAvant={["Charge de la dette de l'État"]} decimales={1} />
+</Figure>
+
+</Essentiel>
+<Mecanisme>
+
+**Une dépense qui ne finance rien de nouveau.** Les intérêts rémunèrent l'argent emprunté dans le passé. Chaque euro
+d'intérêts est un euro qui ne va ni à l'école, ni à la santé, ni à la baisse des impôts. C'est ce qu'on appelle le
+**coût d'opportunité** de la dette.
+
+**Une charge qui augmente avec les taux.** Pendant les années de taux très bas, la charge de la dette a baissé alors
+même que la dette augmentait. Depuis la remontée des taux en 2022, chaque emprunt nouveau ou renouvelé coûte plus cher,
+et la charge augmente d'année en année, à mesure que les anciens titres à taux bas arrivent à échéance. Pour
+l'ensemble des administrations publiques, les intérêts atteignaient <Chiffre id="fp.interets" /> en
+<DateDonnee id="fp.interets" />.
+
+</Mecanisme>
+<PlusLoin>
+
+**Ce que mesure la « charge de la dette ».** Dans le budget de l'État, elle inclut aussi l'effet de l'inflation sur les
+titres indexés, dont le capital à rembourser augmente avec les prix. Elle diffère donc un peu des intérêts mesurés en
+comptabilité nationale pour l'ensemble des administrations publiques.
+
+</PlusLoin>
+</Niveaux>
+
+<ARetenir>
+La charge de la dette de l'État pèse presque autant que la défense dans le budget, et elle augmente avec la remontée des
+taux : c'est de l'argent qui ne finance aucune politique nouvelle.
+</ARetenir>

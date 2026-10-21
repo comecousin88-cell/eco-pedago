@@ -415,6 +415,41 @@ export const glossaire: EntreeGlossaire[] = [
     long: "L'échelle va de AAA (meilleure qualité) à D (défaut). Une dégradation peut renchérir l'emprunt, surtout si elle fait passer un pays sous un seuil que certains investisseurs ne peuvent pas franchir.",
     voir: ["spread"],
   },
+  {
+    id: "assiette",
+    terme: "Assiette (d'un impôt)",
+    court: "Ce sur quoi porte un impôt : les revenus, la consommation, les bénéfices, un patrimoine…",
+    long: "Le rendement d'un impôt est à peu près égal à son taux multiplié par son assiette. Un taux élevé sur une petite assiette rapporte peu ; un taux faible sur une très large assiette, comme la TVA ou la CSG, rapporte beaucoup. L'assiette peut aussi se réduire quand le taux monte : départs, optimisation, baisse de l'activité taxée.",
+    voir: ["progressivite", "tva", "csg"],
+  },
+  {
+    id: "progressivite",
+    terme: "Progressivité",
+    court: "Un impôt est progressif quand il prélève une part plus grande des revenus élevés que des revenus modestes.",
+    long: "L'impôt sur le revenu est progressif : son taux augmente par tranches. La TVA, au contraire, pèse davantage en proportion du revenu sur les ménages modestes, qui consomment une plus grande part de ce qu'ils gagnent. La CSG est proportionnelle : le même taux pour tous les revenus d'activité. La progressivité d'un système fiscal s'apprécie sur l'ensemble des prélèvements, pas impôt par impôt.",
+    voir: ["assiette"],
+  },
+  {
+    id: "procedure-deficit-excessif",
+    terme: "Procédure de déficit excessif",
+    court: "La procédure européenne ouverte contre un pays dont le déficit dépasse 3 % du PIB, ou dont la dette ne baisse pas assez vite.",
+    long: "Le Conseil de l'Union européenne, sur proposition de la Commission, constate le déficit excessif et fixe au pays une trajectoire de correction, avec une date limite. Des sanctions financières sont prévues en cas d'inaction répétée, mais elles n'ont jamais été appliquées. La France a fait l'objet de telles procédures à plusieurs reprises.",
+    voir: ["deficit-public", "consolidation"],
+  },
+  {
+    id: "defaut",
+    terme: "Défaut (souverain)",
+    court: "Quand un État ne paie pas, ou pas entièrement, ce qu'il doit à ses créanciers, à l'échéance prévue.",
+    long: "Un défaut peut être total ou partiel, et prend souvent la forme d'une restructuration négociée : échéances allongées, intérêts réduits, valeur du capital diminuée. Il coupe généralement le pays des marchés pendant un temps et renchérit ses emprunts ensuite.",
+    voir: ["restructuration"],
+  },
+  {
+    id: "repression-financiere",
+    terme: "Répression financière",
+    court: "Des règles qui obligent ou incitent l'épargne à financer l'État à des taux inférieurs à l'inflation.",
+    long: "Après 1945, de nombreux pays ont plafonné les taux d'intérêt, contrôlé les mouvements de capitaux et obligé les banques à détenir des titres publics. Avec une inflation supérieure aux taux, la dette fondait en termes réels, aux dépens des épargnants. Ces outils sont aujourd'hui largement incompatibles avec la libre circulation des capitaux.",
+    voir: ["taux-reel", "inflation"],
+  },
 ];
 
 const parId = new Map(glossaire.map((e) => [e.id, e]));

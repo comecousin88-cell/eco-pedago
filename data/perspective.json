@@ -1,0 +1,45 @@
+{
+  "description": "Chiffres du module 6 ter (la dette en perspective).",
+  "donnees": [
+    {
+      "id": "pop.france",
+      "label": "Population de la France au 1er janvier 2026 (estimation provisoire)",
+      "valeur": 69.1,
+      "unite": "millions d'habitants",
+      "date": "2026-01-01",
+      "source": {
+        "nom": "Insee Première n° 2087, Bilan démographique 2025 (janvier 2026)",
+        "url": "https://www.insee.fr/fr/statistiques/8719824"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-21"
+    },
+    {
+      "id": "apu.patrimoine",
+      "label": "Patrimoine des administrations publiques fin 2024",
+      "serie": [
+        {
+          "x": "actifs non financiers",
+          "y": 2821
+        },
+        {
+          "x": "patrimoine financier net",
+          "y": -2132
+        },
+        {
+          "x": "patrimoine net",
+          "y": 690
+        }
+      ],
+      "unite": "Md€",
+      "date": "2024",
+      "source": {
+        "nom": "Insee Première n° 2081, Le patrimoine économique national en 2024",
+        "url": "https://www.insee.fr/fr/statistiques/8661938"
+      },
+      "note": "Actifs non financiers : bâtiments, terrains, routes, réseaux… (85 % de constructions et terrains bâtis). Patrimoine financier net : actifs financiers moins dettes.",
+      "statut": "verifie",
+      "consulte_le": "2026-10-21"
+    }
+  ]
+}

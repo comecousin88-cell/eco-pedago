@@ -1,0 +1,54 @@
+import { DetteAEchelle } from "@/components/graphiques/DetteAEchelle";
+
+<Niveaux>
+<Essentiel>
+
+Divisée entre les <Chiffre id="pop.france" /> au 1er janvier 2026, la dette publique représente plus de
+50 000 euros par habitant. On peut aussi la mesurer en années de recettes publiques, ou en mois de production du pays.
+
+<Figure
+  titre="La dette, remise à l'échelle"
+  resume="Quatre repères calculés à partir des données : la dette publique par habitant (environ 52 000 euros), les intérêts par habitant et par an (environ 950 euros), la dette en années de recettes publiques (un peu plus de deux ans) et en mois de production du pays (environ quatorze mois)."
+  donnees={["dette.stock", "pop.france", "fp.recettes", "macro.pib", "fp.interets"]}
+>
+  <DetteAEchelle />
+</Figure>
+
+</Essentiel>
+<Mecanisme>
+
+**Pourquoi « par habitant » trompe un peu.** Diviser la dette par le nombre d'habitants suggère que chacun devrait
+rembourser cette somme. Ce n'est pas ainsi qu'une dette publique fonctionne : un État ne rembourse presque jamais sa
+dette d'un coup, il la **refinance** à l'échéance, en empruntant de nouveau. Ce qui compte, c'est la charge annuelle,
+c'est-à-dire les intérêts, et l'évolution de la dette rapportée aux revenus du pays.
+
+**Le bon rapport : la dette face aux revenus.** Un ménage qui doit 200 000 euros n'est pas dans la même situation s'il
+gagne 30 000 ou 150 000 euros par an. De même, on rapporte la dette publique au PIB (<Chiffre id="dette.ratio-pib" />)
+ou aux recettes publiques : c'est la capacité à payer les intérêts et à stabiliser la dette qui compte.
+
+<Exemple titre="Exemple : un ménage endetté sur vingt ans">
+Un ménage qui emprunte 250 000 euros pour son logement, avec 50 000 euros de revenus par an, doit cinq années de
+revenus. L'État doit un peu plus de deux années de recettes. La comparaison a ses limites : l'État ne meurt pas, il peut
+refinancer sa dette indéfiniment tant que les prêteurs ont confiance, et il fixe lui-même une partie de ses recettes.
+</Exemple>
+
+</Mecanisme>
+<PlusLoin>
+
+**À qui doit-on ?** Une partie de la dette est détenue par des Français, directement ou via leur assurance-vie, leur
+banque ou la Banque de France : les intérêts qui leur sont versés restent dans le pays. Une autre partie, un peu plus
+de la moitié, est détenue par des non-résidents
+(<Chiffre id="prop.dette-non-residents" x="2025" /> des titres de long terme des administrations publiques fin 2025).
+Ce sont des revenus qui sortent du pays, et une dépendance à la confiance d'investisseurs étrangers.
+
+**La dette nette.** Les administrations détiennent aussi de la trésorerie et des actifs financiers. Déduits de la
+dette, ils donnent une dette nette de <Chiffre id="dette.nette" /> à la même date.
+
+</PlusLoin>
+</Niveaux>
+
+<ARetenir>
+La dette représente plus de 50 000 euros par habitant, un peu plus de deux années de recettes publiques. Mais un État
+ne rembourse pas sa dette d'un coup : il la refinance. Ce qui compte, ce sont les intérêts et la trajectoire de la
+dette rapportée aux revenus du pays.
+</ARetenir>

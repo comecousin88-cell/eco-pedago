@@ -1,0 +1,54 @@
+import { BarresHorizontales } from "@/components/graphiques/BarresHorizontales";
+
+<Niveaux>
+<Essentiel>
+
+La croissance et l'emploi comptent autant que le budget : une économie qui croît vite et emploie beaucoup de monde
+produit davantage de recettes et a moins de dépenses sociales. En <DateDonnee id="intl.croissance-2025" />, la croissance
+de la France a été de <Chiffre id="intl.croissance-2025" x="France" />, moins que la moyenne de la zone euro
+(<Chiffre id="intl.croissance-2025" x="Zone euro" />), mais plus que l'Allemagne (<Chiffre id="intl.croissance-2025" x="Allemagne" />).
+Son taux de chômage, <Chiffre id="intl.chomage-2025" x="France" />, reste plus élevé que dans la plupart des grandes
+économies.
+
+<Figure
+  titre="Le taux de chômage en 2025"
+  resume="Barres du taux de chômage en 2025, selon le FMI : l'Espagne arrive en tête, devant la Grèce, la Suède et la France ; le Japon, l'Allemagne et les Pays-Bas ont les taux les plus bas."
+  donnees={["intl.chomage-2025"]}
+>
+  <BarresHorizontales serie="intl.chomage-2025" enAvant={["France"]} decimales={1} />
+</Figure>
+
+</Essentiel>
+<Mecanisme>
+
+**Le lien avec les finances publiques.** Chaque point de chômage en moins, c'est davantage de cotisations et d'impôts
+et moins d'allocations. Une partie du déficit français tient à un taux d'emploi plus faible que chez ses voisins,
+notamment chez les jeunes et les seniors.
+
+**La croissance, et ce qui la porte.** À long terme, la croissance dépend du nombre de personnes qui travaillent et de
+leur productivité. La France a une productivité horaire élevée, mais un nombre d'heures travaillées par habitant plus
+faible que beaucoup de ses voisins, en partie parce que moins de jeunes et de seniors sont en emploi.
+
+<Figure
+  titre="La croissance du PIB en 2025"
+  resume="Barres de la croissance du PIB en volume en 2025, selon le FMI : l'Espagne et les États-Unis ont la croissance la plus forte ; la France se situe sous la moyenne de la zone euro, l'Allemagne et l'Italie plus bas encore."
+  donnees={["intl.croissance-2025"]}
+>
+  <BarresHorizontales serie="intl.croissance-2025" enAvant={["France"]} decimales={1} />
+</Figure>
+
+</Mecanisme>
+<PlusLoin>
+
+**Comparer des taux de chômage.** Le FMI utilise des définitions proches de celles du Bureau international du travail,
+mais les marchés du travail diffèrent : temps partiel, emplois précaires, découragement des chômeurs qui cessent de
+chercher. Le taux d'emploi, la part des personnes en âge de travailler qui ont un emploi, complète utilement le taux de
+chômage.
+
+</PlusLoin>
+</Niveaux>
+
+<ARetenir>
+La France a une croissance modeste et un chômage plus élevé que la plupart des grandes économies. Améliorer l'emploi,
+notamment des jeunes et des seniors, est l'un des leviers les plus puissants pour ses finances publiques.
+</ARetenir>
