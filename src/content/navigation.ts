@@ -30,8 +30,8 @@ export const navItems: NavItem[] = [
     href: "/tableau-de-bord/",
     label: "Tableau de bord",
     description:
-      "Les principaux indicateurs (taux, inflation, chômage, dette), avec leur source et leur date.",
-    status: "soon",
+      "Les sept indicateurs à suivre (taux, inflation, chômage, dette, déficit), avec leur source et leur date.",
+    status: "available",
   },
   {
     href: "/jeu-budget/",
