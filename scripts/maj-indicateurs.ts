@@ -235,11 +235,30 @@ async function majInsee() {
  * ignorée et le site s'en tient à la moyenne mensuelle publiée par la BCE.
  */
 async function majBanqueDeFrance(cle: string) {
-  const SERIE = "FM.D.FR.EUR.FR2.BB.FR10YT_RR.YLD";
-  const url = `https://webstat.banque-france.fr/api/explore/v2.1/catalog/datasets/observations/exports/json?where=series_key%3D%22${SERIE}%22&order_by=time_period_start%20desc&limit=30`;
-  const r = await fetch(url, { headers: { Authorization: `Apikey ${cle}` }, signal: AbortSignal.timeout(60_000) });
-  if (!r.ok) throw new Error(`Webstat : HTTP ${r.status}`);
-  const der = derniere(lireWebstat(await r.json()), SERIE);
+  // « Emprunt phare à 10 ans », quotidien (catalogue Webstat : ecofi-inr-fr-figb_pa-_z-d). Les données ne sont
+  // lisibles qu'avec une clé ; faute d'avoir pu tester sans clé, on essaie les formes de requête plausibles et on
+  // garde la première qui renvoie des observations. Le message d'erreur liste chaque tentative.
+  const SERIE = "ECOFI.INR.FR.FIGB_PA._Z.D";
+  const JEU = "ecofi-inr-fr-figb_pa-_z-d";
+  const base_ = "https://webstat.banque-france.fr/api/explore/v2.1/catalog/datasets";
+  const filtre = `where=series_key%3D%22${encodeURIComponent(SERIE)}%22`;
+  const essais = [
+    `${base_}/observations/records?${filtre}&order_by=time_period_start%20desc&limit=30`,
+    `${base_}/observations/records?${filtre}&order_by=time_period%20desc&limit=30`,
+    `${base_}/${JEU}/records?order_by=time_period_start%20desc&limit=30`,
+    `${base_}/${JEU}/records?order_by=time_period%20desc&limit=30`,
+  ];
+  const echecs: string[] = [];
+  let obs: Observation[] = [];
+  for (const url of essais) {
+    const r = await fetch(url, { headers: { Authorization: `Apikey ${cle}` }, signal: AbortSignal.timeout(60_000) });
+    const texte = await r.text();
+    if (r.ok) obs = lireWebstat(JSON.parse(texte));
+    if (obs.length) break;
+    echecs.push(`${url.replace(base_, "")} → HTTP ${r.status} ${texte.slice(0, 120)}`);
+  }
+  if (!obs.length) throw new Error(`Webstat : aucune observation. ${echecs.join(" | ")}`);
+  const der = derniere(obs, SERIE);
   const ancienne = fichier("marches").donnees.find((x) => x.id === "marches.taux10-france-jour");
   const base: DonneeJson = ancienne ?? {
     id: "marches.taux10-france-jour",
@@ -247,7 +266,7 @@ async function majBanqueDeFrance(cle: string) {
     valeur: der.valeur,
     unite: "%",
     date: der.periode,
-    source: { nom: "Banque de France, Webstat : taux de l'échéance constante 10 ans (TEC10)", url: "https://webstat.banque-france.fr" },
+    source: { nom: "Banque de France, Webstat : emprunt phare à 10 ans (série ECOFI.INR.FR.FIGB_PA._Z.D)", url: "https://webstat.banque-france.fr/fr/catalogue/ecofi/ECOFI.INR.FR.FIGB_PA._Z.D" },
     statut: "verifie",
   };
   verifierValeur(base, der.periode, der.valeur, { min: -2, max: 40 });
