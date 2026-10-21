@@ -46,12 +46,14 @@ describe("parcours", () => {
 
   it("« J'approfondis » couvre toutes les pages de tous les modules", () => {
     const total = modules.reduce((n, m) => n + 1 + m.sections.length, 0);
-    expect(getParcours("approfondir").etapes).toHaveLength(total);
+    // plus le tableau de bord, les propositions et les idées reçues
+    expect(getParcours("approfondir").etapes).toHaveLength(total + 3);
   });
 
   it("« Je découvre » suit le fil conducteur et finit par les propositions", () => {
     const groupes = [...new Set(getParcours("decouvrir").etapes.map((e) => e.groupe))];
     expect(groupes.map((g) => g.replace(/^Module [^·]+· /, ""))).toEqual([
+      "La France en 10 chiffres",
       "Les bases",
       "Déficit et dette",
       "Comment l'État emprunte",

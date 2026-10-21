@@ -8,8 +8,8 @@ export interface NavItem {
 }
 
 /**
- * Entrées du menu principal, dans l'ordre. Les rubriques « Idées reçues » et
- * « La France en 10 chiffres » s'ajouteront quand elles existeront.
+ * Entrées du menu principal, dans l'ordre. « La France en 10 chiffres » et
+ * « Sources et méthode » sont accessibles depuis l'accueil et le pied de page.
  */
 export const navItems: NavItem[] = [
   {
@@ -38,6 +38,12 @@ export const navItems: NavItem[] = [
     label: "Jeux",
     description:
       "Redresser les comptes de l'État en choisissant parmi des mesures chiffrées, puis tenir le budget pendant un mandat.",
+    status: "available",
+  },
+  {
+    href: "/idees-recues/",
+    label: "Idées reçues",
+    description: "Dix-huit affirmations qu'on entend souvent, vérifiées chiffres à l'appui.",
     status: "available",
   },
   {

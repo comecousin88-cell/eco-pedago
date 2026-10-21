@@ -3,9 +3,15 @@ import { ModuleCard } from "@/components/modules/ModuleCard";
 import { CartesParcours } from "@/components/lecture/CartesParcours";
 import { ModuleTheme } from "@/components/modules/ModuleTheme";
 import { CarteProposition, versCarte } from "@/components/propositions/CarteProposition";
-import { SoonBadge } from "@/components/ui/SoonBadge";
 import { modules, rubriqueColors } from "@/content/modules";
 import { propositions, propositionsPhares } from "@/content/propositions";
+
+const RACCOURCIS = [
+  { href: "/la-france-en-10-chiffres/", titre: "La France en 10 chiffres", texte: "La situation des finances publiques en un coup d'œil, chiffres sourcés et datés." },
+  { href: "/tableau-de-bord/", titre: "Tableau de bord", texte: "Taux, inflation, chômage, dette, déficit : les sept indicateurs à suivre." },
+  { href: "/idees-recues/", titre: "Idées reçues", texte: "Dix-huit affirmations qu'on entend souvent, vérifiées chiffres à l'appui." },
+  { href: "/jeux/", titre: "Jeux", texte: "Redresser les comptes, puis tenir le budget pendant un mandat de ministre." },
+];
 
 export default function Home() {
   return (
@@ -41,15 +47,19 @@ export default function Home() {
         <div className="mt-6">
           <CartesParcours />
         </div>
-        <div className="mt-4 flex items-start justify-between gap-3 rounded-2xl border border-line bg-surface p-5">
-          <div>
-            <h3 className="font-semibold text-ink">La France en 10 chiffres</h3>
-            <p className="mt-1 text-sm text-muted">
-              La situation des finances publiques en un coup d&apos;œil, chiffres sourcés et datés.
-            </p>
-          </div>
-          <SoonBadge />
-        </div>
+        <ul className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+          {RACCOURCIS.map((r) => (
+            <li key={r.href}>
+              <Link
+                href={r.href}
+                className="flex h-full flex-col rounded-2xl border border-line bg-surface p-4 transition hover:-translate-y-0.5 hover:shadow-md"
+              >
+                <span className="font-semibold text-ink">{r.titre}</span>
+                <span className="mt-1 text-sm text-muted">{r.texte}</span>
+              </Link>
+            </li>
+          ))}
+        </ul>
       </section>
 
       <ModuleTheme color={rubriqueColors.propositions}>

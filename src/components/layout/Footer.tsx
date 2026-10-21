@@ -1,9 +1,31 @@
+import Link from "next/link";
 import { site } from "@/content/site";
+
+const LIENS = [
+  { href: "/la-france-en-10-chiffres/", libelle: "La France en 10 chiffres" },
+  { href: "/tableau-de-bord/", libelle: "Tableau de bord" },
+  { href: "/propositions/", libelle: "Les propositions au crible" },
+  { href: "/idees-recues/", libelle: "Idées reçues" },
+  { href: "/jeux/", libelle: "Jeux" },
+  { href: "/glossaire/", libelle: "Glossaire" },
+  { href: "/sources/", libelle: "Sources et méthode" },
+];
 
 export function Footer() {
   return (
     <footer className="mt-16 border-t border-line bg-surface">
       <div className="mx-auto max-w-5xl space-y-2 px-4 py-8 text-sm text-muted sm:px-6">
+        <nav aria-label="Pied de page" className="mb-4">
+          <ul className="flex flex-wrap gap-x-4 gap-y-1">
+            {LIENS.map((l) => (
+              <li key={l.href}>
+                <Link href={l.href} className="text-body underline-offset-4 hover:text-ink hover:underline">
+                  {l.libelle}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
         <p>
           <span className="font-serif font-semibold text-body">{site.name}</span>
           {" "}: un site pédagogique pour comprendre les finances publiques françaises.

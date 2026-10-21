@@ -450,6 +450,62 @@ export const glossaire: EntreeGlossaire[] = [
     long: "Après 1945, de nombreux pays ont plafonné les taux d'intérêt, contrôlé les mouvements de capitaux et obligé les banques à détenir des titres publics. Avec une inflation supérieure aux taux, la dette fondait en termes réels, aux dépens des épargnants. Ces outils sont aujourd'hui largement incompatibles avec la libre circulation des capitaux.",
     voir: ["taux-reel", "inflation"],
   },
+  {
+    id: "multiplicateur",
+    terme: "Multiplicateur budgétaire",
+    court: "De combien le PIB varie quand l'État dépense un euro de plus ou de moins, ou change les impôts d'un euro.",
+    long: "Un euro de dépense publique en moins, c'est aussi un revenu en moins pour quelqu'un, qui dépense moins à son tour. Le multiplicateur mesure cet effet en chaîne. Il est généralement estimé entre 0,5 et 1, plus élevé en récession, quand la banque centrale ne peut plus baisser ses taux, plus faible quand l'économie tourne à plein. Sa valeur exacte est l'un des grands débats de la politique budgétaire.",
+    voir: ["consolidation", "stabilisateurs-automatiques"],
+  },
+  {
+    id: "stabilisateurs-automatiques",
+    terme: "Stabilisateurs automatiques",
+    court: "Les recettes et dépenses publiques qui varient d'elles-mêmes avec la conjoncture et amortissent les chocs.",
+    long: "En récession, les impôts rentrent moins (moins de revenus, moins de consommation) et les dépenses d'indemnisation du chômage augmentent, sans aucune décision nouvelle : le déficit se creuse, ce qui soutient l'activité. En période de croissance, c'est l'inverse. C'est pourquoi on distingue le solde public effectif du solde structurel, corrigé de la conjoncture.",
+    voir: ["solde-structurel", "multiplicateur"],
+  },
+  {
+    id: "depense-fiscale",
+    terme: "Dépense fiscale (niche fiscale)",
+    court: "Une réduction d'impôt accordée à certains contribuables ou à certaines activités, qui coûte à l'État comme une dépense.",
+    long: "Crédits d'impôt, taux réduits de TVA, exonérations : ces dispositifs réduisent les recettes au lieu d'augmenter les dépenses, mais leur effet sur le budget est le même. Le budget de l'État en recense plusieurs centaines, pour plusieurs dizaines de milliards d'euros. Chacune a ses bénéficiaires et ses justifications, ce qui rend leur suppression délicate.",
+    voir: ["assiette"],
+  },
+  {
+    id: "seigneuriage",
+    terme: "Seigneuriage",
+    court: "Le revenu que tire une banque centrale de la monnaie qu'elle émet, en particulier des billets, qui ne lui coûtent rien.",
+    long: "Les billets en circulation sont une ressource gratuite pour la banque centrale, qui la place et en tire un revenu. Dans la zone euro, ce revenu est mis en commun puis réparti entre les banques centrales nationales. Il dépend du niveau des taux d'intérêt : nul quand les taux sont à zéro, plus élevé quand ils remontent.",
+    voir: ["bce", "financement-monetaire"],
+  },
+  {
+    id: "ipch",
+    terme: "IPCH (indice des prix harmonisé)",
+    court: "L'indice des prix à la consommation calculé selon une méthode commune à tous les pays de l'Union européenne.",
+    long: "Il sert à comparer l'inflation entre pays et c'est sur lui que la BCE fixe son objectif de 2 %. Il diffère un peu de l'indice des prix de l'Insee (IPC), notamment parce qu'il pondère autrement certaines dépenses, comme la santé.",
+    voir: ["inflation", "bce"],
+  },
+  {
+    id: "chomage-bit",
+    terme: "Chômage au sens du BIT",
+    court: "Être sans emploi, disponible pour travailler et en rechercher activement un : la définition internationale du chômage.",
+    long: "Le Bureau international du travail a fixé cette définition pour permettre les comparaisons entre pays. L'Insee la mesure par une enquête trimestrielle. Elle diffère du nombre d'inscrits à France Travail, qui inclut des personnes en activité réduite et n'inclut pas tous les chômeurs.",
+    voir: ["pib"],
+  },
+  {
+    id: "cout-opportunite",
+    terme: "Coût d'opportunité",
+    court: "Ce à quoi on renonce en faisant un choix : la meilleure autre utilisation possible de la même somme.",
+    long: "Les intérêts de la dette ont un coût d'opportunité : chaque euro versé aux prêteurs est un euro qui ne finance ni l'école, ni la santé, ni une baisse d'impôts. Le raisonnement vaut pour toute dépense : la question n'est pas seulement « est-ce utile ? », mais « est-ce plus utile que ce qu'on pourrait faire d'autre ? ».",
+    voir: ["charge-de-la-dette"],
+  },
+  {
+    id: "croissance-potentielle",
+    terme: "Croissance potentielle",
+    court: "Le rythme auquel l'économie peut croître durablement sans faire monter l'inflation, compte tenu de sa population active et de sa productivité.",
+    long: "Elle dépend du nombre de personnes qui travaillent, du capital disponible et des progrès de productivité. La croissance effective peut s'en écarter temporairement (récession, reprise), mais pas durablement. Elle sert à calculer le solde structurel, et elle est estimée autour de 1 % par an pour la France, avec beaucoup d'incertitude.",
+    voir: ["solde-structurel", "pib"],
+  },
 ];
 
 const parId = new Map(glossaire.map((e) => [e.id, e]));

@@ -47,6 +47,13 @@ function mod(slug: string): ModuleInfo {
 
 const GROUPE_PROPOSITIONS = "Les propositions au crible";
 
+/** Rubriques transverses ajoutées à la fin du parcours « J'approfondis ». */
+const ETAPES_TRANSVERSES: EtapeParcours[] = [
+  { href: "/tableau-de-bord/", titre: "Le tableau de bord", groupe: "Tableau de bord", disponible: true },
+  { href: "/propositions/", titre: "Les propositions au crible", groupe: GROUPE_PROPOSITIONS, disponible: true },
+  { href: "/idees-recues/", titre: "Idées reçues", groupe: "Idées reçues", disponible: true },
+];
+
 /** Sélection des sections essentielles, dans l'ordre du fil conducteur. */
 const DECOUVRIR: [string, string?][] = [
   ["les-bases", "recettes-depenses"],
@@ -68,11 +75,12 @@ export const parcours: Parcours[] = [
     id: "decouvrir",
     titre: "Je découvre",
     accroche:
-      "L'essentiel en une demi-heure : d'où vient l'argent public, pourquoi la dette monte, comment l'État emprunte, qui paie les retraites, ce qui reste sur la fiche de paie, et ce que valent les solutions qu'on entend.",
+      "L'essentiel en trois quarts d'heure : la France en dix chiffres, d'où vient l'argent public, pourquoi la dette monte, comment l'État emprunte, qui paie les retraites, ce qui reste sur la fiche de paie, et ce que valent les solutions qu'on entend.",
     duree: "≈ 45 min",
     mode: "simple",
-    // Le parcours se termine sur les fiches : la rubrique, puis les fiches phares.
+    // Le parcours commence par la France en 10 chiffres et se termine sur les fiches : la rubrique, puis les fiches phares.
     etapes: [
+      { href: "/la-france-en-10-chiffres/", titre: "La France en 10 chiffres", groupe: "La France en 10 chiffres", disponible: true },
       ...DECOUVRIR.map(([m, s]) => etapeModule(mod(m), s)),
       { href: "/propositions/", titre: "Les propositions au crible", groupe: GROUPE_PROPOSITIONS, disponible: true },
       ...propositionsPhares.map((p) => ({
@@ -87,10 +95,13 @@ export const parcours: Parcours[] = [
     id: "approfondir",
     titre: "J'approfondis",
     accroche:
-      "Tous les modules et toutes les sections, avec les formules, les nuances et les débats d'économistes dépliés.",
+      "Tous les modules et toutes les sections, avec les formules, les nuances et les débats d'économistes dépliés, puis le tableau de bord, les propositions passées au crible et les idées reçues.",
     duree: "plusieurs heures, à votre rythme",
     mode: "approfondi",
-    etapes: modules.flatMap((m) => [etapeModule(m), ...m.sections.map((s) => etapeModule(m, s.slug))]),
+    etapes: [
+      ...modules.flatMap((m) => [etapeModule(m), ...m.sections.map((s) => etapeModule(m, s.slug))]),
+      ...ETAPES_TRANSVERSES,
+    ],
   },
 ];
 
