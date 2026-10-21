@@ -235,19 +235,13 @@ async function majInsee() {
  * ignorée et le site s'en tient à la moyenne mensuelle publiée par la BCE.
  */
 async function majBanqueDeFrance(cle: string) {
-  // « Emprunt phare à 10 ans », quotidien (catalogue Webstat : ecofi-inr-fr-figb_pa-_z-d). Les données ne sont
-  // lisibles qu'avec une clé ; faute d'avoir pu tester sans clé, on essaie les formes de requête plausibles et on
-  // garde la première qui renvoie des observations. Le message d'erreur liste chaque tentative.
+  // « Emprunt phare à 10 ans », quotidien (catalogue Webstat : ecofi-inr-fr-figb_pa-_z-d). Requête conforme au
+  // guide de l'API Webstat (table observations, filtre sur series_key, clé dans l'en-tête Authorization: Apikey).
+  // Si elle échoue, on essaie la variante « records » ; le message d'erreur liste chaque tentative.
   const SERIE = "ECOFI.INR.FR.FIGB_PA._Z.D";
-  const JEU = "ecofi-inr-fr-figb_pa-_z-d";
   const base_ = "https://webstat.banque-france.fr/api/explore/v2.1/catalog/datasets";
-  const filtre = `where=series_key%3D%22${encodeURIComponent(SERIE)}%22`;
-  const essais = [
-    `${base_}/observations/records?${filtre}&order_by=time_period_start%20desc&limit=30`,
-    `${base_}/observations/records?${filtre}&order_by=time_period%20desc&limit=30`,
-    `${base_}/${JEU}/records?order_by=time_period_start%20desc&limit=30`,
-    `${base_}/${JEU}/records?order_by=time_period%20desc&limit=30`,
-  ];
+  const filtre = `refine=series_key:%22${encodeURIComponent(SERIE)}%22&order_by=time_period_start%20desc&limit=30`;
+  const essais = [`${base_}/observations/exports/json?${filtre}`, `${base_}/observations/records?${filtre}`];
   const echecs: string[] = [];
   let obs: Observation[] = [];
   for (const url of essais) {
