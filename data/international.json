@@ -5637,11 +5637,12 @@
       "unite": "% environ",
       "date": "1953-02-27",
       "source": {
-        "nom": "Debt Justice (Jubilee Debt Campaign), How Europe cancelled Germany's debt in 1953",
-        "url": "https://debtjustice.org.uk/report/europe-cancelled-germanys-debt-1953"
+        "nom": "T. W. Guinnane, « Financial Vergangenheitsbewältigung: The 1953 London Debt Agreement », Yale University, Economic Growth Center, document de travail n° 880 (janvier 2004)",
+        "url": "https://ideas.repec.org/p/egc/wpaper/880.html"
       },
-      "statut": "a_verifier",
-      "note": "Ordre de grandeur cité par des organisations militantes (de 50 % à 62,6 % selon le mode de calcul) : à vérifier dans une source historique officielle."
+      "statut": "verifie",
+      "note": "« L'accord a réduit la dette totale d'environ 50 % et donné aux débiteurs un délai de remboursement bien plus long » (résumé de l'étude). L'auteur souligne que le contexte de 1953 en fait un précédent difficile à transposer.",
+      "consulte_le": "2026-10-21"
     }
   ]
 }

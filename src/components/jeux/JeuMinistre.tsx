@@ -37,6 +37,9 @@ function etatInitial(): { etat: EtatMinistre; h: HypothesesMinistre; annee0: num
       soldePublic: -solde.valeur,
       soldePrimaire: -solde.valeur + interetsPib,
       soldeStructurel: -solde.valeur + interetsPib,
+      soldeHorsChocs: -solde.valeur,
+      spreadHorsChocs: spread.valeur,
+      croissanceHorsChocs: croissance.valeur,
       tauxApparent: (interets.valeur / detteMdPrecedente) * 100,
       spread: spread.valeur,
       croissance: croissance.valeur,
@@ -51,6 +54,7 @@ function etatInitial(): { etat: EtatMinistre; h: HypothesesMinistre; annee0: num
       reactionSpread: v("ministre.reaction-spread"),
       tauxAllemand: v("marches.taux10-allemagne-dernier"),
       maturite: v("aft.maturite-moyenne"),
+      decoteMaturites: v("ministre.decote-maturites"),
     },
   };
 }
@@ -141,6 +145,7 @@ function Hypotheses({ h }: { h: HypothesesMinistre }) {
     "ministre.multiplicateur-investissement",
     "ministre.stabilisateurs",
     "ministre.reaction-spread",
+    "ministre.decote-maturites",
   ];
   const toutes = toutesLesDonnees();
   return (
@@ -324,6 +329,12 @@ export function JeuMinistre() {
                   ))}
                 </ul>
                 <p className="mt-3 text-sm text-muted">
+                  Les critères jugent vos choix, pas la chance : le déficit, la croissance et l&apos;écart de taux y sont
+                  mesurés hors effets des imprévus tirés au sort. À titre de repère, un effort régulier d&apos;environ
+                  25 Md€ par an (0,8 point de PIB) atteint au moins trois critères dans la grande majorité des tirages ;
+                  l&apos;effort minimal demandé par les règles européennes (0,5 point) n&apos;y suffit presque jamais.
+                </p>
+                <p className="mt-2 text-sm text-muted">
                   Ces critères ne disent pas quelle politique est la meilleure : un mandat peut viser d&apos;autres objectifs
                   (services publics, transition énergétique, pouvoir d&apos;achat) que ce jeu ne mesure pas.
                 </p>

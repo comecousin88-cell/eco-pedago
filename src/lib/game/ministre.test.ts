@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { anneeMandat, bilanMandat, tirerEvenements, type EtatMinistre, type Evenement, type HypothesesMinistre } from "./ministre";
 import { evenements } from "@/content/jeu-ministre";
+import { getSerie, getValeur } from "@/lib/data";
 
 const h: HypothesesMinistre = {
   croissanceTendance: 2.8,
@@ -11,15 +12,16 @@ const h: HypothesesMinistre = {
   reactionSpread: 15,
   tauxAllemand: 3.47,
   maturite: 8.5,
+  decoteMaturites: 0.8,
 };
-const depart: EtatMinistre = { annee: 0, dette: 115.7, soldePrimaire: -2.9, soldeStructurel: -2.9, soldePublic: -5.1, tauxApparent: 1.95, spread: 97, croissance: 1.9, pib: 2991.1 };
+const depart: EtatMinistre = { annee: 0, dette: 115.7, soldePrimaire: -2.9, soldeStructurel: -2.9, soldePublic: -5.1, soldeHorsChocs: -5.1, tauxApparent: 1.95, spread: 97, spreadHorsChocs: 97, croissance: 1.9, croissanceHorsChocs: 1.9, pib: 2991.1 };
 const calme: Evenement = { id: "calme", titre: "", texte: "", croissance: 0, taux: 0, spread: 0, cout: 0 };
 const rien = { economies: 0, impots: 0, investissement: 0 };
 
 describe("une année de mandat", () => {
   it("sans budget ni choc, la dette suit la formule d(1+r)/(1+g) − solde primaire", () => {
     const e = anneeMandat(depart, rien, calme, h);
-    const tauxMarche = 3.47 + 0.97;
+    const tauxMarche = 3.47 + 0.97 - 0.8;
     const r = (1.95 + (tauxMarche - 1.95) / 8.5) / 100;
     expect(e.dette).toBeCloseTo((115.7 * (1 + r)) / 1.028 + 2.9, 6);
     expect(e.croissance).toBeCloseTo(2.8, 10);
@@ -29,7 +31,7 @@ describe("une année de mandat", () => {
   it("le taux apparent se rapproche peu à peu du taux de marché", () => {
     const e = anneeMandat(depart, rien, calme, h);
     expect(e.tauxApparent).toBeGreaterThan(1.95);
-    expect(e.tauxApparent).toBeLessThan(3.47 + 0.97);
+    expect(e.tauxApparent).toBeLessThan(3.47 + 0.97 - 0.8);
   });
 
   it("des économies améliorent le solde mais freinent la croissance", () => {
@@ -100,5 +102,64 @@ describe("événements et bilan", () => {
       expect(ev.titre.length, ev.id).toBeGreaterThan(5);
       expect(ev.texte.length, ev.id).toBeGreaterThan(30);
     }
+  });
+});
+
+describe("calibrage : exigeant, mais un plan sérieux réussit", () => {
+  const v = (id: string) => getValeur(id).valeur;
+  const hReel: HypothesesMinistre = {
+    croissanceTendance: v("ministre.croissance-tendancielle"),
+    multDepenses: v("ministre.multiplicateur-depenses"),
+    multImpots: v("ministre.multiplicateur-impots"),
+    multInvestissement: v("ministre.multiplicateur-investissement"),
+    stabilisateurs: v("ministre.stabilisateurs"),
+    reactionSpread: v("ministre.reaction-spread"),
+    tauxAllemand: v("marches.taux10-allemagne-dernier"),
+    maturite: v("aft.maturite-moyenne"),
+    decoteMaturites: v("ministre.decote-maturites"),
+  };
+  const pib = v("macro.pib");
+  const interetsPib = (v("fp.interets") / pib) * 100;
+  const soldeInitial = -v("deficit.ratio-pib");
+  const departReel: EtatMinistre = {
+    annee: 0,
+    dette: v("dette.fin-annee-pib"),
+    soldePrimaire: soldeInitial + interetsPib,
+    soldeStructurel: soldeInitial + interetsPib,
+    soldePublic: soldeInitial,
+    soldeHorsChocs: soldeInitial,
+    tauxApparent: (v("fp.interets") / getSerie("dette.historique-md").serie.find((p) => p.x === "2024")!.y) * 100,
+    spread: v("marches.spread-dernier"),
+    spreadHorsChocs: v("marches.spread-dernier"),
+    croissance: v("macro.croissance-valeur"),
+    croissanceHorsChocs: v("macro.croissance-valeur"),
+    pib,
+  };
+  const jouer = (decision: { economies: number; impots: number; investissement: number }, graine: number) => {
+    let e = departReel;
+    const histo: EtatMinistre[] = [];
+    for (const ev of tirerEvenements(evenements, 5, graine)) {
+      e = anneeMandat(e, decision, ev, hReel);
+      histo.push(e);
+    }
+    return bilanMandat(departReel, histo).score;
+  };
+  // Un plan sérieux et réaliste : 25 Md€ d'effort par an (20 d'économies, 5 de recettes), environ 0,8 point de PIB.
+  const serieux = { economies: 20, impots: 5, investissement: 0 };
+
+  it("un plan sérieux atteint au moins 3 critères sur 4 avec les imprévus par défaut", () => {
+    expect(jouer(serieux, 2026)).toBeGreaterThanOrEqual(3);
+  });
+
+  it("un plan sérieux atteint au moins 3 critères sur 4 dans au moins 85 % des tirages d'imprévus", () => {
+    const graines = Array.from({ length: 200 }, (_, i) => i + 1);
+    const reussis = graines.filter((g) => jouer(serieux, g) >= 3).length;
+    expect(reussis / graines.length).toBeGreaterThanOrEqual(0.85);
+  });
+
+  it("le jeu reste exigeant : le seul effort minimal européen (0,5 point de PIB par an) ne suffit presque jamais", () => {
+    const graines = Array.from({ length: 200 }, (_, i) => i + 1);
+    const reussis = graines.filter((g) => jouer({ economies: 10, impots: 5, investissement: 0 }, g) >= 3).length;
+    expect(reussis / graines.length).toBeLessThan(0.1);
   });
 });

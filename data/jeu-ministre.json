@@ -71,7 +71,19 @@
         "nom": "Hypothèse du jeu « Ministre des Finances », choisie par Éco en clair pour rester dans les ordres de grandeur des études"
       },
       "statut": "hypothese",
-      "note": "+15 pb par an quand le déficit dépasse 4 % du PIB, −10 pb quand il passe sous 3 %, sans changement entre les deux."
+      "note": "+15 pb par an quand le déficit dépasse 4 % du PIB sans reculer d'au moins 0,3 point ; −10 pb quand il passe sous 3 % ou recule d'au moins 0,5 point dans l'année (redressement jugé crédible) ; sans changement sinon."
+    },
+    {
+      "id": "ministre.decote-maturites",
+      "label": "Écart entre le taux à 10 ans et le taux moyen des emprunts nouveaux (toutes durées)",
+      "valeur": 0.8,
+      "unite": "point",
+      "date": "2026",
+      "source": {
+        "nom": "Hypothèse du jeu « Ministre des Finances », choisie par Éco en clair pour rester dans les ordres de grandeur des études"
+      },
+      "statut": "hypothese",
+      "note": "L'État emprunte aussi à court terme (BTF) et à moyen terme, à des taux en général plus bas que le taux à 10 ans : le taux moyen de ses emprunts nouveaux est donc inférieur au taux à 10 ans."
     }
   ]
 }

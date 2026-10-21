@@ -2,7 +2,7 @@
 
 Fichier généré par `npm test` à partir des données marquées `"statut": "a_verifier"` dans `data/*.json`. Ne pas modifier à la main : corriger la donnée dans son fichier JSON, passer son statut à `verifie`, puis relancer `npm test`.
 
-11 chiffres en attente de vérification, et 26 mesures du jeu « Redresser les comptes ».
+10 chiffres en attente de vérification, et 26 mesures du jeu « Redresser les comptes ».
 
 ## data/aft.json
 
@@ -38,12 +38,6 @@ Fichier généré par `npm test` à partir des données marquées `"statut": "a_
 | Identifiant | Donnée | Valeur actuelle | Date | Source à consulter | Remarque |
 |---|---|---|---|---|---|
 | `is.taux-normal` | Taux normal de l'impôt sur les sociétés | 25 % | 2026 | [Service-public.fr (entreprendre), Impôt sur les sociétés : taux](https://entreprendre.service-public.gouv.fr/vosdroits/F23575) | Taux normal depuis 2022 ; taux réduit de 15 % pour une partie du bénéfice des PME. Une contribution exceptionnelle s'applique aux plus grandes entreprises : à vérifier pour 2026. |
-
-## data/international.json
-
-| Identifiant | Donnée | Valeur actuelle | Date | Source à consulter | Remarque |
-|---|---|---|---|---|---|
-| `histo.accord-londres` | Réduction de la dette extérieure de l'Allemagne de l'Ouest par l'accord de Londres (27 février 1953) | 50 % environ | 1953-02-27 | [Debt Justice (Jubilee Debt Campaign), How Europe cancelled Germany's debt in 1953](https://debtjustice.org.uk/report/europe-cancelled-germanys-debt-1953) | Ordre de grandeur cité par des organisations militantes (de 50 % à 62,6 % selon le mode de calcul) : à vérifier dans une source historique officielle. |
 
 ## data/mesures-budget.json (jeu « Redresser les comptes »)
 

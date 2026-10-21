@@ -7,10 +7,11 @@
  *  - croissance nominale = tendance + choc − multiplicateurs × effort (en points de PIB) ;
  *  - solde primaire structurel = celui de l'année précédente + effort de l'année (les budgets votés se cumulent) ;
  *  - solde primaire = structurel + stabilisateurs × écart de croissance − coût des chocs de l'année (effets temporaires) ;
- *  - taux de marché = taux allemand + écart (spread) + choc de taux ;
+ *  - taux des emprunts nouveaux = taux allemand à 10 ans + écart (spread) + choc de taux − décote de maturité ;
  *  - taux apparent : se rapproche du taux de marché d'un « 1 / maturité » chaque année (la dette se renouvelle peu à peu) ;
  *  - dette : d(t+1) = d(t) × (1 + r) / (1 + g) − solde primaire ;
- *  - spread : monte si le déficit dépasse 4 %, baisse s'il passe sous 3 %.
+ *  - spread : monte si le déficit dépasse 4 % sans s'améliorer ; baisse s'il passe sous 3 % ou recule nettement
+ *    (les marchés récompensent un redressement crédible).
  */
 
 export interface HypothesesMinistre {
@@ -27,6 +28,8 @@ export interface HypothesesMinistre {
   tauxAllemand: number;
   /** Maturité moyenne de la dette, en années. */
   maturite: number;
+  /** Écart entre le taux à 10 ans et le taux moyen des emprunts nouveaux, toutes durées confondues, en points. */
+  decoteMaturites: number;
 }
 
 export interface EtatMinistre {
@@ -43,8 +46,14 @@ export interface EtatMinistre {
   tauxApparent: number;
   /** Écart de taux avec l'Allemagne, en points de base. */
   spread: number;
+  /** Écart de taux qu'on observerait sans les chocs de spread tirés au sort, en points de base. */
+  spreadHorsChocs: number;
+  /** Solde public hors effets des chocs de l'année (croissance et dépense imprévue), en % du PIB. */
+  soldeHorsChocs: number;
   /** Croissance nominale de l'année, en %. */
   croissance: number;
+  /** Croissance nominale qu'aurait donnée le seul budget, sans les chocs extérieurs, en %. */
+  croissanceHorsChocs: number;
   /** PIB de l'année, en Md€. */
   pib: number;
 }
@@ -77,18 +86,28 @@ export function anneeMandat(e: EtatMinistre, d: DecisionBudget, ev: Evenement, h
   const pt = (md: number) => (md / e.pib) * 100;
   const effortPib = pt(d.economies) + pt(d.impots) - pt(d.investissement);
   const effetActivite = h.multDepenses * pt(d.economies) + h.multImpots * pt(d.impots) - h.multInvestissement * pt(d.investissement);
-  const croissance = h.croissanceTendance + ev.croissance - effetActivite;
+  const croissanceHorsChocs = h.croissanceTendance - effetActivite;
+  const croissance = croissanceHorsChocs + ev.croissance;
   const soldeStructurel = e.soldeStructurel + effortPib;
   const soldePrimaire = soldeStructurel + h.stabilisateurs * (croissance - h.croissanceTendance) - pt(ev.cout);
-  const tauxMarche = h.tauxAllemand + e.spread / 100 + ev.taux;
+  // Les emprunts nouveaux mêlent titres courts et longs : leur taux moyen est inférieur au taux à 10 ans.
+  const tauxMarche = h.tauxAllemand + e.spread / 100 + ev.taux - h.decoteMaturites;
   const tauxApparent = e.tauxApparent + (tauxMarche - e.tauxApparent) / h.maturite;
   const r = tauxApparent / 100;
   const g = croissance / 100;
   const dette = (e.dette * (1 + r)) / (1 + g) - soldePrimaire;
   const interets = (e.dette * r) / (1 + g);
   const soldePublic = soldePrimaire - interets;
-  const reaction = soldePublic < -4 ? h.reactionSpread : soldePublic > -3 ? -(2 / 3) * h.reactionSpread : 0;
+  const amelioration = soldePublic - e.soldePublic;
+  const reaction =
+    soldePublic >= -3 || amelioration >= 0.5
+      ? -(2 / 3) * h.reactionSpread
+      : soldePublic < -4 && amelioration < 0.3
+        ? h.reactionSpread
+        : 0;
   const spread = Math.max(0, e.spread + reaction + ev.spread);
+  const spreadHorsChocs = Math.max(0, e.spreadHorsChocs + reaction);
+  const soldeHorsChocs = soldePublic - h.stabilisateurs * ev.croissance + pt(ev.cout);
   return {
     annee: e.annee + 1,
     dette,
@@ -97,7 +116,10 @@ export function anneeMandat(e: EtatMinistre, d: DecisionBudget, ev: Evenement, h
     soldePublic,
     tauxApparent,
     spread,
+    spreadHorsChocs,
+    soldeHorsChocs,
     croissance,
+    croissanceHorsChocs,
     pib: e.pib * (1 + g),
   };
 }
@@ -126,6 +148,9 @@ export function tirerEvenements(liste: readonly Evenement[], n: number, graine: 
   return tirage;
 }
 
+/** Inflation supposée, pour passer de la croissance nominale à la croissance en volume. */
+export const INFLATION_SUPPOSEE = 1.8;
+
 export interface CritereBilan {
   libelle: string;
   atteint: boolean;
@@ -146,18 +171,18 @@ export function bilanMandat(depart: EtatMinistre, historique: readonly EtatMinis
     },
     {
       libelle: "Le déficit est revenu sous 3 % du PIB",
-      atteint: fin.soldePublic >= -3,
-      detail: "repère du traité de Maastricht",
+      atteint: fin.soldeHorsChocs >= -3,
+      detail: "repère du traité de Maastricht, hors effets de l'imprévu de la dernière année",
     },
     {
-      libelle: "Pas de récession pendant le mandat",
-      atteint: historique.every((x) => x.croissance - 1.8 > 0),
-      detail: "croissance en volume positive chaque année (croissance nominale moins 1,8 % d'inflation supposée)",
+      libelle: "Vos budgets n'ont pas provoqué de récession",
+      atteint: historique.every((x) => x.croissanceHorsChocs - INFLATION_SUPPOSEE > 0),
+      detail: "hors chocs extérieurs, la croissance en volume reste positive chaque année (croissance nominale moins 1,8 % d'inflation supposée)",
     },
     {
       libelle: "La confiance des marchés est préservée",
-      atteint: fin.spread <= depart.spread,
-      detail: "écart de taux avec l'Allemagne inférieur ou égal à celui du début du mandat",
+      atteint: fin.spreadHorsChocs <= depart.spreadHorsChocs,
+      detail: "écart de taux avec l'Allemagne revenu au moins à son niveau de départ, hors chocs extérieurs (dégradation, crise politique…)",
     },
   ];
   return { criteres, score: criteres.filter((c) => c.atteint).length };
