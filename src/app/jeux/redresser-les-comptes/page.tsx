@@ -1,0 +1,32 @@
+import type { Metadata } from "next";
+import { RedresserLesComptes } from "@/components/jeux/RedresserLesComptes";
+import { FilAriane } from "@/components/modules/FilAriane";
+import { MarquerLue } from "@/components/modules/MarquerLue";
+import { ModuleTheme } from "@/components/modules/ModuleTheme";
+import { rubriqueColors } from "@/content/modules";
+
+export const metadata: Metadata = {
+  title: "Redresser les comptes",
+  description:
+    "Choisissez un objectif (le budget de l'année, stabiliser la dette, zéro déficit) et trouvez l'effort parmi plus de 40 mesures chiffrées et sourcées : qui paie, quand, avec quelle certitude.",
+};
+
+export default function PageRedresserLesComptes() {
+  return (
+    <ModuleTheme color={rubriqueColors.jeux}>
+      <MarquerLue href="/jeux/redresser-les-comptes/" />
+      <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6 sm:py-14">
+        <FilAriane etapes={[{ label: "Jeux", href: "/jeux/" }, { label: "Redresser les comptes" }]} />
+        <h1 className="mt-6 font-serif text-3xl font-semibold tracking-tight text-ink sm:text-4xl">Redresser les comptes</h1>
+        <p className="mt-4 max-w-3xl text-lg leading-relaxed text-muted">
+          À vous de trouver l&apos;effort. Choisissez un objectif, puis des mesures parmi plus de quarante, chiffrées et
+          sourcées : économies sur les dépenses ou recettes nouvelles. Le jeu affiche ce que rapporte chaque mesure, quand,
+          avec quelle certitude, et qui la paie. Il ne dit pas lesquelles sont bonnes : c&apos;est à vous de juger.
+        </p>
+        <div className="mt-8">
+          <RedresserLesComptes />
+        </div>
+      </div>
+    </ModuleTheme>
+  );
+}

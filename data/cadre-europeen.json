@@ -137,6 +137,20 @@
       "note": "Total après le dernier versement de 6,1 Md€ ; uniquement des subventions.",
       "statut": "verifie",
       "consulte_le": "2026-10-21"
+    },
+    {
+      "id": "ue.effort-structurel-minimal",
+      "label": "Effort structurel minimal annuel pour un pays en procédure de déficit excessif",
+      "valeur": 0.5,
+      "unite": "point de PIB",
+      "date": "2026",
+      "source": {
+        "nom": "OFCE, « Budget 2026 : un déficit de compromis » (P. Madec, M. Plane, R. Sampognaro, 27 février 2026)",
+        "url": "https://www.ofce.fr/blog2024/fr/2026/20260228_MPPIMRS/index.html"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-21",
+      "note": "La loi de finances pour 2026 a ramené l'effort structurel de 0,8 à 0,5 point de PIB, « niveau minimal compatible avec les règles européennes »."
     }
   ]
 }

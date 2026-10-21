@@ -34,11 +34,11 @@ export const navItems: NavItem[] = [
     status: "available",
   },
   {
-    href: "/jeu-budget/",
+    href: "/jeux/",
     label: "Jeux",
     description:
       "Redresser les comptes de l'État en choisissant parmi des mesures chiffrées, puis tenir le budget pendant un mandat.",
-    status: "soon",
+    status: "available",
   },
   {
     href: "/glossaire/",

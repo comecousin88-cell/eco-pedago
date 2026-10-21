@@ -7,6 +7,10 @@ import { readdirSync, readFileSync, writeFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { describe, expect, it } from "vitest";
 import { fichiers, type Donnee } from "./data";
+import { mesures } from "./game/mesures";
+
+/** Fichiers de data/ qui n'ont pas le format « donnees » (contrôlés par leurs propres tests). */
+const AUTRES_FORMATS = ["mesures-budget"];
 
 const racine = fileURLToPath(new URL("../../", import.meta.url));
 const DATE = /^\d{4}(-\d{2}(-\d{2})?)?$/;
@@ -17,6 +21,7 @@ describe("données", () => {
     const surDisque = readdirSync(`${racine}data`)
       .filter((f) => f.endsWith(".json"))
       .map((f) => f.replace(/\.json$/, ""))
+      .filter((f) => !AUTRES_FORMATS.includes(f))
       .sort();
     expect(Object.keys(fichiers).sort()).toEqual(surDisque);
   });
@@ -59,6 +64,7 @@ describe("données", () => {
 
   it("A_VERIFIER.md est à jour", () => {
     const a = toutes.filter(({ d }) => d.statut === "a_verifier");
+    const mesuresAVerifier = mesures.filter((m) => m.statut === "a_verifier");
     const lignes = [
       "# Chiffres à vérifier",
       "",
@@ -66,7 +72,7 @@ describe("données", () => {
       "",
       a.length === 0
         ? "Aucun chiffre en attente de vérification."
-        : `${a.length} chiffre${a.length > 1 ? "s" : ""} en attente de vérification.`,
+        : `${a.length} chiffre${a.length > 1 ? "s" : ""} en attente de vérification, et ${mesuresAVerifier.length} mesure${mesuresAVerifier.length > 1 ? "s" : ""} du jeu « Redresser les comptes ».`,
     ];
     for (const fichier of Object.keys(fichiers)) {
       const duFichier = a.filter((x) => x.fichier === fichier);
@@ -81,6 +87,17 @@ describe("données", () => {
             : `série (${d.serie.length} points, ${d.unite})`;
         lignes.push(
           `| \`${d.id}\` | ${d.label} | ${valeur} | ${d.date} | [${d.source.nom}](${d.source.url}) | ${d.note ?? ""} |`,
+        );
+      }
+    }
+    if (mesuresAVerifier.length > 0) {
+      lignes.push("", "## data/mesures-budget.json (jeu « Redresser les comptes »)", "");
+      lignes.push("| Identifiant | Mesure | Rendement bas / central / haut | Source à consulter | Remarque |");
+      lignes.push("|---|---|---|---|---|");
+      for (const m of mesuresAVerifier) {
+        const r = m.rendement;
+        lignes.push(
+          `| \`${m.id}\` | ${m.intitule} | ${r.bas} / ${r.central} / ${r.haut} Md€ | [${m.source.nom}](${m.source.url}) | ${m.note ?? ""} |`,
         );
       }
     }

@@ -727,3 +727,46 @@ export function effortStabilisation(deficitPctPib: number, deficitStabilisantPct
 export function deficitStabilisant(dettePctPib: number, croissanceNominale: number): number {
   return (dettePctPib * croissanceNominale) / (1 + croissanceNominale);
 }
+
+/* ------------------------------------------------------------------------ */
+/* Jeu « Redresser les comptes »                                            */
+/* ------------------------------------------------------------------------ */
+
+export interface DonneesObjectifs {
+  /** Déficit public de la dernière année, en Md€. */
+  deficitMd: number;
+  /** Même déficit, en points de PIB. */
+  deficitPct: number;
+  /** Dette publique fin d'année, en points de PIB. */
+  dettePct: number;
+  /** PIB de la dernière année, en Md€. */
+  pib: number;
+  /** Croissance nominale retenue (0,019 = 1,9 %). */
+  croissanceNominale: number;
+  /** Effort structurel annuel minimal demandé par les règles européennes, en points de PIB. */
+  effortMinimalPct: number;
+}
+
+/** Les trois objectifs du jeu, en Md€ par an. */
+export function objectifsJeu(d: DonneesObjectifs): { budget: number; stabiliser: number; zero: number } {
+  return {
+    budget: (d.effortMinimalPct * d.pib) / 100,
+    stabiliser: effortStabilisation(d.deficitPct, deficitStabilisant(d.dettePct, d.croissanceNominale), d.pib),
+    zero: d.deficitMd,
+  };
+}
+
+/**
+ * Dette en points de PIB sur `annees` ans, avec un déficit constant en points
+ * de PIB : d(t+1) = d(t) / (1 + g) + déficit. Modèle volontairement simple :
+ * il ignore l'effet en retour des mesures sur la croissance et les taux.
+ */
+export function trajectoireRatioDette(detteInitiale: number, deficitPct: number, croissanceNominale: number, annees: number): number[] {
+  const points = [detteInitiale];
+  let d = detteInitiale;
+  for (let t = 1; t <= annees; t++) {
+    d = d / (1 + croissanceNominale) + deficitPct;
+    points.push(d);
+  }
+  return points;
+}

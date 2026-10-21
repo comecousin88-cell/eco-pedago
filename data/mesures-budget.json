@@ -1,0 +1,1054 @@
+{
+  "description": "Mesures du jeu « Redresser les comptes ». Rendements annuels en milliards d'euros à effet plein, toutes choses égales par ailleurs : bas (prudent), central, haut (optimiste). Aucune mesure n'est qualifiée de bonne ou de mauvaise.",
+  "mesures": [
+    {
+      "id": "ret-gel",
+      "categorie": "Retraites",
+      "intitule": "Ne pas revaloriser les pensions pendant un an",
+      "explication": "Les pensions restent au même montant en euros pendant un an au lieu de suivre l'inflation : leur pouvoir d'achat baisse d'autant.",
+      "rendement": {
+        "bas": 4.2,
+        "central": 8.4,
+        "haut": 12.7
+      },
+      "delai": "immediat",
+      "payeurs": [
+        "retraites"
+      ],
+      "nature": "depense",
+      "source": {
+        "nom": "Conseil d'orientation des retraites, rapport annuel (juin 2026), dépenses de retraite ; calcul Éco en clair",
+        "url": "https://www.vie-publique.fr/files/rapport/pdf/303623.pdf"
+      },
+      "date": "2026",
+      "statut": "verifie",
+      "consulte_le": "2026-10-21",
+      "groupe": "indexation-pensions",
+      "calcul": "dépenses de retraite (environ 422 Md€) × inflation évitée : 1 % (bas), 2 % (central), 3 % (haut)"
+    },
+    {
+      "id": "ret-sous-index",
+      "categorie": "Retraites",
+      "intitule": "Revaloriser les pensions d'un point de moins que l'inflation",
+      "explication": "Les pensions augmentent, mais un point de moins que les prix : la perte de pouvoir d'achat est limitée à un point par an.",
+      "rendement": {
+        "bas": 3.8,
+        "central": 4.2,
+        "haut": 4.2
+      },
+      "delai": "immediat",
+      "payeurs": [
+        "retraites"
+      ],
+      "nature": "depense",
+      "source": {
+        "nom": "Conseil d'orientation des retraites, rapport annuel (juin 2026), dépenses de retraite ; calcul Éco en clair",
+        "url": "https://www.vie-publique.fr/files/rapport/pdf/303623.pdf"
+      },
+      "date": "2026",
+      "statut": "verifie",
+      "consulte_le": "2026-10-21",
+      "groupe": "indexation-pensions",
+      "calcul": "1 % des dépenses de retraite (environ 422 Md€) ; un peu moins si les petites pensions sont protégées"
+    },
+    {
+      "id": "ret-sous-index-hautes",
+      "categorie": "Retraites",
+      "intitule": "Sous-indexer seulement les pensions au-dessus de 1 260 € par mois",
+      "explication": "Les pensions les plus basses suivent l'inflation ; les autres sont revalorisées moins vite.",
+      "rendement": {
+        "bas": 3,
+        "central": 4.1,
+        "haut": 4.5
+      },
+      "delai": "immediat",
+      "payeurs": [
+        "retraites"
+      ],
+      "nature": "depense",
+      "source": {
+        "nom": "Presse (MoneyVox, octobre 2026), projet de loi de financement de la sécurité sociale pour 2027 : sous-indexation et abattement",
+        "url": "https://www.moneyvox.fr/retraite/actualites/110585/retraites-2027-sous-indexation-et-baisse-de-abattement-les-seuils-valides-par-le-gouvernement"
+      },
+      "date": "2026",
+      "statut": "a_verifier",
+      "groupe": "indexation-pensions",
+      "note": "Chiffrage gouvernemental rapporté par la presse pour le budget 2027 ; taux et seuils non définitifs."
+    },
+    {
+      "id": "ret-abattement",
+      "categorie": "Retraites",
+      "intitule": "Abaisser le plafond de l'abattement fiscal de 10 % sur les pensions",
+      "explication": "L'abattement forfaitaire de 10 % sur les pensions, qui réduit l'impôt sur le revenu, serait plafonné plus bas : seuls les retraités imposables aux pensions élevées sont concernés.",
+      "rendement": {
+        "bas": 1,
+        "central": 1.4,
+        "haut": 1.8
+      },
+      "delai": "immediat",
+      "payeurs": [
+        "retraites",
+        "menages-aises"
+      ],
+      "nature": "recette",
+      "source": {
+        "nom": "Presse (MoneyVox, octobre 2026), projet de loi de financement de la sécurité sociale pour 2027 : sous-indexation et abattement",
+        "url": "https://www.moneyvox.fr/retraite/actualites/110585/retraites-2027-sous-indexation-et-baisse-de-abattement-les-seuils-valides-par-le-gouvernement"
+      },
+      "date": "2026",
+      "statut": "a_verifier",
+      "note": "Ordre de grandeur rapporté par la presse pour le budget 2027."
+    },
+    {
+      "id": "ret-65",
+      "categorie": "Retraites",
+      "intitule": "Porter l'âge légal de départ à 65 ans",
+      "explication": "Un an de plus que la cible de 64 ans : moins de pensions versées et plus de cotisations, mais un effet qui monte progressivement.",
+      "rendement": {
+        "bas": 5,
+        "central": 8.4,
+        "haut": 8.4
+      },
+      "delai": "long-terme",
+      "payeurs": [
+        "actifs"
+      ],
+      "nature": "depense",
+      "source": {
+        "nom": "Cour des comptes, Situation financière et perspectives du système de retraites (20 février 2025)",
+        "url": "https://www.ccomptes.fr/fr/publications/situation-financiere-et-perspectives-du-systeme-de-retraites"
+      },
+      "date": "2026",
+      "statut": "verifie",
+      "consulte_le": "2026-10-21",
+      "groupe": "age-legal",
+      "note": "Jusqu'à 8,4 Md€ à l'horizon 2035 selon la Cour des comptes."
+    },
+    {
+      "id": "ret-64-reprise",
+      "categorie": "Retraites",
+      "intitule": "Reprendre dès 2027 le relèvement de l'âge vers 64 ans",
+      "explication": "Mettre fin à la suspension de la réforme de 2023 : l'âge légal reprend sa hausse vers 64 ans.",
+      "rendement": {
+        "bas": 0.5,
+        "central": 1.5,
+        "haut": 2
+      },
+      "delai": "2-3-ans",
+      "payeurs": [
+        "actifs"
+      ],
+      "nature": "depense",
+      "source": {
+        "nom": "Ordre de grandeur à documenter (annexe « Voies et moyens » du PLF, rapports de la Cour des comptes et des revues de dépenses)",
+        "url": "https://www.budget.gouv.fr/documentation/documents-budgetaires"
+      },
+      "date": "2026",
+      "statut": "a_verifier",
+      "groupe": "age-legal",
+      "note": "Coût de la suspension estimé à quelques centaines de millions d'euros en 2026 et à plus d'un milliard en 2027 : à vérifier dans l'étude d'impact de la LFSS 2026."
+    },
+    {
+      "id": "sante-ondam",
+      "categorie": "Santé",
+      "intitule": "Ralentir d'un point la hausse des dépenses d'assurance maladie",
+      "explication": "Les dépenses de santé augmentent un point de moins que prévu : économies sur les prix des produits de santé, l'organisation des soins, les volumes.",
+      "rendement": {
+        "bas": 2,
+        "central": 2.6,
+        "haut": 2.6
+      },
+      "delai": "immediat",
+      "payeurs": [
+        "menages-modestes",
+        "classes-moyennes",
+        "retraites",
+        "fonctionnaires"
+      ],
+      "nature": "depense",
+      "source": {
+        "nom": "Insee, dépenses des administrations publiques par fonction (2024) ; calcul Éco en clair",
+        "url": "https://www.insee.fr/fr/statistiques/8574720?sommaire=8574832"
+      },
+      "date": "2026",
+      "statut": "verifie",
+      "consulte_le": "2026-10-21",
+      "calcul": "1 % des dépenses publiques de santé (environ 261 Md€ en 2024)"
+    },
+    {
+      "id": "sante-franchises",
+      "categorie": "Santé",
+      "intitule": "Doubler les franchises médicales",
+      "explication": "Le reste à charge sur les médicaments et les consultations augmente, dans la limite d'un plafond annuel.",
+      "rendement": {
+        "bas": 0.5,
+        "central": 0.8,
+        "haut": 1
+      },
+      "delai": "immediat",
+      "payeurs": [
+        "menages-modestes",
+        "classes-moyennes",
+        "retraites"
+      ],
+      "nature": "depense",
+      "source": {
+        "nom": "Ordre de grandeur à documenter (annexe « Voies et moyens » du PLF, rapports de la Cour des comptes et des revues de dépenses)",
+        "url": "https://www.budget.gouv.fr/documentation/documents-budgetaires"
+      },
+      "date": "2026",
+      "statut": "a_verifier",
+      "note": "Mesure envisagée puis abandonnée pour 2026 ; chiffrage à vérifier."
+    },
+    {
+      "id": "sante-arrets",
+      "categorie": "Santé",
+      "intitule": "Réduire l'indemnisation des arrêts maladie de courte durée",
+      "explication": "Un jour de carence supplémentaire ou un plafond d'indemnisation plus bas pour les arrêts courts.",
+      "rendement": {
+        "bas": 0.4,
+        "central": 0.7,
+        "haut": 1
+      },
+      "delai": "immediat",
+      "payeurs": [
+        "actifs"
+      ],
+      "nature": "depense",
+      "source": {
+        "nom": "Ordre de grandeur à documenter (annexe « Voies et moyens » du PLF, rapports de la Cour des comptes et des revues de dépenses)",
+        "url": "https://www.budget.gouv.fr/documentation/documents-budgetaires"
+      },
+      "date": "2026",
+      "statut": "a_verifier"
+    },
+    {
+      "id": "prest-gel",
+      "categorie": "Prestations sociales",
+      "intitule": "Geler pendant un an les prestations sociales (hors minima sociaux)",
+      "explication": "Allocations familiales, aides au logement et autres prestations restent au même montant en euros pendant un an.",
+      "rendement": {
+        "bas": 1,
+        "central": 2,
+        "haut": 3
+      },
+      "delai": "immediat",
+      "payeurs": [
+        "menages-modestes",
+        "classes-moyennes"
+      ],
+      "nature": "depense",
+      "source": {
+        "nom": "Ordre de grandeur à documenter (annexe « Voies et moyens » du PLF, rapports de la Cour des comptes et des revues de dépenses)",
+        "url": "https://www.budget.gouv.fr/documentation/documents-budgetaires"
+      },
+      "date": "2026",
+      "statut": "a_verifier",
+      "note": "Ordre de grandeur : 1 à 1,5 Md€ par point d'inflation selon le champ retenu."
+    },
+    {
+      "id": "prest-chomage",
+      "categorie": "Prestations sociales",
+      "intitule": "Raccourcir la durée d'indemnisation du chômage",
+      "explication": "Les demandeurs d'emploi sont indemnisés moins longtemps, ou selon des règles plus strictes.",
+      "rendement": {
+        "bas": 1,
+        "central": 2,
+        "haut": 3
+      },
+      "delai": "2-3-ans",
+      "payeurs": [
+        "actifs"
+      ],
+      "nature": "depense",
+      "source": {
+        "nom": "Ordre de grandeur à documenter (annexe « Voies et moyens » du PLF, rapports de la Cour des comptes et des revues de dépenses)",
+        "url": "https://www.budget.gouv.fr/documentation/documents-budgetaires"
+      },
+      "date": "2026",
+      "statut": "a_verifier",
+      "note": "L'effet dépend de la conjoncture et des retours à l'emploi."
+    },
+    {
+      "id": "prest-logement",
+      "categorie": "Prestations sociales",
+      "intitule": "Recentrer les aides au logement",
+      "explication": "Les aides personnelles au logement sont réduites pour certains bénéficiaires (étudiants rattachés à un foyer aisé, revenus proches des plafonds).",
+      "rendement": {
+        "bas": 0.5,
+        "central": 1,
+        "haut": 1.5
+      },
+      "delai": "immediat",
+      "payeurs": [
+        "menages-modestes"
+      ],
+      "nature": "depense",
+      "source": {
+        "nom": "Ordre de grandeur à documenter (annexe « Voies et moyens » du PLF, rapports de la Cour des comptes et des revues de dépenses)",
+        "url": "https://www.budget.gouv.fr/documentation/documents-budgetaires"
+      },
+      "date": "2026",
+      "statut": "a_verifier"
+    },
+    {
+      "id": "fp-point",
+      "categorie": "Fonction publique",
+      "intitule": "Ne pas revaloriser le point d'indice des fonctionnaires",
+      "explication": "Le traitement de base des agents publics reste inchangé alors que les prix augmentent ; par rapport à une hausse de 1 %, l'économie est d'environ 2 Md€.",
+      "rendement": {
+        "bas": 2,
+        "central": 2.1,
+        "haut": 4
+      },
+      "delai": "immediat",
+      "payeurs": [
+        "fonctionnaires"
+      ],
+      "nature": "depense",
+      "source": {
+        "nom": "Acteurs publics, citant la Cour des comptes : coût d'une hausse de 1 % du point d'indice",
+        "url": "https://acteurspublics.fr/articles/la-facture-de-la-hausse-du-point-dindice-pour-chacun-des-3-versants-de-la-fonction-publique"
+      },
+      "date": "2026",
+      "statut": "a_verifier",
+      "note": "2,07 Md€ pour 1 % sur les trois fonctions publiques selon la Cour des comptes ; plus si l'inflation justifiait une hausse plus forte."
+    },
+    {
+      "id": "fp-effectifs",
+      "categorie": "Fonction publique",
+      "intitule": "Réduire d'1 % les effectifs de la fonction publique d'État",
+      "explication": "Ne pas remplacer une partie des départs à la retraite, hors enseignants et forces de sécurité.",
+      "rendement": {
+        "bas": 0.5,
+        "central": 1,
+        "haut": 1.2
+      },
+      "delai": "2-3-ans",
+      "payeurs": [
+        "fonctionnaires"
+      ],
+      "nature": "depense",
+      "source": {
+        "nom": "Ordre de grandeur à documenter (annexe « Voies et moyens » du PLF, rapports de la Cour des comptes et des revues de dépenses)",
+        "url": "https://www.budget.gouv.fr/documentation/documents-budgetaires"
+      },
+      "date": "2026",
+      "statut": "a_verifier"
+    },
+    {
+      "id": "fp-carence",
+      "categorie": "Fonction publique",
+      "intitule": "Instaurer trois jours de carence pour les agents publics",
+      "explication": "Comme dans le privé, les trois premiers jours d'un arrêt maladie ne seraient pas payés.",
+      "rendement": {
+        "bas": 0.2,
+        "central": 0.3,
+        "haut": 0.5
+      },
+      "delai": "immediat",
+      "payeurs": [
+        "fonctionnaires"
+      ],
+      "nature": "depense",
+      "source": {
+        "nom": "Ordre de grandeur à documenter (annexe « Voies et moyens » du PLF, rapports de la Cour des comptes et des revues de dépenses)",
+        "url": "https://www.budget.gouv.fr/documentation/documents-budgetaires"
+      },
+      "date": "2026",
+      "statut": "a_verifier"
+    },
+    {
+      "id": "coll-dotations",
+      "categorie": "Collectivités",
+      "intitule": "Baisser de 2 Md€ les dotations de l'État aux collectivités",
+      "explication": "L'État verse moins aux communes, départements et régions, qui doivent réduire leurs dépenses ou augmenter leurs impôts.",
+      "rendement": {
+        "bas": 1,
+        "central": 2,
+        "haut": 2
+      },
+      "delai": "immediat",
+      "payeurs": [
+        "collectivites"
+      ],
+      "nature": "depense",
+      "source": {
+        "nom": "Insee, dépenses par sous-secteur des administrations publiques (2025) ; calcul Éco en clair",
+        "url": "https://www.insee.fr/fr/statistiques/8988845"
+      },
+      "date": "2026",
+      "statut": "verifie",
+      "consulte_le": "2026-10-21",
+      "calcul": "montant fixé par la mesure ; une partie peut être compensée par des hausses d'impôts locaux"
+    },
+    {
+      "id": "coll-depenses",
+      "categorie": "Collectivités",
+      "intitule": "Limiter la hausse des dépenses locales à l'inflation moins un point",
+      "explication": "Un encadrement des dépenses de fonctionnement des grandes collectivités.",
+      "rendement": {
+        "bas": 1.5,
+        "central": 3.4,
+        "haut": 3.4
+      },
+      "delai": "2-3-ans",
+      "payeurs": [
+        "collectivites"
+      ],
+      "nature": "depense",
+      "source": {
+        "nom": "Insee, dépenses par sous-secteur des administrations publiques (2025) ; calcul Éco en clair",
+        "url": "https://www.insee.fr/fr/statistiques/8988845"
+      },
+      "date": "2026",
+      "statut": "verifie",
+      "consulte_le": "2026-10-21",
+      "calcul": "1 % des dépenses des administrations publiques locales (environ 335 Md€ en 2025)"
+    },
+    {
+      "id": "ent-allegements-haut",
+      "categorie": "Aides aux entreprises et niches",
+      "intitule": "Supprimer les allègements de cotisations au-delà de 2,5 Smic",
+      "explication": "Les réductions de cotisations patronales sur les salaires élevés, sans effet avéré sur l'emploi selon les experts, seraient supprimées.",
+      "rendement": {
+        "bas": 1.5,
+        "central": 1.6,
+        "haut": 2
+      },
+      "delai": "immediat",
+      "payeurs": [
+        "entreprises"
+      ],
+      "nature": "recette",
+      "source": {
+        "nom": "Ordre de grandeur à documenter (annexe « Voies et moyens » du PLF, rapports de la Cour des comptes et des revues de dépenses)",
+        "url": "https://www.budget.gouv.fr/documentation/documents-budgetaires"
+      },
+      "date": "2026",
+      "statut": "a_verifier",
+      "groupe": "allegements",
+      "note": "Environ 1,6 Md€ en 2022 selon le rapport Bozio-Wasmer, cité au Parlement."
+    },
+    {
+      "id": "ent-allegements-10",
+      "categorie": "Aides aux entreprises et niches",
+      "intitule": "Réduire de 10 % tous les allègements de cotisations patronales",
+      "explication": "Les cotisations patronales augmentent, surtout sur les bas salaires : un risque pour l'emploi peu qualifié.",
+      "rendement": {
+        "bas": 7,
+        "central": 8,
+        "haut": 8
+      },
+      "delai": "immediat",
+      "payeurs": [
+        "entreprises",
+        "actifs"
+      ],
+      "nature": "recette",
+      "source": {
+        "nom": "Groupe d'experts sur le Smic, rapport du 28 novembre 2024 ; calcul Éco en clair",
+        "url": "https://www.tresor.economie.gouv.fr/Articles/284b121f-b187-4280-b327-05f18064c3fa/files/e5a11d8e-ca36-42b1-afaf-403257e3edfe"
+      },
+      "date": "2026",
+      "statut": "verifie",
+      "consulte_le": "2026-10-21",
+      "groupe": "allegements",
+      "calcul": "10 % du coût des allègements généraux (près de 80 Md€ en 2024), avant effets sur l'emploi"
+    },
+    {
+      "id": "ent-cir",
+      "categorie": "Aides aux entreprises et niches",
+      "intitule": "Recentrer le crédit d'impôt recherche",
+      "explication": "Le crédit d'impôt pour les dépenses de recherche serait plafonné pour les plus grandes entreprises.",
+      "rendement": {
+        "bas": 0.5,
+        "central": 1,
+        "haut": 2
+      },
+      "delai": "2-3-ans",
+      "payeurs": [
+        "entreprises"
+      ],
+      "nature": "recette",
+      "source": {
+        "nom": "Ordre de grandeur à documenter (annexe « Voies et moyens » du PLF, rapports de la Cour des comptes et des revues de dépenses)",
+        "url": "https://www.budget.gouv.fr/documentation/documents-budgetaires"
+      },
+      "date": "2026",
+      "statut": "a_verifier"
+    },
+    {
+      "id": "ent-niches",
+      "categorie": "Aides aux entreprises et niches",
+      "intitule": "Supprimer 23 dépenses fiscales jugées peu efficaces",
+      "explication": "Un ensemble de réductions et crédits d'impôt ciblés (le projet de budget 2026 en proposait 23).",
+      "rendement": {
+        "bas": 3,
+        "central": 5,
+        "haut": 5
+      },
+      "delai": "2-3-ans",
+      "payeurs": [
+        "entreprises",
+        "menages-aises",
+        "classes-moyennes"
+      ],
+      "nature": "recette",
+      "source": {
+        "nom": "Projet de loi de finances 2026 : suppression de 23 dépenses fiscales (cité par un rapport d'orientation budgétaire local)",
+        "url": "https://www.cig929394.fr/wp-content/uploads/2026/03/Annexe-C-ROB.pdf"
+      },
+      "date": "2026",
+      "statut": "a_verifier",
+      "note": "Environ 5 Md€ dans le projet initial du budget 2026 ; liste et montants définitifs à vérifier."
+    },
+    {
+      "id": "etat-gel",
+      "categorie": "État et défense",
+      "intitule": "Geler en valeur les crédits des ministères (hors défense et charge de la dette)",
+      "explication": "Les budgets des ministères restent au même montant en euros : leur pouvoir d'achat baisse avec l'inflation.",
+      "rendement": {
+        "bas": 3,
+        "central": 5,
+        "haut": 7
+      },
+      "delai": "immediat",
+      "payeurs": [
+        "fonctionnaires",
+        "menages-modestes",
+        "classes-moyennes"
+      ],
+      "nature": "depense",
+      "source": {
+        "nom": "Ordre de grandeur à documenter (annexe « Voies et moyens » du PLF, rapports de la Cour des comptes et des revues de dépenses)",
+        "url": "https://www.budget.gouv.fr/documentation/documents-budgetaires"
+      },
+      "date": "2026",
+      "statut": "a_verifier"
+    },
+    {
+      "id": "def-report",
+      "categorie": "État et défense",
+      "intitule": "Étaler la hausse prévue du budget de la défense",
+      "explication": "Repousser d'un an une partie des hausses de crédits prévues par la loi de programmation militaire.",
+      "rendement": {
+        "bas": 2,
+        "central": 3.3,
+        "haut": 3.3
+      },
+      "delai": "immediat",
+      "payeurs": [
+        "entreprises"
+      ],
+      "nature": "depense",
+      "source": {
+        "nom": "Projet de loi de finances 2026, crédits des missions ; calcul Éco en clair",
+        "url": "https://www.budget.gouv.fr/budget-etat"
+      },
+      "date": "2026",
+      "statut": "verifie",
+      "consulte_le": "2026-10-21",
+      "calcul": "environ 5 % des crédits de la mission Défense (66,7 Md€ en 2026)"
+    },
+    {
+      "id": "edu-demographie",
+      "categorie": "Éducation",
+      "intitule": "Adapter les effectifs d'enseignants à la baisse du nombre d'élèves",
+      "explication": "Avec moins d'élèves, maintenir le nombre d'élèves par classe en supprimant une partie des postes au fil des départs.",
+      "rendement": {
+        "bas": 0.5,
+        "central": 1,
+        "haut": 2
+      },
+      "delai": "long-terme",
+      "payeurs": [
+        "fonctionnaires"
+      ],
+      "nature": "depense",
+      "source": {
+        "nom": "Ordre de grandeur à documenter (annexe « Voies et moyens » du PLF, rapports de la Cour des comptes et des revues de dépenses)",
+        "url": "https://www.budget.gouv.fr/documentation/documents-budgetaires"
+      },
+      "date": "2026",
+      "statut": "a_verifier"
+    },
+    {
+      "id": "csg-1pt",
+      "categorie": "Impôts sur les ménages",
+      "intitule": "Relever la CSG d'un point",
+      "explication": "La CSG porte sur presque tous les revenus : salaires, pensions, revenus du patrimoine.",
+      "rendement": {
+        "bas": 15,
+        "central": 16.7,
+        "haut": 16.7
+      },
+      "delai": "immediat",
+      "payeurs": [
+        "actifs",
+        "retraites",
+        "classes-moyennes",
+        "menages-modestes",
+        "menages-aises"
+      ],
+      "nature": "recette",
+      "source": {
+        "nom": "Insee, recettes des administrations publiques (2024) ; calcul Éco en clair",
+        "url": "https://www.insee.fr/fr/statistiques/8988845"
+      },
+      "date": "2026",
+      "statut": "verifie",
+      "consulte_le": "2026-10-21",
+      "groupe": "csg",
+      "calcul": "recettes de CSG et CRDS (162,2 Md€ en 2024) divisées par leur taux sur les salaires (9,7 %)"
+    },
+    {
+      "id": "csg-retraites",
+      "categorie": "Impôts sur les ménages",
+      "intitule": "Aligner la CSG des retraités aisés sur celle des actifs",
+      "explication": "Le taux de CSG des pensions les plus élevées (8,3 %) passerait à celui des salaires (9,2 %).",
+      "rendement": {
+        "bas": 1.5,
+        "central": 2,
+        "haut": 2.5
+      },
+      "delai": "immediat",
+      "payeurs": [
+        "retraites",
+        "menages-aises"
+      ],
+      "nature": "recette",
+      "source": {
+        "nom": "Ordre de grandeur à documenter (annexe « Voies et moyens » du PLF, rapports de la Cour des comptes et des revues de dépenses)",
+        "url": "https://www.budget.gouv.fr/documentation/documents-budgetaires"
+      },
+      "date": "2026",
+      "statut": "a_verifier",
+      "groupe": "csg"
+    },
+    {
+      "id": "ir-gel-bareme",
+      "categorie": "Impôts sur les ménages",
+      "intitule": "Ne pas indexer le barème de l'impôt sur le revenu pendant un an",
+      "explication": "Les tranches de l'impôt restent au même niveau alors que les revenus augmentent avec les prix : de nouveaux foyers deviennent imposables.",
+      "rendement": {
+        "bas": 1,
+        "central": 2,
+        "haut": 3
+      },
+      "delai": "immediat",
+      "payeurs": [
+        "classes-moyennes",
+        "menages-aises",
+        "menages-modestes"
+      ],
+      "nature": "recette",
+      "source": {
+        "nom": "Ordre de grandeur à documenter (annexe « Voies et moyens » du PLF, rapports de la Cour des comptes et des revues de dépenses)",
+        "url": "https://www.budget.gouv.fr/documentation/documents-budgetaires"
+      },
+      "date": "2026",
+      "statut": "a_verifier",
+      "note": "Environ 1 Md€ par point d'inflation, ordre de grandeur souvent cité : à vérifier."
+    },
+    {
+      "id": "ir-hauts-revenus",
+      "categorie": "Impôts sur les ménages",
+      "intitule": "Pérenniser la contribution différentielle sur les très hauts revenus",
+      "explication": "Un taux minimal d'imposition de 20 % pour les foyers aux revenus très élevés, créé à titre temporaire.",
+      "rendement": {
+        "bas": 1,
+        "central": 1.5,
+        "haut": 2
+      },
+      "delai": "immediat",
+      "payeurs": [
+        "menages-aises"
+      ],
+      "nature": "recette",
+      "source": {
+        "nom": "Ordre de grandeur à documenter (annexe « Voies et moyens » du PLF, rapports de la Cour des comptes et des revues de dépenses)",
+        "url": "https://www.budget.gouv.fr/documentation/documents-budgetaires"
+      },
+      "date": "2026",
+      "statut": "a_verifier"
+    },
+    {
+      "id": "ir-tranche",
+      "categorie": "Impôts sur les ménages",
+      "intitule": "Créer une tranche d'impôt sur le revenu à 50 %",
+      "explication": "Une nouvelle tranche pour les revenus les plus élevés, au-dessus de la tranche à 45 %.",
+      "rendement": {
+        "bas": 0.3,
+        "central": 0.7,
+        "haut": 1
+      },
+      "delai": "immediat",
+      "payeurs": [
+        "menages-aises"
+      ],
+      "nature": "recette",
+      "source": {
+        "nom": "Ordre de grandeur à documenter (annexe « Voies et moyens » du PLF, rapports de la Cour des comptes et des revues de dépenses)",
+        "url": "https://www.budget.gouv.fr/documentation/documents-budgetaires"
+      },
+      "date": "2026",
+      "statut": "a_verifier",
+      "incertain": true,
+      "note": "Rendement sensible aux comportements d'optimisation."
+    },
+    {
+      "id": "is-surtaxe",
+      "categorie": "Impôts sur les entreprises",
+      "intitule": "Prolonger la surtaxe d'impôt sur les sociétés des grandes entreprises",
+      "explication": "Une contribution exceptionnelle sur les bénéfices des entreprises au chiffre d'affaires élevé, créée à titre temporaire.",
+      "rendement": {
+        "bas": 3,
+        "central": 4,
+        "haut": 8
+      },
+      "delai": "immediat",
+      "payeurs": [
+        "entreprises"
+      ],
+      "nature": "recette",
+      "source": {
+        "nom": "Ordre de grandeur à documenter (annexe « Voies et moyens » du PLF, rapports de la Cour des comptes et des revues de dépenses)",
+        "url": "https://www.budget.gouv.fr/documentation/documents-budgetaires"
+      },
+      "date": "2026",
+      "statut": "a_verifier",
+      "groupe": "is"
+    },
+    {
+      "id": "is-1pt",
+      "categorie": "Impôts sur les entreprises",
+      "intitule": "Relever d'un point le taux normal de l'impôt sur les sociétés",
+      "explication": "Le taux passerait de 25 % à 26 %.",
+      "rendement": {
+        "bas": 2,
+        "central": 2.5,
+        "haut": 2.7
+      },
+      "delai": "immediat",
+      "payeurs": [
+        "entreprises"
+      ],
+      "nature": "recette",
+      "source": {
+        "nom": "Insee, recettes des administrations publiques (2024) ; calcul Éco en clair",
+        "url": "https://www.insee.fr/fr/statistiques/8988845"
+      },
+      "date": "2026",
+      "statut": "verifie",
+      "consulte_le": "2026-10-21",
+      "groupe": "is",
+      "incertain": true,
+      "calcul": "recettes d'impôt sur les sociétés (68 Md€ en 2024) / 25, réduit pour tenir compte de l'optimisation"
+    },
+    {
+      "id": "is-rachats",
+      "categorie": "Impôts sur les entreprises",
+      "intitule": "Taxer les rachats d'actions des grandes entreprises",
+      "explication": "Une taxe sur les montants consacrés par les grandes entreprises au rachat de leurs propres actions.",
+      "rendement": {
+        "bas": 0.2,
+        "central": 0.4,
+        "haut": 0.8
+      },
+      "delai": "immediat",
+      "payeurs": [
+        "entreprises",
+        "menages-aises"
+      ],
+      "nature": "recette",
+      "source": {
+        "nom": "Ordre de grandeur à documenter (annexe « Voies et moyens » du PLF, rapports de la Cour des comptes et des revues de dépenses)",
+        "url": "https://www.budget.gouv.fr/documentation/documents-budgetaires"
+      },
+      "date": "2026",
+      "statut": "a_verifier",
+      "incertain": true
+    },
+    {
+      "id": "pat-plancher",
+      "categorie": "Fiscalité du patrimoine",
+      "intitule": "Impôt minimal de 2 % sur les patrimoines de plus de 100 M€",
+      "explication": "Un impôt « plancher » : les très grandes fortunes paieraient au moins 2 % de leur patrimoine chaque année, impôts déjà payés déduits.",
+      "rendement": {
+        "bas": 2,
+        "central": 5,
+        "haut": 25
+      },
+      "delai": "2-3-ans",
+      "payeurs": [
+        "menages-aises"
+      ],
+      "nature": "recette",
+      "source": {
+        "nom": "Sénat, rapport n° 689 (2024-2025) sur l'impôt plancher de 2 %",
+        "url": "https://www.senat.fr/rap/l24-689/l24-6891.html"
+      },
+      "date": "2026",
+      "statut": "verifie",
+      "consulte_le": "2026-10-21",
+      "groupe": "impot-fortune",
+      "incertain": true,
+      "note": "De 2 à 3 Md€ (impôt sur les sociétés déduit) à 15 à 25 Md€ (estimation de ses promoteurs) ; valeur centrale prudente retenue par Éco en clair."
+    },
+    {
+      "id": "pat-isf",
+      "categorie": "Fiscalité du patrimoine",
+      "intitule": "Rétablir un impôt sur la fortune (actifs financiers inclus)",
+      "explication": "Revenir à un impôt annuel sur le patrimoine net des ménages aisés, comme l'ISF avant 2018.",
+      "rendement": {
+        "bas": 2.9,
+        "central": 4,
+        "haut": 4.5
+      },
+      "delai": "2-3-ans",
+      "payeurs": [
+        "menages-aises"
+      ],
+      "nature": "recette",
+      "source": {
+        "nom": "Sénat, rapport n° 689 (2024-2025), citant le rapport sénatorial de 2019 et France Stratégie",
+        "url": "https://www.senat.fr/rap/l24-689/l24-6891.html"
+      },
+      "date": "2026",
+      "statut": "verifie",
+      "consulte_le": "2026-10-21",
+      "groupe": "impot-fortune",
+      "incertain": true,
+      "calcul": "coût de la transformation de l'ISF en IFI : 2,9 Md€ (2018) à 4,5 Md€ (2022)"
+    },
+    {
+      "id": "pat-successions",
+      "categorie": "Fiscalité du patrimoine",
+      "intitule": "Alourdir l'imposition des grosses successions",
+      "explication": "Réduire les exonérations sur les très grosses transmissions (assurance-vie, entreprises familiales).",
+      "rendement": {
+        "bas": 1,
+        "central": 2.5,
+        "haut": 4
+      },
+      "delai": "2-3-ans",
+      "payeurs": [
+        "menages-aises"
+      ],
+      "nature": "recette",
+      "source": {
+        "nom": "Ordre de grandeur à documenter (annexe « Voies et moyens » du PLF, rapports de la Cour des comptes et des revues de dépenses)",
+        "url": "https://www.budget.gouv.fr/documentation/documents-budgetaires"
+      },
+      "date": "2026",
+      "statut": "a_verifier",
+      "incertain": true
+    },
+    {
+      "id": "pat-pfu",
+      "categorie": "Fiscalité du patrimoine",
+      "intitule": "Relever de 30 % à 33 % le prélèvement forfaitaire sur les revenus du capital",
+      "explication": "Dividendes, intérêts et plus-values seraient un peu plus taxés.",
+      "rendement": {
+        "bas": 1,
+        "central": 1.5,
+        "haut": 2
+      },
+      "delai": "immediat",
+      "payeurs": [
+        "menages-aises",
+        "classes-moyennes"
+      ],
+      "nature": "recette",
+      "source": {
+        "nom": "Ordre de grandeur à documenter (annexe « Voies et moyens » du PLF, rapports de la Cour des comptes et des revues de dépenses)",
+        "url": "https://www.budget.gouv.fr/documentation/documents-budgetaires"
+      },
+      "date": "2026",
+      "statut": "a_verifier",
+      "incertain": true
+    },
+    {
+      "id": "tva-normal",
+      "categorie": "TVA et consommation",
+      "intitule": "Relever d'un point le taux normal de TVA (20 % → 21 %)",
+      "explication": "Une hausse des prix d'environ 0,5 % en moyenne sur les produits concernés, payée par tous les consommateurs.",
+      "rendement": {
+        "bas": 8,
+        "central": 8.9,
+        "haut": 8.9
+      },
+      "delai": "immediat",
+      "payeurs": [
+        "menages-modestes",
+        "classes-moyennes",
+        "menages-aises",
+        "retraites"
+      ],
+      "nature": "recette",
+      "source": {
+        "nom": "Fipeco (site de François Ecalle, ancien magistrat de la Cour des comptes), fiche TVA (juin 2026), citant la DG Trésor",
+        "url": "https://www.fipeco.fr/pdf/TVA.pdf"
+      },
+      "date": "2026",
+      "statut": "verifie",
+      "consulte_le": "2026-10-21",
+      "groupe": "tva"
+    },
+    {
+      "id": "tva-tous",
+      "categorie": "TVA et consommation",
+      "intitule": "Relever d'un point tous les taux de TVA",
+      "explication": "Taux normal, intermédiaire, réduit et super-réduit augmentent tous d'un point, y compris sur l'alimentation.",
+      "rendement": {
+        "bas": 11,
+        "central": 11.5,
+        "haut": 14
+      },
+      "delai": "immediat",
+      "payeurs": [
+        "menages-modestes",
+        "classes-moyennes",
+        "menages-aises",
+        "retraites"
+      ],
+      "nature": "recette",
+      "source": {
+        "nom": "Fipeco (site de François Ecalle, ancien magistrat de la Cour des comptes), fiche TVA (juin 2026), citant la DG Trésor",
+        "url": "https://www.fipeco.fr/pdf/TVA.pdf"
+      },
+      "date": "2026",
+      "statut": "verifie",
+      "consulte_le": "2026-10-21",
+      "groupe": "tva",
+      "note": "Près de 14 Md€ brut ; 11,5 Md€ net de la TVA payée par les administrations elles-mêmes."
+    },
+    {
+      "id": "tva-reduits",
+      "categorie": "TVA et consommation",
+      "intitule": "Supprimer certains taux réduits de TVA",
+      "explication": "Restauration, travaux dans les logements, hébergement : passer une partie de ces taux au taux normal.",
+      "rendement": {
+        "bas": 2,
+        "central": 4,
+        "haut": 6
+      },
+      "delai": "immediat",
+      "payeurs": [
+        "classes-moyennes",
+        "menages-aises",
+        "entreprises"
+      ],
+      "nature": "recette",
+      "source": {
+        "nom": "Ordre de grandeur à documenter (annexe « Voies et moyens » du PLF, rapports de la Cour des comptes et des revues de dépenses)",
+        "url": "https://www.budget.gouv.fr/documentation/documents-budgetaires"
+      },
+      "date": "2026",
+      "statut": "a_verifier"
+    },
+    {
+      "id": "accise-gazole",
+      "categorie": "TVA et consommation",
+      "intitule": "Aligner la taxation du gazole sur celle de l'essence",
+      "explication": "L'accise sur le gazole est un peu plus faible que sur l'essence ; l'aligner augmente le prix du litre de gazole d'environ 7 centimes.",
+      "rendement": {
+        "bas": 1,
+        "central": 1.8,
+        "haut": 2.2
+      },
+      "delai": "immediat",
+      "payeurs": [
+        "menages-modestes",
+        "classes-moyennes",
+        "entreprises"
+      ],
+      "nature": "recette",
+      "source": {
+        "nom": "Ordre de grandeur à documenter (annexe « Voies et moyens » du PLF, rapports de la Cour des comptes et des revues de dépenses)",
+        "url": "https://www.budget.gouv.fr/documentation/documents-budgetaires"
+      },
+      "date": "2026",
+      "statut": "a_verifier"
+    },
+    {
+      "id": "fraude-fiscale",
+      "categorie": "Lutte contre la fraude",
+      "intitule": "Renforcer le contrôle fiscal",
+      "explication": "Plus d'agents et d'outils d'analyse de données pour détecter et recouvrer la fraude fiscale.",
+      "rendement": {
+        "bas": 0.5,
+        "central": 1.5,
+        "haut": 3
+      },
+      "delai": "2-3-ans",
+      "payeurs": [
+        "entreprises",
+        "menages-aises"
+      ],
+      "nature": "recette",
+      "source": {
+        "nom": "Ministère de l'Économie, bilan 2025 du contrôle fiscal ; calcul Éco en clair",
+        "url": "https://www.economie.gouv.fr/actualites/lutte-contre-la-fraude-un-controle-fiscal-toujours-plus-efficace-en-2025"
+      },
+      "date": "2026",
+      "statut": "verifie",
+      "consulte_le": "2026-10-21",
+      "incertain": true,
+      "calcul": "hypothèse prudente : +10 % à +25 % sur les 11,4 Md€ encaissés en 2025"
+    },
+    {
+      "id": "fraude-tva",
+      "categorie": "Lutte contre la fraude",
+      "intitule": "Réduire d'un quart l'écart de TVA",
+      "explication": "Facturation électronique et contrôles ciblés pour réduire la TVA due mais non perçue.",
+      "rendement": {
+        "bas": 1,
+        "central": 3,
+        "haut": 6
+      },
+      "delai": "2-3-ans",
+      "payeurs": [
+        "entreprises"
+      ],
+      "nature": "recette",
+      "source": {
+        "nom": "Commission européenne, VAT gap in Europe 2025 ; calcul Éco en clair",
+        "url": "https://taxation-customs.ec.europa.eu/vat-gap_en"
+      },
+      "date": "2026",
+      "statut": "verifie",
+      "consulte_le": "2026-10-21",
+      "incertain": true,
+      "calcul": "un quart (central) de l'écart de TVA estimé à 12,1 Md€ en 2023 ; de moins d'un dixième à la moitié"
+    },
+    {
+      "id": "fraude-sociale",
+      "categorie": "Lutte contre la fraude",
+      "intitule": "Renforcer la lutte contre la fraude sociale",
+      "explication": "Plus de contrôles sur le travail dissimulé et les prestations, et un meilleur recouvrement des sommes détectées.",
+      "rendement": {
+        "bas": 0.3,
+        "central": 0.7,
+        "haut": 2
+      },
+      "delai": "2-3-ans",
+      "payeurs": [
+        "entreprises",
+        "menages-modestes",
+        "actifs"
+      ],
+      "nature": "recette",
+      "source": {
+        "nom": "HCFiPS, note de suivi des fraudes sociales (décembre 2025) ; calcul Éco en clair",
+        "url": "https://www.securite-sociale.fr/files/live/sites/SSFR/files/medias/HCFIPS/2026/HCFIPS%20-%20Synth%C3%A8se%20Fraude%20sociale%202025%20-%20Version%20finalis%C3%A9e.pdf"
+      },
+      "date": "2026",
+      "statut": "verifie",
+      "consulte_le": "2026-10-21",
+      "incertain": true,
+      "calcul": "doubler les sommes recouvrées (680 M€ en 2024) ; jusqu'à 2 Md€ si l'essentiel des sommes détectées était recouvré"
+    }
+  ]
+}
