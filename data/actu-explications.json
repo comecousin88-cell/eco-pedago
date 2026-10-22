@@ -1,4 +1,9 @@
 {
   "description": "Encadrés « Ce que ça veut dire » du fil « L'actu », par identifiant d'entrée. Chaque texte est proposé par la tâche « Veille de l'agenda » dans une demande de mise à jour, et n'est publié qu'après validation (fusion de la demande).",
-  "explications": {}
+  "explications": {
+    "alerte-france-italie-franchi-2026-09": {
+      "texte": "Le taux d'emprunt à 10 ans de la France est au-dessus de celui de l'Italie depuis août 2026 : 4,44 % contre 4,36 % en septembre 2026. Les marchés jugent désormais la France aussi risquée, voire plus, que l'Italie, longtemps considérée comme plus fragile : la prime de risque française augmente. Le tableau de bord suit cet indicateur chaque jour ouvré.",
+      "propose_le": "2026-10-22"
+    }
+  }
 }
