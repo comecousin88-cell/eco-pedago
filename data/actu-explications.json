@@ -1,4 +1,9 @@
 {
   "description": "Encadrés « Ce que ça veut dire » du fil « L'actu », par identifiant d'entrée. Chaque texte est proposé par la tâche « Veille de l'agenda » dans une demande de mise à jour, et n'est publié qu'après validation (fusion de la demande).",
-  "explications": {}
+  "explications": {
+    "alerte-inflation-3-franchi-2026-09": {
+      "texte": "L'inflation en France (IPC de l'Insee) est au-dessus de 3 % sur un an : 3,1 % (définitif) en septembre 2026. Les prix montent plus vite que l'objectif de la BCE : le pouvoir d'achat s'érode, et la BCE peut maintenir des taux plus élevés. Le tableau de bord suit cet indicateur chaque jour ouvré.",
+      "propose_le": "2026-10-22"
+    }
+  }
 }
