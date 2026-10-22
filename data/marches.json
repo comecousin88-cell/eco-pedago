@@ -1297,7 +1297,7 @@
         "url": "https://data.ecb.europa.eu/data/datasets/IRS"
       },
       "statut": "verifie",
-      "consulte_le": "2026-10-21"
+      "consulte_le": "2026-10-22"
     },
     {
       "id": "marches.taux10-allemagne",
@@ -2595,7 +2595,7 @@
         "url": "https://data.ecb.europa.eu/data/datasets/IRS"
       },
       "statut": "verifie",
-      "consulte_le": "2026-10-21"
+      "consulte_le": "2026-10-22"
     },
     {
       "id": "marches.taux10-italie",
@@ -3893,7 +3893,7 @@
         "url": "https://data.ecb.europa.eu/data/datasets/IRS"
       },
       "statut": "verifie",
-      "consulte_le": "2026-10-21"
+      "consulte_le": "2026-10-22"
     },
     {
       "id": "marches.taux10-espagne",
@@ -5191,7 +5191,7 @@
         "url": "https://data.ecb.europa.eu/data/datasets/IRS"
       },
       "statut": "verifie",
-      "consulte_le": "2026-10-21"
+      "consulte_le": "2026-10-22"
     },
     {
       "id": "marches.spread-france-allemagne",
@@ -6489,7 +6489,7 @@
         "url": "https://data.ecb.europa.eu/data/datasets/IRS"
       },
       "statut": "verifie",
-      "consulte_le": "2026-10-21",
+      "consulte_le": "2026-10-22",
       "note": "Calculé : taux français moins taux allemand, multiplié par 100 (1 point de pourcentage = 100 points de base)."
     },
     {
@@ -6503,7 +6503,7 @@
         "url": "https://data.ecb.europa.eu/data/datasets/IRS"
       },
       "statut": "verifie",
-      "consulte_le": "2026-10-21",
+      "consulte_le": "2026-10-22",
       "note": "Moyenne du mois."
     },
     {
@@ -6517,7 +6517,7 @@
         "url": "https://data.ecb.europa.eu/data/datasets/IRS"
       },
       "statut": "verifie",
-      "consulte_le": "2026-10-21",
+      "consulte_le": "2026-10-22",
       "note": "Moyenne du mois."
     },
     {
@@ -6531,7 +6531,7 @@
         "url": "https://data.ecb.europa.eu/data/datasets/IRS"
       },
       "statut": "verifie",
-      "consulte_le": "2026-10-21",
+      "consulte_le": "2026-10-22",
       "note": "Moyenne du mois."
     },
     {
@@ -6545,7 +6545,7 @@
         "url": "https://data.ecb.europa.eu/data/datasets/IRS"
       },
       "statut": "verifie",
-      "consulte_le": "2026-10-21"
+      "consulte_le": "2026-10-22"
     },
     {
       "id": "marches.courbe-zone-euro",

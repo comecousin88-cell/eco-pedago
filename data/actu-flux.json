@@ -1,6 +1,6 @@
 {
   "description": "Publications des sources officielles (Insee, BCE, Cour des comptes) sur les sujets du site, lues dans leurs flux RSS par scripts/maj-actu.ts. Chaque entrée renvoie vers l'original et vers la page du site qui explique le sujet.",
-  "derniere_verification": "2026-10-22T09:05:20.064Z",
+  "derniere_verification": "2026-10-22T17:13:14.464Z",
   "sources": {
     "insee": {
       "statut": "ok"
@@ -13,6 +13,17 @@
     }
   },
   "entrees": [
+    {
+      "titre": "Les salaires dans le secteur privé en 2025",
+      "lien": "https://www.insee.fr/fr/statistiques/9087193",
+      "date": "2026-10-22T15:00:00Z",
+      "resume": "En 2025, un salarié du secteur privé gagne en moyenne 2 797 euros net par mois en équivalent temps plein (EQTP). L’inflation poursuivant sa décrue en 2025 (+0,9 %, après +2,0 % en 2024), le salaire net moyen en euros constants progresse pour la deuxième année consécutive : +1,5 %, après +0,8 % en 2024.La moitié des salariés du secteur privé perçoit moins de 2 238 euros net par mois en EQTP. Un sal",
+      "id": "insee-9ef6ba84",
+      "source": "insee",
+      "page": "/modules/les-bases/inflation-taux-reels/",
+      "sujet": "Inflation",
+      "important": false
+    },
     {
       "titre": "En septembre 2026, les prix à la consommation augmentent de 3,1 % sur un an",
       "lien": "https://www.insee.fr/fr/statistiques/9080209",
@@ -157,17 +168,6 @@
       "important": false
     },
     {
-      "titre": "En août 2026, les prix à la consommation augmenteraient de 2,4 % sur un an",
-      "lien": "https://www.insee.fr/fr/statistiques/9039020",
-      "date": "2026-08-28T06:45:00Z",
-      "resume": "",
-      "id": "insee-9497e0fa",
-      "source": "insee",
-      "page": "/modules/les-bases/inflation-taux-reels/",
-      "sujet": "Inflation",
-      "important": false
-    },
-    {
       "titre": "Au deuxième trimestre 2026, le PIB est stable (+0,0 % après -0,2 %) et le pouvoir d’achat des ménages recule nettement (-0,6 % par unité de consommation)",
       "lien": "https://www.insee.fr/fr/statistiques/9039499",
       "date": "2026-08-28T06:45:00Z",
@@ -176,6 +176,17 @@
       "source": "insee",
       "page": "/modules/les-bases/pib/",
       "sujet": "Croissance",
+      "important": false
+    },
+    {
+      "titre": "En août 2026, les prix à la consommation augmenteraient de 2,4 % sur un an",
+      "lien": "https://www.insee.fr/fr/statistiques/9039020",
+      "date": "2026-08-28T06:45:00Z",
+      "resume": "",
+      "id": "insee-9497e0fa",
+      "source": "insee",
+      "page": "/modules/les-bases/inflation-taux-reels/",
+      "sujet": "Inflation",
       "important": false
     },
     {
@@ -231,17 +242,6 @@
       "source": "insee",
       "page": "/modules/deficit-et-dette/",
       "sujet": "Dette et déficit",
-      "important": false
-    },
-    {
-      "titre": "Évolution des indicateurs monétaires et financiers en France et dans la zone euro",
-      "lien": "https://www.insee.fr/fr/statistiques/2414906",
-      "date": "2026-07-24T14:00:16Z",
-      "resume": "",
-      "id": "insee-c1c896ef",
-      "source": "insee",
-      "page": "/modules/cadre-europeen/",
-      "sujet": "Europe",
       "important": false
     }
   ]
