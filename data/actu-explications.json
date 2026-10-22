@@ -1,4 +1,9 @@
 {
   "description": "Encadrés « Ce que ça veut dire » du fil « L'actu », par identifiant d'entrée. Chaque texte est proposé par la tâche « Veille de l'agenda » dans une demande de mise à jour, et n'est publié qu'après validation (fusion de la demande).",
-  "explications": {}
+  "explications": {
+    "insee-3d45bdca": {
+      "texte": "Insee : « À la fin du deuxième trimestre 2026, le ratio de dette publique s’établit à 119,0 % du PIB » (29 septembre 2026). La dette et le déficit mesurent l'écart entre les dépenses et les recettes publiques, et ce qu'il reste à financer. Le détail est expliqué sur la page « Déficit et dette ».",
+      "propose_le": "2026-10-22"
+    }
+  }
 }
