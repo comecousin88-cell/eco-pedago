@@ -1,5 +1,6 @@
 import { getDonnee } from "@/lib/data";
 import { arrondiLecture, formatAvecUnite, formatSource, sourceCourte } from "@/lib/format";
+import { qualificatif } from "@/lib/versions";
 
 /**
  * Un chiffre tiré de data/*.json, mis en forme à la française. La source et
@@ -39,6 +40,8 @@ export function Chiffre({
   // Mode Simple : chiffre arrondi ; mode Approfondi : chiffre précis, suivi de sa source.
   const a = arrondiLecture(valeur);
   const arrondi = d.unite === "année" ? texte : ecrire(a.valeur, Math.min(a.decimales, decimales ?? a.decimales));
+  // Indicateur en plusieurs versions (inflation : IPC ou IPCH, provisoire ou définitif) : dit dans les deux modes.
+  const version = qualificatif(d, x);
 
   return (
     <span
@@ -55,7 +58,9 @@ export function Chiffre({
           <span data-selon-mode="approfondi">{texte}</span>
         </>
       )}
-      {unite && (
+      {version ? (
+        <span className="chiffre-source"> ({version})</span>
+      ) : unite && (
         <span data-selon-mode="approfondi" className="chiffre-source">
           {" "}
           ({sourceCourte(d.source.nom)})

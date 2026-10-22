@@ -5,6 +5,7 @@ import { pouvoirAchat, tauxReel, tauxReelApproche } from "@/lib/economics";
 import { formatEuros, formatNombre, formatPourcent } from "@/lib/format";
 import { libellePeriode } from "@/lib/indicateurs";
 import { Curseur } from "./Curseur";
+import { qualificatif } from "@/lib/versions";
 import { BarreScenario, useScenario } from "./Scenario";
 
 /**
@@ -14,7 +15,7 @@ import { BarreScenario, useScenario } from "./Scenario";
  */
 export function TauxReel() {
   const oat = getValeur("marches.taux10-france-dernier");
-  const inflationSerie = getSerie("ind.inflation-fr").serie;
+  const inflationSerie = getSerie("ind.inflation-ipc-fr").serie;
   const inflationActuelle = inflationSerie[inflationSerie.length - 1];
   const s = useScenario({ nominal: oat.valeur, inflation: inflationActuelle.y });
   const nominal = s.valeurs.nominal;
@@ -53,7 +54,7 @@ export function TauxReel() {
           pas={0.1}
           onChange={s.regler("inflation")}
           affichage={`${formatNombre(inflation, 1)} %`}
-          aide={`Valeur actuelle : inflation sur un an en ${libellePeriode(inflationActuelle.x, "mensuelle")} (indice harmonisé).`}
+          aide={`Valeur actuelle : inflation sur un an (${qualificatif(getSerie("ind.inflation-ipc-fr"))}).`}
         />
       </div>
 

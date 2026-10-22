@@ -10,6 +10,8 @@ interface DonneeMinimale {
   date: string;
   valeur?: number;
   serie?: { x: string; y: number }[];
+  /** Statut de la valeur la plus récente (inflation : provisoire puis définitif). */
+  etat?: unknown;
 }
 
 export interface EntreeJournal {
@@ -20,6 +22,8 @@ export interface EntreeJournal {
   periode: string;
   valeur: number;
   avant?: { periode: string; valeur: number };
+  /** Statut de la nouvelle valeur, si l'indicateur en a un. */
+  etat?: "provisoire" | "definitif";
 }
 
 export interface Journal {
@@ -31,14 +35,22 @@ const dernier = (d: DonneeMinimale) =>
   d.serie ? { periode: d.serie[d.serie.length - 1].x, valeur: d.serie[d.serie.length - 1].y } : { periode: d.date, valeur: d.valeur as number };
 
 /**
- * Nouvelle période publiée ? Une simple révision d'un chiffre déjà connu n'en
- * est pas une : seule l'arrivée d'une période plus récente compte.
+ * Nouvelle période publiée, ou résultat définitif qui remplace une estimation
+ * provisoire ? Une simple révision d'un chiffre déjà définitif n'est pas une
+ * nouvelle : elle n'est pas inscrite.
  */
 export function nouvellePeriode(ancienne: DonneeMinimale, nouvelle: DonneeMinimale, aujourdhui: string): EntreeJournal | undefined {
   const a = dernier(ancienne);
   const n = dernier(nouvelle);
-  if (n.periode <= a.periode) return undefined;
-  return { id: `${nouvelle.id}-${n.periode}`, date: aujourdhui, donnee: nouvelle.id, periode: n.periode, valeur: n.valeur, avant: a };
+  const etat = nouvelle.etat === "provisoire" || nouvelle.etat === "definitif" ? nouvelle.etat : undefined;
+  if (n.periode > a.periode) {
+    return { id: `${nouvelle.id}-${n.periode}${etat ? `-${etat}` : ""}`, date: aujourdhui, donnee: nouvelle.id, periode: n.periode, valeur: n.valeur, avant: a, ...(etat ? { etat } : {}) };
+  }
+  if (n.periode === a.periode && ancienne.etat === "provisoire" && etat === "definitif") {
+    // Le résultat définitif remplace l'estimation provisoire du même mois.
+    return { id: `${nouvelle.id}-${n.periode}-definitif`, date: aujourdhui, donnee: nouvelle.id, periode: n.periode, valeur: n.valeur, avant: a, etat };
+  }
+  return undefined;
 }
 
 /** Ajoute des entrées au journal, sans doublon, les plus récentes d'abord. */

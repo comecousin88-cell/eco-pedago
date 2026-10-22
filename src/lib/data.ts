@@ -27,7 +27,17 @@ interface DonneeBase {
   /** Date de consultation de la source (AAAA-MM-JJ). */
   consulte_le?: string;
   note?: string;
+  /**
+   * Version de l'indicateur, quand il en existe plusieurs (« IPC Insee » ou
+   * « IPCH Eurostat » pour l'inflation…). Affichée avec le chiffre.
+   */
+  indicateur?: string;
+  /** Statut de la valeur la plus récente : estimation provisoire ou résultat définitif. */
+  etat?: EtatDonnee;
 }
+
+export type EtatDonnee = "provisoire" | "definitif";
+export const LIBELLE_ETAT: Record<EtatDonnee, string> = { provisoire: "provisoire", definitif: "définitif" };
 
 export interface DonneeValeur extends DonneeBase {
   valeur: number;

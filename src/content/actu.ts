@@ -3,7 +3,9 @@ import fluxJson from "../../data/actu-flux.json";
 import journalJson from "../../data/actu-journal.json";
 import type { EntreeFlux } from "@/lib/actu/flux";
 import type { Journal } from "@/lib/actu/journal";
-import { getDonnee } from "@/lib/data";
+import { getDonnee, LIBELLE_ETAT } from "@/lib/data";
+import { resultatIpc } from "@/lib/maj/fonctions";
+import { periodeEnClair, qualificatif } from "@/lib/versions";
 import { formatNombre } from "@/lib/format";
 import { libellePeriode } from "@/lib/indicateurs";
 import { agenda, dateEcheance, finEcheance } from "@/lib/agenda";
@@ -42,6 +44,8 @@ export interface EntreeActu {
   /** Page du site qui explique le sujet. */
   page: { href: string; titre: string };
   important: boolean;
+  /** Indicateur, période et statut du chiffre annoncé : « IPC Insee, septembre 2026, définitif ». */
+  version?: string;
   /** Texte validé de l'encadré « Ce que ça veut dire ». */
   explication?: string;
   /** Proposition de texte, soumise à validation par la veille. */
@@ -92,7 +96,7 @@ const DONNEE_ALERTE: Record<string, string> = {
   "spread-100": "marches.spread-france-allemagne",
   "france-italie": "marches.taux10-france",
   "dette-120": "dette.ratio-pib",
-  "inflation-3": "ind.inflation-fr",
+  "inflation-3": "ind.inflation-ipc-fr",
   "chomage-9": "ind.chomage",
 };
 
@@ -132,6 +136,7 @@ export function construireFil(aujourdhui = new Date().toISOString().slice(0, 10)
       source: d.source.url ? { nom: d.source.nom, url: d.source.url } : undefined,
       page: { href: ind.lien.href, titre: ind.lien.libelle },
       important: false,
+      version: d.indicateur ? [d.indicateur, periodeEnClair(j.periode), j.etat ? LIBELLE_ETAT[j.etat] : ""].filter(Boolean).join(", ") : undefined,
     });
   }
 
@@ -147,6 +152,7 @@ export function construireFil(aujourdhui = new Date().toISOString().slice(0, 10)
       titre: a.phrase,
       page: { href: a.lien.href, titre: a.lien.libelle },
       important: true,
+      version: qualificatif(getDonnee(DONNEE_ALERTE[a.id]), a.date),
       brouillon: `${a.phrase} ${a.pourquoi} Le tableau de bord suit cet indicateur chaque jour ouvré.`,
     });
   }
@@ -175,6 +181,8 @@ export function construireFil(aujourdhui = new Date().toISOString().slice(0, 10)
   const noms: Record<string, string> = { insee: "Insee", bce: "Banque centrale européenne", "cour-des-comptes": "Cour des comptes" };
   for (const f of (fluxJson as { entrees: EntreeFlux[] }).entrees) {
     const quand = jourEnLettres(f.date);
+    // Communiqués de l'Insee sur l'inflation : indicateur (IPC), mois et statut, lus dans le titre.
+    const ipc = f.source === "insee" ? resultatIpc(f.titre) : undefined;
     entrees.push({
       id: f.id,
       date: f.date.slice(0, 10),
@@ -184,6 +192,7 @@ export function construireFil(aujourdhui = new Date().toISOString().slice(0, 10)
       source: { nom: noms[f.source] ?? f.source, url: f.lien },
       page: { href: f.page, titre: titrePage(f.page) },
       important: f.important,
+      version: ipc ? `IPC Insee, ${periodeEnClair(ipc.periode)}, ${LIBELLE_ETAT[ipc.etat]}` : undefined,
       brouillon: f.important
         ? `${noms[f.source]} : « ${f.titre} » (${quand}). ${BROUILLON_SUJET[f.sujet] ?? ""} Le détail est expliqué sur la page « ${titrePage(f.page)} ».`.replace("  ", " ")
         : undefined,

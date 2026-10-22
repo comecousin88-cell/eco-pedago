@@ -1297,7 +1297,8 @@
         "url": "https://data.ecb.europa.eu/data/datasets/IRS"
       },
       "statut": "verifie",
-      "consulte_le": "2026-10-22"
+      "consulte_le": "2026-10-22",
+      "indicateur": "moyenne mensuelle, BCE"
     },
     {
       "id": "marches.taux10-allemagne",
@@ -6490,7 +6491,8 @@
       },
       "statut": "verifie",
       "consulte_le": "2026-10-22",
-      "note": "Calculé : taux français moins taux allemand, multiplié par 100 (1 point de pourcentage = 100 points de base)."
+      "note": "Calculé : taux français moins taux allemand, multiplié par 100 (1 point de pourcentage = 100 points de base).",
+      "indicateur": "moyenne mensuelle, BCE"
     },
     {
       "id": "marches.taux10-france-dernier",
@@ -6504,7 +6506,8 @@
       },
       "statut": "verifie",
       "consulte_le": "2026-10-22",
-      "note": "Moyenne du mois."
+      "note": "Moyenne du mois.",
+      "indicateur": "moyenne mensuelle, BCE"
     },
     {
       "id": "marches.taux10-allemagne-dernier",
@@ -6545,7 +6548,8 @@
         "url": "https://data.ecb.europa.eu/data/datasets/IRS"
       },
       "statut": "verifie",
-      "consulte_le": "2026-10-22"
+      "consulte_le": "2026-10-22",
+      "indicateur": "moyenne mensuelle, BCE"
     },
     {
       "id": "marches.courbe-zone-euro",

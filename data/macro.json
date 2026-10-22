@@ -56,7 +56,7 @@
         },
         {
           "x": "2024",
-          "y": 2.0
+          "y": 2
         },
         {
           "x": "2025",
@@ -71,7 +71,9 @@
       },
       "statut": "verifie",
       "consulte_le": "2026-10-20",
-      "note": "Publication du 15/01/2026."
+      "note": "Publication du 15/01/2026.",
+      "indicateur": "IPC Insee, moyenne annuelle",
+      "etat": "definitif"
     }
   ]
 }

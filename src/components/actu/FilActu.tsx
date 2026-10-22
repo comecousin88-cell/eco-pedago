@@ -17,6 +17,7 @@ export function CarteActu({ e, compacte = false }: { e: EntreeActu; compacte?: b
           {e.dateLibelle}
         </time>
         <span className={`rounded-full border px-2 py-0.5 ${COULEUR[e.type]}`}>{LIBELLES_TYPE[e.type]}</span>
+        {e.version && <span className="text-muted">{e.version}</span>}
       </p>
       <h3 className={`mt-2 font-medium text-ink ${compacte ? "text-base" : "text-lg"}`}>{e.titre}</h3>
       {e.explication && !compacte && (

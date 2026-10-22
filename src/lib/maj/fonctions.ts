@@ -144,6 +144,39 @@ export interface DonneeJson {
   [cle: string]: unknown;
 }
 
+const MOIS_IPC = ["janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août", "septembre", "octobre", "novembre", "décembre"];
+
+/**
+ * Résultat d'inflation (IPC) annoncé par l'Insee dans le titre de son
+ * communiqué. Le conditionnel signale l'estimation provisoire de fin de mois
+ * (« En septembre 2026, les prix à la consommation augmenteraient de 3,0 % sur
+ * un an ») ; l'indicatif, le résultat définitif publié vers le 15 du mois suivant
+ * (« … augmentent de 3,1 % sur un an »).
+ */
+export function resultatIpc(titre: string): { periode: string; valeur: number; etat: "provisoire" | "definitif" } | undefined {
+  const m =
+    /^En (\p{L}+) (\d{4}), les prix à la consommation (augmenteraient|baisseraient|seraient stables|augmentent|baissent|sont stables)(?: de (\d+(?:,\d+)?) %)? sur un an/u.exec(
+      titre.trim(),
+    );
+  if (!m) return undefined;
+  const mois = MOIS_IPC.indexOf(m[1].toLowerCase()) + 1;
+  if (!mois) return undefined;
+  const stable = m[3].includes("stables");
+  const v = stable ? 0 : Number((m[4] ?? "").replace(",", "."));
+  if (!Number.isFinite(v) || (!stable && m[4] === undefined)) return undefined;
+  return {
+    periode: `${m[2]}-${String(mois).padStart(2, "0")}`,
+    valeur: m[3].startsWith("baiss") ? -v : v,
+    etat: /raient/.test(m[3]) ? "provisoire" : "definitif",
+  };
+}
+
+/** Estimation provisoire seulement (voir resultatIpc). */
+export function estimationProvisoireIpc(titre: string): { periode: string; valeur: number } | undefined {
+  const r = resultatIpc(titre);
+  return r?.etat === "provisoire" ? { periode: r.periode, valeur: r.valeur } : undefined;
+}
+
 /** Remplace la série d'une donnée et met à jour sa date et sa date de consultation. */
 export function appliquerSerie(d: DonneeJson, serie: Point[], date: string, aujourdhui: string): DonneeJson {
   return { ...d, serie, date, consulte_le: aujourdhui, statut: "verifie" };

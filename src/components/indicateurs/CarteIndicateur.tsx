@@ -1,6 +1,6 @@
 import Link from "next/link";
 import type { Indicateur } from "@/content/indicateurs";
-import { chercherValeur, getSerie } from "@/lib/data";
+import { chercherValeur, getSerie, LIBELLE_ETAT, type Donnee } from "@/lib/data";
 import { formatDateDonnee, formatNombre } from "@/lib/format";
 import { derniersPoints, dernierPoint, libellePeriode, valeurUnAnAvant, type Point } from "@/lib/indicateurs";
 import { CourbeIndicateur } from "./CourbeIndicateur";
@@ -66,7 +66,11 @@ export function CarteIndicateur({ indicateur: ind }: { indicateur: Indicateur })
   const libelles = Object.fromEntries(
     [...serie, ...(comparaison?.serie ?? [])].map((p) => [p.x, libellePeriode(p.x, ind.frequence)]),
   );
-  const sources = [donnee, ...(recente ? [recente] : []), ...(comparaison ? [comparaison] : [])];
+  const textes = (ind.comparaisonTexte?.series ?? []).map((c) => ({ ...c, d: getSerie(c.serie) }));
+  const sources = [donnee, ...(recente ? [recente] : []), ...(comparaison ? [comparaison] : []), ...textes.map((t) => t.d)];
+  // Indicateur et statut de la valeur affichée : « IPC Insee · définitif ».
+  const affichee: Donnee = recente ?? donnee;
+  const qualificatif = [affichee.indicateur, affichee.etat ? LIBELLE_ETAT[affichee.etat] : ""].filter(Boolean).join(" · ");
   const nomsSources = [...new Set(sources.map((s) => s.source.nom))];
 
   return (
@@ -78,7 +82,10 @@ export function CarteIndicateur({ indicateur: ind }: { indicateur: Indicateur })
             {formatNombre(valeur, ind.decimales)}
             <span className="ml-1 text-lg font-normal text-muted">{ind.unite === "points de base" ? "pb" : ind.unite}</span>
           </p>
-          <p className="mt-1 text-sm text-muted">{periode}</p>
+          <p className="mt-1 text-sm text-muted">
+            {periode}
+            {qualificatif && <span className="block text-xs">{qualificatif}</span>}
+          </p>
         </div>
         <Miniature points={derniersPoints(serie, ind.frequence, paliers ? 5 : ind.frequence === "annuelle" ? 10 : 5)} paliers={paliers} />
       </div>
@@ -92,6 +99,18 @@ export function CarteIndicateur({ indicateur: ind }: { indicateur: Indicateur })
         <p className="mt-1 text-sm text-body">
           {ind.comparaison!.libelle} : {formatNombre(dernierPoint(comparaison.serie).y, ind.decimales)} {ind.unite} en{" "}
           {libellePeriode(dernierPoint(comparaison.serie).x, ind.frequence)}
+        </p>
+      )}
+      {textes.length > 0 && (
+        <p className="mt-1 text-sm text-body">
+          {ind.comparaisonTexte!.titre} ({textes[0].d.indicateur}, {libellePeriode(dernierPoint(textes[0].d.serie).x, ind.frequence)}
+          {textes[0].d.etat ? `, ${LIBELLE_ETAT[textes[0].d.etat]}` : ""}) :{" "}
+          {textes.map((t, i) => (
+            <span key={t.serie}>
+              {i > 0 && ", "}
+              {t.libelle} {formatNombre(dernierPoint(t.d.serie).y, ind.decimales)} {ind.unite}
+            </span>
+          ))}
         </p>
       )}
       <p className="mt-3 text-sm leading-relaxed text-muted">{ind.explication}</p>

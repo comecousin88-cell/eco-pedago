@@ -21,8 +21,13 @@ export interface Indicateur {
    * affichée à la place du dernier point si elle existe dans data/*.json.
    */
   valeurRecente?: string;
-  /** Série de comparaison affichée sur la courbe (par exemple la zone euro). */
+  /** Série de comparaison affichée sur la courbe (même indicateur, autre pays ou zone). */
   comparaison?: { serie: string; libelle: string };
+  /**
+   * Comparaison sur un autre indicateur, affichée en texte seulement (jamais sur
+   * la même courbe) : l'IPCH européen à côté de l'IPC de l'Insee, par exemple.
+   */
+  comparaisonTexte?: { titre: string; series: { serie: string; libelle: string }[] };
   /** Ce que mesure l'indicateur, en deux ou trois phrases, sans chiffre daté. */
   explication: string;
   lien: { href: string; libelle: string };
@@ -66,13 +71,19 @@ export const indicateurs: Indicateur[] = [
   {
     id: "inflation",
     titre: "Inflation",
-    serie: "ind.inflation-fr",
+    serie: "ind.inflation-ipc-fr",
     frequence: "mensuelle",
     unite: "%",
     decimales: 1,
-    comparaison: { serie: "ind.inflation-za", libelle: "Zone euro" },
+    comparaisonTexte: {
+      titre: "Pour comparer en Europe",
+      series: [
+        { serie: "ind.inflation-fr", libelle: "France" },
+        { serie: "ind.inflation-za", libelle: "zone euro" },
+      ],
+    },
     explication:
-      "La hausse des prix à la consommation sur un an, mesurée par l'indice harmonisé européen, comparable entre pays. La BCE vise 2 % à moyen terme pour l'ensemble de la zone euro.",
+      "La hausse des prix à la consommation sur un an, mesurée par l'indice des prix à la consommation (IPC) de l'Insee, la référence en France. Pour comparer les pays européens, on utilise l'indice harmonisé (IPCH), calculé un peu différemment. La BCE vise 2 % à moyen terme pour l'ensemble de la zone euro.",
     lien: { href: "/modules/les-bases/inflation-taux-reels/", libelle: "Inflation et taux réels" },
   },
   {

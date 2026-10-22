@@ -1,4 +1,5 @@
-import { chercherValeur, getSerie, getValeur } from "@/lib/data";
+import { chercherValeur, getSerie, getValeur, LIBELLE_ETAT } from "@/lib/data";
+import { etatDuPoint } from "@/lib/versions";
 import { avecValeurRecente, difference, evaluerSeuil, type Etat, type Sens } from "@/lib/alertes";
 import { formatNombre } from "@/lib/format";
 import { libellePeriode, type Point } from "@/lib/indicateurs";
@@ -83,12 +84,17 @@ export const reglesAlertes: RegleAlerte[] = [
   },
   {
     id: "inflation-3",
-    sujet: "L'inflation en France",
+    sujet: "L'inflation en France (IPC de l'Insee)",
     libelleSeuil: "au-dessus de 3 % sur un an",
     seuil: 3,
     sens: "au-dessus",
-    points: () => getSerie("ind.inflation-fr").serie,
-    detail: pct(1),
+    points: () => getSerie("ind.inflation-ipc-fr").serie,
+    // « 3,1 % (définitif) » : l'Insee publie d'abord une estimation provisoire, puis le résultat définitif.
+    detail: (p) => {
+      const d = getSerie("ind.inflation-ipc-fr");
+      const etat = etatDuPoint(d, p.x);
+      return `${formatNombre(p.y, 1)} %${etat ? ` (${LIBELLE_ETAT[etat]})` : ""}`;
+    },
     lien: { href: "/modules/les-bases/inflation-taux-reels/", libelle: "Inflation et taux réels" },
     pourquoi: "Les prix montent plus vite que l'objectif de la BCE : le pouvoir d'achat s'érode, et la BCE peut maintenir des taux plus élevés.",
   },

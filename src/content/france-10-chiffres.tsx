@@ -118,13 +118,14 @@ export const chiffresCles: ChiffreCle[] = [
   },
   {
     id: "inflation",
-    donnee: "ind.inflation-fr",
+    donnee: "ind.inflation-ipc-fr",
     titre: "L'inflation",
-    valeur: <Chiffre id="ind.inflation-fr" />,
+    valeur: <Chiffre id="ind.inflation-ipc-fr" />,
     phrase: (
       <>
-        Sur un an en <DateDonnee id="ind.inflation-fr" format="jour" /> (indice harmonisé), contre{" "}
-        <Chiffre id="ind.inflation-za" /> dans la zone euro.
+        Hausse des prix sur un an en <DateDonnee id="ind.inflation-ipc-fr" format="jour" />, selon l&apos;indice des prix
+        de l&apos;Insee (IPC). Pour comparer en Europe, avec l&apos;indice harmonisé : France <Chiffre id="ind.inflation-fr" />,
+        zone euro <Chiffre id="ind.inflation-za" />.
       </>
     ),
     lien: { href: "/tableau-de-bord/", libelle: "Le tableau de bord" },

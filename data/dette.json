@@ -13,7 +13,8 @@
       },
       "statut": "verifie",
       "consulte_le": "2026-10-22",
-      "note": "Fin du 2e trimestre 2026."
+      "note": "Fin du 2e trimestre 2026.",
+      "indicateur": "Maastricht, Insee"
     },
     {
       "id": "dette.ratio-pib",
@@ -27,7 +28,8 @@
       },
       "statut": "verifie",
       "consulte_le": "2026-10-22",
-      "note": "Fin du 2e trimestre 2026."
+      "note": "Fin du 2e trimestre 2026.",
+      "indicateur": "Maastricht, Insee"
     },
     {
       "id": "dette.nette",
@@ -306,7 +308,8 @@
         "url": "https://www.insee.fr/fr/statistiques/2830192"
       },
       "statut": "verifie",
-      "consulte_le": "2026-10-20"
+      "consulte_le": "2026-10-20",
+      "indicateur": "Maastricht, Insee"
     },
     {
       "id": "dette.historique-md",
@@ -526,7 +529,8 @@
       },
       "statut": "verifie",
       "consulte_le": "2026-10-20",
-      "note": "Besoin de financement des administrations publiques (tableau 3.201, août 2026 ; 152,5 Md€ dans la version de mai 2026)."
+      "note": "Besoin de financement des administrations publiques (tableau 3.201, août 2026 ; 152,5 Md€ dans la version de mai 2026).",
+      "indicateur": "Maastricht, Insee"
     },
     {
       "id": "deficit.ratio-pib",
@@ -539,7 +543,8 @@
         "url": "https://www.insee.fr/fr/statistiques/8988841"
       },
       "statut": "verifie",
-      "consulte_le": "2026-10-20"
+      "consulte_le": "2026-10-20",
+      "indicateur": "Maastricht, Insee"
     },
     {
       "id": "deficit.historique-md",
@@ -953,7 +958,8 @@
       },
       "statut": "verifie",
       "consulte_le": "2026-10-20",
-      "note": "Calculé : solde (tableau 3.201) divisé par le PIB implicite de la série de dette (Insee). Précision ± 0,1 point."
+      "note": "Calculé : solde (tableau 3.201) divisé par le PIB implicite de la série de dette (Insee). Précision ± 0,1 point.",
+      "indicateur": "Maastricht, Insee"
     },
     {
       "id": "deficit.dernier-excedent",

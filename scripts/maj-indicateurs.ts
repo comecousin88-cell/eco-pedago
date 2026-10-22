@@ -13,11 +13,13 @@
  * une clé (variable d'environnement WEBSTAT_CLIENT_ID).
  */
 import { readFileSync, writeFileSync, appendFileSync } from "node:fs";
+import { lireRss } from "../src/lib/actu/flux.ts";
 import {
   appliquerSerie,
   appliquerValeur,
   changementsDeTaux,
   controlerSerie,
+  estimationProvisoireIpc,
   finDeTrimestre,
   journaliser,
   lireCsvBce,
@@ -185,6 +187,26 @@ async function majInsee() {
   const s = (await serieInsee("001688527")).map((o) => ({ x: trimestreInsee(o.periode), y: o.valeur })).filter((p) => p.x >= "2000");
   verifier(donnee("indicateurs", "ind.chomage").serie, s, { min: 0, max: 30 }, "chômage");
 
+  // Inflation de référence : IPC de l'Insee, glissement annuel, France (résultats définitifs).
+  const ipc = (await serieInsee("011814632")).map((o) => ({ x: o.periode, y: o.valeur })).filter((p) => p.x >= "2015");
+  verifier(donnee("indicateurs", "ind.inflation-ipc-fr").serie, ipc, { min: -5, max: 30 }, "inflation (IPC)");
+  // Estimation provisoire du mois suivant, annoncée en fin de mois par l'Insee : ajoutée tant que le
+  // résultat définitif n'est pas publié, puis remplacée automatiquement par lui.
+  let serieIpc = ipc;
+  let etatIpc: "provisoire" | "definitif" = "definitif";
+  try {
+    for (const item of lireRss(await telecharger("https://www.insee.fr/fr/flux/1"))) {
+      const e = estimationProvisoireIpc(item.titre);
+      if (e && e.periode > ipc.at(-1)!.x && e.valeur > -5 && e.valeur < 30) {
+        serieIpc = [...ipc, { x: e.periode, y: e.valeur }];
+        etatIpc = "provisoire";
+        break;
+      }
+    }
+  } catch {
+    // Flux indisponible : on garde les seuls résultats définitifs.
+  }
+
   // Dette trimestrielle au sens de Maastricht (base 2020)
   const NOM_DETTE = "Insee, dette trimestrielle des administrations publiques au sens de Maastricht";
   const ids = { total: "010777616", ratio: "010777608", nette: "010777611", etat: "010777610", odac: "010777613", apul: "010777626", asso: "010777625" };
@@ -206,6 +228,9 @@ async function majInsee() {
   verifierValeur(donnee("aft", "aft.dette-negociable"), finMois, negociable.valeur / 1000, { min: 1000, max: 8000 });
 
   // Tout est contrôlé : on applique.
+  const derIpc = serieIpc.at(-1)!;
+  remplacer("indicateurs", { ...appliquerSerie(donnee("indicateurs", "ind.inflation-ipc-fr"), serieIpc, derIpc.x, aujourdhui), etat: etatIpc });
+
   const derChomage = s.at(-1)!;
   const chomage = appliquerSerie(donnee("indicateurs", "ind.chomage"), s, finDeTrimestre(derChomage.x), aujourdhui);
   chomage.note = `Données trimestrielles corrigées des variations saisonnières ; dernier trimestre : ${derChomage.x.replace("-T", " T")}.`;
@@ -234,7 +259,7 @@ async function majInsee() {
   remplacer("aft", { ...appliquerValeur(donnee("aft", "aft.dette-court-terme"), Math.round(courtTerme.valeur / 100) / 10, finMois, aujourdhui, noteMois), source: sourceAft("001711532") });
   remplacer("aft", { ...appliquerValeur(donnee("aft", "aft.dette-negociable-indexee"), Math.round(indexee.valeur / 100) / 10, finMois, aujourdhui, noteMois), source: sourceAft("001738854") });
 
-  return `chômage jusqu'au ${derChomage.x.replace("-T", " T")}, dette jusqu'au ${trimestre.replace("-T", " T")}, dette négociable jusqu'en ${negociable.periode}`;
+  return `inflation (IPC) jusqu'en ${derIpc.x} (${etatIpc === "provisoire" ? "estimation provisoire" : "définitif"}), chômage jusqu'au ${derChomage.x.replace("-T", " T")}, dette jusqu'au ${trimestre.replace("-T", " T")}, dette négociable jusqu'en ${negociable.periode}`;
 }
 
 /* ----------------------------------------------------- Banque de France */
