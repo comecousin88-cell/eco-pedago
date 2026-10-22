@@ -243,3 +243,15 @@ Chaque fonction est testée sur des cas calculables à la main. Exemple : une OA
   tableau de bord.
 - **Événements** : `data/agenda.json`. La tâche « Veille de l'agenda » ouvre une pull request par changement,
   assignée au propriétaire du dépôt. Rien n'est publié sans fusion manuelle.
+
+## 9. Navigation refondue (22/10/2026)
+
+- Menu à cinq entrées (src/content/rubriques.ts) : Accueil, Comprendre, Décrypter, L'actu, Jouer. Les adresses
+  existantes ne changent pas ; chaque rubrique regroupe ses pages par préfixe (repère dans le menu).
+  `/modules/` et `/jeux/` renvoient vers `/comprendre/` et `/jouer/`.
+- Modules regroupés en quatre thèmes, sans numéro visible : La dette ; Le budget et les impôts ; Le travail et les
+  retraites ; La France, l'Europe et le monde.
+- Accueil : trois portes d'entrée. Chaque page : fil d'Ariane et bloc « Et ensuite ? » (règles dans
+  src/content/suite.ts). Recherche sur tout le site (index statique /recherche.json, dans le navigateur).
+- Tests : src/content/navigation.test.ts (rubriques, thèmes, suggestions valides, fil d'Ariane et « Et ensuite ? »
+  présents sur chaque page, index de recherche sans lien mort).

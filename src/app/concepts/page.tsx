@@ -12,10 +12,10 @@ export const metadata: Metadata = {
 export default function ConceptsPage() {
   return (
     <div className="mx-auto max-w-3xl px-4 py-14 sm:px-6">
-      <meta httpEquiv="refresh" content="0; url=/modules/" />
+      <meta httpEquiv="refresh" content="0; url=/comprendre/" />
       <p className="text-lg text-muted">
         Cette page a déménagé :{" "}
-        <Link href="/modules/" className="font-medium text-accent underline underline-offset-4">
+        <Link href="/comprendre/" className="font-medium text-accent underline underline-offset-4">
           les notions sont maintenant dans les modules
         </Link>
         .

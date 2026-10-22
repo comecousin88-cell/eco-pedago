@@ -3,7 +3,10 @@ import { BarreParcours } from "@/components/lecture/BarreParcours";
 import { ModeLecture } from "@/components/lecture/ModeLecture";
 import { Quiz, type QuestionQuiz } from "@/components/pedago/Quiz";
 import { PropositionsLiees } from "@/components/propositions/PropositionsLiees";
+import { EtEnsuite } from "@/components/layout/EtEnsuite";
 import { moduleHref, type ModuleInfo } from "@/content/modules";
+import { themeDuModule, themeHref } from "@/content/rubriques";
+import { suiteModule } from "@/content/suite";
 import { FilAriane } from "./FilAriane";
 import { MarquerLue } from "./MarquerLue";
 import { ModuleTheme } from "./ModuleTheme";
@@ -32,6 +35,7 @@ export function PageModule({
   const infoSection = index >= 0 ? module.sections[index] : undefined;
   const derniere = module.sections.length === 0 ? !section : index === module.sections.length - 1;
   const href = moduleHref(module.slug, section);
+  const theme = themeDuModule(module.slug);
 
   return (
     <ModuleTheme color={module.color}>
@@ -39,10 +43,9 @@ export function PageModule({
       <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6 sm:py-12">
         <FilAriane
           etapes={[
-            { label: "Modules", href: "/modules/" },
-            infoSection
-              ? { label: `${module.number}. ${module.title}`, href: moduleHref(module.slug) }
-              : { label: `${module.number}. ${module.title}` },
+            { label: "Comprendre", href: "/comprendre/" },
+            { label: theme.titre, href: themeHref(theme) },
+            infoSection ? { label: module.title, href: moduleHref(module.slug) } : { label: module.title },
             ...(infoSection ? [{ label: infoSection.title }] : []),
           ]}
         />
@@ -51,7 +54,7 @@ export function PageModule({
           <div className="min-w-0">
             <header className="border-b border-line pb-6">
               <p className="text-sm font-semibold text-accent">
-                Module {module.number}
+                {theme.titre}
                 {infoSection && (
                   <span className="font-normal text-muted">
                     {" "}
@@ -77,6 +80,8 @@ export function PageModule({
             {derniere && quiz && quiz.length > 0 && <Quiz module={module.slug} questions={quiz} />}
 
             <NavModule module={module.slug} section={section} />
+
+            <EtEnsuite suggestions={suiteModule(module.slug, section)} />
           </div>
 
           {module.sections.length > 0 && (

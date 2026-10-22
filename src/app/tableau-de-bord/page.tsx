@@ -8,6 +8,8 @@ import { FilAriane } from "@/components/modules/FilAriane";
 import { MarquerLue } from "@/components/modules/MarquerLue";
 import { ModuleTheme } from "@/components/modules/ModuleTheme";
 import { indicateurs } from "@/content/indicateurs";
+import { EtEnsuite } from "@/components/layout/EtEnsuite";
+import { suitePage } from "@/content/suite";
 import { rubriqueColors } from "@/content/modules";
 
 export const metadata: Metadata = {
@@ -21,8 +23,8 @@ export default function TableauDeBordPage() {
     <ModuleTheme color={rubriqueColors.indicateurs}>
       <MarquerLue href="/tableau-de-bord/" />
       <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6 sm:py-14">
-        <FilAriane etapes={[{ label: "Tableau de bord" }]} />
-        <p className="mt-6 text-sm font-semibold tracking-wide text-accent uppercase">Module 7</p>
+        <FilAriane etapes={[{ label: "L'actu", href: "/actu/" }, { label: "Tableau de bord" }]} />
+        <p className="mt-6 text-sm font-semibold tracking-wide text-accent uppercase">L&apos;actu</p>
         <h1 className="mt-2 font-serif text-3xl font-semibold tracking-tight text-ink sm:text-4xl">Tableau de bord</h1>
         <p className="mt-4 max-w-3xl text-lg leading-relaxed text-muted">
           Les sept chiffres à suivre pour comprendre où en sont les finances publiques : ce que coûte l&apos;argent (taux de
@@ -69,6 +71,7 @@ export default function TableauDeBordPage() {
             .
           </p>
         </section>
+        <EtEnsuite suggestions={suitePage("/tableau-de-bord/")} />
       </div>
     </ModuleTheme>
   );

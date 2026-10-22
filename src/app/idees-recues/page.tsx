@@ -4,6 +4,8 @@ import { MarquerLue } from "@/components/modules/MarquerLue";
 import { ModuleTheme } from "@/components/modules/ModuleTheme";
 import { CartesIdees } from "@/components/pedago/CartesIdees";
 import { idees } from "@/content/idees-recues";
+import { EtEnsuite } from "@/components/layout/EtEnsuite";
+import { suitePage } from "@/content/suite";
 import { rubriqueColors } from "@/content/modules";
 
 export const metadata: Metadata = {
@@ -17,7 +19,7 @@ export default function PageIdeesRecues() {
     <ModuleTheme color={rubriqueColors.transverse}>
       <MarquerLue href="/idees-recues/" />
       <div className="mx-auto max-w-5xl px-4 py-10 sm:px-6 sm:py-14">
-        <FilAriane etapes={[{ label: "Idées reçues" }]} />
+        <FilAriane etapes={[{ label: "Décrypter", href: "/decrypter/" }, { label: "Idées reçues" }]} />
         <h1 className="mt-6 font-serif text-3xl font-semibold tracking-tight text-ink sm:text-4xl">Idées reçues</h1>
         <p className="mt-4 max-w-2xl text-lg leading-relaxed text-muted">
           {idees.length} affirmations qu&apos;on entend souvent sur la dette, les impôts et les retraites. Faites-vous un avis,
@@ -27,6 +29,7 @@ export default function PageIdeesRecues() {
         <div className="mt-8">
           <CartesIdees idees={idees} />
         </div>
+        <EtEnsuite suggestions={suitePage("/idees-recues/")} />
       </div>
     </ModuleTheme>
   );

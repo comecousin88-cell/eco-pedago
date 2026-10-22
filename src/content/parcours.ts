@@ -34,7 +34,7 @@ function etapeModule(m: ModuleInfo, section?: string): EtapeParcours {
   return {
     href: moduleHref(m.slug, section),
     titre: s ? s.title : m.title,
-    groupe: `Module ${m.number} · ${m.title}`,
+    groupe: m.title,
     disponible: m.status === "available",
   };
 }

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { neighbours } from "@/content/modules";
+import { themeDuModule } from "@/content/rubriques";
 
 /** Liens « précédent / suivant » en bas de chaque page de module. */
 export function NavModule({ module, section }: { module: string; section?: string }) {
@@ -19,7 +20,7 @@ export function NavModule({ module, section }: { module: string; section?: strin
           <span className="text-sm text-muted">Suivant →</span>
           <span className="mt-1 block font-semibold text-ink">{next.title}</span>
           {next.module.slug !== module && (
-            <span className="mt-0.5 block text-sm text-muted">Module {next.module.number}</span>
+            <span className="mt-0.5 block text-sm text-muted">{themeDuModule(next.module.slug).titre}</span>
           )}
         </Link>
       )}

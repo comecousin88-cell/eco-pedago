@@ -9,6 +9,8 @@ import { ModuleTheme } from "@/components/modules/ModuleTheme";
 import { BadgeVerdict } from "@/components/pedago/Encadres";
 import { getModule, moduleHref, rubriqueColors } from "@/content/modules";
 import { PARTIES, getProposition, propositionHref, propositions } from "@/content/propositions";
+import { EtEnsuite } from "@/components/layout/EtEnsuite";
+import { suiteProposition } from "@/content/suite";
 import { ancre } from "@/lib/ancre";
 
 export const dynamicParams = false;
@@ -35,7 +37,7 @@ export default async function PagePropositionFiche({ params }: PageProps<"/propo
     <ModuleTheme color={rubriqueColors.propositions}>
       <MarquerLue href={href} />
       <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6 sm:py-12">
-        <FilAriane etapes={[{ label: "Les propositions au crible", href: "/propositions/" }, { label: p.titre }]} />
+        <FilAriane etapes={[{ label: "Décrypter", href: "/decrypter/" }, { label: "Les propositions au crible", href: "/propositions/" }, { label: p.titre }]} />
         <div className="mt-6 grid gap-8 lg:grid-cols-[minmax(0,1fr)_16rem]">
           <div className="min-w-0">
             <header className="border-b border-line pb-6">
@@ -60,7 +62,7 @@ export default async function PagePropositionFiche({ params }: PageProps<"/propo
             <p className="mt-12 border-t border-line pt-6 text-sm text-muted">
               Le mécanisme est expliqué en détail dans le module{" "}
               <Link href={moduleHref(m.slug)} className="font-medium text-accent underline underline-offset-4">
-                {m.number}. {m.title}
+                {m.title}
               </Link>
               . <Link href="/propositions/" className="underline underline-offset-4 hover:text-ink">Toutes les propositions</Link>
             </p>
@@ -80,6 +82,7 @@ export default async function PagePropositionFiche({ params }: PageProps<"/propo
             </nav>
           </aside>
         </div>
+        <EtEnsuite suggestions={suiteProposition(p.slug)} />
       </div>
     </ModuleTheme>
   );

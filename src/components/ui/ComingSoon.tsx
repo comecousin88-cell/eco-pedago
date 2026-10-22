@@ -34,7 +34,7 @@ export function ComingSoon({
 
       <p className="mt-8 text-muted">
         En attendant, commencez par{" "}
-        <Link href="/modules/" className="font-medium text-ink underline underline-offset-4 hover:text-accent">
+        <Link href="/comprendre/" className="font-medium text-ink underline underline-offset-4 hover:text-accent">
           parcourir les modules
         </Link>
         .

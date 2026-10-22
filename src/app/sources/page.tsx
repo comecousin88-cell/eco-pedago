@@ -5,6 +5,8 @@ import { ModuleTheme } from "@/components/modules/ModuleTheme";
 import { rubriqueColors } from "@/content/modules";
 import { fichiers, toutesLesDonnees } from "@/lib/data";
 import { formatDateDonnee } from "@/lib/format";
+import { EtEnsuite } from "@/components/layout/EtEnsuite";
+import { suitePage } from "@/content/suite";
 import { mesures } from "@/lib/game/mesures";
 
 export const metadata: Metadata = {
@@ -244,6 +246,7 @@ export default function PageSources() {
             .
           </p>
         </section>
+        <EtEnsuite suggestions={suitePage("/sources/")} />
       </div>
     </ModuleTheme>
   );

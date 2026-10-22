@@ -5,6 +5,8 @@ import { ModuleTheme } from "@/components/modules/ModuleTheme";
 import { versCarte } from "@/components/propositions/CarteProposition";
 import { ListePropositions } from "@/components/propositions/ListePropositions";
 import { rubriqueColors } from "@/content/modules";
+import { EtEnsuite } from "@/components/layout/EtEnsuite";
+import { suitePage } from "@/content/suite";
 import { THEMES, propositions } from "@/content/propositions";
 
 export const metadata: Metadata = {
@@ -18,7 +20,7 @@ export default function PropositionsPage() {
     <ModuleTheme color={rubriqueColors.propositions}>
       <MarquerLue href="/propositions/" />
       <div className="mx-auto max-w-5xl px-4 py-10 sm:px-6 sm:py-14">
-        <FilAriane etapes={[{ label: "Les propositions au crible" }]} />
+        <FilAriane etapes={[{ label: "Décrypter", href: "/decrypter/" }, { label: "Les propositions au crible" }]} />
         <h1 className="mt-6 font-serif text-3xl font-semibold tracking-tight text-ink sm:text-4xl">
           Les propositions au crible
         </h1>
@@ -38,6 +40,7 @@ export default function PropositionsPage() {
           </p>
         </div>
         <ListePropositions propositions={propositions.map(versCarte)} themes={THEMES} />
+        <EtEnsuite suggestions={suitePage("/propositions/")} />
       </div>
     </ModuleTheme>
   );

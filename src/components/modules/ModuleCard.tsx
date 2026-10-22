@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { moduleHref, type ModuleInfo } from "@/content/modules";
+import { themeDuModule } from "@/content/rubriques";
 import { SoonBadge } from "@/components/ui/SoonBadge";
 import { ModuleTheme } from "./ModuleTheme";
 
@@ -9,7 +10,7 @@ export function ModuleCard({ module }: { module: ModuleInfo }) {
   const contenu = (
     <>
       <div className="flex items-center justify-between gap-2">
-        <span className="text-sm font-semibold text-accent">Module {module.number}</span>
+        <span className="text-sm font-semibold text-accent">{themeDuModule(module.slug).titre}</span>
         {!disponible && <SoonBadge />}
       </div>
       <h3 className="mt-2 font-serif text-xl leading-snug font-semibold text-ink">{module.title}</h3>

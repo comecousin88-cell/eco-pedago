@@ -6,6 +6,8 @@ import { ModuleTheme } from "@/components/modules/ModuleTheme";
 import { chiffresCles } from "@/content/france-10-chiffres";
 import { rubriqueColors } from "@/content/modules";
 import { getDonnee } from "@/lib/data";
+import { EtEnsuite } from "@/components/layout/EtEnsuite";
+import { suitePage } from "@/content/suite";
 import { formatSource } from "@/lib/format";
 
 export const metadata: Metadata = {
@@ -18,7 +20,7 @@ export default function PageFranceEn10Chiffres() {
     <ModuleTheme color={rubriqueColors.indicateurs}>
       <MarquerLue href="/la-france-en-10-chiffres/" />
       <div className="mx-auto max-w-5xl px-4 py-10 sm:px-6 sm:py-14">
-        <FilAriane etapes={[{ label: "La France en 10 chiffres" }]} />
+        <FilAriane etapes={[{ label: "Comprendre", href: "/comprendre/" }, { label: "La France en 10 chiffres" }]} />
         <h1 className="mt-6 font-serif text-3xl font-semibold tracking-tight text-ink sm:text-4xl">La France en 10 chiffres</h1>
         <p className="mt-4 max-w-2xl text-lg leading-relaxed text-muted">
           La situation des finances publiques en un coup d&apos;œil. Chaque chiffre est daté et sourcé (survolez-le pour voir la
@@ -56,6 +58,7 @@ export default function PageFranceEn10Chiffres() {
           </Link>
           .
         </p>
+        <EtEnsuite suggestions={suitePage("/la-france-en-10-chiffres/")} />
       </div>
     </ModuleTheme>
   );

@@ -5,13 +5,36 @@ import { CartesParcours } from "@/components/lecture/CartesParcours";
 import { ModuleTheme } from "@/components/modules/ModuleTheme";
 import { CarteProposition, versCarte } from "@/components/propositions/CarteProposition";
 import { modules, rubriqueColors } from "@/content/modules";
+import { idees } from "@/content/idees-recues";
 import { propositions, propositionsPhares } from "@/content/propositions";
 
 const RACCOURCIS = [
   { href: "/la-france-en-10-chiffres/", titre: "La France en 10 chiffres", texte: "La situation des finances publiques en un coup d'œil, chiffres sourcés et datés." },
   { href: "/tableau-de-bord/", titre: "Tableau de bord", texte: "Taux, inflation, chômage, dette, déficit : les sept indicateurs à suivre." },
-  { href: "/idees-recues/", titre: "Idées reçues", texte: "Dix-huit affirmations qu'on entend souvent, vérifiées chiffres à l'appui." },
-  { href: "/jeux/", titre: "Jeux", texte: "Redresser les comptes, puis tenir le budget pendant un mandat de ministre." },
+  { href: "/idees-recues/", titre: "Idées reçues", texte: `${idees.length} affirmations qu'on entend souvent, vérifiées chiffres à l'appui.` },
+  { href: "/jouer/", titre: "Jouer", texte: "Redresser les comptes, tenir le budget pendant un mandat, et tous les simulateurs." },
+];
+
+/** Les trois portes d'entrée du site. */
+const PORTES = [
+  {
+    href: "/comprendre/#commencer",
+    titre: "Comprendre les bases",
+    texte: "PIB, déficit, dette, taux : les notions de départ, en parcours guidé de trois quarts d'heure.",
+    action: "Commencer",
+  },
+  {
+    href: "/actu/",
+    titre: "Suivre l'actualité",
+    texte: "Les indicateurs mis à jour chaque jour ouvré, les seuils franchis et les échéances à venir.",
+    action: "Voir l'actu",
+  },
+  {
+    href: "/decrypter/",
+    titre: "Me faire un avis sur une proposition",
+    texte: "Annuler la dette, taxer les plus riches, retraite à 60 ans : arguments, chiffres et verdict.",
+    action: "Décrypter",
+  },
 ];
 
 export default function Home() {
@@ -31,13 +54,25 @@ export default function Home() {
           sourcés et des simulateurs pour tester par vous-même. Sans parti pris : quand un
           sujet fait débat, vous avez les arguments des deux côtés.
         </p>
-        <Link
-          href="#parcours"
-          className="mt-8 inline-flex items-center gap-2 rounded-full bg-ink px-6 py-3 font-medium text-page transition hover:opacity-85"
-        >
-          Commencer
-          <span aria-hidden="true">→</span>
-        </Link>
+        <ul className="mt-8 grid gap-4 sm:grid-cols-3">
+          {PORTES.map((p) => (
+            <li key={p.href}>
+              <Link
+                href={p.href}
+                className="group flex h-full flex-col rounded-2xl border border-line bg-surface p-5 transition hover:-translate-y-0.5 hover:border-line-strong hover:shadow-md"
+              >
+                <span className="font-serif text-xl font-semibold text-ink">{p.titre}</span>
+                <span className="mt-2 text-sm leading-relaxed text-muted">{p.texte}</span>
+                <span className="mt-auto pt-4 text-sm font-medium text-accent">
+                  {p.action}{" "}
+                  <span aria-hidden="true" className="inline-block transition-transform group-hover:translate-x-1">
+                    →
+                  </span>
+                </span>
+              </Link>
+            </li>
+          ))}
+        </ul>
       </section>
 
       <section aria-labelledby="parcours" className="border-t border-line py-12">
@@ -95,7 +130,7 @@ export default function Home() {
           <h2 id="premiers" className="font-serif text-2xl font-semibold text-ink">
             Les premiers modules
           </h2>
-          <Link href="/modules/" className="text-sm font-medium text-accent underline underline-offset-4">
+          <Link href="/comprendre/" className="text-sm font-medium text-accent underline underline-offset-4">
             Voir les {modules.length} modules
           </Link>
         </div>

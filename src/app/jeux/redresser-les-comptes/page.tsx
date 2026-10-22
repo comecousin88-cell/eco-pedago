@@ -3,6 +3,8 @@ import { RedresserLesComptes } from "@/components/jeux/RedresserLesComptes";
 import { FilAriane } from "@/components/modules/FilAriane";
 import { MarquerLue } from "@/components/modules/MarquerLue";
 import { ModuleTheme } from "@/components/modules/ModuleTheme";
+import { EtEnsuite } from "@/components/layout/EtEnsuite";
+import { suitePage } from "@/content/suite";
 import { rubriqueColors } from "@/content/modules";
 
 export const metadata: Metadata = {
@@ -16,7 +18,7 @@ export default function PageRedresserLesComptes() {
     <ModuleTheme color={rubriqueColors.jeux}>
       <MarquerLue href="/jeux/redresser-les-comptes/" />
       <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6 sm:py-14">
-        <FilAriane etapes={[{ label: "Jeux", href: "/jeux/" }, { label: "Redresser les comptes" }]} />
+        <FilAriane etapes={[{ label: "Jouer", href: "/jouer/" }, { label: "Redresser les comptes" }]} />
         <h1 className="mt-6 font-serif text-3xl font-semibold tracking-tight text-ink sm:text-4xl">Redresser les comptes</h1>
         <p className="mt-4 max-w-3xl text-lg leading-relaxed text-muted">
           À vous de trouver l&apos;effort. Choisissez un objectif, puis des mesures parmi plus de quarante, chiffrées et
@@ -26,6 +28,7 @@ export default function PageRedresserLesComptes() {
         <div className="mt-8">
           <RedresserLesComptes />
         </div>
+        <EtEnsuite suggestions={suitePage("/jeux/redresser-les-comptes/")} />
       </div>
     </ModuleTheme>
   );

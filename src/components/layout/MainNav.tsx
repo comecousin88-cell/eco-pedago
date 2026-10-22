@@ -4,48 +4,29 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { navItems, type NavItem } from "@/content/navigation";
+import { rubriqueDe } from "@/content/rubriques";
 import { ModeLecture } from "@/components/lecture/ModeLecture";
-import { SoonBadge } from "@/components/ui/SoonBadge";
-
-// Les adresses finissent par « / » (trailingSlash) : on compare sans.
-function isActive(pathname: string, href: string) {
-  const p = pathname.replace(/\/$/, "");
-  const h = href.replace(/\/$/, "");
-  // L'accueil n'est actif que sur l'accueil lui-même.
-  if (h === "") return p === "";
-  return p === h || p.startsWith(`${h}/`);
-}
 
 function NavLink({
   item,
   active,
   onNavigate,
   className,
-  court = false,
 }: {
   item: NavItem;
   active: boolean;
   onNavigate?: () => void;
   className: string;
-  /** Intitulé court (menu sur une ligne), nom complet au survol. */
-  court?: boolean;
 }) {
-  const abrege = court && item.court;
   return (
     <Link
       href={item.href}
       onClick={onNavigate}
-      title={abrege ? item.label : undefined}
-      aria-label={abrege ? item.label : undefined}
+      title={item.description}
       aria-current={active ? "page" : undefined}
-      className={`${className} ${
-        active
-          ? "bg-ink text-page"
-          : "text-body hover:bg-subtle hover:text-ink"
-      }`}
+      className={`${className} ${active ? "bg-ink text-page" : "text-body hover:bg-subtle hover:text-ink"}`}
     >
-      {abrege ? item.court : item.label}
-      {item.status === "soon" && <SoonBadge inverted={active} />}
+      {item.label}
     </Link>
   );
 }
@@ -53,18 +34,19 @@ function NavLink({
 export function MainNav() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  // La rubrique reste repérée dans toutes ses pages (un module est dans « Comprendre »…).
+  const active = rubriqueDe(pathname)?.id;
 
   return (
     <nav aria-label="Navigation principale">
       {/* Grands écrans : liens en ligne */}
-      <ul className="hidden items-center gap-1 xl:flex">
+      <ul className="hidden items-center gap-1 lg:flex">
         {navItems.map((item) => (
           <li key={item.href}>
             <NavLink
               item={item}
-              active={isActive(pathname, item.href)}
-              court
-              className="flex items-center gap-2 rounded-full px-3 py-1.5 text-sm font-medium whitespace-nowrap transition-colors"
+              active={item.id === active}
+              className="flex items-center rounded-full px-3 py-1.5 text-sm font-medium whitespace-nowrap transition-colors"
             />
           </li>
         ))}
@@ -73,41 +55,26 @@ export function MainNav() {
       {/* Mobile : bouton menu */}
       <button
         type="button"
-        className="rounded-md p-2 text-body hover:bg-subtle xl:hidden"
+        className="rounded-md p-2 text-body hover:bg-subtle lg:hidden"
         aria-expanded={open}
         aria-controls="menu-mobile"
         onClick={() => setOpen((o) => !o)}
       >
         <span className="sr-only">{open ? "Fermer le menu" : "Ouvrir le menu"}</span>
-        <svg
-          aria-hidden="true"
-          viewBox="0 0 24 24"
-          className="h-6 w-6"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth={2}
-          strokeLinecap="round"
-        >
-          {open ? (
-            <path d="M6 6l12 12M18 6L6 18" />
-          ) : (
-            <path d="M4 7h16M4 12h16M4 17h16" />
-          )}
+        <svg aria-hidden="true" viewBox="0 0 24 24" className="h-6 w-6" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round">
+          {open ? <path d="M6 6l12 12M18 6L6 18" /> : <path d="M4 7h16M4 12h16M4 17h16" />}
         </svg>
       </button>
 
       {open && (
-        <ul
-          id="menu-mobile"
-          className="absolute inset-x-0 top-full space-y-1 border-b border-line bg-surface px-4 py-3 shadow-sm xl:hidden"
-        >
+        <ul id="menu-mobile" className="absolute inset-x-0 top-full space-y-1 border-b border-line bg-surface px-4 py-3 shadow-sm lg:hidden">
           {navItems.map((item) => (
             <li key={item.href}>
               <NavLink
                 item={item}
-                active={isActive(pathname, item.href)}
+                active={item.id === active}
                 onNavigate={() => setOpen(false)}
-                className="flex items-center justify-between rounded-lg px-3 py-2.5 text-base font-medium"
+                className="flex flex-col rounded-lg px-3 py-2.5 text-base font-medium"
               />
             </li>
           ))}

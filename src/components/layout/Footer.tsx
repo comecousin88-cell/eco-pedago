@@ -1,12 +1,12 @@
 import Link from "next/link";
+import { rubriques } from "@/content/rubriques";
 import { site } from "@/content/site";
 
+/** Les cinq rubriques, puis les pages de référence rangées dans le pied de page. */
 const LIENS = [
+  ...rubriques.map((r) => ({ href: r.href, libelle: r.label })),
   { href: "/la-france-en-10-chiffres/", libelle: "La France en 10 chiffres" },
   { href: "/tableau-de-bord/", libelle: "Tableau de bord" },
-  { href: "/propositions/", libelle: "Les propositions au crible" },
-  { href: "/idees-recues/", libelle: "Idées reçues" },
-  { href: "/jeux/", libelle: "Jeux" },
   { href: "/glossaire/", libelle: "Glossaire" },
   { href: "/sources/", libelle: "Sources et méthode" },
 ];

@@ -3,6 +3,8 @@ import { JeuMinistre } from "@/components/jeux/JeuMinistre";
 import { FilAriane } from "@/components/modules/FilAriane";
 import { MarquerLue } from "@/components/modules/MarquerLue";
 import { ModuleTheme } from "@/components/modules/ModuleTheme";
+import { EtEnsuite } from "@/components/layout/EtEnsuite";
+import { suitePage } from "@/content/suite";
 import { rubriqueColors } from "@/content/modules";
 
 export const metadata: Metadata = {
@@ -16,7 +18,7 @@ export default function PageMinistre() {
     <ModuleTheme color={rubriqueColors.jeux}>
       <MarquerLue href="/jeux/ministre-des-finances/" />
       <div className="mx-auto max-w-5xl px-4 py-10 sm:px-6 sm:py-14">
-        <FilAriane etapes={[{ label: "Jeux", href: "/jeux/" }, { label: "Ministre des Finances" }]} />
+        <FilAriane etapes={[{ label: "Jouer", href: "/jouer/" }, { label: "Ministre des Finances" }]} />
         <h1 className="mt-6 font-serif text-3xl font-semibold tracking-tight text-ink sm:text-4xl">Ministre des Finances</h1>
         <p className="mt-4 max-w-3xl text-lg leading-relaxed text-muted">
           Vous avez cinq ans. Chaque année, vous votez un budget : économies, hausses d&apos;impôts, investissements. Puis un
@@ -27,6 +29,7 @@ export default function PageMinistre() {
         <div className="mt-8">
           <JeuMinistre />
         </div>
+        <EtEnsuite suggestions={suitePage("/jeux/ministre-des-finances/")} />
       </div>
     </ModuleTheme>
   );
