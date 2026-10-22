@@ -5,7 +5,6 @@ import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { navItems, type NavItem } from "@/content/navigation";
 import { rubriqueDe } from "@/content/rubriques";
-import { ModeLecture } from "@/components/lecture/ModeLecture";
 
 function NavLink({
   item,
@@ -78,10 +77,6 @@ export function MainNav() {
               />
             </li>
           ))}
-          <li className="flex flex-wrap items-center justify-between gap-2 border-t border-line px-3 pt-3">
-            <span className="text-sm text-muted">Niveau de lecture</span>
-            <ModeLecture />
-          </li>
         </ul>
       )}
     </nav>

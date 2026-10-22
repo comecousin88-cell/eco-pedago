@@ -43,6 +43,7 @@ export default async function PagePropositionFiche({ params }: PageProps<"/propo
             <header className="border-b border-line pb-6">
               <p className="text-sm font-semibold text-accent">Proposition passée au crible · {p.themes.join(" · ")}</p>
               <h1 className="mt-2 font-serif text-3xl leading-tight font-semibold tracking-tight text-ink sm:text-4xl">{p.titre}</h1>
+              <ModeLecture className="mt-5" />
               {p.verdict && (
                 <p className="mt-4 flex flex-wrap items-center gap-3 text-sm text-muted">
                   Verdict : <BadgeVerdict niveau={p.verdict} />
@@ -51,7 +52,6 @@ export default async function PagePropositionFiche({ params }: PageProps<"/propo
                   </a>
                 </p>
               )}
-              <ModeLecture detaille className="mt-5" />
             </header>
             <div className="mt-6">
               <BarreParcours href={href} />

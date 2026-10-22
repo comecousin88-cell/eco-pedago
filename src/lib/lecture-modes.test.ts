@@ -102,3 +102,37 @@ describe("chaque page de module diffère entre les deux modes", () => {
     expect(simple).not.toBe(approfondi);
   }, 20_000);
 });
+
+describe("où se trouve le sélecteur Simple / Approfondi", () => {
+  const source = (chemin: string) => readFileSync(fileURLToPath(new URL(`../${chemin}`, import.meta.url)), "utf8");
+
+  it("n'est plus dans la barre du haut, ni sur ordinateur ni sur mobile", () => {
+    for (const f of ["components/layout/Header.tsx", "components/layout/MainNav.tsx"]) expect(source(f), f).not.toContain("ModeLecture");
+  });
+
+  it("est sous le titre de chaque page de module et de chaque fiche", () => {
+    const module = source("components/modules/PageModule.tsx");
+    expect(module.indexOf("<ModeLecture")).toBeGreaterThan(module.indexOf("</h1>"));
+    expect(module.indexOf("<ModeLecture")).toBeLessThan(module.indexOf("<article"));
+    const fiche = source("app/propositions/[slug]/page.tsx");
+    expect(fiche).toMatch(/<\/h1>\s*<ModeLecture/);
+  });
+
+  it("n'apparaît sur aucune autre page", () => {
+    const pages = ["app/page.tsx", "app/comprendre/page.tsx", "app/decrypter/page.tsx", "app/actu/page.tsx", "app/jouer/page.tsx", "app/jeux/ministre-des-finances/page.tsx", "app/jeux/redresser-les-comptes/page.tsx"];
+    for (const f of pages) expect(source(f), f).not.toContain("ModeLecture");
+  });
+
+  it("explique la différence en une phrase", () => {
+    const texte = source("components/lecture/ModeLecture.tsx").replace(/<[^>]+>|\{" "\}|&apos;/g, (m) => (m === "&apos;" ? "'" : "")).replace(/\s+/g, " ");
+    expect(texte).toContain("Simple : l'essentiel et les mécanismes. Approfondi : formules, débats et chiffres précis avec leurs sources.");
+  });
+
+  it("le choix est gardé d'une page à l'autre et appliqué avant l'affichage", () => {
+    expect(source("lib/lecture.ts")).toMatch(/localStorage\.setItem\(LECTURE_KEY, mode\)/);
+    expect(source("lib/lecture-script.ts")).toMatch(/localStorage\.getItem/);
+    expect(source("app/layout.tsx")).toContain("lectureScript");
+    // Les parcours fixent le mode de départ.
+    expect(source("lib/parcours-actif.ts")).toMatch(/changerModeLecture\(getParcours\(id\)\.mode\)/);
+  });
+});

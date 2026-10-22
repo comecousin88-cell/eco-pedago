@@ -67,7 +67,7 @@ export function PageModule({
                 {infoSection ? infoSection.title : module.title}
               </h1>
               {!infoSection && <p className="mt-3 text-lg text-muted">{module.question}</p>}
-              <ModeLecture detaille className="mt-5" />
+              <ModeLecture className="mt-5" />
             </header>
 
             <div className="mt-6">

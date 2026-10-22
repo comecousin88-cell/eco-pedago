@@ -47,11 +47,6 @@ export function blocsApprofondis(racine: ParentNode = document): HTMLElement[] {
   return tous.filter((b) => !tous.some((autre) => autre !== b && autre.contains(b)));
 }
 
-/** La page change-t-elle selon le mode (blocs, chiffres arrondis ou précis) ? */
-export function pageSelonMode(): boolean {
-  return document.querySelector("main [data-selon-mode]") !== null || blocsApprofondis().length > 0;
-}
-
 /** Message bref à afficher après un changement de mode. */
 export function messageChangement(mode: ModeLecture, n: number, chiffres: boolean): string {
   const sections = `${n} section${n > 1 ? "s" : ""}`;
