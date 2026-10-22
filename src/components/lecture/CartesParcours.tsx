@@ -5,7 +5,11 @@ import { avancement, parcours } from "@/content/parcours";
 import { demarrerParcours, useParcoursActif } from "@/lib/parcours-actif";
 import { useProgression } from "@/lib/progression";
 
-/** Les deux parcours de l'accueil, avec leur progression et un bouton pour (re)commencer. */
+/**
+ * Les deux parcours, avec leur progression et un bouton pour (re)commencer.
+ * Commencer « Je découvre » passe le site en mode Simple, « J'approfondis » en
+ * mode Approfondi (demarrerParcours) : l'interrupteur du haut reflète ce mode.
+ */
 export function CartesParcours() {
   const { lues } = useProgression();
   const actif = useParcoursActif();
@@ -24,10 +28,6 @@ export function CartesParcours() {
               <span className="text-sm text-muted">{p.duree}</span>
             </div>
             <p className="mt-2 flex-1 leading-relaxed text-muted">{p.accroche}</p>
-            <p className="mt-3 text-sm text-muted">
-              Mode de lecture : <strong className="text-body">{p.mode === "simple" ? "Simple" : "Approfondi"}</strong>{" "}
-              (modifiable à tout moment)
-            </p>
 
             <div className="mt-5">
               <div className="flex items-baseline justify-between text-sm">

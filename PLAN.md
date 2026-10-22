@@ -270,3 +270,15 @@ Chaque fonction est testée sur des cas calculables à la main. Exemple : une OA
 - Mise à jour des indicateurs et des flux : trois fois par jour ouvré.
 - Sources sans flux exploitable : Banque de France (refuse les robots), vie-publique.fr (protection anti-robots :
   non contournée).
+
+## 11. Modes de lecture réellement différents (22/10/2026)
+
+- Simple : « L'essentiel » et « Le mécanisme », chiffres arrondis, curseurs principaux des simulateurs.
+  Approfondi : en plus, formules en bloc, débats, « Pour aller plus loin », réglages avancés des simulateurs
+  (<ReglagesAvances>), chiffres précis avec leur source ; sur l'introduction des modules, un bloc qui liste les
+  débats et formules de chaque section.
+- Un seul marqueur : data-selon-mode="simple|approfondi" (globals.css masque l'autre mode). Au changement : message
+  bref (« Mode Approfondi : X sections ajoutées… ») et surbrillance des blocs qui apparaissent ou disparaissent.
+- Bouton grisé, avec explication au survol, sur les pages que le mode ne change pas. Les parcours règlent le mode.
+- Test src/lib/lecture-modes.test.ts : chaque page de module est rendue et son texte visible comparé dans les deux
+  modes (le mode Approfondi doit ajouter du texte).

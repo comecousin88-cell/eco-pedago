@@ -2,7 +2,7 @@ import type { ReactNode } from "react";
 
 /**
  * Les arguments des deux camps, toujours affichés (contrairement à l'encadré
- * « Débat », qui se replie en mode Simple) : dans une fiche, ils sont le cœur
+ * « Débat », réservé au mode Approfondi) : dans une fiche, ils sont le cœur
  * de l'analyse. Les partisans sont présentés en premier, sous leur meilleur jour.
  */
 export function ArgumentsFiche({

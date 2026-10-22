@@ -130,20 +130,80 @@ body {
 }
 
 /*
- * Blocs dépliables (<Depliable>). État par défaut appliqué en CSS, selon le
- * mode de lecture posé sur <html data-lecture> avant le premier affichage ;
- * data-ouvert="true|false" traduit un choix manuel du lecteur.
+ * Blocs dépliables (<Depliable>) : ouverts par défaut ; data-ouvert="false"
+ * traduit un repli manuel du lecteur.
  */
-[data-depliable][data-ouvert="false"] > [data-contenu],
-[data-lecture="simple"] [data-depliable="mode"]:not([data-ouvert="true"]) > [data-contenu] {
+[data-depliable][data-ouvert="false"] > [data-contenu] {
   display: none;
 }
-[data-depliable][data-ouvert="false"] > :first-child .depliable-chevron,
-[data-lecture="simple"] [data-depliable="mode"]:not([data-ouvert="true"]) > :first-child .depliable-chevron {
+[data-depliable][data-ouvert="false"] > :first-child .depliable-chevron {
   transform: rotate(0deg);
 }
 [data-depliable] > :first-child .depliable-chevron {
   transform: rotate(180deg);
+}
+
+/*
+ * Modes de lecture, posés sur <html data-lecture> avant le premier affichage.
+ * data-selon-mode="approfondi" : formules, débats, « Pour aller plus loin »,
+ * réglages avancés des simulateurs, chiffres précis avec leur source.
+ * data-selon-mode="simple" : chiffres arrondis, rappels des réglages masqués.
+ */
+[data-lecture="simple"] [data-selon-mode="approfondi"],
+[data-lecture="simple"] .prose-eco .katex-display,
+[data-lecture="approfondi"] [data-selon-mode="simple"] {
+  display: none;
+}
+
+/* Au passage en mode Simple, les blocs restent visibles un instant, surlignés, avant de disparaître. */
+[data-lecture-sortie] [data-selon-mode="approfondi"][data-bloc],
+[data-lecture-sortie] .prose-eco .katex-display {
+  display: block;
+  animation: lecture-sortie 0.9s ease-in forwards;
+}
+@keyframes lecture-sortie {
+  0% {
+    outline: 3px solid var(--warn);
+    outline-offset: 4px;
+    opacity: 1;
+  }
+  100% {
+    outline: 3px solid var(--warn);
+    outline-offset: 4px;
+    opacity: 0.15;
+  }
+}
+
+/* Au passage en mode Approfondi, les blocs ajoutés sont surlignés quelques secondes. */
+.lecture-apparait {
+  border-radius: 1rem;
+  animation: lecture-apparait 2.6s ease-out;
+}
+@keyframes lecture-apparait {
+  0%,
+  60% {
+    outline: 3px solid var(--accent);
+    outline-offset: 4px;
+    background-color: var(--accent-soft);
+  }
+  100% {
+    outline: 3px solid transparent;
+    outline-offset: 4px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .lecture-apparait,
+  [data-lecture-sortie] [data-selon-mode="approfondi"][data-bloc] {
+    animation-duration: 0.01s;
+  }
+}
+
+/* Source abrégée affichée à côté d'un chiffre précis (mode Approfondi). */
+.chiffre-source {
+  font-size: 0.72em;
+  font-weight: 400;
+  color: var(--muted);
+  white-space: nowrap;
 }
 
 /* Interrupteur « Simple / Approfondi » (<ModeLecture>) et textes propres à un mode. */
@@ -215,4 +275,12 @@ body {
   .prose-eco .katex-display {
     @apply overflow-x-auto overflow-y-hidden py-2;
   }
+}
+
+/* Rappel en mode Simple : des réglages avancés modifiés restent appliqués (<ReglagesAvances>). */
+.reglages-modifies {
+  display: none;
+}
+.reglages-avances:has([data-modifie]) + p .reglages-modifies {
+  display: inline;
 }

@@ -6,6 +6,7 @@ import { ficheDePaie, impotSurLeRevenu, type Destination, type OptionsPaie } fro
 import { formatEuros, formatNombre } from "@/lib/format";
 import { parametresImpot, parametresPaie } from "@/lib/parametres";
 import { BoutonSimu, Curseur } from "./Curseur";
+import { ReglagesAvances } from "./ReglagesAvances";
 import { BarreScenario, MarqueModifie, useScenario } from "./Scenario";
 
 /**
@@ -85,18 +86,20 @@ export function FicheDePaie() {
             </>
           }
         />
-        <div>
-          <p className="text-sm font-semibold text-ink">
-            Taille de l&apos;entreprise <MarqueModifie actif={s.estModifiee("taille")} />
-          </p>
-          <div className="mt-2 flex flex-wrap gap-1.5">
-            {TAILLES.map((t) => (
-              <BoutonSimu key={t.v} actif={taille === t.v} onClick={() => s.regler("taille")(t.v)}>
-                {t.l}
-              </BoutonSimu>
-            ))}
+        <ReglagesAvances nombre={1}>
+          <div>
+            <p className="text-sm font-semibold text-ink">
+              Taille de l&apos;entreprise <MarqueModifie actif={s.estModifiee("taille")} />
+            </p>
+            <div className="mt-2 flex flex-wrap gap-1.5">
+              {TAILLES.map((t) => (
+                <BoutonSimu key={t.v} actif={taille === t.v} onClick={() => s.regler("taille")(t.v)}>
+                  {t.l}
+                </BoutonSimu>
+              ))}
+            </div>
           </div>
-        </div>
+        </ReglagesAvances>
       </div>
 
       <ol className="space-y-2" aria-live="polite">

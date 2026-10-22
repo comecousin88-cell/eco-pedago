@@ -51,3 +51,22 @@ export function formatDateDonnee(date: string): string {
 export function formatSource(d: Pick<Donnee, "source" | "date">): string {
   return `Source : ${d.source.nom} — données ${formatDateDonnee(d.date)}`;
 }
+
+/**
+ * Arrondi du mode de lecture « Simple » : une décimale sous 10, aucun entre 10
+ * et 1 000, la centaine entre 1 000 et 10 000, le millier au-delà.
+ * 4,44 → 4,4 ; 119,0 → 119 ; 3 595,5 → 3 600 ; 69,1 → 69.
+ */
+export function arrondiLecture(valeur: number): { valeur: number; decimales: number } {
+  const a = Math.abs(valeur);
+  if (a < 10) return { valeur: Math.round(valeur * 10) / 10, decimales: Number.isInteger(Math.round(valeur * 10) / 10) ? 0 : 1 };
+  if (a < 1000) return { valeur: Math.round(valeur), decimales: 0 };
+  if (a < 10000) return { valeur: Math.round(valeur / 100) * 100, decimales: 0 };
+  return { valeur: Math.round(valeur / 1000) * 1000, decimales: 0 };
+}
+
+/** Nom court d'une source, pour l'afficher à côté d'un chiffre : « Insee, dette… » → « Insee ». */
+export function sourceCourte(nom: string): string {
+  const court = nom.split(/[,:(]/)[0].trim();
+  return court.length > 40 ? `${court.slice(0, 37)}…` : court;
+}

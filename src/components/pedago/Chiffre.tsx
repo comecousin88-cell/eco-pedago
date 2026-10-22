@@ -1,5 +1,5 @@
 import { getDonnee } from "@/lib/data";
-import { formatAvecUnite, formatSource } from "@/lib/format";
+import { arrondiLecture, formatAvecUnite, formatSource, sourceCourte } from "@/lib/format";
 
 /**
  * Un chiffre tiré de data/*.json, mis en forme à la française. La source et
@@ -33,12 +33,12 @@ export function Chiffre({
   const aVerifier = d.statut === "a_verifier";
   const hypothese = d.statut === "hypothese";
   // Une année s'écrit sans séparateur de milliers.
-  const texte =
-    d.unite === "année"
-      ? String(valeur)
-      : unite
-        ? formatAvecUnite(valeur, d.unite, decimales)
-        : formatAvecUnite(valeur, "", decimales).trimEnd();
+  const ecrire = (v: number, dec?: number) =>
+    d.unite === "année" ? String(v) : unite ? formatAvecUnite(v, d.unite, dec) : formatAvecUnite(v, "", dec).trimEnd();
+  const texte = ecrire(valeur, decimales);
+  // Mode Simple : chiffre arrondi ; mode Approfondi : chiffre précis, suivi de sa source.
+  const a = arrondiLecture(valeur);
+  const arrondi = d.unite === "année" ? texte : ecrire(a.valeur, Math.min(a.decimales, decimales ?? a.decimales));
 
   return (
     <span
@@ -47,7 +47,20 @@ export function Chiffre({
         aVerifier ? "decoration-warn underline decoration-wavy decoration-1 underline-offset-4" : ""
       }`}
     >
-      {texte}
+      {arrondi === texte ? (
+        texte
+      ) : (
+        <>
+          <span data-selon-mode="simple">{arrondi}</span>
+          <span data-selon-mode="approfondi">{texte}</span>
+        </>
+      )}
+      {unite && (
+        <span data-selon-mode="approfondi" className="chiffre-source">
+          {" "}
+          ({sourceCourte(d.source.nom)})
+        </span>
+      )}
     </span>
   );
 }

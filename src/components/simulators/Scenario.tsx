@@ -69,5 +69,5 @@ export function BarreScenario({
 
 /** Mention discrète « modifié » à côté d'un réglage qui n'est pas un curseur (boutons, choix). */
 export function MarqueModifie({ actif }: { actif: boolean }) {
-  return actif ? <span className="text-xs font-medium text-warn">modifié</span> : null;
+  return actif ? <span data-modifie className="text-xs font-medium text-warn">modifié</span> : null;
 }

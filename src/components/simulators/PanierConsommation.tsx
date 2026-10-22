@@ -4,6 +4,7 @@ import { getSerie, getValeur } from "@/lib/data";
 import { tvaContenue } from "@/lib/economics";
 import { formatEuros, formatNombre } from "@/lib/format";
 import { Curseur } from "./Curseur";
+import { ReglagesAvances } from "./ReglagesAvances";
 import { BarreScenario, useScenario } from "./Scenario";
 
 /**
@@ -55,12 +56,14 @@ export function PanierConsommation() {
           reference={s.reference.loyer} min={0} max={1500} pas={25} onChange={s.regler("loyer")} affichage={formatEuros(loyer, 0)} />
         <Curseur libelle="Alimentation" valeur={alimentation}
           reference={s.reference.alimentation} min={0} max={1000} pas={10} onChange={s.regler("alimentation")} affichage={formatEuros(alimentation, 0)} />
+        <Curseur libelle="Électricité, gaz" valeur={energie}
+          reference={s.reference.energie} min={0} max={400} pas={10} onChange={s.regler("energie")} affichage={formatEuros(energie, 0)} />
+      </div>
+      <ReglagesAvances nombre={4} className="grid gap-4 sm:grid-cols-2">
         <Curseur libelle="Restaurants, transports en commun" valeur={restaurant}
           reference={s.reference.restaurant} min={0} max={500} pas={10} onChange={s.regler("restaurant")} affichage={formatEuros(restaurant, 0)} />
         <Curseur libelle="Vêtements, équipement, loisirs, services" valeur={biens}
           reference={s.reference.biens} min={0} max={1500} pas={10} onChange={s.regler("biens")} affichage={formatEuros(biens, 0)} />
-        <Curseur libelle="Électricité, gaz" valeur={energie}
-          reference={s.reference.energie} min={0} max={400} pas={10} onChange={s.regler("energie")} affichage={formatEuros(energie, 0)} />
         <Curseur libelle="Gazole (litres par mois)" valeur={litres}
           reference={s.reference.litres} min={0} max={200} pas={5} onChange={s.regler("litres")} affichage={`${litres} L`} />
         <Curseur
@@ -74,7 +77,7 @@ export function PanierConsommation() {
           onChange={s.regler("prixLitre")}
           affichage={`${formatNombre(prixLitre, 2)} € / L`}
         />
-      </div>
+      </ReglagesAvances>
 
       <ul className="space-y-1.5 text-sm">
         {postes.map((p) => (

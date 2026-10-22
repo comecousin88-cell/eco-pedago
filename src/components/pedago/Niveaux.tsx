@@ -10,9 +10,9 @@ import { Depliable } from "./Depliable";
  *   <PlusLoin>…</PlusLoin>
  * </Niveaux>
  *
- * « L'essentiel » et « Le mécanisme » sont ouverts dans les deux modes de
- * lecture ; « Pour aller plus loin » est replié en mode Simple. Chacun reste
- * dépliable à la main.
+ * « L'essentiel » et « Le mécanisme » s'affichent dans les deux modes de
+ * lecture ; « Pour aller plus loin » n'existe qu'en mode Approfondi (masqué
+ * entièrement en mode Simple). Chacun reste repliable à la main.
  */
 export function Niveaux({ children }: { children: ReactNode }) {
   return <div className="my-8 space-y-3">{children}</div>;
@@ -22,18 +22,15 @@ function Niveau({
   numero,
   titre,
   sousTitre,
-  suitLeMode = false,
   children,
 }: {
   numero: number;
   titre: string;
   sousTitre: string;
-  suitLeMode?: boolean;
   children: ReactNode;
 }) {
   return (
     <Depliable
-      suitLeMode={suitLeMode}
       className="rounded-2xl border border-line bg-surface"
       classeEntete="rounded-2xl px-5 py-4 hover:bg-subtle"
       classeContenu="prose-eco max-w-none px-5 pt-1 pb-6"
@@ -75,8 +72,10 @@ export function Mecanisme({ children }: { children: ReactNode }) {
 
 export function PlusLoin({ children }: { children: ReactNode }) {
   return (
-    <Niveau numero={3} titre="Pour aller plus loin" sousTitre="Formules, nuances, débats et sources" suitLeMode>
-      {children}
-    </Niveau>
+    <div data-selon-mode="approfondi" data-bloc="Pour aller plus loin">
+      <Niveau numero={3} titre="Pour aller plus loin" sousTitre="Formules, nuances, débats et sources">
+        {children}
+      </Niveau>
+    </div>
   );
 }

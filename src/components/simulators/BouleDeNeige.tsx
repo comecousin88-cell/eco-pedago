@@ -6,6 +6,7 @@ import { getSerie, getValeur } from "@/lib/data";
 import { soldePrimaireStabilisant, tauxApparent, trajectoireDette, trajectoireTauxApparent } from "@/lib/economics";
 import { formatNombre } from "@/lib/format";
 import { BoutonSimu, Curseur } from "./Curseur";
+import { ReglagesAvances } from "./ReglagesAvances";
 import { BarreScenario, MarqueModifie, useScenario } from "./Scenario";
 
 /**
@@ -121,7 +122,7 @@ export function BouleDeNeige() {
         />
       </div>
 
-      <div className="flex flex-wrap items-center gap-2">
+      <ReglagesAvances nombre={1} className="flex flex-wrap items-center gap-2">
         <span className="text-sm text-muted">Horizon :</span>
         {[10, 20, 30].map((h) => (
           <BoutonSimu key={h} onClick={() => s.regler("horizon")(h)} actif={horizon === h}>
@@ -129,7 +130,7 @@ export function BouleDeNeige() {
           </BoutonSimu>
         ))}
         <MarqueModifie actif={s.estModifiee("horizon")} />
-      </div>
+      </ReglagesAvances>
 
       <div className="flex flex-wrap gap-2">
         <BoutonSimu onClick={() => appliquer({ sp: spStable }, true)}>Scénario « stabiliser la dette »</BoutonSimu>

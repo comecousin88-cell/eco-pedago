@@ -7,6 +7,7 @@ import { EtEnsuite } from "@/components/layout/EtEnsuite";
 import { moduleHref, type ModuleInfo } from "@/content/modules";
 import { themeDuModule, themeHref } from "@/content/rubriques";
 import { suiteModule } from "@/content/suite";
+import { ApprofondiModule } from "./ApprofondiModule";
 import { FilAriane } from "./FilAriane";
 import { MarquerLue } from "./MarquerLue";
 import { ModuleTheme } from "./ModuleTheme";
@@ -74,6 +75,8 @@ export function PageModule({
             </div>
 
             <article className="prose-eco mt-8 max-w-none">{children}</article>
+
+            {!infoSection && <ApprofondiModule module={module.slug} />}
 
             <PropositionsLiees module={module.slug} section={section} />
 
