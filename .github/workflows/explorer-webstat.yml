@@ -1,0 +1,24 @@
+# Exploration ponctuelle du catalogue Webstat (lancement à la main uniquement) :
+# liste les séries quotidiennes de taux à long terme encore alimentées.
+# N'écrit rien dans le dépôt ; le résultat s'affiche dans le résumé de la tâche.
+name: Explorer Webstat
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  explorer:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Lister les séries quotidiennes
+        run: node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/explorer-webstat.ts
+        env:
+          WEBSTAT_CLIENT_ID: ${{ secrets.WEBSTAT_CLIENT_ID }}
