@@ -30,7 +30,7 @@ const lignes = [`Flux d'actualités du ${maintenant.slice(0, 10)}`];
 
 for (const s of SOURCES_FLUX) {
   try {
-    const r = await fetch(s.url, { headers: { "User-Agent": "eco-en-clair (fil d'actualite)" }, signal: AbortSignal.timeout(60_000) });
+    const r = await fetch(s.url, { headers: { "User-Agent": "ecoclair (fil d'actualite)" }, signal: AbortSignal.timeout(60_000) });
     if (!r.ok) throw new Error(`HTTP ${r.status}`);
     const items = lireRss(await r.text());
     if (items.length === 0) throw new Error("flux vide ou illisible");

@@ -51,7 +51,7 @@ const appliquerConstat = (c: Constat<unknown>) => {
 const lancer = (cmd: string, args: string[]) => execFileSync(cmd, args, { encoding: "utf8", stdio: ["ignore", "pipe", "pipe"] }).trim();
 
 async function page(url: string): Promise<string> {
-  const r = await fetch(url, { headers: { "User-Agent": "eco-en-clair (veille de l'agenda)" }, signal: AbortSignal.timeout(60_000) });
+  const r = await fetch(url, { headers: { "User-Agent": "ecoclair (veille de l'agenda)" }, signal: AbortSignal.timeout(60_000) });
   if (!r.ok) throw new Error(`HTTP ${r.status}`);
   return texteDePage(await r.text());
 }

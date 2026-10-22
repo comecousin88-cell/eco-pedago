@@ -81,7 +81,7 @@ async function telecharger(url: string, essais = 3): Promise<string> {
   let derniere: unknown;
   for (let k = 1; k <= essais; k++) {
     try {
-      const r = await fetch(url, { headers: { "User-Agent": "eco-en-clair (mise a jour des indicateurs)" }, signal: AbortSignal.timeout(60_000) });
+      const r = await fetch(url, { headers: { "User-Agent": "ecoclair (mise a jour des indicateurs)" }, signal: AbortSignal.timeout(60_000) });
       if (!r.ok) throw new Error(`HTTP ${r.status}`);
       return await r.text();
     } catch (e) {

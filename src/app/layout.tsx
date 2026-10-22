@@ -5,7 +5,7 @@ import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
 import { themeScript } from "@/components/theme/theme-script";
 import { lectureScript } from "@/lib/lecture-script";
-import { site } from "@/content/site";
+import { jsonLdSite, metadataSite } from "@/content/metadonnees";
 import "./globals.css";
 
 const inter = Inter({
@@ -18,13 +18,7 @@ const sourceSerif = Source_Serif_4({
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = {
-  title: {
-    default: `${site.name} : l'économie expliquée simplement`,
-    template: `%s · ${site.name}`,
-  },
-  description: site.description,
-};
+export const metadata: Metadata = metadataSite;
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
@@ -46,6 +40,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         />
       </head>
       <body className="flex min-h-full flex-col">
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdSite) }} />
         <a
           href="#contenu"
           className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-50 focus:rounded-md focus:bg-surface focus:px-4 focus:py-2 focus:text-ink focus:shadow"

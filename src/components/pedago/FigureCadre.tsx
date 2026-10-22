@@ -19,7 +19,7 @@ function nomDeFichier(titre: string) {
     .toLowerCase()
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/^-|-$/g, "");
-  return `eco-en-clair-${slug || "graphique"}.png`;
+  return `ecoclair-${slug || "graphique"}.png`;
 }
 
 export function FigureCadre({

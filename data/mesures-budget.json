@@ -17,7 +17,7 @@
       ],
       "nature": "depense",
       "source": {
-        "nom": "Conseil d'orientation des retraites, rapport annuel (juin 2026), dépenses de retraite ; calcul Éco en clair",
+        "nom": "Conseil d'orientation des retraites, rapport annuel (juin 2026), dépenses de retraite ; calcul EcoClair",
         "url": "https://www.vie-publique.fr/files/rapport/pdf/303623.pdf"
       },
       "date": "2026",
@@ -42,7 +42,7 @@
       ],
       "nature": "depense",
       "source": {
-        "nom": "Conseil d'orientation des retraites, rapport annuel (juin 2026), dépenses de retraite ; calcul Éco en clair",
+        "nom": "Conseil d'orientation des retraites, rapport annuel (juin 2026), dépenses de retraite ; calcul EcoClair",
         "url": "https://www.vie-publique.fr/files/rapport/pdf/303623.pdf"
       },
       "date": "2026",
@@ -167,7 +167,7 @@
       ],
       "nature": "depense",
       "source": {
-        "nom": "Insee, dépenses des administrations publiques par fonction (2024) ; calcul Éco en clair",
+        "nom": "Insee, dépenses des administrations publiques par fonction (2024) ; calcul EcoClair",
         "url": "https://www.insee.fr/fr/statistiques/8574720?sommaire=8574832"
       },
       "date": "2026",
@@ -374,7 +374,7 @@
       ],
       "nature": "depense",
       "source": {
-        "nom": "Insee, dépenses par sous-secteur des administrations publiques (2025) ; calcul Éco en clair",
+        "nom": "Insee, dépenses par sous-secteur des administrations publiques (2025) ; calcul EcoClair",
         "url": "https://www.insee.fr/fr/statistiques/8988845"
       },
       "date": "2026",
@@ -398,7 +398,7 @@
       ],
       "nature": "depense",
       "source": {
-        "nom": "Insee, dépenses par sous-secteur des administrations publiques (2025) ; calcul Éco en clair",
+        "nom": "Insee, dépenses par sous-secteur des administrations publiques (2025) ; calcul EcoClair",
         "url": "https://www.insee.fr/fr/statistiques/8988845"
       },
       "date": "2026",
@@ -447,7 +447,7 @@
       ],
       "nature": "recette",
       "source": {
-        "nom": "Groupe d'experts sur le Smic, rapport du 28 novembre 2024 ; calcul Éco en clair",
+        "nom": "Groupe d'experts sur le Smic, rapport du 28 novembre 2024 ; calcul EcoClair",
         "url": "https://www.tresor.economie.gouv.fr/Articles/284b121f-b187-4280-b327-05f18064c3fa/files/e5a11d8e-ca36-42b1-afaf-403257e3edfe"
       },
       "date": "2026",
@@ -543,7 +543,7 @@
       ],
       "nature": "depense",
       "source": {
-        "nom": "Projet de loi de finances 2026, crédits des missions ; calcul Éco en clair",
+        "nom": "Projet de loi de finances 2026, crédits des missions ; calcul EcoClair",
         "url": "https://www.budget.gouv.fr/budget-etat"
       },
       "date": "2026",
@@ -593,7 +593,7 @@
       ],
       "nature": "recette",
       "source": {
-        "nom": "Insee, recettes des administrations publiques (2024) ; calcul Éco en clair",
+        "nom": "Insee, recettes des administrations publiques (2024) ; calcul EcoClair",
         "url": "https://www.insee.fr/fr/statistiques/8988845"
       },
       "date": "2026",
@@ -736,7 +736,7 @@
       ],
       "nature": "recette",
       "source": {
-        "nom": "Insee, recettes des administrations publiques (2024) ; calcul Éco en clair",
+        "nom": "Insee, recettes des administrations publiques (2024) ; calcul EcoClair",
         "url": "https://www.insee.fr/fr/statistiques/8988845"
       },
       "date": "2026",
@@ -794,7 +794,7 @@
       "consulte_le": "2026-10-21",
       "groupe": "impot-fortune",
       "incertain": true,
-      "note": "De 2 à 3 Md€ (impôt sur les sociétés déduit) à 15 à 25 Md€ (estimation de ses promoteurs) ; valeur centrale prudente retenue par Éco en clair."
+      "note": "De 2 à 3 Md€ (impôt sur les sociétés déduit) à 15 à 25 Md€ (estimation de ses promoteurs) ; valeur centrale prudente retenue par EcoClair."
     },
     {
       "id": "pat-isf",
@@ -989,7 +989,7 @@
       ],
       "nature": "recette",
       "source": {
-        "nom": "Ministère de l'Économie, bilan 2025 du contrôle fiscal ; calcul Éco en clair",
+        "nom": "Ministère de l'Économie, bilan 2025 du contrôle fiscal ; calcul EcoClair",
         "url": "https://www.economie.gouv.fr/actualites/lutte-contre-la-fraude-un-controle-fiscal-toujours-plus-efficace-en-2025"
       },
       "date": "2026",
@@ -1014,7 +1014,7 @@
       ],
       "nature": "recette",
       "source": {
-        "nom": "Commission européenne, VAT gap in Europe 2025 ; calcul Éco en clair",
+        "nom": "Commission européenne, VAT gap in Europe 2025 ; calcul EcoClair",
         "url": "https://taxation-customs.ec.europa.eu/vat-gap_en"
       },
       "date": "2026",
@@ -1041,7 +1041,7 @@
       ],
       "nature": "recette",
       "source": {
-        "nom": "HCFiPS, note de suivi des fraudes sociales (décembre 2025) ; calcul Éco en clair",
+        "nom": "HCFiPS, note de suivi des fraudes sociales (décembre 2025) ; calcul EcoClair",
         "url": "https://www.securite-sociale.fr/files/live/sites/SSFR/files/medias/HCFIPS/2026/HCFIPS%20-%20Synth%C3%A8se%20Fraude%20sociale%202025%20-%20Version%20finalis%C3%A9e.pdf"
       },
       "date": "2026",

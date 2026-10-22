@@ -1,4 +1,4 @@
-# Éco en clair
+# EcoClair
 
 Plateforme pédagogique pour comprendre les finances publiques françaises : déficit, dette, emprunt
 de l'État, banque centrale, retraites, fiscalité. Site 100 % statique (Next.js en export statique).

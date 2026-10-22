@@ -7,6 +7,7 @@ import { glossaire } from "./glossaire";
 import { idees } from "./idees-recues";
 import { moduleHref, modules } from "./modules";
 import { propositionHref, propositions } from "./propositions";
+import { pagesDuSite } from "./plan-du-site";
 import { indexRecherche } from "./recherche";
 import { rubriqueDe, rubriques, simulateurs, themeDuModule, themes } from "./rubriques";
 import { pagesAvecSuite, suiteModule, suitePage, suiteProposition } from "./suite";
@@ -111,6 +112,15 @@ describe("« Et ensuite ? »", () => {
       expect(source, `${chemin} : fil d'Ariane`).toContain("<FilAriane");
       expect(source, `${chemin} : « Et ensuite ? »`).toContain("<EtEnsuite");
     }
+  });
+});
+
+describe("plan du site (sitemap.xml)", () => {
+  it("ne contient que des pages qui existent, et toutes les pages publiques", () => {
+    const pages = pagesDuSite();
+    for (const p of pages) expect(connues, p).toContain(p);
+    const exclues = new Set(["/modules/", "/jeux/", "/jeu-budget/", "/concepts/", "/atelier/"]);
+    for (const a of connues) if (!exclues.has(a) && !(a.startsWith("/propositions/") && a !== "/propositions/" && !propositions.find((x) => propositionHref(x.slug) === a)?.contenu)) expect(pages, a).toContain(a);
   });
 });
 

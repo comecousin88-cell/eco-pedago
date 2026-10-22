@@ -1,4 +1,4 @@
-# Mettre « Éco en clair » en ligne, avec mise à jour automatique
+# Mettre « EcoClair » en ligne, avec mise à jour automatique
 
 Solution retenue, entièrement gratuite (une clé d'API facultative) :
 

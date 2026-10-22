@@ -41,6 +41,7 @@ export function Footer() {
           servent à comprendre des mécanismes, pas à faire des prévisions ni à
           remplacer un conseil financier.
         </p>
+        <p className="pt-2">Créé par Côme Cousin</p>
       </div>
     </footer>
   );

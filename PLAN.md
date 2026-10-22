@@ -1,4 +1,4 @@
-# Plan : « Éco en clair », comprendre l'économie publique française
+# Plan : « EcoClair » (anciennement « Éco en clair »), comprendre l'économie publique française
 
 Statut : **validé le 20/10/2026** (plan et 5 décisions). La mise à jour automatique des indicateurs (décision 5) est repoussée à la fin, une fois le site en ligne : d'ici là, le tableau de bord lit des JSON datés, mis à jour à la main.
 
@@ -14,7 +14,7 @@ Ajustements du 20/10/2026, intégrés ci-dessous (section 7) : deux niveaux de l
 | Existant | Ce que j'en fais |
 |---|---|
 | Next.js 16.4 (App Router, Turbopack), React 19, Tailwind 4, Recharts 3, Vitest | **Je garde Next.js** au lieu de Vite (voir décision n° 1) |
-| Nom « Éco en clair », style éditorial (Inter + Source Serif 4, tons stone) | Je garde le nom et la typo. J'ajoute une couleur par module et le mode sombre |
+| Nom « EcoClair », style éditorial (Inter + Source Serif 4, tons stone) | Je garde le nom et la typo. J'ajoute une couleur par module et le mode sombre |
 | `/concepts` : 4 cartes (taux, inflation, dette, retraites) | Les cartes mènent à `/concepts/[slug]`, **qui n'existe pas (404)**. Les 4 notions sont absorbées par les modules 0, 1, 2 et 5. `/concepts` devient `/modules` (avec redirection) |
 | `/tableau-de-bord` (« Bientôt ») | Devient le Module 7, même URL |
 | `/jeu-budget` (« Bientôt », 1 an en 12 mois) | Devient le jeu « Ministre des Finances » (Module 8, mandat de 5 ans), même URL |
