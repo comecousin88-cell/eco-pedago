@@ -111,9 +111,9 @@ describe("où se trouve le sélecteur Simple / Approfondi", () => {
   });
 
   it("est sous le titre de chaque page de module et de chaque fiche", () => {
-    const module = source("components/modules/PageModule.tsx");
-    expect(module.indexOf("<ModeLecture")).toBeGreaterThan(module.indexOf("</h1>"));
-    expect(module.indexOf("<ModeLecture")).toBeLessThan(module.indexOf("<article"));
+    const pageModule = source("components/modules/PageModule.tsx");
+    expect(pageModule.indexOf("<ModeLecture")).toBeGreaterThan(pageModule.indexOf("</h1>"));
+    expect(pageModule.indexOf("<ModeLecture")).toBeLessThan(pageModule.indexOf("<article"));
     const fiche = source("app/propositions/[slug]/page.tsx");
     expect(fiche).toMatch(/<\/h1>\s*<ModeLecture/);
   });
