@@ -1,10 +1,12 @@
 import Link from "next/link";
+import { CarteActu } from "@/components/actu/FilActu";
 import { BandeauAlertes } from "@/components/indicateurs/BandeauAlertes";
 import { ModuleCard } from "@/components/modules/ModuleCard";
 import { CartesParcours } from "@/components/lecture/CartesParcours";
 import { ModuleTheme } from "@/components/modules/ModuleTheme";
 import { CarteProposition, versCarte } from "@/components/propositions/CarteProposition";
 import { modules, rubriqueColors } from "@/content/modules";
+import { dernieresActus } from "@/content/actu";
 import { idees } from "@/content/idees-recues";
 import { propositions, propositionsPhares } from "@/content/propositions";
 
@@ -40,9 +42,26 @@ const PORTES = [
 export default function Home() {
   return (
     <div className="mx-auto max-w-5xl px-4 sm:px-6">
-      <div className="pt-6">
-        <BandeauAlertes />
-      </div>
+      <section aria-labelledby="dernieres-actus" className="pt-6">
+        <div className="flex flex-wrap items-baseline justify-between gap-2">
+          <h2 id="dernieres-actus" className="text-sm font-semibold tracking-wide text-muted uppercase">
+            Les dernières actus
+          </h2>
+          <Link href="/actu/" className="text-sm font-medium text-accent underline underline-offset-4">
+            Tout le fil
+          </Link>
+        </div>
+        <ul className="mt-3 grid gap-3 md:grid-cols-3">
+          {dernieresActus(3).map((e) => (
+            <li key={e.id}>
+              <CarteActu e={e} compacte />
+            </li>
+          ))}
+        </ul>
+        <div className="mt-4">
+          <BandeauAlertes />
+        </div>
+      </section>
       <section className="py-14 sm:py-20">
         <p className="text-sm font-semibold tracking-wide text-accent uppercase">Les finances publiques, sans le jargon</p>
         <h1 className="mt-3 max-w-3xl font-serif text-4xl leading-tight font-semibold tracking-tight text-ink sm:text-5xl">

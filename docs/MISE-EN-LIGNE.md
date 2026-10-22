@@ -4,15 +4,17 @@ Solution retenue, entièrement gratuite (une clé d'API facultative) :
 
 ```
 GitHub (le code et les données)
-  ├─ « Mise à jour des indicateurs », chaque jour ouvré à 19 h 30 (18 h 30 en hiver) :
-  │    1. interroge la BCE, Eurostat, l'Insee et, si la clé est enregistrée, la Banque de France
+  ├─ « Mise à jour des indicateurs », trois fois par jour ouvré (matin, midi, fin de journée) :
+  │    1. interroge la BCE, Eurostat, l'Insee et, si la clé est enregistrée, la Banque de France,
+  │       puis lit les flux d'actualités de l'Insee, de la BCE et de la Cour des comptes (fil « L'actu »)
   │    2. contrôle la vraisemblance des séries
   │    3. lance les tests, le contrôle du code et la construction du site
   │    4. si tout passe : enregistre les nouvelles données sur GitHub → publication
   └─ « Veille de l'agenda », chaque jour ouvré à 20 h (19 h en hiver) :
        repère les échéances passées (notes des agences, budget), compare l'agenda aux
        calendriers de l'Insee et de la BCE, et ouvre une demande de mise à jour
-       (pull request) à votre nom. Rien n'est publié tant que vous ne l'avez pas fusionnée.
+       (pull request) à votre nom ; propose aussi les encadrés « Ce que ça veut dire » des
+       événements importants du fil « L'actu ». Rien n'est publié tant que vous ne l'avez pas fusionnée.
 Vercel (l'hébergement)
   └─ republie le site automatiquement à chaque enregistrement sur la branche main
 ```

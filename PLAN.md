@@ -255,3 +255,18 @@ Chaque fonction est testée sur des cas calculables à la main. Exemple : une OA
   src/content/suite.ts). Recherche sur tout le site (index statique /recherche.json, dans le navigateur).
 - Tests : src/content/navigation.test.ts (rubriques, thèmes, suggestions valides, fil d'Ariane et « Et ensuite ? »
   présents sur chaque page, index de recherche sans lien mort).
+
+## 10. L'actu (22/10/2026)
+
+- Fil chronologique (/actu/, et les trois dernières actus en haut de l'accueil), assemblé à la publication
+  (src/content/actu.ts) : nouvelles périodes des indicateurs (data/actu-journal.json, écrit par
+  maj-indicateurs), alertes de seuil, échéances passées de l'agenda, publications officielles
+  (data/actu-flux.json, écrit par scripts/maj-actu.ts depuis les flux RSS de l'Insee, de la BCE et de la Cour des
+  comptes). Chaque entrée renvoie vers l'original et vers la page du site qui explique le sujet.
+- Publiés automatiquement : les faits (chiffres, alertes, titres et liens des publications).
+- Soumis à validation : l'encadré « Ce que ça veut dire » des événements importants. La veille lit /actu.json sur le
+  site publié et ouvre une demande de mise à jour par événement (brouillon de trois phrases dans
+  data/actu-explications.json), cinq au plus à la fois.
+- Mise à jour des indicateurs et des flux : trois fois par jour ouvré.
+- Sources sans flux exploitable : Banque de France (refuse les robots), vie-publique.fr (protection anti-robots :
+  non contournée).

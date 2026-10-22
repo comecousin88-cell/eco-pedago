@@ -22,6 +22,8 @@ export interface RegleAlerte {
   /** Valeur actuelle en clair : « 5,1 % ». */
   detail: (dernier: Point) => string;
   lien: { href: string; libelle: string };
+  /** Pourquoi ce seuil compte, en une phrase : sert de brouillon à l'encadré « Ce que ça veut dire ». */
+  pourquoi: string;
 }
 
 const pct = (decimales: number) => (p: Point) => `${formatNombre(p.y, decimales)} %`;
@@ -37,6 +39,7 @@ export const reglesAlertes: RegleAlerte[] = [
     points: () => avecValeurRecente(getSerie("marches.taux10-france").serie, taux10Jour()),
     detail: pct(2),
     lien: { href: "/modules/emprunt-etat/prix-et-taux/", libelle: "Pourquoi le taux compte" },
+    pourquoi: "Chaque emprunt nouveau, et chaque dette renouvelée, coûte alors plus cher à l'État : l'effet sur la charge d'intérêts se diffuse sur plusieurs années.",
   },
   {
     id: "spread-100",
@@ -47,6 +50,7 @@ export const reglesAlertes: RegleAlerte[] = [
     points: () => getSerie("marches.spread-france-allemagne").serie,
     detail: (p) => `${formatNombre(p.y, 0)} points de base`,
     lien: { href: "/modules/emprunt-etat/spread-notation/", libelle: "Spread et notation" },
+    pourquoi: "Les investisseurs demandent un supplément pour prêter à la France plutôt qu'à l'Allemagne : c'est un signal de moindre confiance, qui renchérit les emprunts.",
   },
   {
     id: "france-italie",
@@ -61,6 +65,7 @@ export const reglesAlertes: RegleAlerte[] = [
       return `${formatNombre(fr, 2)} % contre ${formatNombre(it, 2)} %`;
     },
     lien: { href: "/modules/emprunt-etat/spread-notation/", libelle: "Spread et notation" },
+    pourquoi: "Les marchés jugent désormais la France aussi risquée, voire plus, que l'Italie, longtemps considérée comme plus fragile : la prime de risque française augmente.",
   },
   {
     id: "dette-120",
@@ -74,6 +79,7 @@ export const reglesAlertes: RegleAlerte[] = [
     },
     detail: (p) => `${formatNombre(p.y, 1)} % du PIB`,
     lien: { href: "/modules/deficit-et-dette/histoire/", libelle: "La dette depuis 1978" },
+    pourquoi: "Plus la dette pèse lourd par rapport à la richesse produite, plus une hausse des taux alourdit la charge d'intérêts et réduit les marges du budget.",
   },
   {
     id: "inflation-3",
@@ -84,6 +90,7 @@ export const reglesAlertes: RegleAlerte[] = [
     points: () => getSerie("ind.inflation-fr").serie,
     detail: pct(1),
     lien: { href: "/modules/les-bases/inflation-taux-reels/", libelle: "Inflation et taux réels" },
+    pourquoi: "Les prix montent plus vite que l'objectif de la BCE : le pouvoir d'achat s'érode, et la BCE peut maintenir des taux plus élevés.",
   },
   {
     id: "chomage-9",
@@ -94,6 +101,7 @@ export const reglesAlertes: RegleAlerte[] = [
     points: () => getSerie("ind.chomage").serie,
     detail: pct(1),
     lien: { href: "/tableau-de-bord/", libelle: "Tableau de bord" },
+    pourquoi: "Un chômage plus élevé pèse sur les recettes (moins de cotisations) et sur les dépenses (plus d'indemnisation).",
   },
 ];
 
@@ -113,6 +121,7 @@ export interface Alerte {
   /** Date de la donnée la plus récente. */
   date: string;
   lien: RegleAlerte["lien"];
+  pourquoi: string;
 }
 
 /** Phrase d'une alerte : « … est au-dessus de 5 % depuis … (5,1 % en novembre 2026). » */
@@ -131,6 +140,6 @@ export function alertesActives(regles: RegleAlerte[] = reglesAlertes): Alerte[] 
   return regles.flatMap((r) => {
     const e = evaluerSeuil(r.points(), r.seuil, r.sens);
     const phrase = phraseAlerte(r, e);
-    return phrase && e.etat !== "normal" ? [{ id: r.id, etat: e.etat, phrase, date: e.dernier.x, lien: r.lien }] : [];
+    return phrase && e.etat !== "normal" ? [{ id: r.id, etat: e.etat, phrase, date: e.dernier.x, lien: r.lien, pourquoi: r.pourquoi }] : [];
   });
 }

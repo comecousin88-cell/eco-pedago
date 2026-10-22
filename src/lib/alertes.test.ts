@@ -48,6 +48,7 @@ describe("phrases du bandeau", () => {
     points: () => [],
     detail: (p) => `${String(p.y).replace(".", ",")} %`,
     lien: { href: "/", libelle: "" },
+    pourquoi: "",
   };
 
   it("datent la donnée et le franchissement", () => {

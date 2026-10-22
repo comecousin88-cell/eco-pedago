@@ -30,6 +30,8 @@ import {
   type Observation,
   type Point,
 } from "../src/lib/maj/fonctions.ts";
+import { ajouterAuJournal, nouvellePeriode, type EntreeJournal, type Journal } from "../src/lib/actu/journal.ts";
+import { indicateurs } from "../src/content/indicateurs.ts";
 
 const RACINE = new URL("../", import.meta.url);
 const maintenant = new Date();
@@ -54,9 +56,17 @@ function donnee(nom: string, id: string): DonneeJson {
   return d;
 }
 
+/** Données du tableau de bord : leurs nouvelles périodes alimentent le fil « L'actu » (data/actu-journal.json). */
+const SUIVIES = new Set(indicateurs.flatMap((i) => [i.serie, ...(i.valeurRecente ? [i.valeurRecente] : [])]));
+const nouveautes: EntreeJournal[] = [];
+
 function remplacer(nom: string, nouvelle: DonneeJson) {
   const f = fichier(nom);
   const i = f.donnees.findIndex((x) => x.id === nouvelle.id);
+  if (SUIVIES.has(nouvelle.id)) {
+    const n = nouvellePeriode(f.donnees[i], nouvelle, aujourdhui);
+    if (n) nouveautes.push(n);
+  }
   if (JSON.stringify(f.donnees[i]) !== JSON.stringify(nouvelle)) modifies.add(nom);
   f.donnees[i] = nouvelle;
 }
@@ -299,6 +309,13 @@ for (const [nom, maj] of sources) {
 for (const nom of modifies) {
   writeFileSync(new URL(`data/${nom}.json`, RACINE), `${JSON.stringify(fichier(nom), null, 2)}\n`, "utf8");
 }
+if (nouveautes.length) {
+  const cheminActu = new URL("data/actu-journal.json", RACINE);
+  const actuel: Journal = JSON.parse(readFileSync(cheminActu, "utf8"));
+  writeFileSync(cheminActu, `${JSON.stringify(ajouterAuJournal(actuel, nouveautes), null, 2)}
+`, "utf8");
+}
+
 const cheminJournal = new URL("data/maj-indicateurs.json", RACINE);
 let precedent: JournalMaj | undefined;
 try {

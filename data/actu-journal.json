@@ -1,0 +1,4 @@
+{
+  "description": "Nouvelles périodes publiées pour les indicateurs du tableau de bord, avec leur date de détection. Écrit par scripts/maj-indicateurs.ts ; lu par le fil « L'actu ».",
+  "entrees": []
+}

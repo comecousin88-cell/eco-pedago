@@ -8,7 +8,7 @@ import { dateEcheance, finEcheance, type Agenda, type Evenement } from "./echean
  * sans validation.
  */
 
-export interface Constat {
+export interface Constat<T = Agenda> {
   /** Identifiant stable : nom de la branche veille/<id>, pour ne jamais ouvrir deux fois la même demande. */
   id: string;
   titre: string;
@@ -16,8 +16,10 @@ export interface Constat {
   explication: string;
   /** Ce qu'il reste à faire avant de valider (cases à cocher). */
   aFaire: string[];
-  /** Modification de data/agenda.json proposée dans la demande. */
-  modifier: (agenda: Agenda) => Agenda;
+  /** Fichier modifié par la demande (data/agenda.json par défaut). */
+  fichier?: string;
+  /** Modification du fichier proposée dans la demande. */
+  modifier: (donnees: T) => T;
 }
 
 const MOIS = ["janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août", "septembre", "octobre", "novembre", "décembre"];
@@ -224,8 +226,55 @@ export function constatPage(agenda: Agenda, id: string, texte: string): Constat 
   };
 }
 
+/** Entrée du fil « L'actu » telle que publiée dans /actu.json (champs utiles à la veille). */
+export interface EntreeFilPubliee {
+  id: string;
+  date: string;
+  titre: string;
+  important: boolean;
+  explication?: string;
+  brouillon?: string;
+  page: { href: string; titre: string };
+  source?: { nom: string; url: string };
+}
+
+export interface Explications {
+  description: string;
+  explications: Record<string, { texte: string; propose_le: string }>;
+}
+
+/**
+ * Événements importants du fil sans encadré « Ce que ça veut dire » : une
+ * demande par événement, avec un brouillon de trois phrases à relire. Seuls les
+ * événements récents sont proposés, et au plus `max` à la fois.
+ */
+export function constatsExplications(fil: EntreeFilPubliee[], explications: Explications, aujourdhui: string, { jours = 45, max = 5 } = {}): Constat<Explications>[] {
+  const limite = new Date(Date.parse(aujourdhui) - jours * 86_400_000).toISOString().slice(0, 10);
+  return fil
+    .filter((e) => e.important && e.brouillon && !e.explication && !explications.explications[e.id] && e.date >= limite)
+    .slice(0, max)
+    .map((e) => ({
+      id: `explication-${e.id}`.slice(0, 90),
+      titre: `Ce que ça veut dire : ${e.titre.length > 80 ? `${e.titre.slice(0, 77)}…` : e.titre}`,
+      explication: [
+        `Le fil « L'actu » contient un événement important sans encadré « Ce que ça veut dire » :`,
+        `> ${e.titre}`,
+        `Brouillon proposé (trois phrases) :`,
+        `> ${e.brouillon}`,
+        `Page du site liée : ${e.page.titre} (${e.page.href}).${e.source ? ` Source : [${e.source.nom}](${e.source.url}).` : ""}`,
+      ].join("\n\n"),
+      aFaire: [
+        "Relire le brouillon dans data/actu-explications.json (onglet « Files changed », crayon pour modifier)",
+        "Vérifier chaque affirmation sur la source et garder trois phrases au plus, sans parti pris",
+        "Fusionner : l'encadré apparaîtra sur le site à la publication suivante",
+      ],
+      fichier: "data/actu-explications.json",
+      modifier: (x) => ({ ...x, explications: { ...x.explications, [e.id]: { texte: e.brouillon as string, propose_le: aujourdhui } } }),
+    }));
+}
+
 /** Texte de la demande de mise à jour (corps de la pull request). */
-export function corpsDemande(c: Constat, proprietaire: string): string {
+export function corpsDemande(c: Pick<Constat, "explication" | "aFaire">, proprietaire: string): string {
   return [
     `@${proprietaire} : la veille de l'agenda propose une mise à jour. **Rien n'est publié tant que vous n'avez pas fusionné cette demande.**`,
     c.explication,

@@ -1,0 +1,248 @@
+{
+  "description": "Publications des sources officielles (Insee, BCE, Cour des comptes) sur les sujets du site, lues dans leurs flux RSS par scripts/maj-actu.ts. Chaque entrée renvoie vers l'original et vers la page du site qui explique le sujet.",
+  "derniere_verification": "2026-10-22T09:05:20.064Z",
+  "sources": {
+    "insee": {
+      "statut": "ok"
+    },
+    "bce": {
+      "statut": "ok"
+    },
+    "cour-des-comptes": {
+      "statut": "ok"
+    }
+  },
+  "entrees": [
+    {
+      "titre": "En septembre 2026, les prix à la consommation augmentent de 3,1 % sur un an",
+      "lien": "https://www.insee.fr/fr/statistiques/9080209",
+      "date": "2026-10-15T06:45:00Z",
+      "resume": "",
+      "id": "insee-c12520f1",
+      "source": "insee",
+      "page": "/modules/les-bases/inflation-taux-reels/",
+      "sujet": "Inflation",
+      "important": false
+    },
+    {
+      "titre": "En septembre 2026, les prix à la consommation augmenteraient de 3,0 % sur un an",
+      "lien": "https://www.insee.fr/fr/statistiques/9056956",
+      "date": "2026-09-30T06:45:00Z",
+      "resume": "",
+      "id": "insee-a14d1f55",
+      "source": "insee",
+      "page": "/modules/les-bases/inflation-taux-reels/",
+      "sujet": "Inflation",
+      "important": false
+    },
+    {
+      "titre": "Dette des administrations publiques au sens de Maastricht",
+      "lien": "https://www.insee.fr/fr/statistiques/2830301",
+      "date": "2026-09-29T06:45:21Z",
+      "resume": "",
+      "id": "insee-098d9efe",
+      "source": "insee",
+      "page": "/modules/deficit-et-dette/",
+      "sujet": "Dette et déficit",
+      "important": false
+    },
+    {
+      "titre": "À la fin du deuxième trimestre 2026, le ratio de dette publique s’établit à 119,0 % du PIB",
+      "lien": "https://www.insee.fr/fr/statistiques/9053525",
+      "date": "2026-09-29T06:45:00Z",
+      "resume": "À la fin du deuxième trimestre 2026, la dette publique au sens de Maastricht s’établit à 3 595,5 Md€, soit une augmentation de 59,6 Md€, après +75,8 Md€ au premier trimestre 2026. Exprimée en pourcentage du produit intérieur brut (PIB), elle s’établit à 119,0 % du PIB, après 117,5 % au premier trimestre 2026. La hausse de la dette publique s’accompagne d’une baisse de la trésorerie des administrat",
+      "id": "insee-3d45bdca",
+      "source": "insee",
+      "page": "/modules/deficit-et-dette/",
+      "sujet": "Dette et déficit",
+      "important": true
+    },
+    {
+      "titre": "En août 2026, les prix à la consommation augmentent de 2,4 % sur un an",
+      "lien": "https://www.insee.fr/fr/statistiques/9051406",
+      "date": "2026-09-15T06:45:00Z",
+      "resume": "",
+      "id": "insee-b5c87300",
+      "source": "insee",
+      "page": "/modules/les-bases/inflation-taux-reels/",
+      "sujet": "Inflation",
+      "important": false
+    },
+    {
+      "titre": "Taux de prélèvements obligatoires rapportés au produit intérieur brut",
+      "lien": "https://www.insee.fr/fr/statistiques/2381412",
+      "date": "2026-08-28T12:53:18Z",
+      "resume": "",
+      "id": "insee-09c99490",
+      "source": "insee",
+      "page": "/modules/fiscalite/",
+      "sujet": "Impôts",
+      "important": false
+    },
+    {
+      "titre": "Dette des administrations publiques au sens de Maastricht par sous-secteur",
+      "lien": "https://www.insee.fr/fr/statistiques/2830192",
+      "date": "2026-08-28T12:51:18Z",
+      "resume": "",
+      "id": "insee-343327d4",
+      "source": "insee",
+      "page": "/modules/deficit-et-dette/",
+      "sujet": "Dette et déficit",
+      "important": false
+    },
+    {
+      "titre": "Capacité ou besoin de financement des administrations publiques au sens de Maastricht par sous-secteur",
+      "lien": "https://www.insee.fr/fr/statistiques/2381402",
+      "date": "2026-08-28T12:49:16Z",
+      "resume": "",
+      "id": "insee-13cbe2e5",
+      "source": "insee",
+      "page": "/modules/deficit-et-dette/",
+      "sujet": "Dette et déficit",
+      "important": false
+    },
+    {
+      "titre": "Impôts",
+      "lien": "https://www.insee.fr/fr/statistiques/2381408",
+      "date": "2026-08-28T12:47:16Z",
+      "resume": "",
+      "id": "insee-19cbec57",
+      "source": "insee",
+      "page": "/modules/fiscalite/",
+      "sujet": "Impôts",
+      "important": false
+    },
+    {
+      "titre": "Évolution du produit intérieur brut et de ses composantes",
+      "lien": "https://www.insee.fr/fr/statistiques/2830547",
+      "date": "2026-08-28T09:04:17Z",
+      "resume": "",
+      "id": "insee-d4b32242",
+      "source": "insee",
+      "page": "/modules/les-bases/pib/",
+      "sujet": "Croissance",
+      "important": false
+    },
+    {
+      "titre": "Dépenses et recettes des administrations publiques en 2025",
+      "lien": "https://www.insee.fr/fr/statistiques/8988845",
+      "date": "2026-08-28T07:35:16Z",
+      "resume": "",
+      "id": "insee-6cba44ed",
+      "source": "insee",
+      "page": "/modules/deficit-et-dette/",
+      "sujet": "Dette et déficit",
+      "important": false
+    },
+    {
+      "titre": "Dette et déficit publics au sens de Maastricht en 2025",
+      "lien": "https://www.insee.fr/fr/statistiques/8988843",
+      "date": "2026-08-28T07:33:49Z",
+      "resume": "",
+      "id": "insee-66ba3b7b",
+      "source": "insee",
+      "page": "/modules/deficit-et-dette/",
+      "sujet": "Dette et déficit",
+      "important": true
+    },
+    {
+      "titre": "Comptes nationaux trimestriels au deuxième trimestre 2026",
+      "lien": "https://www.insee.fr/fr/statistiques/9007859",
+      "date": "2026-08-28T06:45:18Z",
+      "resume": "",
+      "id": "insee-b85b0b75",
+      "source": "insee",
+      "page": "/modules/les-bases/pib/",
+      "sujet": "Croissance",
+      "important": false
+    },
+    {
+      "titre": "En août 2026, les prix à la consommation augmenteraient de 2,4 % sur un an",
+      "lien": "https://www.insee.fr/fr/statistiques/9039020",
+      "date": "2026-08-28T06:45:00Z",
+      "resume": "",
+      "id": "insee-9497e0fa",
+      "source": "insee",
+      "page": "/modules/les-bases/inflation-taux-reels/",
+      "sujet": "Inflation",
+      "important": false
+    },
+    {
+      "titre": "Au deuxième trimestre 2026, le PIB est stable (+0,0 % après -0,2 %) et le pouvoir d’achat des ménages recule nettement (-0,6 % par unité de consommation)",
+      "lien": "https://www.insee.fr/fr/statistiques/9039499",
+      "date": "2026-08-28T06:45:00Z",
+      "resume": "Le produit intérieur brut (PIB) en volume est stable au deuxième trimestre 2026, après -0,2 % au trimestre précédent. L’acquis de croissance pour l’année 2026 est de +0,3 %. Le pouvoir d’achat du revenu disponible brut (RDB) des ménages par unité de consommation recule nettement (-0,6 % après -0,2 %). Le taux d’épargne des ménages se replie fortement ce trimestre : il s’établit ainsi à 17,2 % de l",
+      "id": "insee-c0f4928a",
+      "source": "insee",
+      "page": "/modules/les-bases/pib/",
+      "sujet": "Croissance",
+      "important": false
+    },
+    {
+      "titre": "En juillet 2026, les prix à la consommation augmentent de 2,1 % sur un an",
+      "lien": "https://www.insee.fr/fr/statistiques/9036122",
+      "date": "2026-08-14T06:45:00Z",
+      "resume": "",
+      "id": "insee-0da07bf8",
+      "source": "insee",
+      "page": "/modules/les-bases/inflation-taux-reels/",
+      "sujet": "Inflation",
+      "important": false
+    },
+    {
+      "titre": "Taux de chômage selon le sexe et l'âge",
+      "lien": "https://www.insee.fr/fr/statistiques/2532173",
+      "date": "2026-08-07T09:04:15Z",
+      "resume": "",
+      "id": "insee-48207076",
+      "source": "insee",
+      "page": "/tableau-de-bord/",
+      "sujet": "Chômage",
+      "important": false
+    },
+    {
+      "titre": "Au deuxième trimestre 2026, le taux de chômage augmente de 0,2 point et atteint 8,3 %",
+      "lien": "https://www.insee.fr/fr/statistiques/9032359",
+      "date": "2026-08-07T05:30:00Z",
+      "resume": "Au deuxième trimestre 2026, le nombre de chômeurs en France au sens du Bureau international du travail (BIT) augmente de 62 000 par rapport au trimestre précédent, à 2,7 millions de personnes. Le taux de chômage s’établit à 8,3 % de la population active, supérieur de 0,2 point à son niveau du premier trimestre 2026 et de 0,7 point à celui du deuxième trimestre 2025 (+261 000 chômeurs). Le taux de ",
+      "id": "insee-11e891e8",
+      "source": "insee",
+      "page": "/tableau-de-bord/",
+      "sujet": "Chômage",
+      "important": false
+    },
+    {
+      "titre": "En juillet 2026, les prix à la consommation augmenteraient de 2,1 % sur un an",
+      "lien": "https://www.insee.fr/fr/statistiques/9032859",
+      "date": "2026-07-31T06:45:00Z",
+      "resume": "",
+      "id": "insee-4279c021",
+      "source": "insee",
+      "page": "/modules/les-bases/inflation-taux-reels/",
+      "sujet": "Inflation",
+      "important": false
+    },
+    {
+      "titre": "Le PIB rebondit au deuxième trimestre 2026 (+0,2 % après -0,1 %)",
+      "lien": "https://www.insee.fr/fr/statistiques/9033097",
+      "date": "2026-07-30T05:30:00Z",
+      "resume": "Le produit intérieur brut (PIB) en volume* rebondit au deuxième trimestre 2026 (+0,2 % après -0,1 % au premier trimestre 2026). La demande intérieure finale (hors stocks) repart à la hausse : la consommation des ménages augmente légèrement (+0,2 % après -0,3 %), de même que la consommation des administrations publiques (+0,4 % après +0,3 %). À l’inverse, la formation brute de capital fixe diminue ",
+      "id": "insee-861878b2",
+      "source": "insee",
+      "page": "/modules/deficit-et-dette/",
+      "sujet": "Dette et déficit",
+      "important": false
+    },
+    {
+      "titre": "Évolution des indicateurs monétaires et financiers en France et dans la zone euro",
+      "lien": "https://www.insee.fr/fr/statistiques/2414906",
+      "date": "2026-07-24T14:00:16Z",
+      "resume": "",
+      "id": "insee-c1c896ef",
+      "source": "insee",
+      "page": "/modules/cadre-europeen/",
+      "sujet": "Europe",
+      "important": false
+    }
+  ]
+}
