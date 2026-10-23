@@ -79,6 +79,7 @@ describe("lecture des flux officiels", () => {
       ["Déclaration de politique monétaire", undefined],
       ["Seasonally adjusted government deficit at 3.3% of GDP in the euro area", undefined],
       ["Les décès en 2025", undefined],
+      ["Emploi salarié par secteur", undefined],
     ];
     for (const [titre, page] of cas) expect(sujetDe(titre)?.page, titre).toBe(page);
     // Le résumé n'est pas lu : un article sur les salaires qui cite l'inflation reste un article sur les salaires.

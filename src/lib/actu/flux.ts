@@ -274,6 +274,7 @@ const ECARTES = new RegExp(
     "dans l.union europeenne",
     "selon le secteur",
     "par activite",
+    "par secteur$",
     "regions",
     "^salaire minimum",
     "au sens de maastricht$",

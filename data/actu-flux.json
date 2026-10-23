@@ -1,6 +1,6 @@
 {
   "description": "Publications des sources officielles (Insee, BCE, Banque de France, Eurostat, Cour des comptes, Haut Conseil des finances publiques, Assemblée nationale, Sénat) sur les thèmes du site, lues dans leurs flux RSS et leurs listes de communiqués par scripts/maj-actu.ts. Titre, date et lien vers l'original seulement ; chaque entrée renvoie aussi vers la page du site qui explique le sujet.",
-  "derniere_verification": "2026-10-23T19:47:26.350Z",
+  "derniere_verification": "2026-10-23T19:47:52.850Z",
   "sources": {
     "insee": {
       "statut": "ok"
@@ -51,11 +51,11 @@
       "important": false
     },
     {
-      "titre": "Government debt at 88.8% of GDP in euro area",
-      "lien": "https://ec.europa.eu/eurostat/web/products-euro-indicators/w/2-21102026-bp",
+      "titre": "Euro area government deficit at 3.0% of GDP and government debt at 87.7%",
+      "lien": "https://ec.europa.eu/eurostat/web/products-euro-indicators/w/2-21102026-ap",
       "date": "2026-10-21T00:00:00Z",
       "resume": "",
-      "id": "eurostat-79972858",
+      "id": "eurostat-6b9dce13",
       "source": "eurostat",
       "page": "/modules/comparaisons/dette-et-deficit/",
       "sujet": "Dette",
@@ -63,11 +63,11 @@
       "langue": "en"
     },
     {
-      "titre": "Euro area government deficit at 3.0% of GDP and government debt at 87.7%",
-      "lien": "https://ec.europa.eu/eurostat/web/products-euro-indicators/w/2-21102026-ap",
+      "titre": "Government debt at 88.8% of GDP in euro area",
+      "lien": "https://ec.europa.eu/eurostat/web/products-euro-indicators/w/2-21102026-bp",
       "date": "2026-10-21T00:00:00Z",
       "resume": "",
-      "id": "eurostat-6b9dce13",
+      "id": "eurostat-79972858",
       "source": "eurostat",
       "page": "/modules/comparaisons/dette-et-deficit/",
       "sujet": "Dette",
@@ -155,18 +155,6 @@
       "important": true
     },
     {
-      "titre": "Euro area unemployment at 6.4%",
-      "lien": "https://ec.europa.eu/eurostat/web/products-euro-indicators/w/3-01102026-ap",
-      "date": "2026-10-01T00:00:00Z",
-      "resume": "",
-      "id": "eurostat-02e06046",
-      "source": "eurostat",
-      "page": "/modules/comparaisons/emploi-croissance/",
-      "sujet": "Emploi",
-      "important": false,
-      "langue": "en"
-    },
-    {
       "titre": "Statistiques relatives aux taux d’intérêt des banques de la zone euro : août 2026",
       "lien": "https://www.banque-france.fr/fr/communiques-de-presse/statistiques-relatives-aux-taux-dinteret-des-banques-de-la-zone-euro-aout-2026",
       "date": "2026-10-01T00:00:00Z",
@@ -179,15 +167,16 @@
       "important": false
     },
     {
-      "titre": "La consommation des ménages en biens se replie en août 2026 (-0,5 % après +0,4 %)",
-      "lien": "https://www.insee.fr/fr/statistiques/9057688",
-      "date": "2026-09-30T06:45:00Z",
-      "resume": "En août 2026, les dépenses de consommation des ménages en biens se replient sur un mois (-0,5 % en volume* après +0,4 % en juillet – données révisées). La consommation d'énergie repart à la baisse (-2,3 % après +0,9 %), comme la consommation alimentaire (-0,4 % après +0,2 %). La consommation de biens fabriqués, quant à elle, augmente de nouveau (+0,3 % après +0,4 %).",
-      "id": "insee-237add92",
-      "source": "insee",
-      "page": "/modules/les-bases/pib/",
-      "sujet": "Croissance",
-      "important": false
+      "titre": "Euro area unemployment at 6.4%",
+      "lien": "https://ec.europa.eu/eurostat/web/products-euro-indicators/w/3-01102026-ap",
+      "date": "2026-10-01T00:00:00Z",
+      "resume": "",
+      "id": "eurostat-02e06046",
+      "source": "eurostat",
+      "page": "/modules/comparaisons/emploi-croissance/",
+      "sujet": "Emploi",
+      "important": false,
+      "langue": "en"
     },
     {
       "titre": "En septembre 2026, les prix à la consommation augmenteraient de 3,0 % sur un an",
@@ -201,6 +190,17 @@
       "important": true
     },
     {
+      "titre": "La consommation des ménages en biens se replie en août 2026 (-0,5 % après +0,4 %)",
+      "lien": "https://www.insee.fr/fr/statistiques/9057688",
+      "date": "2026-09-30T06:45:00Z",
+      "resume": "En août 2026, les dépenses de consommation des ménages en biens se replient sur un mois (-0,5 % en volume* après +0,4 % en juillet – données révisées). La consommation d'énergie repart à la baisse (-2,3 % après +0,9 %), comme la consommation alimentaire (-0,4 % après +0,2 %). La consommation de biens fabriqués, quant à elle, augmente de nouveau (+0,3 % après +0,4 %).",
+      "id": "insee-237add92",
+      "source": "insee",
+      "page": "/modules/les-bases/pib/",
+      "sujet": "Croissance",
+      "important": false
+    },
+    {
       "titre": "À la fin du deuxième trimestre 2026, le ratio de dette publique s’établit à 119,0 % du PIB",
       "lien": "https://www.insee.fr/fr/statistiques/9053525",
       "date": "2026-09-29T06:45:00Z",
@@ -212,22 +212,22 @@
       "important": true
     },
     {
-      "titre": "En septembre 2026, le climat des affaires se replie",
-      "lien": "https://www.insee.fr/fr/statistiques/9055046",
+      "titre": "Stable en septembre 2026, la confiance des ménages reste dégradée",
+      "lien": "https://www.insee.fr/fr/statistiques/9054960",
       "date": "2026-09-24T06:45:00Z",
-      "resume": "En septembre 2026, l’indicateur synthétique du climat des affaires, calculé à partir des réponses des chefs d’entreprise des principaux secteurs d’activité marchands, se replie. À 96, il perd deux points et s’éloigne de son niveau moyen (100). L’indicateur du climat de l’emploi perd un point.",
-      "id": "insee-42157c4c",
+      "resume": "En septembre 2026, la confiance des ménages est de nouveau stable. À 86, l’indicateur qui la synthétise reste dégradé, au-dessous de sa moyenne de longue période (100 entre janvier 1987 et décembre 2025). Le climat de l'épargne se replie, de quatre points : à 121, il se maintient toutefois nettement au-dessus de sa moyenne de longue période (100).",
+      "id": "insee-fd4c9a86",
       "source": "insee",
       "page": "/modules/les-bases/pib/",
       "sujet": "Croissance",
       "important": false
     },
     {
-      "titre": "Stable en septembre 2026, la confiance des ménages reste dégradée",
-      "lien": "https://www.insee.fr/fr/statistiques/9054960",
+      "titre": "En septembre 2026, le climat des affaires se replie",
+      "lien": "https://www.insee.fr/fr/statistiques/9055046",
       "date": "2026-09-24T06:45:00Z",
-      "resume": "En septembre 2026, la confiance des ménages est de nouveau stable. À 86, l’indicateur qui la synthétise reste dégradé, au-dessous de sa moyenne de longue période (100 entre janvier 1987 et décembre 2025). Le climat de l'épargne se replie, de quatre points : à 121, il se maintient toutefois nettement au-dessus de sa moyenne de longue période (100).",
-      "id": "insee-fd4c9a86",
+      "resume": "En septembre 2026, l’indicateur synthétique du climat des affaires, calculé à partir des réponses des chefs d’entreprise des principaux secteurs d’activité marchands, se replie. À 96, il perd deux points et s’éloigne de son niveau moyen (100). L’indicateur du climat de l’emploi perd un point.",
+      "id": "insee-42157c4c",
       "source": "insee",
       "page": "/modules/les-bases/pib/",
       "sujet": "Croissance",
@@ -246,18 +246,6 @@
       "langue": "en"
     },
     {
-      "titre": "Annual increase in labour costs at 3.1% in euro area",
-      "lien": "https://ec.europa.eu/eurostat/web/products-euro-indicators/w/3-16092026-bp",
-      "date": "2026-09-16T00:00:00Z",
-      "resume": "",
-      "id": "eurostat-2eb6f28b",
-      "source": "eurostat",
-      "page": "/modules/fiscalite/smic/",
-      "sujet": "Emploi",
-      "important": false,
-      "langue": "en"
-    },
-    {
       "titre": "L’outil de suivi des salaires de la BCE s’est établi à 2,7 % au premier semestre 2027, indiquant une légère accélération de la croissance des salaires négociés",
       "lien": "https://www.banque-france.fr/fr/communiques-de-presse/loutil-de-suivi-des-salaires-de-la-bce-sest-etabli-27-au-premier-semestre-2027-indiquant-une-legere",
       "date": "2026-09-16T00:00:00Z",
@@ -270,15 +258,16 @@
       "important": false
     },
     {
-      "titre": "Au deuxième trimestre 2026, les salaires horaires augmentent de 2,4 % sur un an, le coût horaire du travail de 2,5 %",
-      "lien": "https://www.insee.fr/fr/statistiques/9050412",
-      "date": "2026-09-15T06:45:00Z",
+      "titre": "Annual increase in labour costs at 3.1% in euro area",
+      "lien": "https://ec.europa.eu/eurostat/web/products-euro-indicators/w/3-16092026-bp",
+      "date": "2026-09-16T00:00:00Z",
       "resume": "",
-      "id": "insee-eef8853c",
-      "source": "insee",
+      "id": "eurostat-2eb6f28b",
+      "source": "eurostat",
       "page": "/modules/fiscalite/smic/",
       "sujet": "Emploi",
-      "important": false
+      "important": false,
+      "langue": "en"
     },
     {
       "titre": "En août 2026, les prix à la consommation augmentent de 2,4 % sur un an",
@@ -290,6 +279,17 @@
       "page": "/modules/les-bases/inflation-taux-reels/",
       "sujet": "Inflation",
       "important": true
+    },
+    {
+      "titre": "Au deuxième trimestre 2026, les salaires horaires augmentent de 2,4 % sur un an, le coût horaire du travail de 2,5 %",
+      "lien": "https://www.insee.fr/fr/statistiques/9050412",
+      "date": "2026-09-15T06:45:00Z",
+      "resume": "",
+      "id": "insee-eef8853c",
+      "source": "insee",
+      "page": "/modules/fiscalite/smic/",
+      "sujet": "Emploi",
+      "important": false
     },
     {
       "titre": "Précisions sur le programme de détention de la dette publique par la Banque de France",
@@ -373,18 +373,6 @@
       "important": false
     },
     {
-      "titre": "Euro area unemployment at 6.4%",
-      "lien": "https://ec.europa.eu/eurostat/web/products-euro-indicators/w/3-01092026-bp",
-      "date": "2026-09-01T00:00:00Z",
-      "resume": "",
-      "id": "eurostat-2defb497",
-      "source": "eurostat",
-      "page": "/modules/comparaisons/emploi-croissance/",
-      "sujet": "Emploi",
-      "important": false,
-      "langue": "en"
-    },
-    {
       "titre": "Euro area annual inflation up to 3.3%",
       "lien": "https://ec.europa.eu/eurostat/web/products-euro-indicators/w/2-01092026-ap",
       "date": "2026-09-01T00:00:00Z",
@@ -393,6 +381,18 @@
       "source": "eurostat",
       "page": "/modules/les-bases/inflation-taux-reels/",
       "sujet": "Inflation",
+      "important": false,
+      "langue": "en"
+    },
+    {
+      "titre": "Euro area unemployment at 6.4%",
+      "lien": "https://ec.europa.eu/eurostat/web/products-euro-indicators/w/3-01092026-bp",
+      "date": "2026-09-01T00:00:00Z",
+      "resume": "",
+      "id": "eurostat-2defb497",
+      "source": "eurostat",
+      "page": "/modules/comparaisons/emploi-croissance/",
+      "sujet": "Emploi",
       "important": false,
       "langue": "en"
     },
@@ -408,11 +408,33 @@
       "important": true
     },
     {
-      "titre": "Emploi salarié par secteur",
-      "lien": "https://www.insee.fr/fr/statistiques/2496914",
-      "date": "2026-08-28T06:45:18Z",
+      "titre": "En août 2026, les prix à la consommation augmenteraient de 2,4 % sur un an",
+      "lien": "https://www.insee.fr/fr/statistiques/9039020",
+      "date": "2026-08-28T06:45:00Z",
       "resume": "",
-      "id": "insee-adbe97c2",
+      "id": "insee-9497e0fa",
+      "source": "insee",
+      "page": "/modules/les-bases/inflation-taux-reels/",
+      "sujet": "Inflation",
+      "important": true
+    },
+    {
+      "titre": "La consommation des ménages en biens augmente de nouveau en juillet 2026 (+0,5 % après +0,6 %)",
+      "lien": "https://www.insee.fr/fr/statistiques/9039180",
+      "date": "2026-08-28T06:45:00Z",
+      "resume": "En juillet 2026, les dépenses de consommation des ménages en biens augmentent de nouveau sur un mois (+0,5 % en volume* après +0,6 % en juin – données révisées). La consommation de biens fabriqués repart à la hausse (+0,5 % après une stabilité), la consommation d'énergie augmente de nouveau (+0,8 % après +1,5 %), comme la consommation alimentaire (+0,2 % après +0,7 %).",
+      "id": "insee-77164cab",
+      "source": "insee",
+      "page": "/modules/les-bases/pib/",
+      "sujet": "Croissance",
+      "important": false
+    },
+    {
+      "titre": "Au deuxième trimestre 2026, l’emploi salarié est quasi stable (-0,1 %)",
+      "lien": "https://www.insee.fr/fr/statistiques/9039152",
+      "date": "2026-08-28T06:45:00Z",
+      "resume": "Au deuxième trimestre 2026, l’emploi salarié est quasi stable (-0,1 %, soit -23 500 emplois) après une stabilité au trimestre précédent (0,0 %, soit + 700 emplois). Il se situe 0,3 % sous son niveau d’un an auparavant (soit -72 500 emplois), mais dépasse encore nettement son niveau d’avant la crise sanitaire, fin 2019 (+4,7 % soit +1,2 million d’emplois).Dans le secteur privé, l’emploi salarié est",
+      "id": "insee-77322328",
       "source": "insee",
       "page": "/modules/fiche-de-paie/",
       "sujet": "Emploi",
@@ -427,39 +449,6 @@
       "source": "insee",
       "page": "/modules/les-bases/pib/",
       "sujet": "Croissance",
-      "important": true
-    },
-    {
-      "titre": "Au deuxième trimestre 2026, l’emploi salarié est quasi stable (-0,1 %)",
-      "lien": "https://www.insee.fr/fr/statistiques/9039152",
-      "date": "2026-08-28T06:45:00Z",
-      "resume": "Au deuxième trimestre 2026, l’emploi salarié est quasi stable (-0,1 %, soit -23 500 emplois) après une stabilité au trimestre précédent (0,0 %, soit + 700 emplois). Il se situe 0,3 % sous son niveau d’un an auparavant (soit -72 500 emplois), mais dépasse encore nettement son niveau d’avant la crise sanitaire, fin 2019 (+4,7 % soit +1,2 million d’emplois).Dans le secteur privé, l’emploi salarié est",
-      "id": "insee-77322328",
-      "source": "insee",
-      "page": "/modules/fiche-de-paie/",
-      "sujet": "Emploi",
-      "important": false
-    },
-    {
-      "titre": "La consommation des ménages en biens augmente de nouveau en juillet 2026 (+0,5 % après +0,6 %)",
-      "lien": "https://www.insee.fr/fr/statistiques/9039180",
-      "date": "2026-08-28T06:45:00Z",
-      "resume": "En juillet 2026, les dépenses de consommation des ménages en biens augmentent de nouveau sur un mois (+0,5 % en volume* après +0,6 % en juin – données révisées). La consommation de biens fabriqués repart à la hausse (+0,5 % après une stabilité), la consommation d'énergie augmente de nouveau (+0,8 % après +1,5 %), comme la consommation alimentaire (+0,2 % après +0,7 %).",
-      "id": "insee-77164cab",
-      "source": "insee",
-      "page": "/modules/les-bases/pib/",
-      "sujet": "Croissance",
-      "important": false
-    },
-    {
-      "titre": "En août 2026, les prix à la consommation augmenteraient de 2,4 % sur un an",
-      "lien": "https://www.insee.fr/fr/statistiques/9039020",
-      "date": "2026-08-28T06:45:00Z",
-      "resume": "",
-      "id": "insee-9497e0fa",
-      "source": "insee",
-      "page": "/modules/les-bases/inflation-taux-reels/",
-      "sujet": "Inflation",
       "important": true
     },
     {
@@ -540,17 +529,6 @@
       "important": false
     },
     {
-      "titre": "La consommation des ménages en biens augmente de nouveau en juin 2026 (+0,4 % après +0,3 %)",
-      "lien": "https://www.insee.fr/fr/statistiques/9032867",
-      "date": "2026-07-30T05:30:00Z",
-      "resume": "En juin 2026, les dépenses de consommation des ménages en biens augmentent de nouveau sur un mois (+0,4 % en volume* après +0,3 % en mai – données révisées). La consommation d'énergie continue d’augmenter (+1,4 % après +2,5 %), la consommation alimentaire se redresse (+0,6 % après -0,3 %), tandis que la consommation de biens fabriqués baisse (-0,2 % après une stabilité).Sur l'ensemble du deuxième ",
-      "id": "insee-cc76c7c8",
-      "source": "insee",
-      "page": "/modules/les-bases/pib/",
-      "sujet": "Croissance",
-      "important": false
-    },
-    {
       "titre": "Le PIB rebondit au deuxième trimestre 2026 (+0,2 % après -0,1 %)",
       "lien": "https://www.insee.fr/fr/statistiques/9033097",
       "date": "2026-07-30T05:30:00Z",
@@ -560,6 +538,17 @@
       "page": "/modules/les-bases/pib/",
       "sujet": "Croissance",
       "important": true
+    },
+    {
+      "titre": "La consommation des ménages en biens augmente de nouveau en juin 2026 (+0,4 % après +0,3 %)",
+      "lien": "https://www.insee.fr/fr/statistiques/9032867",
+      "date": "2026-07-30T05:30:00Z",
+      "resume": "En juin 2026, les dépenses de consommation des ménages en biens augmentent de nouveau sur un mois (+0,4 % en volume* après +0,3 % en mai – données révisées). La consommation d'énergie continue d’augmenter (+1,4 % après +2,5 %), la consommation alimentaire se redresse (+0,6 % après -0,3 %), tandis que la consommation de biens fabriqués baisse (-0,2 % après une stabilité).Sur l'ensemble du deuxième ",
+      "id": "insee-cc76c7c8",
+      "source": "insee",
+      "page": "/modules/les-bases/pib/",
+      "sujet": "Croissance",
+      "important": false
     },
     {
       "titre": "En juillet 2026, la confiance des ménages poursuit son redressement",
