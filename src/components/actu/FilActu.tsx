@@ -19,7 +19,13 @@ export function CarteActu({ e, compacte = false }: { e: EntreeActu; compacte?: b
         <span className={`rounded-full border px-2 py-0.5 ${COULEUR[e.type]}`}>{LIBELLES_TYPE[e.type]}</span>
         {e.version && <span className="text-muted">{e.version}</span>}
       </p>
-      <h3 className={`mt-2 font-medium text-ink ${compacte ? "text-base" : "text-lg"}`}>{e.titre}</h3>
+      <h3
+        lang={e.langue}
+        title={e.titreOriginal ? `Titre original : ${e.titreOriginal}` : undefined}
+        className={`mt-2 font-medium text-ink ${compacte ? "text-base" : "text-lg"}`}
+      >
+        {e.titre}
+      </h3>
       {e.explication && !compacte && (
         <div className="mt-3 rounded-xl border border-accent-line bg-subtle px-4 py-3 text-sm leading-relaxed text-body">
           <p className="font-semibold text-ink">Ce que ça veut dire</p>

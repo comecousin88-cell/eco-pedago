@@ -23,9 +23,10 @@ export default function PageActu() {
         <FilAriane etapes={[{ label: rubrique.label }]} />
         <h1 className="mt-6 font-serif text-3xl font-semibold tracking-tight text-ink sm:text-4xl">L&apos;actu des finances publiques</h1>
         <p className="mt-4 max-w-2xl text-lg leading-relaxed text-muted">
-          Ce qui bouge, dans l&apos;ordre : les chiffres publiés, les seuils franchis, les échéances et les publications de
-          l&apos;Insee, de la BCE et de la Cour des comptes. Chaque entrée renvoie vers l&apos;original et vers la page du
-          site qui explique le sujet.
+          Ce qui bouge, dans l&apos;ordre : les seuils franchis, les échéances et les publications officielles sur la dette,
+          le budget, les retraites, les impôts, l&apos;inflation, les taux, l&apos;emploi et la croissance (Insee, BCE,
+          Banque de France, Eurostat, Cour des comptes, Haut Conseil des finances publiques, Assemblée nationale, Sénat).
+          Chaque entrée renvoie vers l&apos;original et vers la page du site qui explique le sujet.
         </p>
 
         <div className="mt-8 max-w-3xl space-y-3">

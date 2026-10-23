@@ -2,6 +2,45 @@
   "description": "Échéances connues qui peuvent changer les chiffres ou les textes du site : notes des agences, calendrier budgétaire, réunions de la BCE, publications de l'Insee et du COR. Chaque jour ouvré, la tâche « Veille de l'agenda » (scripts/veille-agenda.ts) repère les échéances passées, compare les dates aux calendriers officiels de la BCE et de l'Insee (champ calendrier_insee : mots qui identifient la publication) et surveille les pages listées dans « surveillance ». Pour les échéances à validation, elle ouvre une demande de mise à jour sur GitHub : rien n'est publié sans validation. Les échéances « automatique » concernent des chiffres déjà mis à jour par scripts/maj-indicateurs.ts.",
   "evenements": [
     {
+      "id": "budget-2027-conseil-des-ministres",
+      "titre": "Présentation des projets de budget de l'État et de la Sécurité sociale pour 2027 en Conseil des ministres",
+      "categorie": "budget",
+      "date": "2026-10-01",
+      "precision": "jour",
+      "statut": "confirme",
+      "mise_a_jour": "validation",
+      "description": "Le Gouvernement adopte en Conseil des ministres le projet de loi de finances et le projet de loi de financement de la Sécurité sociale pour 2027, puis les dépose à l'Assemblée nationale (au plus tard le 6 octobre).",
+      "donnees": [],
+      "pages": [
+        "/modules/deficit-et-dette/soldes/"
+      ],
+      "source": {
+        "nom": "Assemblée nationale, organisation de la discussion budgétaire (29 septembre 2026)",
+        "url": "https://www.assemblee-nationale.fr/dyn/contenu/visualisation/1119828/file/organisation_discussion_budgetaire.pdf"
+      },
+      "consulte_le": "2026-10-23",
+      "note": "Date prévisionnelle indiquée par l'Assemblée nationale ; l'avis du Haut Conseil des finances publiques sur ces projets est daté du même jour."
+    },
+    {
+      "id": "plf-2027-vote-premiere-partie",
+      "titre": "Vote solennel de l'Assemblée nationale sur la première partie du budget de l'État pour 2027 (les recettes)",
+      "categorie": "budget",
+      "date": "2026-10-20",
+      "precision": "jour",
+      "statut": "confirme",
+      "mise_a_jour": "validation",
+      "description": "Vote en première lecture sur l'ensemble de la première partie du projet de loi de finances, qui fixe les recettes et l'équilibre ; la discussion du budget de la Sécurité sociale commence le même jour.",
+      "donnees": [],
+      "pages": [
+        "/modules/deficit-et-dette/soldes/"
+      ],
+      "source": {
+        "nom": "Assemblée nationale, organisation de la discussion budgétaire (29 septembre 2026)",
+        "url": "https://www.assemblee-nationale.fr/dyn/contenu/visualisation/1119828/file/organisation_discussion_budgetaire.pdf"
+      },
+      "consulte_le": "2026-10-23"
+    },
+    {
       "id": "moodys-2026-10",
       "titre": "Revue de la note de la France par Moody's",
       "categorie": "notation",
@@ -38,7 +77,7 @@
         "/modules/deficit-et-dette/soldes/"
       ],
       "source": {
-        "nom": "Assemblée nationale, organisation de la discussion budgétaire (15 juillet 2026)",
+        "nom": "Assemblée nationale, organisation de la discussion budgétaire (29 septembre 2026)",
         "url": "https://www.assemblee-nationale.fr/dyn/contenu/visualisation/1119828/file/organisation_discussion_budgetaire.pdf"
       },
       "consulte_le": "2026-10-21"
@@ -115,6 +154,25 @@
         "chômage",
         "3e trimestre 2026"
       ]
+    },
+    {
+      "id": "plf-2027-vote",
+      "titre": "Vote solennel de l'Assemblée nationale sur l'ensemble du budget de l'État pour 2027",
+      "categorie": "budget",
+      "date": "2026-11-17",
+      "precision": "jour",
+      "statut": "confirme",
+      "mise_a_jour": "validation",
+      "description": "Vote en première lecture sur l'ensemble du projet de loi de finances, à l'issue de l'examen de la seconde partie (les dépenses) ; c'est aussi la fin du délai de 40 jours accordé à l'Assemblée.",
+      "donnees": [],
+      "pages": [
+        "/modules/deficit-et-dette/soldes/"
+      ],
+      "source": {
+        "nom": "Assemblée nationale, organisation de la discussion budgétaire (29 septembre 2026)",
+        "url": "https://www.assemblee-nationale.fr/dyn/contenu/visualisation/1119828/file/organisation_discussion_budgetaire.pdf"
+      },
+      "consulte_le": "2026-10-23"
     },
     {
       "id": "sp-2026-11",
@@ -205,7 +263,7 @@
         "/modules/deficit-et-dette/soldes/"
       ],
       "source": {
-        "nom": "Assemblée nationale, organisation de la discussion budgétaire (15 juillet 2026)",
+        "nom": "Assemblée nationale, organisation de la discussion budgétaire (29 septembre 2026)",
         "url": "https://www.assemblee-nationale.fr/dyn/contenu/visualisation/1119828/file/organisation_discussion_budgetaire.pdf"
       },
       "consulte_le": "2026-10-21",

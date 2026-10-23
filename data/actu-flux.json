@@ -1,6 +1,6 @@
 {
-  "description": "Publications des sources officielles (Insee, BCE, Cour des comptes) sur les sujets du site, lues dans leurs flux RSS par scripts/maj-actu.ts. Chaque entrée renvoie vers l'original et vers la page du site qui explique le sujet.",
-  "derniere_verification": "2026-10-23T17:10:24.174Z",
+  "description": "Publications des sources officielles (Insee, BCE, Banque de France, Eurostat, Cour des comptes, Haut Conseil des finances publiques, Assemblée nationale, Sénat) sur les thèmes du site, lues dans leurs flux RSS et leurs listes de communiqués par scripts/maj-actu.ts. Titre, date et lien vers l'original seulement ; chaque entrée renvoie aussi vers la page du site qui explique le sujet.",
+  "derniere_verification": "2026-10-23T19:47:26.350Z",
   "sources": {
     "insee": {
       "statut": "ok"
@@ -9,6 +9,21 @@
       "statut": "ok"
     },
     "cour-des-comptes": {
+      "statut": "ok"
+    },
+    "banque-de-france": {
+      "statut": "ok"
+    },
+    "eurostat": {
+      "statut": "ok"
+    },
+    "hcfp": {
+      "statut": "ok"
+    },
+    "assemblee-nationale": {
+      "statut": "ok"
+    },
+    "senat": {
       "statut": "ok"
     }
   },
@@ -20,8 +35,77 @@
       "resume": "En 2025, un salarié du secteur privé gagne en moyenne 2 797 euros net par mois en équivalent temps plein (EQTP). L’inflation poursuivant sa décrue en 2025 (+0,9 %, après +2,0 % en 2024), le salaire net moyen en euros constants progresse pour la deuxième année consécutive : +1,5 %, après +0,8 % en 2024.La moitié des salariés du secteur privé perçoit moins de 2 238 euros net par mois en EQTP. Un sal",
       "id": "insee-9ef6ba84",
       "source": "insee",
+      "page": "/modules/fiche-de-paie/",
+      "sujet": "Emploi",
+      "important": false
+    },
+    {
+      "titre": "En octobre 2026, le climat des affaires repart légèrement à la hausse",
+      "lien": "https://www.insee.fr/fr/statistiques/9097429",
+      "date": "2026-10-22T06:45:00Z",
+      "resume": "En octobre 2026, l’indicateur synthétique du climat des affaires, calculé à partir des réponses des chefs d’entreprise des principaux secteurs d’activité marchands, repart légèrement à la hausse. À 97, il gagne un point et se rapproche de son niveau moyen (100). L’indicateur du climat de l’emploi perd trois points.",
+      "id": "insee-38370425",
+      "source": "insee",
+      "page": "/modules/les-bases/pib/",
+      "sujet": "Croissance",
+      "important": false
+    },
+    {
+      "titre": "Government debt at 88.8% of GDP in euro area",
+      "lien": "https://ec.europa.eu/eurostat/web/products-euro-indicators/w/2-21102026-bp",
+      "date": "2026-10-21T00:00:00Z",
+      "resume": "",
+      "id": "eurostat-79972858",
+      "source": "eurostat",
+      "page": "/modules/comparaisons/dette-et-deficit/",
+      "sujet": "Dette",
+      "important": false,
+      "langue": "en"
+    },
+    {
+      "titre": "Euro area government deficit at 3.0% of GDP and government debt at 87.7%",
+      "lien": "https://ec.europa.eu/eurostat/web/products-euro-indicators/w/2-21102026-ap",
+      "date": "2026-10-21T00:00:00Z",
+      "resume": "",
+      "id": "eurostat-6b9dce13",
+      "source": "eurostat",
+      "page": "/modules/comparaisons/dette-et-deficit/",
+      "sujet": "Dette",
+      "important": false,
+      "langue": "en"
+    },
+    {
+      "titre": "La situation financière de la sécurité sociale : un redressement impératif en 2027",
+      "lien": "https://www.ccomptes.fr/fr/publications/la-situation-financiere-de-la-securite-sociale-un-redressement-imperatif-en-2027",
+      "date": "2026-10-20T00:00:00Z",
+      "resume": "",
+      "id": "cour-des-comptes-33e2b8ba",
+      "source": "cour-des-comptes",
+      "page": "/modules/deficit-et-dette/soldes/",
+      "sujet": "Budget",
+      "important": true
+    },
+    {
+      "titre": "Annual inflation up to 3.8% in the euro area",
+      "lien": "https://ec.europa.eu/eurostat/web/products-euro-indicators/w/2-16102026-ap",
+      "date": "2026-10-16T00:00:00Z",
+      "resume": "",
+      "id": "eurostat-691a696d",
+      "source": "eurostat",
       "page": "/modules/les-bases/inflation-taux-reels/",
       "sujet": "Inflation",
+      "important": false,
+      "langue": "en"
+    },
+    {
+      "titre": "Avis sur le projet de décret d'avance notifié le 5 octobre 2026 - Rapport d'information n° 77",
+      "lien": "https://www.senat.fr/notice-rapport/2026/r26-077-notice.html",
+      "date": "2026-10-15T22:00:00Z",
+      "resume": "Rapport d'information",
+      "id": "senat-0eb96cb1",
+      "source": "senat",
+      "page": "/modules/deficit-et-dette/soldes/",
+      "sujet": "Budget",
       "important": false
     },
     {
@@ -33,6 +117,76 @@
       "source": "insee",
       "page": "/modules/les-bases/inflation-taux-reels/",
       "sujet": "Inflation",
+      "important": true
+    },
+    {
+      "titre": "Compte rendu de la réunion de politique monétaire du Conseil des gouverneurs de la BCE des 9 et 10 septembre 2026",
+      "lien": "https://www.banque-france.fr/fr/communiques-de-presse/compte-rendu-de-la-reunion-de-politique-monetaire-du-conseil-des-gouverneurs-de-la-bce-des-9-et-10-0",
+      "date": "2026-10-08T00:00:00Z",
+      "resume": "",
+      "categorie": "Communiqué de presse BCE",
+      "id": "bce-084aeb45",
+      "source": "bce",
+      "page": "/modules/banque-centrale/bce-eurosysteme/",
+      "sujet": "Taux",
+      "important": false
+    },
+    {
+      "titre": "Euro area annual inflation up to 3.8%",
+      "lien": "https://ec.europa.eu/eurostat/web/products-euro-indicators/w/2-02102026-ap",
+      "date": "2026-10-02T00:00:00Z",
+      "resume": "",
+      "id": "eurostat-3580fcd2",
+      "source": "eurostat",
+      "page": "/modules/les-bases/inflation-taux-reels/",
+      "sujet": "Inflation",
+      "important": false,
+      "langue": "en"
+    },
+    {
+      "titre": "Avis n°2026 – 5 Lois de finances 2027",
+      "lien": "https://www.hcfp.fr/liste-avis/avis-ndeg2026-5-lois-de-finances-2027",
+      "date": "2026-10-01T08:59:52Z",
+      "resume": "Avis n°2026 – 5 Lois de finances 2027 pierre.benadjaoud jeu, 1 Oct 2026 - 10:59 1 octobre 2026 Le Haut Conseil des finances publiques a été saisi le 18 septembre 2026 des prévisions macroéconomiques et de finances publiques inscrites dans les projets de loi de finances et de financement de la sécurité sociale pour 2027. Cet avis est rendu dans un un contexte géopolitique incertain, en raison de la",
+      "id": "hcfp-f116364f",
+      "source": "hcfp",
+      "page": "/modules/deficit-et-dette/soldes/",
+      "sujet": "Budget",
+      "important": true
+    },
+    {
+      "titre": "Euro area unemployment at 6.4%",
+      "lien": "https://ec.europa.eu/eurostat/web/products-euro-indicators/w/3-01102026-ap",
+      "date": "2026-10-01T00:00:00Z",
+      "resume": "",
+      "id": "eurostat-02e06046",
+      "source": "eurostat",
+      "page": "/modules/comparaisons/emploi-croissance/",
+      "sujet": "Emploi",
+      "important": false,
+      "langue": "en"
+    },
+    {
+      "titre": "Statistiques relatives aux taux d’intérêt des banques de la zone euro : août 2026",
+      "lien": "https://www.banque-france.fr/fr/communiques-de-presse/statistiques-relatives-aux-taux-dinteret-des-banques-de-la-zone-euro-aout-2026",
+      "date": "2026-10-01T00:00:00Z",
+      "resume": "",
+      "categorie": "Communiqué de presse BCE",
+      "id": "bce-74b953c3",
+      "source": "bce",
+      "page": "/modules/banque-centrale/bce-eurosysteme/",
+      "sujet": "Taux",
+      "important": false
+    },
+    {
+      "titre": "La consommation des ménages en biens se replie en août 2026 (-0,5 % après +0,4 %)",
+      "lien": "https://www.insee.fr/fr/statistiques/9057688",
+      "date": "2026-09-30T06:45:00Z",
+      "resume": "En août 2026, les dépenses de consommation des ménages en biens se replient sur un mois (-0,5 % en volume* après +0,4 % en juillet – données révisées). La consommation d'énergie repart à la baisse (-2,3 % après +0,9 %), comme la consommation alimentaire (-0,4 % après +0,2 %). La consommation de biens fabriqués, quant à elle, augmente de nouveau (+0,3 % après +0,4 %).",
+      "id": "insee-237add92",
+      "source": "insee",
+      "page": "/modules/les-bases/pib/",
+      "sujet": "Croissance",
       "important": false
     },
     {
@@ -44,18 +198,7 @@
       "source": "insee",
       "page": "/modules/les-bases/inflation-taux-reels/",
       "sujet": "Inflation",
-      "important": false
-    },
-    {
-      "titre": "Dette des administrations publiques au sens de Maastricht",
-      "lien": "https://www.insee.fr/fr/statistiques/2830301",
-      "date": "2026-09-29T06:45:21Z",
-      "resume": "",
-      "id": "insee-098d9efe",
-      "source": "insee",
-      "page": "/modules/deficit-et-dette/",
-      "sujet": "Dette et déficit",
-      "important": false
+      "important": true
     },
     {
       "titre": "À la fin du deuxième trimestre 2026, le ratio de dette publique s’établit à 119,0 % du PIB",
@@ -65,8 +208,77 @@
       "id": "insee-3d45bdca",
       "source": "insee",
       "page": "/modules/deficit-et-dette/",
-      "sujet": "Dette et déficit",
+      "sujet": "Dette",
       "important": true
+    },
+    {
+      "titre": "En septembre 2026, le climat des affaires se replie",
+      "lien": "https://www.insee.fr/fr/statistiques/9055046",
+      "date": "2026-09-24T06:45:00Z",
+      "resume": "En septembre 2026, l’indicateur synthétique du climat des affaires, calculé à partir des réponses des chefs d’entreprise des principaux secteurs d’activité marchands, se replie. À 96, il perd deux points et s’éloigne de son niveau moyen (100). L’indicateur du climat de l’emploi perd un point.",
+      "id": "insee-42157c4c",
+      "source": "insee",
+      "page": "/modules/les-bases/pib/",
+      "sujet": "Croissance",
+      "important": false
+    },
+    {
+      "titre": "Stable en septembre 2026, la confiance des ménages reste dégradée",
+      "lien": "https://www.insee.fr/fr/statistiques/9054960",
+      "date": "2026-09-24T06:45:00Z",
+      "resume": "En septembre 2026, la confiance des ménages est de nouveau stable. À 86, l’indicateur qui la synthétise reste dégradé, au-dessous de sa moyenne de longue période (100 entre janvier 1987 et décembre 2025). Le climat de l'épargne se replie, de quatre points : à 121, il se maintient toutefois nettement au-dessus de sa moyenne de longue période (100).",
+      "id": "insee-fd4c9a86",
+      "source": "insee",
+      "page": "/modules/les-bases/pib/",
+      "sujet": "Croissance",
+      "important": false
+    },
+    {
+      "titre": "Annual inflation up to 3.2% in the euro area",
+      "lien": "https://ec.europa.eu/eurostat/web/products-euro-indicators/w/2-17092026-ap",
+      "date": "2026-09-17T00:00:00Z",
+      "resume": "",
+      "id": "eurostat-c63dbd1a",
+      "source": "eurostat",
+      "page": "/modules/les-bases/inflation-taux-reels/",
+      "sujet": "Inflation",
+      "important": false,
+      "langue": "en"
+    },
+    {
+      "titre": "Annual increase in labour costs at 3.1% in euro area",
+      "lien": "https://ec.europa.eu/eurostat/web/products-euro-indicators/w/3-16092026-bp",
+      "date": "2026-09-16T00:00:00Z",
+      "resume": "",
+      "id": "eurostat-2eb6f28b",
+      "source": "eurostat",
+      "page": "/modules/fiscalite/smic/",
+      "sujet": "Emploi",
+      "important": false,
+      "langue": "en"
+    },
+    {
+      "titre": "L’outil de suivi des salaires de la BCE s’est établi à 2,7 % au premier semestre 2027, indiquant une légère accélération de la croissance des salaires négociés",
+      "lien": "https://www.banque-france.fr/fr/communiques-de-presse/loutil-de-suivi-des-salaires-de-la-bce-sest-etabli-27-au-premier-semestre-2027-indiquant-une-legere",
+      "date": "2026-09-16T00:00:00Z",
+      "resume": "",
+      "categorie": "Communiqué de presse BCE",
+      "id": "bce-5dac6703",
+      "source": "bce",
+      "page": "/modules/fiche-de-paie/",
+      "sujet": "Emploi",
+      "important": false
+    },
+    {
+      "titre": "Au deuxième trimestre 2026, les salaires horaires augmentent de 2,4 % sur un an, le coût horaire du travail de 2,5 %",
+      "lien": "https://www.insee.fr/fr/statistiques/9050412",
+      "date": "2026-09-15T06:45:00Z",
+      "resume": "",
+      "id": "insee-eef8853c",
+      "source": "insee",
+      "page": "/modules/fiscalite/smic/",
+      "sujet": "Emploi",
+      "important": false
     },
     {
       "titre": "En août 2026, les prix à la consommation augmentent de 2,4 % sur un an",
@@ -77,73 +289,112 @@
       "source": "insee",
       "page": "/modules/les-bases/inflation-taux-reels/",
       "sujet": "Inflation",
+      "important": true
+    },
+    {
+      "titre": "Précisions sur le programme de détention de la dette publique par la Banque de France",
+      "lien": "https://www.banque-france.fr/fr/communiques-de-presse/precisions-sur-le-programme-de-detention-de-la-dette-publique-par-la-banque-de-france",
+      "date": "2026-09-12T00:00:00Z",
+      "resume": "",
+      "categorie": "Communiqué de presse BDF",
+      "id": "banque-de-france-ec8093a1",
+      "source": "banque-de-france",
+      "page": "/modules/emprunt-etat/detenteurs/",
+      "sujet": "Dette",
       "important": false
     },
     {
-      "titre": "Taux de prélèvements obligatoires rapportés au produit intérieur brut",
-      "lien": "https://www.insee.fr/fr/statistiques/2381412",
-      "date": "2026-08-28T12:53:18Z",
+      "titre": "Vigilance orange sur la croissance",
+      "lien": "https://www.insee.fr/fr/statistiques/9050757",
+      "date": "2026-09-10T15:00:00Z",
       "resume": "",
-      "id": "insee-09c99490",
-      "source": "insee",
-      "page": "/modules/fiscalite/",
-      "sujet": "Impôts",
-      "important": false
-    },
-    {
-      "titre": "Dette des administrations publiques au sens de Maastricht par sous-secteur",
-      "lien": "https://www.insee.fr/fr/statistiques/2830192",
-      "date": "2026-08-28T12:51:18Z",
-      "resume": "",
-      "id": "insee-343327d4",
-      "source": "insee",
-      "page": "/modules/deficit-et-dette/",
-      "sujet": "Dette et déficit",
-      "important": false
-    },
-    {
-      "titre": "Capacité ou besoin de financement des administrations publiques au sens de Maastricht par sous-secteur",
-      "lien": "https://www.insee.fr/fr/statistiques/2381402",
-      "date": "2026-08-28T12:49:16Z",
-      "resume": "",
-      "id": "insee-13cbe2e5",
-      "source": "insee",
-      "page": "/modules/deficit-et-dette/",
-      "sujet": "Dette et déficit",
-      "important": false
-    },
-    {
-      "titre": "Impôts",
-      "lien": "https://www.insee.fr/fr/statistiques/2381408",
-      "date": "2026-08-28T12:47:16Z",
-      "resume": "",
-      "id": "insee-19cbec57",
-      "source": "insee",
-      "page": "/modules/fiscalite/",
-      "sujet": "Impôts",
-      "important": false
-    },
-    {
-      "titre": "Évolution du produit intérieur brut et de ses composantes",
-      "lien": "https://www.insee.fr/fr/statistiques/2830547",
-      "date": "2026-08-28T09:04:17Z",
-      "resume": "",
-      "id": "insee-d4b32242",
+      "id": "insee-69c89ada",
       "source": "insee",
       "page": "/modules/les-bases/pib/",
       "sujet": "Croissance",
+      "important": true
+    },
+    {
+      "titre": "Décisions de politique monétaire",
+      "lien": "https://www.banque-france.fr/fr/communiques-de-presse/decisions-de-politique-monetaire-27",
+      "date": "2026-09-10T00:00:00Z",
+      "resume": "",
+      "categorie": "Communiqué de presse BCE",
+      "id": "bce-ef34e456",
+      "source": "bce",
+      "page": "/modules/banque-centrale/bce-eurosysteme/",
+      "sujet": "Taux",
+      "important": true
+    },
+    {
+      "titre": "Mobilités professionnelles, salaires et fin de carrière",
+      "lien": "https://www.insee.fr/fr/statistiques/9041706",
+      "date": "2026-09-08T15:00:00Z",
+      "resume": "",
+      "id": "insee-793475aa",
+      "source": "insee",
+      "page": "/modules/retraites/",
+      "sujet": "Retraites",
       "important": false
     },
     {
-      "titre": "Dépenses et recettes des administrations publiques en 2025",
-      "lien": "https://www.insee.fr/fr/statistiques/8988845",
-      "date": "2026-08-28T07:35:16Z",
+      "titre": "GDP up by 0.6% and employment up by 0.1% in the euro area",
+      "lien": "https://ec.europa.eu/eurostat/web/products-euro-indicators/w/2-07092026-ap",
+      "date": "2026-09-07T00:00:00Z",
       "resume": "",
-      "id": "insee-6cba44ed",
-      "source": "insee",
-      "page": "/modules/deficit-et-dette/",
-      "sujet": "Dette et déficit",
+      "id": "eurostat-2f7e1ba1",
+      "source": "eurostat",
+      "page": "/modules/comparaisons/emploi-croissance/",
+      "sujet": "Croissance",
+      "important": false,
+      "langue": "en"
+    },
+    {
+      "titre": "Prélèvements obligatoires et entreprises : vers un cadre fiscal et social stable pour la croissance et l'emploi - Rapport d'information n° 942",
+      "lien": "https://www.senat.fr/notice-rapport/2025/r25-942-notice.html",
+      "date": "2026-09-03T22:00:00Z",
+      "resume": "Rapport d'information",
+      "id": "senat-86996be6",
+      "source": "senat",
+      "page": "/modules/fiscalite/",
+      "sujet": "Impôts",
       "important": false
+    },
+    {
+      "titre": "Statistiques relatives aux taux d’intérêt des banques de la zone euro : juillet 2026",
+      "lien": "https://www.banque-france.fr/fr/communiques-de-presse/statistiques-relatives-aux-taux-dinteret-des-banques-de-la-zone-euro-juillet-2026",
+      "date": "2026-09-02T00:00:00Z",
+      "resume": "",
+      "categorie": "Communiqué de presse BCE",
+      "id": "bce-cda5cdf1",
+      "source": "bce",
+      "page": "/modules/banque-centrale/bce-eurosysteme/",
+      "sujet": "Taux",
+      "important": false
+    },
+    {
+      "titre": "Euro area unemployment at 6.4%",
+      "lien": "https://ec.europa.eu/eurostat/web/products-euro-indicators/w/3-01092026-bp",
+      "date": "2026-09-01T00:00:00Z",
+      "resume": "",
+      "id": "eurostat-2defb497",
+      "source": "eurostat",
+      "page": "/modules/comparaisons/emploi-croissance/",
+      "sujet": "Emploi",
+      "important": false,
+      "langue": "en"
+    },
+    {
+      "titre": "Euro area annual inflation up to 3.3%",
+      "lien": "https://ec.europa.eu/eurostat/web/products-euro-indicators/w/2-01092026-ap",
+      "date": "2026-09-01T00:00:00Z",
+      "resume": "",
+      "id": "eurostat-3c7384a3",
+      "source": "eurostat",
+      "page": "/modules/les-bases/inflation-taux-reels/",
+      "sujet": "Inflation",
+      "important": false,
+      "langue": "en"
     },
     {
       "titre": "Dette et déficit publics au sens de Maastricht en 2025",
@@ -153,15 +404,48 @@
       "id": "insee-66ba3b7b",
       "source": "insee",
       "page": "/modules/deficit-et-dette/",
-      "sujet": "Dette et déficit",
+      "sujet": "Dette",
       "important": true
     },
     {
-      "titre": "Comptes nationaux trimestriels au deuxième trimestre 2026",
-      "lien": "https://www.insee.fr/fr/statistiques/9007859",
+      "titre": "Emploi salarié par secteur",
+      "lien": "https://www.insee.fr/fr/statistiques/2496914",
       "date": "2026-08-28T06:45:18Z",
       "resume": "",
-      "id": "insee-b85b0b75",
+      "id": "insee-adbe97c2",
+      "source": "insee",
+      "page": "/modules/fiche-de-paie/",
+      "sujet": "Emploi",
+      "important": false
+    },
+    {
+      "titre": "Au deuxième trimestre 2026, le PIB est stable (+0,0 % après -0,2 %) et le pouvoir d’achat des ménages recule nettement (-0,6 % par unité de consommation)",
+      "lien": "https://www.insee.fr/fr/statistiques/9039499",
+      "date": "2026-08-28T06:45:00Z",
+      "resume": "Le produit intérieur brut (PIB) en volume est stable au deuxième trimestre 2026, après -0,2 % au trimestre précédent. L’acquis de croissance pour l’année 2026 est de +0,3 %. Le pouvoir d’achat du revenu disponible brut (RDB) des ménages par unité de consommation recule nettement (-0,6 % après -0,2 %). Le taux d’épargne des ménages se replie fortement ce trimestre : il s’établit ainsi à 17,2 % de l",
+      "id": "insee-c0f4928a",
+      "source": "insee",
+      "page": "/modules/les-bases/pib/",
+      "sujet": "Croissance",
+      "important": true
+    },
+    {
+      "titre": "Au deuxième trimestre 2026, l’emploi salarié est quasi stable (-0,1 %)",
+      "lien": "https://www.insee.fr/fr/statistiques/9039152",
+      "date": "2026-08-28T06:45:00Z",
+      "resume": "Au deuxième trimestre 2026, l’emploi salarié est quasi stable (-0,1 %, soit -23 500 emplois) après une stabilité au trimestre précédent (0,0 %, soit + 700 emplois). Il se situe 0,3 % sous son niveau d’un an auparavant (soit -72 500 emplois), mais dépasse encore nettement son niveau d’avant la crise sanitaire, fin 2019 (+4,7 % soit +1,2 million d’emplois).Dans le secteur privé, l’emploi salarié est",
+      "id": "insee-77322328",
+      "source": "insee",
+      "page": "/modules/fiche-de-paie/",
+      "sujet": "Emploi",
+      "important": false
+    },
+    {
+      "titre": "La consommation des ménages en biens augmente de nouveau en juillet 2026 (+0,5 % après +0,6 %)",
+      "lien": "https://www.insee.fr/fr/statistiques/9039180",
+      "date": "2026-08-28T06:45:00Z",
+      "resume": "En juillet 2026, les dépenses de consommation des ménages en biens augmentent de nouveau sur un mois (+0,5 % en volume* après +0,6 % en juin – données révisées). La consommation de biens fabriqués repart à la hausse (+0,5 % après une stabilité), la consommation d'énergie augmente de nouveau (+0,8 % après +1,5 %), comme la consommation alimentaire (+0,2 % après +0,7 %).",
+      "id": "insee-77164cab",
       "source": "insee",
       "page": "/modules/les-bases/pib/",
       "sujet": "Croissance",
@@ -176,14 +460,25 @@
       "source": "insee",
       "page": "/modules/les-bases/inflation-taux-reels/",
       "sujet": "Inflation",
+      "important": true
+    },
+    {
+      "titre": "En août 2026, la confiance des ménages est stable",
+      "lien": "https://www.insee.fr/fr/statistiques/9038078",
+      "date": "2026-08-25T06:45:00Z",
+      "resume": "En août 2026, la confiance des ménages est stable. À 86, l’indicateur qui la synthétise est inchangé et demeure au-dessous de sa moyenne de longue période (100 entre janvier 1987 et décembre 2025). Le climat de l'épargne augmente de nouveau, d'un point, et se maintient nettement au-dessus de sa moyenne de longue période (100).",
+      "id": "insee-a1a5b2fe",
+      "source": "insee",
+      "page": "/modules/les-bases/pib/",
+      "sujet": "Croissance",
       "important": false
     },
     {
-      "titre": "Au deuxième trimestre 2026, le PIB est stable (+0,0 % après -0,2 %) et le pouvoir d’achat des ménages recule nettement (-0,6 % par unité de consommation)",
-      "lien": "https://www.insee.fr/fr/statistiques/9039499",
-      "date": "2026-08-28T06:45:00Z",
-      "resume": "Le produit intérieur brut (PIB) en volume est stable au deuxième trimestre 2026, après -0,2 % au trimestre précédent. L’acquis de croissance pour l’année 2026 est de +0,3 %. Le pouvoir d’achat du revenu disponible brut (RDB) des ménages par unité de consommation recule nettement (-0,6 % après -0,2 %). Le taux d’épargne des ménages se replie fortement ce trimestre : il s’établit ainsi à 17,2 % de l",
-      "id": "insee-c0f4928a",
+      "titre": "En août 2026, le climat des affaires s’améliore de nouveau",
+      "lien": "https://www.insee.fr/fr/statistiques/9037673",
+      "date": "2026-08-21T06:45:00Z",
+      "resume": "En août 2026, l’indicateur synthétique du climat des affaires, calculé à partir des réponses des chefs d’entreprise des principaux secteurs d’activité marchands gagne un point. À 98, il est en hausse pour le troisième mois consécutif et se rapproche de son niveau moyen. L’indicateur du climat de l’emploi est stable à 99.",
+      "id": "insee-a7096e46",
       "source": "insee",
       "page": "/modules/les-bases/pib/",
       "sujet": "Croissance",
@@ -198,17 +493,17 @@
       "source": "insee",
       "page": "/modules/les-bases/inflation-taux-reels/",
       "sujet": "Inflation",
-      "important": false
+      "important": true
     },
     {
-      "titre": "Taux de chômage selon le sexe et l'âge",
-      "lien": "https://www.insee.fr/fr/statistiques/2532173",
-      "date": "2026-08-07T09:04:15Z",
+      "titre": "Au deuxième trimestre 2026, les salaires horaires augmentent de 2,3 % sur un an, le coût horaire du travail de 2,4 %",
+      "lien": "https://www.insee.fr/fr/statistiques/9034523",
+      "date": "2026-08-07T06:45:00Z",
       "resume": "",
-      "id": "insee-48207076",
+      "id": "insee-35262645",
       "source": "insee",
-      "page": "/tableau-de-bord/",
-      "sujet": "Chômage",
+      "page": "/modules/fiscalite/smic/",
+      "sujet": "Emploi",
       "important": false
     },
     {
@@ -219,7 +514,7 @@
       "id": "insee-11e891e8",
       "source": "insee",
       "page": "/tableau-de-bord/",
-      "sujet": "Chômage",
+      "sujet": "Emploi",
       "important": false
     },
     {
@@ -231,6 +526,28 @@
       "source": "insee",
       "page": "/modules/les-bases/inflation-taux-reels/",
       "sujet": "Inflation",
+      "important": true
+    },
+    {
+      "titre": "Au deuxième trimestre 2026, l’emploi salarié du secteur privé est quasi stable (-0,1 %)",
+      "lien": "https://www.insee.fr/fr/statistiques/9032830",
+      "date": "2026-07-30T06:45:00Z",
+      "resume": "Entre mars et juin 2026, l’emploi salarié du secteur privé est quasi stable (-0,1 %, soit -19 300 emplois), comme au trimestre précédent (-0,1 %, soit -13 900 emplois). Il se situe 0,4 % sous son niveau de juin 2025 (soit -79 700 emplois), baissant sur un an pour le sixième trimestre consécutif. Il excède toutefois encore largement son niveau d’avant-crise sanitaire, fin 2019 (+5,0 %, soit +1,0 mi",
+      "id": "insee-356aa120",
+      "source": "insee",
+      "page": "/modules/fiche-de-paie/",
+      "sujet": "Emploi",
+      "important": false
+    },
+    {
+      "titre": "La consommation des ménages en biens augmente de nouveau en juin 2026 (+0,4 % après +0,3 %)",
+      "lien": "https://www.insee.fr/fr/statistiques/9032867",
+      "date": "2026-07-30T05:30:00Z",
+      "resume": "En juin 2026, les dépenses de consommation des ménages en biens augmentent de nouveau sur un mois (+0,4 % en volume* après +0,3 % en mai – données révisées). La consommation d'énergie continue d’augmenter (+1,4 % après +2,5 %), la consommation alimentaire se redresse (+0,6 % après -0,3 %), tandis que la consommation de biens fabriqués baisse (-0,2 % après une stabilité).Sur l'ensemble du deuxième ",
+      "id": "insee-cc76c7c8",
+      "source": "insee",
+      "page": "/modules/les-bases/pib/",
+      "sujet": "Croissance",
       "important": false
     },
     {
@@ -240,8 +557,30 @@
       "resume": "Le produit intérieur brut (PIB) en volume* rebondit au deuxième trimestre 2026 (+0,2 % après -0,1 % au premier trimestre 2026). La demande intérieure finale (hors stocks) repart à la hausse : la consommation des ménages augmente légèrement (+0,2 % après -0,3 %), de même que la consommation des administrations publiques (+0,4 % après +0,3 %). À l’inverse, la formation brute de capital fixe diminue ",
       "id": "insee-861878b2",
       "source": "insee",
-      "page": "/modules/deficit-et-dette/",
-      "sujet": "Dette et déficit",
+      "page": "/modules/les-bases/pib/",
+      "sujet": "Croissance",
+      "important": true
+    },
+    {
+      "titre": "En juillet 2026, la confiance des ménages poursuit son redressement",
+      "lien": "https://www.insee.fr/fr/statistiques/9031846",
+      "date": "2026-07-28T06:45:00Z",
+      "resume": "En juillet 2026, la confiance des ménages poursuit son redressement. À 86, l’indicateur qui la synthétise augmente de deux points mais demeure au-dessous de sa moyenne de longue période (100 entre janvier 1987 et décembre 2025). Le climat de l'épargne rebondit, de cinq points, et se maintient au-dessus de sa moyenne de longue période (100).",
+      "id": "insee-be3cea36",
+      "source": "insee",
+      "page": "/modules/les-bases/pib/",
+      "sujet": "Croissance",
+      "important": false
+    },
+    {
+      "titre": "Compensation des suppressions ou exonérations de fiscalité locale : les collectivités sont-elles perdantes ? - Rapport d'information n° 799",
+      "lien": "https://www.senat.fr/notice-rapport/2025/r25-799-notice.html",
+      "date": "2026-07-26T22:00:00Z",
+      "resume": "Rapport d'information",
+      "id": "senat-0a081b3c",
+      "source": "senat",
+      "page": "/modules/fiscalite/",
+      "sujet": "Impôts",
       "important": false
     }
   ]

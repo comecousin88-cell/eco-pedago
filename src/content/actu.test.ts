@@ -2,10 +2,25 @@ import { describe, expect, it } from "vitest";
 import explications from "../../data/actu-explications.json";
 import flux from "../../data/actu-flux.json";
 import journal from "../../data/actu-journal.json";
-import { fusionnerFlux, idFlux, lireRss, SOURCES_FLUX, texteBrut, trierFlux, type EntreeFlux } from "@/lib/actu/flux";
+import {
+  dateEnLettres,
+  fusionnerFlux,
+  idFlux,
+  lienPropre,
+  lireListeBanqueDeFrance,
+  lireListeEurostat,
+  lireRss,
+  sansDoublon,
+  SOURCES_FLUX,
+  sujetDe,
+  texteBrut,
+  traduireEurostat,
+  trierFlux,
+  type EntreeFlux,
+} from "@/lib/actu/flux";
 import { ajouterAuJournal, nouvellePeriode } from "@/lib/actu/journal";
 import { constatsExplications, corpsDemande, type EntreeFilPubliee, type Explications } from "@/lib/veille";
-import { construireFil, finDePeriode, jourEnLettres, titrePage } from "./actu";
+import { construireFil, DEBUT_FIL, finDePeriode, jourEnLettres, titrePage, versionEurostat } from "./actu";
 import { moduleHref, modules } from "./modules";
 
 const pages = new Set(["/tableau-de-bord/", "/la-france-en-10-chiffres/", ...modules.flatMap((m) => [moduleHref(m.slug), ...m.sections.map((s) => moduleHref(m.slug, s.slug))])]);
@@ -33,15 +48,71 @@ describe("lecture des flux officiels", () => {
     expect(texteBrut("&lt;b&gt;A&lt;/b&gt; &#233;t&#233; &amp; <![CDATA[hiver]]>")).toBe("A été & hiver");
   });
 
-  it("garde les sujets du site, avec la page qui les explique", () => {
+  it("garde les thèmes du site, avec la page qui les explique", () => {
     const insee = trierFlux(SOURCES_FLUX.find((s) => s.id === "insee")!, items);
-    expect(insee.map((e) => e.sujet)).toEqual(["Dette et déficit", "Politique monétaire", "Politique monétaire"]);
+    expect(insee.map((e) => e.sujet)).toEqual(["Dette", "Croissance", "Taux"]);
     expect(insee[0]).toMatchObject({ page: "/modules/deficit-et-dette/", important: true });
     // La BCE : seulement les communiqués, pas les discours.
     const bce = trierFlux(SOURCES_FLUX.find((s) => s.id === "bce")!, items);
     expect(bce.map((e) => e.titre)).toEqual(["Monetary policy decisions"]);
-    expect(bce[0].important).toBe(true);
+    expect(bce[0]).toMatchObject({ important: true, langue: "en" });
     for (const s of SOURCES_FLUX) for (const e of trierFlux(s, items)) expect(pages, e.page).toContain(e.page);
+  });
+
+  it("rattache chaque publication au module le plus pertinent, d'après son titre", () => {
+    const cas: [string, string | undefined][] = [
+      ["Les salaires dans le secteur privé en 2025", "/modules/fiche-de-paie/"],
+      ["En septembre 2026, les prix à la consommation augmentent de 3,1 % sur un an", "/modules/les-bases/inflation-taux-reels/"],
+      ["Au deuxième trimestre 2026, les salaires horaires augmentent de 2,4 % sur un an, le coût horaire du travail de 2,5 %", "/modules/fiscalite/smic/"],
+      ["Vigilance orange sur la croissance", "/modules/les-bases/pib/"],
+      ["En octobre 2026, le climat des affaires repart légèrement à la hausse", "/modules/les-bases/pib/"],
+      ["Avis n°2026 – 5 Lois de finances 2027", "/modules/deficit-et-dette/soldes/"],
+      ["Précisions sur le programme de détention de la dette publique par la Banque de France", "/modules/emprunt-etat/detenteurs/"],
+      ["Government debt at 88.8% of GDP in euro area", "/modules/comparaisons/dette-et-deficit/"],
+      ["GDP up by 0.6% and employment up by 0.1% in the euro area", "/modules/comparaisons/emploi-croissance/"],
+      ["Décisions de politique monétaire", "/modules/banque-centrale/bce-eurosysteme/"],
+      // Hors thèmes, tableaux de données, résultats sectoriels ou régionaux, doublons d'un même événement.
+      ["En octobre 2026, le climat des affaires dans le bâtiment diminue", undefined],
+      ["Salaire minimum interprofessionnel de croissance (Smic)", undefined],
+      ["Dette des administrations publiques au sens de Maastricht", undefined],
+      ["Chômage – tableau de bord de l’économie française", undefined],
+      ["Déclaration de politique monétaire", undefined],
+      ["Seasonally adjusted government deficit at 3.3% of GDP in the euro area", undefined],
+      ["Les décès en 2025", undefined],
+    ];
+    for (const [titre, page] of cas) expect(sujetDe(titre)?.page, titre).toBe(page);
+    // Le résumé n'est pas lu : un article sur les salaires qui cite l'inflation reste un article sur les salaires.
+    const [e] = trierFlux({ id: "insee" }, [{ titre: "Les salaires dans le secteur privé en 2025", lien: "https://x", date: "2026-10-22T00:00:00Z", resume: "L'inflation poursuit sa décrue" }]);
+    expect(e.sujet).toBe("Emploi");
+  });
+
+  it("lit les listes de communiqués de la Banque de France et d'Eurostat", () => {
+    const bdf = `<a class="card card-horizontal"
+          href ="/fr/communiques-de-presse/decisions-de-politique-monetaire-27"
+          title ="D&#233;cisions de politique mon&#233;taire">
+        <small class="fs-8 category-btn-grid ">Communiqué de presse BCE</small>
+        <h3>Décisions de politique monétaire des 9 et 10 septembre 2026</h3>
+        <p class="d-flex"><small> 10 Septembre 2026</small></p></a>`;
+    expect(lireListeBanqueDeFrance(bdf)).toEqual([
+      { titre: "Décisions de politique monétaire", lien: "https://www.banque-france.fr/fr/communiques-de-presse/decisions-de-politique-monetaire-27", date: "2026-09-10T00:00:00Z", resume: "", categorie: "Communiqué de presse BCE" },
+    ]);
+    // Communiqué de la BCE relayé en français : il reste attribué à la BCE.
+    expect(trierFlux(SOURCES_FLUX.find((s) => s.id === "banque-de-france")!, lireListeBanqueDeFrance(bdf))[0].source).toBe("bce");
+    const eurostat = `<a href="https://ec.europa.eu/eurostat/web/products-euro-indicators/w/2-16102026-ap" class="ecl-link">
+      <span class="estat-title">  Annual inflation up to 3.8% in the euro area </span>
+      <span class="ecl-content-block__secondary-meta-label">	16&nbsp;October&nbsp;2026
+</span></a>`;
+    expect(lireListeEurostat(eurostat)).toEqual([
+      { titre: "Annual inflation up to 3.8% in the euro area", lien: "https://ec.europa.eu/eurostat/web/products-euro-indicators/w/2-16102026-ap", date: "2026-10-16T00:00:00Z", resume: "" },
+    ]);
+    expect(dateEnLettres("1er décembre 2026")).toBe("2026-12-01T00:00:00Z");
+    expect(lienPropre("http://www.senat.fr/rap/x.html")).toBe("https://www.senat.fr/rap/x.html");
+  });
+
+  it("garde la version française d'un communiqué de la BCE publié dans les deux langues", () => {
+    const e = (id: string, langue?: "en") => ({ id, date: "2026-09-10T00:00:00Z", source: "bce", sujet: "Taux", ...(langue ? { langue } : {}) }) as EntreeFlux;
+    expect(sansDoublon([e("fr"), e("en", "en")]).map((x) => x.id)).toEqual(["fr"]);
+    expect(sansDoublon([e("en", "en")]).map((x) => x.id)).toEqual(["en"]);
   });
 
   it("fusionne sans doublon, du plus récent au plus ancien, sans les éléments trop vieux", () => {
@@ -123,6 +194,58 @@ describe("le fil « L'actu »", () => {
       expect(pages, e.page).toContain(e.page);
       expect(Number.isNaN(Date.parse(e.date))).toBe(false);
     }
+  });
+
+  it("ne reprend que des sources officielles, chaque entrée rattachée à un thème et à un module", () => {
+    const officielles = /^(Insee|Banque centrale européenne|Banque de France|Eurostat|Cour des comptes|Haut Conseil des finances publiques|Assemblée nationale|Sénat|Agence France Trésor)/;
+    for (const e of fil) {
+      if (e.type === "publication" || e.type === "echeance") expect(e.source?.nom, e.id).toMatch(officielles);
+      expect(e.sujet, e.id).toBeTruthy();
+    }
+    const titres = fil.map((e) => `${e.date} ${e.titre}`);
+    expect(new Set(titres).size, "doublon").toBe(titres.length);
+  });
+
+  it("couvre septembre et octobre 2026 avec les événements majeurs", () => {
+    const fil23 = construireFil("2026-10-23");
+    expect(fil23.every((e) => e.date >= DEBUT_FIL)).toBe(true);
+    const septembre = fil23.filter((e) => e.date.startsWith("2026-09")).length;
+    expect(septembre).toBeGreaterThanOrEqual(15);
+    expect(septembre).toBeLessThanOrEqual(30);
+    const titres = fil23.map((e) => e.titre).join("\n");
+    expect(titres).toMatch(/En septembre 2026, les prix à la consommation augmentent/);
+    expect(titres).toMatch(/budget de l'État et de la Sécurité sociale pour 2027 en Conseil des ministres/);
+    expect(titres).toMatch(/Lois de finances 2027/);
+    expect(titres).toMatch(/Moody's : c'est aujourd'hui/);
+    // Le lendemain, l'échéance est passée.
+    expect(construireFil("2026-10-24").map((e) => e.titre).join("\n")).toMatch(/Moody's : échéance passée/);
+  });
+
+  it("traduit fidèlement les titres d'Eurostat, en gardant l'original", () => {
+    const cas: [string, string | undefined][] = [
+      ["Euro area annual inflation up to 3.8%", "Inflation annuelle en hausse à 3,8 % dans la zone euro"],
+      ["Annual inflation down to 2.8% in the euro area", "Inflation annuelle en baisse à 2,8 % dans la zone euro"],
+      ["Euro area unemployment at 6.4%", "Chômage à 6,4 % dans la zone euro"],
+      ["GDP up by 0.6% and employment up by 0.1% in the euro area", "PIB en hausse de 0,6 % et emploi en hausse de 0,1 % dans la zone euro"],
+      ["GDP down by 0.2% and employment stable in the euro area", "PIB en baisse de 0,2 % et emploi stable dans la zone euro"],
+      ["Annual increase in labour costs at 3.1% in euro area", "Hausse annuelle du coût de la main-d'œuvre à 3,1 % dans la zone euro"],
+      ["Government debt at 88.8% of GDP in euro area", "Dette publique à 88,8 % du PIB dans la zone euro"],
+      ["Euro area government deficit at 3.0% of GDP and government debt at 87.7%", "Déficit public à 3,0 % du PIB et dette publique à 87,7 % dans la zone euro"],
+      // Forme inconnue : pas de traduction approximative, le titre reste en anglais.
+      ["Euro area job vacancy rate at 2.1%", undefined],
+    ];
+    for (const [titre, fr] of cas) expect(traduireEurostat(titre), titre).toBe(fr);
+    for (const e of fil.filter((x) => x.source?.nom === "Eurostat")) {
+      expect(e.titreOriginal, e.id).toBeTruthy();
+      expect(e.langue, e.id).toBeUndefined();
+    }
+  });
+
+  it("précise l'indicateur, le mois et le statut de l'inflation de la zone euro (Eurostat)", () => {
+    expect(versionEurostat("Euro area annual inflation up to 3.8%", "2026-10-02")).toBe("IPCH Eurostat, zone euro, septembre 2026, estimation rapide");
+    expect(versionEurostat("Euro area annual inflation up to 2.9%", "2026-07-31")).toBe("IPCH Eurostat, zone euro, juillet 2026, estimation rapide");
+    expect(versionEurostat("Annual inflation up to 3.8% in the euro area", "2026-10-16")).toBe("IPCH Eurostat, zone euro, septembre 2026, définitif");
+    expect(versionEurostat("Euro area unemployment at 6.4%", "2026-10-01")).toBeUndefined();
   });
 
   it("met les dates en toutes lettres", () => {

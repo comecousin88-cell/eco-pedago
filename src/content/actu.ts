@@ -1,14 +1,14 @@
 import explicationsJson from "../../data/actu-explications.json";
 import fluxJson from "../../data/actu-flux.json";
 import journalJson from "../../data/actu-journal.json";
-import type { EntreeFlux } from "@/lib/actu/flux";
+import { traduireEurostat, type EntreeFlux, type IdSource, type Sujet } from "@/lib/actu/flux";
 import type { Journal } from "@/lib/actu/journal";
 import { getDonnee, LIBELLE_ETAT } from "@/lib/data";
 import { resultatIpc } from "@/lib/maj/fonctions";
 import { periodeEnClair, qualificatif } from "@/lib/versions";
 import { formatNombre } from "@/lib/format";
 import { libellePeriode } from "@/lib/indicateurs";
-import { agenda, dateEcheance, finEcheance } from "@/lib/agenda";
+import { agenda, dateEcheance, finEcheance, type Categorie } from "@/lib/agenda";
 import { alertesActives, libelleDate } from "./alertes";
 import { indicateurs } from "./indicateurs";
 import { modules } from "./modules";
@@ -50,6 +50,55 @@ export interface EntreeActu {
   explication?: string;
   /** Proposition de texte, soumise à validation par la veille. */
   brouillon?: string;
+  /** Thème du fil (Dette, Budget, Retraites, Impôts, Inflation, Emploi, Croissance, Taux). */
+  sujet?: Sujet;
+  /** Langue du titre, quand ce n'est pas le français (Eurostat, BCE). */
+  langue?: "en";
+  /** Titre original, quand le titre affiché en est la traduction (Eurostat). */
+  titreOriginal?: string;
+}
+
+/** Le fil commence le 1er septembre 2026 (rattrapage initial). */
+export const DEBUT_FIL = "2026-09-01";
+
+/** Nom affiché de chaque source officielle. */
+export const NOMS_SOURCES: Record<IdSource, string> = {
+  insee: "Insee",
+  bce: "Banque centrale européenne",
+  "banque-de-france": "Banque de France",
+  eurostat: "Eurostat",
+  "cour-des-comptes": "Cour des comptes",
+  hcfp: "Haut Conseil des finances publiques",
+  "assemblee-nationale": "Assemblée nationale",
+  senat: "Sénat",
+};
+
+/** Thème suivi par chaque donnée du journal : une nouvelle période déjà annoncée par la publication officielle n'est pas répétée. */
+const SUJET_DONNEE: Record<string, Sujet> = {
+  "ind.inflation-ipc-fr": "Inflation",
+  "ind.inflation-fr": "Inflation",
+  "ind.inflation-za": "Inflation",
+  "ind.chomage": "Emploi",
+  "dette.ratio-pib": "Dette",
+  "deficit.ratio-pib": "Dette",
+  "bce.taux-depot": "Taux",
+  "bce.taux-depot-actuel": "Taux",
+  "marches.taux10-france": "Taux",
+  "marches.spread-france-allemagne": "Taux",
+};
+
+/**
+ * Inflation de la zone euro publiée par Eurostat : estimation rapide (« Euro
+ * area annual inflation… », fin du mois ou tout début du suivant) puis
+ * résultat définitif (« Annual inflation… in the euro area », mi-mois suivant).
+ */
+export function versionEurostat(titre: string, date: string): string | undefined {
+  const rapide = /^euro area annual inflation/i.test(titre);
+  if (!rapide && !/^annual inflation .* in the euro area/i.test(titre)) return undefined;
+  const [a, m, j] = date.slice(0, 10).split("-").map(Number);
+  // Mois de référence : celui de la publication pour une estimation rapide de fin de mois, sinon le mois précédent.
+  const ref = rapide && j >= 25 ? new Date(Date.UTC(a, m - 1, 1)) : new Date(Date.UTC(a, m - 2, 1));
+  return `IPCH Eurostat, zone euro, ${periodeEnClair(ref.toISOString().slice(0, 7))}, ${rapide ? "estimation rapide" : LIBELLE_ETAT.definitif}`;
 }
 
 interface Explications {
@@ -110,20 +159,28 @@ const BROUILLON_AGENDA: Record<string, (titre: string, date: string) => string> 
   publication: (t, d) => `${t} (${d}). Ces chiffres officiels servent de référence au débat public. Le site met à jour les pages concernées.`,
 };
 
-const BROUILLON_SUJET: Record<string, string> = {
-  "Politique monétaire": "Les décisions de la BCE se répercutent sur le coût des crédits et, en partie, sur les taux auxquels l'État emprunte.",
-  "Dette et déficit": "La dette et le déficit mesurent l'écart entre les dépenses et les recettes publiques, et ce qu'il reste à financer.",
+const BROUILLON_SUJET: Partial<Record<Sujet, string>> = {
+  Taux: "Les décisions de la BCE se répercutent sur le coût des crédits et, en partie, sur les taux auxquels l'État emprunte.",
+  Dette: "La dette et le déficit mesurent l'écart entre les dépenses et les recettes publiques, et ce qu'il reste à financer.",
+  Budget: "Le budget fixe les recettes et les dépenses prévues, donc le déficit visé pour l'année.",
 };
+
+const SUJET_CATEGORIE: Partial<Record<Categorie, Sujet>> = { budget: "Budget", bce: "Taux", notation: "Dette" };
 
 export function construireFil(aujourdhui = new Date().toISOString().slice(0, 10)): EntreeActu[] {
   const journal = journalJson as Journal;
   const explications = (explicationsJson as Explications).explications;
   const entrees: EntreeActu[] = [];
+  const flux = (fluxJson as { entrees: EntreeFlux[] }).entrees;
+  const ecart = (a: string, b: string) => Math.abs(Date.parse(a.slice(0, 10)) - Date.parse(b.slice(0, 10))) / 86_400_000;
 
   // 1. Nouvelles périodes des indicateurs du tableau de bord.
   for (const j of journal.entrees) {
     const ind = indicateurs.find((i) => i.serie === j.donnee || i.valeurRecente === j.donnee);
     if (!ind) continue;
+    const sujet = SUJET_DONNEE[j.donnee];
+    // Déjà annoncé par la publication officielle (communiqué de l'Insee, d'Eurostat, de la BCE) : pas de doublon.
+    if (sujet && flux.some((f) => f.sujet === sujet && ecart(f.date, j.date) <= 3)) continue;
     const d = getDonnee(j.donnee);
     const valeur = (v: number) => `${formatNombre(v, ind.decimales)} ${ind.unite}`;
     const periode = libellePeriode(j.periode, /^\d{4}-\d{2}-\d{2}$/.test(j.periode) ? "paliers" : ind.frequence);
@@ -136,6 +193,7 @@ export function construireFil(aujourdhui = new Date().toISOString().slice(0, 10)
       source: d.source.url ? { nom: d.source.nom, url: d.source.url } : undefined,
       page: { href: ind.lien.href, titre: ind.lien.libelle },
       important: false,
+      sujet,
       version: d.indicateur ? [d.indicateur, periodeEnClair(j.periode), j.etat ? LIBELLE_ETAT[j.etat] : ""].filter(Boolean).join(", ") : undefined,
     });
   }
@@ -152,16 +210,18 @@ export function construireFil(aujourdhui = new Date().toISOString().slice(0, 10)
       titre: a.phrase,
       page: { href: a.lien.href, titre: a.lien.libelle },
       important: true,
+      sujet: SUJET_DONNEE[DONNEE_ALERTE[a.id]],
       version: qualificatif(getDonnee(DONNEE_ALERTE[a.id]), a.date),
       brouillon: `${a.phrase} ${a.pourquoi} Le tableau de bord suit cet indicateur chaque jour ouvré.`,
     });
   }
 
-  // 3. Échéances de l'agenda passées depuis moins de deux mois.
+  // 3. Échéances de l'agenda : celles du jour, et celles passées depuis moins de deux mois.
   const limite = new Date(Date.parse(aujourdhui) - 60 * 86_400_000).toISOString().slice(0, 10);
   for (const e of agenda.evenements) {
     const fin = finEcheance(e);
-    if (fin >= aujourdhui || fin < limite) continue;
+    if (fin > aujourdhui || fin < limite || (fin === aujourdhui && e.precision !== "jour")) continue;
+    const etat = e.traite ? "la mise à jour a été validée" : fin === aujourdhui ? "c'est aujourd'hui" : "échéance passée";
     const quand = dateEcheance(e);
     const page = e.pages[0];
     entrees.push({
@@ -169,32 +229,39 @@ export function construireFil(aujourdhui = new Date().toISOString().slice(0, 10)
       date: fin,
       dateLibelle: e.precision === "jour" ? jourEnLettres(e.date) : quand,
       type: "echeance",
-      titre: e.traite ? `${e.titre} : la mise à jour a été validée` : `${e.titre} : échéance passée`,
+      titre: `${e.titre} : ${etat}`,
       source: e.source,
       page: { href: page, titre: titrePage(page) },
       important: e.categorie !== "publication" || e.mise_a_jour === "validation",
+      sujet: SUJET_CATEGORIE[e.categorie],
       brouillon: BROUILLON_AGENDA[e.categorie](e.titre, quand),
     });
   }
 
   // 4. Publications des sources officielles.
-  const noms: Record<string, string> = { insee: "Insee", bce: "Banque centrale européenne", "cour-des-comptes": "Cour des comptes" };
-  for (const f of (fluxJson as { entrees: EntreeFlux[] }).entrees) {
+  for (const f of flux) {
     const quand = jourEnLettres(f.date);
-    // Communiqués de l'Insee sur l'inflation : indicateur (IPC), mois et statut, lus dans le titre.
+    const nom = NOMS_SOURCES[f.source] ?? f.source;
+    // Communiqués sur l'inflation : indicateur, mois et statut, lus dans le titre (Insee) ou déduits de la date (Eurostat).
     const ipc = f.source === "insee" ? resultatIpc(f.titre) : undefined;
+    // Titres d'Eurostat traduits en français ; l'original reste lisible au survol.
+    const traduit = f.source === "eurostat" ? traduireEurostat(f.titre) : undefined;
     entrees.push({
       id: f.id,
       date: f.date.slice(0, 10),
       dateLibelle: quand,
       type: "publication",
-      titre: f.titre,
-      source: { nom: noms[f.source] ?? f.source, url: f.lien },
+      titre: traduit ?? f.titre,
+      ...(traduit ? { titreOriginal: f.titre } : {}),
+      // Communiqué de la BCE lu sur le site de la Banque de France : sa version française.
+      source: { nom: f.source === "bce" && f.lien.includes("banque-france.fr") ? `${nom} (version française, Banque de France)` : nom, url: f.lien },
       page: { href: f.page, titre: titrePage(f.page) },
       important: f.important,
-      version: ipc ? `IPC Insee, ${periodeEnClair(ipc.periode)}, ${LIBELLE_ETAT[ipc.etat]}` : undefined,
+      sujet: f.sujet,
+      ...(f.langue && !traduit ? { langue: f.langue } : {}),
+      version: ipc ? `IPC Insee, ${periodeEnClair(ipc.periode)}, ${LIBELLE_ETAT[ipc.etat]}` : f.source === "eurostat" ? versionEurostat(f.titre, f.date) : undefined,
       brouillon: f.important
-        ? `${noms[f.source]} : « ${f.titre} » (${quand}). ${BROUILLON_SUJET[f.sujet] ?? ""} Le détail est expliqué sur la page « ${titrePage(f.page)} ».`.replace("  ", " ")
+        ? `${nom} : « ${traduit ?? f.titre} » (${quand}). ${BROUILLON_SUJET[f.sujet] ?? ""} Le détail est expliqué sur la page « ${titrePage(f.page)} ».`.replace("  ", " ")
         : undefined,
     });
   }
@@ -203,7 +270,7 @@ export function construireFil(aujourdhui = new Date().toISOString().slice(0, 10)
     const x = explications[e.id];
     if (x) e.explication = x.texte;
   }
-  return entrees.sort((a, b) => (a.date < b.date ? 1 : a.date > b.date ? -1 : a.id < b.id ? -1 : 1));
+  return entrees.filter((e) => e.date >= DEBUT_FIL).sort((a, b) => (a.date < b.date ? 1 : a.date > b.date ? -1 : a.id < b.id ? -1 : 1));
 }
 
 /** Les n dernières actualités, pour l'accueil. */
