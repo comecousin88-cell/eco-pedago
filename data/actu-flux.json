@@ -1,6 +1,6 @@
 {
   "description": "Publications des sources officielles (Insee, BCE, Cour des comptes) sur les sujets du site, lues dans leurs flux RSS par scripts/maj-actu.ts. Chaque entrée renvoie vers l'original et vers la page du site qui explique le sujet.",
-  "derniere_verification": "2026-10-23T12:36:04.081Z",
+  "derniere_verification": "2026-10-23T17:10:24.174Z",
   "sources": {
     "insee": {
       "statut": "ok"
@@ -168,17 +168,6 @@
       "important": false
     },
     {
-      "titre": "Au deuxième trimestre 2026, le PIB est stable (+0,0 % après -0,2 %) et le pouvoir d’achat des ménages recule nettement (-0,6 % par unité de consommation)",
-      "lien": "https://www.insee.fr/fr/statistiques/9039499",
-      "date": "2026-08-28T06:45:00Z",
-      "resume": "Le produit intérieur brut (PIB) en volume est stable au deuxième trimestre 2026, après -0,2 % au trimestre précédent. L’acquis de croissance pour l’année 2026 est de +0,3 %. Le pouvoir d’achat du revenu disponible brut (RDB) des ménages par unité de consommation recule nettement (-0,6 % après -0,2 %). Le taux d’épargne des ménages se replie fortement ce trimestre : il s’établit ainsi à 17,2 % de l",
-      "id": "insee-c0f4928a",
-      "source": "insee",
-      "page": "/modules/les-bases/pib/",
-      "sujet": "Croissance",
-      "important": false
-    },
-    {
       "titre": "En août 2026, les prix à la consommation augmenteraient de 2,4 % sur un an",
       "lien": "https://www.insee.fr/fr/statistiques/9039020",
       "date": "2026-08-28T06:45:00Z",
@@ -187,6 +176,17 @@
       "source": "insee",
       "page": "/modules/les-bases/inflation-taux-reels/",
       "sujet": "Inflation",
+      "important": false
+    },
+    {
+      "titre": "Au deuxième trimestre 2026, le PIB est stable (+0,0 % après -0,2 %) et le pouvoir d’achat des ménages recule nettement (-0,6 % par unité de consommation)",
+      "lien": "https://www.insee.fr/fr/statistiques/9039499",
+      "date": "2026-08-28T06:45:00Z",
+      "resume": "Le produit intérieur brut (PIB) en volume est stable au deuxième trimestre 2026, après -0,2 % au trimestre précédent. L’acquis de croissance pour l’année 2026 est de +0,3 %. Le pouvoir d’achat du revenu disponible brut (RDB) des ménages par unité de consommation recule nettement (-0,6 % après -0,2 %). Le taux d’épargne des ménages se replie fortement ce trimestre : il s’établit ainsi à 17,2 % de l",
+      "id": "insee-c0f4928a",
+      "source": "insee",
+      "page": "/modules/les-bases/pib/",
+      "sujet": "Croissance",
       "important": false
     },
     {
