@@ -1,4 +1,9 @@
 {
   "description": "Encadrés « Ce que ça veut dire » du fil « L'actu », par identifiant d'entrée. Chaque texte est proposé par la tâche « Veille de l'agenda » dans une demande de mise à jour, et n'est publié qu'après validation (fusion de la demande).",
-  "explications": {}
+  "explications": {
+    "echeance-budget-2027-conseil-des-ministres": {
+      "texte": "Présentation des projets de budget de l'État et de la Sécurité sociale pour 2027 en Conseil des ministres (1er octobre 2026). Le vote fixe les recettes et les dépenses prévues, donc le déficit visé pour l'année. Les chiffres définitifs ne seront connus qu'à l'exécution, l'année suivante.",
+      "propose_le": "2026-10-23"
+    }
+  }
 }
