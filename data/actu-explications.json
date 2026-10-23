@@ -1,4 +1,9 @@
 {
   "description": "Encadrés « Ce que ça veut dire » du fil « L'actu », par identifiant d'entrée. Chaque texte est proposé par la tâche « Veille de l'agenda » dans une demande de mise à jour, et n'est publié qu'après validation (fusion de la demande).",
-  "explications": {}
+  "explications": {
+    "echeance-moodys-2026-10": {
+      "texte": "Revue de la note de la France par Moody's (23 octobre 2026). Une note plus basse peut renchérir un peu les emprunts de l'État, mais les marchés anticipent souvent la décision. La note et sa perspective sont à lire dans le communiqué de l'agence.",
+      "propose_le": "2026-10-23"
+    }
+  }
 }
