@@ -1,4 +1,9 @@
 {
   "description": "Encadrés « Ce que ça veut dire » du fil « L'actu », par identifiant d'entrée. Chaque texte est proposé par la tâche « Veille de l'agenda » dans une demande de mise à jour, et n'est publié qu'après validation (fusion de la demande).",
-  "explications": {}
+  "explications": {
+    "insee-c12520f1": {
+      "texte": "Insee : « En septembre 2026, les prix à la consommation augmentent de 3,1 % sur un an » (15 octobre 2026). Le détail est expliqué sur la page « Inflation et taux réels ».",
+      "propose_le": "2026-10-23"
+    }
+  }
 }
