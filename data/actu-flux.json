@@ -1,6 +1,6 @@
 {
   "description": "Publications des sources officielles (Insee, BCE, Cour des comptes) sur les sujets du site, lues dans leurs flux RSS par scripts/maj-actu.ts. Chaque entrée renvoie vers l'original et vers la page du site qui explique le sujet.",
-  "derniere_verification": "2026-10-22T20:42:29.127Z",
+  "derniere_verification": "2026-10-23T12:36:04.081Z",
   "sources": {
     "insee": {
       "statut": "ok"
@@ -168,17 +168,6 @@
       "important": false
     },
     {
-      "titre": "En août 2026, les prix à la consommation augmenteraient de 2,4 % sur un an",
-      "lien": "https://www.insee.fr/fr/statistiques/9039020",
-      "date": "2026-08-28T06:45:00Z",
-      "resume": "",
-      "id": "insee-9497e0fa",
-      "source": "insee",
-      "page": "/modules/les-bases/inflation-taux-reels/",
-      "sujet": "Inflation",
-      "important": false
-    },
-    {
       "titre": "Au deuxième trimestre 2026, le PIB est stable (+0,0 % après -0,2 %) et le pouvoir d’achat des ménages recule nettement (-0,6 % par unité de consommation)",
       "lien": "https://www.insee.fr/fr/statistiques/9039499",
       "date": "2026-08-28T06:45:00Z",
@@ -187,6 +176,17 @@
       "source": "insee",
       "page": "/modules/les-bases/pib/",
       "sujet": "Croissance",
+      "important": false
+    },
+    {
+      "titre": "En août 2026, les prix à la consommation augmenteraient de 2,4 % sur un an",
+      "lien": "https://www.insee.fr/fr/statistiques/9039020",
+      "date": "2026-08-28T06:45:00Z",
+      "resume": "",
+      "id": "insee-9497e0fa",
+      "source": "insee",
+      "page": "/modules/les-bases/inflation-taux-reels/",
+      "sujet": "Inflation",
       "important": false
     },
     {
