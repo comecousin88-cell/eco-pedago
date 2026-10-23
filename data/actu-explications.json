@@ -1,4 +1,9 @@
 {
   "description": "Encadrés « Ce que ça veut dire » du fil « L'actu », par identifiant d'entrée. Chaque texte est proposé par la tâche « Veille de l'agenda » dans une demande de mise à jour, et n'est publié qu'après validation (fusion de la demande).",
-  "explications": {}
+  "explications": {
+    "cour-des-comptes-33e2b8ba": {
+      "texte": "Cour des comptes : « La situation financière de la sécurité sociale : un redressement impératif en 2027 » (20 octobre 2026). Le budget fixe les recettes et les dépenses prévues, donc le déficit visé pour l'année. Le détail est expliqué sur la page « Solde public, primaire, structurel ».",
+      "propose_le": "2026-10-23"
+    }
+  }
 }
