@@ -7,6 +7,7 @@ import { DateDonnee } from "@/components/pedago/DateDonnee";
 import { ARetenir, BadgeVerdict, Debat, Exemple, Verdict } from "@/components/pedago/Encadres";
 import { Figure } from "@/components/pedago/Figure";
 import { Essentiel, Mecanisme, Niveaux, PlusLoin } from "@/components/pedago/Niveaux";
+import { Analogie, PasAPas, PourBienComprendre, Retenir } from "@/components/pedago/PourBienComprendre";
 import { Quiz } from "@/components/pedago/Quiz";
 import { Terme } from "@/components/pedago/Terme";
 import { ArgumentsFiche, GrilleVerdict } from "@/components/propositions/ArgumentsFiche";
@@ -32,6 +33,7 @@ const components: MDXComponents = {
   ),
   ARetenir,
   ArgumentsFiche,
+  Analogie,
   BadgeVerdict,
   Calcul,
   Chiffre,
@@ -43,8 +45,11 @@ const components: MDXComponents = {
   GrilleVerdict,
   Mecanisme,
   Niveaux,
+  PasAPas,
   PlusLoin,
+  PourBienComprendre,
   Quiz,
+  Retenir,
   Terme,
   Verdict,
 };

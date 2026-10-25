@@ -5,7 +5,7 @@
  * pour que tout le site se mette à jour en même temps.
  *
  * Restent permis, sans déclaration :
- * - les exemples chiffrés, dans un encadré <Exemple> ;
+ * - les exemples chiffrés, dans un encadré <Exemple> ou un bloc <PourBienComprendre> ;
  * - les faits datés du passé : la phrase cite une année antérieure ou égale à ANNEE_HISTOIRE ;
  * - les repères des traités et le mandat de la BCE (3 % et 60 % du PIB, inflation de 2 %).
  * Tout autre chiffre doit être déclaré dans src/content/chiffres-fixes.ts, avec sa raison.
@@ -22,6 +22,8 @@ const MOTIF = new RegExp(`${NOMBRE}[ \\u202f\\u00a0]?${UNITES}(?![\\wÀ-ÿ])`, "
 export function prose(mdx: string): string {
   let t = mdx.replace(/^(import|export) .*$/gm, "");
   t = t.replace(/<Exemple[\s\S]*?<\/Exemple>/g, " ");
+  // Les étapes de « Pour bien comprendre » prennent des chiffres ronds d'exemple (100 €, 1 %).
+  t = t.replace(/<PourBienComprendre[\s\S]*?<\/PourBienComprendre>/g, " ");
   t = t.replace(/<[A-Z][\w.]*(?:\s[^<>]*?)?\/>/g, " ");
   // Les expressions JavaScript calculent leurs valeurs : on les retire. Le texte des
   // éléments JSX passés en attribut (tient={<p>…</p>}) reste contrôlé.
