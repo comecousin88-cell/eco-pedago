@@ -48,7 +48,7 @@
       "precision": "jour",
       "statut": "confirme",
       "mise_a_jour": "validation",
-      "situation": "Aa3, perspective négative",
+      "situation": "Aa3, perspective négative (maintenue le 23 octobre 2026)",
       "description": "Moody's publie sa décision après la clôture des marchés : maintien, changement de perspective ou abaissement de la note.",
       "donnees": [
         "notation.france"
@@ -61,7 +61,10 @@
         "nom": "Agence France Trésor, notations souveraines de la France",
         "url": "https://www.aft.gouv.fr/fr/notations-souveraines"
       },
-      "consulte_le": "2026-10-21"
+      "consulte_le": "2026-10-25",
+      "traite": "2026-10-25",
+      "resultat": "Note Aa3 maintenue, perspective négative",
+      "note": "Décision rapportée par Euronews (24 octobre 2026) et Xinhua (24 octobre 2026) ; le site de l'Agence France Trésor refuse la lecture automatique : à confirmer sur sa page des notations souveraines."
     },
     {
       "id": "plfss-2027-vote",
