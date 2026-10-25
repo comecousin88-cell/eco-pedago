@@ -1,0 +1,4 @@
+{
+  "description": "Résumés des pages « L'actu » (/actu/<slug>/), par identifiant d'entrée du fil : « En bref » (trois points) et « Ce que ça veut dire ». Rédigés avec l'aide de l'IA, ils sont proposés par demande de mise à jour et ne sont publiés qu'après relecture et fusion. Aucun chiffre n'est écrit en dur : {{id}} affiche une donnée de data/*.json, {{id@x}} un point de sa série. « indicateurs » et « donnees » remplacent, pour cette page, les chiffres clés choisis d'après le thème.",
+  "resumes": {}
+}

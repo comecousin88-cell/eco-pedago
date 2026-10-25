@@ -18,6 +18,7 @@ import {
   trierFlux,
   type EntreeFlux,
 } from "@/lib/actu/flux";
+import { agenda, etatEcheance, finEcheance } from "@/lib/agenda";
 import { ajouterAuJournal, nouvellePeriode } from "@/lib/actu/journal";
 import { constatsExplications, corpsDemande, type EntreeFilPubliee, type Explications } from "@/lib/veille";
 import { construireFil, DEBUT_FIL, finDePeriode, jourEnLettres, titrePage, versionEurostat } from "./actu";
@@ -118,7 +119,7 @@ describe("lecture des flux officiels", () => {
 
   it("fusionne sans doublon, du plus récent au plus ancien, sans les éléments trop vieux", () => {
     const e = (id: string, date: string) => ({ id, date }) as EntreeFlux;
-    const f = fusionnerFlux([e("a", "2026-10-01T00:00:00Z"), e("b", "2026-06-01T00:00:00Z")], [e("c", "2026-10-20T00:00:00Z"), e("a", "2026-10-01T00:00:00Z")], "2026-10-22T00:00:00Z");
+    const f = fusionnerFlux([e("a", "2026-10-01T00:00:00Z"), e("b", "2026-06-01T00:00:00Z")], [e("c", "2026-10-20T00:00:00Z"), e("a", "2026-10-01T00:00:00Z")]);
     expect(f.map((x) => x.id)).toEqual(["c", "a"]);
     expect(idFlux("insee", "https://x")).toBe(idFlux("insee", "https://x"));
     expect(idFlux("insee", "https://x")).not.toBe(idFlux("insee", "https://y"));
@@ -217,9 +218,40 @@ describe("le fil « L'actu »", () => {
     expect(titres).toMatch(/En septembre 2026, les prix à la consommation augmentent/);
     expect(titres).toMatch(/budget de l'État et de la Sécurité sociale pour 2027 en Conseil des ministres/);
     expect(titres).toMatch(/Lois de finances 2027/);
-    expect(titres).toMatch(/Moody's : c'est aujourd'hui/);
-    // Le lendemain, l'échéance est passée.
-    expect(construireFil("2026-10-24").map((e) => e.titre).join("\n")).toMatch(/Moody's : échéance passée/);
+    expect(titres).toMatch(/Revue de la note de la France par Moody's/);
+  });
+
+  it("une échéance passée n'affiche jamais « aujourd'hui », « demain » ni un compte à rebours", () => {
+    const relatif = /aujourd'hui|demain|dans \d+ jours?|ce mois-ci/i;
+    // Le titre ne porte jamais l'état de l'échéance : il est calculé à l'affichage.
+    for (const jour of ["2026-10-23", "2026-10-24", "2026-11-30"]) {
+      for (const e of construireFil(jour).filter((x) => x.type === "echeance")) {
+        expect(e.titre, e.id).not.toMatch(relatif);
+        expect(e.echeance, e.id).toBeDefined();
+      }
+    }
+    // Pour chaque échéance de l'agenda et chaque jour après elle, en mode relatif (navigateur) comme absolu (construction).
+    for (const ev of agenda.evenements) {
+      for (const decalage of [1, 2, 7, 40]) {
+        const jour = new Date(Date.parse(finEcheance(ev)) + decalage * 86_400_000).toISOString().slice(0, 10);
+        for (const relatifActif of [true, false]) {
+          const { texte, passee } = etatEcheance(ev, jour, relatifActif);
+          expect(passee, `${ev.id} le ${jour}`).toBe(true);
+          expect(texte, `${ev.id} le ${jour}`).not.toMatch(relatif);
+          expect(texte).toMatch(ev.resultat ? new RegExp(ev.resultat.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")) : /^A eu lieu (le|en) /);
+        }
+      }
+    }
+    // Avant : mentions relatives seulement dans le navigateur.
+    const ev = { date: "2026-10-23", precision: "jour" as const };
+    expect(etatEcheance(ev, "2026-10-23", true).texte).toBe("Aujourd'hui");
+    expect(etatEcheance(ev, "2026-10-22", true).texte).toBe("Demain");
+    expect(etatEcheance(ev, "2026-10-20", true).texte).toBe("Dans 3 jours (23 octobre 2026)");
+    expect(etatEcheance(ev, "2026-10-23", false).texte).toBe("Prévue le 23 octobre 2026");
+    expect(etatEcheance(ev, "2026-10-24", true).texte).toBe("A eu lieu le 23 octobre 2026");
+    expect(etatEcheance({ ...ev, resultat: "Note Aa3 maintenue, perspective négative" }, "2026-10-24", true).texte).toBe(
+      "Note Aa3 maintenue, perspective négative (23 octobre 2026)",
+    );
   });
 
   it("traduit fidèlement les titres d'Eurostat, en gardant l'original", () => {

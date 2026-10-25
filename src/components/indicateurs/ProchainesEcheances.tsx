@@ -1,10 +1,13 @@
 import Link from "next/link";
-import { agenda, CATEGORIES, dateEcheance, prochainesEcheances } from "@/lib/agenda";
+import { EtatEcheance, SiAVenir } from "@/components/actu/EtatEcheance";
+import { agenda, CATEGORIES, finEcheance, prochainesEcheances } from "@/lib/agenda";
 
 /**
  * Les prochaines échéances de data/agenda.json (notes des agences, budget,
  * BCE, publications). La liste est calculée à la construction du site, qui est
- * reconstruit chaque jour ouvré par la mise à jour automatique.
+ * reconstruit chaque jour ouvré ; dans le navigateur, une échéance déjà passée
+ * pour le visiteur est masquée et les délais (« demain », « dans 3 jours »)
+ * sont calculés avec sa date.
  */
 export function ProchainesEcheances({ nombre = 6 }: { nombre?: number }) {
   const aujourdhui = new Date().toISOString().slice(0, 10);
@@ -21,10 +24,10 @@ export function ProchainesEcheances({ nombre = 6 }: { nombre?: number }) {
       </p>
       <ol className="mt-4 divide-y divide-line">
         {liste.map((e) => (
-          <li key={e.id} className="grid gap-1 py-3 sm:grid-cols-[11rem_1fr] sm:gap-4">
-            <p className="text-sm font-semibold text-ink tabular-nums">
-              {e.precision === "mois" ? "Courant " : ""}
-              {dateEcheance(e)}
+          <SiAVenir key={e.id} fin={finEcheance(e)}>
+            <li className="grid gap-1 py-3 sm:grid-cols-[11rem_1fr] sm:gap-4">
+            <p className="text-sm tabular-nums">
+              <EtatEcheance echeance={e} construitLe={aujourdhui} />
               {e.statut === "a_confirmer" && <span className="block text-xs font-normal text-muted">date à confirmer</span>}
             </p>
             <div className="text-sm text-body">
@@ -42,7 +45,8 @@ export function ProchainesEcheances({ nombre = 6 }: { nombre?: number }) {
                 </Link>
               </p>
             </div>
-          </li>
+            </li>
+          </SiAVenir>
         ))}
       </ol>
     </section>

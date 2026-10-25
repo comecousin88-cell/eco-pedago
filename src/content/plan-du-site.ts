@@ -1,3 +1,4 @@
+import { actuHref, construireFil } from "./actu";
 import { moduleHref, modules } from "./modules";
 import { propositionHref, propositions } from "./propositions";
 
@@ -27,5 +28,6 @@ export function pagesDuSite(): string[] {
     ...PAGES_FIXES,
     ...modules.filter((m) => m.status === "available").flatMap((m) => [moduleHref(m.slug), ...m.sections.map((s) => moduleHref(m.slug, s.slug))]),
     ...propositions.filter((p) => p.contenu).map((p) => propositionHref(p.slug)),
+    ...construireFil().flatMap((e) => (e.slug ? [actuHref(e.slug)] : [])),
   ];
 }

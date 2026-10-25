@@ -1,7 +1,7 @@
 import explicationsJson from "../../data/actu-explications.json";
 import fluxJson from "../../data/actu-flux.json";
 import journalJson from "../../data/actu-journal.json";
-import { traduireEurostat, type EntreeFlux, type IdSource, type Sujet } from "@/lib/actu/flux";
+import { DEBUT_FIL, traduireEurostat, type EntreeFlux, type IdSource, type Sujet } from "@/lib/actu/flux";
 import type { Journal } from "@/lib/actu/journal";
 import { getDonnee, LIBELLE_ETAT } from "@/lib/data";
 import { resultatIpc } from "@/lib/maj/fonctions";
@@ -9,7 +9,7 @@ import { periodeEnClair, qualificatif } from "@/lib/versions";
 import { formatNombre } from "@/lib/format";
 import { libellePeriode } from "@/lib/indicateurs";
 import { agenda, dateEcheance, finEcheance, type Categorie } from "@/lib/agenda";
-import { alertesActives, libelleDate } from "./alertes";
+import { episodesAlertes, libelleDate } from "./alertes";
 import { indicateurs } from "./indicateurs";
 import { modules } from "./modules";
 
@@ -56,10 +56,30 @@ export interface EntreeActu {
   langue?: "en";
   /** Titre original, quand le titre affiché en est la traduction (Eurostat). */
   titreOriginal?: string;
+  /** Adresse de la page de l'actualité (/actu/<slug>/). */
+  slug?: string;
+  /** Échéance de l'agenda : date et, une fois validé, son résultat. Son état (à venir, passée) se calcule à l'affichage. */
+  echeance?: { date: string; precision: "jour" | "mois"; resultat?: string };
 }
 
-/** Le fil commence le 1er septembre 2026 (rattrapage initial). */
-export const DEBUT_FIL = "2026-09-01";
+/** « Revue de la note de la France par Moody's » → « revue-de-la-note-de-la-france-par-moody-s ». */
+export function slugifier(texte: string, max = 80): string {
+  const s = texte
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/œ/g, "oe")
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "");
+  if (s.length <= max) return s;
+  const coupe = s.slice(0, max);
+  return coupe.slice(0, coupe.lastIndexOf("-") > 20 ? coupe.lastIndexOf("-") : max);
+}
+
+/** Adresse de la page d'une actualité. */
+export const actuHref = (slug: string) => `/actu/${slug}/`;
+
+export { DEBUT_FIL } from "@/lib/actu/flux";
 
 /** Nom affiché de chaque source officielle. */
 export const NOMS_SOURCES: Record<IdSource, string> = {
@@ -171,6 +191,8 @@ export function construireFil(aujourdhui = new Date().toISOString().slice(0, 10)
   const journal = journalJson as Journal;
   const explications = (explicationsJson as Explications).explications;
   const entrees: EntreeActu[] = [];
+  /** Adresse fixée d'avance pour les pages dont le titre et la date changent (alertes : la valeur évolue). */
+  const slugsFixes = new Map<string, string>();
   const flux = (fluxJson as { entrees: EntreeFlux[] }).entrees;
   const ecart = (a: string, b: string) => Math.abs(Date.parse(a.slice(0, 10)) - Date.parse(b.slice(0, 10))) / 86_400_000;
 
@@ -198,15 +220,20 @@ export function construireFil(aujourdhui = new Date().toISOString().slice(0, 10)
     });
   }
 
-  // 2. Alertes de seuil en cours, datées au jour où la donnée qui les déclenche est arrivée.
-  for (const a of alertesActives()) {
+  // 2. Seuils franchis (en cours ou terminés depuis le début du fil), datés au jour où la donnée qui les signale est arrivée.
+  for (const a of episodesAlertes(DEBUT_FIL)) {
     const arrivee = journal.entrees.find((j) => j.donnee === DONNEE_ALERTE[a.id] && j.periode === a.date);
     const date = arrivee?.date ?? finDePeriode(a.date);
+    const id = `alerte-${a.id}-${a.debut}`;
+    // Une page par épisode, à une adresse tirée de son début : elle ne change pas quand la valeur évolue ni quand l'alerte prend fin.
+    slugsFixes.set(id, `${finDePeriode(a.debut)}-seuil-${a.id}`);
     entrees.push({
-      id: `alerte-${a.id}-${a.etat}-${a.date}`,
+      id,
       date,
       dateLibelle: arrivee ? jourEnLettres(arrivee.date) : `Données ${libelleDate(a.date).replace(/^(en|le|fin) /, "de ")}`,
       type: "alerte",
+      // La source de l'alerte est celle de la donnée qui la déclenche.
+      source: (({ nom, url }) => (url ? { nom, url } : undefined))(getDonnee(DONNEE_ALERTE[a.id]).source),
       titre: a.phrase,
       page: { href: a.lien.href, titre: a.lien.libelle },
       important: true,
@@ -216,12 +243,11 @@ export function construireFil(aujourdhui = new Date().toISOString().slice(0, 10)
     });
   }
 
-  // 3. Échéances de l'agenda : celles du jour, et celles passées depuis moins de deux mois.
-  const limite = new Date(Date.parse(aujourdhui) - 60 * 86_400_000).toISOString().slice(0, 10);
+  // 3. Échéances de l'agenda arrivées depuis le début du fil. Le titre ne dit rien de leur état : « a eu lieu le… »,
+  // « aujourd'hui » ou le résultat s'affichent à part, calculés dans le navigateur du visiteur (EtatEcheance).
   for (const e of agenda.evenements) {
     const fin = finEcheance(e);
-    if (fin > aujourdhui || fin < limite || (fin === aujourdhui && e.precision !== "jour")) continue;
-    const etat = e.traite ? "la mise à jour a été validée" : fin === aujourdhui ? "c'est aujourd'hui" : "échéance passée";
+    if (fin > aujourdhui || fin < DEBUT_FIL || (fin === aujourdhui && e.precision !== "jour")) continue;
     const quand = dateEcheance(e);
     const page = e.pages[0];
     entrees.push({
@@ -229,7 +255,8 @@ export function construireFil(aujourdhui = new Date().toISOString().slice(0, 10)
       date: fin,
       dateLibelle: e.precision === "jour" ? jourEnLettres(e.date) : quand,
       type: "echeance",
-      titre: `${e.titre} : ${etat}`,
+      titre: e.titre,
+      echeance: { date: e.date, precision: e.precision, ...(e.resultat ? { resultat: e.resultat } : {}) },
       source: e.source,
       page: { href: page, titre: titrePage(page) },
       important: e.categorie !== "publication" || e.mise_a_jour === "validation",
@@ -270,7 +297,22 @@ export function construireFil(aujourdhui = new Date().toISOString().slice(0, 10)
     const x = explications[e.id];
     if (x) e.explication = x.texte;
   }
-  return entrees.filter((e) => e.date >= DEBUT_FIL).sort((a, b) => (a.date < b.date ? 1 : a.date > b.date ? -1 : a.id < b.id ? -1 : 1));
+  const fil = entrees.filter((e) => e.date >= DEBUT_FIL).sort((a, b) => (a.date < b.date ? 1 : a.date > b.date ? -1 : a.id < b.id ? -1 : 1));
+  // Une page par actualité, à une adresse stable tirée de la date et du titre.
+  const pris = new Set<string>();
+  for (const e of fil) {
+    const base = slugsFixes.get(e.id) ?? `${e.date}-${slugifier(e.titre)}`;
+    let slug = base;
+    for (let n = 2; pris.has(slug); n++) slug = `${base}-${n}`;
+    pris.add(slug);
+    e.slug = slug;
+  }
+  return fil;
+}
+
+/** L'actualité d'une page /actu/<slug>/. */
+export function actuParSlug(slug: string, fil = construireFil()): EntreeActu | undefined {
+  return fil.find((e) => e.slug === slug);
 }
 
 /** Les n dernières actualités, pour l'accueil. */

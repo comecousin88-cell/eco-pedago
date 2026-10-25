@@ -1,0 +1,247 @@
+{
+  "description": "Chiffres cités dans les résumés de « L'actu » (data/actu-resumes.json), relevés dans chaque publication officielle résumée.",
+  "donnees": [
+    {
+      "id": "actu.hcfp.croissance-2026",
+      "label": "Croissance du PIB prévue par le Gouvernement pour 2026 (projet de budget 2027)",
+      "valeur": 0.5,
+      "unite": "%",
+      "date": "2026",
+      "source": {
+        "nom": "Haut Conseil des finances publiques, avis n° 2026-5 sur les projets de lois de finances et de financement de la sécurité sociale pour 2027 (1er octobre 2026)",
+        "url": "https://www.hcfp.fr/liste-avis/avis-ndeg2026-5-lois-de-finances-2027"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-25"
+    },
+    {
+      "id": "actu.hcfp.croissance-2027",
+      "label": "Croissance du PIB prévue par le Gouvernement pour 2027",
+      "valeur": 1.0,
+      "unite": "%",
+      "date": "2027",
+      "source": {
+        "nom": "Haut Conseil des finances publiques, avis n° 2026-5 sur les projets de lois de finances et de financement de la sécurité sociale pour 2027 (1er octobre 2026)",
+        "url": "https://www.hcfp.fr/liste-avis/avis-ndeg2026-5-lois-de-finances-2027"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-25",
+      "note": "Le Haut Conseil juge cette prévision « optimiste au regard des dernières évolutions »."
+    },
+    {
+      "id": "actu.hcfp.deficit-2026",
+      "label": "Déficit public prévu par le Gouvernement pour 2026 (projet de budget 2027)",
+      "valeur": 5.4,
+      "unite": "% du PIB",
+      "date": "2026",
+      "source": {
+        "nom": "Haut Conseil des finances publiques, avis n° 2026-5 sur les projets de lois de finances et de financement de la sécurité sociale pour 2027 (1er octobre 2026)",
+        "url": "https://www.hcfp.fr/liste-avis/avis-ndeg2026-5-lois-de-finances-2027"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-25",
+      "note": "Contre 5,0 % du PIB dans la loi de finances initiale pour 2026."
+    },
+    {
+      "id": "actu.hcfp.deficit-2026-lfi",
+      "label": "Déficit public prévu pour 2026 dans la loi de finances initiale",
+      "valeur": 5.0,
+      "unite": "% du PIB",
+      "date": "2026",
+      "source": {
+        "nom": "Haut Conseil des finances publiques, avis n° 2026-5 sur les projets de lois de finances et de financement de la sécurité sociale pour 2027 (1er octobre 2026)",
+        "url": "https://www.hcfp.fr/liste-avis/avis-ndeg2026-5-lois-de-finances-2027"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-25"
+    },
+    {
+      "id": "actu.hcfp.deficit-2027",
+      "label": "Déficit public visé par le Gouvernement pour 2027",
+      "valeur": 5.0,
+      "unite": "% du PIB",
+      "date": "2027",
+      "source": {
+        "nom": "Haut Conseil des finances publiques, avis n° 2026-5 sur les projets de lois de finances et de financement de la sécurité sociale pour 2027 (1er octobre 2026)",
+        "url": "https://www.hcfp.fr/liste-avis/avis-ndeg2026-5-lois-de-finances-2027"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-25"
+    },
+    {
+      "id": "actu.hcfp.effort-structurel-2027",
+      "label": "Effort structurel prévu en 2027, selon la méthode du Haut Conseil",
+      "valeur": 0.9,
+      "unite": "point de PIB",
+      "date": "2027",
+      "source": {
+        "nom": "Haut Conseil des finances publiques, avis n° 2026-5 sur les projets de lois de finances et de financement de la sécurité sociale pour 2027 (1er octobre 2026)",
+        "url": "https://www.hcfp.fr/liste-avis/avis-ndeg2026-5-lois-de-finances-2027"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-25",
+      "note": "Environ 28 Md€, dont 17 Md€ en recettes et 11 Md€ en dépenses."
+    },
+    {
+      "id": "actu.secu.deficit-2026",
+      "label": "Déficit des régimes obligatoires de base de la sécurité sociale prévu pour 2026",
+      "valeur": 21.8,
+      "unite": "Md€",
+      "date": "2026",
+      "source": {
+        "nom": "Cour des comptes, La situation financière de la sécurité sociale : un redressement impératif en 2027 (20 octobre 2026)",
+        "url": "https://www.ccomptes.fr/fr/publications/la-situation-financiere-de-la-securite-sociale-un-redressement-imperatif-en-2027"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-25",
+      "note": "Prévision associée au projet de loi de financement de la sécurité sociale pour 2027, supérieure de 2,4 Md€ à l'objectif voté."
+    },
+    {
+      "id": "actu.secu.deficit-2027",
+      "label": "Déficit des régimes obligatoires de base de la sécurité sociale prévu pour 2027 par le projet de loi de financement",
+      "valeur": 12.7,
+      "unite": "Md€",
+      "date": "2027",
+      "source": {
+        "nom": "Cour des comptes, La situation financière de la sécurité sociale : un redressement impératif en 2027 (20 octobre 2026)",
+        "url": "https://www.ccomptes.fr/fr/publications/la-situation-financiere-de-la-securite-sociale-un-redressement-imperatif-en-2027"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-25"
+    },
+    {
+      "id": "actu.secu.mesures-recettes-2027",
+      "label": "Mesures nouvelles de recettes du projet de loi de financement de la sécurité sociale pour 2027",
+      "valeur": 6.3,
+      "unite": "Md€",
+      "date": "2027",
+      "source": {
+        "nom": "Cour des comptes, La situation financière de la sécurité sociale : un redressement impératif en 2027 (20 octobre 2026)",
+        "url": "https://www.ccomptes.fr/fr/publications/la-situation-financiere-de-la-securite-sociale-un-redressement-imperatif-en-2027"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-25"
+    },
+    {
+      "id": "actu.za.deficit-2025",
+      "label": "Déficit public de la zone euro en 2025",
+      "valeur": 3.0,
+      "unite": "% du PIB",
+      "date": "2025",
+      "source": {
+        "nom": "Eurostat, euro-indicateurs, déficit et dette publics de 2025 (21 octobre 2026)",
+        "url": "https://ec.europa.eu/eurostat/web/products-euro-indicators/w/2-21102026-ap"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-25",
+      "note": "Zone euro à 20 pays, telle que publiée par Eurostat en titre de son communiqué."
+    },
+    {
+      "id": "actu.za.dette-2025",
+      "label": "Dette publique de la zone euro fin 2025",
+      "valeur": 87.7,
+      "unite": "% du PIB",
+      "date": "2025",
+      "source": {
+        "nom": "Eurostat, euro-indicateurs, déficit et dette publics de 2025 (21 octobre 2026)",
+        "url": "https://ec.europa.eu/eurostat/web/products-euro-indicators/w/2-21102026-ap"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-25",
+      "note": "Zone euro à 20 pays, telle que publiée par Eurostat en titre de son communiqué."
+    },
+    {
+      "id": "actu.ipc.energie-2026-09",
+      "label": "Hausse sur un an des prix de l'énergie en septembre 2026",
+      "valeur": 21.3,
+      "unite": "%",
+      "date": "2026-09",
+      "source": {
+        "nom": "Insee, Informations rapides n° 247, indice des prix à la consommation de septembre 2026, résultats définitifs (15 octobre 2026)",
+        "url": "https://www.insee.fr/fr/statistiques/9080209"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-25"
+    },
+    {
+      "id": "actu.ipc.sous-jacente-2026-09",
+      "label": "Inflation sous-jacente en septembre 2026 (sur un an)",
+      "valeur": 1.5,
+      "unite": "%",
+      "date": "2026-09",
+      "source": {
+        "nom": "Insee, Informations rapides n° 247, indice des prix à la consommation de septembre 2026, résultats définitifs (15 octobre 2026)",
+        "url": "https://www.insee.fr/fr/statistiques/9080209"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-25"
+    },
+    {
+      "id": "actu.ipc.services-2026-09",
+      "label": "Hausse sur un an des prix des services en septembre 2026",
+      "valeur": 2.4,
+      "unite": "%",
+      "date": "2026-09",
+      "source": {
+        "nom": "Insee, Informations rapides n° 247, indice des prix à la consommation de septembre 2026, résultats définitifs (15 octobre 2026)",
+        "url": "https://www.insee.fr/fr/statistiques/9080209"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-25"
+    },
+    {
+      "id": "actu.salaires.net-moyen-2025",
+      "label": "Salaire net moyen dans le secteur privé en 2025, en équivalent temps plein",
+      "valeur": 2797,
+      "unite": "€ par mois",
+      "date": "2025",
+      "source": {
+        "nom": "Insee Première n° 2132, Les salaires dans le secteur privé en 2025 (22 octobre 2026)",
+        "url": "https://www.insee.fr/fr/statistiques/9087193"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-25"
+    },
+    {
+      "id": "actu.salaires.median-2025",
+      "label": "Salaire net médian dans le secteur privé en 2025, en équivalent temps plein",
+      "valeur": 2238,
+      "unite": "€ par mois",
+      "date": "2025",
+      "source": {
+        "nom": "Insee Première n° 2132, Les salaires dans le secteur privé en 2025 (22 octobre 2026)",
+        "url": "https://www.insee.fr/fr/statistiques/9087193"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-25"
+    },
+    {
+      "id": "actu.salaires.pouvoir-achat-2025",
+      "label": "Évolution du salaire net moyen du secteur privé en 2025, en euros constants (pouvoir d'achat)",
+      "valeur": 1.5,
+      "unite": "%",
+      "date": "2025",
+      "source": {
+        "nom": "Insee Première n° 2132, Les salaires dans le secteur privé en 2025 (22 octobre 2026)",
+        "url": "https://www.insee.fr/fr/statistiques/9087193"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-25",
+      "note": "Après +0,8 % en 2024 ; l'inflation a été de 0,9 % en 2025."
+    },
+    {
+      "id": "actu.salaires.ecart-femmes-hommes-2025",
+      "label": "Écart de salaire net moyen entre femmes et hommes dans le secteur privé en 2025, en équivalent temps plein",
+      "valeur": 12.8,
+      "unite": "%",
+      "date": "2025",
+      "source": {
+        "nom": "Insee Première n° 2132, Les salaires dans le secteur privé en 2025 (22 octobre 2026)",
+        "url": "https://www.insee.fr/fr/statistiques/9087193"
+      },
+      "statut": "verifie",
+      "consulte_le": "2026-10-25",
+      "note": "Les femmes gagnent en moyenne 12,8 % de moins que les hommes."
+    }
+  ]
+}

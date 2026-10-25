@@ -203,7 +203,7 @@ export function lireSource(source: Pick<SourceFlux, "format">, texte: string): I
 function sansAccents(s: string): string {
   return s
     .normalize("NFD")
-    .replace(/[̀-ͯ]/g, "")
+    .replace(/[\u0300-\u036f]/g, "")
     .replace(/[’‘]/g, "'")
     .toLowerCase();
 }
@@ -362,10 +362,14 @@ export function traduireEurostat(titre: string): string | undefined {
   return phrase.charAt(0).toUpperCase() + phrase.slice(1);
 }
 
-/** Applique les règles actuelles à une entrée déjà connue (thème, page, importance), ou l'écarte. */
-export function reclasser(e: EntreeFlux): EntreeFlux[] {
+/**
+ * Applique les règles actuelles à une entrée déjà connue (thème, page,
+ * importance). Une entrée publiée n'est jamais retirée : sa page resterait
+ * sans contenu (erreur 404) pour qui en a gardé l'adresse.
+ */
+export function reclasser(e: EntreeFlux): EntreeFlux {
   const s = sujetDe(e.titre);
-  return s ? [{ ...e, sujet: s.sujet, page: s.page, important: !!s.important?.test(sansAccents(e.titre)) }] : [];
+  return s ? { ...e, sujet: s.sujet, page: s.page, important: !!s.important?.test(sansAccents(e.titre)) } : e;
 }
 
 /**
@@ -377,13 +381,19 @@ export function sansDoublon(entrees: EntreeFlux[]): EntreeFlux[] {
   return entrees.filter((e) => !(e.source === "bce" && e.langue === "en" && francais.has(`${e.date.slice(0, 10)}|${e.sujet}`)));
 }
 
-/** Fusionne les nouveaux éléments avec ceux déjà connus : sans doublon, récents d'abord, bornés en nombre et en âge. */
-export function fusionnerFlux(anciens: EntreeFlux[], nouveaux: EntreeFlux[], aujourdhui: string, { jours = 90, max = 150 } = {}): EntreeFlux[] {
+/** Le fil commence le 1er septembre 2026 (rattrapage initial). */
+export const DEBUT_FIL = "2026-09-01";
+
+/**
+ * Fusionne les nouveaux éléments avec ceux déjà connus : sans doublon, récents
+ * d'abord. Rien n'est retiré depuis le début du fil : chaque actualité garde sa
+ * page (/actu/<slug>/), dont l'adresse a pu être partagée.
+ */
+export function fusionnerFlux(anciens: EntreeFlux[], nouveaux: EntreeFlux[], { depuis = DEBUT_FIL, max = 5000 } = {}): EntreeFlux[] {
   const parId = new Map<string, EntreeFlux>();
   for (const e of [...anciens, ...nouveaux]) parId.set(e.id, e);
-  const limite = new Date(Date.parse(aujourdhui) - jours * 86_400_000).toISOString();
   return sansDoublon([...parId.values()])
-    .filter((e) => e.date >= limite)
+    .filter((e) => e.date >= depuis)
     .sort((a, b) => (a.date < b.date ? 1 : -1))
     .slice(0, max);
 }

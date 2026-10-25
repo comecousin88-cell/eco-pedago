@@ -61,6 +61,7 @@ export interface FichierDonnees {
 }
 
 // Chaque nouveau fichier de données s'ajoute ici.
+import actualites from "../../data/actualites.json";
 import aft from "../../data/aft.json";
 import banqueCentrale from "../../data/banque-centrale.json";
 import budgets from "../../data/budgets.json";
@@ -81,6 +82,7 @@ import propositions from "../../data/propositions.json";
 import retraites from "../../data/retraites.json";
 
 export const fichiers: Record<string, FichierDonnees> = {
+  actualites: actualites as FichierDonnees,
   aft: aft as FichierDonnees,
   "banque-centrale": banqueCentrale as FichierDonnees,
   budgets: budgets as FichierDonnees,

@@ -1,0 +1,102 @@
+import resumesJson from "../../data/actu-resumes.json";
+import type { Sujet } from "@/lib/actu/flux";
+import type { EntreeActu } from "./actu";
+import { titrePage } from "./actu";
+import { glossaire } from "./glossaire";
+import { idees } from "./idees-recues";
+
+/**
+ * Pages « L'actu » (/actu/<slug>/) : ce qui est automatique (chiffres clés
+ * d'après le thème, liens « Pour aller plus loin », source) et ce qui est
+ * rédigé (« En bref », « Ce que ça veut dire »). Les parties rédigées viennent
+ * de data/actu-resumes.json, modifié par demande de mise à jour : tant qu'un
+ * résumé n'y est pas, la page affiche « Résumé à venir » et aucun texte rédigé.
+ */
+
+export interface Resume {
+  /** Trois points ; {{id}} et {{id@x}} affichent une donnée de data/*.json. */
+  en_bref: string[];
+  ce_que_ca_veut_dire: string;
+  /** Cartes du tableau de bord à afficher (identifiants de src/content/indicateurs.ts). */
+  indicateurs?: string[];
+  /** Données à afficher en chiffres clés. */
+  donnees?: string[];
+  propose_le: string;
+}
+
+export const resumes = (resumesJson as { resumes: Record<string, Resume> }).resumes;
+
+export const resumeDe = (e: Pick<EntreeActu, "id">): Resume | undefined => resumes[e.id];
+
+/** Chiffres clés automatiques, d'après le thème : cartes du tableau de bord (avec leur courbe) et données. */
+const CHIFFRES_SUJET: Record<Sujet, { indicateurs: string[]; donnees: string[] }> = {
+  Taux: { indicateurs: ["taux-depot", "oat10"], donnees: [] },
+  Dette: { indicateurs: ["dette", "deficit"], donnees: [] },
+  Budget: { indicateurs: ["deficit", "dette"], donnees: [] },
+  Retraites: { indicateurs: [], donnees: ["retraites.depenses-pib"] },
+  Impôts: { indicateurs: [], donnees: ["fp.prelevements-obligatoires-pib"] },
+  Inflation: { indicateurs: ["inflation"], donnees: [] },
+  Emploi: { indicateurs: ["chomage"], donnees: [] },
+  Croissance: { indicateurs: [], donnees: ["macro.croissance-volume"] },
+};
+
+export function chiffresCles(e: Pick<EntreeActu, "id" | "sujet">): { indicateurs: string[]; donnees: string[] } {
+  const r = resumeDe(e);
+  const auto = e.sujet ? CHIFFRES_SUJET[e.sujet] : { indicateurs: [], donnees: [] };
+  return { indicateurs: r?.indicateurs ?? auto.indicateurs, donnees: r?.donnees ?? auto.donnees };
+}
+
+/**
+ * Pour aller plus loin, par thème : pages des modules, puis fiches du
+ * glossaire (« glossaire:<id> ») et idées reçues (« idee:<id> »).
+ */
+const PLUS_LOIN: Record<Sujet, string[]> = {
+  Taux: ["/modules/banque-centrale/bce-eurosysteme/", "/modules/emprunt-etat/prix-et-taux/", "glossaire:taux-directeur", "glossaire:spread", "idee:taux-immediat"],
+  Dette: ["/modules/deficit-et-dette/", "/modules/boule-de-neige/", "glossaire:dette-maastricht", "glossaire:effet-boule-de-neige", "idee:faillite-100"],
+  Budget: ["/modules/deficit-et-dette/soldes/", "/modules/cadre-europeen/regles/", "glossaire:solde-structurel", "glossaire:deficit-public", "idee:dernier-excedent"],
+  Retraites: ["/modules/retraites/", "/modules/retraites/leviers/", "glossaire:repartition", "glossaire:taux-de-remplacement", "idee:retraites-faillite"],
+  Impôts: ["/modules/fiscalite/", "/modules/fiscalite/qui-paie/", "glossaire:prelevements-obligatoires", "glossaire:progressivite", "idee:impots-moitie"],
+  Inflation: ["/modules/les-bases/inflation-taux-reels/", "/modules/histoire-des-dettes/inflation/", "glossaire:inflation", "glossaire:ipch", "idee:inflation-dette"],
+  Emploi: ["/modules/fiche-de-paie/", "/modules/fiscalite/smic/", "glossaire:salaire-brut-net", "glossaire:chomage-bit", "idee:smic-cotisations"],
+  Croissance: ["/modules/les-bases/pib/", "/modules/comparaisons/emploi-croissance/", "glossaire:pib", "glossaire:croissance-potentielle"],
+};
+
+export interface Lien {
+  href: string;
+  titre: string;
+  type: "Module" | "Glossaire" | "Idée reçue";
+}
+
+/** Liens « Pour aller plus loin » : la page qui explique le sujet d'abord, puis celles du thème. */
+export function liensPlusLoin(e: Pick<EntreeActu, "page" | "sujet">): Lien[] {
+  const cles = [e.page.href, ...(e.sujet ? PLUS_LOIN[e.sujet] : [])];
+  const liens = cles.map((c): Lien => {
+    if (c.startsWith("glossaire:")) {
+      const g = glossaire.find((x) => x.id === c.slice(10));
+      if (!g) throw new Error(`Glossaire : terme inconnu ${c}`);
+      return { href: `/glossaire/#${g.id}`, titre: g.terme, type: "Glossaire" };
+    }
+    if (c.startsWith("idee:")) {
+      const i = idees.find((x) => x.id === c.slice(5));
+      if (!i) throw new Error(`Idée reçue inconnue ${c}`);
+      return { href: `/idees-recues/#${i.id}`, titre: i.affirmation, type: "Idée reçue" };
+    }
+    return { href: c, titre: titrePage(c), type: "Module" };
+  });
+  return liens.filter((l, i) => liens.findIndex((x) => x.href === l.href) === i);
+}
+
+export type Morceau = { texte: string } | { id: string; x?: string };
+
+/** « Les prix augmentent de {{ind.inflation-ipc-fr@2026-09}}. » → texte et chiffres à afficher. */
+export function morceaux(texte: string): Morceau[] {
+  const res: Morceau[] = [];
+  let i = 0;
+  for (const m of texte.matchAll(/\{\{([a-z0-9.-]+)(?:@([^}]+))?\}\}/g)) {
+    if (m.index! > i) res.push({ texte: texte.slice(i, m.index) });
+    res.push(m[2] ? { id: m[1], x: m[2] } : { id: m[1] });
+    i = m.index! + m[0].length;
+  }
+  if (i < texte.length) res.push({ texte: texte.slice(i) });
+  return res;
+}

@@ -1,3 +1,4 @@
+import { actuHref, construireFil } from "./actu";
 import { existsSync, readdirSync, readFileSync, statSync } from "node:fs";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -30,6 +31,7 @@ function adresses(): Set<string> {
     for (const s of m.sections) res.add(moduleHref(m.slug, s.slug));
   }
   for (const p of propositions) res.add(propositionHref(p.slug));
+  for (const e of construireFil()) if (e.slug) res.add(actuHref(e.slug));
   return res;
 }
 const connues = adresses();

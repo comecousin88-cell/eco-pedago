@@ -83,10 +83,10 @@ if (depuis) {
 }
 
 const avant = new Set(actuel.entrees.map((e) => e.id));
-// Les entrées déjà connues sont triées de nouveau : une règle plus stricte ou plus juste s'applique aussi à elles.
+// Les entrées déjà connues suivent les règles actuelles (thème, page), sans jamais être retirées.
 // Au rattrapage, le fil repart de la date demandée.
-const connues = actuel.entrees.flatMap(reclasser).filter((e) => !depuis || e.date >= depuis);
-actuel.entrees = fusionnerFlux(connues, nouveaux, maintenant);
+const connues = actuel.entrees.map(reclasser);
+actuel.entrees = fusionnerFlux(connues, nouveaux);
 actuel.derniere_verification = maintenant;
 writeFileSync(CHEMIN, `${JSON.stringify(actuel, null, 2)}\n`, "utf8");
 lignes.push(`${actuel.entrees.filter((e) => !avant.has(e.id)).length} nouvelle(s) entrée(s) ; ${actuel.entrees.length} au total.`);

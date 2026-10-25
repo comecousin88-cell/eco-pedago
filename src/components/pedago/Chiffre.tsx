@@ -10,17 +10,20 @@ import { qualificatif } from "@/lib/versions";
  * <Chiffre id="macro.inflation" x="2025" />          un point d'une série
  * <Chiffre id="bce.pspp-france" />                  le dernier point d'une série (suit les mises à jour)
  * <Chiffre id="dette.stock" unite={false} />         sans l'unité
+ * <Chiffre id="actu.salaires.median-2025" exact />   sans arrondi en mode Simple (chiffre cité tel que publié)
  */
 export function Chiffre({
   id,
   x,
   decimales,
   unite = true,
+  exact = false,
 }: {
   id: string;
   x?: string;
   decimales?: number;
   unite?: boolean;
+  exact?: boolean;
 }) {
   const d = getDonnee(id);
   let valeur: number;
@@ -39,7 +42,7 @@ export function Chiffre({
   const texte = ecrire(valeur, decimales);
   // Mode Simple : chiffre arrondi ; mode Approfondi : chiffre précis, suivi de sa source.
   const a = arrondiLecture(valeur);
-  const arrondi = d.unite === "année" ? texte : ecrire(a.valeur, Math.min(a.decimales, decimales ?? a.decimales));
+  const arrondi = d.unite === "année" || exact ? texte : ecrire(a.valeur, Math.min(a.decimales, decimales ?? a.decimales));
   // Indicateur en plusieurs versions (inflation : IPC ou IPCH, provisoire ou définitif) : dit dans les deux modes.
   const version = qualificatif(d, x);
 

@@ -31,6 +31,8 @@ export interface Evenement {
   calendrier_insee?: string[];
   /** Date à laquelle l'échéance passée a été traitée (demande de mise à jour fusionnée). */
   traite?: string;
+  /** Résultat de l'échéance, inscrit par la demande de mise à jour validée : « Note Aa3 maintenue, perspective négative ». */
+  resultat?: string;
 }
 
 /** Page officielle surveillée : une modification de son texte ouvre une demande de mise à jour. */
@@ -77,4 +79,30 @@ export function dateEcheance(e: Pick<Evenement, "date" | "precision">): string {
   const [a, m, j] = e.date.split("-").map(Number);
   const mois = `${MOIS[m - 1]} ${a}`;
   return e.precision === "mois" ? mois : `${j === 1 ? "1er" : j} ${mois}`;
+}
+
+/** Date du jour du visiteur (AAAA-MM-JJ), dans son fuseau horaire. */
+export function jourLocal(d = new Date()): string {
+  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+}
+
+/**
+ * État d'une échéance pour un jour donné. `relatif` : « aujourd'hui »,
+ * « demain », « dans 3 jours » (seulement pour une échéance à venir, calculé
+ * dans le navigateur du visiteur) ; sinon des dates écrites en entier. Une
+ * échéance passée dit toujours « a eu lieu le … », ou son résultat validé.
+ */
+export function etatEcheance(
+  e: Pick<Evenement, "date" | "precision" | "resultat">,
+  aujourdhui: string,
+  relatif = false,
+): { texte: string; passee: boolean } {
+  const quand = dateEcheance(e);
+  const fin = finEcheance(e);
+  const passee = fin < aujourdhui;
+  if (passee) return { texte: e.resultat ? `${e.resultat} (${quand})` : `A eu lieu ${e.precision === "mois" ? "en" : "le"} ${quand}`, passee };
+  if (e.precision === "mois") return { texte: relatif && e.date === aujourdhui.slice(0, 7) ? `Ce mois-ci (${quand})` : `Prévue en ${quand}`, passee };
+  if (!relatif) return { texte: `Prévue le ${quand}`, passee };
+  const jours = Math.round((Date.parse(e.date) - Date.parse(aujourdhui)) / 86_400_000);
+  return { texte: jours === 0 ? "Aujourd'hui" : jours === 1 ? "Demain" : `Dans ${jours} jours (${quand})`, passee };
 }

@@ -1,6 +1,6 @@
 import { chercherValeur, getSerie, getValeur, LIBELLE_ETAT } from "@/lib/data";
 import { etatDuPoint } from "@/lib/versions";
-import { avecValeurRecente, difference, evaluerSeuil, type Etat, type Sens } from "@/lib/alertes";
+import { avecValeurRecente, difference, episodes, evaluerSeuil, type Etat, type Sens } from "@/lib/alertes";
 import { formatNombre } from "@/lib/format";
 import { libellePeriode, type Point } from "@/lib/indicateurs";
 
@@ -148,4 +148,34 @@ export function alertesActives(regles: RegleAlerte[] = reglesAlertes): Alerte[] 
     const phrase = phraseAlerte(r, e);
     return phrase && e.etat !== "normal" ? [{ id: r.id, etat: e.etat, phrase, date: e.dernier.x, lien: r.lien, pourquoi: r.pourquoi }] : [];
   });
+}
+
+/** Seuil franchi, en cours ou terminé : chacun a sa page dans « L'actu », qui reste en ligne après la fin de l'alerte. */
+export interface EpisodeAlerte extends Alerte {
+  /** Premier point au-delà du seuil : donne l'adresse stable de la page. */
+  debut: string;
+  enCours: boolean;
+}
+
+/** Dernier jour d'une période : « 2026-09 » → « 2026-09-30 », « 2026-T2 » → « 2026-06-30 », « 2025 » → « 2025-12-31 ». */
+function finPeriode(x: string): string {
+  if (/^\d{4}-\d{2}-\d{2}$/.test(x)) return x;
+  const t = /^(\d{4})-T(\d)$/.exec(x);
+  const [a, m] = t ? [Number(t[1]), Number(t[2]) * 3] : /^\d{4}-\d{2}$/.test(x) ? x.split("-").map(Number) : [Number(x.slice(0, 4)), 12];
+  return new Date(Date.UTC(a, m, 0)).toISOString().slice(0, 10);
+}
+
+/** Épisodes des règles d'alerte qui durent encore ou se sont terminés après `depuis` (AAAA-MM-JJ). */
+export function episodesAlertes(depuis: string, regles: RegleAlerte[] = reglesAlertes): EpisodeAlerte[] {
+  return regles.flatMap((r) =>
+    episodes(r.points(), r.seuil, r.sens).flatMap((ep): EpisodeAlerte[] => {
+      const e: Etat = ep.retour ? { etat: "retour", dernier: ep.retour, precedent: ep.fin } : { etat: "franchi", depuis: ep.debut.x, dernier: ep.fin };
+      // La période la plus récente de l'épisode (ou de son retour) doit finir après le début du fil.
+      const date = e.dernier.x;
+      if (finPeriode(date) < depuis) return [];
+      const phrase = phraseAlerte(r, e);
+      if (!phrase) return [];
+      return [{ id: r.id, etat: e.etat, phrase, date, lien: r.lien, pourquoi: r.pourquoi, debut: ep.debut.x, enCours: !ep.retour }];
+    }),
+  );
 }

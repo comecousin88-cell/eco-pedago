@@ -15,7 +15,7 @@ export type Etat =
   | { etat: "retour"; dernier: Point; precedent: Point }
   | { etat: "normal"; dernier: Point };
 
-const auDela = (y: number, seuil: number, sens: Sens) => (sens === "au-dessus" ? y > seuil : y < seuil);
+export const auDela = (y: number, seuil: number, sens: Sens) => (sens === "au-dessus" ? y > seuil : y < seuil);
 
 /** Situation d'une série (triée par date) par rapport à un seuil. */
 export function evaluerSeuil(points: readonly Point[], seuil: number, sens: Sens): Etat {
@@ -47,4 +47,29 @@ export function avecValeurRecente(points: readonly Point[], recente?: { valeur: 
   // Une date du jour (AAAA-MM-JJ) est postérieure au mois AAAA-MM si elle ne commence pas par lui.
   if (recente.date <= dernier.x || recente.date.startsWith(dernier.x)) return [...points];
   return [...points, { x: recente.date, y: recente.valeur }];
+}
+
+/** Épisode où une série est restée au-delà d'un seuil : premier et dernier point, et le point qui l'a terminé. */
+export interface Episode {
+  debut: Point;
+  fin: Point;
+  /** Premier point revenu en deçà ; absent si l'épisode dure encore. */
+  retour?: Point;
+}
+
+/** Tous les épisodes au-delà du seuil, dans l'ordre chronologique. */
+export function episodes(points: readonly Point[], seuil: number, sens: Sens): Episode[] {
+  const res: Episode[] = [];
+  let courant: Episode | undefined;
+  for (const p of points) {
+    if (auDela(p.y, seuil, sens)) {
+      if (courant) courant.fin = p;
+      else courant = { debut: p, fin: p };
+    } else if (courant) {
+      res.push({ ...courant, retour: p });
+      courant = undefined;
+    }
+  }
+  if (courant) res.push(courant);
+  return res;
 }
