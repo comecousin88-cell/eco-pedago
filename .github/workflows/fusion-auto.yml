@@ -1,0 +1,57 @@
+# Fusion automatique des demandes de mise à jour ouvertes par les tâches
+# automatiques (veille de l'agenda) : chacune est fusionnée dans main si les
+# tests, les garde-fous, le contrôle du code et la construction du site
+# passent ; sinon elle reste ouverte, avec un commentaire, et apparaît dans
+# RECAPITULATIF.md. Lancée après chaque veille, et chaque matin en rattrapage.
+name: Fusion automatique
+
+on:
+  workflow_run:
+    workflows: ["Veille de l'agenda"]
+    types: [completed]
+  schedule:
+    - cron: "45 6 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: fusion-auto
+  cancel-in-progress: false
+
+jobs:
+  fusion:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Installer les dépendances
+        run: npm ci
+
+      - name: Contrôler et fusionner les demandes automatiques
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          npm run fusion:auto
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Publier le journal et le récapitulatif
+        run: |
+          git add data/fusions-journal.json RECAPITULATIF.md
+          if git diff --cached --quiet; then
+            echo "Rien de nouveau."
+            exit 0
+          fi
+          git commit -m "Fusion automatique : journal du $(date -u +%F)"
+          git push

@@ -1,0 +1,4 @@
+{
+  "description": "Résumés générés automatiquement par IA (scripts/resumer-actu.ts) à partir des publications officielles, publiés après contrôle automatique : format, chiffres présents tels quels dans la source, aucun nom propre ni opinion absents de la source. Les résumés de data/actu-resumes.json passent avant.",
+  "resumes": {}
+}

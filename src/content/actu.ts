@@ -1,6 +1,7 @@
 import explicationsJson from "../../data/actu-explications.json";
 import fluxJson from "../../data/actu-flux.json";
 import journalJson from "../../data/actu-journal.json";
+import { slugifier } from "@/lib/actu/slug";
 import { DEBUT_FIL, traduireEurostat, type EntreeFlux, type IdSource, type Sujet } from "@/lib/actu/flux";
 import type { Journal } from "@/lib/actu/journal";
 import { getDonnee, LIBELLE_ETAT } from "@/lib/data";
@@ -62,19 +63,7 @@ export interface EntreeActu {
   echeance?: { date: string; precision: "jour" | "mois"; resultat?: string };
 }
 
-/** « Revue de la note de la France par Moody's » → « revue-de-la-note-de-la-france-par-moody-s ». */
-export function slugifier(texte: string, max = 80): string {
-  const s = texte
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .replace(/œ/g, "oe")
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-|-$/g, "");
-  if (s.length <= max) return s;
-  const coupe = s.slice(0, max);
-  return coupe.slice(0, coupe.lastIndexOf("-") > 20 ? coupe.lastIndexOf("-") : max);
-}
+export { slugifier } from "@/lib/actu/slug";
 
 /** Adresse de la page d'une actualité. */
 export const actuHref = (slug: string) => `/actu/${slug}/`;

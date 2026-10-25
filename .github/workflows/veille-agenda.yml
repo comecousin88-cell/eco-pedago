@@ -1,9 +1,10 @@
 # Chaque jour ouvré en fin de journée : veille de l'agenda (data/agenda.json).
 # Repère les échéances passées (notes des agences, budget…), compare les dates
 # aux calendriers de l'Insee et de la BCE, surveille les pages officielles, et
-# ouvre une demande de mise à jour (pull request) par changement, assignée au
-# propriétaire du dépôt (qui reçoit une notification). Cette tâche ne publie
-# jamais rien : seule la fusion de la demande modifie le site.
+# ouvre une demande de mise à jour (pull request) par changement. Cette tâche
+# ne publie rien elle-même : la tâche « Fusion automatique » fusionne chaque
+# demande si les tests, les garde-fous et la construction passent, et laisse
+# ouvertes les autres (signalées dans RECAPITULATIF.md).
 name: Veille de l'agenda
 
 on:

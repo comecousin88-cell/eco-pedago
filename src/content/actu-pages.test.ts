@@ -3,7 +3,8 @@ import { describe, expect, it } from "vitest";
 import PageActualite, { generateStaticParams } from "@/app/actu/[slug]/page";
 import { getDonnee } from "@/lib/data";
 import { construireFil, slugifier } from "./actu";
-import { chiffresCles, deLaSource, liensPlusLoin, morceaux, resumes } from "./actu-pages";
+import { problemesDeFormat } from "@/lib/actu/garde-fous";
+import { chiffresCles, deLaSource, liensPlusLoin, morceaux, resumes, resumesAuto, resumesManuels } from "./actu-pages";
 import { chiffresEnDur } from "./chiffres-en-dur";
 import { indicateurs } from "./indicateurs";
 import { moduleHref, modules } from "./modules";
@@ -84,7 +85,7 @@ describe("pages « L'actu »", () => {
 
 describe("résumés (data/actu-resumes.json)", () => {
   const ids = new Set(fil.map((e) => e.id));
-  const entrees = Object.entries(resumes);
+  const entrees = Object.entries(resumesManuels);
   it("le fichier est bien formé", () => expect(typeof resumes).toBe("object"));
   if (entrees.length > 0) it.each(entrees)("%s", (id, r) => {
     expect(ids, "le résumé doit correspondre à une actualité du fil").toContain(id);
@@ -102,6 +103,17 @@ describe("résumés (data/actu-resumes.json)", () => {
       }
       const sansChiffres = t.replace(/\{\{[^}]+\}\}/g, "X");
       expect(chiffresEnDur(sansChiffres).map((c) => c.texte), t).toEqual([]);
+    }
+  });
+});
+
+describe("résumés automatiques (data/actu-resumes-auto.json)", () => {
+  const ids = new Set(fil.map((e) => e.id));
+  it("chaque résumé publié correspond à une actualité et respecte le format", () => {
+    for (const [id, r] of Object.entries(resumesAuto)) {
+      expect(ids, id).toContain(id);
+      expect(problemesDeFormat(r), id).toEqual([]);
+      expect(r.genere_le, id).toMatch(/^\d{4}-\d{2}-\d{2}$/);
     }
   });
 });

@@ -2,8 +2,11 @@
 # si la clé est enregistrée, la Banque de France ; met à jour data/, lance les
 # tests, le contrôle du code et la construction du site, puis publie (commit
 # sur main) seulement si tout passe. Vercel redéploie à chaque commit.
-# Ne concerne que les chiffres : les événements (notes, budget) passent par la
-# tâche « Veille de l'agenda », qui ouvre une demande de validation.
+# Résume aussi les nouvelles publications officielles avec l'API d'Anthropic
+# (si la clé est enregistrée) : un résumé n'est publié que s'il passe les
+# garde-fous automatiques ; le récapitulatif est écrit dans RECAPITULATIF.md.
+# Les événements (notes, budget) passent par la tâche « Veille de l'agenda »,
+# dont les demandes sont fusionnées par « Fusion automatique » si tout passe.
 # Si une source ne répond pas, ses dernières valeurs sont conservées avec leur
 # date ; si les tests échouent, rien n'est publié et GitHub envoie un courriel.
 name: Mise à jour des indicateurs
@@ -50,6 +53,13 @@ jobs:
       - name: Lire les flux d'actualités officiels
         run: npm run maj:actu
 
+      - name: Résumer les nouvelles publications (IA, avec garde-fous)
+        run: npm run resumer:actu
+        continue-on-error: true # une panne de l'API ne doit pas bloquer la mise à jour des chiffres
+        env:
+          # Clé de l'API d'Anthropic (secret ANTHROPIC_API_KEY). Sans clé, les pages gardent « Résumé à venir ».
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+
       - name: Tests
         run: npm test
 
@@ -63,7 +73,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/ A_VERIFIER.md
+          git add data/ A_VERIFIER.md RECAPITULATIF.md
           if git diff --cached --quiet; then
             echo "Aucune donnée nouvelle."
             exit 0

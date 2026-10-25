@@ -276,7 +276,7 @@ export function constatsExplications(fil: EntreeFilPubliee[], explications: Expl
 /** Texte de la demande de mise à jour (corps de la pull request). */
 export function corpsDemande(c: Pick<Constat, "explication" | "aFaire">, proprietaire: string): string {
   return [
-    `@${proprietaire} : la veille de l'agenda propose une mise à jour. **Rien n'est publié tant que vous n'avez pas fusionné cette demande.**`,
+    `@${proprietaire} : la veille de l'agenda propose une mise à jour. **Rien n'est publié avant la fusion : la tâche « Fusion automatique » la fusionne si les tests, les garde-fous et la construction du site passent, sinon elle reste ouverte.**`,
     c.explication,
     "### À faire avant de fusionner",
     c.aFaire.map((t) => `- [ ] ${t}`).join("\n"),

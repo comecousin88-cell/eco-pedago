@@ -1,0 +1,4 @@
+{
+  "description": "Journal de la fusion automatique des demandes de mise à jour créées par les tâches automatiques : fusionnées si tous les contrôles passent, sinon laissées ouvertes avec leurs raisons. Écrit par scripts/fusion-auto.ts.",
+  "entrees": []
+}

@@ -1,3 +1,4 @@
+import resumesAutoJson from "../../data/actu-resumes-auto.json";
 import resumesJson from "../../data/actu-resumes.json";
 import type { Sujet } from "@/lib/actu/flux";
 import type { EntreeActu } from "./actu";
@@ -8,9 +9,10 @@ import { idees } from "./idees-recues";
 /**
  * Pages « L'actu » (/actu/<slug>/) : ce qui est automatique (chiffres clés
  * d'après le thème, liens « Pour aller plus loin », source) et ce qui est
- * rédigé (« En bref », « Ce que ça veut dire »). Les parties rédigées viennent
- * de data/actu-resumes.json, modifié par demande de mise à jour : tant qu'un
- * résumé n'y est pas, la page affiche « Résumé à venir » et aucun texte rédigé.
+ * rédigé (« En bref », « Ce que ça veut dire »). Les résumés sont générés par
+ * IA chaque jour (data/actu-resumes-auto.json, scripts/resumer-actu.ts) et
+ * publiés après les garde-fous automatiques ; ceux de data/actu-resumes.json
+ * passent avant. Sans résumé, la page affiche « Résumé à venir » et aucun texte rédigé.
  */
 
 export interface Resume {
@@ -21,10 +23,18 @@ export interface Resume {
   indicateurs?: string[];
   /** Données à afficher en chiffres clés. */
   donnees?: string[];
-  propose_le: string;
+  /** Résumés de data/actu-resumes.json : date de la proposition. */
+  propose_le?: string;
+  /** Résumés automatiques : date de génération et modèle. */
+  genere_le?: string;
+  modele?: string;
 }
 
-export const resumes = (resumesJson as { resumes: Record<string, Resume> }).resumes;
+/** Résumés écrits avec leurs chiffres tirés de data/ ({{id}}). */
+export const resumesManuels = (resumesJson as { resumes: Record<string, Resume> }).resumes;
+/** Résumés générés automatiquement, dont chaque chiffre figure tel quel dans la publication source. */
+export const resumesAuto = (resumesAutoJson as { resumes: Record<string, Resume> }).resumes;
+export const resumes: Record<string, Resume> = { ...resumesAuto, ...resumesManuels };
 
 export const resumeDe = (e: Pick<EntreeActu, "id">): Resume | undefined => resumes[e.id];
 
