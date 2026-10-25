@@ -1,4 +1,60 @@
 {
   "description": "Résumés des pages « L'actu » (/actu/<slug>/), par identifiant d'entrée du fil : « En bref » (trois points) et « Ce que ça veut dire ». Rédigés avec l'aide de l'IA, ils sont proposés par demande de mise à jour et ne sont publiés qu'après relecture et fusion. Aucun chiffre n'est écrit en dur : {{id}} affiche une donnée de data/*.json, {{id@x}} un point de sa série. « indicateurs » et « donnees » remplacent, pour cette page, les chiffres clés choisis d'après le thème.",
-  "resumes": {}
+  "resumes": {
+    "insee-c12520f1": {
+      "en_bref": [
+        "Sur un an, les prix à la consommation augmentent de {{ind.inflation-ipc-fr@2026-09}} en septembre 2026, après {{ind.inflation-ipc-fr@2026-08}} en août : c'est le résultat définitif de l'Insee.",
+        "La hausse vient surtout de l'énergie, dont les prix augmentent de {{actu.ipc.energie-2026-09}} sur un an ; ceux des services ({{actu.ipc.services-2026-09}}) et de l'alimentation accélèrent aussi.",
+        "L'inflation sous-jacente, qui laisse de côté les prix les plus volatils comme ceux de l'énergie et des produits frais, est nettement plus basse : {{actu.ipc.sous-jacente-2026-09}}."
+      ],
+      "ce_que_ca_veut_dire": "L'inflation remonte, mais surtout à cause de l'énergie : hors prix les plus volatils, la hausse reste modérée. Pour les finances publiques, la hausse des prix augmente certaines recettes, comme la TVA, mais aussi les dépenses indexées sur les prix, comme une partie des pensions. Elle compte aussi pour la BCE, qui fixe ses taux en fonction de l'inflation de la zone euro.",
+      "indicateurs": ["inflation"],
+      "donnees": ["actu.ipc.energie-2026-09", "actu.ipc.services-2026-09", "actu.ipc.sous-jacente-2026-09"],
+      "propose_le": "2026-10-25"
+    },
+    "hcfp-f116364f": {
+      "en_bref": [
+        "Pour 2026, le Gouvernement prévoit désormais une croissance de {{actu.hcfp.croissance-2026}} et un déficit de {{actu.hcfp.deficit-2026}}, contre {{actu.hcfp.deficit-2026-lfi}} dans le budget initial ; le Haut Conseil juge cette prévision plausible.",
+        "Pour 2027, il vise un déficit de {{actu.hcfp.deficit-2027}} en supposant une croissance de {{actu.hcfp.croissance-2027}}, une hypothèse que le Haut Conseil juge optimiste.",
+        "L'effort prévu est important ({{actu.hcfp.effort-structurel-2027}}, surtout en recettes), mais la hausse de la charge d'intérêts en absorbe une grande partie et la dette continuerait d'augmenter."
+      ],
+      "ce_que_ca_veut_dire": "Le Haut Conseil des finances publiques ne vote pas le budget : il vérifie si les prévisions du Gouvernement sont réalistes. Il estime que la prévision de dépenses pour 2027 est atteignable si toutes les mesures prévues sont adoptées, mais que la croissance attendue est optimiste. Il souligne que, même avec cet effort, le déficit resterait proche de son niveau de 2025.",
+      "indicateurs": ["deficit", "dette"],
+      "donnees": ["actu.hcfp.deficit-2026", "actu.hcfp.deficit-2027", "actu.hcfp.croissance-2027", "actu.hcfp.effort-structurel-2027"],
+      "propose_le": "2026-10-25"
+    },
+    "cour-des-comptes-33e2b8ba": {
+      "en_bref": [
+        "En 2026, le déficit de la sécurité sociale (régimes obligatoires de base) devrait atteindre {{actu.secu.deficit-2026}}, plus que l'objectif voté, en raison de la dégradation de l'économie.",
+        "Le projet de budget de la Sécurité sociale pour 2027 prévoit de le ramener à {{actu.secu.deficit-2027}}, surtout par des économies de dépenses, avec aussi {{actu.secu.mesures-recettes-2027}} de recettes nouvelles.",
+        "La Cour juge plusieurs de ces économies incertaines et recommande de transférer d'ici fin 2027 la dette sociale accumulée vers la Cades, la caisse chargée de la rembourser, après avoir fixé une trajectoire de retour à l'équilibre."
+      ],
+      "ce_que_ca_veut_dire": "Les déficits répétés de la sécurité sociale s'accumulent dans une dette financée à court terme par l'Acoss, ce qui l'expose davantage à la hausse des taux d'intérêt. La Cour estime qu'un retour à l'équilibre vers 2030 est envisageable si l'effort prévu pour 2027 est voté puis tenu. Le Parlement doit encore se prononcer sur ce budget.",
+      "indicateurs": ["deficit"],
+      "donnees": ["actu.secu.deficit-2026", "actu.secu.deficit-2027", "actu.secu.mesures-recettes-2027"],
+      "propose_le": "2026-10-25"
+    },
+    "eurostat-6b9dce13": {
+      "en_bref": [
+        "En 2025, le déficit public de la zone euro est de {{actu.za.deficit-2025}} et sa dette de {{actu.za.dette-2025}}.",
+        "La France fait partie des pays de l'Union aux plus forts déficits ({{deficit.ratio-pib}}), avec la Roumanie, la Pologne et la Belgique.",
+        "Sa dette ({{dette.fin-annee-pib}}) est la troisième plus élevée de l'Union, derrière celles de la Grèce et de l'Italie."
+      ],
+      "ce_que_ca_veut_dire": "Ces chiffres sont transmis par chaque pays puis validés par Eurostat : ils servent de référence pour appliquer les règles budgétaires européennes. Ils permettent de comparer les pays sur la même base. La France y apparaît avec un déficit nettement plus élevé que la moyenne de la zone euro et une dette parmi les plus lourdes.",
+      "indicateurs": ["deficit", "dette"],
+      "donnees": ["actu.za.deficit-2025", "actu.za.dette-2025", "deficit.ratio-pib", "dette.fin-annee-pib"],
+      "propose_le": "2026-10-25"
+    },
+    "insee-9ef6ba84": {
+      "en_bref": [
+        "En 2025, un salarié du secteur privé gagne en moyenne, net et en équivalent temps plein, {{actu.salaires.net-moyen-2025}} ; la moitié gagne moins de {{actu.salaires.median-2025}}.",
+        "Comme l'inflation a ralenti, le pouvoir d'achat de ce salaire moyen progresse de {{actu.salaires.pouvoir-achat-2025}}, pour la deuxième année d'affilée.",
+        "Les femmes gagnent en moyenne {{actu.salaires.ecart-femmes-hommes-2025}} de moins que les hommes, un écart qui continue de se réduire."
+      ],
+      "ce_que_ca_veut_dire": "Le salaire « en euros constants » tient compte de la hausse des prix : il mesure ce qu'un salaire permet réellement d'acheter. Après avoir reculé pendant les années de forte inflation, il dépasse de nouveau son niveau d'avant la crise du Covid. Ces chiffres portent sur 2025 : ils ne tiennent pas encore compte de la remontée de l'inflation en 2026.",
+      "indicateurs": ["inflation"],
+      "donnees": ["actu.salaires.net-moyen-2025", "actu.salaires.median-2025", "actu.salaires.pouvoir-achat-2025", "actu.salaires.ecart-femmes-hommes-2025"],
+      "propose_le": "2026-10-25"
+    }
+  }
 }
