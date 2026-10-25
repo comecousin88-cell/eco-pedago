@@ -19,20 +19,16 @@ import {
   constatPage,
   constatsBce,
   constatsEcheancesPassees,
-  constatsExplications,
   constatsInsee,
   corpsDemande,
   lireCalendrierBce,
   lireCalendrierInsee,
   texteDePage,
   type Constat,
-  type EntreeFilPubliee,
-  type Explications,
 } from "../src/lib/veille.ts";
 
 const RACINE = new URL("../", import.meta.url);
 const CHEMIN = new URL("data/agenda.json", RACINE);
-const SITE = process.env.SITE_URL ?? "https://eco-pedago.vercel.app";
 const enLigne = process.env.GITHUB_ACTIONS === "true" && !process.argv.includes("--essai");
 const appliquer = !enLigne && process.argv.includes("--appliquer");
 const base = process.env.BRANCHE_BASE ?? "main";
@@ -90,17 +86,8 @@ for (const s of agenda.surveillance) {
   }
 }
 
-// Encadrés « Ce que ça veut dire » des événements importants du fil « L'actu », lu sur le site publié.
-try {
-  const r = await fetch(`${SITE}/actu.json`, { signal: AbortSignal.timeout(60_000) });
-  if (!r.ok) throw new Error(`HTTP ${r.status}`);
-  const fil = (await r.json()) as EntreeFilPubliee[];
-  const cs = constatsExplications(fil, lireJson("data/actu-explications.json") as Explications, aujourdhui);
-  constats.push(...(cs as unknown as Constat<unknown>[]));
-  journal.push(`✓ fil « L'actu » lu (${fil.length} entrées, ${cs.length} encadré(s) à proposer)`);
-} catch (e) {
-  journal.push(`• fil « L'actu » non lu : ${e instanceof Error ? e.message : e} (le site n'est peut-être pas encore republié)`);
-}
+// Les encadrés « Ce que ça veut dire » ne sont plus proposés ici : les résumés automatiques des
+// actualités (scripts/resumer-actu.ts) les remplacent, avec leurs garde-fous.
 
 if (enLigne) {
   try {

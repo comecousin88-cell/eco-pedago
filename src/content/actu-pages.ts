@@ -100,3 +100,27 @@ export function morceaux(texte: string): Morceau[] {
   if (i < texte.length) res.push({ texte: texte.slice(i) });
   return res;
 }
+
+/** « de l'Insee », « d'Eurostat », « de la Cour des comptes », « du Sénat » : complément du nom d'une source. */
+export function deLaSource(nom: string): string {
+  const articles: [RegExp, string][] = [
+    [/^(Insee|Agence France Trésor|Assemblée nationale)/, "de l'"],
+    [/^Eurostat/, "d'"],
+    [/^(Banque centrale européenne|Banque de France|Cour des comptes)/, "de la "],
+    [/^(Haut Conseil|Sénat)/, "du "],
+  ];
+  const article = articles.find(([motif]) => motif.test(nom))?.[1] ?? "de ";
+  return `${article}${nom}`;
+}
+
+/** Mention affichée sous chaque résumé : il est publié sans relecture humaine. */
+export const mentionIA = (nomSource: string) =>
+  `Généré automatiquement par IA à partir ${deLaSource(nomSource)}. En cas d'écart, la source fait foi.`;
+
+/** Lien « Signaler une erreur » : ouvre un ticket prérempli sur le dépôt du site. */
+export function signalerErreurHref(e: Pick<EntreeActu, "titre" | "slug">, site: string): string {
+  const page = `${site}/actu/${e.slug}/`;
+  const titre = `Erreur dans L'actu : ${e.titre}`.slice(0, 200);
+  const corps = `Page : ${page}\n\nCe qui est faux (et ce que dit la source) :\n\n`;
+  return `https://github.com/comecousin88-cell/eco-pedago/issues/new?title=${encodeURIComponent(titre)}&body=${encodeURIComponent(corps)}`;
+}

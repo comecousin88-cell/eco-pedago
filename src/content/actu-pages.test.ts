@@ -3,7 +3,7 @@ import { describe, expect, it } from "vitest";
 import PageActualite, { generateStaticParams } from "@/app/actu/[slug]/page";
 import { getDonnee } from "@/lib/data";
 import { construireFil, slugifier } from "./actu";
-import { chiffresCles, liensPlusLoin, morceaux, resumes } from "./actu-pages";
+import { chiffresCles, deLaSource, liensPlusLoin, morceaux, resumes } from "./actu-pages";
 import { chiffresEnDur } from "./chiffres-en-dur";
 import { indicateurs } from "./indicateurs";
 import { moduleHref, modules } from "./modules";
@@ -59,7 +59,8 @@ describe("pages « L'actu »", () => {
       expect(html, e.id).toContain("Résumé à venir");
       expect(html, e.id).not.toContain("En bref");
       expect(html, e.id).not.toContain("Ce que ça veut dire");
-      expect(html, e.id).not.toContain("relu par");
+      expect(html, e.id).not.toContain("Généré automatiquement par IA");
+      expect(html, e.id).toContain("Signaler une erreur");
       expect(html, e.id).toContain(e.source!.nom);
       expect(html, e.id).toContain("Lire l'original");
     }
@@ -71,7 +72,9 @@ describe("pages « L'actu »", () => {
       const html = await rendre(e.slug!);
       expect(html, e.id).toContain("En bref");
       expect(html, e.id).toContain("Ce que ça veut dire");
-      expect(html, e.id).toContain("Résumé rédigé avec l'aide de l'IA, relu par Côme Cousin.");
+      expect(html, e.id).toContain(`Généré automatiquement par IA à partir ${deLaSource(e.source!.nom)}. En cas d'écart, la source fait foi.`);
+      expect(html, e.id).not.toContain("relu par");
+      expect(html, e.id).toContain("Signaler une erreur");
       expect(html, e.id).not.toContain("Résumé à venir");
       expect(html, e.id).toContain("Lire l'original");
       expect(html, e.id).not.toMatch(/\{\{|undefined|NaN/);

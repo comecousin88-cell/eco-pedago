@@ -8,7 +8,8 @@ import { FilAriane } from "@/components/modules/FilAriane";
 import { ModuleTheme } from "@/components/modules/ModuleTheme";
 import { Chiffre } from "@/components/pedago/Chiffre";
 import { actuParSlug, construireFil, LIBELLES_TYPE } from "@/content/actu";
-import { chiffresCles, liensPlusLoin, resumeDe } from "@/content/actu-pages";
+import { chiffresCles, liensPlusLoin, mentionIA, resumeDe, signalerErreurHref } from "@/content/actu-pages";
+import { site } from "@/content/site";
 import { indicateurs } from "@/content/indicateurs";
 import { rubriqueColors } from "@/content/modules";
 import { getDonnee } from "@/lib/data";
@@ -179,9 +180,16 @@ export default async function PageActualite({ params }: PageProps<"/actu/[slug]"
             Lire l&apos;original
             <span className="sr-only"> (nouvel onglet)</span> ↗
           </a>
-          {resume && <p className="mt-6 text-sm text-muted italic">Résumé rédigé avec l&apos;aide de l&apos;IA, relu par Côme Cousin.</p>}
+          {resume && <p className="mt-6 text-sm text-muted italic">{mentionIA(e.source.nom)}</p>}
           </Section>
         )}
+
+        <p className="mt-8 text-sm">
+          <a href={signalerErreurHref(e, site.url)} target="_blank" rel="noopener" className="text-muted underline underline-offset-4 hover:text-ink">
+            Signaler une erreur sur cette page
+            <span className="sr-only"> (nouvel onglet)</span> ↗
+          </a>
+        </p>
 
         <p className="mt-12 border-t border-line pt-6 text-sm">
           <Link href="/actu/" className="font-medium text-accent underline underline-offset-4">
