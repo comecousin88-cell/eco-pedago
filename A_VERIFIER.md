@@ -15,7 +15,7 @@ Fichier généré par `npm test` à partir des données marquées `"statut": "a_
 
 | Identifiant | Donnée | Valeur actuelle | Date | Source à consulter | Remarque |
 |---|---|---|---|---|---|
-| `notation.france` | Notes de la dette à long terme de la France (Fitch, S&P, Moody's) | série (3 points, rang sur l'échelle (1 = AAA)) | 2026-10 | [Agences de notation (communiqués de Fitch, S&P Global et Moody's)](https://www.aft.gouv.fr/fr/notations-souveraines) | A+ chez Fitch (confirmée le 28 août 2026) et S&P, Aa3 perspective négative chez Moody's, revue annoncée pour le 23 octobre 2026. À confirmer sur la page de l'Agence France Trésor. |
+| `notation.france` | Notes de la dette à long terme de la France (Fitch, S&P, Moody's) | série (3 points, rang sur l'échelle (1 = AAA)) | 2026-10 | [Agences de notation (communiqués de Fitch, S&P Global et Moody's)](https://www.aft.gouv.fr/fr/notations-souveraines) | A+ chez Fitch (confirmée le 28 août 2026) et S&P, Aa3 perspective négative chez Moody's (note et perspective maintenues le 23 octobre 2026, selon Euronews et Xinhua). À confirmer sur la page de l'Agence France Trésor. |
 
 ## data/cotisations.json
 
