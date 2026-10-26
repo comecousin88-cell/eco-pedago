@@ -1,8 +1,9 @@
 "use client";
 
 import Link from "next/link";
+import { BoutonRecommencer } from "@/components/lecture/BoutonRecommencer";
 import { moduleHref, type ModuleSection } from "@/content/modules";
-import { useProgression } from "@/lib/progression";
+import { effacerProgression, useProgression } from "@/lib/progression";
 
 /**
  * Barre de progression d'un module et liste de ses sections, avec une coche
@@ -26,10 +27,16 @@ export function ProgressionModule({
 
   return (
     <nav aria-label="Sections du module" className="rounded-2xl border border-line bg-surface p-4">
-      <div className="flex items-baseline justify-between text-sm">
+      <div className="flex items-center justify-between gap-2 text-sm">
         <span className="font-semibold text-ink">Progression</span>
-        <span className="text-muted">
+        <span className="flex items-center gap-1 text-muted">
           {faites} / {sections.length} sections
+          {(faites > 0 || scoreQuiz) && (
+            <BoutonRecommencer
+              message="Ta progression sur ce module sera effacée. Continuer ?"
+              effacer={() => effacerProgression([moduleHref(module), ...sections.map((s) => moduleHref(module, s.slug))], [module])}
+            />
+          )}
         </span>
       </div>
       <div

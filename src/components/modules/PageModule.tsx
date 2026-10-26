@@ -4,12 +4,12 @@ import { ModeLecture } from "@/components/lecture/ModeLecture";
 import { Quiz, type QuestionQuiz } from "@/components/pedago/Quiz";
 import { PropositionsLiees } from "@/components/propositions/PropositionsLiees";
 import { EtEnsuite } from "@/components/layout/EtEnsuite";
-import { moduleHref, type ModuleInfo } from "@/content/modules";
+import { moduleHref, neighbours, type ModuleInfo } from "@/content/modules";
 import { themeDuModule, themeHref } from "@/content/rubriques";
 import { suiteModule } from "@/content/suite";
 import { ApprofondiModule } from "./ApprofondiModule";
 import { FilAriane } from "./FilAriane";
-import { MarquerLue } from "./MarquerLue";
+import { FinDeSection } from "./FinDeSection";
 import { ModuleTheme } from "./ModuleTheme";
 import { NavModule } from "./NavModule";
 import { ProgressionModule } from "./ProgressionModule";
@@ -37,10 +37,12 @@ export function PageModule({
   const derniere = module.sections.length === 0 ? !section : index === module.sections.length - 1;
   const href = moduleHref(module.slug, section);
   const theme = themeDuModule(module.slug);
+  // Section suivante du même module, pour le bouton « J'ai compris → section suivante ».
+  const { next } = neighbours(module.slug, section);
+  const suivante = next && next.module.slug === module.slug ? { href: next.href, titre: next.title } : undefined;
 
   return (
     <ModuleTheme color={module.color}>
-      <MarquerLue href={href} />
       <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6 sm:py-12">
         <FilAriane
           etapes={[
@@ -75,6 +77,9 @@ export function PageModule({
             </div>
 
             <article className="prose-eco mt-8 max-w-none">{children}</article>
+
+            {/* La section n'est lue qu'en arrivant ici, ou au clic sur « J'ai compris ». */}
+            <FinDeSection href={href} suivante={suivante} />
 
             {!infoSection && <ApprofondiModule module={module.slug} />}
 

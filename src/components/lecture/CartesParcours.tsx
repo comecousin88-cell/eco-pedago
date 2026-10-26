@@ -3,7 +3,8 @@
 import Link from "next/link";
 import { avancement, parcours } from "@/content/parcours";
 import { demarrerParcours, useParcoursActif } from "@/lib/parcours-actif";
-import { useProgression } from "@/lib/progression";
+import { effacerProgression, useProgression } from "@/lib/progression";
+import { BoutonRecommencer } from "./BoutonRecommencer";
 
 /**
  * Les deux parcours, avec leur progression et un bouton pour (re)commencer.
@@ -54,14 +55,22 @@ export function CartesParcours() {
             </div>
 
             {cible ? (
-              <Link
-                href={cible}
-                onClick={() => demarrerParcours(p.id)}
-                className="mt-5 inline-flex items-center justify-center gap-2 self-start rounded-full bg-ink px-5 py-2.5 font-medium text-page transition hover:opacity-85"
-              >
-                {fini ? "Revoir le parcours" : commence ? "Reprendre" : "Commencer"}
-                <span aria-hidden="true">→</span>
-              </Link>
+              <div className="mt-5 flex items-center gap-2">
+                <Link
+                  href={cible}
+                  onClick={() => demarrerParcours(p.id)}
+                  className="inline-flex items-center justify-center gap-2 rounded-full bg-ink px-5 py-2.5 font-medium text-page transition hover:opacity-85"
+                >
+                  {fini ? "Revoir le parcours" : commence ? "Reprendre" : "Commencer"}
+                  <span aria-hidden="true">→</span>
+                </Link>
+                {commence && (
+                  <BoutonRecommencer
+                    message="Ta progression sur ce parcours sera effacée. Continuer ?"
+                    effacer={() => effacerProgression(p.etapes.map((e) => e.href))}
+                  />
+                )}
+              </div>
             ) : (
               <p className="mt-5 text-sm font-medium text-muted">Les premières étapes arrivent bientôt.</p>
             )}

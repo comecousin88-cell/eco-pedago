@@ -75,3 +75,15 @@ export function enregistrerQuiz(module: string, score: number, total: number) {
     return { ...p, quiz: { ...p.quiz, [module]: { score, total } } };
   });
 }
+
+/**
+ * Efface la progression de pages et de quiz (bouton « Recommencer à zéro »
+ * d'un parcours ou d'un module). Les autres pages lues sont gardées.
+ */
+export function effacerProgression(pages: string[], modulesQuiz: string[] = []) {
+  const aRetirer = new Set(pages);
+  ecrire((p) => ({
+    lues: p.lues.filter((h) => !aRetirer.has(h)),
+    quiz: Object.fromEntries(Object.entries(p.quiz).filter(([m]) => !modulesQuiz.includes(m))),
+  }));
+}
