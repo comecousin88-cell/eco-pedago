@@ -1,10 +1,12 @@
 import { getDonnee } from "@/lib/data";
-import { arrondiLecture, formatAvecUnite, formatSource, sourceCourte } from "@/lib/format";
+import { arrondiLecture, formatAvecUnite, formatSource } from "@/lib/format";
+import { InfobulleSource } from "./InfobulleSource";
 import { qualificatif } from "@/lib/versions";
 
 /**
  * Un chiffre tiré de data/*.json, mis en forme à la française. La source et
- * la date apparaissent au survol, et un chiffre non vérifié est signalé.
+ * la date s'affichent dans une infobulle (survol, clavier, toucher), jamais
+ * entre parenthèses dans le texte ; un chiffre non vérifié est signalé.
  *
  * <Chiffre id="dette.stock" />                       une valeur
  * <Chiffre id="macro.inflation" x="2025" />          un point d'une série
@@ -47,8 +49,8 @@ export function Chiffre({
   const version = qualificatif(d, x);
 
   return (
-    <span
-      title={`${d.label}${x ? ` (${x})` : "serie" in d ? ` (${d.serie[d.serie.length - 1].x})` : ""} — ${formatSource(d)}${aVerifier ? " (chiffre à vérifier)" : ""}${hypothese ? " (hypothèse, pas une donnée observée)" : ""}`}
+    <InfobulleSource
+      source={`${d.label}${x ? ` (${x})` : "serie" in d ? ` (${d.serie[d.serie.length - 1].x})` : ""}. ${formatSource(d)}.${aVerifier ? " Chiffre à vérifier." : ""}${hypothese ? " Hypothèse, pas une donnée observée." : ""}`}
       className={`font-semibold whitespace-nowrap text-ink ${
         aVerifier ? "decoration-warn underline decoration-wavy decoration-1 underline-offset-4" : ""
       }`}
@@ -61,14 +63,8 @@ export function Chiffre({
           <span data-selon-mode="approfondi">{texte}</span>
         </>
       )}
-      {version ? (
-        <span className="chiffre-source"> ({version})</span>
-      ) : unite && (
-        <span data-selon-mode="approfondi" className="chiffre-source">
-          {" "}
-          ({sourceCourte(d.source.nom)})
-        </span>
-      )}
-    </span>
+      {/* Indicateur en plusieurs versions : sa version (IPC ou IPCH, provisoire ou définitif) reste dite dans le texte. */}
+      {version && <span className="chiffre-source"> ({version})</span>}
+    </InfobulleSource>
   );
 }

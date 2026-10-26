@@ -9,9 +9,10 @@ import { BarreScenario, useScenario } from "./Scenario";
 /**
  * « Combien rapporte de taxer les plus riches ? » Un impôt plancher sur les
  * plus grandes fortunes, comparé à un besoin de financement et à d'autres
- * impôts.
+ * impôts. Avec `besoinDeficit`, le besoin de départ est le déficit public
+ * actuel (data/*.json) : le simulateur part alors des chiffres actuels.
  */
-export function ImpotGrandesFortunes() {
+export function ImpotGrandesFortunes({ besoinDeficit = false }: { besoinDeficit?: boolean }) {
   const assiette = getValeur("prop.grandes-fortunes-patrimoine");
   const dejaPayes = getValeur("prop.grandes-fortunes-impots");
   const elasticite = getValeur("prop.elasticite-zucman");
@@ -19,7 +20,8 @@ export function ImpotGrandesFortunes() {
   const tva = getValeur("prop.tva-point");
   const csg = getSerie("fp.recettes-2024-par-type").serie.find((p) => p.x === "CSG et CRDS")!;
 
-  const s = useScenario({ taux: 2, besoin: 100 });
+  const deficit = getValeur("deficit.montant");
+  const s = useScenario({ taux: 2, besoin: besoinDeficit ? Math.round(deficit.valeur / 10) * 10 : 100 });
 
   const taux = s.valeurs.taux;
 
@@ -44,7 +46,7 @@ export function ImpotGrandesFortunes() {
 
   return (
     <div className="space-y-5">
-      <BarreScenario scenario={s} libelleReference="valeurs de départ" />
+      <BarreScenario scenario={s} libelleReference={besoinDeficit ? "chiffres actuels" : "valeurs de départ"} />
       <div className="grid gap-5 sm:grid-cols-2">
         <Curseur
           libelle="Taux de l'impôt sur les plus grandes fortunes"
@@ -68,6 +70,7 @@ export function ImpotGrandesFortunes() {
           pas={10}
           onChange={s.regler("besoin")}
           affichage={`${formatNombre(besoin)} Md€`}
+          aide={besoinDeficit ? `Au départ : le déficit public, ${formatNombre(deficit.valeur)} Md€ en ${deficit.date}, arrondi à la dizaine.` : undefined}
         />
       </div>
 

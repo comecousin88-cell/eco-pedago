@@ -1,60 +1,69 @@
 import { RendementFaceAuxBesoins } from "@/components/graphiques/RendementFaceAuxBesoins";
+import { ImpotGrandesFortunes } from "@/components/simulators/ImpotGrandesFortunes";
 import { texteCalcul, texteDonnee } from "@/content/calculs";
 
-## 1. La proposition
+## En 30 secondes
 
-Combler le déficit public, ou financer un grand programme de dépenses nouvelles, essentiellement en taxant les plus
-riches, sans demander d'effort au reste de la population.
+<En30Secondes
+  verdict="ne-tient-pas"
+  proposition={<>Combler le <Terme id="deficit-public">déficit public</Terme>, ou financer de grandes dépenses nouvelles, en faisant payer surtout les plus riches.</>}
+  tient={<>les plus grandes fortunes paient peu d'impôts au regard de leur richesse : les taxer davantage peut rapporter plusieurs milliards par an.</>}
+  coince={<>même l'estimation la plus haute ne couvre qu'environ <Calcul id="calc.impot-plancher-part-deficit" /> du déficit, et une fortune taxée trop fort fond d'année en année.</>}
+  debattu={<>le bon niveau d'imposition des plus aisés, et ce que rapporteraient vraiment les autres pistes : successions, revenus du capital, avantages fiscaux.</>}
+/>
 
-La question n'est pas ici de savoir s'il est juste de taxer davantage les plus hauts patrimoines : c'est l'objet d'une
-autre fiche, où le débat reste ouvert. Elle est de savoir si les sommes en jeu sont à la hauteur des besoins.
+## Pourquoi on en parle
 
-## 2. L'idée derrière
+L'idée revient à chaque budget : faire contribuer d'abord les plus grandes fortunes plutôt que le reste de la
+population. Le débat s'est intensifié en 2025 autour d'un impôt minimal de 2 % sur les patrimoines de plus de
+100 millions d'euros, discuté au Parlement.
 
-L'argent existe, rappellent les défenseurs de cette idée. Le patrimoine des 500 plus grandes fortunes françaises
-atteint environ <Chiffre id="prop.grandes-fortunes-patrimoine" /> selon une estimation de presse reprise par le Sénat,
-soit l'équivalent de <Calcul id="calc.grandes-fortunes-part-pib" /> de la production annuelle du pays. Ces fortunes progressent plus vite que
-l'économie et sont proportionnellement peu imposées : les foyers les plus riches acquittent environ
-<Chiffre id="prop.ipp-taux-effectif" /> de leur revenu économique en impôts, selon l'Institut des politiques publiques.
+## Pour bien suivre cette fiche
+
+<PourBienSuivre module="fiscalite" section="taxer-les-riches" />
+
+<EnApprofondi>
+
+## La proposition et l'idée derrière
+
+**La proposition.** Combler le déficit public, ou financer un grand programme de dépenses nouvelles, essentiellement
+en taxant les plus riches, sans demander d'effort au reste de la population. La question n'est pas ici de savoir s'il
+est juste de taxer davantage les plus hauts patrimoines : c'est l'objet d'une autre fiche, où le débat reste ouvert.
+Elle est de savoir si les sommes en jeu sont à la hauteur des besoins.
+
+**L'idée, sous son meilleur jour.** L'argent existe, rappellent les défenseurs de cette idée. Le patrimoine des 500
+plus grandes fortunes françaises atteint environ <Chiffre id="prop.grandes-fortunes-patrimoine" /> selon une
+estimation de presse reprise par le Sénat, soit l'équivalent de <Calcul id="calc.grandes-fortunes-part-pib" /> de la
+production annuelle du pays. Ces fortunes progressent plus vite que l'économie et sont proportionnellement peu
+imposées : selon l'Institut des politiques publiques, les foyers les plus riches acquittent environ
+<Chiffre id="prop.ipp-taux-effectif" /> de leur revenu économique en impôts, un <Terme id="taux-effectif">taux effectif</Terme>
+bien plus faible que celui des contribuables aisés imposés au barème.
 
 Pour eux, il serait injuste de demander des économies aux services publics ou des impôts aux ménages modestes tant
 que cette richesse reste peu mise à contribution. Ils ajoutent que « les plus riches » ne se limitent pas aux
 quelques centaines de milliardaires : on peut aussi relever l'imposition des grosses successions, des revenus du
-capital, des holdings, supprimer des niches fiscales qui profitent surtout aux plus aisés, et mieux lutter contre
-l'optimisation. Additionnés, ces leviers rapporteraient bien plus qu'un seul impôt. Enfin, une partie des dépenses
-financées (investissement, transition écologique) soutiendrait la croissance, donc les recettes futures.
+capital, des <Terme id="holding">holdings</Terme>, supprimer des <Terme id="depense-fiscale">niches fiscales</Terme> qui
+profitent surtout aux plus aisés, et mieux lutter contre l'optimisation. Additionnés, ces leviers rapporteraient bien
+plus qu'un seul impôt. Enfin, une partie des dépenses financées (investissement, transition écologique) soutiendrait
+la croissance, donc les recettes futures.
 
-## 3. Comment ça marcherait concrètement
+</EnApprofondi>
 
-Il faut comparer deux choses de nature différente : des **besoins annuels**, qui reviennent chaque année, et ce que
-peut rapporter chaque année un impôt sur les plus grandes fortunes.
+## Comment ça marcherait
 
-<Figure
-  titre="Ce que rapporterait l'impôt, face aux besoins"
-  resume={`Barres comparant, en milliards d'euros par an, le rendement estimé d'un impôt de 2 % sur les patrimoines de plus de 100 millions d'euros (de ${texteDonnee("prop.impot-plancher-rendements", "Estimation critique, impôt sur les sociétés déduit (bas)")} dans l'estimation critique à ${texteDonnee("prop.impot-plancher-rendements", "Estimation de ses promoteurs (haut)")} dans l'estimation haute de ses promoteurs) à l'effort annuel pour stabiliser la dette (environ ${texteCalcul("calc.effort-stabilisation-md")}, réglable par un curseur), au déficit public (${texteDonnee("deficit.montant", undefined, { arrondi: 1 })}) et à un programme de ${texteDonnee("prop.programme-depenses")} de dépenses nouvelles, retenu comme hypothèse d'illustration. Même la fourchette haute ne couvre qu'environ ${texteCalcul("calc.impot-plancher-part-deficit")} du déficit.`}
-  donnees={["prop.impot-plancher-rendements", "deficit.montant", "deficit.ratio-pib", "dette.fin-annee-pib", "macro.croissance-valeur", "macro.pib", "prop.programme-depenses"]}
->
-  <RendementFaceAuxBesoins />
-</Figure>
+D'un côté, des besoins qui reviennent chaque année. De l'autre, ce qu'un impôt sur les plus grandes fortunes peut
+rapporter chaque année. Il suffit de mettre les deux face à face.
 
-L'effort pour stabiliser la dette est calculé : c'est l'écart entre le déficit de <DateDonnee id="deficit.ratio-pib" />
-(<Chiffre id="deficit.ratio-pib" />) et le déficit qui stabilise la dette, appliqué au PIB. Ce déficit stabilisant
-dépend de la croissance nominale (volume et prix) : avec <Chiffre id="macro.croissance-valeur" /> en
-<DateDonnee id="macro.croissance-valeur" /> et une dette de <Chiffre id="dette.fin-annee-pib" />, il vaut environ
-<Calcul id="calc.deficit-stabilisant" />, proche du calcul du Haut Conseil des finances publiques
-(<Chiffre id="deficit.stabilisant" />). Plus la croissance nominale est forte, plus l'effort est faible : le curseur
-permet de le vérifier.
-
-Les deux bornes du rendement viennent du rapport du Sénat : la fourchette haute est l'estimation des promoteurs de
-l'impôt, avant départs et optimisation ; la fourchette basse, le calcul de l'économiste Antoine Levy, qui déduit
-l'impôt sur les sociétés déjà payé par les entreprises que ces fortunes détiennent.
-
-**Un stock n'est pas un revenu.** Pour trouver chaque année <Chiffre id="prop.programme-depenses" unite={false} /> milliards dans un patrimoine de
-<Chiffre id="prop.grandes-fortunes-patrimoine" unite={false} /> milliards, il faudrait en prélever
-<Calcul id="calc.programme-part-patrimoine" /> par an : au bout de <Calcul id="calc.programme-annees-epuisement" /> environ,
-il n'en resterait rien, et donc plus rien à taxer. Même en confisquant la totalité de ce patrimoine, on couvrirait le
-déficit public environ <Calcul id="calc.patrimoine-annees-deficit" />, une seule fois. Un impôt durable doit porter sur une assiette qui se reconstitue, ce qui limite son taux à quelques
-pour cent.
+<SchemaEtapes
+  titre="Ce que rapporterait l'impôt, face au déficit"
+  etapes={[
+    <>Un impôt minimal de 2 % par an sur les patrimoines de plus de 100 millions d'euros…</>,
+    <>… rapporterait de <Chiffre id="prop.impot-plancher-rendements" x="Estimation critique, impôt sur les sociétés déduit (bas)" decimales={0} unite={false} /> à <Chiffre id="prop.impot-plancher-rendements" x="Estimation de ses promoteurs (haut)" decimales={0} /> selon les estimations…</>,
+    <>… soit au mieux <Calcul id="calc.impot-plancher-part-deficit" /> d'un déficit de <Chiffre id="deficit.montant" />…</>,
+    <>… et il resterait au moins <Calcul id="calc.reste-a-trouver-deficit" /> à trouver chaque année.</>,
+  ]}
+  legende="Le calcul ne dit pas s'il est juste de taxer davantage les plus riches : il dit que cela ne suffit pas, à soi seul, à combler le déficit."
+/>
 
 <PourBienComprendre titre="Taxer un patrimoine chaque année : la récolte et le verger">
 <Analogie>
@@ -75,10 +84,35 @@ diminuent.
 <Retenir>
 
 Un impôt sur le patrimoine ne rapporte durablement que s'il reste sous ce que le patrimoine rapporte. Au-delà, il
-finance des dépenses en vidant sa propre assiette.
+finance des dépenses en vidant sa propre <Terme id="assiette">assiette</Terme>.
 
 </Retenir>
 </PourBienComprendre>
+
+<EnApprofondi>
+
+**L'effort pour stabiliser la dette.** C'est l'écart entre le déficit de <DateDonnee id="deficit.ratio-pib" />, soit
+<Chiffre id="deficit.ratio-pib" />, et le déficit qui stabilise la <Terme id="dette-publique">dette publique</Terme>,
+appliqué au <Terme id="pib">PIB</Terme>. Ce déficit stabilisant dépend de la
+<Terme id="croissance-nominale">croissance nominale</Terme> (volume et prix) : avec
+<Chiffre id="macro.croissance-valeur" /> en <DateDonnee id="macro.croissance-valeur" /> et une dette de
+<Chiffre id="dette.fin-annee-pib" />, il vaut environ <Calcul id="calc.deficit-stabilisant" />, proche du calcul du Haut
+Conseil des finances publiques, qui l'estime à <Chiffre id="deficit.stabilisant" />. Plus la croissance nominale est
+forte, plus l'effort est faible : le curseur du graphique, plus bas, permet de le vérifier.
+
+**D'où viennent les estimations.** Les deux bornes du rendement viennent du rapport du Sénat : la fourchette haute
+est l'estimation des promoteurs de l'<Terme id="impot-plancher">impôt plancher</Terme>, avant départs et optimisation ;
+la fourchette basse, le calcul de l'économiste Antoine Levy, qui déduit l'impôt sur les sociétés déjà payé par les
+entreprises que ces fortunes détiennent.
+
+**Un stock n'est pas un revenu.** Pour trouver chaque année <Chiffre id="prop.programme-depenses" unite={false} /> milliards
+dans un patrimoine de <Chiffre id="prop.grandes-fortunes-patrimoine" unite={false} /> milliards, il faudrait en prélever
+<Calcul id="calc.programme-part-patrimoine" /> par an : au bout de <Calcul id="calc.programme-annees-epuisement" /> environ,
+il n'en resterait rien, et donc plus rien à taxer. Même en confisquant la totalité de ce patrimoine, on couvrirait le
+déficit public environ <Calcul id="calc.patrimoine-annees-deficit" />, une seule fois. Un impôt durable doit porter sur
+une assiette qui se reconstitue, ce qui limite son taux à quelques pour cent.
+
+</EnApprofondi>
 
 <Niveaux>
 <PlusLoin>
@@ -87,8 +121,8 @@ finance des dépenses en vidant sa propre assiette.
 supplémentaires, il faut taxer au-delà des très grandes fortunes : successions moyennes et grosses, revenus du
 capital d'une partie bien plus large des ménages, épargne. Ce peut être un choix défendable, mais ce n'est plus
 « faire payer les plus riches » : l'effort touche alors une partie des classes moyennes et supérieures. À titre de
-repère, un point de taux normal de TVA, impôt payé par tous, rapporte environ <Chiffre id="prop.tva-point" /> selon
-Fipeco, le site de François Ecalle, ancien magistrat de la Cour des comptes.
+repère, un point de taux normal de <Terme id="tva">TVA</Terme>, impôt payé par tous, rapporte environ
+<Chiffre id="prop.tva-point" /> selon Fipeco, le site de François Ecalle, ancien magistrat de la Cour des comptes.
 
 **Plus le taux monte, plus l'assiette fond.** Les estimations de rendement supposent un impôt modéré. Un prélèvement
 beaucoup plus lourd accroîtrait les départs, l'optimisation et les ventes forcées de parts d'entreprises, ce qui
@@ -97,7 +131,16 @@ réduirait d'autant ce qu'il rapporte.
 </PlusLoin>
 </Niveaux>
 
-## 4. Ce que disent les économistes
+## Le débat
+
+<Dialogue
+  partisan={<>L'argent existe : les 500 plus grandes fortunes possèdent environ <Chiffre id="prop.grandes-fortunes-patrimoine" />. Elles paient pourtant peu d'impôts au regard de leur richesse. Avant de demander des efforts à tout le monde, il est juste de commencer par elles. Et avec les successions, les revenus du capital et les avantages fiscaux, on irait bien au-delà d'un seul impôt.</>}
+  sceptique={<>Qu'elles paient davantage, pourquoi pas, mais faisons le calcul. Même l'estimation la plus haute rapporte environ <Chiffre id="prop.impot-plancher-rendements" x="Estimation de ses promoteurs (haut)" decimales={0} />, quand le déficit atteint <Chiffre id="deficit.montant" />. On ne peut pas prélever chaque année une grosse part d'une fortune sans la faire fondre. Pour trouver vraiment plus, il faut taxer bien au-delà des plus riches.</>}
+/>
+
+<EnApprofondi>
+
+### Tous les arguments, en détail
 
 <ArgumentsFiche
   pour={
@@ -120,29 +163,107 @@ réduirait d'autant ce qu'il rapporte.
   }
 />
 
-## 5. Ordres de grandeur
+</EnApprofondi>
+
+## Ordres de grandeur
+
+<Reperes>
+  <Repere valeur={<Chiffre id="prop.impot-plancher-rendements" x="Estimation de ses promoteurs (haut)" decimales={0} />}>dans l'estimation la plus haute : environ <Calcul id="calc.impot-plancher-haut-par-habitant" arrondi={10} /> par habitant et par an, ou à peu près <Calcul id="calc.impot-plancher-mois-interets" /> des intérêts de la dette publique.</Repere>
+  <Repere valeur={<Calcul id="calc.deficit-fois-impot-plancher" />}>plus gros : c'est le déficit public, <Chiffre id="deficit.montant" />, comparé à cette estimation la plus haute.</Repere>
+  <Repere valeur={<Calcul id="calc.programme-fois-impot-plancher" />}>plus gros : c'est un programme de <Chiffre id="prop.programme-depenses" /> de dépenses nouvelles, hypothèse d'illustration, comparé à la même estimation.</Repere>
+  <Repere valeur={<Calcul id="calc.patrimoine-annees-deficit" />}>de déficit seulement, si l'on confisquait d'un coup toute la fortune des 500 plus riches, <Chiffre id="prop.grandes-fortunes-patrimoine" /> : une seule fois, et plus rien à taxer ensuite.</Repere>
+</Reperes>
+
+<Figure
+  titre="Ce que rapporterait l'impôt, face aux besoins"
+  resume={`Barres comparant, en milliards d'euros par an, le rendement estimé d'un impôt de 2 % sur les patrimoines de plus de 100 millions d'euros (de ${texteDonnee("prop.impot-plancher-rendements", "Estimation critique, impôt sur les sociétés déduit (bas)")} dans l'estimation critique à ${texteDonnee("prop.impot-plancher-rendements", "Estimation de ses promoteurs (haut)")} dans l'estimation haute de ses promoteurs) à l'effort annuel pour stabiliser la dette (environ ${texteCalcul("calc.effort-stabilisation-md")}, réglable par un curseur), au déficit public (${texteDonnee("deficit.montant", undefined, { arrondi: 1 })}) et à un programme de ${texteDonnee("prop.programme-depenses")} de dépenses nouvelles, retenu comme hypothèse d'illustration. Même la fourchette haute ne couvre qu'environ ${texteCalcul("calc.impot-plancher-part-deficit")} du déficit.`}
+  donnees={["prop.impot-plancher-rendements", "deficit.montant", "deficit.ratio-pib", "dette.fin-annee-pib", "macro.croissance-valeur", "macro.pib", "prop.programme-depenses"]}
+>
+  <RendementFaceAuxBesoins />
+</Figure>
+
+<EnApprofondi>
+
+### Le détail des chiffres
 
 | | Montant |
 |---|---|
 | Rendement estimé d'un impôt plancher de 2 % sur les patrimoines de plus de 100 M€ | de <Chiffre id="prop.impot-plancher-rendements" x="Estimation critique, impôt sur les sociétés déduit (bas)" decimales={0} unite={false} /> à <Chiffre id="prop.impot-plancher-rendements" x="Estimation de ses promoteurs (haut)" decimales={0} /> |
 | Déficit public | <Chiffre id="deficit.montant" /> en <DateDonnee id="deficit.montant" /> |
-| Effort annuel pour stabiliser la dette | environ <Calcul id="calc.effort-stabilisation-md" /> (calcul : <Chiffre id="deficit.ratio-pib" /> moins environ <Calcul id="calc.deficit-stabilisant" unite={false} /> points, avec <Chiffre id="macro.croissance-valeur" /> de croissance nominale, appliqué au PIB) |
-| Programme de dépenses nouvelles | <Chiffre id="prop.programme-depenses" /> (hypothèse d'illustration) |
+| Effort annuel pour stabiliser la dette | environ <Calcul id="calc.effort-stabilisation-md" /> : le déficit de <Chiffre id="deficit.ratio-pib" />, moins environ <Calcul id="calc.deficit-stabilisant" unite={false} /> points, avec <Chiffre id="macro.croissance-valeur" /> de croissance nominale, appliqué au PIB |
+| Programme de dépenses nouvelles | <Chiffre id="prop.programme-depenses" />, hypothèse d'illustration |
 | Patrimoine des 500 plus grandes fortunes | <Chiffre id="prop.grandes-fortunes-patrimoine" />, à ne prélever qu'une fois |
-| Un point de taux normal de TVA, pour comparer | environ <Chiffre id="prop.tva-point" /> (Fipeco) |
+| Un point de taux normal de TVA, pour comparer | environ <Chiffre id="prop.tva-point" /> |
 
-## 6. Verdict
+</EnApprofondi>
+
+<EnApprofondi>
+
+## Et si on le faisait ?
+
+Réglez le taux de l'impôt et la somme à trouver chaque année. Au départ, la somme à trouver est le déficit public.
+
+<Figure
+  titre="Combien rapporte de taxer les plus grandes fortunes ?"
+  resume="Simulateur : on règle le taux d'un impôt sur les 500 plus grandes fortunes et la somme à financer chaque année, au départ le déficit public. Le rendement, même sans départs ni optimisation, reste loin du besoin, et un taux élevé épuise le patrimoine en quelques années."
+  donnees={["prop.grandes-fortunes-patrimoine", "prop.grandes-fortunes-impots", "prop.elasticite-zucman", "prop.impot-plancher-rendements", "prop.tva-point", "fp.recettes-2024-par-type", "deficit.montant"]}
+>
+  <ImpotGrandesFortunes besoinDeficit />
+</Figure>
+
+</EnApprofondi>
+
+## Le verdict
 
 <Verdict niveau="ne-tient-pas">
-Taxer les plus riches ne suffit pas, en l'état, à combler le déficit ni à financer un programme de dépenses de
-plusieurs centaines de milliards : même l'estimation la plus favorable d'un impôt sur les très grandes fortunes ne couvre
-qu'environ un sixième du déficit et moins d'un tiers de l'effort pour stabiliser la dette, et un patrimoine taxé chaque année ne peut pas être prélevé au-delà de
-quelques pour cent sans disparaître. Une contribution accrue des plus aisés peut faire partie d'un plan de
-redressement ; elle ne peut pas en être l'essentiel sans élargir l'effort à bien plus de ménages.
+Taxer davantage les plus riches peut rapporter quelques milliards à une vingtaine de milliards par an, mais pas de
+quoi combler le déficit ni financer un grand programme de dépenses. Au-delà de quelques pour cent par an, la fortune
+taxée fond et l'impôt rapporte de moins en moins.
 </Verdict>
+
+<Conditions>
+Comme une partie d'un plan plus large : une contribution accrue des plus aisés, à côté d'économies et d'autres
+recettes. Pour rapporter vraiment plus, il faudrait taxer bien au-delà des plus grandes fortunes, et ce ne serait plus
+la même proposition.
+</Conditions>
+
+<EnApprofondi>
+
+### Le verdict en détail
+
+Taxer les plus riches ne suffit pas, en l'état, à combler le déficit ni à financer un programme de dépenses de
+plusieurs centaines de milliards : même l'estimation la plus favorable d'un impôt sur les très grandes fortunes ne
+couvre qu'environ un sixième du déficit et moins d'un tiers de l'effort pour stabiliser la dette, et un patrimoine taxé
+chaque année ne peut pas être prélevé au-delà de quelques pour cent sans disparaître. Une contribution accrue des plus
+aisés peut faire partie d'un plan de redressement ; elle ne peut pas en être l'essentiel sans élargir l'effort à bien
+plus de ménages.
 
 <GrilleVerdict
   tient={<p>Les plus grandes fortunes sont proportionnellement peu imposées, et une contribution accrue de leur part peut rapporter quelques milliards à une vingtaine de milliards par an : une part d'un plan de redressement.</p>}
   tientPas={<p>L'idée que cela suffirait à combler le déficit ou à financer un programme de plusieurs centaines de milliards : le besoin dépasse le rendement de trois fois à plus de cent fois, selon l'estimation et le besoin retenus.</p>}
   debattu={<p>Le niveau souhaitable d'imposition des plus aisés, le rendement réel des différents leviers, et l'effet des dépenses financées sur la croissance.</p>}
+/>
+
+</EnApprofondi>
+
+## Avez-vous compris ?
+
+<Quiz
+  module="fiche-financer-les-depenses-en-taxant-les-riches"
+  titre="Deux questions"
+  niveau={3}
+  questions={[
+    {
+      question: "Pourquoi un impôt annuel sur les grandes fortunes ne peut-il pas avoir un taux très élevé ?",
+      choix: ["Parce que la loi l'interdit au-delà de 1 %", "Parce qu'au-delà de ce que rapporte le patrimoine, celui-ci fond et l'impôt rapporte de moins en moins", "Parce que les grandes fortunes ne paient déjà aucun impôt"],
+      bonne: 1,
+      explication: "Un patrimoine taxé plus fort qu'il ne rapporte diminue chaque année : l'impôt vide sa propre assiette, comme un verger dont on couperait les arbres.",
+    },
+    {
+      question: "Que couvrirait, au mieux, l'impôt sur les très grandes fortunes ?",
+      choix: ["Tout le déficit public", "Environ la moitié du déficit", "Une petite part du déficit"],
+      bonne: 2,
+      explication: `Même l'estimation la plus haute, environ ${texteDonnee("prop.impot-plancher-rendements", "Estimation de ses promoteurs (haut)", { decimales: 0 })}, ne couvre qu'environ ${texteCalcul("calc.impot-plancher-part-deficit")} du déficit public.`,
+    },
+  ]}
 />

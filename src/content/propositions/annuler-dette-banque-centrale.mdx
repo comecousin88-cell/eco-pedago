@@ -1,36 +1,37 @@
 import { AnnulationDette } from "@/components/simulators/AnnulationDette";
 
-## 1. La proposition
+## En 30 secondes
 
-Effacer les titres de dette publique française que la Banque de France a achetés ces dernières années dans le
-cadre des programmes de rachat de l'Eurosystème, pour alléger d'autant la dette de l'État.
+<En30Secondes
+  verdict="ne-tient-pas"
+  proposition={<>Effacer les titres de dette de l'État que possède la Banque de France, pour alléger d'autant la <Terme id="dette-publique">dette publique</Terme>.</>}
+  tient={<>cette dette n'est pas ordinaire : l'État se la doit en partie à lui-même, puisque la Banque de France lui appartient.</>}
+  coince={<>ce que l'État ne paierait plus, sa banque ne le toucherait plus, alors qu'elle doit toujours payer les banques. Et les traités européens l'interdisent.</>}
+  debattu={<>la réaction des marchés, et la possibilité pour une banque centrale de vivre longtemps avec des pertes.</>}
+/>
 
-Au <DateDonnee id="bdf.titres-politique-monetaire" format="jour" />, ces titres représentaient
-<Chiffre id="bdf.titres-politique-monetaire" />, pour une dette publique totale de <Chiffre id="dette.stock" />. Une variante,
-transformer ces titres en dette perpétuelle à taux zéro, fait l'objet de sa propre fiche (« mettre la dette au
-frigo »).
+## Pourquoi on en parle
 
-**<Chiffre id="bdf.titres-politique-monetaire" />, ou près de <Calcul id="calc.eurosysteme-titres-france" arrondi={10} /> ? Une question de périmètre et de date.** Le débat cite souvent des montants plus
-élevés, voire une part de la dette proche d'un cinquième. Les chiffres ne se contredisent pas :
+Une tribune de plus d'une centaine d'économistes européens l'a défendue en 2021. L'idée revient chaque fois que la
+dette et les taux montent, et depuis que la Banque de France a enregistré des pertes.
 
-- **La Banque de France seule** : <Chiffre id="bdf.titres-politique-monetaire" /> au
-  <DateDonnee id="bdf.titres-politique-monetaire" format="jour" />, au coût amorti (<Chiffre id="bdf.titres-politique-monetaire-2025" />
-  fin 2025). C'est ce montant que la France pourrait, en théorie, viser, et celui du simulateur.
-- **Tout l'Eurosystème** : la BCE recense <Chiffre id="bce.pspp-france" /> de titres publics français
-  au titre du programme PSPP et <Chiffre id="bce.pepp-france" /> au titre du PEPP fin <DateDonnee id="bce.pspp-france" format="jour" />, soit
-  <Calcul id="calc.eurosysteme-titres-france" />. Ce total inclut les titres français détenus par la BCE elle-même, qui ne sont pas au bilan de la
-  Banque de France et sur lesquels la France n'a aucune prise.
-- **Une date plus ancienne** : les portefeuilles fondent depuis l'arrêt des réinvestissements. Fin 2021, les seuls
-  achats du PSPP atteignaient déjà <Chiffre id="bce.pspp-france" x="2021-12" />, soit environ <Calcul id="calc.pspp-part-dette-2021" /> d'une dette publique
-  de <Chiffre id="dette.historique-md" x="2021" /> ; ils ont culminé à <Chiffre id="bce.pspp-france" x="2022-09" /> en
-  septembre 2022. Les parts de 18 à 20 % de la dette souvent citées datent de cette période.
+## Pour bien suivre cette fiche
 
-Aujourd'hui, les titres de la Banque de France représentent environ <Calcul id="calc.bdf-part-dette" /> de la dette
-publique, et ceux de tout l'Eurosystème environ <Calcul id="calc.eurosysteme-part-dette" />.
+<PourBienSuivre module="banque-centrale" section="bilan-bdf" />
 
-## 2. L'idée derrière
+<EnApprofondi>
 
-L'idée part d'un constat juste : **une partie de la dette publique est détenue par une institution publique**. La
+## La proposition et l'idée derrière
+
+**La proposition.** Effacer les titres de dette publique française que la Banque de France a achetés ces dernières
+années dans le cadre des <Terme id="rachats-de-dette">programmes de rachat</Terme> de
+l'<Terme id="eurosysteme">Eurosystème</Terme>, pour alléger d'autant la dette de l'État. Au
+<DateDonnee id="bdf.titres-politique-monetaire" format="jour" />, ces titres représentaient
+<Chiffre id="bdf.titres-politique-monetaire" />, pour une dette publique totale de <Chiffre id="dette.stock" />. Une
+variante, transformer ces titres en <Terme id="dette-perpetuelle">dette perpétuelle</Terme> à taux zéro, fait l'objet de
+sa propre fiche (« mettre la dette au frigo »).
+
+**L'idée, sous son meilleur jour.** Une partie de la dette publique est détenue par une institution publique. La
 Banque de France appartient à l'État, et ses bénéfices lui reviennent en grande partie. Pour ses défenseurs, une
 dette que le secteur public se doit à lui-même n'est pas une vraie dette : l'effacer ne lèserait aucun épargnant,
 aucune banque, aucun fonds de pension.
@@ -39,50 +40,55 @@ L'enjeu, selon eux, est de **retrouver des marges d'action**. Une dette affiché
 européennes et éloignerait la menace des marchés. Les sommes ainsi « libérées » pourraient financer la transition
 écologique, les hôpitaux ou l'école, au lieu d'imposer des années d'économies. Ils rappellent que la monnaie qui a
 servi à acheter ces titres a déjà été créée : l'annulation n'en créerait pas de nouvelle. Ils citent aussi l'histoire,
-qui compte de nombreuses annulations de dettes, comme l'accord de Londres de 1953, qui a allégé la dette
-allemande.
+qui compte de nombreuses annulations de dettes, comme l'accord de Londres de 1953, qui a allégé la dette allemande.
 
 Ils font valoir, enfin, que **les banques centrales encaissent déjà des pertes sans dommage visible**. En
 <DateDonnee id="bc.resultats-2024" />, avant recours à leurs réserves, la Bundesbank affichait un résultat de
-<Chiffre id="bc.resultats-2024" x="Bundesbank (Allemagne)" />, la BCE de <Chiffre id="bc.resultats-2024" x="BCE" />, la
-Banque de France de <Chiffre id="bc.resultats-2024" x="Banque de France" />, sans que la monnaie ni les prix en soient
-ébranlés. Si une banque centrale peut absorber de telles pertes, elle pourrait selon eux absorber les quelques
-milliards d'intérêts par an qu'une annulation lui ferait perdre. Et une dette logée à la banque centrale est déjà **soustraite aux marchés** : l'annuler, ou la
-transformer en dette perpétuelle à taux nul, rendrait définitive cette mise à l'abri, au lieu de la revendre peu à
-peu aux investisseurs à mesure que les titres arrivent à échéance.
+<Chiffre id="bc.resultats-2024" x="Bundesbank (Allemagne)" />, la <Terme id="bce">BCE</Terme> de
+<Chiffre id="bc.resultats-2024" x="BCE" />, la Banque de France de <Chiffre id="bc.resultats-2024" x="Banque de France" />,
+sans que la monnaie ni les prix en soient ébranlés. Si une banque centrale peut absorber de telles pertes, elle
+pourrait selon eux absorber les quelques milliards d'intérêts par an qu'une annulation lui ferait perdre. Et une dette
+logée à la banque centrale est déjà **soustraite aux marchés** : l'annuler rendrait définitive cette mise à l'abri, au
+lieu de la revendre peu à peu aux investisseurs à mesure que les titres arrivent à échéance.
 
-En février 2021, une tribune signée par plus d'une centaine d'économistes européens a défendu une version de
-cette idée à l'échelle de la zone euro : annuler les dettes détenues par la BCE en échange d'un engagement des États
-à investir autant dans la reconstruction écologique et sociale.
+En février 2021, une tribune signée par plus d'une centaine d'économistes européens a défendu une version de cette
+idée à l'échelle de la zone euro : annuler les dettes détenues par la BCE en échange d'un engagement des États à
+investir autant dans la reconstruction écologique et sociale.
 
-## 3. Comment ça marcherait concrètement
+**<Chiffre id="bdf.titres-politique-monetaire" />, ou près de <Calcul id="calc.eurosysteme-titres-france" arrondi={10} /> ? Une question de périmètre et de date.**
+Le débat cite souvent des montants plus élevés, voire une part de la dette proche d'un cinquième. Les chiffres ne se
+contredisent pas :
 
-Pour acheter ces titres, la Banque de France a créé des <Terme id="reserves-bancaires">réserves</Terme> sur le compte
-des banques qui les lui ont vendus. Son bilan porte donc les titres à l'actif et, en face, ces réserves au passif :
-une dette envers les banques, qu'elle rémunère au taux de dépôt de la BCE
-(<Chiffre id="bce.taux-depot-actuel" /> depuis le <DateDonnee id="bce.taux-depot-actuel" format="jour" />).
+- **La Banque de France seule** : <Chiffre id="bdf.titres-politique-monetaire" /> au
+  <DateDonnee id="bdf.titres-politique-monetaire" format="jour" />, au <Terme id="cout-amorti">coût amorti</Terme>, et
+  <Chiffre id="bdf.titres-politique-monetaire-2025" /> fin 2025. C'est ce montant que la France pourrait, en théorie,
+  viser, et celui du simulateur.
+- **Tout l'Eurosystème** : la BCE recense <Chiffre id="bce.pspp-france" /> de titres publics français au titre du
+  programme PSPP et <Chiffre id="bce.pepp-france" /> au titre du PEPP fin <DateDonnee id="bce.pspp-france" format="jour" />,
+  soit <Calcul id="calc.eurosysteme-titres-france" />. Ce total inclut les titres français détenus par la BCE elle-même,
+  qui ne sont pas au <Terme id="bilan">bilan</Terme> de la Banque de France et sur lesquels la France n'a aucune prise.
+- **Une date plus ancienne** : les portefeuilles fondent depuis l'arrêt des réinvestissements. Fin 2021, les seuls
+  achats du PSPP atteignaient déjà <Chiffre id="bce.pspp-france" x="2021-12" />, soit environ
+  <Calcul id="calc.pspp-part-dette-2021" /> d'une dette publique de <Chiffre id="dette.historique-md" x="2021" /> ; ils ont
+  culminé à <Chiffre id="bce.pspp-france" x="2022-09" /> en septembre 2022. Les parts de 18 à 20 % de la dette souvent
+  citées datent de cette période.
 
-Annuler les titres supprime l'actif, **pas le passif** : les réserves restent dues aux banques. La Banque de France
-perd le montant annulé sur ses fonds propres et ne touche plus les intérêts de ces titres. Le simulateur suit les
-trois acteurs : l'État, la Banque de France et les marchés.
+Aujourd'hui, les titres de la Banque de France représentent environ <Calcul id="calc.bdf-part-dette" /> de la dette
+publique, et ceux de tout l'Eurosystème environ <Calcul id="calc.eurosysteme-part-dette" />.
 
-**Ce décalage n'est pas théorique : il a déjà coûté cher.** Les titres achetés quand les taux étaient bas rapportent
-peu : <Chiffre id="bdf.rendement-titres-pm" decimales={2} /> en moyenne en <DateDonnee id="bdf.rendement-titres-pm" />,
-selon la Banque de France. Les réserves, elles, ont été rémunérées en moyenne à
-<Chiffre id="bce.taux-depot-moyen-2024" decimales={2} /> en <DateDonnee id="bce.taux-depot-moyen-2024" />. Résultat : un
-résultat ordinaire avant impôt de <Chiffre id="bdf.resultat-ordinaire-2024" /> en
-<DateDonnee id="bdf.resultat-ordinaire-2024" />, et une marge sur ces titres de
-<Chiffre id="bdf.marge-titres-pm" x="2024" /> cette année-là, puis <Chiffre id="bdf.marge-titres-pm" x="2025" /> en
-2025. Une annulation ne ferait pas disparaître ce coût : la Banque de France paierait toujours les réserves, sans plus
-rien toucher en face.
+</EnApprofondi>
 
-<Figure
-  titre="Ce que change l'annulation, pour qui"
-  resume="Simulateur : on choisit le montant annulé, le coupon moyen des titres et la réaction des marchés. Le gain d'intérêts de l'État est exactement compensé par la perte de la Banque de France ; seule reste, en net, la prime de risque éventuelle, qui coûte de plus en plus au fil du refinancement."
-  donnees={["bdf.titres-politique-monetaire", "bdf.rendement-titres-pm", "bdf.resultat-cumule-2015-2022", "bce.taux-depot-actuel", "aft.programme-emissions", "dette.stock", "dette.ratio-pib"]}
->
-  <AnnulationDette />
-</Figure>
+## Comment ça marcherait
+
+Pour acheter ces titres, la Banque de France a créé de l'argent sur le compte des banques qui les lui ont vendus. Cet
+argent, elle le doit aux banques, et elle le rémunère.
+
+<SchemaAvantApres
+  titre="Les comptes de la Banque de France, avant et après l'annulation"
+  avant={<Bilan titre="Aujourd'hui" actif={[["Titres de dette de l'État", <Chiffre id="bdf.titres-politique-monetaire" />]]} passif={[["Argent des banques, déposé chez elle", <Chiffre id="bdf.titres-politique-monetaire" />]]} />}
+  apres={<Bilan titre="Après l'annulation" actif={[["Titres effacés", "plus rien"]]} passif={[["Argent des banques, toujours dû", <Chiffre id="bdf.titres-politique-monetaire" />], ["Perte, inscrite dans ses comptes", <>− <Chiffre id="bdf.titres-politique-monetaire" /></>]]} />}
+  legende="Effacer les titres vide la colonne de gauche, pas celle de droite. La Banque de France doit toujours rémunérer l'argent des banques, sans plus rien toucher en face : la perte se retrouve dans ses comptes, donc chez l'État, son propriétaire."
+/>
 
 <PourBienComprendre titre="Annuler une dette entre l'État et sa propre banque">
 <Analogie>
@@ -109,8 +115,37 @@ l'économie : elle déplace la dette d'un compte public à un autre.
 </Retenir>
 </PourBienComprendre>
 
+<EnApprofondi>
+
+**Le mécanisme, en termes techniques.** L'argent créé pour acheter les titres prend la forme de
+<Terme id="reserves-bancaires">réserves</Terme> sur le compte des banques. Le bilan de la Banque de France porte donc
+les titres <Terme id="actif-passif">à l'actif</Terme> et, en face, ces réserves au passif : une dette envers les
+banques, qu'elle rémunère au <Terme id="taux-de-depot">taux de dépôt</Terme> de la BCE, soit
+<Chiffre id="bce.taux-depot-actuel" /> depuis le <DateDonnee id="bce.taux-depot-actuel" format="jour" />.
+
+Annuler les titres supprime l'actif, **pas le passif** : les réserves restent dues aux banques. La Banque de France
+perd le montant annulé sur ses <Terme id="fonds-propres">fonds propres</Terme> et ne touche plus les intérêts de ces
+titres.
+
+**Ce décalage n'est pas théorique : il a déjà coûté cher.** Les titres achetés quand les taux étaient bas rapportent
+peu : <Chiffre id="bdf.rendement-titres-pm" decimales={2} /> en moyenne en <DateDonnee id="bdf.rendement-titres-pm" />,
+selon la Banque de France. Les réserves, elles, ont été rémunérées en moyenne à
+<Chiffre id="bce.taux-depot-moyen-2024" decimales={2} /> en <DateDonnee id="bce.taux-depot-moyen-2024" />. Résultat : un
+résultat ordinaire avant impôt de <Chiffre id="bdf.resultat-ordinaire-2024" /> en
+<DateDonnee id="bdf.resultat-ordinaire-2024" />, et une marge sur ces titres de
+<Chiffre id="bdf.marge-titres-pm" x="2024" /> cette année-là, puis <Chiffre id="bdf.marge-titres-pm" x="2025" /> en
+2025. Une annulation ne ferait pas disparaître ce coût : la Banque de France paierait toujours les réserves, sans plus
+rien toucher en face.
+
+</EnApprofondi>
+
 <Niveaux>
 <PlusLoin>
+
+**Ce que dit le droit.** L'article 123 du traité sur le fonctionnement de l'Union européenne interdit aux banques
+centrales de financer les États. La présidence de la BCE a écrit en <Chiffre id="prop.lettre-bce-2021" /> que
+l'annulation enfreindrait cette interdiction. La Banque de France agit pour le compte de l'Eurosystème et ne peut pas
+décider seule.
 
 **Et si la Banque de France ne rémunérait plus les réserves ?** C'est la réponse la plus sérieuse des partisans à
 l'argument comptable : une banque centrale ne perd de l'argent sur ses réserves que parce qu'elle choisit de les
@@ -123,10 +158,10 @@ revoir la façon dont la BCE pilote les taux du marché. Il relève d'une décis
 cumulé de <Chiffre id="bdf.resultat-cumule-2015-2022" />. Elle a versé à l'État
 <Chiffre id="bdf.verse-etat-2015-2022" x="impôt sur les sociétés" /> d'impôt sur les sociétés et
 <Chiffre id="bdf.verse-etat-2015-2022" x="dividendes" /> de dividendes, et mis le reste en réserve. C'est ce fonds pour
-risques généraux qui a absorbé toute la perte ordinaire de 2023
-(<Chiffre id="bdf.pertes-ordinaires" x="2023" />) et une grande partie de celle de 2024. Les deux camps lisent ces
-chiffres à leur façon : pour les partisans, ils montrent que les pertes d'une banque centrale s'absorbent ; pour les
-opposants, que l'État et sa banque centrale forment déjà un seul ensemble, où ce que l'un gagne, l'autre le perd.
+risques généraux qui a absorbé toute la perte ordinaire de 2023, soit <Chiffre id="bdf.pertes-ordinaires" x="2023" />,
+et une grande partie de celle de 2024. Les deux camps lisent ces chiffres à leur façon : pour les partisans, ils
+montrent que les pertes d'une banque centrale s'absorbent ; pour les opposants, que l'État et sa banque centrale
+forment déjà un seul ensemble, où ce que l'un gagne, l'autre le perd.
 
 **Le bilan de la Banque de France.** Elle a enregistré une perte nette de <Chiffre id="bdf.resultat-2024" /> en
 <DateDonnee id="bdf.resultat-2024" />, puis un bénéfice de <Chiffre id="bdf.resultat-2025" /> en
@@ -137,13 +172,22 @@ fonds propres nettement sous zéro.
 </PlusLoin>
 </Niveaux>
 
-## 4. Ce que disent les économistes
+## Le débat
+
+<Dialogue
+  partisan={<>Cette dette, l'État se la doit à lui-même : la Banque de France lui appartient. L'effacer ne ruinerait aucun épargnant. La monnaie a déjà été créée au moment des achats, donc rien de plus ne serait imprimé. Ce seraient des milliards d'intérêts en moins chaque année pour l'école, l'hôpital ou la transition écologique.</>}
+  sceptique={<>Ce que l'État ne paierait plus, sa banque ne le toucherait plus, alors qu'elle doit toujours rémunérer l'argent des banques. Ses bénéfices, qui reviennent à l'État, baisseraient d'autant : au total, on ne gagne rien. En plus, les traités européens l'interdisent. Et si les marchés s'inquiètent, une petite hausse des taux suffirait à coûter bien plus que l'économie espérée.</>}
+/>
+
+<EnApprofondi>
+
+### Tous les arguments, en détail
 
 <ArgumentsFiche
   pour={
     <ul>
       <li><strong>C'est une dette du public envers le public.</strong> Vu de l'ensemble « État + banque centrale », les titres détenus par la Banque de France ne sont pas une dette envers des tiers : l'annulation se borne à en tirer les conséquences dans les comptes.</li>
-      <li><strong>Une banque centrale peut vivre avec des fonds propres négatifs.</strong> Elle crée la monnaie et ne peut pas faire faillite dans sa propre monnaie ; plusieurs banques centrales (au Chili, en République tchèque, en Israël) ont fonctionné des années avec des fonds propres négatifs sans perdre le contrôle de l'inflation.</li>
+      <li><strong>Une banque centrale peut vivre avec des fonds propres négatifs.</strong> Elle crée la monnaie et ne peut pas faire faillite dans sa propre monnaie ; plusieurs banques centrales (au Chili, en République tchèque, en Israël) ont fonctionné des années avec des fonds propres négatifs sans perdre le contrôle de l'<Terme id="inflation">inflation</Terme>.</li>
       <li><strong>Les pertes viennent d'un choix.</strong> Elles tiennent à la rémunération des réserves des banques, qui pourrait être réduite : l'argument comptable dépend d'une règle qui peut changer.</li>
       <li><strong>Les banques centrales absorbent déjà des pertes.</strong> En <DateDonnee id="bc.resultats-2024" />, la Bundesbank, la BCE et la Banque de France ont enregistré ensemble plus de <Calcul id="calc.pertes-banques-centrales-2024" arrondi={10} sens="bas" /> de pertes avant reprise sur provisions, sans crise monétaire. La recette annuelle perdue en cas d'annulation, de l'ordre de quelques milliards, serait selon eux bien moindre ; la perte de fonds propres, elle, ne se paie pas en argent.</li>
       <li><strong>Une dette soustraite aux marchés.</strong> Les titres détenus par la banque centrale ne sont plus exposés à la défiance des investisseurs ; les garder définitivement, plutôt que de les laisser arriver à échéance et d'être refinancés sur les marchés, réduirait la dette à placer chaque année.</li>
@@ -156,7 +200,7 @@ fonds propres nettement sous zéro.
     <ul>
       <li><strong>Le gain est une illusion comptable.</strong> Ce que l'État ne paie plus, la Banque de France ne le touche plus, alors qu'elle doit toujours rémunérer les réserves. Ses bénéfices reviennent à l'État : en net, l'État n'économise rien, il transfère un trou dans les comptes de sa banque centrale.</li>
       <li><strong>C'est interdit par les traités.</strong> L'article 123 interdit aux banques centrales de financer les États ; la présidence de la BCE a écrit en <Chiffre id="prop.lettre-bce-2021" /> que l'annulation enfreindrait cette interdiction. La Banque de France agit pour le compte de l'Eurosystème et ne peut pas décider seule.</li>
-      <li><strong>La confiance a un prix.</strong> Une annulation, même de titres publics, signale que l'État peut revenir sur ses engagements. Une prime de risque, même faible, appliquée à toute la dette qui se refinance coûterait vite plus que l'économie espérée.</li>
+      <li><strong>La confiance a un prix.</strong> Une annulation, même de titres publics, signale que l'État peut revenir sur ses engagements. Une <Terme id="prime-de-risque">prime de risque</Terme>, même faible, appliquée à toute la dette qui se <Terme id="refinancement">refinance</Terme> coûterait vite plus que l'économie espérée.</li>
       <li><strong>Ne plus rémunérer les réserves n'est pas gratuit.</strong> C'est un impôt sur les banques, répercuté sur les crédits et l'épargne, et cela compliquerait la conduite de la politique monétaire.</li>
       <li><strong>La perpétuelle à taux nul ne change pas le calcul.</strong> Un titre qui ne rapporte rien pèse sur la banque centrale exactement comme un titre annulé : elle continue de rémunérer les réserves, sans recette en face. La différence est juridique, pas budgétaire.</li>
       <li><strong>Absorber une perte n'est pas l'effacer.</strong> Les pertes de 2023 et 2024 ont été couvertes par des réserves accumulées grâce aux bénéfices des années de taux bas, qui revenaient à l'État : en consolidant les deux bilans, on retrouve le même jeu à somme nulle.</li>
@@ -165,7 +209,20 @@ fonds propres nettement sous zéro.
   }
 />
 
-## 5. Ordres de grandeur
+</EnApprofondi>
+
+## Ordres de grandeur
+
+<Reperes>
+  <Repere valeur={<Chiffre id="bdf.titres-politique-monetaire" />}>de titres de l'État détenus par la Banque de France : environ <Calcul id="calc.bdf-titres-par-habitant" arrondi={100} /> par habitant, ou <Calcul id="calc.bdf-part-dette" /> de toute la dette publique.</Repere>
+  <Repere valeur={<Calcul id="calc.frigo-gain-brut" />}>d'intérêts par an que l'État ne verserait plus, environ <Calcul id="calc.frigo-gain-par-habitant" /> par habitant : à peine <Calcul id="calc.frigo-gain-jours-interets" /> des intérêts que paient chaque année l'État, les collectivités et la Sécurité sociale.</Repere>
+  <Repere valeur="0 €">d'économie au total pour l'État et la Banque de France réunis : les bénéfices que la banque reverse à l'État baissent d'autant.</Repere>
+  <Repere valeur={<Calcul id="calc.prime-risque-premiere-annee" />}>le coût, dès la première année, d'une hausse d'un demi-point des taux demandés à la France : environ <Calcul id="calc.prime-risque-part-gain" /> du gain espéré, et davantage chaque année ensuite.</Repere>
+</Reperes>
+
+<EnApprofondi>
+
+### Le détail des chiffres
 
 | | Montant |
 |---|---|
@@ -173,7 +230,7 @@ fonds propres nettement sous zéro.
 | Dette publique totale à la même date | <Chiffre id="dette.stock" /> |
 | Situation financière nette de la Banque de France | <Chiffre id="bdf.situation-nette" /> |
 | Rendement moyen des titres de politique monétaire de la Banque de France | <Chiffre id="bdf.rendement-titres-pm" decimales={2} /> en <DateDonnee id="bdf.rendement-titres-pm" /> |
-| Intérêts que l'État ne paierait plus (gain brut) | environ <Calcul id="calc.frigo-gain-brut" /> par an (<Chiffre id="bdf.titres-politique-monetaire" /> × <Chiffre id="bdf.rendement-titres-pm" />, calcul ; ordre de grandeur, ce rendement moyen couvre aussi des titres autres que ceux de l'État français) |
+| Intérêts que l'État ne paierait plus (gain brut) | environ <Calcul id="calc.frigo-gain-brut" /> par an : les titres détenus multipliés par leur rendement moyen. C'est un ordre de grandeur, car ce rendement moyen couvre aussi des titres autres que ceux de l'État français. |
 | Bénéfices en moins reversés par la Banque de France à l'État | le même montant : économie nette nulle pour l'ensemble État + Banque de France |
 | Recettes perdues par la Banque de France | le même montant, chaque année |
 | Perte de fonds propres de la Banque de France | le montant annulé, une fois |
@@ -181,23 +238,80 @@ fonds propres nettement sous zéro.
 | Résultat ordinaire avant impôt de la Banque de France | <Chiffre id="bdf.resultat-ordinaire-2024" /> en <DateDonnee id="bdf.resultat-ordinaire-2024" /> |
 | Taux moyen auquel elle a rémunéré les réserves | <Chiffre id="bce.taux-depot-moyen-2024" decimales={2} /> en <DateDonnee id="bce.taux-depot-moyen-2024" /> |
 | Coût d'une prime de risque de 0,5 point sur les emprunts de l'État | environ <Calcul id="calc.prime-risque-premiere-annee" /> la première année, puis davantage chaque année au fil du refinancement |
-| Baisse de la dette publique affichée | environ <Calcul id="calc.bdf-part-pib" /> (<Calcul id="calc.bdf-part-dette" /> de la dette), sans enrichissement de l'ensemble État + banque centrale |
+| Baisse de la dette publique affichée | environ <Calcul id="calc.bdf-part-pib" />, soit <Calcul id="calc.bdf-part-dette" /> de la dette, sans enrichissement de l'ensemble État + banque centrale |
 
-Pour situer : la charge de la dette prévue au budget de l'État pour <DateDonnee id="etat.charge-dette" /> est de
-<Chiffre id="etat.charge-dette" />.
+Pour situer : la <Terme id="charge-de-la-dette">charge de la dette</Terme> prévue au budget de l'État pour
+<DateDonnee id="etat.charge-dette" /> est de <Chiffre id="etat.charge-dette" />.
 
-## 6. Verdict
+</EnApprofondi>
+
+<EnApprofondi>
+
+## Et si on le faisait ?
+
+Choisissez le montant annulé et la réaction des marchés : le simulateur suit l'État, la Banque de France et
+l'ensemble des deux, sur dix ans.
+
+<Figure
+  titre="Ce que change l'annulation, pour qui"
+  resume="Simulateur : on choisit le montant annulé, le coupon moyen des titres et la réaction des marchés. Le gain d'intérêts de l'État est exactement compensé par la perte de la Banque de France ; seule reste, en net, la prime de risque éventuelle, qui coûte de plus en plus au fil du refinancement."
+  donnees={["bdf.titres-politique-monetaire", "bdf.rendement-titres-pm", "bdf.resultat-cumule-2015-2022", "bce.taux-depot-actuel", "aft.programme-emissions", "dette.stock", "dette.ratio-pib"]}
+>
+  <AnnulationDette />
+</Figure>
+
+</EnApprofondi>
+
+## Le verdict
 
 <Verdict niveau="ne-tient-pas">
+L'annulation ne libère pas d'argent : ce que l'État gagne, sa banque centrale le perd, car elle doit toujours
+rémunérer l'argent des banques. Elle est en outre interdite par les traités européens, et la France ne peut pas la
+décider seule.
+</Verdict>
+
+<Conditions>
+Il faudrait que les traités soient modifiés, avec l'accord de tous les pays de l'Union, et que l'Eurosystème cesse de
+rémunérer l'argent des banques, ce qui reviendrait à les taxer. Même alors, le gain viendrait de cette rémunération
+supprimée, pas de l'annulation elle-même.
+</Conditions>
+
+<EnApprofondi>
+
+### Le verdict en détail
+
 L'annulation de la dette détenue par la banque centrale ne libère pas de marges budgétaires durables : ce que
 l'État gagne, sa banque centrale le perd, puisque les réserves créées pour acheter les titres restent dues. Elle est
-en outre contraire à l'article 123 du traité, et la France ne peut pas la décider seule. Ce qui reste discutable,
-c'est l'ampleur de la réaction des marchés et la question de la rémunération des réserves, qui relève de
-l'Eurosystème.
-</Verdict>
+en outre contraire à l'article 123 du traité, qui interdit le <Terme id="financement-monetaire">financement monétaire</Terme>
+des États, et la France ne peut pas la décider seule. Ce qui reste discutable, c'est l'ampleur de la réaction des
+marchés et la question de la rémunération des réserves, qui relève de l'Eurosystème.
 
 <GrilleVerdict
   tient={<p>La dette détenue par la Banque de France n'est pas une dette ordinaire : ses intérêts reviennent en grande partie à l'État, tant que la banque centrale fait des bénéfices. Une banque centrale peut fonctionner un temps avec des fonds propres négatifs.</p>}
   tientPas={<p>L'idée d'un gain budgétaire : l'économie d'intérêts de l'État est compensée par la perte de la Banque de France. L'idée qu'un pays puisse l'imposer seul : c'est contraire aux traités et cela relève de l'Eurosystème.</p>}
   debattu={<p>La réaction des investisseurs (de faible à forte), la capacité d'une banque centrale à vivre durablement avec des pertes ou des fonds propres négatifs, au-delà des pertes cycliques de 2023-2024, et l'opportunité de rémunérer moins les réserves des banques.</p>}
+/>
+
+</EnApprofondi>
+
+## Avez-vous compris ?
+
+<Quiz
+  module="fiche-annuler-dette-banque-centrale"
+  titre="Deux questions"
+  niveau={3}
+  questions={[
+    {
+      question: "L'État annule les titres que possède la Banque de France. Que devient l'argent qu'elle doit aux banques ?",
+      choix: ["Il disparaît aussi", "Il reste dû, et elle doit toujours le rémunérer", "Il est remboursé par la BCE"],
+      bonne: 1,
+      explication: "Effacer les titres vide ce que la Banque de France possède, pas ce qu'elle doit. Elle continue de rémunérer l'argent des banques, sans plus rien toucher en face.",
+    },
+    {
+      question: "L'État ne verse plus les intérêts de ces titres. Pourquoi n'économise-t-il presque rien au total ?",
+      choix: ["Parce que la Banque de France lui reverse autant de bénéfices en moins", "Parce que la BCE lui fait payer une amende", "Parce que les titres restent à rembourser"],
+      bonne: 0,
+      explication: "Les intérêts que l'État versait à la Banque de France lui revenaient en grande partie sous forme de bénéfices. Les supprimer, c'est aussi supprimer ces bénéfices : l'un compense l'autre.",
+    },
+  ]}
 />

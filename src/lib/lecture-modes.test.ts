@@ -14,11 +14,12 @@ import { messageChangement } from "./lecture";
 /**
  * Ce que voit le lecteur dans un mode : le HTML rendu, moins les éléments que
  * le CSS du site masque dans ce mode (globals.css) — data-selon-mode de l'autre
- * mode, et les formules en bloc (.katex-display) en mode Simple.
+ * mode, et les formules en bloc (.katex-display) en mode Simple. Les
+ * infobulles fermées (sources des chiffres) ne font pas partie du texte lu.
  */
 export function texteVisible(html: string, mode: "simple" | "approfondi"): string {
   const autre = mode === "simple" ? "approfondi" : "simple";
-  let h = html;
+  let h = html.replace(/<span[^>]*role="tooltip"[^>]*>[^<]*<\/span>/g, "");
   const ouverture = new RegExp(`<([a-z][a-z0-9]*)\\b[^>]*(?:data-selon-mode="${autre}"${mode === "simple" ? '|class="katex-display"' : ""})[^>]*>`, "i");
   for (let m = ouverture.exec(h); m; m = ouverture.exec(h)) {
     const balise = m[1];
@@ -61,10 +62,11 @@ describe("ce que change le mode de lecture", () => {
     expect(sourceCourte("Insee, dette trimestrielle (série 010777616)")).toBe("Insee");
   });
 
-  it("un chiffre est arrondi en Simple, précis et sourcé en Approfondi", () => {
+  it("un chiffre est arrondi en Simple, précis en Approfondi, et sa source est dans son infobulle, pas entre parenthèses", () => {
     const html = renderToStaticMarkup(createElement(Chiffre, { id: "dette.stock" }));
     expect(texteVisible(html, "simple")).toBe("3 600 Md€");
-    expect(texteVisible(html, "approfondi")).toMatch(/^3 595,5 Md€ \(Insee\)$/);
+    expect(texteVisible(html, "approfondi")).toBe("3 595,5 Md€");
+    expect(html).toMatch(/role="tooltip"[^>]*>[^<]*Source : Insee/);
   });
 
   it("annonce le nombre de sections ajoutées ou masquées", () => {

@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { glossaire } from "./glossaire";
 import { contenus } from "./modules/contenus";
-import { PARTIES, THEMES, propositionHref, propositions, propositionsPhares } from "./propositions";
+import { PARTIES, PARTIES_FICHE, THEMES, propositionHref, propositions, propositionsPhares } from "./propositions";
 import { readFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { modules, neighbours } from "./modules";
@@ -107,12 +107,18 @@ describe("propositions passées au crible", () => {
     expect(new Set(propositions.map((p) => p.slug)).size).toBe(16);
   });
 
-  it("une fiche rédigée a un verdict, et suit les six parties dans l'ordre", () => {
+  it("une fiche rédigée a un verdict, et suit ses parties dans l'ordre (six parties, ou la structure des fiches refondues)", () => {
     for (const p of propositions.filter((x) => x.contenu)) {
       expect(p.verdict, p.slug).toBeDefined();
       const texte = readFileSync(fileURLToPath(new URL(`./propositions/${p.slug}.mdx`, import.meta.url)), "utf8");
       const titres = [...texte.matchAll(/^## (.+)$/gm)].map((m) => m[1].trim());
-      expect(titres, p.slug).toEqual([...PARTIES]);
+      if (!p.refondue) {
+        expect(titres, p.slug).toEqual([...PARTIES]);
+        continue;
+      }
+      // Les sources sont listées par la page ; « Et si on le faisait ? » est facultative.
+      const attendus = PARTIES_FICHE.filter((x) => x.titre !== "Sources" && !("facultative" in x && x.facultative && !titres.includes(x.titre))).map((x) => x.titre);
+      expect(titres, p.slug).toEqual(attendus);
     }
   });
 

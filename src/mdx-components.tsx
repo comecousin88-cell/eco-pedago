@@ -11,6 +11,7 @@ import { Analogie, PasAPas, PourBienComprendre, Retenir } from "@/components/ped
 import { Quiz } from "@/components/pedago/Quiz";
 import { Terme } from "@/components/pedago/Terme";
 import { ArgumentsFiche, GrilleVerdict } from "@/components/propositions/ArgumentsFiche";
+import { Bilan, Conditions, Dialogue, En30Secondes, EnApprofondi, PourBienSuivre, Repere, Reperes, SchemaAvantApres, SchemaEtapes } from "@/components/propositions/BlocsFiche";
 import { ancre, texteDe } from "@/lib/ancre";
 
 /**
@@ -35,9 +36,14 @@ const components: MDXComponents = {
   ArgumentsFiche,
   Analogie,
   BadgeVerdict,
+  Bilan,
   Calcul,
   Chiffre,
+  Conditions,
   DateDonnee,
+  Dialogue,
+  En30Secondes,
+  EnApprofondi,
   Debat,
   Essentiel,
   Exemple,
@@ -48,8 +54,13 @@ const components: MDXComponents = {
   PasAPas,
   PlusLoin,
   PourBienComprendre,
+  PourBienSuivre,
   Quiz,
+  Repere,
+  Reperes,
   Retenir,
+  SchemaAvantApres,
+  SchemaEtapes,
   Terme,
   Verdict,
 };

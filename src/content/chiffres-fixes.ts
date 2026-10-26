@@ -62,9 +62,10 @@ export const chiffresFixes: Record<string, Record<string, string>> = {
   "src/content/propositions/annuler-dette-banque-centrale.mdx": {
     "20 %": "chiffre souvent cité dans le débat, daté par le texte",
     "0,5 point": "hypothèse de prime de risque",
+    "0 €": "résultat du raisonnement (économie nette nulle pour l'État et la Banque de France)",
   },
   "src/content/propositions/austerite-rapide.mdx": { "5 %": "ordre de grandeur de la baisse de dépenses (3 à 5 %)" },
-  "src/content/propositions/financer-les-depenses-en-taxant-les-riches.mdx": { "2 %": IMPOT_PLANCHER },
+  "src/content/propositions/financer-les-depenses-en-taxant-les-riches.mdx": { "2 %": IMPOT_PLANCHER, "100 millions": IMPOT_PLANCHER },
   "src/content/propositions/hausse-forte-du-smic.mdx": { "10 %": "paramètre de la proposition", "20 %": "paramètre de la proposition" },
   "src/content/propositions/passage-capitalisation.mdx": { "10 %": "paramètre du scénario étudié" },
   "src/content/propositions/taxer-les-tres-hauts-patrimoines.mdx": {

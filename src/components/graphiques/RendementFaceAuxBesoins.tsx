@@ -78,9 +78,9 @@ export function RendementFaceAuxBesoins() {
             <span className="absolute top-[-3px] bottom-[-3px] w-0.5 rounded bg-accent" style={{ left: `${pct(haut)}%` }} />
           </div>
           <p className="mt-1 text-xs text-muted">
-            Fourchette basse : calcul de l&apos;économiste Antoine Levy, qui déduit l&apos;impôt sur les sociétés déjà payé
-            par les entreprises détenues (cité par le rapport du Sénat). Fourchette haute : estimation de ses promoteurs,
-            avant départs et optimisation.
+            Fourchette basse : calcul de l&apos;économiste Antoine Levy, cité par le rapport du Sénat, qui déduit
+            l&apos;impôt sur les sociétés déjà payé par les entreprises détenues. Fourchette haute : estimation de ses
+            promoteurs, avant départs et optimisation.
           </p>
         </li>
         {besoins.map((b) => (

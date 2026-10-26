@@ -19,6 +19,26 @@ export const PARTIES = [
   "6. Verdict",
 ] as const;
 
+/**
+ * Structure des fiches refondues (pilote : `refondue: true`), dans cet ordre.
+ * « Et si on le faisait ? » est facultative (quand la fiche s'y prête) ; les
+ * sources sont listées par la page elle-même, d'après les chiffres cités.
+ * `approfondi` : partie affichée seulement en mode Approfondi.
+ */
+export const PARTIES_FICHE = [
+  { titre: "En 30 secondes" },
+  { titre: "Pourquoi on en parle" },
+  { titre: "Pour bien suivre cette fiche" },
+  { titre: "La proposition et l'idée derrière", approfondi: true },
+  { titre: "Comment ça marcherait" },
+  { titre: "Le débat" },
+  { titre: "Ordres de grandeur" },
+  { titre: "Et si on le faisait ?", approfondi: true, facultative: true },
+  { titre: "Le verdict" },
+  { titre: "Avez-vous compris ?" },
+  { titre: "Sources" },
+] as const;
+
 export const THEMES = ["Dette", "Monnaie", "Fiscalité", "Retraites", "Salaires et prix"] as const;
 export type Theme = (typeof THEMES)[number];
 
@@ -43,6 +63,8 @@ export interface Proposition {
   /** Fiche mise en avant (rubrique « Décrypter », fin du dernier module). */
   phare?: boolean;
   verdict?: NiveauVerdict;
+  /** Fiche au nouveau format (PARTIES_FICHE) ; les autres gardent PARTIES jusqu'à leur refonte. */
+  refondue?: boolean;
   /** Texte de la fiche ; absent tant qu'elle n'est pas rédigée. */
   contenu?: () => Promise<{ default: MDXContent }>;
 }
@@ -61,6 +83,7 @@ export const propositions: Proposition[] = [
     ],
     phare: true,
     verdict: "ne-tient-pas",
+    refondue: true,
     contenu: () => import("./propositions/annuler-dette-banque-centrale.mdx"),
   },
   {
@@ -125,6 +148,7 @@ export const propositions: Proposition[] = [
     ],
     phare: true,
     verdict: "ne-tient-pas",
+    refondue: true,
     contenu: () => import("./propositions/financer-les-depenses-en-taxant-les-riches.mdx"),
   },
   {

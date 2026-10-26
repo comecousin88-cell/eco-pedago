@@ -50,6 +50,7 @@ export function TermeInfobulle({
     <span ref={conteneur} className="relative inline">
       <button
         type="button"
+        data-terme={id}
         aria-expanded={ouvert}
         aria-controls={bulleId}
         onClick={() => {
