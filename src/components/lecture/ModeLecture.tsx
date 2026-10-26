@@ -10,8 +10,7 @@ const OPTIONS: { valeur: Mode; libelle: string }[] = [
 /**
  * Sélecteur « Simple / Approfondi », placé sous le titre des pages de module et
  * des fiches (les seules pages que le mode change). Le choix vaut pour tout le
- * site et est gardé d'une page à l'autre (localStorage) ; les parcours fixent
- * le mode de départ. La position active est dessinée en CSS d'après
+ * site et est gardé d'une page à l'autre (localStorage). La position active est dessinée en CSS d'après
  * <html data-lecture> (globals.css, .bouton-lecture) : elle est juste dès le
  * premier affichage.
  */

@@ -1,8 +1,8 @@
 "use client";
 
 /**
- * Petit bouton ↺ « Recommencer à zéro », à côté de « Reprendre » (parcours) et
- * dans le panneau « Progression » d'un module. Demande confirmation avant
+ * Petit bouton ↺ « Recommencer à zéro », sur les cartes de la grille « Les 12 modules »
+ * et dans le panneau « Progression » d'un module. Demande confirmation avant
  * d'effacer.
  */
 export function BoutonRecommencer({ message, effacer }: { message: string; effacer: () => void }) {

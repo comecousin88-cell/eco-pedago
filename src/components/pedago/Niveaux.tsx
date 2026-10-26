@@ -56,7 +56,7 @@ function Niveau({
 
 export function Essentiel({ children }: { children: ReactNode }) {
   return (
-    <Niveau numero={1} titre="L'essentiel" sousTitre="En deux minutes, avec une image du quotidien">
+    <Niveau numero={1} titre="L'essentiel" sousTitre="L'idée, avec une image du quotidien">
       {children}
     </Niveau>
   );

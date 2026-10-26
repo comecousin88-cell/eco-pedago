@@ -5,7 +5,9 @@ import { PARTIES, THEMES, propositionHref, propositions, propositionsPhares } fr
 import { readFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { modules, neighbours } from "./modules";
-import { ANCIENS_PARCOURS, avancement, dureeEstimee, getParcours, modulesDuParcours, parcours, parcoursDuModule, positionDans } from "./parcours";
+import { execSync } from "node:child_process";
+import { themes } from "./rubriques";
+import { avancementModule, modulesTermines, NIVEAU_DANS_CHAQUE_MODULE, pagesDuModule, reprise } from "@/lib/avancement-modules";
 
 describe("glossaire", () => {
   it("identifiants uniques", () => {
@@ -36,71 +38,50 @@ describe("modules", () => {
   });
 });
 
-describe("parcours", () => {
-  it("étapes uniques dans chaque parcours", () => {
-    for (const p of parcours) {
-      const hrefs = p.etapes.map((e) => e.href);
-      expect(hrefs.length, p.id).toBe(new Set(hrefs).size);
+describe("les 12 modules", () => {
+  const racine = fileURLToPath(new URL("../../", import.meta.url));
+  const lire = (f: string) => readFileSync(`${racine}${f}`, "utf8");
+
+  it("numérotés de 1 à 12 dans l'ordre conseillé, rangés en quatre parties qui suivent cet ordre", () => {
+    expect(modules.map((m) => m.number)).toEqual(Array.from({ length: 12 }, (_, i) => String(i + 1)));
+    expect(themes.map((t) => t.titre)).toEqual(["Les bases", "La dette", "Retraites, impôts et budget", "La France et le monde"]);
+    expect(themes.flatMap((t) => t.modules)).toEqual(modules.map((m) => m.slug));
+  });
+
+  it("chaque carte : numéro, titre, description, progression, « Commencer » ou « Reprendre » et ↺", () => {
+    const grille = lire("src/components/modules/GrilleModules.tsx");
+    for (const motif of [/\{m\.number\}/, /\{m\.title\}/, /\{m\.question\}/, /role="progressbar"/, /"Reprendre" : "Commencer"/, /<BoutonRecommencer/])
+      expect(grille).toMatch(motif);
+    expect(grille).toContain('"Reprendre où j\'en étais" : "Commencer par le module 1"');
+    expect(grille).toContain("{NIVEAU_DANS_CHAQUE_MODULE}");
+    expect(NIVEAU_DANS_CHAQUE_MODULE).toBe("Dans chaque module, choisissez votre niveau : Simple ou Approfondi.");
+  });
+
+  it("progression par module : celle déjà enregistrée est reprise telle quelle", () => {
+    const m = modules[1];
+    const pages = pagesDuModule(m);
+    expect(avancementModule(m, [])).toMatchObject({ faites: 0, etat: "a-faire", cible: pages[0] });
+    expect(avancementModule(m, [pages[0], pages[2]])).toMatchObject({ faites: 2, etat: "en-cours", cible: pages[1] });
+    expect(avancementModule(m, [pages[0]], [pages[1]]).cible).toBe(pages[2]);
+    expect(avancementModule(m, pages)).toMatchObject({ etat: "termine", pourcent: 100, cible: pages[0] });
+    expect(modulesTermines(pages)).toBe(1);
+  });
+
+  it("bouton principal : module 1 au départ, puis reprise là où on en était", () => {
+    expect(reprise([])).toEqual({ href: "/modules/les-bases/", commence: false });
+    const [m2, m3] = [modules[1], modules[2]];
+    expect(reprise([pagesDuModule(m3)[0], pagesDuModule(m2)[0]])).toEqual({ href: pagesDuModule(m2)[1], commence: true });
+    // Dernier module lu terminé : le premier module pas terminé.
+    expect(reprise(pagesDuModule(m3))).toEqual({ href: pagesDuModule(modules[0])[0], commence: true });
+  });
+
+  it("plus aucun parcours ni durée estimée sur le site", () => {
+    const fichiers = execSync("git ls-files src", { cwd: racine, encoding: "utf8" }).split("\n").filter((f) => /\.(tsx?|mdx)$/.test(f) && !f.endsWith(".test.ts"));
+    for (const f of fichiers) {
+      const texte = lire(f);
+      expect(texte, f).not.toMatch(/[Pp]arcours (guidé|thématique)|CartesParcours|BarreParcours|dureeEstimee/);
+      expect(texte, f).not.toMatch(/Comptez [^.]*(minutes|heure)|En deux minutes|≈ \d+ (h|min)\b/);
     }
-  });
-
-  it("quatre parcours thématiques, chacun avec sa durée estimée", () => {
-    expect(parcours.map((p) => p.titre)).toEqual([
-      "Comprendre la dette",
-      "Comprendre les retraites et ma fiche de paie",
-      "Me faire un avis sur les propositions",
-      "Tout comprendre",
-    ]);
-    for (const p of parcours) expect(dureeEstimee(p), p.id).toMatch(/^≈ (\d+ h( \d+)?|\d+ min)$/);
-  });
-
-  it("« Comprendre la dette » : déficit et dette, emprunt de l'État, boule de neige, banque centrale", () => {
-    expect(modulesDuParcours(getParcours("dette"), []).modules).toEqual(["deficit-et-dette", "emprunt-etat", "boule-de-neige", "banque-centrale"]);
-    expect(modulesDuParcours(getParcours("retraites-paie"), []).modules).toEqual(["retraites", "fiche-de-paie"]);
-  });
-
-  it("« Me faire un avis » : les bases, puis les fiches au crible et les idées reçues", () => {
-    const etapes = getParcours("propositions").etapes.map((e) => e.href);
-    expect(etapes[0]).toBe("/modules/les-bases/");
-    expect(etapes.slice(-6)).toEqual(["/propositions/", ...propositionsPhares.map((p) => propositionHref(p.slug)), "/idees-recues/"]);
-  });
-
-  it("« Tout comprendre » couvre toutes les pages de tous les modules", () => {
-    const total = modules.reduce((n, m) => n + 1 + m.sections.length, 0);
-    // plus le tableau de bord, la rubrique et les fiches phares des propositions, et les idées reçues
-    expect(getParcours("tout").etapes).toHaveLength(total + 1 + 1 + propositionsPhares.length + 1);
-  });
-
-  it("la progression déjà enregistrée se reporte sur les nouveaux parcours, et un ancien parcours en cours reprend dans « Tout comprendre »", () => {
-    const lues = ["/modules/deficit-et-dette/", "/modules/deficit-et-dette/flux-et-stock/", "/modules/retraites/leviers/"];
-    expect(avancement(getParcours("dette"), lues).faites).toBe(2);
-    expect(avancement(getParcours("retraites-paie"), lues).faites).toBe(1);
-    expect(avancement(getParcours("tout"), lues).faites).toBe(3);
-    expect(ANCIENS_PARCOURS).toEqual({ decouvrir: "tout", approfondir: "tout" });
-    const dette = getParcours("dette");
-    const toutesLues = dette.etapes.filter((e) => e.module === "deficit-et-dette").map((e) => e.href);
-    expect(modulesDuParcours(dette, toutesLues).termines).toBe(1);
-    expect(parcoursDuModule("emprunt-etat").id).toBe("dette");
-    expect(parcoursDuModule("emprunt-etat", "tout").id).toBe("tout");
-    expect(parcoursDuModule("cadre-europeen").id).toBe("tout");
-  });
-
-  it("l'avancement ne compte que les étapes disponibles", () => {
-    const p = {
-      ...getParcours("dette"),
-      etapes: [
-        { href: "/a/", titre: "A", groupe: "g", disponible: true },
-        { href: "/b/", titre: "B", groupe: "g", disponible: true },
-        { href: "/c/", titre: "C", groupe: "g", disponible: false },
-      ],
-    };
-    expect(avancement(p, [])).toMatchObject({ faites: 0, disponibles: 2, aVenir: 1, pourcent: 0 });
-    const a = avancement(p, ["/a/", "/c/"]);
-    expect(a).toMatchObject({ faites: 1, disponibles: 2, pourcent: 50 });
-    expect(a.prochaine?.href).toBe("/b/");
-    expect(avancement(p, ["/a/", "/b/"]).prochaine).toBeUndefined();
-    expect(positionDans(p, "/b/")).toBe(2);
-    expect(positionDans(p, "/z/")).toBe(0);
   });
 });
 

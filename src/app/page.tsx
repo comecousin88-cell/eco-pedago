@@ -1,11 +1,10 @@
 import Link from "next/link";
 import { CarteActu } from "@/components/actu/FilActu";
 import { BandeauAlertes } from "@/components/indicateurs/BandeauAlertes";
-import { ModuleCard } from "@/components/modules/ModuleCard";
-import { CartesParcours } from "@/components/lecture/CartesParcours";
+import { GrilleModules } from "@/components/modules/GrilleModules";
 import { ModuleTheme } from "@/components/modules/ModuleTheme";
 import { CarteProposition, versCarte } from "@/components/propositions/CarteProposition";
-import { modules, rubriqueColors } from "@/content/modules";
+import { rubriqueColors } from "@/content/modules";
 import { dernieresActus } from "@/content/actu";
 import { idees } from "@/content/idees-recues";
 import { propositions, propositionsPhares } from "@/content/propositions";
@@ -20,9 +19,9 @@ const RACCOURCIS = [
 /** Les trois portes d'entrée du site. */
 const PORTES = [
   {
-    href: "/comprendre/#commencer",
+    href: "/comprendre/",
     titre: "Comprendre les bases",
-    texte: "PIB, déficit, dette, taux : les notions de départ, en parcours guidé de trois quarts d'heure.",
+    texte: "PIB, déficit, dette, taux : les notions de départ, dans le module 1.",
     action: "Commencer",
   },
   {
@@ -94,16 +93,11 @@ export default function Home() {
         </ul>
       </section>
 
-      <section aria-labelledby="parcours" className="border-t border-line py-12">
-        <h2 id="parcours" className="font-serif text-2xl font-semibold text-ink">
-          Choisissez votre parcours
+      <section aria-labelledby="modules" className="border-t border-line py-12">
+        <h2 id="modules" className="mb-6 font-serif text-2xl font-semibold text-ink">
+          Les 12 modules
         </h2>
-        <p className="mt-2 max-w-2xl text-muted">
-          Quatre parcours, selon ce que vous voulez comprendre.
-        </p>
-        <div className="mt-6">
-          <CartesParcours />
-        </div>
+        <GrilleModules niveau={3} />
         <ul className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
           {RACCOURCIS.map((r) => (
             <li key={r.href}>
@@ -143,23 +137,6 @@ export default function Home() {
         </section>
       </ModuleTheme>
 
-      <section aria-labelledby="premiers" className="border-t border-line py-12">
-        <div className="flex flex-wrap items-baseline justify-between gap-2">
-          <h2 id="premiers" className="font-serif text-2xl font-semibold text-ink">
-            Les premiers modules
-          </h2>
-          <Link href="/comprendre/" className="text-sm font-medium text-accent underline underline-offset-4">
-            Voir les {modules.length} modules
-          </Link>
-        </div>
-        <ul className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {modules.slice(0, 3).map((m) => (
-            <li key={m.slug}>
-              <ModuleCard module={m} />
-            </li>
-          ))}
-        </ul>
-      </section>
     </div>
   );
 }

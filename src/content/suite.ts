@@ -26,12 +26,12 @@ const rubrique = (id: Parameters<typeof getRubrique>[0], raison: string) => {
   return { href: r.href, titre: r.label, raison };
 };
 
-/** Page « pratique » proposée en fin de module, selon le thème. */
+/** Page « pratique » proposée en fin de module, selon la partie. */
 const PRATIQUE: Record<string, Suggestion> = {
+  "les-bases": DIX,
   "la-dette": TABLEAU,
-  "budget-et-impots": REDRESSER,
-  "travail-et-retraites": { href: moduleHref("retraites", "leviers"), titre: "Les trois leviers des retraites", raison: "Passer à la pratique" },
-  "france-europe-monde": DIX,
+  "retraites-impots-budget": REDRESSER,
+  "france-et-monde": DIX,
 };
 
 /** Suggestions pour une page de module (introduction ou section). */
@@ -43,12 +43,12 @@ export function suiteModule(moduleSlug: string, section?: string): Suggestion[] 
   if (liee) res.push({ href: propositionHref(liee.slug), titre: liee.titre, raison: "Une proposition liée" });
   const pratique = PRATIQUE[themeDuModule(moduleSlug).slug];
   if (pratique && !res.some((s) => s.href === pratique.href) && pratique.href !== moduleHref(moduleSlug, section)) res.push(pratique);
-  // Fin de parcours : le premier module du thème suivant, puis les propositions au crible.
+  // Fin d'une partie : le premier module de la partie suivante, puis les propositions au crible.
   if (res.length < 2) {
     const i = themes.findIndex((t) => t.modules.includes(moduleSlug));
     const suivant = themes[(i + 1) % themes.length];
     const m = getModule(suivant.modules[0]);
-    res.push({ href: moduleHref(m.slug), titre: m.title, raison: `Thème suivant : ${suivant.titre}` });
+    res.push({ href: moduleHref(m.slug), titre: m.title, raison: `Partie suivante : ${suivant.titre}` });
   }
   if (res.length < 2) res.push(CRIBLE);
   return res.slice(0, 3);
@@ -73,7 +73,7 @@ export function suiteProposition(slug: string): Suggestion[] {
 const PAGES: Record<string, Suggestion[]> = {
   "/comprendre/": [DIX, { href: moduleHref("les-bases"), titre: "Les bases", raison: "Commencer par le début" }, rubrique("decrypter", "Se faire un avis")],
   "/decrypter/": [CRIBLE, IDEES, rubrique("comprendre", "Revoir les mécanismes")],
-  "/actu/": [TABLEAU, { href: themeHref(themes[0]), titre: "Comprendre la dette", raison: "Les mécanismes derrière les chiffres" }, CRIBLE],
+  "/actu/": [TABLEAU, { href: themeHref(themes.find((t) => t.slug === "la-dette")!), titre: "Comprendre la dette", raison: "Les mécanismes derrière les chiffres" }, CRIBLE],
   "/jouer/": [REDRESSER, { href: "/jeux/ministre-des-finances/", titre: "Ministre des Finances", raison: "Tenir un budget pendant un mandat" }, rubrique("comprendre", "Revoir les mécanismes")],
   "/glossaire/": [DIX, { href: moduleHref("les-bases"), titre: "Les bases", raison: "Les notions dans leur contexte" }, IDEES],
   "/la-france-en-10-chiffres/": [TABLEAU, { href: moduleHref("deficit-et-dette"), titre: "Déficit et dette", raison: "Comprendre ces chiffres" }, CRIBLE],

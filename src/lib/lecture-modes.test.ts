@@ -132,7 +132,5 @@ describe("où se trouve le sélecteur Simple / Approfondi", () => {
     expect(source("lib/lecture.ts")).toMatch(/localStorage\.setItem\(LECTURE_KEY, mode\)/);
     expect(source("lib/lecture-script.ts")).toMatch(/localStorage\.getItem/);
     expect(source("app/layout.tsx")).toContain("lectureScript");
-    // Les parcours ne fixent plus le mode : le niveau se choisit dans chaque module.
-    expect(source("lib/parcours-actif.ts")).not.toMatch(/changerModeLecture/);
   });
 });

@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ModeLecture } from "@/components/lecture/ModeLecture";
-import { BarreParcours } from "@/components/lecture/BarreParcours";
 import { FilAriane } from "@/components/modules/FilAriane";
 import { MarquerLue } from "@/components/modules/MarquerLue";
 import { ModuleTheme } from "@/components/modules/ModuleTheme";
@@ -53,9 +52,6 @@ export default async function PagePropositionFiche({ params }: PageProps<"/propo
                 </p>
               )}
             </header>
-            <div className="mt-6">
-              <BarreParcours href={href} />
-            </div>
             <article className="prose-eco fiche-proposition mt-8 max-w-none">
               <Texte />
             </article>

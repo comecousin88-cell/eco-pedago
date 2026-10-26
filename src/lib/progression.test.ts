@@ -39,7 +39,7 @@ describe("progression", () => {
     expect(etat().lues).toEqual(["/modules/x/a/"]);
   });
 
-  it("« Recommencer à zéro » efface seulement le parcours ou le module visé", () => {
+  it("« Recommencer à zéro » efface seulement le module visé", () => {
     for (const h of ["/modules/x/", "/modules/x/a/", "/modules/y/a/"]) marquerLue(h);
     enregistrerQuiz("x", 2, 3);
     enregistrerQuiz("y", 1, 3);
@@ -47,15 +47,15 @@ describe("progression", () => {
     passerSection("/modules/x/a/");
     effacerProgression(["/modules/x/", "/modules/x/a/"], ["x"]);
     expect(etat()).toEqual({ lues: ["/modules/y/a/"], passees: [], quiz: { y: { score: 1, total: 3 } } });
-    // Avec confirmation, sur les cartes des parcours et dans le panneau de chaque module.
+    // Avec confirmation, sur les cartes de la grille et dans le panneau de chaque module.
     expect(lire("src/components/lecture/BoutonRecommencer.tsx")).toMatch(/window\.confirm\(message\)/);
     expect(lire("src/components/lecture/BoutonRecommencer.tsx")).toContain('title="Recommencer à zéro"');
-    expect(lire("src/components/lecture/CartesParcours.tsx")).toContain("Ta progression sur ce parcours sera effacée. Continuer ?");
+    expect(lire("src/components/modules/GrilleModules.tsx")).toContain("Ta progression sur ce module sera effacée. Continuer ?");
     expect(lire("src/components/modules/ProgressionModule.tsx")).toContain("<BoutonRecommencer");
   });
 
   it("à zéro, le bouton affiche « Commencer »", () => {
-    expect(lire("src/components/lecture/CartesParcours.tsx")).toMatch(/commence \? "Reprendre" : "Commencer"/);
+    expect(lire("src/components/modules/GrilleModules.tsx")).toMatch(/"en-cours" \? "Reprendre" : "Commencer"/);
   });
 });
 

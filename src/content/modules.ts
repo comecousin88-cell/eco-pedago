@@ -12,7 +12,7 @@ export interface ModuleSection {
 
 export interface ModuleInfo {
   slug: string;
-  /** Numéro affiché (« 0 », « 5 bis »…). */
+  /** Numéro du module, de 1 à 12, dans l'ordre conseillé (celui de cette liste). */
   number: string;
   title: string;
   /** La question que se pose le lecteur. */
@@ -27,7 +27,7 @@ export interface ModuleInfo {
 export const modules: ModuleInfo[] = [
   {
     slug: "les-bases",
-    number: "0",
+    number: "1",
     title: "Les bases",
     question: "D'où vient l'argent public, et où va-t-il ?",
     summary:
@@ -43,7 +43,7 @@ export const modules: ModuleInfo[] = [
   },
   {
     slug: "deficit-et-dette",
-    number: "1",
+    number: "2",
     title: "Déficit et dette",
     question: "Quelle différence entre le déficit et la dette ?",
     summary:
@@ -61,7 +61,7 @@ export const modules: ModuleInfo[] = [
   },
   {
     slug: "emprunt-etat",
-    number: "2",
+    number: "3",
     title: "Comment l'État emprunte",
     question: "Comment l'État trouve-t-il l'argent qui lui manque ?",
     summary:
@@ -79,7 +79,7 @@ export const modules: ModuleInfo[] = [
   },
   {
     slug: "boule-de-neige",
-    number: "3",
+    number: "4",
     title: "L'effet boule de neige",
     question: "Pourquoi la dette peut-elle grossir toute seule ?",
     summary:
@@ -96,7 +96,7 @@ export const modules: ModuleInfo[] = [
   },
   {
     slug: "banque-centrale",
-    number: "4",
+    number: "5",
     title: "La banque centrale et la dette",
     question: "La banque centrale peut-elle effacer la dette ?",
     summary:
@@ -113,8 +113,51 @@ export const modules: ModuleInfo[] = [
     status: "available",
   },
   {
+    slug: "dette-en-perspective",
+    number: "6",
+    title: "La dette en perspective",
+    question: "3 500 milliards, c'est beaucoup ?",
+    summary:
+      "Par habitant, face aux budgets des ministères, face au patrimoine public : remettre la dette à l'échelle.",
+    color: { light: "#a21caf", dark: "#f0abfc" },
+    sections: [
+      { slug: "par-habitant", title: "Par habitant, en années de recettes" },
+      { slug: "face-aux-budgets", title: "Face aux budgets de l'État" },
+      { slug: "patrimoine-public", title: "Face au patrimoine public" },
+    ],
+    status: "available",
+  },
+  {
+    slug: "fiscalite",
+    number: "7",
+    title: "Fiscalité et financement",
+    question: "Qui paie les impôts, et combien rapporte chacun ?",
+    summary:
+      "Assiette, taux, rendement : pourquoi un taux élevé sur une petite base rapporte peu, et ce que rapporterait de taxer les plus riches.",
+    color: { light: "#a16207", dark: "#fde047" },
+    sections: [
+      { slug: "qui-paie", title: "Qui paie quoi ?" },
+      { slug: "assiette-rendement", title: "Assiette, taux, rendement" },
+      { slug: "taxer-les-riches", title: "Combien rapporte de taxer les plus riches ?" },
+      { slug: "smic", title: "Salaire minimum et coût du travail" },
+      { slug: "blocage-prix", title: "Le blocage des prix" },
+    ],
+    status: "available",
+  },
+  {
+    slug: "fiche-de-paie",
+    number: "8",
+    title: "Ma fiche de paie",
+    question: "Du coût employeur à ce qui reste en poche",
+    summary:
+      "Entrez un salaire brut et suivez chaque euro : cotisations, CSG, impôt, TVA, et ce qui finance les retraites.",
+    color: { light: "#0f766e", dark: "#5eead4" },
+    sections: [],
+    status: "available",
+  },
+  {
     slug: "retraites",
-    number: "5",
+    number: "9",
     title: "Les retraites",
     question: "Qui paie ma retraite ?",
     summary:
@@ -131,36 +174,8 @@ export const modules: ModuleInfo[] = [
     status: "available",
   },
   {
-    slug: "fiche-de-paie",
-    number: "5 bis",
-    title: "Ma fiche de paie",
-    question: "Du coût employeur à ce qui reste en poche",
-    summary:
-      "Entrez un salaire brut et suivez chaque euro : cotisations, CSG, impôt, TVA, et ce qui finance les retraites.",
-    color: { light: "#0f766e", dark: "#5eead4" },
-    sections: [],
-    status: "available",
-  },
-  {
-    slug: "fiscalite",
-    number: "6",
-    title: "Fiscalité et financement",
-    question: "Qui paie les impôts, et combien rapporte chacun ?",
-    summary:
-      "Assiette, taux, rendement : pourquoi un taux élevé sur une petite base rapporte peu, et ce que rapporterait de taxer les plus riches.",
-    color: { light: "#a16207", dark: "#fde047" },
-    sections: [
-      { slug: "qui-paie", title: "Qui paie quoi ?" },
-      { slug: "assiette-rendement", title: "Assiette, taux, rendement" },
-      { slug: "taxer-les-riches", title: "Combien rapporte de taxer les plus riches ?" },
-      { slug: "smic", title: "Salaire minimum et coût du travail" },
-      { slug: "blocage-prix", title: "Le blocage des prix" },
-    ],
-    status: "available",
-  },
-  {
     slug: "cadre-europeen",
-    number: "6 bis",
+    number: "10",
     title: "Le cadre européen et la notation",
     question: "Qui surveille les comptes de la France ?",
     summary:
@@ -175,23 +190,8 @@ export const modules: ModuleInfo[] = [
     status: "available",
   },
   {
-    slug: "dette-en-perspective",
-    number: "6 ter",
-    title: "La dette en perspective",
-    question: "3 500 milliards, c'est beaucoup ?",
-    summary:
-      "Par habitant, face aux budgets des ministères, face au patrimoine public : remettre la dette à l'échelle.",
-    color: { light: "#a21caf", dark: "#f0abfc" },
-    sections: [
-      { slug: "par-habitant", title: "Par habitant, en années de recettes" },
-      { slug: "face-aux-budgets", title: "Face aux budgets de l'État" },
-      { slug: "patrimoine-public", title: "Face au patrimoine public" },
-    ],
-    status: "available",
-  },
-  {
     slug: "comparaisons",
-    number: "6 quater",
+    number: "11",
     title: "Comparaisons internationales",
     question: "La France est-elle une exception ?",
     summary:
@@ -207,7 +207,7 @@ export const modules: ModuleInfo[] = [
   },
   {
     slug: "histoire-des-dettes",
-    number: "6 quinquies",
+    number: "12",
     title: "L'histoire des dettes",
     question: "Comment les pays sont-ils déjà sortis d'une dette trop lourde ?",
     summary:

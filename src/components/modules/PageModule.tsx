@@ -1,5 +1,4 @@
 import type { ReactNode } from "react";
-import { BarreParcours } from "@/components/lecture/BarreParcours";
 import { ModeLecture } from "@/components/lecture/ModeLecture";
 import { Quiz, type QuestionQuiz } from "@/components/pedago/Quiz";
 import { PropositionsLiees } from "@/components/propositions/PropositionsLiees";
@@ -16,7 +15,7 @@ import { ProgressionModule } from "./ProgressionModule";
 
 /**
  * Mise en page d'une page de module (introduction ou section) : fil d'Ariane,
- * en-tête, interrupteur de lecture, barre de parcours, texte, quiz en fin de
+ * en-tête, interrupteur de lecture, texte, quiz en fin de
  * module, progression et navigation.
  */
 export function PageModule({
@@ -71,10 +70,6 @@ export function PageModule({
               {!infoSection && <p className="mt-3 text-lg text-muted">{module.question}</p>}
               <ModeLecture className="mt-5" />
             </header>
-
-            <div className="mt-6">
-              <BarreParcours href={href} />
-            </div>
 
             <article className="prose-eco mt-8 max-w-none">{children}</article>
 
