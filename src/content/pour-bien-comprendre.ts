@@ -211,4 +211,74 @@ export const pourBienComprendre: { notion: string; fichier: string; page: string
     fichier: "src/content/modules/les-bases/administrations.mdx",
     page: "/modules/les-bases/administrations/",
   },
+  {
+    notion: "Une note dégradée et ses effets sur les taux",
+    fichier: "src/content/modules/cadre-europeen/notation.mdx",
+    page: "/modules/cadre-europeen/notation/",
+  },
+  {
+    notion: "Le blocage des prix",
+    fichier: "src/content/propositions/blocage-des-prix.mdx",
+    page: "/propositions/blocage-des-prix/",
+  },
+  {
+    notion: "Ce que rapporte la lutte contre la fraude",
+    fichier: "src/content/propositions/lutte-contre-la-fraude.mdx",
+    page: "/propositions/lutte-contre-la-fraude/",
+  },
+  {
+    notion: "La retraite par points",
+    fichier: "src/content/propositions/retraite-par-points.mdx",
+    page: "/propositions/retraite-par-points/",
+  },
+  {
+    notion: "La dette « au frigo »",
+    fichier: "src/content/propositions/dette-au-frigo.mdx",
+    page: "/propositions/dette-au-frigo/",
+  },
+  {
+    notion: "Une hausse du Smic, du coût employeur au revenu",
+    fichier: "src/content/propositions/hausse-forte-du-smic.mdx",
+    page: "/propositions/hausse-forte-du-smic/",
+  },
+  {
+    notion: "Relancer pour réduire la dette",
+    fichier: "src/content/propositions/relance-pour-reduire-la-dette.mdx",
+    page: "/propositions/relance-pour-reduire-la-dette/",
+  },
+  {
+    notion: "Le passage à la capitalisation",
+    fichier: "src/content/propositions/passage-capitalisation.mdx",
+    page: "/propositions/passage-capitalisation/",
+  },
+  {
+    notion: "L'austérité rapide",
+    fichier: "src/content/propositions/austerite-rapide.mdx",
+    page: "/propositions/austerite-rapide/",
+  },
+  {
+    notion: "La sortie de l'euro",
+    fichier: "src/content/propositions/sortir-de-l-euro.mdx",
+    page: "/propositions/sortir-de-l-euro/",
+  },
+  {
+    notion: "Financer des dépenses en taxant les plus riches",
+    fichier: "src/content/propositions/financer-les-depenses-en-taxant-les-riches.mdx",
+    page: "/propositions/financer-les-depenses-en-taxant-les-riches/",
+  },
+  {
+    notion: "L'impôt plancher sur les très hauts patrimoines",
+    fichier: "src/content/propositions/taxer-les-tres-hauts-patrimoines.mdx",
+    page: "/propositions/taxer-les-tres-hauts-patrimoines/",
+  },
+  {
+    notion: "La retraite à 60 ans",
+    fichier: "src/content/propositions/retraite-a-60-ans.mdx",
+    page: "/propositions/retraite-a-60-ans/",
+  },
+  {
+    notion: "Annuler la dette détenue par la banque centrale",
+    fichier: "src/content/propositions/annuler-dette-banque-centrale.mdx",
+    page: "/propositions/annuler-dette-banque-centrale/",
+  },
 ];
