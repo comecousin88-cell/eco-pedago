@@ -160,4 +160,34 @@ export const pourBienComprendre: { notion: string; fichier: string; page: string
     fichier: "src/content/modules/retraites/notions.mdx",
     page: "/modules/retraites/notions/",
   },
+  {
+    notion: "La BCE, l'Eurosystème et les taux directeurs",
+    fichier: "src/content/modules/banque-centrale/bce-eurosysteme.mdx",
+    page: "/modules/banque-centrale/bce-eurosysteme/",
+  },
+  {
+    notion: "Le blocage des prix",
+    fichier: "src/content/modules/fiscalite/blocage-prix.mdx",
+    page: "/modules/fiscalite/blocage-prix/",
+  },
+  {
+    notion: "Le Smic, le coût du travail et les allègements de cotisations",
+    fichier: "src/content/modules/fiscalite/smic.mdx",
+    page: "/modules/fiscalite/smic/",
+  },
+  {
+    notion: "Qui détient la dette",
+    fichier: "src/content/modules/emprunt-etat/detenteurs.mdx",
+    page: "/modules/emprunt-etat/detenteurs/",
+  },
+  {
+    notion: "Dette brute et patrimoine public",
+    fichier: "src/content/modules/dette-en-perspective/patrimoine-public.mdx",
+    page: "/modules/dette-en-perspective/patrimoine-public/",
+  },
+  {
+    notion: "Qui paie quoi : la progressivité des prélèvements",
+    fichier: "src/content/modules/fiscalite/qui-paie.mdx",
+    page: "/modules/fiscalite/qui-paie/",
+  },
 ];
