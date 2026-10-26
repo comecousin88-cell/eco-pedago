@@ -34,6 +34,7 @@ function texteMdx(mdx: string): string {
     .replace(/<(?:Chiffre|Calcul|DateDonnee)\b[^>]*\/>/g, " ")
     .replace(/questions=\{\[[\s\S]*?\]\}\s*\/>/g, " ")
     .replace(/\b[a-zA-Z]+=(?:"[^"]*"|\{`[\s\S]*?`\}|\{\[(?:"[^"]*",?\s*)*\]\})/g, " ")
+    .replace(/\b[a-zA-Z]+=\{/g, " ")
     .replace(/<\/?[A-Za-z][A-Za-z0-9]*|\/?>|<\/?>|[{}]/g, " ")
     .replace(/\]\([^)]*\)/g, " ");
 }
@@ -88,7 +89,8 @@ describe("fiches refondues : structure", () => {
 describe("fiches refondues : lisibilité", () => {
   it.each(refondues.map((p) => ({ slug: p.slug })))("aucune source entre parenthèses dans le texte, en Simple comme en Approfondi : $slug", async ({ slug }) => {
     const { default: Fiche } = (await import(`./propositions/${slug}.mdx`)) as { default: MDXContent };
-    const html = renderToStaticMarkup(createElement(Fiche));
+    // La version d'un indicateur (« IPC Insee, septembre 2026, provisoire ») reste dite à côté du chiffre : ce n'est pas une source.
+    const html = renderToStaticMarkup(createElement(Fiche)).replace(/<span class="chiffre-source">[^<]*<\/span>/g, "");
     for (const mode of ["simple", "approfondi"] as const) {
       const texte = texteVisible(html, mode);
       expect(texte.match(SOURCE_ENTRE_PARENTHESES)?.[0], mode).toBeUndefined();

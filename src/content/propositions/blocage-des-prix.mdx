@@ -1,9 +1,31 @@
-## 1. La proposition
+## En 30 secondes
+
+<En30Secondes
+  verdict="debattu"
+  proposition={<>Bloquer ou plafonner les prix de produits essentiels, comme l'énergie ou l'alimentation, pour protéger le pouvoir d'achat.</>}
+  tient={<>un plafonnement temporaire, payé par l'État, peut freiner l'<Terme id="inflation">inflation</Terme> et protéger les ménages lors d'un choc.</>}
+  coince={<>un prix bloqué sous son coût doit être payé par quelqu'un : par le budget de l'État, ou par des pénuries si personne ne compense.</>}
+  debattu={<>le rapport entre ce que ça coûte et ce que ça protège, le ciblage des aides, et la durée acceptable d'un plafond.</>}
+/>
+
+## Pourquoi on en parle
+
+L'idée est revenue avec la flambée des prix de 2022, quand la France a plafonné les tarifs de l'électricité et du gaz. Elle ressurgit à chaque hausse forte des prix de l'énergie ou de l'alimentation.
+
+## Pour bien suivre cette fiche
+
+<PourBienSuivre module="fiscalite" section="blocage-prix" />
+
+<EnApprofondi>
+
+## La proposition et l'idée derrière
+
+### La proposition
 
 Bloquer, ou plafonner, les prix de produits essentiels (énergie, carburants, produits alimentaires de base) pour
 protéger le pouvoir d'achat face à l'inflation.
 
-## 2. L'idée derrière
+### L'idée derrière
 
 Quand les prix flambent, les ménages modestes sont les plus touchés : l'énergie et l'alimentation pèsent plus lourd
 dans leur budget. Un plafonnement agit **vite, pour tous, et de façon visible**, là où les hausses de salaires ou
@@ -16,20 +38,21 @@ dispositifs ont réduit en moyenne de <Chiffre id="prop.bouclier-baisse-prix" />
 de prix ne reflètent pas toujours des coûts : quand des entreprises augmentent leurs marges à la faveur de
 l'inflation, un plafonnement protège les consommateurs sans les priver de rien.
 
-## 3. Comment ça marcherait concrètement
+</EnApprofondi>
 
-Il existe deux grandes façons de bloquer un prix :
+## Comment ça marcherait
 
-- **L'État paie la différence.** C'est le principe des boucliers tarifaires : les fournisseurs vendent sous leur coût,
-  et l'État compense. Le prix est tenu, mais la facture est transférée au budget public. Le coût total des boucliers
-  électricité et gaz et des amortisseurs gérés par la CRE a atteint <Chiffre id="prop.boucliers-cout" /> de 2022 à
-  2024, sans compter la baisse de l'accise sur l'électricité.
-- **Le vendeur absorbe la différence.** Le prix est imposé sans compensation. Si le prix plafond est inférieur au coût
-  de production, les producteurs vendent moins, importent moins ou cessent de vendre : des pénuries apparaissent,
-  et des marchés parallèles se développent. C'est le principal risque d'un blocage durable.
+Un prix bloqué ne fait pas disparaître le coût de production. Il change seulement qui le paie.
 
-Un blocage a aussi un effet sur la **demande** : en cachant la hausse du coût réel, il n'incite pas à économiser un
-produit devenu rare, ce qui prolonge la tension sur les prix.
+<SchemaEtapes
+  titre="Un prix plafonné sous son coût : deux issues"
+  etapes={[
+    <>Le prix de vente est fixé sous ce que coûte le produit…</>,
+    <>… si l'État paie la différence, le prix tient, et la facture passe au budget public…</>,
+    <>… si personne ne paie, le vendeur vend moins ou arrête : les rayons se vident.</>,
+  ]}
+  legende="Les boucliers tarifaires de 2022 à 2024 ont suivi la première voie : le prix a tenu, et l'État a payé la différence."
+/>
 
 <PourBienComprendre titre="Bloquer un prix : qui paie la différence ?">
 <Analogie>
@@ -56,6 +79,23 @@ par des rayons vides si personne ne compense.
 </Retenir>
 </PourBienComprendre>
 
+<EnApprofondi>
+
+Il existe deux grandes façons de bloquer un prix :
+
+- **L'État paie la différence.** C'est le principe des boucliers tarifaires : les fournisseurs vendent sous leur coût,
+  et l'État compense. Le prix est tenu, mais la facture est transférée au budget public. Le coût total des boucliers
+  électricité et gaz et des amortisseurs gérés par la CRE a atteint <Chiffre id="prop.boucliers-cout" /> de 2022 à
+  2024, sans compter la baisse de l'accise sur l'électricité.
+- **Le vendeur absorbe la différence.** Le prix est imposé sans compensation. Si le prix plafond est inférieur au coût
+  de production, les producteurs vendent moins, importent moins ou cessent de vendre : des pénuries apparaissent,
+  et des marchés parallèles se développent. C'est le principal risque d'un blocage durable.
+
+Un blocage a aussi un effet sur la **demande** : en cachant la hausse du coût réel, il n'incite pas à économiser un
+produit devenu rare, ce qui prolonge la tension sur les prix.
+
+</EnApprofondi>
+
 <Niveaux>
 <PlusLoin>
 
@@ -76,7 +116,16 @@ chèque énergie, coûte moins cher pour le même effet sur eux.
 </PlusLoin>
 </Niveaux>
 
-## 4. Ce que disent les économistes
+## Le débat
+
+<Dialogue
+  partisan={<>Quand les prix flambent, les ménages modestes sont les premiers touchés. Un plafond agit vite, pour tout le monde, et se voit. Les boucliers de 2022 ont fait baisser la facture d'électricité de millions de foyers. Et certaines hausses de prix gonflent surtout les marges : les plafonner ne prive personne.</>}
+  sceptique={<>Un prix bloqué a toujours un payeur. Si c'est l'État, les boucliers ont coûté des dizaines de milliards, y compris aux ménages aisés. Si personne ne compense, les vendeurs vendent moins, et les pénuries arrivent. Et un prix qui ne monte pas n'incite pas à économiser un produit devenu rare.</>}
+/>
+
+<EnApprofondi>
+
+### Tous les arguments, en détail
 
 <ArgumentsFiche
   pour={
@@ -97,27 +146,75 @@ chèque énergie, coûte moins cher pour le même effet sur eux.
   }
 />
 
-## 5. Ordres de grandeur
+</EnApprofondi>
+
+## Ordres de grandeur
+
+<Reperes>
+  <Repere valeur={<Chiffre id="prop.boucliers-cout" />}>le coût des boucliers électricité et gaz de 2022 à 2024 : environ <Calcul id="calc.boucliers-par-habitant" arrondi={10} /> par habitant.</Repere>
+  <Repere valeur={<Chiffre id="prop.bouclier-menages" />}>ont bénéficié du bouclier sur l'électricité, selon la Commission de régulation de l'énergie.</Repere>
+  <Repere valeur={<Chiffre id="prop.bouclier-baisse-prix" />}>de baisse moyenne du prix facturé de l'électricité grâce au bouclier.</Repere>
+</Reperes>
+
+<EnApprofondi>
+
+### Le détail des chiffres
 
 | | Montant |
 |---|---|
 | Coût des boucliers électricité et gaz et des amortisseurs (2022-2024) | <Chiffre id="prop.boucliers-cout" /> |
-| Ménages bénéficiaires du bouclier électricité | <Chiffre id="prop.bouclier-menages" /> (CRE) |
-| Réduction moyenne du prix facturé de l'électricité | <Chiffre id="prop.bouclier-baisse-prix" /> (CRE) |
+| Ménages bénéficiaires du bouclier électricité | <Chiffre id="prop.bouclier-menages" /> |
+| Réduction moyenne du prix facturé de l'électricité | <Chiffre id="prop.bouclier-baisse-prix" /> |
 | Inflation en France | <Chiffre id="macro.inflation" x="2022" /> en 2022, <Chiffre id="macro.inflation" x="2025" /> en 2025 |
-| Déficit public | <Chiffre id="deficit.montant" /> en <DateDonnee id="deficit.montant" /> |
+| <Terme id="deficit-public">Déficit public</Terme> | <Chiffre id="deficit.montant" /> en <DateDonnee id="deficit.montant" /> |
 
-## 6. Verdict
+</EnApprofondi>
+
+## Le verdict
 
 <Verdict niveau="debattu">
+Un plafond temporaire, payé par l'État, peut protéger les ménages lors d'un choc, mais il coûte cher au budget. Un blocage durable sans compensation mène aux pénuries.
+</Verdict>
+
+<Conditions>
+Un plafond court, ciblé sur les ménages qui en ont le plus besoin, et financé : c'est le budget de l'État qui paie la différence.
+</Conditions>
+
+<EnApprofondi>
+
+### Le verdict en détail
+
 Plafonner temporairement certains prix peut contenir l'inflation et protéger les ménages lors d'un choc, comme l'ont
 montré les boucliers tarifaires, mais cela a un coût : soit pour le budget de l'État, soit pour les producteurs, au
 risque de pénuries. Un blocage généralisé et durable sans compensation ne tient pas ; un plafonnement temporaire et
 ciblé, financé par l'État, est un choix débattu entre efficacité immédiate, coût budgétaire et ciblage.
-</Verdict>
 
 <GrilleVerdict
   tient={<p>Un plafonnement temporaire, compensé par l'État, peut freiner l'inflation et protéger le pouvoir d'achat lors d'un choc.</p>}
   tientPas={<p>L'idée d'un blocage gratuit et durable : sans compensation, les producteurs vendent moins et des pénuries apparaissent.</p>}
   debattu={<p>Le rapport entre le coût budgétaire et l'efficacité, le ciblage des aides, et la durée acceptable d'un plafonnement.</p>}
+/>
+
+</EnApprofondi>
+
+## Avez-vous compris ?
+
+<Quiz
+  module="fiche-blocage-des-prix"
+  titre="Deux questions"
+  niveau={3}
+  questions={[
+    {
+      question: "Le prix de l'essence est bloqué sous ce qu'elle coûte à produire, et l'État ne compense rien. Que risque-t-il de se passer ?",
+      choix: ["Rien, les vendeurs absorbent la différence sans problème", "Les vendeurs livrent moins et des stations manquent de carburant", "L'inflation disparaît partout"],
+      bonne: 1,
+      explication: "Un vendeur qui perd de l'argent sur chaque litre réduit ses livraisons. Sans compensation, un prix bloqué sous son coût mène aux pénuries.",
+    },
+    {
+      question: "Avec les boucliers tarifaires, qui a payé la différence de prix ?",
+      choix: ["Les fournisseurs d'énergie, seuls", "Le budget de l'État", "La Banque centrale européenne"],
+      bonne: 1,
+      explication: "Les fournisseurs vendaient sous leur coût, et l'État compensait : la facture est passée au budget public.",
+    },
+  ]}
 />

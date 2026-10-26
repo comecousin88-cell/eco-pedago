@@ -94,6 +94,7 @@ export const propositions: Proposition[] = [
     module: "banque-centrale",
     liens: [{ module: "banque-centrale", section: "qe" }],
     verdict: "ne-tient-pas",
+    refondue: true,
     contenu: () => import("./propositions/dette-au-frigo.mdx"),
   },
   {
@@ -109,6 +110,7 @@ export const propositions: Proposition[] = [
     ],
     phare: true,
     verdict: "ne-tient-pas",
+    refondue: true,
     contenu: () => import("./propositions/planche-a-billets.mdx"),
   },
   {
@@ -123,6 +125,7 @@ export const propositions: Proposition[] = [
       { module: "comparaisons", section: "japon-grece" },
     ],
     verdict: "debattu",
+    refondue: true,
     contenu: () => import("./propositions/sortir-de-l-euro.mdx"),
   },
   {
@@ -133,6 +136,7 @@ export const propositions: Proposition[] = [
     module: "fiscalite",
     liens: [{ module: "fiscalite", section: "taxer-les-riches" }, { module: "fiscalite", section: "assiette-rendement" }],
     verdict: "debattu",
+    refondue: true,
     contenu: () => import("./propositions/taxer-les-tres-hauts-patrimoines.mdx"),
   },
   {
@@ -160,6 +164,7 @@ export const propositions: Proposition[] = [
     liens: [{ module: "retraites", section: "leviers" }],
     phare: true,
     verdict: "debattu",
+    refondue: true,
     contenu: () => import("./propositions/retraite-a-60-ans.mdx"),
   },
   {
@@ -173,6 +178,7 @@ export const propositions: Proposition[] = [
       { module: "retraites", section: "transition" },
     ],
     verdict: "ne-tient-pas",
+    refondue: true,
     contenu: () => import("./propositions/passage-capitalisation.mdx"),
   },
   {
@@ -183,6 +189,7 @@ export const propositions: Proposition[] = [
     module: "retraites",
     liens: [{ module: "retraites", section: "notions" }],
     verdict: "solide",
+    refondue: true,
     contenu: () => import("./propositions/retraite-par-points.mdx"),
   },
   {
@@ -193,6 +200,7 @@ export const propositions: Proposition[] = [
     module: "fiche-de-paie",
     liens: [{ module: "fiscalite", section: "smic" }, { module: "fiche-de-paie" }],
     verdict: "debattu",
+    refondue: true,
     contenu: () => import("./propositions/hausse-forte-du-smic.mdx"),
   },
   {
@@ -203,6 +211,7 @@ export const propositions: Proposition[] = [
     module: "les-bases",
     liens: [{ module: "fiscalite", section: "blocage-prix" }, { module: "les-bases", section: "inflation-taux-reels" }],
     verdict: "debattu",
+    refondue: true,
     contenu: () => import("./propositions/blocage-des-prix.mdx"),
   },
   {
@@ -213,6 +222,7 @@ export const propositions: Proposition[] = [
     module: "fiche-de-paie",
     liens: [{ module: "fiscalite", section: "qui-paie" }, { module: "fiche-de-paie" }],
     verdict: "debattu",
+    refondue: true,
     contenu: () => import("./propositions/tva-sociale.mdx"),
   },
   {
@@ -223,6 +233,7 @@ export const propositions: Proposition[] = [
     module: "boule-de-neige",
     liens: [{ module: "boule-de-neige", section: "cercles" }, { module: "comparaisons", section: "depenses-et-impots" }],
     verdict: "debattu",
+    refondue: true,
     contenu: () => import("./propositions/austerite-rapide.mdx"),
   },
   {
@@ -233,6 +244,7 @@ export const propositions: Proposition[] = [
     module: "les-bases",
     liens: [{ module: "fiscalite", section: "qui-paie" }, { module: "les-bases", section: "recettes-depenses" }],
     verdict: "ne-tient-pas",
+    refondue: true,
     contenu: () => import("./propositions/lutte-contre-la-fraude.mdx"),
   },
   {
@@ -243,6 +255,7 @@ export const propositions: Proposition[] = [
     module: "boule-de-neige",
     liens: [{ module: "boule-de-neige", section: "formule" }, { module: "histoire-des-dettes", section: "croissance" }],
     verdict: "debattu",
+    refondue: true,
     contenu: () => import("./propositions/relance-pour-reduire-la-dette.mdx"),
   },
   {
@@ -253,6 +266,7 @@ export const propositions: Proposition[] = [
     module: "banque-centrale",
     liens: [{ module: "banque-centrale", section: "signal-marches" }, { module: "comparaisons", section: "japon-grece" }],
     verdict: "ne-tient-pas",
+    refondue: true,
     contenu: () => import("./propositions/theorie-monetaire-moderne.mdx"),
   },
 ];

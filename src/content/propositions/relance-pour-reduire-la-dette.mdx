@@ -1,14 +1,36 @@
 import { BouleDeNeige } from "@/components/simulators/BouleDeNeige";
 
-## 1. La proposition
+## En 30 secondes
+
+<En30Secondes
+  verdict="debattu"
+  proposition={<>Dépenser plus ou baisser les impôts pour relancer la croissance, en comptant sur elle pour réduire le poids de la dette.</>}
+  tient={<>la croissance allège le poids de la dette, et en <Terme id="recession">récession</Terme> profonde une relance peut se financer en partie elle-même.</>}
+  coince={<>en temps normal, un euro dépensé ne rapporte qu'une fraction de son coût en impôts : le reste s'ajoute à la dette.</>}
+  debattu={<>la force de l'effet d'une dépense publique sur la croissance aujourd'hui, et ce que rapportent à long terme les investissements publics.</>}
+/>
+
+## Pourquoi on en parle
+
+L'idée revient chaque fois qu'un plan d'économies est annoncé : ses défenseurs y voient une alternative à l'austérité. Elle s'appuie sur l'histoire de l'après-guerre, quand la croissance a fait fondre les dettes.
+
+## Pour bien suivre cette fiche
+
+<PourBienSuivre module="boule-de-neige" section="formule" />
+
+<EnApprofondi>
+
+## La proposition et l'idée derrière
+
+### La proposition
 
 Augmenter la dépense publique ou baisser les impôts pour stimuler la croissance, en comptant sur celle-ci pour réduire
-le poids de la dette : plus de croissance, plus de recettes fiscales, et une dette plus petite rapportée au PIB.
+le poids de la dette : plus de croissance, plus de recettes fiscales, et une dette plus petite rapportée au <Terme id="pib">PIB</Terme>.
 
-## 2. L'idée derrière
+### L'idée derrière
 
 Ce qui compte pour juger une dette, ce n'est pas son montant mais son **poids par rapport à la richesse produite**. La
-dette publique représente <Chiffre id="dette.ratio-pib" />. Si le PIB augmente plus vite, ce ratio baisse,
+<Terme id="dette-publique">dette publique</Terme> représente <Chiffre id="dette.ratio-pib" />. Si le PIB augmente plus vite, ce ratio baisse,
 même sans rembourser un euro : c'est ainsi que de nombreux pays ont allégé leur dette après 1945.
 
 Les défenseurs d'une relance ajoutent que l'austérité peut être contre-productive : quand l'économie tourne au
@@ -18,30 +40,21 @@ taux très bas, une relance budgétaire pouvait **se financer en partie elle-mê
 n'abîme la capacité de production. Enfin, certains investissements (recherche, éducation, transition énergétique)
 augmentent la croissance future et donc les recettes de demain.
 
-## 3. Comment ça marcherait concrètement
+</EnApprofondi>
 
-Tout dépend de deux grandeurs, que le module sur l'effet boule de neige détaille : le **taux d'intérêt** payé sur la
-dette et la **croissance nominale** (volume et prix).
+## Comment ça marcherait
 
-- Quand la croissance nominale dépasse le taux d'intérêt, la dette tend à baisser en proportion du PIB, à condition
-  que le déficit hors intérêts reste limité.
-- Quand le taux d'intérêt dépasse la croissance, la dette augmente d'elle-même, sauf excédent hors intérêts.
+Ce qui compte, c'est le poids de la dette par rapport à la richesse produite. Une relance peut faire grossir la richesse, mais elle fait aussi grossir la dette.
 
-Aujourd'hui, la France emprunte à 10 ans à <Chiffre id="marches.taux10-france-dernier" /> en
-<DateDonnee id="marches.taux10-france-dernier" />, alors que sa croissance nominale a été de
-<Chiffre id="macro.croissance-valeur" /> en <DateDonnee id="macro.croissance-valeur" />. Pour qu'une relance réduise
-le poids de la dette, il faudrait que chaque euro dépensé produise assez de croissance, et donc de recettes, pour
-couvrir son coût et ses intérêts. Avec un multiplicateur budgétaire généralement estimé entre 0,5 et 1 en temps
-normal, et des recettes publiques d'environ la moitié du PIB, un euro de dépense rapporte de l'ordre de 25 à
-50 centimes de recettes : le reste s'ajoute à la dette.
-
-<Figure
-  titre="Simulateur : taux d'intérêt, croissance et dette"
-  resume="Simulateur : on règle le taux d'intérêt moyen, la croissance nominale et le solde hors intérêts, et l'on suit la dette en % du PIB sur plusieurs années. Quand la croissance dépasse le taux, la dette peut baisser ; dans le cas inverse, elle monte d'elle-même."
-  donnees={["dette.historique-pib", "dette.historique-md", "fp.interets", "macro.pib", "deficit.montant", "macro.croissance-valeur", "marches.taux10-france-dernier", "aft.maturite-moyenne"]}
->
-  <BouleDeNeige />
-</Figure>
+<SchemaEtapes
+  titre="Une relance et le poids de la dette"
+  etapes={[
+    <>L'État dépense un euro de plus, emprunté…</>,
+    <>… l'activité augmente, et une partie de cet euro revient en impôts…</>,
+    <>… en temps normal, il en revient une petite partie : le reste s'ajoute à la dette…</>,
+    <>… et si la croissance obtenue ne dure pas, la dette pèse plus lourd qu'avant.</>,
+  ]}
+/>
 
 <PourBienComprendre titre="Une relance peut-elle faire baisser la dette ?">
 <Analogie>
@@ -68,6 +81,25 @@ lourde une fois l'effet retombé.
 </Retenir>
 </PourBienComprendre>
 
+<EnApprofondi>
+
+Tout dépend de deux grandeurs, que le module sur l'effet <Terme id="effet-boule-de-neige">boule de neige</Terme> détaille : le **taux d'intérêt** payé sur la
+dette et la **<Terme id="croissance-nominale">croissance nominale</Terme>** (volume et prix).
+
+- Quand la croissance nominale dépasse le taux d'intérêt, la dette tend à baisser en proportion du PIB, à condition
+  que le déficit hors intérêts reste limité.
+- Quand le taux d'intérêt dépasse la croissance, la dette augmente d'elle-même, sauf excédent hors intérêts.
+
+Aujourd'hui, la France emprunte à 10 ans à <Chiffre id="marches.taux10-france-dernier" /> en
+<DateDonnee id="marches.taux10-france-dernier" />, alors que sa croissance nominale a été de
+<Chiffre id="macro.croissance-valeur" /> en <DateDonnee id="macro.croissance-valeur" />. Pour qu'une relance réduise
+le poids de la dette, il faudrait que chaque euro dépensé produise assez de croissance, et donc de recettes, pour
+couvrir son coût et ses intérêts. Avec un <Terme id="multiplicateur">multiplicateur budgétaire</Terme> généralement estimé entre 0,5 et 1 en temps
+normal, et des recettes publiques d'environ la moitié du PIB, un euro de dépense rapporte de l'ordre de 25 à
+50 centimes de recettes : le reste s'ajoute à la dette.
+
+</EnApprofondi>
+
 <Niveaux>
 <PlusLoin>
 
@@ -85,7 +117,16 @@ au prix d'une dette passée de <Chiffre id="dette.historique-pib" x="2019" /> à
 </PlusLoin>
 </Niveaux>
 
-## 4. Ce que disent les économistes
+## Le débat
+
+<Dialogue
+  partisan={<>Ce qui compte, c'est le poids de la dette par rapport à la richesse, pas son montant. Après 1945, c'est la croissance qui a fait fondre les dettes. Couper dans les dépenses quand l'économie ralentit fait baisser l'activité et les recettes. Et certains investissements, comme l'éducation ou la recherche, augmentent la croissance de demain.</>}
+  sceptique={<>En temps normal, un euro dépensé ne rapporte qu'une fraction de son coût en impôts : le reste s'ajoute à la dette. Aujourd'hui, la France emprunte plus cher que sa croissance. Une relance passagère laisse une dette plus lourde une fois l'effet retombé. Et un déficit plus élevé pourrait faire monter les taux.</>}
+/>
+
+<EnApprofondi>
+
+### Tous les arguments, en détail
 
 <ArgumentsFiche
   pour={
@@ -99,36 +140,100 @@ au prix d'une dette passée de <Chiffre id="dette.historique-pib" x="2019" /> à
   contre={
     <ul>
       <li><strong>Un multiplicateur inférieur à ce qu'il faudrait.</strong> En temps normal, un euro de dépense rapporte de l'ordre de 25 à 50 centimes de recettes : la dette augmente.</li>
-      <li><strong>Des taux supérieurs à la croissance.</strong> Avec un taux de marché supérieur à la croissance nominale, chaque euro emprunté pèse davantage.</li>
+      <li><strong>Des taux supérieurs à la croissance.</strong> Avec un <Terme id="rendement">taux de marché</Terme> supérieur à la croissance nominale, chaque euro emprunté pèse davantage.</li>
       <li><strong>Une économie ouverte.</strong> Une partie de la demande supplémentaire va aux importations, comme l'a montré la relance de 1981-1982.</li>
       <li><strong>Le risque de marché.</strong> Un déficit en hausse peut élargir l'écart de taux avec l'Allemagne et renchérir toute la dette.</li>
     </ul>
   }
 />
 
-## 5. Ordres de grandeur
+</EnApprofondi>
+
+## Ordres de grandeur
+
+<Reperes>
+  <Repere valeur={<Calcul id="calc.ecart-taux-croissance" />}>d'écart entre le taux auquel l'État emprunte à 10 ans, <Chiffre id="marches.taux10-france-dernier" />, et la croissance de la richesse produite, <Chiffre id="macro.croissance-valeur" /> : la dette a tendance à grossir d'elle-même.</Repere>
+  <Repere valeur={<Chiffre id="fp.interets" />}>d'intérêts versés en un an : environ <Calcul id="calc.interets-par-habitant" arrondi={10} /> par habitant.</Repere>
+  <Repere valeur={<Chiffre id="fp.recettes-pib" />}>de la richesse produite revient en recettes publiques : c'est la part, au mieux, d'un euro de croissance en plus qui rentre en impôts.</Repere>
+</Reperes>
+
+<EnApprofondi>
+
+### Le détail des chiffres
 
 | | Montant |
 |---|---|
 | Dette publique | <Chiffre id="dette.ratio-pib" /> |
-| Taux de l'OAT à 10 ans | <Chiffre id="marches.taux10-france-dernier" /> en <DateDonnee id="marches.taux10-france-dernier" /> |
+| Taux de l'<Terme id="oat">OAT</Terme> à 10 ans | <Chiffre id="marches.taux10-france-dernier" /> en <DateDonnee id="marches.taux10-france-dernier" /> |
 | Croissance nominale | <Chiffre id="macro.croissance-valeur" /> en <DateDonnee id="macro.croissance-valeur" /> |
-| Intérêts versés par les administrations publiques | <Chiffre id="fp.interets" /> en <DateDonnee id="fp.interets" /> |
+| Intérêts versés par les <Terme id="administrations-publiques">administrations publiques</Terme> | <Chiffre id="fp.interets" /> en <DateDonnee id="fp.interets" /> |
 | Recettes publiques | <Chiffre id="fp.recettes-pib" /> |
 
-## 6. Verdict
+</EnApprofondi>
+
+<EnApprofondi>
+
+## Et si on le faisait ?
+
+Réglez le taux d'intérêt, la croissance et le déficit hors intérêts, et suivez le poids de la dette sur vingt ans.
+
+<Figure
+  titre="Simulateur : taux d'intérêt, croissance et dette"
+  resume="Simulateur : on règle le taux d'intérêt moyen, la croissance nominale et le solde hors intérêts, et l'on suit la dette en % du PIB sur plusieurs années. Quand la croissance dépasse le taux, la dette peut baisser ; dans le cas inverse, elle monte d'elle-même."
+  donnees={["dette.historique-pib", "dette.historique-md", "fp.interets", "macro.pib", "deficit.montant", "macro.croissance-valeur", "marches.taux10-france-dernier", "aft.maturite-moyenne"]}
+>
+  <BouleDeNeige />
+</Figure>
+
+</EnApprofondi>
+
+## Le verdict
 
 <Verdict niveau="debattu">
+Une relance peut alléger le poids de la dette, mais seulement en récession profonde avec des taux très bas. Dans la situation actuelle de la France, l'argument est fragile.
+</Verdict>
+
+<Conditions>
+Une récession profonde, des taux très bas, et des dépenses qui augmentent durablement la croissance, comme certains investissements.
+</Conditions>
+
+<EnApprofondi>
+
+### Le verdict en détail
+
 Une relance peut réduire le poids de la dette, mais seulement dans certaines conditions, et c'est tout le débat.
 L'effet dépend de la conjoncture et du multiplicateur budgétaire : en récession profonde, avec des taux proches de
 zéro et une banque centrale qui ne réagit pas, un euro de dépense peut produire assez de croissance pour se financer
 en bonne partie ; en temps normal, il ne rapporte qu'une fraction de son coût en recettes. Dans la situation actuelle
 de la France, l'argument est fragile : l'économie n'est pas en récession profonde, le taux auquel l'État emprunte
 dépasse sa croissance nominale, et le déficit élevé expose à une hausse de l'écart de taux avec l'Allemagne.
-</Verdict>
 
 <GrilleVerdict
   tient={<p>La croissance réduit le poids de la dette, et une relance peut s'autofinancer en partie en cas de récession profonde avec des taux très bas ; certains investissements élèvent la croissance à long terme.</p>}
   tientPas={<p>L'idée qu'une relance réduirait mécaniquement la dette quelles que soient les circonstances : en temps normal, elle l'augmente.</p>}
   debattu={<p>La taille du multiplicateur budgétaire en France aujourd'hui, le niveau de sous-activité de l'économie, le rendement à long terme des investissements publics, et la réaction des marchés à un déficit plus élevé.</p>}
+/>
+
+</EnApprofondi>
+
+## Avez-vous compris ?
+
+<Quiz
+  module="fiche-relance-pour-reduire-la-dette"
+  titre="Deux questions"
+  niveau={3}
+  questions={[
+    {
+      question: "En temps normal, l'État dépense un euro de plus. Que se passe-t-il pour sa dette ?",
+      choix: ["Elle baisse, car l'euro revient entièrement en impôts", "Elle augmente, car seule une partie de l'euro revient en impôts", "Elle ne bouge pas"],
+      bonne: 1,
+      explication: "Une dépense en plus soutient l'activité, mais seule une fraction revient en recettes fiscales. Le reste est emprunté et s'ajoute à la dette.",
+    },
+    {
+      question: "Quand la dette pèse-t-elle de moins en moins lourd, même sans être remboursée ?",
+      choix: ["Quand la croissance de la richesse produite dépasse le taux d'intérêt", "Quand les taux d'intérêt dépassent la croissance", "Jamais"],
+      bonne: 0,
+      explication: "Si la richesse produite grossit plus vite que les intérêts ne s'accumulent, le poids de la dette baisse, à condition que le déficit hors intérêts reste limité.",
+    },
+  ]}
 />

@@ -33,9 +33,10 @@ const TAILLES: { v: OptionsPaie["taille"]; l: string }[] = [
 
 const TAUX_AT = 2; // % : hypothèse, le taux réel est notifié à chaque entreprise
 
-export function FicheDePaie() {
+/** `depuisSmic` : le simulateur part du Smic actuel (data/*.json), et « Revenir aux chiffres actuels » y ramène. */
+export function FicheDePaie({ depuisSmic = false }: { depuisSmic?: boolean }) {
   const smic = getValeur("paie.smic-mensuel");
-  const s = useScenario({ brut: 3500, taille: "11-49" as OptionsPaie["taille"] });
+  const s = useScenario({ brut: depuisSmic ? smic.valeur : 3500, taille: "11-49" as OptionsPaie["taille"] });
   const brut = s.valeurs.brut;
   const taille = s.valeurs.taille;
 
@@ -65,14 +66,14 @@ export function FicheDePaie() {
 
   return (
     <div className="space-y-6">
-      <BarreScenario scenario={s} libelleReference="valeurs de départ" />
+      <BarreScenario scenario={s} libelleReference={depuisSmic ? "chiffres actuels" : "valeurs de départ"} />
       <div className="grid gap-5 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-end">
         <Curseur
           libelle="Salaire brut mensuel"
           valeur={brut}
           reference={s.reference.brut}
           affichageReference={formatEuros(s.reference.brut, Number.isInteger(s.reference.brut) ? 0 : 2)}
-          min={Math.ceil(smic.valeur / 50) * 50}
+          min={depuisSmic ? smic.valeur : Math.ceil(smic.valeur / 50) * 50}
           max={10000}
           pas={50}
           onChange={s.regler("brut")}

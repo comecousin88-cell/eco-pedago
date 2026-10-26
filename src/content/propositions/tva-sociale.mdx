@@ -1,9 +1,33 @@
-## 1. La proposition
+import { TvaSociale } from "@/components/simulators/TvaSociale";
+
+## En 30 secondes
+
+<En30Secondes
+  verdict="debattu"
+  proposition={<>Baisser les <Terme id="cotisations-sociales">cotisations sociales</Terme> payées sur les salaires, et compenser par une hausse de la TVA.</>}
+  tient={<>basculer des cotisations vers la TVA allège le coût du travail en France et fait contribuer les produits importés.</>}
+  coince={<>la mesure n'est pas neutre pour le pouvoir d'achat : les ménages modestes et les retraités y sont plus exposés.</>}
+  debattu={<>la part de la baisse de cotisations qui se retrouve dans les prix, l'effet durable sur l'emploi, et les compensations à prévoir.</>}
+/>
+
+## Pourquoi on en parle
+
+L'idée revient dans les débats sur le coût du travail et la compétitivité. L'Allemagne a pratiqué une bascule de ce type en 2007, et la France l'a votée en 2012 avant de l'annuler.
+
+## Pour bien suivre cette fiche
+
+<PourBienSuivre module="fiscalite" section="assiette-rendement" />
+
+<EnApprofondi>
+
+## La proposition et l'idée derrière
+
+### La proposition
 
 Baisser les cotisations sociales payées sur les salaires et compenser la perte de recettes par une hausse de la
 <Terme id="tva">TVA</Terme>. On parle aussi de « dévaluation fiscale ».
 
-## 2. L'idée derrière
+### L'idée derrière
 
 En France, la protection sociale est largement financée par des cotisations prélevées sur les salaires : elles
 représentaient <Chiffre id="fp.recettes-2024-par-type" x="Cotisations sociales" /> en 2024, plus du double de la TVA
@@ -21,25 +45,18 @@ Ses défenseurs notent que la TVA pèse moins en France que chez ses voisins :
 a pratiqué une bascule de ce type en 2007, en consacrant une partie d'une hausse de sa TVA à la baisse des
 cotisations chômage.
 
-## 3. Comment ça marcherait concrètement
+</EnApprofondi>
 
-Un point de taux normal de TVA rapporte environ <Chiffre id="prop.tva-point" />, selon Fipeco, le site de François
-Ecalle, ancien magistrat de la Cour des comptes, qui reprend une étude de la direction générale du Trésor. Deux
-points permettraient donc de baisser les cotisations patronales d'environ <Calcul id="calc.tva-deux-points" />.
+## Comment ça marcherait
 
-L'effet dépend ensuite de ce que font les entreprises :
+La TVA frappe tous les produits vendus en France, qu'ils y soient fabriqués ou importés. Les cotisations, elles, ne pèsent que sur ce qui est produit en France.
 
-- si elles **répercutent** la baisse de cotisations sur leurs prix hors taxe, les produits français deviennent moins
-  chers, ce qui compense en partie la hausse de TVA pour les consommateurs, tandis que les importations
-  renchérissent ;
-- si elles **gardent** la baisse pour restaurer leurs marges ou augmenter les salaires, les prix à la consommation
-  montent de presque toute la hausse de TVA.
-
-La France a voté une TVA sociale en mars 2012, à l'initiative du gouvernement de François Fillon : le taux normal
-devait passer de 19,6 % à <Chiffre id="prop.tva-sociale-2012" /> au 1er octobre 2012, en échange d'une baisse des
-cotisations patronales famille. Après l'alternance de mai 2012, le gouvernement de Jean-Marc Ayrault l'a supprimée en
-août 2012, avant son entrée en vigueur (loi de finances rectificative du 16 août 2012), et a créé à la fin de 2012 un
-crédit d'impôt pour les entreprises (le CICE) pour alléger le coût du travail.
+<SchemaAvantApres
+  titre="Qui finance la protection sociale, avant et après"
+  avant={<Bilan titre="Aujourd'hui" actif={[["Produit fabriqué en France", "paie des cotisations et la TVA"]]} passif={[["Produit importé", "ne paie que la TVA"]]} />}
+  apres={<Bilan titre="Avec la TVA sociale" actif={[["Produit fabriqué en France", "moins de cotisations, un peu plus de TVA"]]} passif={[["Produit importé", "un peu plus de TVA"]]} />}
+  legende="Le produit fabriqué en France coûte moins cher à produire, et le produit importé participe davantage au financement. À la caisse, les prix peuvent monter un peu."
+/>
 
 <PourBienComprendre titre="La TVA sociale : faire payer la protection sociale à la caisse plutôt que sur la paie">
 <Analogie>
@@ -67,11 +84,33 @@ France et fait contribuer les importations ; en contrepartie, les prix à la con
 </Retenir>
 </PourBienComprendre>
 
+<EnApprofondi>
+
+Un point de taux normal de TVA rapporte environ <Chiffre id="prop.tva-point" />, selon Fipeco, le site de François
+Ecalle, ancien magistrat de la Cour des comptes, qui reprend une étude de la direction générale du Trésor. Deux
+points permettraient donc de baisser les cotisations patronales d'environ <Calcul id="calc.tva-deux-points" />.
+
+L'effet dépend ensuite de ce que font les entreprises :
+
+- si elles **répercutent** la baisse de cotisations sur leurs prix hors taxe, les produits français deviennent moins
+  chers, ce qui compense en partie la hausse de TVA pour les consommateurs, tandis que les importations
+  renchérissent ;
+- si elles **gardent** la baisse pour restaurer leurs marges ou augmenter les salaires, les prix à la consommation
+  montent de presque toute la hausse de TVA.
+
+La France a voté une TVA sociale en mars 2012, à l'initiative du gouvernement de François Fillon : le taux normal
+devait passer de 19,6 % à <Chiffre id="prop.tva-sociale-2012" /> au 1er octobre 2012, en échange d'une baisse des
+cotisations patronales famille. Après l'alternance de mai 2012, le gouvernement de Jean-Marc Ayrault l'a supprimée en
+août 2012, avant son entrée en vigueur (loi de finances rectificative du 16 août 2012), et a créé à la fin de 2012 un
+crédit d'impôt pour les entreprises (le CICE) pour alléger le coût du travail.
+
+</EnApprofondi>
+
 <Niveaux>
 <PlusLoin>
 
 **Une hausse de TVA seule coûte en activité.** Selon le modèle macroéconomique de l'Insee et de la direction
-générale du Trésor, cité par Fipeco, une hausse de la TVA de 1 point de PIB (environ <Calcul id="calc.point-de-pib" arrondi={10} />), **sans compensation**,
+générale du Trésor, cité par Fipeco, une hausse de la TVA de 1 point de <Terme id="pib">PIB</Terme> (environ <Calcul id="calc.point-de-pib" arrondi={10} />), **sans compensation**,
 se traduit au bout de trois ans, par rapport à une situation sans hausse, par un écart de
 <Chiffre id="prop.tva-hausse-pib" /> sur le PIB et de <Chiffre id="prop.tva-hausse-emplois" /> salariés. Toute la question de la TVA sociale est
 de savoir dans quelle mesure la baisse des cotisations compense cet effet.
@@ -83,14 +122,23 @@ y perdent aussi, sauf si leurs pensions sont revalorisées.
 </PlusLoin>
 </Niveaux>
 
-## 4. Ce que disent les économistes
+## Le débat
+
+<Dialogue
+  partisan={<>La protection sociale pèse surtout sur les salaires, ce qui alourdit le coût du travail en France. La TVA, elle, frappe aussi les produits importés. Basculer de l'une à l'autre allège ce qui est produit en France et fait payer les importations. C'est l'effet d'une dévaluation, sans changer de monnaie.</>}
+  sceptique={<>La TVA pèse plus lourd, en proportion, sur les ménages modestes, qui consomment presque tout ce qu'ils gagnent. Les retraités paient la TVA sans profiter de la baisse des cotisations. Et rien ne garantit que les entreprises baisseront leurs prix plutôt que d'augmenter leurs marges. Les gains pour l'emploi sont discutés.</>}
+/>
+
+<EnApprofondi>
+
+### Tous les arguments, en détail
 
 <ArgumentsFiche
   pour={
     <ul>
       <li><strong>Un coût du travail plus bas.</strong> Moins de cotisations sur les salaires favorise l'emploi, notamment peu qualifié.</li>
       <li><strong>Les importations mises à contribution.</strong> La TVA frappe aussi les produits importés, et pas les exportations.</li>
-      <li><strong>Une dévaluation sans sortir de l'euro.</strong> L'effet sur la compétitivité ressemble à celui d'une dépréciation de la monnaie.</li>
+      <li><strong>Une dévaluation sans sortir de l'euro.</strong> L'effet sur la compétitivité ressemble à celui d'une <Terme id="depreciation">dépréciation</Terme> de la monnaie.</li>
       <li><strong>Une marge par rapport aux voisins.</strong> La TVA pèse moins dans les recettes publiques en France que dans la moyenne européenne.</li>
     </ul>
   }
@@ -104,27 +152,91 @@ y perdent aussi, sauf si leurs pensions sont revalorisées.
   }
 />
 
-## 5. Ordres de grandeur
+</EnApprofondi>
+
+## Ordres de grandeur
+
+<Reperes>
+  <Repere valeur={<Chiffre id="prop.tva-point" />}>par an pour un point de taux normal de TVA : environ <Calcul id="calc.tva-point-par-habitant" arrondi={10} /> par habitant.</Repere>
+  <Repere valeur={<Chiffre id="fp.recettes-2024-par-type" x="Cotisations sociales" />}>de cotisations sociales en 2024, plus du double des recettes de TVA, <Chiffre id="fp.recettes-2024-par-type" x="TVA" />.</Repere>
+  <Repere valeur={<Chiffre id="prop.tva-part-recettes" x="France" />}>des recettes publiques viennent de la TVA en France, contre <Chiffre id="prop.tva-part-recettes" x="Union européenne" /> en moyenne dans l'Union européenne.</Repere>
+</Reperes>
+
+<EnApprofondi>
+
+### Le détail des chiffres
 
 | | Montant |
 |---|---|
 | Cotisations sociales | <Chiffre id="fp.recettes-2024-par-type" x="Cotisations sociales" /> en 2024 |
 | Recettes de TVA | <Chiffre id="fp.recettes-2024-par-type" x="TVA" /> en 2024 |
-| Un point de taux normal de TVA | environ <Chiffre id="prop.tva-point" /> (Fipeco) |
+| Un point de taux normal de TVA | environ <Chiffre id="prop.tva-point" />, selon Fipeco |
 | Un point de tous les taux de TVA | près de <Chiffre id="prop.tva-point-tous-taux" x="brut" /> |
 | Part de la TVA dans les recettes publiques | <Chiffre id="prop.tva-part-recettes" x="France" /> en France, <Chiffre id="prop.tva-part-recettes" x="Union européenne" /> dans l'UE |
 
-## 6. Verdict
+</EnApprofondi>
+
+<EnApprofondi>
+
+## Et si on le faisait ?
+
+Relevez le taux normal de TVA et voyez ce que la hausse permettrait de baisser en cotisations.
+
+<Figure
+  titre="Une TVA sociale, en ordres de grandeur"
+  resume="Simulateur : on relève le taux normal de TVA de quelques points, et l'on voit la TVA payée en plus chaque année, la baisse de cotisations qu'elle permettrait, et sa part dans les cotisations sociales."
+  donnees={["prop.tva-point", "fp.recettes-2024-par-type", "pop.france"]}
+>
+  <TvaSociale />
+</Figure>
+
+</EnApprofondi>
+
+## Le verdict
 
 <Verdict niveau="debattu">
+La TVA sociale repose sur un mécanisme réel : elle fait contribuer les importations et allège le coût du travail. Mais elle pèse davantage sur les ménages modestes et les retraités.
+</Verdict>
+
+<Conditions>
+Des compensations pour les ménages modestes et les retraités, et une baisse de cotisations qui se retrouve vraiment dans les prix et l'emploi.
+</Conditions>
+
+<EnApprofondi>
+
+### Le verdict en détail
+
 La TVA sociale repose sur un mécanisme réel : elle fait contribuer les importations au financement de la protection
 sociale et allège le coût du travail en France. Mais son effet sur l'emploi et la compétitivité dépend de la façon
 dont les entreprises répercutent la baisse de cotisations, et elle pèse davantage sur les ménages modestes et les
 retraités. Les économistes sont partagés sur l'ampleur des gains et sur le prix à payer en pouvoir d'achat.
-</Verdict>
 
 <GrilleVerdict
   tient={<p>Basculer des cotisations vers la TVA allège le coût du travail et met les importations à contribution, avec un effet comparable à une dévaluation.</p>}
   tientPas={<p>L'idée d'une mesure neutre pour le pouvoir d'achat de tous : les ménages modestes et les retraités sont plus exposés.</p>}
   debattu={<p>La part de la baisse de cotisations répercutée sur les prix, l'effet durable sur l'emploi et les exportations, et les compensations à prévoir.</p>}
+/>
+
+</EnApprofondi>
+
+## Avez-vous compris ?
+
+<Quiz
+  module="fiche-tva-sociale"
+  titre="Deux questions"
+  niveau={3}
+  questions={[
+    {
+      question: "Pourquoi la TVA sociale fait-elle contribuer les produits importés ?",
+      choix: ["Parce que la TVA s'applique aussi aux produits importés vendus en France", "Parce que les importateurs paient des cotisations", "Parce que les importations sont interdites"],
+      bonne: 0,
+      explication: "Les cotisations ne pèsent que sur ce qui est produit en France, alors que la TVA frappe tous les produits vendus en France, importés compris.",
+    },
+    {
+      question: "Qui risque d'y perdre ?",
+      choix: ["Les entreprises exportatrices", "Les retraités et les ménages modestes", "Les produits fabriqués en France"],
+      bonne: 1,
+      explication: "Les retraités paient la TVA sans profiter de la baisse des cotisations, et les ménages modestes consomment presque tout ce qu'ils gagnent.",
+    },
+  ]}
 />

@@ -1,46 +1,64 @@
-## 1. La proposition
+## En 30 secondes
+
+<En30Secondes
+  verdict="ne-tient-pas"
+  proposition={<>Faire financer directement le déficit de l'État par sa banque centrale, qui créerait la monnaie, au lieu d'emprunter et de payer des intérêts.</>}
+  tient={<>un État qui contrôle sa monnaie ne peut pas en manquer, et la création monétaire peut aider quand l'économie est en panne et les prix trop sages.</>}
+  coince={<>la monnaie créée n'est pas gratuite : rémunérée, elle coûte autant qu'un emprunt ; non rémunérée, elle fait monter les prix. Et c'est interdit dans la zone euro.</>}
+  debattu={<>l'intérêt d'un financement monétaire encadré et temporaire en cas de crise grave.</>}
+/>
+
+## Pourquoi on en parle
+
+L'idée revient avec la charge croissante des intérêts de la dette, et depuis que les banques centrales ont créé des centaines de milliards pour racheter de la dette après 2015.
+
+## Pour bien suivre cette fiche
+
+<PourBienSuivre module="banque-centrale" section="cadre-juridique" />
+
+<EnApprofondi>
+
+## La proposition et l'idée derrière
+
+### La proposition
 
 Faire financer directement le déficit de l'État par sa banque centrale, qui créerait la monnaie nécessaire, au lieu
 d'emprunter sur les marchés et de payer des intérêts aux investisseurs. On parle de « planche à billets » ou de
 <Terme id="financement-monetaire">financement monétaire</Terme>.
 
-## 2. L'idée derrière
+### L'idée derrière
 
 Le point de départ est solide : **un État qui dispose d'une banque centrale ne peut pas manquer de sa propre
 monnaie**. Plutôt que de payer chaque année des intérêts à des investisseurs
-(<Chiffre id="fp.interets" /> pour l'ensemble des administrations publiques en <DateDonnee id="fp.interets" />), il
+(<Chiffre id="fp.interets" /> pour l'ensemble des <Terme id="administrations-publiques">administrations publiques</Terme> en <DateDonnee id="fp.interets" />), il
 pourrait faire financer une partie de ses dépenses par la banque centrale, qui lui reverse de toute façon l'essentiel
 de ses bénéfices.
 
 Les défenseurs de l'idée s'appuient sur l'expérience récente. De 2015 à 2022, les banques centrales de la zone euro
-ont créé des centaines de milliards d'euros pour racheter de la dette publique, sans que l'inflation dépasse son
+ont créé des centaines de milliards d'euros pour racheter de la <Terme id="dette-publique">dette publique</Terme>, sans que l'<Terme id="inflation">inflation</Terme> dépasse son
 objectif de 2 % pendant des années. En avril 2020, la Banque d'Angleterre a temporairement ouvert au Trésor
 britannique un découvert direct pour faire face à la crise sanitaire. Des économistes reconnus, comme l'ancien
 président de la Réserve fédérale Ben Bernanke ou l'ancien régulateur britannique Adair Turner, ont jugé qu'un
-financement monétaire assumé, encadré et temporaire pouvait se justifier quand l'économie est en récession et l'inflation trop basse.
+financement monétaire assumé, encadré et temporaire pouvait se justifier quand l'économie est en <Terme id="recession">récession</Terme> et l'inflation trop basse.
 
 Pour eux, le danger d'inflation est réel mais pilotable : tant que l'économie a des capacités inemployées, de la
 monnaie nouvelle peut financer de l'investissement sans faire monter les prix.
 
-## 3. Comment ça marcherait concrètement
+</EnApprofondi>
 
-La banque centrale créditerait le compte du Trésor, qui dépenserait ces sommes. La monnaie ainsi créée finit sur les
-comptes des banques, sous forme de <Terme id="reserves-bancaires">réserves</Terme> à la banque centrale. C'est là que
-se joue l'essentiel :
+## Comment ça marcherait
 
-- **Si les taux sont à zéro**, ces réserves ne coûtent rien : la monnaie nouvelle est réellement gratuite pour le
-  secteur public. C'était le cas entre 2015 et 2022.
-- **Si les taux sont positifs**, la banque centrale doit rémunérer ces réserves au taux de dépôt
-  (<Chiffre id="bce.taux-depot-actuel" /> aujourd'hui) pour garder la maîtrise des taux. La monnaie « gratuite » coûte
-  alors à peu près ce que coûterait un emprunt à court terme : on a changé de créancier, pas de facture.
-- **Si la banque centrale ne rémunère pas ces réserves**, les taux de marché tombent et la monnaie abondante tend à
-  faire monter les prix. Le coût est alors payé par tous, sous forme d'**inflation**, qui agit comme un impôt sur
-  l'épargne et les revenus non indexés.
+Quand la banque centrale crée de la monnaie pour l'État, cet argent finit sur le compte des banques. La question est de savoir si on le rémunère.
 
-Pour situer les montants : la création monétaire ordinaire rapporte chaque année à la Banque de France un revenu de
-« seigneuriage » de <Chiffre id="prop.seigneuriage-bdf" /> en <DateDonnee id="prop.seigneuriage-bdf" />. Le déficit
-public était de <Chiffre id="deficit.montant" /> la même année, plus de vingt fois plus. Financer un tel déficit par
-la monnaie n'aurait rien d'ordinaire.
+<SchemaEtapes
+  titre="La monnaie créée pour l'État : deux issues"
+  etapes={[
+    <>La banque centrale crée de la monnaie pour payer les dépenses de l'État…</>,
+    <>… cette monnaie finit sur le compte des banques auprès d'elle…</>,
+    <>… si elle la rémunère, elle paie des intérêts, à peu près comme un emprunt…</>,
+    <>… si elle ne la rémunère pas, cette monnaie en plus pousse les prix à la hausse.</>,
+  ]}
+/>
 
 <PourBienComprendre titre="Faire financer l'État par la banque centrale : où est le piège ?">
 <Analogie>
@@ -53,7 +71,7 @@ billets des autres joueurs ne vaudraient plus grand-chose.
 <PasAPas>
 
 1. L'État doit payer 100 € de dépenses. Au lieu d'emprunter, il demande à la banque centrale de créer 100 €.
-2. Il n'a ni intérêts à payer ni dette à rembourser à des investisseurs : ce gain s'appelle le seigneuriage.
+2. Il n'a ni intérêts à payer ni dette à rembourser à des investisseurs : ce gain s'appelle le <Terme id="seigneuriage">seigneuriage</Terme>.
 3. Si l'économie produit déjà tout ce qu'elle peut, ces 100 € en plus font surtout monter les prix. La hausse
    rogne le pouvoir d'achat de tous ceux qui détiennent des euros.
 
@@ -66,14 +84,36 @@ d'inflation et de perte de confiance dans la monnaie. Dans la zone euro, c'est i
 </Retenir>
 </PourBienComprendre>
 
+<EnApprofondi>
+
+La banque centrale créditerait le compte du Trésor, qui dépenserait ces sommes. La monnaie ainsi créée finit sur les
+comptes des banques, sous forme de <Terme id="reserves-bancaires">réserves</Terme> à la banque centrale. C'est là que
+se joue l'essentiel :
+
+- **Si les taux sont à zéro**, ces réserves ne coûtent rien : la monnaie nouvelle est réellement gratuite pour le
+  secteur public. C'était le cas entre 2015 et 2022.
+- **Si les taux sont positifs**, la banque centrale doit rémunérer ces réserves au <Terme id="taux-de-depot">taux de dépôt</Terme>
+  (<Chiffre id="bce.taux-depot-actuel" /> aujourd'hui) pour garder la maîtrise des taux. La monnaie « gratuite » coûte
+  alors à peu près ce que coûterait un emprunt à court terme : on a changé de créancier, pas de facture.
+- **Si la banque centrale ne rémunère pas ces réserves**, les <Terme id="rendement">taux de marché</Terme> tombent et la monnaie abondante tend à
+  faire monter les prix. Le coût est alors payé par tous, sous forme d'**inflation**, qui agit comme un impôt sur
+  l'épargne et les revenus non indexés.
+
+Pour situer les montants : la création monétaire ordinaire rapporte chaque année à la Banque de France un revenu de
+« seigneuriage » de <Chiffre id="prop.seigneuriage-bdf" /> en <DateDonnee id="prop.seigneuriage-bdf" />. Le déficit
+public était de <Chiffre id="deficit.montant" /> la même année, plus de vingt fois plus. Financer un tel déficit par
+la monnaie n'aurait rien d'ordinaire.
+
+</EnApprofondi>
+
 <Niveaux>
 <PlusLoin>
 
-**Ce que dit le droit.** L'article 123 du traité sur le fonctionnement de l'Union européenne interdit à la BCE et
+**Ce que dit le droit.** L'article 123 du traité sur le fonctionnement de l'Union européenne interdit à la <Terme id="bce">BCE</Terme> et
 aux banques centrales nationales d'accorder des découverts ou des crédits aux États, et d'acheter leurs titres
-directement à l'émission. Les rachats de dette de 2015-2022 se faisaient sur le marché secondaire, dans un but de
+directement à l'émission. Les <Terme id="rachats-de-dette">rachats de dette</Terme> de 2015-2022 se faisaient sur le marché secondaire, dans un but de
 politique monétaire, sous des limites strictes. La France ne peut pas demander à la Banque de France de financer son
-déficit : celle-ci agit dans le cadre de l'Eurosystème.
+déficit : celle-ci agit dans le cadre de l'<Terme id="eurosysteme">Eurosystème</Terme>.
 
 **Quand la planche à billets a mal tourné.** Les hyperinflations les plus célèbres (Allemagne en 1923, Zimbabwe à la
 fin des années 2000) ont toutes été précédées d'un financement monétaire massif d'un État qui ne pouvait plus
@@ -88,7 +128,16 @@ poussée, à côté du choc énergétique.
 </PlusLoin>
 </Niveaux>
 
-## 4. Ce que disent les économistes
+## Le débat
+
+<Dialogue
+  partisan={<>Un État doté d'une banque centrale ne peut pas manquer de sa propre monnaie. Pourquoi payer des dizaines de milliards d'intérêts à des investisseurs ? De 2015 à 2022, les banques centrales ont créé des centaines de milliards sans inflation pendant des années. Et des économistes reconnus jugent utile un financement monétaire encadré en cas de crise.</>}
+  sceptique={<>La monnaie créée n'est pas gratuite. Elle finit sur le compte des banques, et la banque centrale doit la rémunérer pour tenir les taux : cela coûte à peu près un emprunt. Si elle ne la rémunère pas, le coût revient par l'inflation. Et dans la zone euro, c'est interdit : la France ne peut pas le décider seule.</>}
+/>
+
+<EnApprofondi>
+
+### Tous les arguments, en détail
 
 <ArgumentsFiche
   pour={
@@ -110,7 +159,19 @@ poussée, à côté du choc énergétique.
   }
 />
 
-## 5. Ordres de grandeur
+</EnApprofondi>
+
+## Ordres de grandeur
+
+<Reperes>
+  <Repere valeur={<Chiffre id="fp.interets" />}>d'intérêts versés en un an par l'ensemble des administrations publiques : environ <Calcul id="calc.interets-par-habitant" arrondi={10} /> par habitant.</Repere>
+  <Repere valeur={<Chiffre id="prop.seigneuriage-bdf" />}>de revenu tiré de la création monétaire par la Banque de France : de quoi couvrir à peine <Calcul id="calc.seigneuriage-jours-interets" /> de ces intérêts.</Repere>
+  <Repere valeur={<Chiffre id="deficit.montant" />}>de <Terme id="deficit-public">déficit public</Terme>, environ <Calcul id="calc.deficit-par-habitant" arrondi={100} /> par habitant : bien plus que ce que la création monétaire rapporte sans faire monter les prix.</Repere>
+</Reperes>
+
+<EnApprofondi>
+
+### Le détail des chiffres
 
 | | Montant |
 |---|---|
@@ -120,18 +181,54 @@ poussée, à côté du choc énergétique.
 | Taux auquel la banque centrale rémunère les réserves | <Chiffre id="bce.taux-depot-actuel" /> |
 | Inflation en France | <Chiffre id="macro.inflation" x="2022" /> en 2022, <Chiffre id="macro.inflation" x="2025" /> en 2025 |
 
-## 6. Verdict
+</EnApprofondi>
+
+## Le verdict
 
 <Verdict niveau="ne-tient-pas">
+Financer durablement le déficit en créant de la monnaie ne tient pas : c'est interdit dans la zone euro, et cette monnaie coûte soit des intérêts, soit de l'inflation.
+</Verdict>
+
+<Conditions>
+Seulement de façon limitée et temporaire, en crise grave avec des prix trop sages, et avec une décision de tous les pays de la zone euro.
+</Conditions>
+
+<EnApprofondi>
+
+### Le verdict en détail
+
 Financer durablement le déficit par la création monétaire ne tient pas en l'état : c'est interdit dans la zone euro,
 et l'idée d'une monnaie gratuite ne résiste pas au mécanisme. Quand les taux sont positifs, la monnaie créée doit
 être rémunérée et coûte à peu près ce que coûterait un emprunt ; si elle ne l'est pas, le coût revient sous forme
 d'inflation. Ce qui reste débattu, c'est l'usage limité et temporaire d'un financement monétaire en période de
 récession et d'inflation trop faible.
-</Verdict>
 
 <GrilleVerdict
   tient={<p>Un État qui contrôle sa monnaie ne peut pas être forcé au défaut, et la création monétaire peut soutenir l'économie quand les taux sont à zéro et l'inflation trop basse.</p>}
   tientPas={<p>L'idée que la monnaie créée serait gratuite quelles que soient les circonstances, et que la France pourrait y recourir seule dans la zone euro.</p>}
   debattu={<p>L'intérêt d'un financement monétaire encadré et temporaire en cas de crise grave, et la part des rachats de dette dans l'inflation de 2022-2023.</p>}
+/>
+
+</EnApprofondi>
+
+## Avez-vous compris ?
+
+<Quiz
+  module="fiche-planche-a-billets"
+  titre="Deux questions"
+  niveau={3}
+  questions={[
+    {
+      question: "La banque centrale crée de la monnaie pour l'État et la rémunère sur le compte des banques. Que coûte cette monnaie ?",
+      choix: ["Rien du tout", "À peu près ce que coûterait un emprunt", "Le double d'un emprunt"],
+      bonne: 1,
+      explication: "La monnaie créée finit sur le compte des banques, que la banque centrale rémunère pour tenir les taux. Elle coûte donc à peu près des intérêts.",
+    },
+    {
+      question: "Et si la banque centrale ne rémunère pas cette monnaie ?",
+      choix: ["Elle devient gratuite pour toujours", "Le coût revient sous forme d'inflation", "L'État doit la rembourser en or"],
+      bonne: 1,
+      explication: "Une monnaie en plus, non rémunérée, alimente la demande et pousse les prix à la hausse : le coût passe par l'inflation.",
+    },
+  ]}
 />

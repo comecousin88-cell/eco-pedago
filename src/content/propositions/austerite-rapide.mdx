@@ -1,40 +1,61 @@
-## 1. La proposition
+## En 30 secondes
+
+<En30Secondes
+  verdict="debattu"
+  proposition={<>Réduire fortement les dépenses publiques en deux ou trois ans, pour ramener vite le déficit sous 3 % du <Terme id="pib">PIB</Terme>, sans hausse d'impôts.</>}
+  tient={<>la France dépense beaucoup, et un effort crédible peut faire baisser les taux auxquels elle emprunte.</>}
+  coince={<>une économie rapide freine aussi l'activité : une partie de l'effort se perd en recettes, et le poids de la dette peut d'abord monter.</>}
+  debattu={<>l'ampleur de ce frein sur l'activité, le bon rythme de l'effort, et les dépenses à réduire.</>}
+/>
+
+## Pourquoi on en parle
+
+L'idée revient à chaque débat budgétaire, avec un déficit qui reste au-dessus des règles européennes. Elle oppose ceux qui veulent un effort rapide et net à ceux qui préfèrent l'étaler sur plusieurs années.
+
+## Pour bien suivre cette fiche
+
+<PourBienSuivre module="boule-de-neige" section="chiffrage" />
+
+<EnApprofondi>
+
+## La proposition et l'idée derrière
+
+### La proposition
 
 Réduire fortement et rapidement les dépenses publiques, en deux ou trois ans, pour ramener le déficit sous 3 % du
 PIB, voire à l'équilibre, sans augmenter les impôts.
 
-## 2. L'idée derrière
+### L'idée derrière
 
 La France dépense beaucoup : <Chiffre id="fp.depenses" /> en <DateDonnee id="fp.depenses" />, soit
 <Chiffre id="fp.depenses-pib" /> de la richesse produite, l'un des niveaux les plus élevés du monde développé. Son
 déficit atteint <Chiffre id="deficit.ratio-pib" /> et les intérêts de la dette montent. Pour les défenseurs d'un
 effort rapide, le problème vient des dépenses, pas d'un manque d'impôts : la France a déjà l'un des taux de
-prélèvements obligatoires les plus élevés (<Chiffre id="fp.prelevements-obligatoires-pib" />).
+<Terme id="prelevements-obligatoires">prélèvements obligatoires</Terme> les plus élevés (<Chiffre id="fp.prelevements-obligatoires-pib" />).
 
 Ils avancent aussi un argument de **crédibilité** : un effort étalé sur dix ans est rarement tenu, et les marchés le
 savent. Un ajustement rapide et net rassure les investisseurs, fait baisser la
-<Terme id="prime-de-risque">prime de risque</Terme> et donc les taux, ce qui allège la charge de la dette. Plusieurs
+<Terme id="prime-de-risque">prime de risque</Terme> et donc les taux, ce qui allège la <Terme id="charge-de-la-dette">charge de la dette</Terme>. Plusieurs
 pays, comme le Canada ou la Suède dans les années 1990, ont fortement réduit leurs dépenses en quelques années et ont
 renoué avec la croissance. Certains économistes, comme Alberto Alesina, ont soutenu qu'une consolidation fondée sur
 les dépenses pouvait même relancer l'activité, en restaurant la confiance des ménages et des entreprises.
 
-## 3. Comment ça marcherait concrètement
+</EnApprofondi>
 
-Ramener le déficit de <Chiffre id="deficit.ratio-pib" /> à 3 % du PIB représente un effort d'environ
-<Calcul id="calc.effort-3pct-points" />, soit de l'ordre de <Calcul id="calc.effort-3pct-md" arrondi={10} /> ; le ramener
-au niveau qui stabilise la dette, environ <Calcul id="calc.deficit-stabilisant" />, près de
-<Calcul id="calc.effort-stabilisation-md" arrondi={5} />. En deux ou trois ans, cela suppose de baisser les dépenses de 3 à 5 % en volume, alors que les dépenses
-de retraite, de santé et les intérêts augmentent spontanément.
+## Comment ça marcherait
 
-Le point clé est l'**effet en retour sur l'activité**. Une dépense publique en moins, c'est aussi un revenu en moins
-pour un fonctionnaire, une entreprise ou un ménage, qui réduit à son tour ses dépenses. C'est ce que mesure le
-« multiplicateur budgétaire ». S'il est de 0,5, un euro d'économie réduit le PIB de 50 centimes ; s'il est proche de 1,
-d'un euro. Comme les recettes fiscales suivent le PIB, une partie de l'économie se perd, et le ratio de dette peut
-même monter à court terme, puisque le PIB recule.
+Une dépense publique en moins, c'est aussi un revenu en moins pour quelqu'un. Ce revenu en moins réduit à son tour l'activité, donc les impôts encaissés.
 
-Au plus fort de la crise de la zone euro, Olivier Blanchard et Daniel Leigh, au FMI, ont montré que chaque point de
-PIB de consolidation supplémentaire prévue en Europe s'était accompagné d'une croissance inférieure d'environ
-<Chiffre id="prop.multiplicateur-blanchard-leigh" /> aux prévisions : les multiplicateurs avaient été sous-estimés.
+<SchemaEtapes
+  titre="Une économie budgétaire, et son effet en retour"
+  etapes={[
+    <>L'État dépense moins…</>,
+    <>… des entreprises et des ménages reçoivent moins, et dépensent moins à leur tour…</>,
+    <>… l'activité ralentit et les impôts rentrent moins bien…</>,
+    <>… le déficit baisse moins que prévu, et le poids de la dette peut d'abord monter.</>,
+  ]}
+  legende="L'ampleur de cet effet en retour dépend de la conjoncture : il est plus fort quand l'économie va mal et quand tous les voisins font des économies en même temps."
+/>
 
 <PourBienComprendre titre="Pourquoi une économie rapide peut faire monter le ratio de dette">
 <Analogie>
@@ -60,10 +81,30 @@ recettes, et plus le ratio de dette peut monter au début.
 </Retenir>
 </PourBienComprendre>
 
+<EnApprofondi>
+
+Ramener le déficit de <Chiffre id="deficit.ratio-pib" /> à 3 % du PIB représente un effort d'environ
+<Calcul id="calc.effort-3pct-points" />, soit de l'ordre de <Calcul id="calc.effort-3pct-md" arrondi={10} /> ; le ramener
+au niveau qui stabilise la dette, environ <Calcul id="calc.deficit-stabilisant" />, près de
+<Calcul id="calc.effort-stabilisation-md" arrondi={5} />. En deux ou trois ans, cela suppose de baisser les dépenses de 3 à 5 % en volume, alors que les dépenses
+de retraite, de santé et les intérêts augmentent spontanément.
+
+Le point clé est l'**effet en retour sur l'activité**. Une dépense publique en moins, c'est aussi un revenu en moins
+pour un fonctionnaire, une entreprise ou un ménage, qui réduit à son tour ses dépenses. C'est ce que mesure le
+« <Terme id="multiplicateur">multiplicateur budgétaire</Terme> ». S'il est de 0,5, un euro d'économie réduit le PIB de 50 centimes ; s'il est proche de 1,
+d'un euro. Comme les recettes fiscales suivent le PIB, une partie de l'économie se perd, et le ratio de dette peut
+même monter à court terme, puisque le PIB recule.
+
+Au plus fort de la crise de la zone euro, Olivier Blanchard et Daniel Leigh, au FMI, ont montré que chaque point de
+PIB de consolidation supplémentaire prévue en Europe s'était accompagné d'une croissance inférieure d'environ
+<Chiffre id="prop.multiplicateur-blanchard-leigh" /> aux prévisions : les multiplicateurs avaient été sous-estimés.
+
+</EnApprofondi>
+
 <Niveaux>
 <PlusLoin>
 
-**Le multiplicateur dépend des circonstances.** Il est plus élevé en récession, quand la banque centrale ne peut plus
+**Le multiplicateur dépend des circonstances.** Il est plus élevé en <Terme id="recession">récession</Terme>, quand la banque centrale ne peut plus
 baisser ses taux, et quand tous les pays voisins font de même. Il est plus faible quand l'économie tourne à plein,
 quand la banque centrale peut compenser par une baisse des taux, ou quand l'effort restaure une confiance perdue. Les
 exemples canadien et suédois des années 1990 se sont accompagnés de baisses de taux et de monnaies dépréciées, des
@@ -83,7 +124,16 @@ années.
 </PlusLoin>
 </Niveaux>
 
-## 4. Ce que disent les économistes
+## Le débat
+
+<Dialogue
+  partisan={<>La France dépense plus que presque tous ses voisins, et elle prélève déjà beaucoup. Le problème vient donc des dépenses, pas d'un manque d'impôts. Un effort étalé sur dix ans n'est jamais tenu, les marchés le savent. Un effort rapide et net rassure, fait baisser les taux, et allège vite la charge de la dette.</>}
+  sceptique={<>Couper fort et vite, c'est aussi couper des revenus : l'activité ralentit et les impôts rentrent moins bien. Une partie de l'économie se perd en route. En Europe, après 2010, les économies ont pesé plus que prévu sur la croissance. Un effort plus étalé coûterait moins cher en activité, pour le même résultat.</>}
+/>
+
+<EnApprofondi>
+
+### Tous les arguments, en détail
 
 <ArgumentsFiche
   pour={
@@ -104,27 +154,75 @@ années.
   }
 />
 
-## 5. Ordres de grandeur
+</EnApprofondi>
+
+## Ordres de grandeur
+
+<Reperes>
+  <Repere valeur={<Calcul id="calc.effort-3pct-md" />}>d'économies par an pour revenir à 3 % du PIB : environ <Calcul id="calc.effort-3pct-par-habitant" arrondi={10} /> par habitant, ou <Calcul id="calc.effort-3pct-part-depenses" /> des dépenses publiques.</Repere>
+  <Repere valeur={<Calcul id="calc.effort-stabilisation-md" />}>par an, rien que pour que la dette cesse de grossir plus vite que la richesse produite.</Repere>
+  <Repere valeur={<Chiffre id="prop.multiplicateur-blanchard-leigh" />}>de croissance en moins que prévu, pour chaque point de PIB d'économies, dans l'Europe de 2010-2011, selon deux économistes du FMI.</Repere>
+</Reperes>
+
+<EnApprofondi>
+
+### Le détail des chiffres
 
 | | Montant |
 |---|---|
 | Dépenses publiques | <Chiffre id="fp.depenses" /> en <DateDonnee id="fp.depenses" />, soit <Chiffre id="fp.depenses-pib" /> |
-| Déficit public | <Chiffre id="deficit.montant" />, soit <Chiffre id="deficit.ratio-pib" /> |
-| Revenir à 3 % du PIB | environ <Calcul id="calc.effort-3pct-points" />, de l'ordre de <Calcul id="calc.effort-3pct-md" arrondi={10} /> (calcul) |
-| Stabiliser la dette | près de <Calcul id="calc.effort-stabilisation-md" arrondi={5} /> par an (calcul, avec la croissance nominale de <DateDonnee id="macro.croissance-valeur" />) |
+| <Terme id="deficit-public">Déficit public</Terme> | <Chiffre id="deficit.montant" />, soit <Chiffre id="deficit.ratio-pib" /> |
+| Revenir à 3 % du PIB | environ <Calcul id="calc.effort-3pct-points" />, de l'ordre de <Calcul id="calc.effort-3pct-md" arrondi={10} /> |
+| Stabiliser la dette | près de <Calcul id="calc.effort-stabilisation-md" arrondi={5} /> par an, avec la <Terme id="croissance-nominale">croissance nominale</Terme> de <DateDonnee id="macro.croissance-valeur" /> |
 | Effet d'un point de PIB de consolidation sur la croissance (Europe, 2010-2011) | environ <Chiffre id="prop.multiplicateur-blanchard-leigh" /> en moins que prévu |
 
-## 6. Verdict
+</EnApprofondi>
+
+## Le verdict
 
 <Verdict niveau="debattu">
+Réduire le déficit par les dépenses est un choix défendable. Mais un effort massif en deux ou trois ans freine l'activité, et une partie des économies se perd en recettes.
+</Verdict>
+
+<Conditions>
+Un effort crédible mais étalé, porté sur des dépenses qui pèsent peu sur l'activité, et engagé quand l'économie n'est pas en récession.
+</Conditions>
+
+<EnApprofondi>
+
+### Le verdict en détail
+
 Réduire le déficit par les dépenses est un choix défendable, et la France dispose de marges du fait de son niveau de
 dépense élevé. Mais un effort massif concentré sur deux ou trois ans risque de freiner fortement l'activité : une
 partie des économies se perd alors en recettes fiscales, et le ratio de dette peut monter à court terme. L'ampleur de
 cet effet en retour, qui dépend de la conjoncture et de la confiance, est au cœur du débat.
-</Verdict>
 
 <GrilleVerdict
   tient={<p>La France peut réduire son déficit par les dépenses, et un effort crédible fait baisser la prime de risque.</p>}
   tientPas={<p>L'idée que l'économie réalisée se retrouverait intégralement dans le solde public : l'effet en retour sur l'activité en reprend une partie.</p>}
   debattu={<p>La taille du multiplicateur budgétaire en France aujourd'hui, le bon rythme de l'effort, et le choix des dépenses à réduire.</p>}
+/>
+
+</EnApprofondi>
+
+## Avez-vous compris ?
+
+<Quiz
+  module="fiche-austerite-rapide"
+  titre="Deux questions"
+  niveau={3}
+  questions={[
+    {
+      question: "L'État économise 10 milliards. Pourquoi le déficit baisse-t-il de moins de 10 milliards ?",
+      choix: ["Parce que l'activité ralentit et que les impôts rentrent moins bien", "Parce que la BCE reprend une partie de l'économie", "Parce que les intérêts de la dette baissent"],
+      bonne: 0,
+      explication: "Moins de dépense publique, c'est moins de revenus pour des entreprises et des ménages, qui dépensent moins à leur tour. Les recettes fiscales baissent, et reprennent une partie de l'économie.",
+    },
+    {
+      question: "Pourquoi le poids de la dette peut-il monter juste après un plan d'économies ?",
+      choix: ["Parce que la dette est réévaluée chaque année", "Parce que la richesse produite, qui sert à mesurer la dette, ralentit aussi", "Parce que les économies sont empruntées"],
+      bonne: 1,
+      explication: "La dette se mesure en part du PIB. Si le PIB recule plus vite que la dette, ce rapport monte, même quand le déficit baisse.",
+    },
+  ]}
 />

@@ -1,6 +1,30 @@
-## 1. La proposition
+import { AnnulationDette } from "@/components/simulators/AnnulationDette";
 
-Échanger les titres de dette publique détenus par la Banque de France contre une dette **perpétuelle** (sans date de
+## En 30 secondes
+
+<En30Secondes
+  verdict="ne-tient-pas"
+  proposition={<>Échanger la dette détenue par la Banque de France contre une dette sans fin et sans intérêts : rien n'est effacé, la dette est « mise au frigo ».</>}
+  tient={<>une dette sans fin existe bel et bien, et la dette détenue par la banque centrale n'est pas une dette comme les autres.</>}
+  coince={<>un titre qui ne rapporte rien et n'est jamais remboursé ne vaut rien : c'est une annulation sous un autre nom, avec le même coût pour la Banque de France.</>}
+  debattu={<>la capacité d'une banque centrale à porter longtemps des pertes, et la réaction des investisseurs.</>}
+/>
+
+## Pourquoi on en parle
+
+La variante est apparue dans le débat comme une façon plus douce d'annuler la dette détenue par la banque centrale. Elle revient avec la dette élevée et les pertes récentes de la Banque de France.
+
+## Pour bien suivre cette fiche
+
+<PourBienSuivre module="banque-centrale" section="bilan-bdf" />
+
+<EnApprofondi>
+
+## La proposition et l'idée derrière
+
+### La proposition
+
+Échanger les titres de <Terme id="dette-publique">dette publique</Terme> détenus par la Banque de France contre une dette **perpétuelle** (sans date de
 remboursement) et **sans intérêt**. Rien n'est effacé sur le papier : la dette est « mise au frigo », sans échéance
 et sans coût.
 
@@ -8,36 +32,32 @@ Au <DateDonnee id="bdf.titres-politique-monetaire" format="jour" />, ces titres 
 <Chiffre id="bdf.titres-politique-monetaire" />. C'est une variante de l'annulation, présentée comme plus douce :
 elle ne heurte pas de front l'idée qu'une dette doit être honorée.
 
-## 2. L'idée derrière
+### L'idée derrière
 
 Ses défenseurs partent du même constat que pour l'annulation : la dette détenue par la banque centrale est une dette
-du public envers le public. Mais ils cherchent une solution qui **n'efface rien**. Une dette perpétuelle à taux nul
+du public envers le public. Mais ils cherchent une solution qui **n'efface rien**. Une <Terme id="dette-perpetuelle">dette perpétuelle</Terme> à taux nul
 reste inscrite dans les comptes ; l'État ne fait pas défaut ; aucun créancier privé n'est touché.
 
-Ils y voient trois avantages. La dette concernée n'aurait plus à être refinancée sur les marchés, ce qui réduirait
+Ils y voient trois avantages. La dette concernée n'aurait plus à être <Terme id="refinancement">refinancée</Terme> sur les marchés, ce qui réduirait
 chaque année les montants à emprunter et l'exposition à une hausse des taux. Les intérêts versés sur ces titres
-disparaîtraient. Enfin, la banque centrale garderait la monnaie créée lors des achats, au lieu de réduire son bilan
+disparaîtraient. Enfin, la banque centrale garderait la monnaie créée lors des achats, au lieu de réduire son <Terme id="bilan">bilan</Terme>
 au fil des échéances, ce qui éviterait de remettre ces titres entre les mains d'investisseurs.
 
 Ils rappellent que les dettes perpétuelles ne sont pas une curiosité : le Royaume-Uni en a émis pendant plus de deux
 siècles, et en a remboursé les dernières en 2015.
 
-## 3. Comment ça marcherait concrètement
+</EnApprofondi>
 
-La Banque de France rendrait ses titres à l'État et recevrait en échange un titre perpétuel qui ne rapporte rien.
-Pour elle, le bilan ne change pas en apparence : un titre remplace un autre. Mais ce nouveau titre vaut, en pratique,
-**presque zéro** : un titre qui ne verse jamais rien et ne se rembourse jamais n'a pas de valeur économique. Les
-règles comptables obligeraient la banque à le déprécier.
+## Comment ça marcherait
 
-Au passif, rien ne bouge : les <Terme id="reserves-bancaires">réserves</Terme> créées pour acheter les titres restent
-dues aux banques et rémunérées au taux de dépôt de la BCE (<Chiffre id="bce.taux-depot-actuel" />). La Banque de
-France paierait donc toujours ses réserves, sans plus rien toucher sur ces titres. C'est exactement la situation de
-l'annulation, sous un autre nom.
+Sur le papier, rien n'est effacé : la Banque de France garde un titre du même montant. Mais ce titre ne lui rapporte plus rien.
 
-Les ordres de grandeur sont les mêmes : un rendement moyen de <Chiffre id="bdf.rendement-titres-pm" decimales={2} />
-sur ces titres en <DateDonnee id="bdf.rendement-titres-pm" />, soit environ <Calcul id="calc.frigo-gain-brut" /> d'intérêts que l'État ne paierait
-plus, et autant de recettes en moins pour la Banque de France, donc de bénéfices en moins reversés à l'État. Le
-simulateur de la fiche sur l'annulation s'applique tel quel.
+<SchemaAvantApres
+  titre="Ce que possède la Banque de France, avant et après"
+  avant={<Bilan titre="Aujourd'hui" actif={[["Titres d'État, qui rapportent des intérêts", <Chiffre id="bdf.titres-politique-monetaire" />]]} passif={[["Argent des banques, à rémunérer", <Chiffre id="bdf.titres-politique-monetaire" />]]} />}
+  apres={<Bilan titre="Au frigo" actif={[["Titre sans fin et sans intérêts", "presque rien en valeur"]]} passif={[["Argent des banques, toujours à rémunérer", <Chiffre id="bdf.titres-politique-monetaire" />]]} />}
+  legende="Le montant inscrit ne change pas, mais le titre ne rapporte plus rien : la Banque de France paie toujours l'argent des banques, sans plus rien toucher en face. C'est la situation de l'annulation."
+/>
 
 <PourBienComprendre titre="Pourquoi une dette perpétuelle à taux zéro ne vaut rien">
 <Analogie>
@@ -63,6 +83,25 @@ pour celui qui la détient, même si son montant reste affiché.
 </Retenir>
 </PourBienComprendre>
 
+<EnApprofondi>
+
+La Banque de France rendrait ses titres à l'État et recevrait en échange un titre perpétuel qui ne rapporte rien.
+Pour elle, le bilan ne change pas en apparence : un titre remplace un autre. Mais ce nouveau titre vaut, en pratique,
+**presque zéro** : un titre qui ne verse jamais rien et ne se rembourse jamais n'a pas de valeur économique. Les
+règles comptables obligeraient la banque à le <Terme id="depreciation">déprécier</Terme>.
+
+Au <Terme id="actif-passif">passif</Terme>, rien ne bouge : les <Terme id="reserves-bancaires">réserves</Terme> créées pour acheter les titres restent
+dues aux banques et rémunérées au <Terme id="taux-de-depot">taux de dépôt</Terme> de la <Terme id="bce">BCE</Terme> (<Chiffre id="bce.taux-depot-actuel" />). La Banque de
+France paierait donc toujours ses réserves, sans plus rien toucher sur ces titres. C'est exactement la situation de
+l'annulation, sous un autre nom.
+
+Les ordres de grandeur sont les mêmes : un rendement moyen de <Chiffre id="bdf.rendement-titres-pm" decimales={2} />
+sur ces titres en <DateDonnee id="bdf.rendement-titres-pm" />, soit environ <Calcul id="calc.frigo-gain-brut" /> d'intérêts que l'État ne paierait
+plus, et autant de recettes en moins pour la Banque de France, donc de bénéfices en moins reversés à l'État. Le
+simulateur de la fiche sur l'annulation s'applique tel quel.
+
+</EnApprofondi>
+
 <Niveaux>
 <PlusLoin>
 
@@ -78,7 +117,16 @@ gratuit tombe sous le même raisonnement.
 </PlusLoin>
 </Niveaux>
 
-## 4. Ce que disent les économistes
+## Le débat
+
+<Dialogue
+  partisan={<>On n'efface rien, l'État ne fait pas défaut et aucun épargnant n'est touché. La dette mise au frigo n'a plus à être refinancée sur les marchés, ce qui réduit l'exposition aux hausses de taux. Les intérêts sur ces titres disparaissent. Et le Royaume-Uni a eu des dettes perpétuelles pendant deux siècles.</>}
+  sceptique={<>Un titre qui ne rapporte rien et n'est jamais remboursé ne vaut rien : la Banque de France devrait le déprécier. Elle continuerait de rémunérer l'argent des banques, sans plus rien toucher en face. Ce que l'État gagne, elle le perd, comme pour une annulation. Le changement de nom ne change pas le mécanisme.</>}
+/>
+
+<EnApprofondi>
+
+### Tous les arguments, en détail
 
 <ArgumentsFiche
   pour={
@@ -86,40 +134,100 @@ gratuit tombe sous le même raisonnement.
       <li><strong>Rien n'est effacé.</strong> L'État n'est pas en défaut : la dette reste inscrite, aucun créancier privé n'est lésé.</li>
       <li><strong>Moins de dette à refinancer.</strong> Les titres mis au frigo ne reviendraient plus sur les marchés : l'État emprunterait moins chaque année et serait moins exposé à une hausse des taux.</li>
       <li><strong>Une dette du public envers le public.</strong> Vu de l'ensemble État + banque centrale, ces titres ne sont pas une dette envers des tiers.</li>
-      <li><strong>Une banque centrale peut supporter des pertes.</strong> Les banques centrales de la zone euro ont absorbé de lourdes pertes en 2023 et 2024 sans perdre le contrôle de l'inflation.</li>
+      <li><strong>Une banque centrale peut supporter des pertes.</strong> Les banques centrales de la zone euro ont absorbé de lourdes pertes en 2023 et 2024 sans perdre le contrôle de l'<Terme id="inflation">inflation</Terme>.</li>
     </ul>
   }
   contre={
     <ul>
       <li><strong>Une annulation sous un autre nom.</strong> Un titre qui ne rapporte rien et ne se rembourse jamais vaut presque zéro : la perte de la banque centrale est la même qu'avec une annulation.</li>
       <li><strong>Aucun gain net.</strong> Les intérêts que l'État ne paie plus sont des recettes que la Banque de France ne touche plus, alors qu'elle rémunère toujours les réserves.</li>
-      <li><strong>Interdit par les traités.</strong> Un prêt perpétuel gratuit de la banque centrale à l'État est un financement monétaire direct.</li>
-      <li><strong>Une décision qui n'appartient pas à la France.</strong> Ces titres ont été achetés dans le cadre des programmes de l'Eurosystème, décidés en commun.</li>
+      <li><strong>Interdit par les traités.</strong> Un prêt perpétuel gratuit de la banque centrale à l'État est un <Terme id="financement-monetaire">financement monétaire</Terme> direct.</li>
+      <li><strong>Une décision qui n'appartient pas à la France.</strong> Ces titres ont été achetés dans le cadre des programmes de l'<Terme id="eurosysteme">Eurosystème</Terme>, décidés en commun.</li>
     </ul>
   }
 />
 
-## 5. Ordres de grandeur
+</EnApprofondi>
+
+## Ordres de grandeur
+
+<Reperes>
+  <Repere valeur={<Chiffre id="bdf.titres-politique-monetaire" />}>de titres de l'État détenus par la Banque de France : environ <Calcul id="calc.bdf-titres-par-habitant" arrondi={100} /> par habitant.</Repere>
+  <Repere valeur={<Calcul id="calc.frigo-gain-brut" />}>d'intérêts par an que l'État ne verserait plus, environ <Calcul id="calc.frigo-gain-par-habitant" /> par habitant : à peine <Calcul id="calc.frigo-gain-jours-interets" /> des intérêts de toute la dette publique sur une année.</Repere>
+  <Repere valeur="0 €">d'économie au total pour l'État et la Banque de France réunis : la banque reverse à l'État autant de bénéfices en moins.</Repere>
+</Reperes>
+
+<EnApprofondi>
+
+### Le détail des chiffres
 
 | | Montant |
 |---|---|
 | Titres publics détenus par la Banque de France | <Chiffre id="bdf.titres-politique-monetaire" /> au <DateDonnee id="bdf.titres-politique-monetaire" format="jour" /> |
 | Rendement moyen de ces titres | <Chiffre id="bdf.rendement-titres-pm" decimales={2} /> en <DateDonnee id="bdf.rendement-titres-pm" /> |
-| Intérêts que l'État ne paierait plus (gain brut) | environ <Calcul id="calc.frigo-gain-brut" /> par an (calcul : <Chiffre id="bdf.titres-politique-monetaire" /> × <Chiffre id="bdf.rendement-titres-pm" />) |
+| Intérêts que l'État ne paierait plus (gain brut) | environ <Calcul id="calc.frigo-gain-brut" /> par an : <Chiffre id="bdf.titres-politique-monetaire" /> multipliés par <Chiffre id="bdf.rendement-titres-pm" /> |
 | Recettes perdues par la Banque de France | le même montant : économie nette nulle pour l'ensemble |
 | Taux auquel elle rémunère les réserves | <Chiffre id="bce.taux-depot-actuel" /> depuis le <DateDonnee id="bce.taux-depot-actuel" format="jour" /> |
 
-## 6. Verdict
+</EnApprofondi>
+
+<EnApprofondi>
+
+## Et si on le faisait ?
+
+Le mécanisme est celui de l'annulation : le simulateur de la fiche « Annuler la dette détenue par la banque centrale » s'applique tel quel. Choisissez le montant mis au frigo et la réaction des marchés.
+
+<Figure
+  titre="Ce que change l'opération, pour qui"
+  resume="Simulateur : on choisit le montant concerné, le coupon moyen des titres et la réaction des marchés. Le gain d'intérêts de l'État est exactement compensé par la perte de la Banque de France ; seule reste, en net, la prime de risque éventuelle."
+  donnees={["bdf.titres-politique-monetaire", "bdf.rendement-titres-pm", "bce.taux-depot-actuel", "aft.programme-emissions", "dette.stock", "dette.ratio-pib"]}
+>
+  <AnnulationDette />
+</Figure>
+
+</EnApprofondi>
+
+## Le verdict
 
 <Verdict niveau="ne-tient-pas">
+Mettre la dette au frigo a les mêmes effets qu'une annulation : ce que l'État gagne, la Banque de France le perd. Le changement de nom ne change pas le mécanisme.
+</Verdict>
+
+<EnApprofondi>
+
+### Le verdict en détail
+
 Mettre la dette « au frigo » produit les mêmes effets économiques qu'une annulation : la Banque de France détiendrait
 un titre sans valeur et continuerait de rémunérer les réserves créées pour l'acheter. L'économie d'intérêts de l'État
 est compensée par la perte de sa banque centrale, et l'opération serait contraire à l'interdiction du financement
 monétaire. Le changement de nom ne change pas le mécanisme.
-</Verdict>
 
 <GrilleVerdict
   tient={<p>La dette détenue par la banque centrale n'est pas une dette ordinaire, et une dette perpétuelle est un instrument qui existe.</p>}
   tientPas={<p>L'idée d'un gain budgétaire net, et celle qu'un prêt perpétuel gratuit échapperait aux règles qui interdisent l'annulation.</p>}
-  debattu={<p>La capacité d'une banque centrale à porter durablement des pertes ou des fonds propres négatifs, et la réaction des investisseurs.</p>}
+  debattu={<p>La capacité d'une banque centrale à porter durablement des pertes ou des <Terme id="fonds-propres">fonds propres</Terme> négatifs, et la réaction des investisseurs.</p>}
+/>
+
+</EnApprofondi>
+
+## Avez-vous compris ?
+
+<Quiz
+  module="fiche-dette-au-frigo"
+  titre="Deux questions"
+  niveau={3}
+  questions={[
+    {
+      question: "Que vaut, pour celui qui le détient, un titre qui ne verse jamais d'intérêts et n'est jamais remboursé ?",
+      choix: ["Son montant inscrit", "La moitié de son montant", "Presque rien"],
+      bonne: 2,
+      explication: "Ce que vaut un titre dépend de ce qu'il rapportera. Sans intérêts ni remboursement, il ne rapporte rien, quel que soit le montant affiché.",
+    },
+    {
+      question: "Pourquoi la Banque de France perd-elle de l'argent si la dette est mise au frigo ?",
+      choix: ["Parce qu'elle doit toujours rémunérer l'argent des banques, sans plus rien toucher en face", "Parce qu'elle doit rembourser la BCE", "Parce que les billets perdent leur valeur"],
+      bonne: 0,
+      explication: "Pour acheter ces titres, elle a créé de l'argent qu'elle doit aux banques et qu'elle rémunère. Les titres au frigo ne lui rapportent plus rien : elle paie sans recevoir.",
+    },
+  ]}
 />

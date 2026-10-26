@@ -65,6 +65,7 @@ export const chiffresFixes: Record<string, Record<string, string>> = {
     "0 €": "résultat du raisonnement (économie nette nulle pour l'État et la Banque de France)",
   },
   "src/content/propositions/austerite-rapide.mdx": { "5 %": "ordre de grandeur de la baisse de dépenses (3 à 5 %)" },
+  "src/content/propositions/dette-au-frigo.mdx": { "0 €": "résultat du raisonnement (économie nette nulle pour l'État et la Banque de France)" },
   "src/content/propositions/financer-les-depenses-en-taxant-les-riches.mdx": { "2 %": IMPOT_PLANCHER, "100 millions": IMPOT_PLANCHER },
   "src/content/propositions/hausse-forte-du-smic.mdx": { "10 %": "paramètre de la proposition", "20 %": "paramètre de la proposition" },
   "src/content/propositions/passage-capitalisation.mdx": { "10 %": "paramètre du scénario étudié" },

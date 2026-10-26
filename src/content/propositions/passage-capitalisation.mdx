@@ -1,6 +1,28 @@
 import { DoubleCharge } from "@/components/graphiques/DoubleCharge";
 
-## 1. La proposition
+## En 30 secondes
+
+<En30Secondes
+  verdict="ne-tient-pas"
+  proposition={<>Remplacer, en tout ou en partie, la retraite par répartition par une retraite où chacun épargne pour lui-même, et où cette épargne est placée.</>}
+  tient={<>une part d'épargne placée diversifie le financement des retraites, et rapporte sur longue période plus que la hausse des salaires.</>}
+  coince={<>pendant des décennies, une génération doit payer deux fois : pour les pensions déjà promises, et pour sa propre épargne.</>}
+  debattu={<>une part de capitalisation ajoutée progressivement : sa taille, ses garanties, et comment financer la transition.</>}
+/>
+
+## Pourquoi on en parle
+
+L'idée revient à chaque réforme des retraites, face à la baisse du nombre d'actifs pour chaque retraité. Plusieurs pays voisins combinent déjà les deux systèmes.
+
+## Pour bien suivre cette fiche
+
+<PourBienSuivre module="retraites" section="repartition-capitalisation" />
+
+<EnApprofondi>
+
+## La proposition et l'idée derrière
+
+### La proposition
 
 Remplacer, en tout ou en partie, la retraite par <Terme id="repartition">répartition</Terme> (les cotisations des
 actifs paient les pensions des retraités du moment) par une retraite par
@@ -13,9 +35,9 @@ Deux versions de cette proposition doivent être distinguées, car elles n'ont p
 - **l'introduction progressive d'une part de capitalisation**, un étage supplémentaire à côté de la répartition, qui
   reste le socle.
 
-## 2. L'idée derrière
+### L'idée derrière
 
-La répartition dépend de la démographie : quand le nombre de cotisants par retraité baisse, il faut cotiser plus,
+La répartition dépend de la démographie : quand le nombre de <Terme id="rapport-demographique">cotisants par retraité</Terme> baisse, il faut cotiser plus,
 partir plus tard ou toucher moins. On comptait <Chiffre id="retraites.cotisants-par-retraite" x="2025" decimales={1} /> pour un retraité en 2025, et le Conseil d'orientation des retraites en prévoit
 <Chiffre id="retraites.cotisants-par-retraite" x="2070" decimales={1} /> en 2070.
 
@@ -26,25 +48,18 @@ L'épargne ainsi constituée financerait aussi les entreprises françaises, au l
 étrangers en détenir une large part. Plusieurs pays, comme les Pays-Bas, la Suède ou la Suisse, combinent un socle
 par répartition et un étage important en capitalisation.
 
-## 3. Comment ça marcherait concrètement
+</EnApprofondi>
 
-Le problème central est celui de la **transition**. Les pensions déjà promises aux retraités actuels, et les droits
-accumulés par les actifs, devront être payés pendant des décennies. Si une partie des cotisations va désormais vers
-l'épargne de chacun, elle ne finance plus ces pensions : une génération doit **payer deux fois**, pour les retraités
-d'aujourd'hui et pour sa propre retraite. C'est la « double charge ».
+## Comment ça marcherait
 
-Pour en mesurer l'ampleur : les dépenses de retraite représentent <Chiffre id="retraites.depenses-montant" /> par an
-(<Chiffre id="retraites.depenses-pib" />). Faire passer 10 % du système en capitalisation, c'est devoir trouver de
-l'ordre de <Calcul id="calc.capitalisation-10pct" arrondi={10} /> par an pendant la transition, pour continuer à payer les pensions en cours tout en
-alimentant l'épargne nouvelle, et cela pendant plusieurs décennies.
+Le cœur du problème est la transition : les pensions déjà promises doivent être payées, pendant que les actifs commencent à épargner pour eux-mêmes.
 
-<Figure
-  titre="La double charge d'une transition vers la capitalisation"
-  resume="Modèle illustratif : si une part de la retraite passe en capitalisation, les pensions déjà promises s'éteignent lentement pendant que l'épargne pour soi monte vite. Pendant plusieurs décennies, l'effort total dépasse celui du système actuel."
-  source="Modèle illustratif, chiffres d'exemple. Voir les hypothèses sous le graphique."
->
-  <DoubleCharge />
-</Figure>
+<SchemaAvantApres
+  titre="Ce que paie un actif, avant et pendant la transition"
+  avant={<Bilan titre="Aujourd'hui" actif={[["Ce qu'il verse", "ses cotisations"]]} passif={[["Ce qu'elles financent", "les pensions des retraités actuels"]]} />}
+  apres={<Bilan titre="Pendant la transition" actif={[["Ce qu'il verse", "ses cotisations, plus son épargne"]]} passif={[["Ce qu'elles financent", "les pensions déjà promises"], ["Et en plus", "sa propre retraite future"]]} />}
+  legende="Les retraités actuels ont toujours droit à leur pension. Si une partie des cotisations part vers l'épargne, il faut la remplacer, par un impôt ou un emprunt, tant que ces pensions sont versées."
+/>
 
 <PourBienComprendre titre="Passer à la capitalisation : payer deux retraites à la fois">
 <Analogie>
@@ -71,6 +86,28 @@ sienne, qu'elle épargne.
 </Retenir>
 </PourBienComprendre>
 
+<EnApprofondi>
+
+Le problème central est celui de la **transition**. Les pensions déjà promises aux retraités actuels, et les droits
+accumulés par les actifs, devront être payés pendant des décennies. Si une partie des cotisations va désormais vers
+l'épargne de chacun, elle ne finance plus ces pensions : une génération doit **payer deux fois**, pour les retraités
+d'aujourd'hui et pour sa propre retraite. C'est la « double charge ».
+
+Pour en mesurer l'ampleur : les dépenses de retraite représentent <Chiffre id="retraites.depenses-montant" /> par an
+(<Chiffre id="retraites.depenses-pib" />). Faire passer 10 % du système en capitalisation, c'est devoir trouver de
+l'ordre de <Calcul id="calc.capitalisation-10pct" arrondi={10} /> par an pendant la transition, pour continuer à payer les pensions en cours tout en
+alimentant l'épargne nouvelle, et cela pendant plusieurs décennies.
+
+<Figure
+  titre="La double charge d'une transition vers la capitalisation"
+  resume="Modèle illustratif : si une part de la retraite passe en capitalisation, les pensions déjà promises s'éteignent lentement pendant que l'épargne pour soi monte vite. Pendant plusieurs décennies, l'effort total dépasse celui du système actuel."
+  source="Modèle illustratif, chiffres d'exemple. Voir les hypothèses sous le graphique."
+>
+  <DoubleCharge />
+</Figure>
+
+</EnApprofondi>
+
 <Niveaux>
 <PlusLoin>
 
@@ -84,14 +121,23 @@ En capitalisation, le risque de marché pèse sur chaque épargnant : partir à 
 durablement la pension. Les systèmes étrangers réduisent ce risque par des garanties, des placements prudents en fin
 de carrière ou des fonds collectifs.
 
-**Ce qui existe déjà en France.** Le plan d'épargne retraite, l'épargne salariale, et certains régimes de
+**Ce qui existe déjà en France.** Le <Terme id="per">plan d'épargne retraite</Terme>, l'épargne salariale, et certains régimes de
 fonctionnaires ou de professions libérales sont déjà en capitalisation. Le débat porte surtout sur l'ampleur d'un
 étage collectif et obligatoire.
 
 </PlusLoin>
 </Niveaux>
 
-## 4. Ce que disent les économistes
+## Le débat
+
+<Dialogue
+  partisan={<>La répartition dépend de la démographie, et le nombre d'actifs par retraité baisse. L'épargne placée rapporte, sur longue période, plus que la hausse des salaires. Chacun voit ses droits s'accumuler sur un compte à son nom. Et les Pays-Bas, la Suède ou la Suisse combinent déjà les deux systèmes.</>}
+  sceptique={<>Les retraités d'aujourd'hui ont toujours droit à leur pension : il faut la payer pendant des décennies. Une génération paierait donc deux fois, pour ses aînés et pour elle-même. Une bascule complète creuserait le déficit au lieu de le réduire. Et l'épargne placée fait passer le risque de la démographie aux marchés financiers.</>}
+/>
+
+<EnApprofondi>
+
+### Tous les arguments, en détail
 
 <ArgumentsFiche
   pour={
@@ -113,28 +159,76 @@ fonctionnaires ou de professions libérales sont déjà en capitalisation. Le d�
   }
 />
 
-## 5. Ordres de grandeur
+</EnApprofondi>
+
+## Ordres de grandeur
+
+<Reperes>
+  <Repere valeur={<Chiffre id="retraites.depenses-montant" />}>de dépenses de retraite par an : environ <Calcul id="calc.retraites-par-habitant" arrondi={100} /> par habitant.</Repere>
+  <Repere valeur={<Calcul id="calc.capitalisation-10pct" arrondi={10} />}>à trouver en plus chaque année pour faire passer 10 % du système en capitalisation : environ <Calcul id="calc.capitalisation-10pct-par-habitant" arrondi={10} /> par habitant, pendant des décennies.</Repere>
+  <Repere valeur={<Chiffre id="retraites.cotisants-par-retraite" x="2070" decimales={1} />}>cotisants pour un retraité prévus en 2070, contre <Chiffre id="retraites.cotisants-par-retraite" x="2025" decimales={1} /> en 2025.</Repere>
+</Reperes>
+
+<EnApprofondi>
+
+### Le détail des chiffres
 
 | | Montant |
 |---|---|
 | Dépenses de retraite | <Chiffre id="retraites.depenses-montant" /> en <DateDonnee id="retraites.depenses-montant" /> |
-| Part du PIB | <Chiffre id="retraites.depenses-pib" /> |
-| Faire passer 10 % du système en capitalisation | de l'ordre de <Calcul id="calc.capitalisation-10pct" arrondi={10} /> par an à financer en plus pendant la transition (calcul : 10 % des dépenses) |
+| Part du <Terme id="pib">PIB</Terme> | <Chiffre id="retraites.depenses-pib" /> |
+| Faire passer 10 % du système en capitalisation | de l'ordre de <Calcul id="calc.capitalisation-10pct" arrondi={10} /> par an à financer en plus pendant la transition : 10 % des dépenses |
 | Cotisants pour un retraité | <Chiffre id="retraites.cotisants-par-retraite" x="2025" decimales={1} /> en 2025, <Chiffre id="retraites.cotisants-par-retraite" x="2070" decimales={1} /> en 2070 |
 
-## 6. Verdict
+</EnApprofondi>
+
+## Le verdict
 
 <Verdict niveau="ne-tient-pas">
+Remplacer toute la répartition par la capitalisation creuserait le besoin de financement pendant des décennies. Ajouter progressivement une part de capitalisation reste un choix débattu.
+</Verdict>
+
+<Conditions>
+Une part de capitalisation modeste, ajoutée à côté de la répartition, avec des garanties et un financement prévu pour la transition.
+</Conditions>
+
+<EnApprofondi>
+
+### Le verdict en détail
+
 **La bascule complète ne tient pas en l'état.** Remplacer la répartition par la capitalisation impose de payer deux
 fois pendant des décennies, pour les pensions déjà promises et pour l'épargne nouvelle : elle aggrave le besoin de
 financement au lieu de le réduire. **L'introduction progressive d'une part de capitalisation, à côté de la
 répartition, relève en revanche du débat** : défendue par de nombreux économistes, elle diversifie le financement des
 retraites mais déplace une partie du risque démographique vers le risque de marché, et sa transition, plus limitée,
 doit aussi être financée.
-</Verdict>
 
 <GrilleVerdict
   tient={<p>La capitalisation diversifie les sources de financement des retraites et rapporte, sur longue période, un rendement supérieur à la croissance des salaires.</p>}
   tientPas={<p>La bascule complète : l'idée qu'elle résoudrait le déficit actuel, alors que la double charge le creuse pendant des décennies.</p>}
   debattu={<p>Une part de capitalisation introduite progressivement : sa taille, sa gestion collective ou individuelle, ses garanties, son financement pendant la transition et le partage des risques entre générations.</p>}
+/>
+
+</EnApprofondi>
+
+## Avez-vous compris ?
+
+<Quiz
+  module="fiche-passage-capitalisation"
+  titre="Deux questions"
+  niveau={3}
+  questions={[
+    {
+      question: "Pourquoi passer à la capitalisation coûte-t-il cher pendant la transition ?",
+      choix: ["Parce que les marchés baissent toujours", "Parce qu'il faut à la fois payer les pensions déjà promises et épargner pour soi", "Parce que les retraités doivent rendre leurs pensions"],
+      bonne: 1,
+      explication: "Les retraités actuels ont droit à leur pension. Si une partie des cotisations part vers l'épargne, il faut trouver ailleurs de quoi la payer, pendant des décennies.",
+    },
+    {
+      question: "En répartition, que paient les cotisations de cette année ?",
+      choix: ["Les pensions de cette année", "La retraite future de chaque cotisant", "Les intérêts de la dette"],
+      bonne: 0,
+      explication: "En répartition, les cotisations des actifs paient directement les pensions des retraités du moment.",
+    },
+  ]}
 />

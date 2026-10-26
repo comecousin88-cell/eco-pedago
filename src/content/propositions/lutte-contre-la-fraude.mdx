@@ -1,39 +1,58 @@
-## 1. La proposition
+## En 30 secondes
+
+<En30Secondes
+  verdict="ne-tient-pas"
+  proposition={<>Financer de nouvelles dépenses, ou réduire le déficit, en récupérant l'argent de la fraude fiscale et sociale plutôt qu'en levant de nouveaux impôts.</>}
+  tient={<>la fraude coûte cher, et des contrôles mieux outillés peuvent récupérer un peu plus chaque année.</>}
+  coince={<>les grands montants avancés sont des estimations : seule une petite partie est détectée, et moins encore est encaissée.</>}
+  debattu={<>l'ampleur réelle de la fraude fiscale, faute d'estimation officielle d'ensemble, et ce que rapportent des moyens en plus.</>}
+/>
+
+## Pourquoi on en parle
+
+L'idée revient à chaque budget, parce qu'elle promet des recettes sans demander d'effort aux contribuables honnêtes. Les chiffres de fraude publiés chaque année la relancent.
+
+## Pour bien suivre cette fiche
+
+<PourBienSuivre module="fiscalite" section="qui-paie" />
+
+<EnApprofondi>
+
+## La proposition et l'idée derrière
+
+### La proposition
 
 Financer de nouvelles dépenses, ou réduire le déficit, en récupérant l'argent de la fraude fiscale et sociale plutôt
 qu'en augmentant les impôts ou en réduisant les dépenses.
 
-## 2. L'idée derrière
+### L'idée derrière
 
 La fraude est une injustice : ceux qui la pratiquent font payer les autres. La combattre, c'est faire contribuer
 chacun selon les règles, sans demander d'effort supplémentaire aux contribuables honnêtes. Ses défenseurs avancent des
 montants importants : la fraude sociale est estimée à <Chiffre id="prop.fraude-sociale" x="évaluation 2025" /> par le
 Haut Conseil du financement de la protection sociale, dont plus de la moitié liée au travail dissimulé ; pour la
-seule TVA, la Commission européenne évalue à <Chiffre id="prop.ecart-tva" /> la taxe due mais non perçue en France en
+seule <Terme id="tva">TVA</Terme>, la Commission européenne évalue à <Chiffre id="prop.ecart-tva" /> la taxe due mais non perçue en France en
 <DateDonnee id="prop.ecart-tva" />. La fraude fiscale dans son ensemble, plus difficile à mesurer, est souvent
 estimée bien au-delà.
 
 Ils soulignent aussi que les moyens comptent : les outils d'exploration de données ont permis de recouvrer
 <Chiffre id="prop.datamining-recouvre" /> en <DateDonnee id="prop.datamining-recouvre" />, et des moyens humains supplémentaires produisent souvent bien plus qu'ils ne coûtent.
 
-## 3. Comment ça marcherait concrètement
+</EnApprofondi>
 
-Il faut distinguer trois montants très différents :
+## Comment ça marcherait
 
-- **La fraude estimée** : ce qui échappe à l'impôt ou aux cotisations, ou ce qui est versé à tort. C'est une
-  estimation, avec de larges marges d'incertitude, et qui mêle parfois fraude, erreurs et faillites.
-- **La fraude détectée** : ce que les contrôles mettent au jour. En <DateDonnee id="prop.controle-fiscal" />, le
-  contrôle fiscal a notifié <Chiffre id="prop.controle-fiscal" x="droits et pénalités notifiés" /> de droits et
-  pénalités ; pour la fraude sociale, un peu plus de <Chiffre id="prop.fraude-sociale-detectee" x="détectée" /> ont été
-  détectés en <DateDonnee id="prop.fraude-sociale-detectee" />.
-- **L'argent réellement récupéré** : <Chiffre id="prop.controle-fiscal" x="sommes encaissées" /> encaissés au titre du
-  contrôle fiscal en 2025, et <Chiffre id="prop.fraude-sociale-detectee" x="recouvrée" /> pour la fraude sociale en
-  2024.
+Il faut distinguer trois montants : la fraude estimée, la fraude détectée, et l'argent réellement encaissé. Seul le dernier finance des dépenses.
 
-Le contrôle fiscal rapporte donc déjà une dizaine de milliards d'euros par an, compris dans les recettes actuelles.
-Ce qu'une lutte renforcée peut apporter **en plus**, c'est la progression de ces montants : quelques milliards
-d'euros par an, en montée progressive, d'après l'expérience des dernières années. Une partie de la fraude est en
-outre impossible à recouvrer (entreprises disparues, fraudeurs insolvables).
+<SchemaEtapes
+  titre="De la fraude estimée à l'argent encaissé"
+  etapes={[
+    <>Fraude sociale estimée : <Chiffre id="prop.fraude-sociale" x="évaluation 2025" />…</>,
+    <>… fraude sociale détectée : <Chiffre id="prop.fraude-sociale-detectee" x="détectée" />…</>,
+    <>… fraude sociale recouvrée : <Chiffre id="prop.fraude-sociale-detectee" x="recouvrée" />, soit environ <Calcul id="calc.fraude-sociale-recouvree-part" /> de la fraude estimée.</>,
+  ]}
+  legende="Le même entonnoir vaut pour la fraude fiscale : ce que les contrôles notifient est bien supérieur à ce qui est finalement encaissé."
+/>
 
 <PourBienComprendre titre="Ce que la lutte contre la fraude peut vraiment rapporter">
 <Analogie>
@@ -60,6 +79,27 @@ total de la fraude estimée.
 </Retenir>
 </PourBienComprendre>
 
+<EnApprofondi>
+
+Il faut distinguer trois montants très différents :
+
+- **La fraude estimée** : ce qui échappe à l'impôt ou aux cotisations, ou ce qui est versé à tort. C'est une
+  estimation, avec de larges marges d'incertitude, et qui mêle parfois fraude, erreurs et faillites.
+- **La fraude détectée** : ce que les contrôles mettent au jour. En <DateDonnee id="prop.controle-fiscal" />, le
+  contrôle fiscal a notifié <Chiffre id="prop.controle-fiscal" x="droits et pénalités notifiés" /> de droits et
+  pénalités ; pour la fraude sociale, un peu plus de <Chiffre id="prop.fraude-sociale-detectee" x="détectée" /> ont été
+  détectés en <DateDonnee id="prop.fraude-sociale-detectee" />.
+- **L'argent réellement récupéré** : <Chiffre id="prop.controle-fiscal" x="sommes encaissées" /> encaissés au titre du
+  contrôle fiscal en 2025, et <Chiffre id="prop.fraude-sociale-detectee" x="recouvrée" /> pour la fraude sociale en
+  2024.
+
+Le contrôle fiscal rapporte donc déjà une dizaine de milliards d'euros par an, compris dans les recettes actuelles.
+Ce qu'une lutte renforcée peut apporter **en plus**, c'est la progression de ces montants : quelques milliards
+d'euros par an, en montée progressive, d'après l'expérience des dernières années. Une partie de la fraude est en
+outre impossible à recouvrer (entreprises disparues, fraudeurs insolvables).
+
+</EnApprofondi>
+
 <Niveaux>
 <PlusLoin>
 
@@ -76,7 +116,16 @@ redressements après coup, mais leurs effets se mesurent sur plusieurs années.
 </PlusLoin>
 </Niveaux>
 
-## 4. Ce que disent les économistes
+## Le débat
+
+<Dialogue
+  partisan={<>La fraude est une injustice : ceux qui fraudent font payer les autres. La combattre, c'est faire respecter les règles, sans demander d'effort aux honnêtes. Les montants en jeu se comptent en dizaines de milliards. Et les nouveaux outils de contrôle rapportent souvent bien plus qu'ils ne coûtent.</>}
+  sceptique={<>Les dizaines de milliards sont des estimations, avec de larges marges d'erreur. Seule une petite partie est détectée, et moins encore est encaissée : des fraudeurs ont disparu ou sont insolvables. Ce que rapportent déjà les contrôles est compté dans les recettes. Ce qu'on peut espérer en plus, ce sont quelques milliards, pas de quoi financer de grandes dépenses.</>}
+/>
+
+<EnApprofondi>
+
+### Tous les arguments, en détail
 
 <ArgumentsFiche
   pour={
@@ -97,27 +146,75 @@ redressements après coup, mais leurs effets se mesurent sur plusieurs années.
   }
 />
 
-## 5. Ordres de grandeur
+</EnApprofondi>
+
+## Ordres de grandeur
+
+<Reperes>
+  <Repere valeur={<Chiffre id="prop.controle-fiscal" x="sommes encaissées" />}>encaissés en un an grâce au contrôle fiscal : environ <Calcul id="calc.controle-encaisse-par-habitant" arrondi={10} /> par habitant, déjà compris dans les recettes actuelles.</Repere>
+  <Repere valeur={<Calcul id="calc.controle-encaisse-part-deficit" />}>du <Terme id="deficit-public">déficit public</Terme> : c'est ce que représente tout l'argent encaissé chaque année par le contrôle fiscal.</Repere>
+  <Repere valeur={<Calcul id="calc.fraude-sociale-recouvree-part" />}>de la fraude sociale estimée est réellement récupérée.</Repere>
+</Reperes>
+
+<EnApprofondi>
+
+### Le détail des chiffres
 
 | | Montant |
 |---|---|
-| Fraude sociale estimée (HCFiPS) | <Chiffre id="prop.fraude-sociale" x="évaluation 2025" /> |
+| Fraude sociale estimée par le Haut Conseil du financement de la protection sociale | <Chiffre id="prop.fraude-sociale" x="évaluation 2025" /> |
 | Fraude sociale détectée / recouvrée | <Chiffre id="prop.fraude-sociale-detectee" x="détectée" /> / <Chiffre id="prop.fraude-sociale-detectee" x="recouvrée" /> en 2024 |
-| Écart de TVA (Commission européenne) | <Chiffre id="prop.ecart-tva" /> en <DateDonnee id="prop.ecart-tva" /> |
+| Écart de TVA, mesuré par la Commission européenne | <Chiffre id="prop.ecart-tva" /> en <DateDonnee id="prop.ecart-tva" /> |
 | Contrôle fiscal : notifié / encaissé | <Chiffre id="prop.controle-fiscal" x="droits et pénalités notifiés" /> / <Chiffre id="prop.controle-fiscal" x="sommes encaissées" /> en 2025 |
 | Déficit public, pour comparer | <Chiffre id="deficit.montant" /> en <DateDonnee id="deficit.montant" /> |
 
-## 6. Verdict
+</EnApprofondi>
+
+## Le verdict
 
 <Verdict niveau="ne-tient-pas">
+Lutter contre la fraude est juste et peut rapporter quelques milliards de plus chaque année. Mais on n'y trouvera pas de quoi financer de grandes dépenses ou combler le déficit.
+</Verdict>
+
+<Conditions>
+Pour des recettes en plus, modestes mais réelles : des moyens de contrôle supplémentaires, et des montants comptés à mesure qu'ils sont encaissés.
+</Conditions>
+
+<EnApprofondi>
+
+### Le verdict en détail
+
 Renforcer la lutte contre la fraude est juste et utile, et peut rapporter quelques milliards d'euros de plus chaque
 année. Mais l'idée d'y trouver de quoi financer de grandes dépenses ou combler le déficit ne tient pas en l'état : les
 montants avancés sont des estimations, dont seule une petite partie est détectée et encore moins encaissée, et ce qui
 est déjà récupéré figure dans les recettes actuelles.
-</Verdict>
 
 <GrilleVerdict
   tient={<p>La fraude représente des montants importants, et une lutte mieux outillée peut augmenter chaque année les sommes récupérées.</p>}
   tientPas={<p>L'idée que les dizaines de milliards de fraude estimée seraient disponibles pour financer des dépenses nouvelles.</p>}
   debattu={<p>L'ampleur réelle de la fraude fiscale, faute d'estimation officielle d'ensemble, et le rendement des moyens supplémentaires.</p>}
+/>
+
+</EnApprofondi>
+
+## Avez-vous compris ?
+
+<Quiz
+  module="fiche-lutte-contre-la-fraude"
+  titre="Deux questions"
+  niveau={3}
+  questions={[
+    {
+      question: "Parmi ces trois montants, lequel peut réellement financer des dépenses ?",
+      choix: ["La fraude estimée", "La fraude détectée", "L'argent réellement encaissé"],
+      bonne: 2,
+      explication: "Une estimation n'est pas de l'argent disponible, et une partie de la fraude détectée n'est jamais payée. Seul ce qui est encaissé finance des dépenses.",
+    },
+    {
+      question: "Le contrôle fiscal rapporte déjà une dizaine de milliards par an. Que peut apporter un effort renforcé ?",
+      choix: ["Ces dix milliards, une seconde fois", "La progression de ces montants : quelques milliards de plus", "La totalité de la fraude estimée"],
+      bonne: 1,
+      explication: "Ce qui est déjà encaissé est compté dans les recettes actuelles. Un effort renforcé apporte seulement ce qui s'y ajoute.",
+    },
+  ]}
 />

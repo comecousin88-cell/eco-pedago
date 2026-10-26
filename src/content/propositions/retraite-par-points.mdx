@@ -1,4 +1,26 @@
-## 1. La proposition
+## En 30 secondes
+
+<En30Secondes
+  verdict="solide"
+  proposition={<>Remplacer le calcul actuel des pensions par un système à points : chaque euro cotisé achète des points, convertis en pension au départ.</>}
+  tient={<>le système à points est éprouvé, en France même, et il permet qu'un euro cotisé ouvre les mêmes droits pour tous.</>}
+  coince={<>il ne crée aucune ressource nouvelle : il change la façon de calculer, pas ce qu'il faut financer.</>}
+  debattu={<>la prévisibilité des pensions, qui fixe la valeur du point, et le coût de la transition.</>}
+/>
+
+## Pourquoi on en parle
+
+Un projet de régime universel par points a été présenté en 2019, puis suspendu en 2020. L'idée revient à chaque réforme des retraites, au nom de la lisibilité et de l'égalité entre métiers.
+
+## Pour bien suivre cette fiche
+
+<PourBienSuivre module="retraites" section="notions" />
+
+<EnApprofondi>
+
+## La proposition et l'idée derrière
+
+### La proposition
 
 Remplacer les règles actuelles des régimes de base, qui calculent la pension à partir d'un salaire de référence et
 d'une durée de cotisation, par un **système à points** : chaque euro cotisé achète des points, et la pension est égale
@@ -7,7 +29,7 @@ au nombre de points accumulés multiplié par la valeur du point au moment du d�
 Précision importante dès le départ : changer la **façon de calculer** les pensions ne change pas, à lui seul, **ce
 qu'il faut financer**. Le système à points est une règle de calcul et de pilotage, pas une source de financement.
 
-## 2. L'idée derrière
+### L'idée derrière
 
 Le système français compte des dizaines de régimes aux règles différentes. Un salarié du privé voit sa pension de base
 calculée sur ses 25 meilleures années, un fonctionnaire sur ses six derniers mois, un indépendant selon d'autres
@@ -20,21 +42,21 @@ privé, l'Agirc-Arrco, fonctionne par points. La Suède a basculé à la fin des
 « comptes notionnels », souvent cité en exemple. En France, un projet de régime universel par points a été présenté
 en 2019 puis suspendu en mars 2020, au début de la crise sanitaire.
 
-## 3. Comment ça marcherait concrètement
+</EnApprofondi>
 
-Chaque année, les cotisations sont converties en points à un **prix d'achat** du point. Au départ en retraite, la
-pension annuelle est égale au nombre de points multiplié par la **valeur de service** du point. Ces deux paramètres
-sont fixés chaque année par le gestionnaire du régime, ce qui en fait les vrais leviers du système :
+## Comment ça marcherait
 
-- **Revaloriser la valeur de service** moins vite que les salaires réduit les pensions de tous les retraités et
-  améliore l'équilibre ;
-- **Augmenter le prix d'achat** réduit les droits acquis pour chaque euro cotisé.
+Dans un système à points, deux prix fixés chaque année font tout : ce que coûte un point, et ce qu'il rapporte en pension.
 
-Un système à points ne crée donc ni ne supprime de ressources : il change la façon de les répartir et de piloter
-l'équilibre. Les trois leviers d'un régime par répartition (âge, cotisations, pensions) restent les mêmes ; ils
-passent simplement par la valeur du point. Le dossier des retraites reste soumis à la même démographie : on comptait
-<Chiffre id="retraites.cotisants-par-retraite" x="2025" decimales={1} /> pour un retraité en 2025, et
-<Chiffre id="retraites.cotisants-par-retraite" x="2070" decimales={1} /> sont prévus en 2070.
+<SchemaEtapes
+  titre="Comment se calcule une pension à points"
+  etapes={[
+    <>Chaque année, les cotisations achètent des points, au prix fixé par le régime…</>,
+    <>… au fil de la carrière, les points s'accumulent sur un compte…</>,
+    <>… au départ, la pension égale le nombre de points multiplié par la valeur du point.</>,
+  ]}
+  legende="Si la valeur du point monte moins vite que les salaires, toutes les pensions suivent : c'est par là que passe l'équilibre du régime."
+/>
 
 <PourBienComprendre titre="Une retraite par points : ce que vaut un point">
 <Analogie>
@@ -61,6 +83,24 @@ passe l'équilibre du régime, sans que les règles écrites de calcul changent.
 </Retenir>
 </PourBienComprendre>
 
+<EnApprofondi>
+
+Chaque année, les cotisations sont converties en points à un **prix d'achat** du point. Au départ en retraite, la
+pension annuelle est égale au nombre de points multiplié par la **valeur de service** du point. Ces deux paramètres
+sont fixés chaque année par le gestionnaire du régime, ce qui en fait les vrais leviers du système :
+
+- **Revaloriser la valeur de service** moins vite que les salaires réduit les pensions de tous les retraités et
+  améliore l'équilibre ;
+- **Augmenter le prix d'achat** réduit les droits acquis pour chaque euro cotisé.
+
+Un système à points ne crée donc ni ne supprime de ressources : il change la façon de les répartir et de piloter
+l'équilibre. Les trois leviers d'un régime <Terme id="repartition">par répartition</Terme> (âge, cotisations, pensions) restent les mêmes ; ils
+passent simplement par la valeur du point. Le dossier des retraites reste soumis à la même démographie : on comptait
+<Chiffre id="retraites.cotisants-par-retraite" x="2025" decimales={1} /> pour un retraité en 2025, et
+<Chiffre id="retraites.cotisants-par-retraite" x="2070" decimales={1} /> sont prévus en 2070.
+
+</EnApprofondi>
+
 <Niveaux>
 <PlusLoin>
 
@@ -76,7 +116,16 @@ dizaines de régimes spéciaux et préserver les droits de chacun.
 </PlusLoin>
 </Niveaux>
 
-## 4. Ce que disent les économistes
+## Le débat
+
+<Dialogue
+  partisan={<>Aujourd'hui, des dizaines de régimes ont des règles différentes, source d'injustices pour ceux qui changent de métier. Avec des points, chaque euro cotisé ouvre les mêmes droits. Chacun peut suivre les points acquis. Et le système existe déjà : la retraite complémentaire des salariés du privé fonctionne ainsi.</>}
+  sceptique={<>Un système à points ne crée pas un euro de plus : les leviers restent l'âge, les cotisations et les pensions. Ils passent seulement par la valeur du point, fixée chaque année. La pension devient moins prévisible. Et la transition depuis des dizaines de régimes serait longue et coûteuse.</>}
+/>
+
+<EnApprofondi>
+
+### Tous les arguments, en détail
 
 <ArgumentsFiche
   pour={
@@ -97,26 +146,70 @@ dizaines de régimes spéciaux et préserver les droits de chacun.
   }
 />
 
-## 5. Ordres de grandeur
+</EnApprofondi>
+
+## Ordres de grandeur
+
+<Reperes>
+  <Repere valeur={<Chiffre id="retraites.depenses-montant" />}>de dépenses de retraite par an : environ <Calcul id="calc.retraites-par-habitant" arrondi={100} /> par habitant, quel que soit le mode de calcul.</Repere>
+  <Repere valeur={<Chiffre id="retraites.pension-moyenne" />}>de pension brute moyenne, hors pension de réversion.</Repere>
+  <Repere valeur={<Chiffre id="retraites.cotisants-par-retraite" x="2070" decimales={1} />}><Terme id="rapport-demographique">cotisants pour un retraité</Terme> prévus en 2070, contre <Chiffre id="retraites.cotisants-par-retraite" x="2025" decimales={1} /> en 2025 : un système à points n'y change rien.</Repere>
+</Reperes>
+
+<EnApprofondi>
+
+### Le détail des chiffres
 
 | | Montant |
 |---|---|
 | Dépenses de retraite | <Chiffre id="retraites.depenses-montant" /> en <DateDonnee id="retraites.depenses-montant" /> |
 | Pension brute moyenne de droit direct | <Chiffre id="retraites.pension-moyenne" /> fin 2024 |
 | Cotisants pour un retraité | <Chiffre id="retraites.cotisants-par-retraite" x="2025" decimales={1} /> en 2025, <Chiffre id="retraites.cotisants-par-retraite" x="2070" decimales={1} /> en 2070 |
-| Déficit prévu sans changement | <Chiffre id="prop.retraites-deficit-cour" x="2035" /> en 2035 (Cour des comptes) |
+| Déficit prévu sans changement | <Chiffre id="prop.retraites-deficit-cour" x="2035" /> en 2035, selon la Cour des comptes |
 
-## 6. Verdict
+</EnApprofondi>
+
+## Le verdict
 
 <Verdict niveau="solide">
+Un système à points fonctionne et peut rendre les droits plus lisibles. Mais il ne règle pas à lui seul le financement des retraites.
+</Verdict>
+
+<EnApprofondi>
+
+### Le verdict en détail
+
 Un système de retraite par points fonctionne : la France en a déjà un avec l'Agirc-Arrco, et d'autres pays l'ont
 adopté. Il peut rendre les droits plus lisibles et plus homogènes entre métiers. Mais **il ne règle pas à lui seul le financement des retraites** : il ne crée aucune
 ressource nouvelle, et les leviers restent les mêmes (âge, cotisations, pensions), simplement pilotés par la valeur
 du point. Le débat porte sur la transition et sur qui fixe cette valeur.
-</Verdict>
 
 <GrilleVerdict
   tient={<p>Le mécanisme à points est éprouvé et permet qu'un euro cotisé ouvre les mêmes droits pour tous.</p>}
   tientPas={<p>L'idée qu'un système à points réglerait le financement des retraites : il ne crée aucune ressource nouvelle.</p>}
   debattu={<p>La prévisibilité des pensions, la gouvernance de la valeur du point, le sort des carrières hachées et le coût de la transition.</p>}
+/>
+
+</EnApprofondi>
+
+## Avez-vous compris ?
+
+<Quiz
+  module="fiche-retraite-par-points"
+  titre="Deux questions"
+  niveau={3}
+  questions={[
+    {
+      question: "Dans un système à points, comment se calcule la pension ?",
+      choix: ["Sur le dernier salaire", "Nombre de points multiplié par la valeur du point", "Sur les 25 meilleures années"],
+      bonne: 1,
+      explication: "Les cotisations achètent des points ; au départ, la pension égale le nombre de points accumulés multiplié par la valeur du point.",
+    },
+    {
+      question: "Un système à points règle-t-il le financement des retraites ?",
+      choix: ["Oui, il crée de nouvelles ressources", "Non, il change le calcul mais pas ce qu'il faut financer", "Oui, il supprime le déficit dès la première année"],
+      bonne: 1,
+      explication: "Les leviers restent les mêmes : âge, cotisations, pensions. Ils passent simplement par la valeur du point.",
+    },
+  ]}
 />

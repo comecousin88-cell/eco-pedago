@@ -1,18 +1,40 @@
 import { FicheDePaie } from "@/components/simulators/FicheDePaie";
 
-## 1. La proposition
+## En 30 secondes
+
+<En30Secondes
+  verdict="debattu"
+  proposition={<>Augmenter fortement le Smic, bien au-delà de sa hausse automatique, pour améliorer le pouvoir d'achat des salariés les moins payés.</>}
+  tient={<>une hausse du Smic augmente le revenu des salariés concernés et peut relancer les négociations de salaires.</>}
+  coince={<>une hausse forte coûte : soit à l'emploi peu qualifié, soit aux finances publiques si l'État compense par des allègements.</>}
+  debattu={<>l'ampleur des pertes d'emplois, la part reprise par la baisse de la prime d'activité, et le bon équilibre entre Smic et aides.</>}
+/>
+
+## Pourquoi on en parle
+
+L'idée est revenue avec la hausse des prix de 2022-2023, quand le Smic a été revalorisé plusieurs fois. Elle se nourrit aussi du constat que de nombreux salaires se tassent autour du minimum.
+
+## Pour bien suivre cette fiche
+
+<PourBienSuivre module="fiscalite" section="smic" />
+
+<EnApprofondi>
+
+## La proposition et l'idée derrière
+
+### La proposition
 
 Augmenter fortement le salaire minimum, bien au-delà de sa revalorisation automatique, par exemple de 10 % à 20 % en
 une fois. Le Smic est aujourd'hui de <Chiffre id="paie.smic-mensuel" /> brut par mois pour un temps plein, soit
 <Chiffre id="paie.smic-mensuel-net" /> net, depuis le <DateDonnee id="paie.smic-mensuel" format="jour" />.
 
-## 2. L'idée derrière
+### L'idée derrière
 
 Ses défenseurs partent du **pouvoir d'achat** : avec la hausse des prix de 2022-2023, le coût du logement, de
 l'énergie et de l'alimentation pèse lourd dans le budget des ménages modestes. Travailler à temps plein doit
 permettre de vivre dignement.
 
-Ils mettent aussi en avant la **« smicardisation »** : à force d'allègements de cotisations concentrés au niveau du
+Ils mettent aussi en avant la **« smicardisation »** : à force d'<Terme id="allegements-cotisations">allègements de cotisations</Terme> concentrés au niveau du
 Smic, les salaires se tassent autour du minimum, et de nombreux salariés y restent bloqués. Au 1er janvier 2023,
 <Chiffre id="prop.smic-salaries-concernes" x="2023" /> du privé ont été directement concernés par la
 revalorisation du Smic, un record. Une hausse forte, disent-ils, relancerait la négociation des grilles salariales.
@@ -22,29 +44,21 @@ négatifs attendus sur l'emploi : les études de David Card et Alan Krueger aux 
 l'introduction d'un salaire minimum en Allemagne en 2015, dont les effets sur l'emploi ont été jugés limités. Des
 salaires plus élevés soutiennent aussi la consommation.
 
-## 3. Comment ça marcherait concrètement
+</EnApprofondi>
 
-Une hausse du Smic se répercute d'abord sur le **coût du travail**. Au niveau du Smic, l'employeur ne paie presque
-plus de cotisations patronales grâce aux allègements généraux, qui diminuent ensuite à mesure que le salaire
-augmente. Ces allègements sont calculés par rapport au Smic : quand il augmente, leur coût pour les finances
-publiques augmente aussi. Il a fortement progressé ces dernières années pour atteindre près de
-<Chiffre id="prop.smic-allegements-cout" /> en <DateDonnee id="prop.smic-allegements-cout" />, selon le groupe d'experts
-sur le Smic.
+## Comment ça marcherait
 
-Pour le salarié, le gain net est réduit par la **prime d'activité**, qui diminue quand le revenu augmente. Pour
-l'employeur, le coût augmente à peu près dans la même proportion que le Smic, et davantage pour les salaires juste
-au-dessus, si l'on veut préserver la hiérarchie des rémunérations.
+Une hausse du Smic ne se lit pas seulement sur la fiche de paie : elle touche aussi le coût pour l'employeur, les aides de l'État et les aides au salarié.
 
-Le simulateur de fiche de paie permet de comparer le coût employeur, le salaire net et ce que finance chaque euro, au
-niveau du Smic et au-dessus.
-
-<Figure
-  titre="De ce que paie l'employeur à ce qui reste au salarié"
-  resume="Simulateur : on choisit un salaire brut, par exemple le Smic, et on suit chaque euro, du coût employeur au salaire net, avec les cotisations, la CSG et les allègements de cotisations patronales."
-  donnees={["paie.smic-mensuel", "paie.rgdu.tdelta-petite", "paie.sal.vieillesse-plafonnee", "paie.emp.maladie", "paie.sal.agirc-t1", "ir.bareme"]}
->
-  <FicheDePaie />
-</Figure>
+<SchemaEtapes
+  titre="Ce que devient une hausse du Smic"
+  etapes={[
+    <>Le Smic brut augmente…</>,
+    <>… l'employeur paie plus, et l'État aussi, car il prend en charge une partie des cotisations à ce niveau de salaire…</>,
+    <>… le salarié touche plus, mais certaines aides, comme la prime d'activité, baissent…</>,
+    <>… son revenu monte moins que son salaire.</>,
+  ]}
+/>
 
 <PourBienComprendre titre="Une hausse du Smic : qui paie, qui gagne ?">
 <Analogie>
@@ -58,7 +72,7 @@ salarié lui-même, dont certaines aides baissent quand son revenu monte.
 
 1. Le Smic brut augmente de 100 € par mois. Comme les cotisations patronales sont presque nulles à ce niveau, le coût
    pour l'employeur monte lui aussi d'environ 100 €.
-2. Après ses cotisations et la CSG, le salarié touche environ 80 € de plus en net.
+2. Après ses cotisations et la <Terme id="csg">CSG</Terme>, le salarié touche environ 80 € de plus en net.
 3. S'il perçoit la prime d'activité, elle baisse quand son revenu monte. Une partie de ces 80 € disparaît, et son
    revenu progresse moins que son salaire.
 
@@ -70,6 +84,24 @@ salarié, dont le gain net est en partie repris par la baisse de la prime d'acti
 
 </Retenir>
 </PourBienComprendre>
+
+<EnApprofondi>
+
+Une hausse du Smic se répercute d'abord sur le **coût du travail**. Au niveau du Smic, l'employeur ne paie presque
+plus de cotisations patronales grâce aux allègements généraux, qui diminuent ensuite à mesure que le salaire
+augmente. Ces allègements sont calculés par rapport au Smic : quand il augmente, leur coût pour les finances
+publiques augmente aussi. Il a fortement progressé ces dernières années pour atteindre près de
+<Chiffre id="prop.smic-allegements-cout" /> en <DateDonnee id="prop.smic-allegements-cout" />, selon le groupe d'experts
+sur le Smic.
+
+Pour le salarié, le gain net est réduit par la **prime d'activité**, qui diminue quand le revenu augmente. Pour
+l'employeur, le coût augmente à peu près dans la même proportion que le Smic, et davantage pour les salaires juste
+au-dessus, si l'on veut préserver la hiérarchie des rémunérations.
+
+Le simulateur de fiche de paie permet de comparer le coût employeur, le <Terme id="salaire-brut-net">salaire net</Terme> et ce que finance chaque euro, au
+niveau du Smic et au-dessus.
+
+</EnApprofondi>
 
 <Niveaux>
 <PlusLoin>
@@ -89,12 +121,21 @@ autour du Smic s'accentuerait.
 </PlusLoin>
 </Niveaux>
 
-## 4. Ce que disent les économistes
+## Le débat
+
+<Dialogue
+  partisan={<>Travailler à temps plein doit permettre de vivre dignement, et les prix du logement, de l'énergie et de l'alimentation ont flambé. Les salaires se tassent autour du Smic : une hausse forte relancerait les grilles salariales. Des études, aux États-Unis comme en Allemagne, montrent des effets limités sur l'emploi. Et des salaires plus élevés soutiennent la consommation.</>}
+  sceptique={<>En France, le Smic est déjà élevé par rapport au salaire médian. Une hausse forte renchérit le travail peu qualifié, et les études françaises y voient un vrai risque pour l'emploi. Si l'État compense par des allègements, la facture passe au budget. Et une partie du gain est reprise par la baisse de la prime d'activité.</>}
+/>
+
+<EnApprofondi>
+
+### Tous les arguments, en détail
 
 <ArgumentsFiche
   pour={
     <ul>
-      <li><strong>Le pouvoir d'achat des plus modestes.</strong> Une hausse forte compense la perte de pouvoir d'achat liée à l'inflation de 2022-2023 et aux dépenses contraintes.</li>
+      <li><strong>Le pouvoir d'achat des plus modestes.</strong> Une hausse forte compense la perte de pouvoir d'achat liée à l'<Terme id="inflation">inflation</Terme> de 2022-2023 et aux dépenses contraintes.</li>
       <li><strong>Contre la smicardisation.</strong> Une hausse du minimum oblige à renégocier les grilles salariales, aujourd'hui tassées autour du Smic.</li>
       <li><strong>Des effets sur l'emploi parfois limités.</strong> Plusieurs études, aux États-Unis et en Allemagne, n'ont pas trouvé les pertes d'emplois redoutées.</li>
       <li><strong>Un soutien à la consommation.</strong> Les ménages modestes dépensent l'essentiel d'un revenu supplémentaire.</li>
@@ -111,7 +152,19 @@ autour du Smic s'accentuerait.
   }
 />
 
-## 5. Ordres de grandeur
+</EnApprofondi>
+
+## Ordres de grandeur
+
+<Reperes>
+  <Repere valeur={<Chiffre id="paie.smic-mensuel" />}>brut par mois pour un temps plein, soit <Chiffre id="paie.smic-mensuel-net" /> net.</Repere>
+  <Repere valeur={<Chiffre id="prop.smic-allegements-cout" />}>par an pour les allègements de cotisations, concentrés autour du Smic : environ <Calcul id="calc.allegements-par-habitant" arrondi={10} /> par habitant, ou <Calcul id="calc.allegements-part-deficit" /> du <Terme id="deficit-public">déficit public</Terme>.</Repere>
+  <Repere valeur={<Chiffre id="prop.smic-salaries-concernes" x="2024" />}>ont été directement concernés par la revalorisation du Smic au 1er janvier 2024.</Repere>
+</Reperes>
+
+<EnApprofondi>
+
+### Le détail des chiffres
 
 | | Montant |
 |---|---|
@@ -121,17 +174,69 @@ autour du Smic s'accentuerait.
 | Coût des allègements généraux de cotisations | près de <Chiffre id="prop.smic-allegements-cout" /> en <DateDonnee id="prop.smic-allegements-cout" /> |
 | Emplois liés à ces allègements (estimation) | <Chiffre id="prop.smic-emplois-allegements" x="bas" unite={false} /> à <Chiffre id="prop.smic-emplois-allegements" x="haut" /> |
 
-## 6. Verdict
+</EnApprofondi>
+
+<EnApprofondi>
+
+## Et si on le faisait ?
+
+Partez du Smic actuel et suivez chaque euro, du coût pour l'employeur au salaire net.
+
+<Figure
+  titre="De ce que paie l'employeur à ce qui reste au salarié"
+  resume="Simulateur : on choisit un salaire brut, par exemple le Smic, et on suit chaque euro, du coût employeur au salaire net, avec les cotisations, la CSG et les allègements de cotisations patronales."
+  donnees={["paie.smic-mensuel", "paie.rgdu.tdelta-petite", "paie.sal.vieillesse-plafonnee", "paie.emp.maladie", "paie.sal.agirc-t1", "ir.bareme"]}
+>
+  <FicheDePaie depuisSmic />
+</Figure>
+
+</EnApprofondi>
+
+## Le verdict
 
 <Verdict niveau="debattu">
+Une hausse forte du Smic améliorerait le revenu des moins bien payés, mais elle a un coût : pour l'emploi peu qualifié, ou pour les finances publiques si l'État compense.
+</Verdict>
+
+<Conditions>
+Une hausse mesurée, étalée, et accompagnée d'une réforme des allègements et de la prime d'activité, pour que le gain reste aux salariés.
+</Conditions>
+
+<EnApprofondi>
+
+### Le verdict en détail
+
 Une hausse forte du Smic améliorerait le revenu des salariés les moins payés, mais ses effets dépendent de son
 ampleur et de ce qui l'accompagne. Non compensée, elle renchérit le coût du travail peu qualifié, avec un risque
 pour l'emploi que la plupart des économistes jugent réel en France ; compensée par des allègements, elle coûte cher
 aux finances publiques et accentue le tassement des salaires. L'ampleur des effets sur l'emploi reste discutée.
-</Verdict>
 
 <GrilleVerdict
   tient={<p>Une hausse du Smic augmente le revenu des salariés concernés et peut relancer la négociation salariale.</p>}
   tientPas={<p>L'idée d'une hausse forte sans coût : elle pèse soit sur l'emploi peu qualifié, soit sur les finances publiques via les allègements.</p>}
   debattu={<p>L'ampleur des pertes d'emplois, la part de la hausse absorbée par la prime d'activité et les prix, et le bon équilibre entre Smic, allègements et prime d'activité.</p>}
+/>
+
+</EnApprofondi>
+
+## Avez-vous compris ?
+
+<Quiz
+  module="fiche-hausse-forte-du-smic"
+  titre="Deux questions"
+  niveau={3}
+  questions={[
+    {
+      question: "Le Smic augmente. Pourquoi l'État paie-t-il aussi une partie de la hausse ?",
+      choix: ["Parce qu'il prend en charge une partie des cotisations autour du Smic, et ces allègements suivent le Smic", "Parce qu'il paie directement les salaires du privé", "Parce que la TVA baisse automatiquement"],
+      bonne: 0,
+      explication: "Les allègements de cotisations sont calculés par rapport au Smic. Quand il augmente, leur coût pour les finances publiques augmente aussi.",
+    },
+    {
+      question: "Pourquoi le revenu d'un salarié payé au Smic peut-il monter moins que son salaire ?",
+      choix: ["Parce que ses impôts doublent", "Parce que la prime d'activité baisse quand son revenu monte", "Parce que son employeur retient la hausse"],
+      bonne: 1,
+      explication: "La prime d'activité diminue quand les revenus augmentent : une partie de la hausse de salaire est reprise par la baisse de cette aide.",
+    },
+  ]}
 />
