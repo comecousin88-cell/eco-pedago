@@ -2,7 +2,8 @@ import Link from "next/link";
 import type { Indicateur } from "@/content/indicateurs";
 import { chercherValeur, getSerie, LIBELLE_ETAT, type Donnee } from "@/lib/data";
 import { formatDateDonnee, formatNombre } from "@/lib/format";
-import { derniersPoints, dernierPoint, libellePeriode, valeurUnAnAvant, type Point } from "@/lib/indicateurs";
+import { derniersPoints, dernierPoint, libellePeriode, periodeIndicateur, valeurUnAnAvant, type Point } from "@/lib/indicateurs";
+import { TAUX_DU_JOUR_BDF } from "./BandeauAlertes";
 import { CourbeIndicateur } from "./CourbeIndicateur";
 
 /** Courbe miniature en SVG : la tendance des dernières années, sans axes. */
@@ -54,7 +55,7 @@ export function CarteIndicateur({ indicateur: ind }: { indicateur: Indicateur })
   const paliers = ind.frequence === "paliers";
   const periode = recente
     ? `au ${formatDateDonnee(recente.date).replace(/^au /, "")}`
-    : `${paliers ? "depuis le " : ""}${libellePeriode(dernier.x, ind.frequence)}`;
+    : periodeIndicateur(dernier.x, ind.frequence, ind.nature);
   const reference = recente ? dernier.y : valeurUnAnAvant(serie, ind.frequence);
   const libelleReference = recente
     ? ind.frequence === "mensuelle"
@@ -118,6 +119,13 @@ export function CarteIndicateur({ indicateur: ind }: { indicateur: Indicateur })
         <Link href={ind.lien.href} className="font-medium text-accent underline underline-offset-4">
           Comprendre : {ind.lien.libelle}
         </Link>
+        {/* Taux du jour pas encore disponible ici (branchement Webstat en attente d'autorisation) : lien vers la source. */}
+        {ind.valeurRecente === "marches.taux10-france-jour" && !recente && (
+          <a href={TAUX_DU_JOUR_BDF} target="_blank" rel="noopener" className="mt-1 block text-muted underline underline-offset-4 hover:text-ink">
+            Voir le taux du jour sur le site de la Banque de France
+            <span className="sr-only"> (nouvel onglet)</span> ↗
+          </a>
+        )}
       </p>
       <div className="mt-auto">
         <CourbeIndicateur

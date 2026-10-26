@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { alertesActives, libelleDate, phraseAlerte, reglesAlertes, type RegleAlerte } from "@/content/alertes";
+import { alertesActives, libelleDate, periodeCourte, periodePhrase, phraseAlerte, reglesAlertes, type RegleAlerte } from "@/content/alertes";
 import { avecValeurRecente, difference, evaluerSeuil } from "./alertes";
 
 const s = (...ys: number[]) => ys.map((y, i) => ({ x: `2026-0${i + 1}`, y }));
@@ -41,39 +41,51 @@ describe("évaluation d'un seuil", () => {
 describe("phrases du bandeau", () => {
   const regle: RegleAlerte = {
     id: "test",
-    sujet: "Le taux",
     libelleSeuil: "au-dessus de 5 %",
+    libelleRetour: "de nouveau sous 5 %",
+    rappelSeuil: true,
     seuil: 5,
     sens: "au-dessus",
+    mesure: "moyenne-mensuelle",
     points: () => [],
-    detail: (p) => `${String(p.y).replace(".", ",")} %`,
+    enonce: (p) => `l'État emprunte à 10 ans à ${String(p.y).replace(".", ",")} %`,
     lien: { href: "/", libelle: "" },
     pourquoi: "",
   };
 
-  it("datent la donnée et le franchissement", () => {
+  it("disent la période du chiffre et depuis quand le seuil est franchi", () => {
+    expect(phraseAlerte(regle, evaluerSeuil(s(4.9, 5.1, 5.3), 5, "au-dessus"))).toBe(
+      "En moyenne sur mars 2026, l'État emprunte à 10 ans à 5,3 %, au-dessus de 5 %. C'est le cas depuis février 2026.",
+    );
+    // Taux du jour ajouté à la série mensuelle : la date du jour, sans « en moyenne ».
     expect(phraseAlerte(regle, evaluerSeuil([...s(4.9, 5.1), { x: "2026-03-20", y: 5.3 }], 5, "au-dessus"))).toBe(
-      "Le taux est au-dessus de 5 % depuis février 2026 : 5,3 % le 20 mars 2026.",
+      "Le 20 mars 2026, l'État emprunte à 10 ans à 5,3 %, au-dessus de 5 %. C'est le cas depuis février 2026.",
     );
-    expect(phraseAlerte(regle, evaluerSeuil(s(5.2, 4.9), 5, "au-dessus"))).toBe(
-      "Le taux n'est plus au-dessus de 5 % : 4,9 % en février 2026, après 5,2 % en janvier 2026.",
-    );
+    expect(phraseAlerte(regle, evaluerSeuil(s(4.9, 5.1), 5, "au-dessus"))).toBe("En moyenne sur février 2026, l'État emprunte à 10 ans à 5,1 %, au-dessus de 5 %.");
+    expect(phraseAlerte(regle, evaluerSeuil(s(5.2, 4.9), 5, "au-dessus"))).toBe("En moyenne sur février 2026, l'État emprunte à 10 ans à 4,9 %, de nouveau sous 5 %.");
     expect(phraseAlerte(regle, evaluerSeuil(s(4, 4.1), 5, "au-dessus"))).toBeUndefined();
   });
 
-  it("écrivent toutes les formes de date", () => {
+  it("écrivent toutes les formes de période", () => {
+    expect(periodePhrase("2026-09", "moyenne-mensuelle")).toBe("En moyenne sur septembre 2026");
+    expect(periodePhrase("2026-09", "mois-sur-un-an")).toBe("En septembre 2026");
+    expect(periodePhrase("2026-T2", "trimestre")).toBe("Au 2e trimestre 2026");
+    expect(periodePhrase("2026-06-30", "fin-de-periode")).toBe("Fin juin 2026");
+    expect(periodePhrase("2025", "fin-de-periode")).toBe("Fin 2025");
+    expect(periodePhrase("2026-10-23", "moyenne-mensuelle")).toBe("Le 23 octobre 2026");
+    expect(periodeCourte("2026-08", "moyenne-mensuelle")).toBe("août 2026");
+    expect(periodeCourte("2026-T1", "trimestre")).toBe("au 1er trimestre 2026");
     expect(libelleDate("2025")).toBe("fin 2025");
-    expect(libelleDate("2026-T2")).toBe("le 2e trimestre 2026");
-    expect(libelleDate("2026-09")).toBe("en septembre 2026");
     expect(libelleDate("2026-06-30")).toBe("le 30 juin 2026");
     expect(libelleDate("2026-12-01")).toBe("le 1er décembre 2026");
   });
 
-  it("toutes les règles se calculent sur les données actuelles", () => {
+  it("toutes les règles se calculent sur les données actuelles, et chaque phrase dit sa période", () => {
     for (const r of reglesAlertes) expect(() => evaluerSeuil(r.points(), r.seuil, r.sens), r.id).not.toThrow();
     for (const a of alertesActives()) {
       expect(a.phrase).toMatch(/\.$/);
       expect(a.phrase).not.toMatch(/undefined|NaN/);
+      expect(a.phrase, a.id).toMatch(/^(En moyenne sur \p{L}+ \d{4}|En \p{L}+ \d{4}|Au \d+(er|e) trimestre \d{4}|Fin (\p{L}+ )?\d{4}|Le \d+(er)? \p{L}+ \d{4}), /u);
     }
   });
 });

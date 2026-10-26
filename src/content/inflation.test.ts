@@ -63,7 +63,7 @@ describe("chaque affichage d'inflation précise l'indicateur, le mois et le stat
 
   it("dans le bandeau d'alerte", () => {
     const alerte = alertesActives().find((a) => a.id === "inflation-3");
-    if (alerte) expect(alerte.phrase).toMatch(/IPC de l'Insee.*\((provisoire|définitif)\)/);
+    if (alerte) expect(alerte.phrase).toMatch(/^En \p{L}+ \d{4}, .* sur un an \(IPC de l'Insee, (provisoire|définitif)\)/u);
   });
 
   it("dans le fil « L'actu »", () => {
@@ -94,7 +94,7 @@ describe("un seul chiffre par indicateur, mois et statut", () => {
     }
     // 3. Le bandeau d'alerte.
     const alerte = alertesActives().find((a) => a.id === "inflation-3");
-    const m = alerte && /: (-?\d+,\d) % .*\((provisoire|définitif)\)/.exec(alerte.phrase);
+    const m = alerte && /de (-?\d+,\d) % sur un an \(IPC de l'Insee, (provisoire|définitif)\)/.exec(alerte.phrase);
     if (alerte && m) ajouter("IPC Insee", alerte.date, m[2] === "définitif" ? "definitif" : "provisoire", Number(m[1].replace(",", ".")), "bandeau d'alerte");
     expect(vus.size).toBeGreaterThan(100);
   });

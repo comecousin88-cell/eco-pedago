@@ -11,105 +11,152 @@ import { libellePeriode, type Point } from "@/lib/indicateurs";
  * jour automatiques. Les seuils sont des repères de lecture, pas des jugements.
  */
 
+/**
+ * Nature de la période d'un indicateur, pour dire clairement de quoi parle le
+ * chiffre : moyenne d'un mois (taux de marché, ou valeur d'un jour quand elle
+ * existe), évolution sur un an d'un mois donné (inflation), trimestre
+ * (chômage), fin de période (dette).
+ */
+export type Mesure = "moyenne-mensuelle" | "mois-sur-un-an" | "trimestre" | "fin-de-periode";
+
 export interface RegleAlerte {
   id: string;
-  /** Sujet de la phrase : « Le taux d'emprunt de l'État à 10 ans ». */
-  sujet: string;
   /** Position par rapport au seuil, sans verbe : « au-dessus de 5 % ». */
   libelleSeuil: string;
+  /** Retour sous le seuil : « de nouveau sous 5 % ». */
+  libelleRetour: string;
+  /** Rappeler le seuil après l'énoncé (inutile quand l'énoncé le dit déjà : France contre Italie). */
+  rappelSeuil: boolean;
   seuil: number;
   sens: Sens;
+  mesure: Mesure;
   points: () => Point[];
-  /** Valeur actuelle en clair : « 5,1 % ». */
-  detail: (dernier: Point) => string;
+  /** Le constat, sans la période : « la France emprunte à 10 ans à 4,44 %, contre 4,36 % pour l'Italie ». */
+  enonce: (p: Point) => string;
   lien: { href: string; libelle: string };
   /** Pourquoi ce seuil compte, en une phrase : sert de brouillon à l'encadré « Ce que ça veut dire ». */
   pourquoi: string;
 }
 
-const pct = (decimales: number) => (p: Point) => `${formatNombre(p.y, decimales)} %`;
+const pct = (v: number, decimales: number) => `${formatNombre(v, decimales)} %`;
 const taux10Jour = () => chercherValeur("marches.taux10-france-jour");
 
 export const reglesAlertes: RegleAlerte[] = [
   {
     id: "oat-5",
-    sujet: "Le taux d'emprunt de l'État à 10 ans",
     libelleSeuil: "au-dessus de 5 %",
+    libelleRetour: "de nouveau sous 5 %",
+    rappelSeuil: true,
     seuil: 5,
     sens: "au-dessus",
+    mesure: "moyenne-mensuelle",
     points: () => avecValeurRecente(getSerie("marches.taux10-france").serie, taux10Jour()),
-    detail: pct(2),
+    enonce: (p) => `l'État emprunte à 10 ans à ${pct(p.y, 2)}`,
     lien: { href: "/modules/emprunt-etat/prix-et-taux/", libelle: "Pourquoi le taux compte" },
     pourquoi: "Chaque emprunt nouveau, et chaque dette renouvelée, coûte alors plus cher à l'État : l'effet sur la charge d'intérêts se diffuse sur plusieurs années.",
   },
   {
     id: "spread-100",
-    sujet: "L'écart de taux à 10 ans entre la France et l'Allemagne",
     libelleSeuil: "au-dessus d'un point (100 points de base)",
+    libelleRetour: "de nouveau sous un point (100 points de base)",
+    rappelSeuil: true,
     seuil: 100,
     sens: "au-dessus",
+    mesure: "moyenne-mensuelle",
     points: () => getSerie("marches.spread-france-allemagne").serie,
-    detail: (p) => `${formatNombre(p.y, 0)} points de base`,
+    enonce: (p) => `l'écart de taux à 10 ans entre la France et l'Allemagne est de ${formatNombre(p.y, 0)} points de base`,
     lien: { href: "/modules/emprunt-etat/spread-notation/", libelle: "Spread et notation" },
     pourquoi: "Les investisseurs demandent un supplément pour prêter à la France plutôt qu'à l'Allemagne : c'est un signal de moindre confiance, qui renchérit les emprunts.",
   },
   {
     id: "france-italie",
-    sujet: "Le taux d'emprunt à 10 ans de la France",
     libelleSeuil: "au-dessus de celui de l'Italie",
+    libelleRetour: "de nouveau moins que l'Italie",
+    rappelSeuil: false,
     seuil: 0,
     sens: "au-dessus",
+    mesure: "moyenne-mensuelle",
     points: () => difference(getSerie("marches.taux10-france").serie, getSerie("marches.taux10-italie").serie),
-    detail: (p) => {
+    enonce: (p) => {
       const fr = getSerie("marches.taux10-france").serie.find((q) => q.x === p.x)!.y;
       const it = getSerie("marches.taux10-italie").serie.find((q) => q.x === p.x)!.y;
-      return `${formatNombre(fr, 2)} % contre ${formatNombre(it, 2)} %`;
+      return `la France emprunte à 10 ans à ${pct(fr, 2)}, contre ${pct(it, 2)} pour l'Italie`;
     },
     lien: { href: "/modules/emprunt-etat/spread-notation/", libelle: "Spread et notation" },
     pourquoi: "Les marchés jugent désormais la France aussi risquée, voire plus, que l'Italie, longtemps considérée comme plus fragile : la prime de risque française augmente.",
   },
   {
     id: "dette-120",
-    sujet: "La dette publique",
     libelleSeuil: "au-dessus de 120 % du PIB",
+    libelleRetour: "de nouveau sous 120 % du PIB",
+    rappelSeuil: true,
     seuil: 120,
     sens: "au-dessus",
+    mesure: "fin-de-periode",
     points: () => {
       const recente = getValeur("dette.ratio-pib");
       return avecValeurRecente(getSerie("dette.historique-pib").serie, recente);
     },
-    detail: (p) => `${formatNombre(p.y, 1)} % du PIB`,
+    enonce: (p) => `la dette publique atteint ${formatNombre(p.y, 1)} % du PIB`,
     lien: { href: "/modules/deficit-et-dette/histoire/", libelle: "La dette depuis 1978" },
     pourquoi: "Plus la dette pèse lourd par rapport à la richesse produite, plus une hausse des taux alourdit la charge d'intérêts et réduit les marges du budget.",
   },
   {
     id: "inflation-3",
-    sujet: "L'inflation en France (IPC de l'Insee)",
-    libelleSeuil: "au-dessus de 3 % sur un an",
+    libelleSeuil: "au-dessus de 3 %",
+    libelleRetour: "de nouveau sous 3 %",
+    rappelSeuil: true,
     seuil: 3,
     sens: "au-dessus",
+    mesure: "mois-sur-un-an",
     points: () => getSerie("ind.inflation-ipc-fr").serie,
-    // « 3,1 % (définitif) » : l'Insee publie d'abord une estimation provisoire, puis le résultat définitif.
-    detail: (p) => {
-      const d = getSerie("ind.inflation-ipc-fr");
-      const etat = etatDuPoint(d, p.x);
-      return `${formatNombre(p.y, 1)} %${etat ? ` (${LIBELLE_ETAT[etat]})` : ""}`;
+    // L'Insee publie d'abord une estimation provisoire, puis le résultat définitif : le statut est toujours dit.
+    enonce: (p) => {
+      const etat = etatDuPoint(getSerie("ind.inflation-ipc-fr"), p.x);
+      return `les prix à la consommation augmentent de ${pct(p.y, 1)} sur un an (IPC de l'Insee${etat ? `, ${LIBELLE_ETAT[etat]}` : ""})`;
     },
     lien: { href: "/modules/les-bases/inflation-taux-reels/", libelle: "Inflation et taux réels" },
     pourquoi: "Les prix montent plus vite que l'objectif de la BCE : le pouvoir d'achat s'érode, et la BCE peut maintenir des taux plus élevés.",
   },
   {
     id: "chomage-9",
-    sujet: "Le taux de chômage",
     libelleSeuil: "au-dessus de 9 %",
+    libelleRetour: "de nouveau sous 9 %",
+    rappelSeuil: true,
     seuil: 9,
     sens: "au-dessus",
+    mesure: "trimestre",
     points: () => getSerie("ind.chomage").serie,
-    detail: pct(1),
+    enonce: (p) => `le taux de chômage est de ${pct(p.y, 1)} de la population active`,
     lien: { href: "/tableau-de-bord/", libelle: "Tableau de bord" },
     pourquoi: "Un chômage plus élevé pèse sur les recettes (moins de cotisations) et sur les dépenses (plus d'indemnisation).",
   },
 ];
+
+const MOIS = ["janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août", "septembre", "octobre", "novembre", "décembre"];
+const jourEnClair = (x: string) => {
+  const [a, m, j] = x.split("-").map(Number);
+  return `${j === 1 ? "1er" : j} ${MOIS[m - 1]} ${a}`;
+};
+
+/**
+ * Période d'un point, en début de phrase : « En moyenne sur septembre 2026 »,
+ * « Le 23 octobre 2026 » (taux du jour), « En septembre 2026 » (inflation sur
+ * un an, dite dans l'énoncé), « Au 2e trimestre 2026 », « Fin juin 2026 », « Fin 2025 ».
+ */
+export function periodePhrase(x: string, mesure: Mesure): string {
+  if (/^\d{4}$/.test(x)) return `Fin ${x}`;
+  if (/^\d{4}-T\d$/.test(x)) return `Au ${libellePeriode(x, "trimestrielle")}`;
+  const mois = /^\d{4}-\d{2}$/.test(x) ? libellePeriode(x, "mensuelle") : undefined;
+  if (mois) return mesure === "moyenne-mensuelle" ? `En moyenne sur ${mois}` : `En ${mois}`;
+  return mesure === "fin-de-periode" ? `Fin ${libellePeriode(x.slice(0, 7), "mensuelle")}` : `Le ${jourEnClair(x)}`;
+}
+
+/** Même période, en fin de phrase : « août 2026 », « le 1er trimestre 2026 », « fin mars 2026 », « le 20 octobre 2026 ». */
+export function periodeCourte(x: string, mesure: Mesure): string {
+  const p = periodePhrase(x, mesure).replace(/^En moyenne sur /, "").replace(/^En /, "");
+  return p.charAt(0).toLowerCase() + p.slice(1);
+}
 
 /** Date d'un point, quel que soit son format : année, trimestre, mois ou jour. */
 export function libelleDate(x: string): string {
@@ -130,15 +177,19 @@ export interface Alerte {
   pourquoi: string;
 }
 
-/** Phrase d'une alerte : « … est au-dessus de 5 % depuis … (5,1 % en novembre 2026). » */
+/**
+ * Phrase d'une alerte, qui dit toujours la période du chiffre : « En moyenne
+ * sur septembre 2026, la France emprunte à 10 ans à 4,44 %, contre 4,36 % pour
+ * l'Italie. C'est le cas depuis août 2026. »
+ */
 export function phraseAlerte(r: RegleAlerte, e: Etat): string | undefined {
   if (e.etat === "normal") return undefined;
-  const actuel = `${r.detail(e.dernier)} ${libelleDate(e.dernier.x)}`;
+  const debut = `${periodePhrase(e.dernier.x, r.mesure)}, ${r.enonce(e.dernier)}`;
   if (e.etat === "franchi") {
-    const depuis = e.depuis === e.dernier.x ? "" : ` depuis ${libelleDate(e.depuis).replace(/^(en|le|fin) /, "")}`;
-    return `${r.sujet} est ${r.libelleSeuil}${depuis} : ${actuel}.`;
+    const depuis = e.depuis === e.dernier.x ? "" : ` C'est le cas depuis ${periodeCourte(e.depuis, r.mesure)}.`;
+    return `${debut}${r.rappelSeuil ? `, ${r.libelleSeuil}` : ""}.${depuis}`;
   }
-  return `${r.sujet} n'est plus ${r.libelleSeuil} : ${actuel}, après ${r.detail(e.precedent)} ${libelleDate(e.precedent.x)}.`;
+  return `${debut}, ${r.libelleRetour}.`;
 }
 
 /** Alertes en cours, calculées sur les données actuelles. */

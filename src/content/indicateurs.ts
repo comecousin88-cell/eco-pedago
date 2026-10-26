@@ -13,6 +13,8 @@ export interface Indicateur {
   /** Identifiant de la série dans data/*.json. */
   serie: string;
   frequence: Frequence;
+  /** Nature du chiffre, dite avec sa période : moyenne du mois (taux de marché) ou évolution sur un an (inflation). */
+  nature?: "moyenne" | "sur-un-an";
   /** Unité affichée après la valeur. */
   unite: string;
   decimales: number;
@@ -50,6 +52,7 @@ export const indicateurs: Indicateur[] = [
     titre: "Taux d'emprunt de l'État à 10 ans",
     serie: "marches.taux10-france",
     frequence: "mensuelle",
+    nature: "moyenne",
     valeurRecente: "marches.taux10-france-jour",
     unite: "%",
     decimales: 2,
@@ -62,6 +65,7 @@ export const indicateurs: Indicateur[] = [
     titre: "Écart de taux avec l'Allemagne",
     serie: "marches.spread-france-allemagne",
     frequence: "mensuelle",
+    nature: "moyenne",
     unite: "points de base",
     decimales: 0,
     explication:
@@ -73,6 +77,7 @@ export const indicateurs: Indicateur[] = [
     titre: "Inflation",
     serie: "ind.inflation-ipc-fr",
     frequence: "mensuelle",
+    nature: "sur-un-an",
     unite: "%",
     decimales: 1,
     comparaisonTexte: {

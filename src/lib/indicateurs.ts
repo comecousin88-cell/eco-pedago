@@ -65,6 +65,19 @@ export function libellePeriode(x: string, frequence: Frequence): string {
   return `${j}/${m}/${a}`;
 }
 
+/**
+ * Période d'un chiffre du tableau de bord, avec sa nature : « moyenne de
+ * septembre 2026 » (taux de marché), « septembre 2026, sur un an » (inflation),
+ * « 2e trimestre 2026 », « depuis le 16/09/2026 » (taux directeurs), « 2025 ».
+ */
+export function periodeIndicateur(x: string, frequence: Frequence, nature?: "moyenne" | "sur-un-an"): string {
+  const p = libellePeriode(x, frequence);
+  if (frequence === "paliers") return `depuis le ${p}`;
+  if (nature === "moyenne") return `moyenne de ${p}`;
+  if (nature === "sur-un-an") return `${p}, sur un an`;
+  return p;
+}
+
 /** Points des `annees` dernières années (pour une courbe miniature). */
 export function derniersPoints(serie: readonly Point[], frequence: Frequence, annees: number): Point[] {
   const fin = dernierPoint(serie).x;
