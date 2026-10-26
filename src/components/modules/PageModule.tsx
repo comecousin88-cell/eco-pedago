@@ -6,12 +6,14 @@ import type { QuestionQuiz } from "@/components/pedago/Quiz";
 import { PropositionsLiees } from "@/components/propositions/PropositionsLiees";
 import { EtEnsuite } from "@/components/layout/EtEnsuite";
 import { moduleHref, neighbours, type ModuleInfo } from "@/content/modules";
-import { themeDuModule, themeHref } from "@/content/rubriques";
+import { themeDuModule } from "@/content/rubriques";
 import { suiteModule } from "@/content/suite";
 import { ApprofondiModule } from "./ApprofondiModule";
 import { FilAriane } from "./FilAriane";
 import { SourcesPage } from "@/components/pedago/SourcesPage";
 import { sourcesPage } from "@/lib/sources-page";
+import { BarreModuleMobile } from "./BarreModuleMobile";
+import { filModule } from "@/content/fil-ariane";
 import { FinDeSection } from "./FinDeSection";
 import { FinDuModule } from "./FinDuModule";
 import { ModuleTheme } from "./ModuleTheme";
@@ -42,21 +44,18 @@ export function PageModule({
   const href = moduleHref(module.slug, section);
   const theme = themeDuModule(module.slug);
   // Section suivante du même module, pour le bouton « J'ai compris → section suivante ».
-  const { next } = neighbours(module.slug, section);
+  const { previous, next } = neighbours(module.slug, section);
   const suivante = next && next.module.slug === module.slug ? { href: next.href, titre: next.title } : undefined;
   // Les sources des chiffres de la page, listées en bas (dans le texte, elles sont dans l'infobulle de chaque chiffre).
   const sources = sourcesPage(readFileSync(join(process.cwd(), "src/content/modules", module.slug, `${section ?? "index"}.mdx`), "utf8"));
 
   return (
     <ModuleTheme color={module.color}>
-      <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6 sm:py-12">
+      {/* Sur mobile, de la place en bas pour la barre « Précédent · Sommaire · Suivant ». */}
+      <div className="mx-auto max-w-6xl px-4 pt-2 pb-24 sm:px-6 lg:pb-12">
         <FilAriane
-          etapes={[
-            { label: "Comprendre", href: "/comprendre/" },
-            { label: theme.titre, href: themeHref(theme) },
-            infoSection ? { label: module.title, href: moduleHref(module.slug) } : { label: module.title },
-            ...(infoSection ? [{ label: infoSection.title }] : []),
-          ]}
+          retour={{ label: "Les 12 modules", href: "/comprendre/" }}
+          etapes={filModule(module, section)}
         />
 
         <div className="mt-6 grid gap-8 lg:grid-cols-[minmax(0,1fr)_17rem]">
@@ -102,13 +101,21 @@ export function PageModule({
 
           {module.sections.length > 0 && (
             <aside>
-              <div className="lg:sticky lg:top-20">
+              {/* Sur ordinateur, le sommaire reste visible à côté du texte (sous l'en-tête et le fil d'Ariane). */}
+              <div className="lg:sticky lg:top-32">
                 <ProgressionModule module={module.slug} sections={module.sections} courante={section} />
               </div>
             </aside>
           )}
         </div>
       </div>
+      <BarreModuleMobile
+        module={module.slug}
+        sections={module.sections}
+        courante={section}
+        precedente={previous ? { href: previous.href, titre: previous.title } : undefined}
+        suivante={next ? { href: next.href, titre: next.title } : undefined}
+      />
     </ModuleTheme>
   );
 }

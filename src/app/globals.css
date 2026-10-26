@@ -217,6 +217,11 @@ body {
   display: none;
 }
 
+/* Une ancre (#…) arrive sous l'en-tête et le fil d'Ariane, qui restent en haut de l'écran. */
+html {
+  scroll-padding-top: 7.5rem;
+}
+
 /* Focus clavier bien visible partout */
 :focus-visible {
   outline: 2px solid var(--accent);

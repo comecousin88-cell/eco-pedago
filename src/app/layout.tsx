@@ -3,6 +3,7 @@ import { Inter, Source_Serif_4 } from "next/font/google";
 import { AnnonceLecture } from "@/components/lecture/AnnonceLecture";
 import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
+import { RetourSansPerte } from "@/components/layout/RetourSansPerte";
 import { themeScript } from "@/components/theme/theme-script";
 import { lectureScript } from "@/lib/lecture-script";
 import { jsonLdSite, metadataSite } from "@/content/metadonnees";
@@ -48,6 +49,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           Aller au contenu
         </a>
         <Header />
+        <RetourSansPerte />
         <main id="contenu" className="flex-1">
           {children}
         </main>

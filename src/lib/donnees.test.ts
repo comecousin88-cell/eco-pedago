@@ -10,7 +10,7 @@ import { fichiers, type Donnee } from "./data";
 import { mesures } from "./game/mesures";
 
 /** Fichiers de data/ qui n'ont pas le format « donnees » (contrôlés par leurs propres tests). */
-const AUTRES_FORMATS = ["mesures-budget", "maj-indicateurs", "agenda", "actu-flux", "actu-journal", "actu-explications", "actu-resumes", "actu-resumes-officiels", "actu-resumes-journal", "fusions-journal"];
+const AUTRES_FORMATS = ["mesures-budget", "maj-indicateurs", "agenda", "actu-flux", "actu-journal", "actu-explications", "actu-resumes", "actu-resumes-officiels", "actu-resumes-journal", "fusions-journal", "liens-externes"];
 
 const racine = fileURLToPath(new URL("../../", import.meta.url));
 const DATE = /^\d{4}(-\d{2}(-\d{2})?)?$/;

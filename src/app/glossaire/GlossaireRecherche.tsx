@@ -1,6 +1,7 @@
 "use client";
 
-import { useDeferredValue, useState } from "react";
+import { useDeferredValue } from "react";
+import { useEtatConserve } from "@/lib/etat-conserve";
 import type { EntreeGlossaire } from "@/content/glossaire";
 
 /** Minuscules sans accents, pour chercher « deficit » comme « déficit ». */
@@ -15,7 +16,8 @@ export function GlossaireRecherche({
   entrees: EntreeGlossaire[];
   noms: Record<string, string>;
 }) {
-  const [recherche, setRecherche] = useState("");
+  // La recherche est gardée pour la visite : en revenant sur le glossaire, on la retrouve.
+  const [recherche, setRecherche] = useEtatConserve("glossaire:recherche", "");
   const q = normaliser(useDeferredValue(recherche).trim());
   const visibles = q
     ? entrees.filter((e) => normaliser(`${e.terme} ${e.court} ${e.long}`).includes(q))
@@ -27,7 +29,7 @@ export function GlossaireRecherche({
 
   return (
     <>
-      <div className="sticky top-16 z-10 -mx-4 mt-8 bg-page/95 px-4 py-3 backdrop-blur sm:mx-0 sm:px-0">
+      <div className="sticky top-28 z-10 -mx-4 mt-8 bg-page/95 px-4 py-3 backdrop-blur sm:mx-0 sm:px-0">
         <label htmlFor="recherche-glossaire" className="sr-only">
           Chercher un terme
         </label>

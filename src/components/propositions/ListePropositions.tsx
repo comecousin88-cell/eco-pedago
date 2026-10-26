@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEtatConserve } from "@/lib/etat-conserve";
 import type { NiveauVerdict } from "@/components/pedago/Encadres";
 import { CarteProposition, type CarteFiche } from "./CarteProposition";
 
@@ -48,8 +48,9 @@ function Filtre<T extends string>({
  * disparaissent dès qu'on filtre par verdict).
  */
 export function ListePropositions({ propositions, themes }: { propositions: CarteFiche[]; themes: readonly string[] }) {
-  const [theme, setTheme] = useState("tous");
-  const [verdict, setVerdict] = useState<NiveauVerdict | "tous">("tous");
+  // Filtres gardés pour la visite : en revenant sur la liste, on les retrouve.
+  const [theme, setTheme] = useEtatConserve("propositions:theme", "tous");
+  const [verdict, setVerdict] = useEtatConserve<NiveauVerdict | "tous">("propositions:verdict", "tous");
   const visibles = propositions.filter(
     (p) => (theme === "tous" || p.themes.includes(theme)) && (verdict === "tous" || (p.redigee && p.verdict === verdict)),
   );
