@@ -1,12 +1,13 @@
 "use client";
 
 import { useSyncExternalStore } from "react";
-import { getParcours, type ParcoursId } from "@/content/parcours";
-import { changerModeLecture } from "./lecture";
+import { ANCIENS_PARCOURS, parcours, type ParcoursId } from "@/content/parcours";
 
 /**
- * Le parcours en cours (« Je découvre » ou « J'approfondis »), gardé dans le
- * navigateur. Sans stockage, il vaut jusqu'au rechargement de la page.
+ * Le parcours thématique en cours, gardé dans le navigateur. Sans stockage, il
+ * vaut jusqu'au rechargement de la page. Un ancien parcours (« Je découvre »,
+ * « J'approfondis ») reprend dans « Tout comprendre ». Le niveau de lecture ne
+ * dépend plus du parcours : il se choisit dans chaque module.
  */
 
 const CLE = "parcours";
@@ -16,7 +17,8 @@ let memoire: ParcoursId | null = null;
 function lire(): ParcoursId | null {
   try {
     const v = localStorage.getItem(CLE);
-    return v === "decouvrir" || v === "approfondir" ? v : null;
+    if (v && ANCIENS_PARCOURS[v]) return ANCIENS_PARCOURS[v];
+    return parcours.some((p) => p.id === v) ? (v as ParcoursId) : null;
   } catch {
     return memoire;
   }
@@ -42,10 +44,9 @@ function ecrire(id: ParcoursId | null) {
   for (const e of ecouteurs) e();
 }
 
-/** Démarre (ou reprend) un parcours et règle le mode de lecture qui va avec. */
+/** Démarre (ou reprend) un parcours. */
 export function demarrerParcours(id: ParcoursId) {
   ecrire(id);
-  changerModeLecture(getParcours(id).mode);
 }
 
 export function quitterParcours() {

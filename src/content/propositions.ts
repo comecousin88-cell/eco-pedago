@@ -40,7 +40,7 @@ export interface Proposition {
   module: string;
   /** Pages de modules qui renvoient vers la fiche (encadré « Une proposition liée »). */
   liens: LienModule[];
-  /** Fiche mise en avant sur l'accueil et en fin de parcours « Je découvre ». */
+  /** Fiche mise en avant sur l'accueil et dans le parcours « Me faire un avis sur les propositions ». */
   phare?: boolean;
   verdict?: NiveauVerdict;
   /** Texte de la fiche ; absent tant qu'elle n'est pas rédigée. */

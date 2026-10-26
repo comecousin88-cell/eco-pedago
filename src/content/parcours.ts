@@ -1,20 +1,23 @@
 import { moduleHref, modules, type ModuleInfo } from "./modules";
 import { propositionHref, propositionsPhares } from "./propositions";
-import type { ModeLecture } from "@/lib/lecture";
 
 /**
- * Les deux parcours proposés sur l'accueil. Une étape est une page ; celles
- * des modules pas encore écrits sont « bientôt » et ne comptent pas dans la
- * progression.
+ * Les parcours thématiques proposés sur l'accueil et dans « Comprendre ». Le
+ * niveau (Simple ou Approfondi) se choisit dans chaque module : un parcours
+ * ne règle plus le mode de lecture. Une étape est une page ; celles des
+ * modules pas encore écrits sont « bientôt » et ne comptent pas. La
+ * progression est celle des pages lues : elle est commune à tous les parcours.
  */
 
-export type ParcoursId = "decouvrir" | "approfondir";
+export type ParcoursId = "dette" | "retraites-paie" | "propositions" | "tout";
 
 export interface EtapeParcours {
   href: string;
   titre: string;
   /** Module ou rubrique d'appartenance, pour regrouper l'affichage. */
   groupe: string;
+  /** Module de l'étape, quand c'en est une page (pour compter les modules terminés). */
+  module?: string;
   disponible: boolean;
 }
 
@@ -22,22 +25,11 @@ export interface Parcours {
   id: ParcoursId;
   titre: string;
   accroche: string;
-  duree: string;
-  /** Mode de lecture réglé au démarrage du parcours. */
-  mode: ModeLecture;
   etapes: EtapeParcours[];
 }
 
-function etapeModule(m: ModuleInfo, section?: string): EtapeParcours {
-  const s = section ? m.sections.find((x) => x.slug === section) : undefined;
-  if (section && !s) throw new Error(`Section inconnue : ${m.slug}/${section}`);
-  return {
-    href: moduleHref(m.slug, section),
-    titre: s ? s.title : m.title,
-    groupe: m.title,
-    disponible: m.status === "available",
-  };
-}
+/** Anciens parcours (« Je découvre », « J'approfondis ») : un parcours en cours reprend dans « Tout comprendre ». */
+export const ANCIENS_PARCOURS: Record<string, ParcoursId> = { decouvrir: "tout", approfondir: "tout" };
 
 function mod(slug: string): ModuleInfo {
   const m = modules.find((x) => x.slug === slug);
@@ -45,68 +37,78 @@ function mod(slug: string): ModuleInfo {
   return m;
 }
 
+function etapeModule(m: ModuleInfo, section?: string): EtapeParcours {
+  const s = section ? m.sections.find((x) => x.slug === section) : undefined;
+  if (section && !s) throw new Error(`Section inconnue : ${m.slug}/${section}`);
+  return { href: moduleHref(m.slug, section), titre: s ? s.title : m.title, groupe: m.title, module: m.slug, disponible: m.status === "available" };
+}
+
+/** Toutes les pages d'un module : introduction, puis chaque section. */
+const moduleComplet = (slug: string) => {
+  const m = mod(slug);
+  return [etapeModule(m), ...m.sections.map((s) => etapeModule(m, s.slug))];
+};
+
 const GROUPE_PROPOSITIONS = "Les propositions au crible";
-
-/** Rubriques transverses ajoutées à la fin du parcours « J'approfondis ». */
-const ETAPES_TRANSVERSES: EtapeParcours[] = [
-  { href: "/tableau-de-bord/", titre: "Le tableau de bord", groupe: "Tableau de bord", disponible: true },
+const PROPOSITIONS: EtapeParcours[] = [
   { href: "/propositions/", titre: "Les propositions au crible", groupe: GROUPE_PROPOSITIONS, disponible: true },
-  { href: "/idees-recues/", titre: "Idées reçues", groupe: "Idées reçues", disponible: true },
+  ...propositionsPhares.map((p) => ({ href: propositionHref(p.slug), titre: p.titre, groupe: GROUPE_PROPOSITIONS, disponible: !!p.contenu })),
 ];
-
-/** Sélection des sections essentielles, dans l'ordre du fil conducteur. */
-const DECOUVRIR: [string, string?][] = [
-  ["les-bases", "recettes-depenses"],
-  ["les-bases", "administrations"],
-  ["deficit-et-dette", "flux-et-stock"],
-  ["deficit-et-dette", "soldes"],
-  ["deficit-et-dette", "histoire"],
-  ["emprunt-etat", "oat-btf"],
-  ["emprunt-etat", "prix-et-taux"],
-  ["emprunt-etat", "taux-apparent"],
-  ["retraites", "repartition-capitalisation"],
-  ["retraites", "demographie"],
-  ["retraites", "leviers"],
-  ["fiche-de-paie"],
-];
+const IDEES_RECUES: EtapeParcours = { href: "/idees-recues/", titre: "Idées reçues", groupe: "Idées reçues", disponible: true };
 
 export const parcours: Parcours[] = [
   {
-    id: "decouvrir",
-    titre: "Je découvre",
-    accroche:
-      "L'essentiel en trois quarts d'heure : la France en dix chiffres, d'où vient l'argent public, pourquoi la dette monte, comment l'État emprunte, qui paie les retraites, ce qui reste sur la fiche de paie, et ce que valent les solutions qu'on entend.",
-    duree: "≈ 45 min",
-    mode: "simple",
-    // Le parcours commence par la France en 10 chiffres et se termine sur les fiches : la rubrique, puis les fiches phares.
+    id: "dette",
+    titre: "Comprendre la dette",
+    accroche: "Pourquoi la dette monte, comment l'État emprunte, ce qu'est l'effet boule de neige et ce que peut faire la banque centrale.",
+    etapes: ["deficit-et-dette", "emprunt-etat", "boule-de-neige", "banque-centrale"].flatMap(moduleComplet),
+  },
+  {
+    id: "retraites-paie",
+    titre: "Comprendre les retraites et ma fiche de paie",
+    accroche: "Comment les retraites sont financées, les leviers pour les équilibrer, et ce que deviennent les cotisations prélevées sur un salaire.",
+    etapes: ["retraites", "fiche-de-paie"].flatMap(moduleComplet),
+  },
+  {
+    id: "propositions",
+    titre: "Me faire un avis sur les propositions",
+    accroche: "Les bases nécessaires (PIB, déficit, dette, taux), puis les propositions du débat public passées au crible, et les idées reçues vérifiées.",
     etapes: [
-      { href: "/la-france-en-10-chiffres/", titre: "La France en 10 chiffres", groupe: "La France en 10 chiffres", disponible: true },
-      ...DECOUVRIR.map(([m, s]) => etapeModule(mod(m), s)),
-      { href: "/propositions/", titre: "Les propositions au crible", groupe: GROUPE_PROPOSITIONS, disponible: true },
-      ...propositionsPhares.map((p) => ({
-        href: propositionHref(p.slug),
-        titre: p.titre,
-        groupe: GROUPE_PROPOSITIONS,
-        disponible: !!p.contenu,
-      })),
+      ...moduleComplet("les-bases"),
+      etapeModule(mod("deficit-et-dette"), "flux-et-stock"),
+      etapeModule(mod("deficit-et-dette"), "soldes"),
+      etapeModule(mod("emprunt-etat"), "prix-et-taux"),
+      etapeModule(mod("boule-de-neige"), "formule"),
+      ...PROPOSITIONS,
+      IDEES_RECUES,
     ],
   },
   {
-    id: "approfondir",
-    titre: "J'approfondis",
-    accroche:
-      "Tous les modules et toutes les sections, avec les formules, les nuances et les débats d'économistes dépliés, puis le tableau de bord, les propositions passées au crible et les idées reçues.",
-    duree: "plusieurs heures, à votre rythme",
-    mode: "approfondi",
+    id: "tout",
+    titre: "Tout comprendre",
+    accroche: "Tous les modules, dans l'ordre, puis le tableau de bord, les propositions passées au crible et les idées reçues.",
     etapes: [
-      ...modules.flatMap((m) => [etapeModule(m), ...m.sections.map((s) => etapeModule(m, s.slug))]),
-      ...ETAPES_TRANSVERSES,
+      ...modules.flatMap((m) => moduleComplet(m.slug)),
+      { href: "/tableau-de-bord/", titre: "Le tableau de bord", groupe: "Tableau de bord", disponible: true },
+      ...PROPOSITIONS,
+      IDEES_RECUES,
     ],
   },
 ];
 
+/** Ligne commune aux cartes des parcours. */
+export const NIVEAU_DANS_CHAQUE_MODULE = "Dans chaque module, choisissez votre niveau : Simple ou Approfondi.";
+
 export function getParcours(id: ParcoursId): Parcours {
   return parcours.find((p) => p.id === id)!;
+}
+
+/** Durée estimée d'un parcours : environ cinq minutes par page, arrondie au quart d'heure. */
+export function dureeEstimee(p: Parcours): string {
+  const minutes = Math.max(15, Math.round((p.etapes.filter((e) => e.disponible).length * 5) / 15) * 15);
+  const h = Math.floor(minutes / 60);
+  const m = minutes % 60;
+  return `≈ ${h ? `${h} h${m ? ` ${m}` : ""}` : `${m} min`}`;
 }
 
 export interface Avancement {
@@ -130,6 +132,19 @@ export function avancement(p: Parcours, lues: readonly string[]): Avancement {
     pourcent: dispo.length ? Math.round((faites / dispo.length) * 100) : 0,
     prochaine: dispo.find((e) => !lues.includes(e.href)),
   };
+}
+
+/** Modules du parcours, dans l'ordre, et combien sont terminés (toutes leurs pages lues). */
+export function modulesDuParcours(p: Parcours, lues: readonly string[]): { modules: string[]; termines: number } {
+  const liste = [...new Set(p.etapes.flatMap((e) => (e.module ? [e.module] : [])))];
+  const termines = liste.filter((m) => p.etapes.filter((e) => e.module === m && e.disponible).every((e) => lues.includes(e.href))).length;
+  return { modules: liste, termines };
+}
+
+/** Le parcours d'un module, à défaut du parcours en cours : le premier parcours thématique qui le contient, sinon « Tout comprendre ». */
+export function parcoursDuModule(module: string, actif?: ParcoursId | null): Parcours {
+  const candidats = parcours.filter((p) => p.etapes.some((e) => e.module === module));
+  return candidats.find((p) => p.id === actif) ?? candidats.find((p) => p.id !== "tout") ?? getParcours("tout");
 }
 
 /** Position d'une page dans un parcours (1 = première étape), ou 0 si absente. */

@@ -1,21 +1,23 @@
 "use client";
 
 import Link from "next/link";
-import { avancement, parcours } from "@/content/parcours";
+import { avancement, dureeEstimee, NIVEAU_DANS_CHAQUE_MODULE, parcours } from "@/content/parcours";
 import { demarrerParcours, useParcoursActif } from "@/lib/parcours-actif";
 import { effacerProgression, useProgression } from "@/lib/progression";
 import { BoutonRecommencer } from "./BoutonRecommencer";
 
 /**
- * Les deux parcours, avec leur progression et un bouton pour (re)commencer.
- * Commencer « Je découvre » passe le site en mode Simple, « J'approfondis » en
- * mode Approfondi (demarrerParcours) : l'interrupteur du haut reflète ce mode.
+ * Les quatre parcours thématiques, avec leur durée estimée, leur progression,
+ * un bouton « Commencer » ou « Reprendre » et le bouton ↺ pour recommencer.
+ * Le niveau de lecture se choisit dans chaque module.
  */
 export function CartesParcours() {
   const { lues } = useProgression();
   const actif = useParcoursActif();
 
   return (
+    <div>
+    <p className="mb-4 text-sm text-muted">{NIVEAU_DANS_CHAQUE_MODULE}</p>
     <ul className="grid gap-4 md:grid-cols-2">
       {parcours.map((p) => {
         const a = avancement(p, lues);
@@ -26,7 +28,7 @@ export function CartesParcours() {
           <li key={p.id} className="flex flex-col rounded-2xl border border-line bg-surface p-6">
             <div className="flex flex-wrap items-baseline justify-between gap-2">
               <h3 className="font-serif text-2xl font-semibold text-ink">{p.titre}</h3>
-              <span className="text-sm text-muted">{p.duree}</span>
+              <span className="text-sm text-muted">{dureeEstimee(p)}</span>
             </div>
             <p className="mt-2 flex-1 leading-relaxed text-muted">{p.accroche}</p>
 
@@ -78,5 +80,6 @@ export function CartesParcours() {
         );
       })}
     </ul>
+    </div>
   );
 }

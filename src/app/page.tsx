@@ -99,8 +99,7 @@ export default function Home() {
           Choisissez votre parcours
         </h2>
         <p className="mt-2 max-w-2xl text-muted">
-          Deux façons de lire le site. Vous pouvez passer de l&apos;une à l&apos;autre à tout moment avec
-          l&apos;interrupteur « Simple / Approfondi ».
+          Quatre parcours, selon ce que vous voulez comprendre.
         </p>
         <div className="mt-6">
           <CartesParcours />

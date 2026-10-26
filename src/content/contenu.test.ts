@@ -5,7 +5,7 @@ import { PARTIES, THEMES, propositionHref, propositions, propositionsPhares } fr
 import { readFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { modules, neighbours } from "./modules";
-import { avancement, getParcours, parcours, positionDans } from "./parcours";
+import { ANCIENS_PARCOURS, avancement, dureeEstimee, getParcours, modulesDuParcours, parcours, parcoursDuModule, positionDans } from "./parcours";
 
 describe("glossaire", () => {
   it("identifiants uniques", () => {
@@ -44,34 +44,50 @@ describe("parcours", () => {
     }
   });
 
-  it("« J'approfondis » couvre toutes les pages de tous les modules", () => {
-    const total = modules.reduce((n, m) => n + 1 + m.sections.length, 0);
-    // plus le tableau de bord, les propositions et les idées reçues
-    expect(getParcours("approfondir").etapes).toHaveLength(total + 3);
-  });
-
-  it("« Je découvre » suit le fil conducteur et finit par les propositions", () => {
-    const groupes = [...new Set(getParcours("decouvrir").etapes.map((e) => e.groupe))];
-    expect(groupes.map((g) => g.replace(/^Module [^·]+· /, ""))).toEqual([
-      "La France en 10 chiffres",
-      "Les bases",
-      "Déficit et dette",
-      "Comment l'État emprunte",
-      "Les retraites",
-      "Ma fiche de paie",
-      "Les propositions au crible",
+  it("quatre parcours thématiques, chacun avec sa durée estimée", () => {
+    expect(parcours.map((p) => p.titre)).toEqual([
+      "Comprendre la dette",
+      "Comprendre les retraites et ma fiche de paie",
+      "Me faire un avis sur les propositions",
+      "Tout comprendre",
     ]);
+    for (const p of parcours) expect(dureeEstimee(p), p.id).toMatch(/^≈ (\d+ h( \d+)?|\d+ min)$/);
   });
 
-  it("« Je découvre » se termine sur la rubrique puis les quatre fiches phares", () => {
-    const etapes = getParcours("decouvrir").etapes;
-    const fin = etapes.slice(-5).map((e) => e.href);
-    expect(fin).toEqual(["/propositions/", ...propositionsPhares.map((p) => propositionHref(p.slug))]);
+  it("« Comprendre la dette » : déficit et dette, emprunt de l'État, boule de neige, banque centrale", () => {
+    expect(modulesDuParcours(getParcours("dette"), []).modules).toEqual(["deficit-et-dette", "emprunt-etat", "boule-de-neige", "banque-centrale"]);
+    expect(modulesDuParcours(getParcours("retraites-paie"), []).modules).toEqual(["retraites", "fiche-de-paie"]);
+  });
+
+  it("« Me faire un avis » : les bases, puis les fiches au crible et les idées reçues", () => {
+    const etapes = getParcours("propositions").etapes.map((e) => e.href);
+    expect(etapes[0]).toBe("/modules/les-bases/");
+    expect(etapes.slice(-6)).toEqual(["/propositions/", ...propositionsPhares.map((p) => propositionHref(p.slug)), "/idees-recues/"]);
+  });
+
+  it("« Tout comprendre » couvre toutes les pages de tous les modules", () => {
+    const total = modules.reduce((n, m) => n + 1 + m.sections.length, 0);
+    // plus le tableau de bord, la rubrique et les fiches phares des propositions, et les idées reçues
+    expect(getParcours("tout").etapes).toHaveLength(total + 1 + 1 + propositionsPhares.length + 1);
+  });
+
+  it("la progression déjà enregistrée se reporte sur les nouveaux parcours, et un ancien parcours en cours reprend dans « Tout comprendre »", () => {
+    const lues = ["/modules/deficit-et-dette/", "/modules/deficit-et-dette/flux-et-stock/", "/modules/retraites/leviers/"];
+    expect(avancement(getParcours("dette"), lues).faites).toBe(2);
+    expect(avancement(getParcours("retraites-paie"), lues).faites).toBe(1);
+    expect(avancement(getParcours("tout"), lues).faites).toBe(3);
+    expect(ANCIENS_PARCOURS).toEqual({ decouvrir: "tout", approfondir: "tout" });
+    const dette = getParcours("dette");
+    const toutesLues = dette.etapes.filter((e) => e.module === "deficit-et-dette").map((e) => e.href);
+    expect(modulesDuParcours(dette, toutesLues).termines).toBe(1);
+    expect(parcoursDuModule("emprunt-etat").id).toBe("dette");
+    expect(parcoursDuModule("emprunt-etat", "tout").id).toBe("tout");
+    expect(parcoursDuModule("cadre-europeen").id).toBe("tout");
   });
 
   it("l'avancement ne compte que les étapes disponibles", () => {
     const p = {
-      ...getParcours("decouvrir"),
+      ...getParcours("dette"),
       etapes: [
         { href: "/a/", titre: "A", groupe: "g", disponible: true },
         { href: "/b/", titre: "B", groupe: "g", disponible: true },
