@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 import { ModeLecture } from "@/components/lecture/ModeLecture";
-import { Quiz, type QuestionQuiz } from "@/components/pedago/Quiz";
+import type { QuestionQuiz } from "@/components/pedago/Quiz";
 import { PropositionsLiees } from "@/components/propositions/PropositionsLiees";
 import { EtEnsuite } from "@/components/layout/EtEnsuite";
 import { moduleHref, neighbours, type ModuleInfo } from "@/content/modules";
@@ -9,14 +9,15 @@ import { suiteModule } from "@/content/suite";
 import { ApprofondiModule } from "./ApprofondiModule";
 import { FilAriane } from "./FilAriane";
 import { FinDeSection } from "./FinDeSection";
+import { FinDuModule } from "./FinDuModule";
 import { ModuleTheme } from "./ModuleTheme";
 import { NavModule } from "./NavModule";
 import { ProgressionModule } from "./ProgressionModule";
 
 /**
  * Mise en page d'une page de module (introduction ou section) : fil d'Ariane,
- * en-tête, interrupteur de lecture, texte, quiz en fin de
- * module, progression et navigation.
+ * en-tête, interrupteur de lecture, texte, progression et
+ * navigation, et sur la dernière page l'écran de fin de module.
  */
 export function PageModule({
   module,
@@ -27,7 +28,7 @@ export function PageModule({
   module: ModuleInfo;
   /** Slug de la section ; absent sur la page d'introduction. */
   section?: string;
-  /** Questions du quiz, affichées sur la dernière page du module. */
+  /** Questions du quiz : les premières forment le mini-quiz de l'écran de fin de module. */
   quiz?: QuestionQuiz[];
   children: ReactNode;
 }) {
@@ -80,11 +81,15 @@ export function PageModule({
 
             <PropositionsLiees module={module.slug} section={section} />
 
-            {derniere && quiz && quiz.length > 0 && <Quiz module={module.slug} questions={quiz} />}
-
-            <NavModule module={module.slug} section={section} />
-
-            <EtEnsuite suggestions={suiteModule(module.slug, section)} />
+            {/* Dernière page : l'écran de fin de module remplace « Suivant » et « Et ensuite ? ». */}
+            {derniere ? (
+              <FinDuModule module={module.slug} quiz={quiz} />
+            ) : (
+              <>
+                <NavModule module={module.slug} section={section} />
+                <EtEnsuite suggestions={suiteModule(module.slug, section)} />
+              </>
+            )}
           </div>
 
           {module.sections.length > 0 && (

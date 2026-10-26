@@ -12,7 +12,19 @@ export interface QuestionQuiz {
   explication: string;
 }
 
-export function Quiz({ module, questions }: { module: string; questions: QuestionQuiz[] }) {
+export function Quiz({
+  module,
+  questions,
+  titre = "Testez-vous",
+  niveau = 2,
+}: {
+  module: string;
+  questions: QuestionQuiz[];
+  titre?: string;
+  /** Niveau du titre : 3 dans l'écran de fin de module. */
+  niveau?: 2 | 3;
+}) {
+  const Titre = `h${niveau}` as "h2" | "h3";
   const [reponses, setReponses] = useState<(number | null)[]>(() => questions.map(() => null));
   const total = questions.length;
   const repondu = reponses.filter((r) => r !== null).length;
@@ -35,9 +47,9 @@ export function Quiz({ module, questions }: { module: string; questions: Questio
   return (
     <section aria-labelledby={`quiz-${module}`} className="my-10 rounded-2xl border border-accent-line bg-surface p-5 sm:p-6">
       <div className="flex flex-wrap items-baseline justify-between gap-2">
-        <h2 id={`quiz-${module}`} className="font-serif text-2xl font-semibold text-ink">
-          Testez-vous
-        </h2>
+        <Titre id={`quiz-${module}`} className="font-serif text-2xl font-semibold text-ink">
+          {titre}
+        </Titre>
         <p className="text-sm text-muted" aria-live="polite">
           {repondu} / {total} question{total > 1 ? "s" : ""}
         </p>
