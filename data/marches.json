@@ -1297,7 +1297,7 @@
         "url": "https://data.ecb.europa.eu/data/datasets/IRS"
       },
       "statut": "verifie",
-      "consulte_le": "2026-10-23",
+      "consulte_le": "2026-10-26",
       "indicateur": "moyenne mensuelle, BCE"
     },
     {
@@ -2596,7 +2596,7 @@
         "url": "https://data.ecb.europa.eu/data/datasets/IRS"
       },
       "statut": "verifie",
-      "consulte_le": "2026-10-23"
+      "consulte_le": "2026-10-26"
     },
     {
       "id": "marches.taux10-italie",
@@ -3894,7 +3894,7 @@
         "url": "https://data.ecb.europa.eu/data/datasets/IRS"
       },
       "statut": "verifie",
-      "consulte_le": "2026-10-23"
+      "consulte_le": "2026-10-26"
     },
     {
       "id": "marches.taux10-espagne",
@@ -5192,7 +5192,7 @@
         "url": "https://data.ecb.europa.eu/data/datasets/IRS"
       },
       "statut": "verifie",
-      "consulte_le": "2026-10-23"
+      "consulte_le": "2026-10-26"
     },
     {
       "id": "marches.spread-france-allemagne",
@@ -6490,7 +6490,7 @@
         "url": "https://data.ecb.europa.eu/data/datasets/IRS"
       },
       "statut": "verifie",
-      "consulte_le": "2026-10-23",
+      "consulte_le": "2026-10-26",
       "note": "Calculé : taux français moins taux allemand, multiplié par 100 (1 point de pourcentage = 100 points de base).",
       "indicateur": "moyenne mensuelle, BCE"
     },
@@ -6505,7 +6505,7 @@
         "url": "https://data.ecb.europa.eu/data/datasets/IRS"
       },
       "statut": "verifie",
-      "consulte_le": "2026-10-23",
+      "consulte_le": "2026-10-26",
       "note": "Moyenne du mois.",
       "indicateur": "moyenne mensuelle, BCE"
     },
@@ -6520,7 +6520,7 @@
         "url": "https://data.ecb.europa.eu/data/datasets/IRS"
       },
       "statut": "verifie",
-      "consulte_le": "2026-10-23",
+      "consulte_le": "2026-10-26",
       "note": "Moyenne du mois."
     },
     {
@@ -6534,7 +6534,7 @@
         "url": "https://data.ecb.europa.eu/data/datasets/IRS"
       },
       "statut": "verifie",
-      "consulte_le": "2026-10-23",
+      "consulte_le": "2026-10-26",
       "note": "Moyenne du mois."
     },
     {
@@ -6548,7 +6548,7 @@
         "url": "https://data.ecb.europa.eu/data/datasets/IRS"
       },
       "statut": "verifie",
-      "consulte_le": "2026-10-23",
+      "consulte_le": "2026-10-26",
       "indicateur": "moyenne mensuelle, BCE"
     },
     {

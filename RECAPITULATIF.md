@@ -13,7 +13,7 @@ Vérifiés le 2026-10-26 : 119 liens externes.
 
 Aucun lien externe cassé.
 
-11 lien(s) refusent les robots ou n'ont pas répondu : à ouvrir dans un navigateur.
+18 lien(s) refusent les robots ou n'ont pas répondu : à ouvrir dans un navigateur.
 
 ## 2026-10-26
 
