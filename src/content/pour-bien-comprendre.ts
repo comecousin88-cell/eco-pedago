@@ -1,8 +1,9 @@
 /**
  * Notions techniques qui ont leur bloc « Pour bien comprendre » (analogie,
  * mécanisme pas à pas avec des chiffres ronds, phrase à retenir), placé avant
- * la partie technique de la page. Pilote : trois notions, en attendant la
- * validation du ton avant de généraliser.
+ * la partie technique de la page. Toutes les notions techniques du site, du
+ * pilote validé (les trois premières) aux plus simples ; un test vérifie que
+ * chaque page listée a son bloc complet.
  */
 export const pourBienComprendre: { notion: string; fichier: string; page: string }[] = [
   {
@@ -189,5 +190,25 @@ export const pourBienComprendre: { notion: string; fichier: string; page: string
     notion: "Qui paie quoi : la progressivité des prélèvements",
     fichier: "src/content/modules/fiscalite/qui-paie.mdx",
     page: "/modules/fiscalite/qui-paie/",
+  },
+  {
+    notion: "Flux et stock : déficit et dette",
+    fichier: "src/content/modules/deficit-et-dette/flux-et-stock.mdx",
+    page: "/modules/deficit-et-dette/flux-et-stock/",
+  },
+  {
+    notion: "Coût employeur, salaire brut et salaire net",
+    fichier: "src/content/modules/fiche-de-paie/index.mdx",
+    page: "/modules/fiche-de-paie/",
+  },
+  {
+    notion: "Le PIB",
+    fichier: "src/content/modules/les-bases/pib.mdx",
+    page: "/modules/les-bases/pib/",
+  },
+  {
+    notion: "Les quatre administrations publiques",
+    fichier: "src/content/modules/les-bases/administrations.mdx",
+    page: "/modules/les-bases/administrations/",
   },
 ];

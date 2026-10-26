@@ -1,6 +1,7 @@
 import { readFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { describe, expect, it } from "vitest";
+import { pagesDuSite } from "./plan-du-site";
 import { pourBienComprendre } from "./pour-bien-comprendre";
 
 const racine = fileURLToPath(new URL("../../", import.meta.url));
@@ -20,6 +21,12 @@ const TOURNURES = [
 ];
 
 describe("blocs « Pour bien comprendre »", () => {
+  it("chaque notion listée renvoie à une page publique du site", () => {
+    const pages = new Set(pagesDuSite());
+    for (const n of pourBienComprendre) expect(pages, n.page).toContain(n.page);
+    expect(new Set(pourBienComprendre.map((n) => n.fichier)).size).toBe(pourBienComprendre.length);
+  });
+
   it.each(pourBienComprendre)("$notion", ({ fichier }) => {
     const mdx = readFileSync(`${racine}${fichier}`, "utf8");
     const bloc = /<PourBienComprendre titre="[^"]+">([\s\S]*?)<\/PourBienComprendre>/.exec(mdx);
