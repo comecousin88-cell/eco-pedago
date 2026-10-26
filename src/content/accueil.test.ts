@@ -32,13 +32,14 @@ describe("accueil", () => {
     expect(INDICATEURS_CLES.map((i) => i.id)).toEqual(["dette", "deficit", "oat10", "inflation"]);
     for (const { id } of INDICATEURS_CLES) expect(indicateurs.some((i) => i.id === id), id).toBe(true);
     const html = renderToStaticMarkup(createElement(IndicateursCles));
-    expect(html.match(/<li /g)).toHaveLength(4);
+    const cartes = html.split('<li class="relative rounded-2xl').slice(1);
+    expect(cartes).toHaveLength(4);
     expect(html).toContain("Tout le tableau de bord");
     expect(html).toMatch(/href="\/tableau-de-bord\/?"/);
     // Le déficit est affiché comme un déficit (positif), pour que la flèche dise son sens.
     expect(html.replace(/<[^>]+>/g, " ")).toMatch(/Déficit public\s+\d/);
     // Chaque indicateur dit sa période et le sens de son évolution.
-    for (const li of html.split("<li ").slice(1)) {
+    for (const li of cartes) {
       expect(li).toMatch(/\b(19|20)\d\d\b/);
       expect(li).toMatch(/en hausse|en baisse|stable/);
     }

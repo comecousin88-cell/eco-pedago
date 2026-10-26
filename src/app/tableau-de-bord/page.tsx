@@ -1,13 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { CarteIndicateur } from "@/components/indicateurs/CarteIndicateur";
-import { BandeauAlertes } from "@/components/indicateurs/BandeauAlertes";
 import { DerniereVerification } from "@/components/indicateurs/DerniereVerification";
 import { ProchainesEcheances } from "@/components/indicateurs/ProchainesEcheances";
 import { FilAriane } from "@/components/modules/FilAriane";
 import { MarquerLue } from "@/components/modules/MarquerLue";
 import { ModuleTheme } from "@/components/modules/ModuleTheme";
-import { indicateurs } from "@/content/indicateurs";
+import { indicateurs, TAUX_DU_JOUR_BDF } from "@/content/indicateurs";
 import { EtEnsuite } from "@/components/layout/EtEnsuite";
 import { suitePage } from "@/content/suite";
 import { rubriqueColors } from "@/content/modules";
@@ -34,7 +33,6 @@ export default function TableauDeBordPage() {
         </p>
 
         <div className="mt-6 max-w-3xl space-y-3">
-          <BandeauAlertes lienTableau={false} />
           <DerniereVerification />
         </div>
 
@@ -42,6 +40,12 @@ export default function TableauDeBordPage() {
           {indicateurs.map((i) => (
             <li key={i.id}>
               <CarteIndicateur indicateur={i} />
+              {i.id === "oat10" && (
+                <a href={TAUX_DU_JOUR_BDF} target="_blank" rel="noopener" className="mt-2 inline-block px-1 text-sm text-muted underline underline-offset-4 hover:text-ink">
+                  Voir le taux du jour sur le site de la Banque de France
+                  <span className="sr-only"> (nouvel onglet)</span> ↗
+                </a>
+              )}
             </li>
           ))}
         </ul>

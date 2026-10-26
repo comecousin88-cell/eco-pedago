@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { indicateurs } from "@/content/indicateurs";
 import { formatNombre } from "@/lib/format";
+import { BadgesSeuil } from "./BadgesSeuil";
 import { ecart, lectureIndicateur } from "./CarteIndicateur";
 
 /** Les quatre indicateurs de l'accueil, dans cet ordre, avec un libellé court. */
@@ -40,7 +41,7 @@ export function IndicateursCles() {
           const fleche = diff === undefined ? "" : diff > 0 ? "↗" : diff < 0 ? "↘" : "→";
           const sens = diff === undefined ? "" : diff > 0 ? "en hausse" : diff < 0 ? "en baisse" : "stable";
           return (
-            <li key={cle.id} className="rounded-2xl border border-line bg-surface p-3 sm:p-4">
+            <li key={cle.id} className="relative rounded-2xl border border-line bg-surface p-3 sm:p-4">
               <p className="text-sm font-medium text-muted">{cle.libelle}</p>
               <p className="mt-1 font-serif text-2xl font-semibold text-ink tabular-nums sm:text-3xl">
                 {formatNombre(valeur, ind.decimales)}
@@ -56,6 +57,7 @@ export function IndicateursCles() {
                   {diff === 0 ? "stable" : ecart(diff, ind.decimales, ind.unite)} {depuis(libelleReference)}
                 </p>
               )}
+              <BadgesSeuil indicateur={cle.id} className="mt-2" />
             </li>
           );
         })}

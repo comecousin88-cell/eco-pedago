@@ -3,7 +3,7 @@ import type { Indicateur } from "@/content/indicateurs";
 import { chercherValeur, getSerie, LIBELLE_ETAT, type Donnee } from "@/lib/data";
 import { formatDateDonnee, formatNombre } from "@/lib/format";
 import { derniersPoints, dernierPoint, libellePeriode, periodeIndicateur, valeurUnAnAvant, type Point } from "@/lib/indicateurs";
-import { TAUX_DU_JOUR_BDF } from "./BandeauAlertes";
+import { BadgesSeuil } from "./BadgesSeuil";
 import { CourbeIndicateur } from "./CourbeIndicateur";
 
 /** Courbe miniature en SVG : la tendance des dernières années, sans axes. */
@@ -87,8 +87,9 @@ export function CarteIndicateur({ indicateur: ind }: { indicateur: Indicateur })
   const nomsSources = [...new Set(sources.map((s) => s.source.nom))];
 
   return (
-    <article className="flex h-full flex-col rounded-2xl border border-line bg-surface p-5">
+    <article className="relative flex h-full flex-col rounded-2xl border border-line bg-surface p-5">
       <h2 className="font-serif text-lg font-semibold text-ink">{ind.titre}</h2>
+      <BadgesSeuil indicateur={ind.id} className="mt-2" />
       <div className="mt-3 flex items-end justify-between gap-3">
         <div>
           <p className="font-serif text-4xl font-semibold text-ink tabular-nums">
@@ -131,13 +132,6 @@ export function CarteIndicateur({ indicateur: ind }: { indicateur: Indicateur })
         <Link href={ind.lien.href} className="font-medium text-accent underline underline-offset-4">
           Comprendre : {ind.lien.libelle}
         </Link>
-        {/* Taux du jour pas encore disponible ici (branchement Webstat en attente d'autorisation) : lien vers la source. */}
-        {ind.valeurRecente === "marches.taux10-france-jour" && !recente && (
-          <a href={TAUX_DU_JOUR_BDF} target="_blank" rel="noopener" className="mt-1 block text-muted underline underline-offset-4 hover:text-ink">
-            Voir le taux du jour sur le site de la Banque de France
-            <span className="sr-only"> (nouvel onglet)</span> ↗
-          </a>
-        )}
       </p>
       <div className="mt-auto">
         <CourbeIndicateur

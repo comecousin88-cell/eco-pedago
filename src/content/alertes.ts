@@ -5,10 +5,12 @@ import { formatNombre } from "@/lib/format";
 import { libellePeriode, type Point } from "@/lib/indicateurs";
 
 /**
- * Seuils marquants surveillés. Quand un indicateur les franchit, un bandeau
- * d'actualité s'affiche sur l'accueil et le tableau de bord, avec la date de
- * la donnée. Les valeurs viennent de data/*.json : le bandeau suit les mises à
- * jour automatiques. Les seuils sont des repères de lecture, pas des jugements.
+ * Seuils marquants surveillés. Quand un indicateur en franchit un, un petit
+ * badge s'affiche sur sa carte (accueil et tableau de bord), avec une
+ * infobulle qui explique le seuil, et l'épisode devient une actu datée dans le
+ * fil « L'actu ». Les valeurs viennent de data/*.json : badges et actus suivent
+ * les mises à jour automatiques. Les seuils sont des repères de lecture, pas
+ * des jugements.
  */
 
 /**
@@ -21,6 +23,12 @@ export type Mesure = "moyenne-mensuelle" | "mois-sur-un-an" | "trimestre" | "fin
 
 export interface RegleAlerte {
   id: string;
+  /** Indicateur dont la carte porte le badge (src/content/indicateurs.ts). */
+  indicateur: string;
+  /** Texte du badge, court : « au-dessus de 3 % », « plus cher que l'Italie ». */
+  badge: string;
+  /** Le seuil, dit en clair pour l'infobulle. */
+  seuilEnClair: string;
   /** Position par rapport au seuil, sans verbe : « au-dessus de 5 % ». */
   libelleSeuil: string;
   /** Retour sous le seuil : « de nouveau sous 5 % ». */
@@ -44,6 +52,9 @@ const taux10Jour = () => chercherValeur("marches.taux10-france-jour");
 export const reglesAlertes: RegleAlerte[] = [
   {
     id: "oat-5",
+    indicateur: "oat10",
+    badge: "au-dessus de 5 %",
+    seuilEnClair: "Le taux à 10 ans dépasse 5 %.",
     libelleSeuil: "au-dessus de 5 %",
     libelleRetour: "de nouveau sous 5 %",
     rappelSeuil: true,
@@ -57,6 +68,9 @@ export const reglesAlertes: RegleAlerte[] = [
   },
   {
     id: "spread-100",
+    indicateur: "spread",
+    badge: "au-dessus d'un point",
+    seuilEnClair: "L'écart avec l'Allemagne dépasse un point de pourcentage (100 points de base).",
     libelleSeuil: "au-dessus d'un point (100 points de base)",
     libelleRetour: "de nouveau sous un point (100 points de base)",
     rappelSeuil: true,
@@ -70,6 +84,9 @@ export const reglesAlertes: RegleAlerte[] = [
   },
   {
     id: "france-italie",
+    indicateur: "oat10",
+    badge: "plus cher que l'Italie",
+    seuilEnClair: "La France emprunte à 10 ans à un taux plus élevé que l'Italie.",
     libelleSeuil: "au-dessus de celui de l'Italie",
     libelleRetour: "de nouveau moins que l'Italie",
     rappelSeuil: false,
@@ -87,6 +104,9 @@ export const reglesAlertes: RegleAlerte[] = [
   },
   {
     id: "dette-120",
+    indicateur: "dette",
+    badge: "au-dessus de 120 % du PIB",
+    seuilEnClair: "La dette publique dépasse 120 % du PIB.",
     libelleSeuil: "au-dessus de 120 % du PIB",
     libelleRetour: "de nouveau sous 120 % du PIB",
     rappelSeuil: true,
@@ -103,6 +123,9 @@ export const reglesAlertes: RegleAlerte[] = [
   },
   {
     id: "inflation-3",
+    indicateur: "inflation",
+    badge: "au-dessus de 3 %",
+    seuilEnClair: "Les prix augmentent de plus de 3 % sur un an.",
     libelleSeuil: "au-dessus de 3 %",
     libelleRetour: "de nouveau sous 3 %",
     rappelSeuil: true,
@@ -120,6 +143,9 @@ export const reglesAlertes: RegleAlerte[] = [
   },
   {
     id: "chomage-9",
+    indicateur: "chomage",
+    badge: "au-dessus de 9 %",
+    seuilEnClair: "Le taux de chômage dépasse 9 % de la population active.",
     libelleSeuil: "au-dessus de 9 %",
     libelleRetour: "de nouveau sous 9 %",
     rappelSeuil: true,
@@ -199,6 +225,25 @@ export function alertesActives(regles: RegleAlerte[] = reglesAlertes): Alerte[] 
     const phrase = phraseAlerte(r, e);
     return phrase && e.etat !== "normal" ? [{ id: r.id, etat: e.etat, phrase, date: e.dernier.x, lien: r.lien, pourquoi: r.pourquoi }] : [];
   });
+}
+
+export interface BadgeSeuil {
+  id: string;
+  libelle: string;
+  /** Infobulle : le seuil, depuis quand, et pourquoi il compte. */
+  explication: string;
+}
+
+/** Badges des seuils franchis en ce moment pour un indicateur (pas ceux dont on est revenu). */
+export function badgesSeuil(indicateur: string, regles: RegleAlerte[] = reglesAlertes): BadgeSeuil[] {
+  return regles
+    .filter((r) => r.indicateur === indicateur)
+    .flatMap((r) => {
+      const e = evaluerSeuil(r.points(), r.seuil, r.sens);
+      if (e.etat !== "franchi") return [];
+      const depuis = `C'est le cas depuis ${periodeCourte(e.depuis, r.mesure)}.`;
+      return [{ id: r.id, libelle: r.badge, explication: `${r.seuilEnClair} ${depuis} ${r.pourquoi}` }];
+    });
 }
 
 /** Seuil franchi, en cours ou terminé : chacun a sa page dans « L'actu », qui reste en ligne après la fin de l'alerte. */

@@ -35,6 +35,9 @@ export interface Indicateur {
   lien: { href: string; libelle: string };
 }
 
+/** Page officielle où lire le taux à 10 ans du jour (le site affiche la moyenne mensuelle de la BCE). */
+export const TAUX_DU_JOUR_BDF = "https://www.banque-france.fr/fr/statistiques/taux-et-cours";
+
 export const indicateurs: Indicateur[] = [
   {
     id: "taux-depot",

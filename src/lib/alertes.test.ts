@@ -38,9 +38,12 @@ describe("évaluation d'un seuil", () => {
   });
 });
 
-describe("phrases du bandeau", () => {
+describe("phrases des alertes (actus de seuil)", () => {
   const regle: RegleAlerte = {
     id: "test",
+    indicateur: "oat10",
+    badge: "au-dessus de 5 %",
+    seuilEnClair: "Le taux à 10 ans dépasse 5 %.",
     libelleSeuil: "au-dessus de 5 %",
     libelleRetour: "de nouveau sous 5 %",
     rappelSeuil: true,

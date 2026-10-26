@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { FilActu } from "@/components/actu/FilActu";
-import { BandeauAlertes } from "@/components/indicateurs/BandeauAlertes";
 import { DerniereVerification } from "@/components/indicateurs/DerniereVerification";
 import { ProchainesEcheances } from "@/components/indicateurs/ProchainesEcheances";
 import { EtEnsuite } from "@/components/layout/EtEnsuite";
@@ -30,7 +29,6 @@ export default function PageActu() {
         </p>
 
         <div className="mt-8 max-w-3xl space-y-3">
-          <BandeauAlertes lienTableau={false} />
           <DerniereVerification />
         </div>
 
