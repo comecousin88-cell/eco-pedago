@@ -3,6 +3,7 @@ import { FilAriane } from "@/components/modules/FilAriane";
 import { glossaire } from "@/content/glossaire";
 import { EtEnsuite } from "@/components/layout/EtEnsuite";
 import { suitePage } from "@/content/suite";
+import { RechercheSite } from "@/components/layout/RechercheSite";
 import { GlossaireRecherche } from "./GlossaireRecherche";
 
 export const metadata: Metadata = {
@@ -21,6 +22,7 @@ export default function GlossairePage() {
         {glossaire.length} termes, expliqués sans jargon. Dans les modules, un mot souligné en
         pointillés ouvre directement sa définition.
       </p>
+      <RechercheSite />
       <GlossaireRecherche entrees={tries} noms={noms} />
       <EtEnsuite suggestions={suitePage("/glossaire/")} />
     </div>

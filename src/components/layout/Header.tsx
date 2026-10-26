@@ -16,6 +16,7 @@ export function Header() {
         </Link>
         <div className="flex items-center gap-1">
           <MainNav />
+          {/* Pas de bouton : raccourci « / », menu mobile et barre de la page Glossaire ouvrent la recherche. */}
           <Recherche />
           <ThemeToggle />
         </div>

@@ -7,6 +7,7 @@ import { normaliser, rechercher } from "@/lib/recherche";
 import { glossaire } from "./glossaire";
 import { idees } from "./idees-recues";
 import { moduleHref, modules } from "./modules";
+import { entreeActive, navItems } from "./navigation";
 import { propositionHref, propositions } from "./propositions";
 import { pagesDuSite } from "./plan-du-site";
 import { indexRecherche } from "./recherche";
@@ -14,6 +15,7 @@ import { rubriqueDe, rubriques, simulateurs, themeDuModule, themes } from "./rub
 import { pagesAvecSuite, suiteModule, suitePage, suiteProposition } from "./suite";
 
 const app = fileURLToPath(new URL("../app/", import.meta.url));
+const racine = fileURLToPath(new URL("../../", import.meta.url));
 
 /** Toutes les adresses publiées : pages fixes, modules, sections, fiches. */
 function adresses(): Set<string> {
@@ -39,7 +41,26 @@ const valide = (href: string) => connues.has(href.split("#")[0]);
 const ancres = new Set([...themes.map((t) => t.slug), "commencer", ...glossaire.map((g) => g.id), ...idees.map((i) => i.id)]);
 
 describe("rubriques et thèmes", () => {
-  it("le menu a cinq entrées, chacune avec sa page", () => {
+  it("le menu : les cinq rubriques, le tableau de bord et le glossaire, chacun avec sa page", () => {
+    expect(navItems.map((r) => r.label)).toEqual(["Accueil", "Comprendre", "Décrypter", "L'actu", "Tableau de bord", "Jouer", "Glossaire"]);
+    for (const r of navItems) expect(connues, r.href).toContain(r.href);
+    // Intitulé court dans la barre quand la place manque, nom complet au survol.
+    expect(navItems.find((r) => r.id === "tableau-de-bord")?.court).toBeTruthy();
+    expect(entreeActive("/tableau-de-bord/")).toBe("tableau-de-bord");
+    expect(entreeActive("/glossaire/")).toBe("glossaire");
+    expect(entreeActive("/modules/retraites/leviers/")).toBe("comprendre");
+    expect(entreeActive("/actu/")).toBe("actu");
+  });
+
+  it("la recherche reste accessible sans loupe : raccourci « / », menu mobile, barre du Glossaire", () => {
+    const lire = (f: string) => readFileSync(join(racine, f), "utf8");
+    expect(lire("src/components/layout/Recherche.tsx")).not.toMatch(/aria-label="Rechercher dans le site \(raccourci/);
+    expect(lire("src/components/layout/Recherche.tsx")).toMatch(/e\.key === "\/"/);
+    expect(lire("src/components/layout/MainNav.tsx")).toMatch(/ouvrirRecherche\(\)/);
+    expect(lire("src/app/glossaire/page.tsx")).toMatch(/<RechercheSite \/>/);
+  });
+
+  it("les cinq rubriques, chacune avec sa page", () => {
     expect(rubriques.map((r) => r.label)).toEqual(["Accueil", "Comprendre", "Décrypter", "L'actu", "Jouer"]);
     for (const r of rubriques) expect(connues, r.href).toContain(r.href);
   });

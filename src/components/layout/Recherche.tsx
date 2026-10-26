@@ -4,10 +4,18 @@ import { useRouter } from "next/navigation";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { rechercher, type EntreeRecherche } from "@/lib/recherche";
 
+const OUVRIR = "recherche:ouvrir";
+
+/** Ouvre la recherche dans tout le site (entrée « Rechercher » du menu mobile). */
+export function ouvrirRecherche() {
+  window.dispatchEvent(new Event(OUVRIR));
+}
+
 /**
- * Recherche dans tout le site : bouton loupe dans l'en-tête, raccourci « / ».
- * L'index (/recherche.json) est chargé à la première ouverture ; la recherche
- * se fait dans le navigateur.
+ * Recherche dans tout le site : raccourci « / » sur toutes les pages, entrée
+ * « Rechercher » du menu mobile (ouvrirRecherche). La page Glossaire a aussi sa
+ * barre de recherche (RechercheSite). L'index (/recherche.json) est chargé à
+ * la première ouverture ; la recherche se fait dans le navigateur.
  */
 export function Recherche() {
   const [ouvert, setOuvert] = useState(false);
@@ -30,8 +38,13 @@ export function Recherche() {
         setOuvert(true);
       }
     };
+    const ouvrir = () => setOuvert(true);
     window.addEventListener("keydown", touche);
-    return () => window.removeEventListener("keydown", touche);
+    window.addEventListener(OUVRIR, ouvrir);
+    return () => {
+      window.removeEventListener("keydown", touche);
+      window.removeEventListener(OUVRIR, ouvrir);
+    };
   }, [ouvert]);
 
   useEffect(() => {
@@ -57,19 +70,6 @@ export function Recherche() {
 
   return (
     <>
-      <button
-        type="button"
-        onClick={() => setOuvert(true)}
-        className="rounded-md p-2 text-body hover:bg-subtle"
-        aria-label="Rechercher dans le site (raccourci : /)"
-        title="Rechercher (/)"
-      >
-        <svg aria-hidden="true" viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round">
-          <circle cx="11" cy="11" r="7" />
-          <path d="M20 20l-3.5-3.5" />
-        </svg>
-      </button>
-
       <dialog
         ref={dialogue}
         onClose={() => setOuvert(false)}
