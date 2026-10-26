@@ -1,10 +1,12 @@
 import Link from "next/link";
-import { neighbours } from "@/content/modules";
+import { moduleHref, modules, neighbours } from "@/content/modules";
 import { themeDuModule } from "@/content/rubriques";
+import { CarteSuivant } from "./CarteSuivant";
 
-/** Liens « précédent / suivant » en bas de chaque page de module. */
+/** Liens « précédent / suivant » en bas de chaque page de module ; « Suivant » suit le verrouillage des sections. */
 export function NavModule({ module, section }: { module: string; section?: string }) {
   const { previous, next } = neighbours(module, section);
+  const sections = (modules.find((m) => m.slug === module)?.sections ?? []).map((s) => moduleHref(module, s.slug));
   return (
     <nav aria-label="Pages voisines" className="mt-16 grid gap-3 border-t border-line pt-8 sm:grid-cols-2">
       {previous ? (
@@ -16,13 +18,12 @@ export function NavModule({ module, section }: { module: string; section?: strin
         <span />
       )}
       {next && (
-        <Link href={next.href} className="rounded-2xl border border-line bg-surface p-4 text-right hover:border-line-strong">
-          <span className="text-sm text-muted">Suivant →</span>
-          <span className="mt-1 block font-semibold text-ink">{next.title}</span>
-          {next.module.slug !== module && (
-            <span className="mt-0.5 block text-sm text-muted">{themeDuModule(next.module.slug).titre}</span>
-          )}
-        </Link>
+        <CarteSuivant
+          href={next.href}
+          titre={next.title}
+          sousTitre={next.module.slug !== module ? themeDuModule(next.module.slug).titre : undefined}
+          sections={sections}
+        />
       )}
     </nav>
   );

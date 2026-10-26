@@ -4,10 +4,12 @@ import Link from "next/link";
 import { BoutonRecommencer } from "@/components/lecture/BoutonRecommencer";
 import { moduleHref, type ModuleSection } from "@/content/modules";
 import { effacerProgression, useProgression } from "@/lib/progression";
+import { Cadenas, LienVerrouille, useEtapes } from "./Etapes";
 
 /**
- * Barre de progression d'un module et liste de ses sections, avec une coche
- * pour chaque section déjà lue.
+ * Barre de progression d'un module et liste de ses sections : coche pour une
+ * section validée, section en cours mise en avant, cadenas pour les suivantes
+ * (un clic ramène au bouton « J'ai compris » de la section en cours).
  */
 export function ProgressionModule({
   module,
@@ -24,6 +26,7 @@ export function ProgressionModule({
   const faites = sections.filter((s) => lues.includes(moduleHref(module, s.slug))).length;
   const pourcent = sections.length ? Math.round((faites / sections.length) * 100) : 0;
   const scoreQuiz = quiz[module];
+  const { etats, enCours } = useEtapes(sections.map((s) => moduleHref(module, s.slug)));
 
   return (
     <nav aria-label="Sections du module" className="rounded-2xl border border-line bg-surface p-4">
@@ -53,6 +56,23 @@ export function ProgressionModule({
         {sections.map((s, i) => {
           const lue = lues.includes(moduleHref(module, s.slug));
           const ici = s.slug === courante;
+          if (etats[i] === "verrouillee" && enCours) {
+            return (
+              <li key={s.slug}>
+                <LienVerrouille
+                  enCours={enCours}
+                  label={`${s.title} (verrouillée : termine d’abord la section en cours)`}
+                  className="flex items-start gap-2 rounded-lg px-2 py-1.5 text-muted hover:bg-subtle"
+                >
+                  <span className="mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center">
+                    <Cadenas />
+                  </span>
+                  <span>{s.title}</span>
+                </LienVerrouille>
+              </li>
+            );
+          }
+          const actuelle = etats[i] === "en-cours";
           return (
             <li key={s.slug}>
               <Link
@@ -60,7 +80,7 @@ export function ProgressionModule({
                 aria-current={ici ? "page" : undefined}
                 className={`flex items-start gap-2 rounded-lg px-2 py-1.5 ${
                   ici ? "bg-accent-soft font-semibold text-ink" : "text-body hover:bg-subtle"
-                }`}
+                } ${actuelle ? "ring-1 ring-accent" : ""}`}
               >
                 <span
                   aria-hidden="true"
@@ -73,6 +93,7 @@ export function ProgressionModule({
                 <span>
                   {s.title}
                   {lue && <span className="sr-only"> (lue)</span>}
+                  {actuelle && <span className="ml-1.5 text-xs font-semibold text-accent">en cours</span>}
                 </span>
               </Link>
             </li>

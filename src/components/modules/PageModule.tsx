@@ -79,7 +79,7 @@ export function PageModule({
             <article className="prose-eco mt-8 max-w-none">{children}</article>
 
             {/* La section n'est lue qu'en arrivant ici, ou au clic sur « J'ai compris ». */}
-            <FinDeSection href={href} suivante={suivante} />
+            <FinDeSection href={href} suivante={suivante} sections={module.sections.map((s) => moduleHref(module.slug, s.slug))} />
 
             {!infoSection && <ApprofondiModule module={module.slug} />}
 
