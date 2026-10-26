@@ -130,4 +130,34 @@ export const pourBienComprendre: { notion: string; fichier: string; page: string
     fichier: "src/content/modules/boule-de-neige/cercles.mdx",
     page: "/modules/boule-de-neige/cercles/",
   },
+  {
+    notion: "Le coût d'opportunité des intérêts",
+    fichier: "src/content/modules/boule-de-neige/cout-opportunite.mdx",
+    page: "/modules/boule-de-neige/cout-opportunite/",
+  },
+  {
+    notion: "Assiette, taux et rendement d'un impôt",
+    fichier: "src/content/modules/fiscalite/assiette-rendement.mdx",
+    page: "/modules/fiscalite/assiette-rendement/",
+  },
+  {
+    notion: "Répartition et capitalisation",
+    fichier: "src/content/modules/retraites/repartition-capitalisation.mdx",
+    page: "/modules/retraites/repartition-capitalisation/",
+  },
+  {
+    notion: "Le nombre d'actifs par retraité",
+    fichier: "src/content/modules/retraites/demographie.mdx",
+    page: "/modules/retraites/demographie/",
+  },
+  {
+    notion: "Les trois leviers des retraites",
+    fichier: "src/content/modules/retraites/leviers.mdx",
+    page: "/modules/retraites/leviers/",
+  },
+  {
+    notion: "Trimestres, décote et taux de remplacement",
+    fichier: "src/content/modules/retraites/notions.mdx",
+    page: "/modules/retraites/notions/",
+  },
 ];

@@ -100,7 +100,7 @@ describe("chaque page de module diffère entre les deux modes", () => {
     // Le mode Approfondi ajoute du texte (sections, débats, formules), pas seulement des chiffres plus précis.
     expect(approfondi.length - simple.length, "le mode Approfondi n'ajoute presque rien").toBeGreaterThan(150);
     expect(simple).not.toBe(approfondi);
-  }, 20_000);
+  }, 60_000); // La première page paie la compilation du MDX : large marge quand la machine est chargée.
 });
 
 describe("où se trouve le sélecteur Simple / Approfondi", () => {
