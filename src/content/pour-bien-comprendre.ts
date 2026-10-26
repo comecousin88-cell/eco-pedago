@@ -70,4 +70,34 @@ export const pourBienComprendre: { notion: string; fichier: string; page: string
     fichier: "src/content/modules/les-bases/inflation-taux-reels.mdx",
     page: "/modules/les-bases/inflation-taux-reels/",
   },
+  {
+    notion: "La répression financière",
+    fichier: "src/content/modules/histoire-des-dettes/inflation.mdx",
+    page: "/modules/histoire-des-dettes/inflation/",
+  },
+  {
+    notion: "La TVA sociale",
+    fichier: "src/content/propositions/tva-sociale.mdx",
+    page: "/propositions/tva-sociale/",
+  },
+  {
+    notion: "La planche à billets et le seigneuriage",
+    fichier: "src/content/propositions/planche-a-billets.mdx",
+    page: "/propositions/planche-a-billets/",
+  },
+  {
+    notion: "Le signal envoyé aux marchés",
+    fichier: "src/content/modules/banque-centrale/signal-marches.mdx",
+    page: "/modules/banque-centrale/signal-marches/",
+  },
+  {
+    notion: "Pourquoi le Japon n'est pas la Grèce",
+    fichier: "src/content/modules/comparaisons/japon-grece.mdx",
+    page: "/modules/comparaisons/japon-grece/",
+  },
+  {
+    notion: "Défauts et restructurations de dette",
+    fichier: "src/content/modules/histoire-des-dettes/defauts.mdx",
+    page: "/modules/histoire-des-dettes/defauts/",
+  },
 ];
