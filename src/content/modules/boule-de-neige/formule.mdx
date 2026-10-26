@@ -3,7 +3,7 @@
 
 Vous devez 100 € à une amie, à 3 % d'intérêts par an. Votre salaire, lui, augmente de 2 % par an. Même si vous
 n'empruntez plus un centime, la dette grossit un peu plus vite que votre salaire. Chaque année, elle pèse un peu
-plus lourd dans votre budget. C'est l'effet boule de neige.
+plus lourd dans votre budget. C'est l'effet <Terme id="effet-boule-de-neige">boule de neige</Terme>.
 
 </Analogie>
 <PasAPas>
@@ -28,14 +28,16 @@ l'inverse : le temps joue pour vous.
 <Essentiel>
 
 Ce qui compte n'est pas seulement le montant de la dette, mais son poids par rapport à l'économie : le ratio
-dette/PIB. Trois forces le font bouger chaque année :
+dette/<Terme id="pib">PIB</Terme>. Trois forces le font bouger chaque année :
 
 - **les intérêts** font grossir la dette, au rythme du taux d'intérêt moyen, noté **r** ;
-- **la croissance** de l'économie (en euros courants, donc inflation comprise), notée **g**, fait grossir le PIB,
+- **la croissance** de l'économie (en euros courants, donc <Terme id="inflation">inflation</Terme> comprise), notée **g**, fait grossir le PIB,
   et donc diminuer le poids relatif de la dette ;
-- **le solde primaire** (le déficit ou l'excédent hors intérêts) ajoute ou retire de la dette.
+- **le <Terme id="solde-primaire">solde primaire</Terme>** (le déficit ou l'excédent hors intérêts) ajoute ou retire de la dette.
 
-Si **r est plus grand que g**, la dette grossit plus vite que l'économie : c'est l'effet boule de neige. Il faut
+Si **r est plus grand que g**, la dette grossit plus vite que l'économie : c'est l'effet boule de neige.
+
+Il faut
 alors un excédent primaire, c'est-à-dire dépenser moins que ses recettes hors intérêts, rien que pour
 stabiliser le ratio. Si r est plus petit que g, la croissance fait une partie du travail.
 
@@ -49,7 +51,7 @@ $$
 $$
 
 <Exemple titre="Exemple : une dette à 100 % du PIB">
-Une dette égale à 100 % du PIB, un taux moyen de **3 %**, une croissance nominale de **2 %**.
+Une dette égale à 100 % du PIB, un taux moyen de **3 %**, une <Terme id="croissance-nominale">croissance nominale</Terme> de **2 %**.
 
 - Sans déficit hors intérêts (solde primaire nul) : (3 % − 2 %) × 100 % = **+1 point** de PIB par an. La dette
   grossit toute seule.
@@ -61,7 +63,9 @@ sans aucun effort supplémentaire. Un déficit primaire de 1 % du PIB suffirait 
 </Exemple>
 
 **Stabiliser n'est pas rembourser.** Un pays qui « stabilise sa dette » continue en général d'avoir un déficit :
-sa dette augmente en euros, mais au même rythme que son économie, et son poids relatif cesse de monter. Pour
+sa dette augmente en euros, mais au même rythme que son économie, et son poids relatif cesse de monter.
+
+Pour
 <DateDonnee id="deficit.stabilisant" />, le Haut Conseil des finances publiques estimait que le déficit qui aurait
 stabilisé la dette française était de <Chiffre id="deficit.stabilisant" />, contre
 <Chiffre id="deficit.ratio-pib" /> constatés.
@@ -69,7 +73,7 @@ stabilisé la dette française était de <Chiffre id="deficit.stabilisant" />, c
 </Mecanisme>
 <PlusLoin>
 
-**La relation exacte.** Avec $d$ la dette/PIB, $r$ le taux apparent, $g$ la croissance nominale et $sp$ le solde
+**La relation exacte.** Avec $d$ la dette/PIB, $r$ le <Terme id="taux-apparent">taux apparent</Terme>, $g$ la croissance nominale et $sp$ le solde
 primaire en % du PIB :
 
 $$
@@ -89,9 +93,9 @@ peu près $g \times d$ : avec une dette à <Chiffre id="dette.ratio-pib" /> et u
 C'est l'ordre de grandeur retenu par le Haut Conseil des finances publiques.
 
 **Pourquoi r et g ne sont pas indépendants.** Une hausse de l'inflation augmente g tout de suite, mais r
-seulement au fil du refinancement (module 2) : à court terme, l'inflation aide à réduire le ratio. Une politique
-de réduction rapide du déficit peut freiner la croissance (le « multiplicateur budgétaire ») et donc réduire g.
-Et une dette qui s'envole peut faire monter r, via la prime de risque. Le simulateur qui suit traite ces
+seulement au fil du <Terme id="refinancement">refinancement</Terme> (module 2) : à court terme, l'inflation aide à réduire le ratio. Une politique
+de réduction rapide du déficit peut freiner la croissance (le « <Terme id="multiplicateur">multiplicateur budgétaire</Terme> ») et donc réduire g.
+Et une dette qui s'envole peut faire monter r, via la <Terme id="prime-de-risque">prime de risque</Terme>. Le simulateur qui suit traite ces
 grandeurs comme indépendantes : c'est sa principale limite.
 
 **Le débat r − g.** Pendant les années 2010, r était inférieur à g dans la plupart des pays avancés, ce qui a

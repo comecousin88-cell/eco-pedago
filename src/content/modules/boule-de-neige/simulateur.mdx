@@ -4,7 +4,7 @@ import { BouleDeNeige } from "@/components/simulators/BouleDeNeige";
 <Essentiel>
 
 Testez vous-même. Le simulateur part de la situation réelle à la fin de la dernière année connue (dette,
-taux moyen, croissance, solde primaire) et calcule la trajectoire de la dette/PIB sur 10, 20 ou 30 ans.
+taux moyen, croissance, <Terme id="solde-primaire">solde primaire</Terme>) et calcule la trajectoire de la dette/<Terme id="pib">PIB</Terme> sur 10, 20 ou 30 ans.
 Changez un curseur, et regardez la courbe réagir.
 
 </Essentiel>
@@ -22,14 +22,14 @@ Changez un curseur, et regardez la courbe réagir.
 
 1. Cliquez sur « Les taux montent de 1 point » : sur 20 ans, la dette finit nettement plus haut. Un point de taux
    d'intérêt, appliqué à une dette de plus d'une année de PIB, pèse plus d'un point de PIB chaque année.
-2. Cliquez sur « La croissance ralentit de 1 point » : l'effet est symétrique. La croissance nominale protège autant
+2. Cliquez sur « La croissance ralentit de 1 point » : l'effet est symétrique. La <Terme id="croissance-nominale">croissance nominale</Terme> protège autant
    que des taux bas.
-3. Cliquez sur « Le taux moyen rejoint peu à peu le taux de marché » : c'est le scénario le plus réaliste à court
-   terme. Le taux moyen payé est encore bas, mais il remonte à mesure que la dette est refinancée au taux actuel
+3. Cliquez sur « Le taux moyen rejoint peu à peu le <Terme id="rendement">taux de marché</Terme> » : c'est le scénario le plus réaliste à court
+   terme. Le taux moyen payé est encore bas, mais il remonte à mesure que la dette est <Terme id="refinancement">refinancée</Terme> au taux actuel
    (module 2).
 
 <Exemple titre="Exemple : lire le résultat">
-Si l'écart r − g vaut +1 point et la dette 115 % du PIB, la boule de neige ajoute à peu près 1,15 point de PIB de
+Si l'écart r − g vaut +1 point et la dette 115 % du PIB, la <Terme id="effet-boule-de-neige">boule de neige</Terme> ajoute à peu près 1,15 point de PIB de
 dette par an. Pour compenser, il faut un excédent primaire de même ampleur. Si en plus le solde primaire est
 négatif, les deux effets s'additionnent.
 </Exemple>
@@ -38,7 +38,7 @@ négatif, les deux effets s'additionnent.
 <PlusLoin>
 
 **Ce que le simulateur ne fait pas.** Il ne modélise ni l'effet d'un effort budgétaire sur la croissance, ni
-celui de la dette sur les taux, ni les chocs (récession, crise). Il tient le solde primaire constant, alors qu'en
+celui de la dette sur les taux, ni les chocs (<Terme id="recession">récession</Terme>, crise). Il tient le solde primaire constant, alors qu'en
 réalité le vieillissement pousse certaines dépenses à la hausse (module 5). Les projections officielles, celles du
 Haut Conseil des finances publiques, de la Commission européenne ou du FMI, intègrent ces effets avec des modèles
 bien plus complets ; leurs conclusions dépendent beaucoup des hypothèses.

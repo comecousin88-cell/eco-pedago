@@ -54,7 +54,7 @@ export function TauxReel() {
           pas={0.1}
           onChange={s.regler("inflation")}
           affichage={`${formatNombre(inflation, 1)} %`}
-          aide={`Valeur actuelle : inflation sur un an (${qualificatif(getSerie("ind.inflation-ipc-fr"))}).`}
+          aide={`Valeur actuelle : inflation sur un an, ${qualificatif(getSerie("ind.inflation-ipc-fr"))}.`}
         />
       </div>
 

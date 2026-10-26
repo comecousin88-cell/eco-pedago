@@ -31,7 +31,7 @@ les anciens emprunts sont remplacés.
 
 Il y a deux taux à ne pas confondre :
 
-- le **taux de marché** : ce que coûte un emprunt **neuf** aujourd'hui. L'OAT à 10 ans était à
+- le **<Terme id="rendement">taux de marché</Terme>** : ce que coûte un emprunt **neuf** aujourd'hui. L'<Terme id="oat">OAT</Terme> à 10 ans était à
   <Chiffre id="marches.taux10-france-dernier" /> en moyenne en
   <DateDonnee id="marches.taux10-france-dernier" format="jour" /> ;
 - le <Terme id="taux-apparent">taux apparent</Terme> : le taux **moyen** payé sur toute la dette, qui mélange des
@@ -54,10 +54,13 @@ Réglez le nouveau taux d'emprunt et la durée moyenne des emprunts, et regardez
   <CouchesDette />
 </Figure>
 
-**Une hausse des taux coûte peu la première année, et beaucoup ensuite.** Selon l'estimation de l'Agence France
-Trésor reprise par le Sénat, si tous les taux montaient durablement de 1 point, la charge de la dette de l'État
-augmenterait de <Chiffre id="etat.sensibilite-taux" x="Après 1 an" /> la première année, de
-<Chiffre id="etat.sensibilite-taux" x="Après 5 ans" /> au bout de cinq ans et de
+**Une hausse des taux coûte peu la première année, et beaucoup ensuite.** Imaginons que tous les taux montent
+durablement de 1 point.
+
+Selon l'<Terme id="aft">Agence France Trésor</Terme>, dont l'estimation est reprise par le Sénat, la charge de la
+dette de l'État augmenterait de <Chiffre id="etat.sensibilite-taux" x="Après 1 an" /> la première année.
+
+Elle augmenterait de <Chiffre id="etat.sensibilite-taux" x="Après 5 ans" /> au bout de cinq ans, et de
 <Chiffre id="etat.sensibilite-taux" x="Après 9 ans" /> au bout de neuf ans.
 
 <Figure
@@ -79,21 +82,21 @@ refinancée (10 € de plus) ; au bout de 8 ans, toute la dette coûte 4 % : 40 
 <PlusLoin>
 
 **Le calcul du taux apparent.** Il se calcule en rapportant les intérêts de l'année à la dette moyenne de
-l'année. Pour l'ensemble des administrations publiques, avec <Chiffre id="fp.interets" /> d'intérêts versés en
+l'année. Pour l'ensemble des <Terme id="administrations-publiques">administrations publiques</Terme>, avec <Chiffre id="fp.interets" /> d'intérêts versés en
 <DateDonnee id="fp.interets" />, il se situe autour de <Calcul id="calc.taux-apparent" />, bien en dessous du taux de marché actuel : la
 charge d'intérêts va donc continuer à monter, même si les taux de marché se stabilisent.
 
 **Un modèle simple.** Le simulateur suppose des échéances régulières (la même part de la dette chaque année)
-et une dette constante. Dans la réalité, le calendrier des échéances est irrégulier, les BTF se refinancent en
-moins d'un an (ils transmettent les hausses de taux presque immédiatement), les OAT indexées réagissent à
-l'inflation, et les nouveaux déficits s'empruntent eux aussi au taux du jour.
+et une dette constante. Dans la réalité, le calendrier des échéances est irrégulier, les <Terme id="btf">BTF</Terme> se refinancent en
+moins d'un an (ils transmettent les hausses de taux presque immédiatement), les <Terme id="oat-indexee">OAT indexées</Terme> réagissent à
+l'<Terme id="inflation">inflation</Terme>, et les nouveaux déficits s'empruntent eux aussi au taux du jour.
 
 **Allonger la durée de la dette ?** Emprunter long protège contre une hausse future des taux, mais coûte
 généralement plus cher aujourd'hui (la courbe des taux monte avec la durée, voir plus loin). Les gestionnaires
 de dette arbitrent entre coût et risque. La durée de vie moyenne de la dette de l'État est d'environ
 <Chiffre id="aft.maturite-moyenne" />.
 
-**Charge de la dette budgétaire et intérêts en comptabilité nationale.** La « charge de la dette » du budget de
+**<Terme id="charge-de-la-dette">Charge de la dette</Terme> budgétaire et intérêts en comptabilité nationale.** La « charge de la dette » du budget de
 l'État (<Chiffre id="etat.charge-dette" /> prévus pour <DateDonnee id="etat.charge-dette" />) ne porte que sur l'État
 et suit des règles budgétaires (par exemple sur le traitement des primes et décotes à l'émission). Les intérêts
 de la comptabilité nationale portent sur toutes les administrations publiques. Les deux chiffres ne se

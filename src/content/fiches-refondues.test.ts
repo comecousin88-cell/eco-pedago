@@ -5,6 +5,7 @@ import { createElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import { describe, expect, it } from "vitest";
 import { texteVisible } from "@/lib/lecture-modes.test";
+import { SOURCE_ENTRE_PARENTHESES, texteMdx } from "@/lib/lisibilite";
 import { glossaire } from "./glossaire";
 import { formesGlossaire, motifTerme } from "./glossaire-formes";
 import { PARTIES_FICHE, propositions } from "./propositions";
@@ -21,26 +22,6 @@ function partie(mdx: string, titre: string): string {
   const suite = mdx.indexOf("\n## ", debut + 3);
   return mdx.slice(debut, suite < 0 ? undefined : suite);
 }
-
-/**
- * Texte lisible d'un MDX : sans les imports, sans les chiffres (<Chiffre>,
- * <Calcul>, <DateDonnee>, dont l'unité n'est pas un terme à expliquer), sans
- * les attributs en chaîne (identifiants, résumés de figures) ni les questions
- * de quiz, et sans les balises.
- */
-function texteMdx(mdx: string): string {
-  return mdx
-    .replace(/^import .*$/gm, " ")
-    .replace(/<(?:Chiffre|Calcul|DateDonnee)\b[^>]*\/>/g, " ")
-    .replace(/questions=\{\[[\s\S]*?\]\}\s*\/>/g, " ")
-    .replace(/\b[a-zA-Z]+=(?:"[^"]*"|\{`[\s\S]*?`\}|\{\[(?:"[^"]*",?\s*)*\]\})/g, " ")
-    .replace(/\b[a-zA-Z]+=\{/g, " ")
-    .replace(/<\/?[A-Za-z][A-Za-z0-9]*|\/?>|<\/?>|[{}]/g, " ")
-    .replace(/\]\([^)]*\)/g, " ");
-}
-
-/** Sources écrites entre parenthèses dans le texte : « (Insee) », « (calcul : Banque de France) »… */
-const SOURCE_ENTRE_PARENTHESES = /\((?:[^()]*?)\b(?:calcul|source|Fipeco|Insee|Eurostat|Banque de France|Cour des comptes|Sénat|IPP)\b[^()]*\)/i;
 
 describe("fiches refondues : structure", () => {
   it.each(refondues.map((p) => ({ slug: p.slug, p })))("$slug", ({ p }) => {

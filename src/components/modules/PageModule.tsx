@@ -1,3 +1,5 @@
+import { readFileSync } from "node:fs";
+import { join } from "node:path";
 import type { ReactNode } from "react";
 import { ModeLecture } from "@/components/lecture/ModeLecture";
 import type { QuestionQuiz } from "@/components/pedago/Quiz";
@@ -8,6 +10,8 @@ import { themeDuModule, themeHref } from "@/content/rubriques";
 import { suiteModule } from "@/content/suite";
 import { ApprofondiModule } from "./ApprofondiModule";
 import { FilAriane } from "./FilAriane";
+import { SourcesPage } from "@/components/pedago/SourcesPage";
+import { sourcesPage } from "@/lib/sources-page";
 import { FinDeSection } from "./FinDeSection";
 import { FinDuModule } from "./FinDuModule";
 import { ModuleTheme } from "./ModuleTheme";
@@ -40,6 +44,8 @@ export function PageModule({
   // Section suivante du même module, pour le bouton « J'ai compris → section suivante ».
   const { next } = neighbours(module.slug, section);
   const suivante = next && next.module.slug === module.slug ? { href: next.href, titre: next.title } : undefined;
+  // Les sources des chiffres de la page, listées en bas (dans le texte, elles sont dans l'infobulle de chaque chiffre).
+  const sources = sourcesPage(readFileSync(join(process.cwd(), "src/content/modules", module.slug, `${section ?? "index"}.mdx`), "utf8"));
 
   return (
     <ModuleTheme color={module.color}>
@@ -80,6 +86,8 @@ export function PageModule({
             {!infoSection && <ApprofondiModule module={module.slug} />}
 
             <PropositionsLiees module={module.slug} section={section} />
+
+            <SourcesPage sources={sources} />
 
             {/* Dernière page : l'écran de fin de module remplace « Suivant » et « Et ensuite ? ». */}
             {derniere ? (

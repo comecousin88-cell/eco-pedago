@@ -31,10 +31,12 @@ banques. Et c'est l'État qui finit par payer la différence.
 <Essentiel>
 
 Une partie de la dette de l'État est détenue par la Banque de France. On entend donc parfois : « l'État se doit
-cet argent à lui-même, il suffirait d'effacer ces titres ». Pour comprendre pourquoi ce n'est pas si simple, il
-faut regarder le **bilan** de la banque centrale : ce qu'elle possède d'un côté, ce qu'elle doit de l'autre.
+cet argent à lui-même, il suffirait d'effacer ces titres ».
 
-Quand elle a acheté des OAT, elle les a payées en créant des <Terme id="reserves-bancaires">réserves</Terme> pour
+Pour comprendre pourquoi ce n'est pas si simple, il
+faut regarder le **<Terme id="bilan">bilan</Terme>** de la banque centrale : ce qu'elle possède d'un côté, ce qu'elle doit de l'autre.
+
+Quand elle a acheté des <Terme id="oat">OAT</Terme>, elle les a payées en créant des <Terme id="reserves-bancaires">réserves</Terme> pour
 les banques. Ces réserves sont **une dette de la banque centrale envers les banques**, qu'elle doit rémunérer.
 Effacer les OAT supprime ce qu'elle possède, mais pas ce qu'elle doit.
 
@@ -52,10 +54,14 @@ Suivez 100 € fictifs dans les trois situations :
 </Figure>
 
 **Ce n'est pas qu'une hypothèse.** Le deuxième scénario s'est produit : la Banque de France a acheté beaucoup
-d'OAT à taux très bas, puis le taux de dépôt est monté jusqu'à 4 % en 2023. Elle a enregistré une perte de
+d'OAT à taux très bas, puis le <Terme id="taux-de-depot">taux de dépôt</Terme> est monté jusqu'à 4 % en 2023.
+
+Elle a enregistré une perte de
 <Chiffre id="bdf.resultat-2024" /> en <DateDonnee id="bdf.resultat-2024" />, la première de son histoire, avant un
 retour au bénéfice en <DateDonnee id="bdf.resultat-2025" /> (<Chiffre id="bdf.resultat-2025" />), aidé par une opération
-exceptionnelle sur son stock d'or. Une année de perte, il n'y a pas de bénéfice à reverser à l'État : les
+exceptionnelle sur son stock d'or.
+
+Une année de perte, il n'y a pas de bénéfice à reverser à l'État : les
 intérêts que l'État versait à la Banque de France et qui lui revenaient en dividendes ne lui reviennent plus.
 
 </Mecanisme>
@@ -63,21 +69,21 @@ intérêts que l'État versait à la Banque de France et qui lui revenaient en d
 
 **Annuler les titres : le mécanisme.** Si l'on effaçait les OAT détenues par la Banque de France, l'État
 n'aurait plus à les rembourser. Mais la Banque de France devrait toujours les réserves correspondantes aux
-banques, et les rémunérer au taux de dépôt. Ses fonds propres deviendraient fortement négatifs. Une banque
+banques, et les rémunérer au taux de dépôt. Ses <Terme id="fonds-propres">fonds propres</Terme> deviendraient fortement négatifs. Une banque
 centrale peut fonctionner un temps ainsi, puisqu'elle crée la monnaie, mais deux issues se présentent :
 
 - l'État la **recapitalise**, c'est-à-dire lui reverse de l'argent… qu'il devrait emprunter : l'opération est
   blanche pour les finances publiques ;
-- ou elle crée de la monnaie pour couvrir ses pertes, ce qui revient à du financement monétaire, interdit par
-  le traité, et risque d'alimenter l'inflation et la défiance envers l'euro.
+- ou elle crée de la monnaie pour couvrir ses pertes, ce qui revient à du <Terme id="financement-monetaire">financement monétaire</Terme>, interdit par
+  le traité, et risque d'alimenter l'<Terme id="inflation">inflation</Terme> et la défiance envers l'euro.
 
-**La « mise au frigo ».** Une variante consiste à transformer ces titres en dette perpétuelle à taux zéro, jamais
+**La « mise au frigo ».** Une variante consiste à transformer ces titres en <Terme id="dette-perpetuelle">dette perpétuelle</Terme> à taux zéro, jamais
 remboursée. Le problème est le même : la banque centrale garderait un actif qui ne rapporte rien face à des
 réserves qu'elle rémunère, soit des pertes chaque année tant que le taux de dépôt est positif.
 
-**Le chiffre du débat.** On cite souvent environ 20 % de la dette française « détenue par la BCE ». Le chiffre
+**Le chiffre du débat.** On cite souvent environ 20 % de la dette française « détenue par la <Terme id="bce">BCE</Terme> ». Le chiffre
 dépend de la date et de la mesure retenue : la Banque de France indiquait <Chiffre id="bdf.titres-politique-monetaire" />
-au <DateDonnee id="bdf.titres-politique-monetaire" format="jour" /> (en coût amorti), à comparer à une dette de
+au <DateDonnee id="bdf.titres-politique-monetaire" format="jour" /> (en <Terme id="cout-amorti">coût amorti</Terme>), à comparer à une dette de
 <Chiffre id="dette.stock" />, soit <Calcul id="calc.bdf-part-dette" />, une part qui baisse chaque trimestre.
 
 <Debat
@@ -85,7 +91,7 @@ au <DateDonnee id="bdf.titres-politique-monetaire" format="jour" /> (en coût am
   titrePour="Les partisans"
   titreContre="Les opposants"
   pour={<p>La banque centrale est une institution publique : la dette qu'elle détient est une dette du secteur public envers lui-même, et l'annuler libérerait des marges budgétaires pour investir (transition écologique, services publics). Ses fonds propres négatifs ne l'empêcheraient pas de fonctionner, puisqu'elle crée la monnaie ; plusieurs banques centrales ont déjà vécu avec des fonds propres négatifs sans perdre le contrôle de l'inflation.</p>}
-  contre={<p>Le passif ne disparaît pas : les réserves des banques restent dues et doivent être rémunérées, ce qui transforme l'économie d'intérêts en pertes pour la banque centrale, donc en moindres recettes pour l'État. L'opération est interdite par l'article 123 du traité, nécessiterait l'accord des autres pays de la zone euro et ruinerait la crédibilité de l'euro, au risque de faire monter les taux sur toute la dette restante, bien plus large que la part annulée.</p>}
+  contre={<p>Le <Terme id="actif-passif">passif</Terme> ne disparaît pas : les réserves des banques restent dues et doivent être rémunérées, ce qui transforme l'économie d'intérêts en pertes pour la banque centrale, donc en moindres recettes pour l'État. L'opération est interdite par l'article 123 du traité, nécessiterait l'accord des autres pays de la zone euro et ruinerait la crédibilité de l'euro, au risque de faire monter les taux sur toute la dette restante, bien plus large que la part annulée.</p>}
 >
 **Ce qui tient, ce qui ne tient pas.** L'argument comptable est établi : annuler les titres ne fait pas disparaître
 la dette correspondante du bilan de la banque centrale, il la déplace. L'interdiction juridique est explicite dans
