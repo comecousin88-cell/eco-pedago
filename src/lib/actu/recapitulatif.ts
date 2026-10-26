@@ -15,6 +15,8 @@ export interface ResumeOfficiel {
   organisme?: string;
   /** Licence qui autorise la reprise. */
   licence: string;
+  /** Date de dernière mise à jour affichée par la source, quand sa licence demande de la citer (Banque de France). */
+  mis_a_jour?: string;
   recupere_le: string;
 }
 

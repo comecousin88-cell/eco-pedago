@@ -56,10 +56,12 @@ export const LICENCES: Record<string, Licence> = {
     conditions: "Reproduction libre et gratuite des travaux parlementaires, sans modification, en citant www.senat.fr avec un lien.",
   },
   "www.banque-france.fr": {
-    nom: "Mentions légales de la Banque de France",
-    url: "https://www.banque-france.fr/fr/mentions-legales",
-    reutilisable: false,
-    conditions: "Conditions de réutilisation non vérifiables : la page des mentions légales refuse la lecture automatique.",
+    nom: "Informations légales de la Banque de France",
+    url: "https://www.banque-france.fr/fr/infos-legales",
+    reutilisable: true,
+    // Page fermée à la lecture automatique : conditions relevées par le responsable du site le 26 octobre 2026.
+    conditions:
+      "Réutilisation des contenus dont la source est uniquement la Banque de France, en la citant avec la date de dernière mise à jour, sans déformer le contenu. Ne couvre pas les communiqués de la BCE qu'elle relaie (repris depuis le site de la BCE) ni les indices CNO-TEC (données de marché de tiers).",
   },
   "www.assemblee-nationale.fr": {
     nom: "Informations légales de l'Assemblée nationale",
@@ -150,6 +152,10 @@ export function extraireResume(lien: string, html: string): string[] | undefined
     const apres = html.split(/<h2>\s*Le r(?:é|&eacute;)sum(?:é|&eacute;)\s*<\/h2>/i)[1];
     // Sans les liens de navigation (« Consulter le rapport »), qui ne font pas partie du résumé.
     if (apres) ps = paragraphesP(apres.split(/<h2|<\/section>/i)[0]).filter((p) => !/^(Consulter|Télécharger|Lire) /.test(p));
+  } else if (site === "www.banque-france.fr") {
+    // Communiqué propre à la Banque de France : le texte d'introduction sous le titre.
+    const chapo = bloc(html, /<div class="[^"]*field--name-field-espaces2-description[^"]*">/);
+    if (chapo) ps = paragraphes(chapo);
   } else if (site === "www.ccomptes.fr") {
     // Le résumé affiché sous le titre, en entier ; à défaut, la description complète des métadonnées.
     const resume = bloc(html, /<div class="teaser-text[^"]*">/);
@@ -186,4 +192,19 @@ export function listeBce(titre: string, date: string): { liste: string; prefixe:
 export function trouverDansListeBce(html: string, prefixe: string): string | undefined {
   const m = new RegExp(`href="(?:https://www\\.ecb\\.europa\\.eu)?(/press/[^"]*/${prefixe.replace(".", "\\.")}~[0-9a-f]+)\\.[a-z]{2}\\.html"`).exec(html);
   return m ? `https://www.ecb.europa.eu${m[1]}.fr.html` : undefined;
+}
+
+const MOIS_FR = ["janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août", "septembre", "octobre", "novembre", "décembre"];
+
+/**
+ * Date de dernière mise à jour affichée par la page (Banque de France : « Mise
+ * en ligne le 12 Septembre 2026 » ou « Mis à jour le … »), en toutes lettres,
+ * ou undefined. La licence de la Banque de France demande de la citer.
+ */
+export function dateMiseAJour(html: string): string | undefined {
+  const textes = [...html.matchAll(/(Mis(?:e)? (?:à jour|en ligne) le)\s+(\d{1,2})(?:er)?\s+(\p{L}+)\s+(\d{4})/giu)];
+  const m = textes.find((x) => /jour/i.test(x[1])) ?? textes[0];
+  if (!m) return undefined;
+  const mois = MOIS_FR.find((x) => x.normalize("NFD").replace(/[\u0300-\u036f]/g, "") === m[3].toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, ""));
+  return mois ? `${Number(m[2]) === 1 ? "1er" : Number(m[2])} ${mois} ${m[4]}` : undefined;
 }

@@ -139,6 +139,15 @@
       "organisme": "Banque centrale européenne",
       "licence": "Conditions de reproduction de la BCE",
       "recupere_le": "2026-10-26"
+    },
+    "banque-de-france-ec8093a1": {
+      "paragraphes": [
+        "Suite aux polémiques et aux fausses informations circulant sur les réseaux sociaux, la Banque de France souhaite apporter des précisions sur son programme de détention de la dette publique."
+      ],
+      "lien": "https://www.banque-france.fr/fr/communiques-de-presse/precisions-sur-le-programme-de-detention-de-la-dette-publique-par-la-banque-de-france",
+      "licence": "Informations légales de la Banque de France",
+      "mis_a_jour": "12 septembre 2026",
+      "recupere_le": "2026-10-26"
     }
   }
 }

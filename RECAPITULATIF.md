@@ -8,8 +8,9 @@ Fichier écrit chaque jour par les tâches automatiques (`npm run resumes:offici
 
 ## 2026-10-26
 
-16 résumé(s) officiel(s) repris, 16 non repris.
+17 résumé(s) officiel(s) repris, 15 non repris.
 
+- ✅ [Précisions sur le programme de détention de la dette publique par la Banque de France](https://eco-pedago.vercel.app/actu/2026-09-12-precisions-sur-le-programme-de-detention-de-la-dette-publique-par-la-banque-de/) ([source](https://www.banque-france.fr/fr/communiques-de-presse/precisions-sur-le-programme-de-detention-de-la-dette-publique-par-la-banque-de-france))
 - ✅ [Décisions de politique monétaire](https://eco-pedago.vercel.app/actu/2026-09-10-decisions-de-politique-monetaire/) ([source](https://www.banque-france.fr/fr/communiques-de-presse/decisions-de-politique-monetaire-27))
 - ✅ [Prélèvements obligatoires et entreprises : vers un cadre fiscal et social stable pour la croissance et l'emploi - Rapport d'information n° 942](https://eco-pedago.vercel.app/actu/2026-09-03-prelevements-obligatoires-et-entreprises-vers-un-cadre-fiscal-et-social-stable/) ([source](https://www.senat.fr/notice-rapport/2025/r25-942-notice.html))
 - ✅ [Mobilités professionnelles, salaires et fin de carrière](https://eco-pedago.vercel.app/actu/2026-09-08-mobilites-professionnelles-salaires-et-fin-de-carriere/) ([source](https://www.insee.fr/fr/statistiques/9041706))
@@ -34,7 +35,6 @@ Fichier écrit chaque jour par les tâches automatiques (`npm run resumes:offici
 - ➖ Chômage à 6,4 % dans la zone euro ([source](https://ec.europa.eu/eurostat/web/products-euro-indicators/w/3-01092026-bp)) : résumé publié en anglais : seul le titre traduit est affiché
 - ➖ PIB en hausse de 0,6 % et emploi en hausse de 0,1 % dans la zone euro ([source](https://ec.europa.eu/eurostat/web/products-euro-indicators/w/2-07092026-ap)) : résumé publié en anglais : seul le titre traduit est affiché
 - ➖ Vigilance orange sur la croissance ([source](https://www.insee.fr/fr/statistiques/9050757)) : pas de résumé reconnaissable sur la page
-- ➖ Précisions sur le programme de détention de la dette publique par la Banque de France ([source](https://www.banque-france.fr/fr/communiques-de-presse/precisions-sur-le-programme-de-detention-de-la-dette-publique-par-la-banque-de-france)) : licence : Conditions de réutilisation non vérifiables : la page des mentions légales refuse la lecture automatique.
 - ➖ Hausse annuelle du coût de la main-d'œuvre à 3,1 % dans la zone euro ([source](https://ec.europa.eu/eurostat/web/products-euro-indicators/w/3-16092026-bp)) : résumé publié en anglais : seul le titre traduit est affiché
 - ➖ Inflation annuelle en hausse à 3,2 % dans la zone euro ([source](https://ec.europa.eu/eurostat/web/products-euro-indicators/w/2-17092026-ap)) : résumé publié en anglais : seul le titre traduit est affiché
 - ➖ Chômage à 6,4 % dans la zone euro ([source](https://ec.europa.eu/eurostat/web/products-euro-indicators/w/3-01102026-ap)) : résumé publié en anglais : seul le titre traduit est affiché

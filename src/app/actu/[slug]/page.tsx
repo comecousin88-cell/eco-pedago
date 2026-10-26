@@ -106,7 +106,8 @@ export default async function PageActualite({ params }: PageProps<"/actu/[slug]"
                 {officiel.organisme ? `la version française du communiqué, sur le site ${deLaSource(officiel.organisme)}` : "la publication originale"}
                 <span className="sr-only"> (nouvel onglet)</span>
               </a>{" "}
-              ({officiel.licence}).
+              ({officiel.licence}
+              {officiel.mis_a_jour ? `, dernière mise à jour le ${officiel.mis_a_jour}` : ""}).
             </p>
           </Section>
         )}

@@ -2,6 +2,14 @@
   "description": "Journal de la reprise des résumés officiels : chaque publication, reprise ou non, avec la raison. Écrit par scripts/reprendre-resumes.ts ; RECAPITULATIF.md en est tiré.",
   "entrees": [
     {
+      "date": "2026-10-26T11:16:55.431Z",
+      "id": "banque-de-france-ec8093a1",
+      "titre": "Précisions sur le programme de détention de la dette publique par la Banque de France",
+      "date_publication": "2026-09-12",
+      "lien": "https://www.banque-france.fr/fr/communiques-de-presse/precisions-sur-le-programme-de-detention-de-la-dette-publique-par-la-banque-de-france",
+      "statut": "repris"
+    },
+    {
       "date": "2026-10-26T11:04:27.112Z",
       "id": "bce-ef34e456",
       "titre": "Décisions de politique monétaire",
@@ -96,15 +104,6 @@
       "lien": "https://www.insee.fr/fr/statistiques/9050757",
       "statut": "non-repris",
       "raison": "pas de résumé reconnaissable sur la page"
-    },
-    {
-      "date": "2026-10-26T10:54:05.661Z",
-      "id": "banque-de-france-ec8093a1",
-      "titre": "Précisions sur le programme de détention de la dette publique par la Banque de France",
-      "date_publication": "2026-09-12",
-      "lien": "https://www.banque-france.fr/fr/communiques-de-presse/precisions-sur-le-programme-de-detention-de-la-dette-publique-par-la-banque-de-france",
-      "statut": "non-repris",
-      "raison": "licence : Conditions de réutilisation non vérifiables : la page des mentions légales refuse la lecture automatique."
     },
     {
       "date": "2026-10-26T10:54:05.661Z",

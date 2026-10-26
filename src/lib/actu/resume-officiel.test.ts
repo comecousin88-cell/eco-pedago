@@ -1,13 +1,15 @@
 import { describe, expect, it } from "vitest";
 import { SOURCES_FLUX } from "./flux";
-import { extraireResume, LICENCES, licenceDe, listeBce, raisonNonReprise, trouverDansListeBce, versionFrancaiseBce } from "./resume-officiel";
+import { dateMiseAJour, extraireResume, LICENCES, licenceDe, listeBce, raisonNonReprise, trouverDansListeBce, versionFrancaiseBce } from "./resume-officiel";
 
 describe("résumés officiels repris tels quels", () => {
   it("chaque source du fil a sa licence vérifiée, et seules les licences ouvertes ou équivalentes permettent la reprise", () => {
     for (const s of SOURCES_FLUX) for (const url of s.urls) expect(licenceDe(url), url).toBeDefined();
     expect(raisonNonReprise("https://www.insee.fr/fr/statistiques/9080209")).toBeUndefined();
     expect(raisonNonReprise("https://www.ccomptes.fr/fr/publications/x")).toBeUndefined();
-    expect(raisonNonReprise("https://www.banque-france.fr/fr/communiques-de-presse/x")).toMatch(/^licence/);
+    expect(raisonNonReprise("https://www.banque-france.fr/fr/communiques-de-presse/x")).toBeUndefined();
+    expect(licenceDe("https://www.banque-france.fr/fr/communiques-de-presse/x")?.conditions).toMatch(/date de dernière mise à jour/);
+    expect(licenceDe("https://www.banque-france.fr/fr/communiques-de-presse/x")?.conditions).toMatch(/CNO-TEC/);
     expect(raisonNonReprise("https://www.assemblee-nationale.fr/dyn/x")).toMatch(/usage personnel/);
     expect(raisonNonReprise("https://exemple.fr/x")).toBe("licence du site non vérifiée");
     for (const l of Object.values(LICENCES)) expect(l.url).toMatch(/^https:\/\//);
@@ -66,6 +68,17 @@ describe("résumés officiels repris tels quels", () => {
     expect(extraireResume(lien, page)).toEqual(["Le Conseil des gouverneurs a décidé, ce jour, d'augmenter les trois taux d'intérêt directeurs de la BCE de 25 points de base."]);
     expect(extraireResume(lien, page.replace("<main>", '<main><div id="language-not-available">Pas disponible en français</div>'))).toBeUndefined();
     expect(extraireResume(lien.replace(".fr.html", ".en.html"), page)).toBeUndefined();
+  });
+
+  it("Banque de France : le texte d'introduction du communiqué et sa date de mise en ligne ou de mise à jour", () => {
+    const html = `<h1>Précisions</h1><div class="clearfix text-formatted field field--name-field-espaces2-description field--type-text-long"><p>Suite aux fausses informations circulant sur les réseaux sociaux, la Banque de France souhaite apporter des précisions sur son programme.</p></div>
+      <p class="fw-semibold">Mise en ligne le 12 Septembre 2026</p>`;
+    expect(extraireResume("https://www.banque-france.fr/fr/communiques-de-presse/x", html)).toEqual([
+      "Suite aux fausses informations circulant sur les réseaux sociaux, la Banque de France souhaite apporter des précisions sur son programme.",
+    ]);
+    expect(dateMiseAJour(html)).toBe("12 septembre 2026");
+    expect(dateMiseAJour(`${html}<p>Mis à jour le 1 Octobre 2026</p>`)).toBe("1er octobre 2026");
+    expect(dateMiseAJour("<p>Sans date</p>")).toBeUndefined();
   });
 
   it("sans résumé reconnaissable, rien n'est repris", () => {

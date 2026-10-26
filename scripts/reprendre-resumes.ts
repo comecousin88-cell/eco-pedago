@@ -18,7 +18,7 @@ import { appendFileSync, readFileSync, writeFileSync } from "node:fs";
 import { DEBUT_FIL, traduireEurostat, type EntreeFlux } from "../src/lib/actu/flux.ts";
 import { estPageProtegee, permisParRobots } from "../src/lib/actu/lecture-source.ts";
 import { aChercher, texteRecapitulatif, type EntreeJournalResume, type JournalFusions, type JournalResumes, type ResumesOfficiels } from "../src/lib/actu/recapitulatif.ts";
-import { extraireResume, licenceDe, listeBce, raisonNonReprise, trouverDansListeBce, versionFrancaiseBce } from "../src/lib/actu/resume-officiel.ts";
+import { dateMiseAJour, extraireResume, licenceDe, listeBce, raisonNonReprise, trouverDansListeBce, versionFrancaiseBce } from "../src/lib/actu/resume-officiel.ts";
 
 const UA = "ecoclair (resumes officiels des publications)";
 const RACINE = new URL("../", import.meta.url);
@@ -29,6 +29,8 @@ const maintenant = new Date().toISOString();
 const flux = lire<{ entrees: EntreeFlux[] }>("data/actu-flux.json").entrees.filter((e) => e.date >= DEBUT_FIL);
 const officiels = lire<ResumesOfficiels>("data/actu-resumes-officiels.json");
 const journal = lire<JournalResumes>("data/actu-resumes-journal.json");
+
+const url = (lien: string) => new URL(lien);
 
 const robotsCache = new Map<string, Promise<string>>();
 function robots(origine: string): Promise<string> {
@@ -62,13 +64,14 @@ async function lienFrancaisBce(e: EntreeFlux): Promise<string | undefined> {
 }
 
 /** Résumé officiel d'une publication, ou la raison pour laquelle il n'est pas repris. */
-async function resumeOfficiel(lien: string): Promise<{ paragraphes: string[] } | { raison: string }> {
+async function resumeOfficiel(lien: string): Promise<{ paragraphes: string[]; misAJour?: string } | { raison: string }> {
   const raison = raisonNonReprise(lien);
   if (raison) return { raison };
   const page = await lirePage(lien);
   if ("raison" in page) return page;
   const paragraphes = extraireResume(lien, page.html);
-  if (paragraphes) return { paragraphes };
+  // La Banque de France demande de citer la date de dernière mise à jour de ses contenus.
+  if (paragraphes) return { paragraphes, ...(url(lien).hostname === "www.banque-france.fr" ? { misAJour: dateMiseAJour(page.html) } : {}) };
   if (/id="language-not-available"/.test(page.html)) return { raison: "communiqué de la BCE non publié en français : non repris" };
   return { raison: "pas de résumé reconnaissable sur la page" };
 }
@@ -96,6 +99,7 @@ for (const e of flux) {
         lien,
         ...(e.source === "bce" ? { organisme: "Banque centrale européenne" } : {}),
         licence: licenceDe(lien)!.nom,
+        ...(r.misAJour ? { mis_a_jour: r.misAJour } : {}),
         recupere_le: maintenant.slice(0, 10),
       };
       journal.entrees.unshift({ ...base, statut: "repris" });

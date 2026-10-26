@@ -68,14 +68,20 @@ describe("pages « L'actu »", () => {
     }
   });
 
-  it("Eurostat, Banque de France : pas de résumé repris (anglais, licence), seulement titre, chiffres, modules et source", async () => {
+  it("Eurostat : pas de résumé repris (anglais), seulement titre traduit, chiffres, modules et source", async () => {
     const eurostat = fil.find((e) => e.source?.nom === "Eurostat" && !resumes[e.id])!;
     expect(resumesOfficiels[eurostat.id]).toBeUndefined();
     expect(absenceDeResume(eurostat)).toMatch(/anglais/);
     expect(await rendre(eurostat.slug!)).toContain("Eurostat publie son résumé en anglais");
+  });
+
+  it("Banque de France : « Résumé de la Banque de France », avec la date de dernière mise à jour demandée par sa licence", async () => {
     const bdf = fil.find((e) => e.source?.nom === "Banque de France")!;
-    expect(resumesOfficiels[bdf.id]).toBeUndefined();
-    expect(absenceDeResume(bdf)).toMatch(/^licence/);
+    const r = resumesOfficiels[bdf.id];
+    expect(r.mis_a_jour).toMatch(/^\d{1,2}(er)? \p{L}+ \d{4}$/u);
+    const html = await rendre(bdf.slug!);
+    expect(html).toContain("Résumé de la Banque de France");
+    expect(html).toContain(`dernière mise à jour le ${r.mis_a_jour}`);
   });
 
   it("avec un résumé officiel : « Résumé de [source] », texte repris tel quel et en entier, lien vers l'original", async () => {
