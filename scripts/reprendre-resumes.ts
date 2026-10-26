@@ -14,10 +14,10 @@
  * Chaque tentative est inscrite au journal (data/actu-resumes-journal.json),
  * d'où est tiré RECAPITULATIF.md. Aucun service payant n'est appelé.
  */
-import { appendFileSync, readFileSync, writeFileSync } from "node:fs";
+import { appendFileSync, existsSync, readFileSync, writeFileSync } from "node:fs";
 import { DEBUT_FIL, traduireEurostat, type EntreeFlux } from "../src/lib/actu/flux.ts";
 import { estPageProtegee, permisParRobots } from "../src/lib/actu/lecture-source.ts";
-import { aChercher, texteRecapitulatif, type EntreeJournalResume, type JournalFusions, type JournalResumes, type ResumesOfficiels } from "../src/lib/actu/recapitulatif.ts";
+import { aChercher, texteRecapitulatif, type EntreeJournalResume, type JournalFusions, type JournalResumes, type LiensExternes, type ResumesOfficiels } from "../src/lib/actu/recapitulatif.ts";
 import { dateMiseAJour, extraireResume, licenceDe, listeBce, raisonNonReprise, trouverDansListeBce, versionFrancaiseBce } from "../src/lib/actu/resume-officiel.ts";
 
 const UA = "ecoclair (resumes officiels des publications)";
@@ -115,7 +115,7 @@ journal.entrees = journal.entrees.slice(0, 3000);
 ecrire("data/actu-resumes-officiels.json", officiels);
 ecrire("data/actu-resumes-journal.json", journal);
 const site = process.env.SITE_URL ?? "https://eco-pedago.vercel.app";
-writeFileSync(new URL("RECAPITULATIF.md", RACINE), texteRecapitulatif(journal, lire<JournalFusions>("data/fusions-journal.json"), site, maintenant), "utf8");
+writeFileSync(new URL("RECAPITULATIF.md", RACINE), texteRecapitulatif(journal, lire<JournalFusions>("data/fusions-journal.json"), site, maintenant, existsSync(new URL("data/liens-externes.json", RACINE)) ? lire<LiensExternes>("data/liens-externes.json") : undefined), "utf8");
 
 const resume = `Résumés officiels du ${maintenant.slice(0, 10)} : ${repris} repris, ${nonRepris} non repris (raisons dans RECAPITULATIF.md).`;
 console.log(resume);

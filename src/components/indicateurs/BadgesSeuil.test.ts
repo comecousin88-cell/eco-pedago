@@ -58,9 +58,9 @@ describe("badges de seuil sur les cartes d'indicateurs", () => {
     for (const a of alertesActives()) expect(fil.some((e) => e.type === "alerte" && e.id.startsWith(`alerte-${a.id}-`)), a.id).toBe(true);
   });
 
-  it("le lien vers le taux du jour est sous la carte du taux à 10 ans, dans le tableau de bord", () => {
+  it("le lien vers les derniers taux de l'État est sous la carte du taux à 10 ans, dans le tableau de bord", () => {
     const page = lire("src/app/tableau-de-bord/page.tsx");
-    expect(page).toMatch(/<CarteIndicateur indicateur=\{i\} \/>\s*\{i\.id === "oat10" && \(\s*<a href=\{TAUX_DU_JOUR_BDF\}[\s\S]*?Voir le taux du jour sur le site de la Banque de France/);
-    expect(lire("src/components/indicateurs/CarteIndicateur.tsx")).not.toContain("TAUX_DU_JOUR_BDF");
+    expect(page).toMatch(/<CarteIndicateur indicateur=\{i\} \/>\s*\{i\.id === "oat10" && \(\s*<a href=\{LIEN_TAUX_ETAT\}[\s\S]*?Voir les derniers taux de l’État sur le site de l’Agence France Trésor/);
+    expect(lire("src/components/indicateurs/CarteIndicateur.tsx")).not.toContain("LIEN_TAUX_ETAT");
   });
 });

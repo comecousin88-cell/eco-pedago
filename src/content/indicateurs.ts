@@ -35,8 +35,11 @@ export interface Indicateur {
   lien: { href: string; libelle: string };
 }
 
-/** Page officielle où lire le taux à 10 ans du jour (le site affiche la moyenne mensuelle de la BCE). */
-export const TAUX_DU_JOUR_BDF = "https://www.banque-france.fr/fr/statistiques/taux-et-cours";
+/**
+ * Page officielle des derniers taux d'emprunt de l'État (le site affiche la moyenne mensuelle de la BCE).
+ * La Banque de France ne publie plus les taux des OAT depuis le 10 juillet 2024 : elle renvoie à l'Agence France Trésor.
+ */
+export const LIEN_TAUX_ETAT = "https://www.aft.gouv.fr/fr/principaux-chiffres-dette#courbe";
 
 export const indicateurs: Indicateur[] = [
   {

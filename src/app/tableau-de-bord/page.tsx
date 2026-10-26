@@ -6,7 +6,7 @@ import { ProchainesEcheances } from "@/components/indicateurs/ProchainesEcheance
 import { FilAriane } from "@/components/modules/FilAriane";
 import { MarquerLue } from "@/components/modules/MarquerLue";
 import { ModuleTheme } from "@/components/modules/ModuleTheme";
-import { indicateurs, TAUX_DU_JOUR_BDF } from "@/content/indicateurs";
+import { indicateurs, LIEN_TAUX_ETAT } from "@/content/indicateurs";
 import { EtEnsuite } from "@/components/layout/EtEnsuite";
 import { suitePage } from "@/content/suite";
 import { rubriqueColors } from "@/content/modules";
@@ -41,8 +41,8 @@ export default function TableauDeBordPage() {
             <li key={i.id}>
               <CarteIndicateur indicateur={i} />
               {i.id === "oat10" && (
-                <a href={TAUX_DU_JOUR_BDF} target="_blank" rel="noopener" className="mt-2 inline-block px-1 text-sm text-muted underline underline-offset-4 hover:text-ink">
-                  Voir le taux du jour sur le site de la Banque de France
+                <a href={LIEN_TAUX_ETAT} target="_blank" rel="noopener" className="mt-2 inline-block px-1 text-sm text-muted underline underline-offset-4 hover:text-ink">
+                  Voir les derniers taux de l’État sur le site de l’Agence France Trésor
                   <span className="sr-only"> (nouvel onglet)</span> ↗
                 </a>
               )}

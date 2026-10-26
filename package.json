@@ -15,6 +15,7 @@
     "postbuild": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/verifier-liens.ts",
     "verifier:liens": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/verifier-liens.ts",
     "fusion:auto": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/fusion-auto.ts",
+    "recapitulatif": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/recapitulatif.ts",
     "resumes:officiels": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/reprendre-resumes.ts"
   },
   "dependencies": {

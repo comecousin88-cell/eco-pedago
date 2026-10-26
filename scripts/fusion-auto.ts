@@ -12,8 +12,8 @@
  * RECAPITULATIF.md. Rien n'est jamais forcé.
  */
 import { execSync } from "node:child_process";
-import { readFileSync, writeFileSync } from "node:fs";
-import { texteRecapitulatif, type EntreeJournalFusion, type JournalFusions, type JournalResumes } from "../src/lib/actu/recapitulatif.ts";
+import { existsSync, readFileSync, writeFileSync } from "node:fs";
+import { texteRecapitulatif, type EntreeJournalFusion, type JournalFusions, type JournalResumes, type LiensExternes } from "../src/lib/actu/recapitulatif.ts";
 
 const RACINE = new URL("../", import.meta.url);
 const lire = <T>(f: string): T => JSON.parse(readFileSync(new URL(f, RACINE), "utf8")) as T;
@@ -72,7 +72,7 @@ sh("git checkout -q main && git pull -q --ff-only origin main");
 journal.entrees = [...resultats, ...lire<JournalFusions>("data/fusions-journal.json").entrees].slice(0, 2000);
 writeFileSync(new URL("data/fusions-journal.json", RACINE), `${JSON.stringify(journal, null, 2)}\n`, "utf8");
 const site = process.env.SITE_URL ?? "https://eco-pedago.vercel.app";
-writeFileSync(new URL("RECAPITULATIF.md", RACINE), texteRecapitulatif(lire<JournalResumes>("data/actu-resumes-journal.json"), journal, site, maintenant), "utf8");
+writeFileSync(new URL("RECAPITULATIF.md", RACINE), texteRecapitulatif(lire<JournalResumes>("data/actu-resumes-journal.json"), journal, site, maintenant, existsSync(new URL("data/liens-externes.json", RACINE)) ? lire<LiensExternes>("data/liens-externes.json") : undefined), "utf8");
 
 console.log(
   demandes.length === 0

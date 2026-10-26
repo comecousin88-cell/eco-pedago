@@ -67,8 +67,20 @@ export function aChercher(journal: EntreeJournalResume[], id: string, aujourdhui
   return Date.parse(aujourdhui) - Date.parse(dernier.date) >= 7 * 86_400_000;
 }
 
-/** Contenu de RECAPITULATIF.md : les trente derniers jours, du plus récent au plus ancien. */
-export function texteRecapitulatif(resumes: JournalResumes, fusions: JournalFusions, site: string, aujourdhui: string): string {
+/** Dernière vérification des liens externes (data/liens-externes.json, écrit par scripts/verifier-liens.ts). */
+export interface LiensExternes {
+  verifie_le: string;
+  verifies: number;
+  casses: { lien: string; raison: string; page: string }[];
+  a_verifier: { lien: string; raison: string; page: string }[];
+}
+
+/**
+ * Contenu de RECAPITULATIF.md : les liens externes cassés à corriger (ils ne
+ * bloquent pas la mise en ligne), puis les trente derniers jours de
+ * publications automatiques, du plus récent au plus ancien.
+ */
+export function texteRecapitulatif(resumes: JournalResumes, fusions: JournalFusions, site: string, aujourdhui: string, liens?: LiensExternes): string {
   const limite = new Date(Date.parse(aujourdhui) - 30 * 86_400_000).toISOString();
   const jours = new Map<string, { r: EntreeJournalResume[]; f: EntreeJournalFusion[] }>();
   const jour = (d: string) => {
@@ -87,8 +99,16 @@ export function texteRecapitulatif(resumes: JournalResumes, fusions: JournalFusi
     "- **Résumés repris** : le chapô ou le paragraphe d'introduction rédigé par l'organisme, repris tel quel et en entier, quand sa licence le permet. Pour en retirer un, supprimer son entrée dans `data/actu-resumes-officiels.json`.",
     "- **Résumés non repris** : licence qui ne le permet pas, résumé en anglais (Eurostat), page illisible ou sans résumé reconnaissable ; la page garde le titre, les chiffres, les liens vers les modules et le lien vers la source.",
     "- **Demandes laissées ouvertes** : un contrôle a échoué ; elles attendent une décision.",
+    "- **Liens externes cassés** : une source a déplacé ou supprimé sa page. La mise en ligne continue ; le lien est à corriger dans le texte.",
     "",
   ];
+  if (liens) {
+    lignes.push("## Liens externes à corriger", "", `Vérifiés le ${liens.verifie_le.slice(0, 10)} : ${liens.verifies} liens externes.`, "");
+    if (liens.casses.length === 0) lignes.push("Aucun lien externe cassé.");
+    for (const c of liens.casses) lignes.push(`- ❌ ${c.lien} : ${c.raison}, sur la page [${c.page.replace(/\/?index\.html$/, "/")}](${site}/${c.page.replace(/index\.html$/, "")})`);
+    if (liens.a_verifier.length) lignes.push("", `${liens.a_verifier.length} lien(s) refusent les robots ou n'ont pas répondu : à ouvrir dans un navigateur.`);
+    lignes.push("");
+  }
   if (jours.size === 0) lignes.push("Aucune publication automatique ces trente derniers jours.");
   for (const [j, { r, f }] of [...jours.entries()].sort((a, b) => (a[0] < b[0] ? 1 : -1))) {
     const repris = r.filter((e) => e.statut === "repris");

@@ -5,6 +5,15 @@ Fichier écrit chaque jour par les tâches automatiques (`npm run resumes:offici
 - **Résumés repris** : le chapô ou le paragraphe d'introduction rédigé par l'organisme, repris tel quel et en entier, quand sa licence le permet. Pour en retirer un, supprimer son entrée dans `data/actu-resumes-officiels.json`.
 - **Résumés non repris** : licence qui ne le permet pas, résumé en anglais (Eurostat), page illisible ou sans résumé reconnaissable ; la page garde le titre, les chiffres, les liens vers les modules et le lien vers la source.
 - **Demandes laissées ouvertes** : un contrôle a échoué ; elles attendent une décision.
+- **Liens externes cassés** : une source a déplacé ou supprimé sa page. La mise en ligne continue ; le lien est à corriger dans le texte.
+
+## Liens externes à corriger
+
+Vérifiés le 2026-10-26 : 119 liens externes.
+
+Aucun lien externe cassé.
+
+11 lien(s) refusent les robots ou n'ont pas répondu : à ouvrir dans un navigateur.
 
 ## 2026-10-26
 

@@ -8,11 +8,13 @@
  * 1. Liens internes : chacun doit mener à une page ou un fichier de out/.
  * 2. Liens externes (sources, originaux des publications) : chacun est ouvert ;
  *    une page introuvable (404) ou une redirection vers la page d'accueil du
- *    site fait échouer la vérification. Un refus des robots (403) ou une panne
- *    passagère est seulement signalé, à vérifier dans un navigateur.
- * En cas d'échec, la construction (et donc la mise en ligne) s'arrête.
+ *    site est un lien cassé ; un refus des robots (403) ou une panne passagère
+ *    est à vérifier dans un navigateur. Un lien externe cassé ne bloque pas la
+ *    mise en ligne : il est écrit dans data/liens-externes.json, et listé dans
+ *    le récapitulatif quotidien (RECAPITULATIF.md) pour être corrigé.
+ * Seul un lien interne cassé arrête la construction (et donc la mise en ligne).
  */
-import { readdirSync, readFileSync, statSync } from "node:fs";
+import { readdirSync, readFileSync, statSync, writeFileSync } from "node:fs";
 import { join, relative } from "node:path";
 import { liensCasses, liensExternes, verdictLien } from "../src/lib/liens.ts";
 
@@ -64,9 +66,15 @@ if (process.env.VERIFIER_LIENS_EXTERNES !== "non") {
   const externesCasses = resultats.filter((r) => r.etat === "casse");
   const avertissements = resultats.filter((r) => r.etat === "avertissement");
   for (const a of avertissements) console.warn(`• ${a.lien} : ${a.raison} (page ${ou.get(a.lien)})`);
+  // Un lien externe cassé est un avertissement : la mise en ligne continue, le récapitulatif quotidien le liste.
+  const ligne = (r: { lien: string; raison?: string }) => ({ lien: r.lien, raison: r.raison ?? "", page: ou.get(r.lien) ?? "" });
+  writeFileSync(
+    new URL("../data/liens-externes.json", import.meta.url),
+    `${JSON.stringify({ verifie_le: new Date().toISOString(), verifies: liens.length, casses: externesCasses.map(ligne), a_verifier: avertissements.map(ligne) }, null, 2)}\n`,
+    "utf8",
+  );
   if (externesCasses.length > 0) {
-    console.error(`✗ ${externesCasses.length} lien(s) externe(s) cassé(s) :\n${externesCasses.map((c) => `${c.lien} : ${c.raison} (page ${ou.get(c.lien)})`).join("\n")}`);
-    echec = true;
+    console.warn(`⚠ ${externesCasses.length} lien(s) externe(s) cassé(s), listé(s) dans RECAPITULATIF.md (la mise en ligne continue) :\n${externesCasses.map((c) => `${c.lien} : ${c.raison} (page ${ou.get(c.lien)})`).join("\n")}`);
   } else {
     console.log(`✓ Liens externes : ${liens.length} vérifiés, aucun cassé${avertissements.length ? ` (${avertissements.length} à vérifier dans un navigateur)` : ""}.`);
   }

@@ -66,6 +66,11 @@ jobs:
       - name: Construire le site
         run: npm run build
 
+      # La construction vérifie les liens : les liens externes cassés (qui ne bloquent pas la mise en ligne)
+      # sont ajoutés au récapitulatif quotidien.
+      - name: Récapitulatif quotidien, avec les liens externes à corriger
+        run: npm run recapitulatif
+
       - name: Publier les nouvelles données
         run: |
           git config user.name "github-actions[bot]"
