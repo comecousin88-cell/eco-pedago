@@ -19,7 +19,7 @@ export function BadgesSeuil({ indicateur, className = "" }: { indicateur: string
             <button
               type="button"
               aria-describedby={id}
-              className="inline-flex items-center gap-1 rounded-full border border-accent-line bg-accent-soft px-2 py-0.5 text-xs font-medium text-ink"
+              className="inline-flex items-center gap-1 rounded-full border border-accent-line bg-accent-soft px-2 py-0.5 text-left text-xs font-medium text-ink"
             >
               <svg aria-hidden="true" viewBox="0 0 20 20" className="h-3 w-3 shrink-0 text-accent" fill="currentColor">
                 <path d="M10 1.5a8.5 8.5 0 1 0 0 17 8.5 8.5 0 0 0 0-17Zm0 3.75a1.1 1.1 0 1 1 0 2.2 1.1 1.1 0 0 1 0-2.2Zm1.25 9.5h-2.5v-1.25h.6v-3.5h-.6V8.75h1.85v4.75h.65v1.25Z" />
