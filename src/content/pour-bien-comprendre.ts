@@ -45,4 +45,29 @@ export const pourBienComprendre: { notion: string; fichier: string; page: string
     fichier: "src/content/modules/boule-de-neige/chiffrage.mdx",
     page: "/modules/boule-de-neige/chiffrage/",
   },
+  {
+    notion: "Spread, prime de risque et notation",
+    fichier: "src/content/modules/emprunt-etat/spread-notation.mdx",
+    page: "/modules/emprunt-etat/spread-notation/",
+  },
+  {
+    notion: "L'interdiction du financement monétaire (article 123)",
+    fichier: "src/content/modules/banque-centrale/cadre-juridique.mdx",
+    page: "/modules/banque-centrale/cadre-juridique/",
+  },
+  {
+    notion: "La double charge du passage à la capitalisation",
+    fichier: "src/content/modules/retraites/transition.mdx",
+    page: "/modules/retraites/transition/",
+  },
+  {
+    notion: "La dette au sens de Maastricht",
+    fichier: "src/content/modules/deficit-et-dette/maastricht.mdx",
+    page: "/modules/deficit-et-dette/maastricht/",
+  },
+  {
+    notion: "Taux nominal et taux réel",
+    fichier: "src/content/modules/les-bases/inflation-taux-reels.mdx",
+    page: "/modules/les-bases/inflation-taux-reels/",
+  },
 ];
