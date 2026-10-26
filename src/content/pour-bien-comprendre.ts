@@ -100,4 +100,34 @@ export const pourBienComprendre: { notion: string; fichier: string; page: string
     fichier: "src/content/modules/histoire-des-dettes/defauts.mdx",
     page: "/modules/histoire-des-dettes/defauts/",
   },
+  {
+    notion: "Les règles budgétaires européennes",
+    fichier: "src/content/modules/cadre-europeen/regles.mdx",
+    page: "/modules/cadre-europeen/regles/",
+  },
+  {
+    notion: "La procédure de déficit excessif",
+    fichier: "src/content/modules/cadre-europeen/deficit-excessif.mdx",
+    page: "/modules/cadre-europeen/deficit-excessif/",
+  },
+  {
+    notion: "Les filets de sécurité de la zone euro",
+    fichier: "src/content/modules/cadre-europeen/solidarite.mdx",
+    page: "/modules/cadre-europeen/solidarite/",
+  },
+  {
+    notion: "Les adjudications de l'Agence France Trésor",
+    fichier: "src/content/modules/emprunt-etat/aft-adjudications.mdx",
+    page: "/modules/emprunt-etat/aft-adjudications/",
+  },
+  {
+    notion: "OAT et BTF : coupon, maturité, OAT indexée",
+    fichier: "src/content/modules/emprunt-etat/oat-btf.mdx",
+    page: "/modules/emprunt-etat/oat-btf/",
+  },
+  {
+    notion: "Cercle vicieux, cercle vertueux",
+    fichier: "src/content/modules/boule-de-neige/cercles.mdx",
+    page: "/modules/boule-de-neige/cercles/",
+  },
 ];
