@@ -1,6 +1,6 @@
 # Fusion automatique des demandes de mise à jour ouvertes par les tâches
 # automatiques (veille de l'agenda) : chacune est fusionnée dans main si les
-# tests, les garde-fous, le contrôle du code et la construction du site
+# tests (dont le contrôle des données), le contrôle du code et la construction du site
 # passent ; sinon elle reste ouverte, avec un commentaire, et apparaît dans
 # RECAPITULATIF.md. Lancée après chaque veille, et chaque matin en rattrapage.
 name: Fusion automatique

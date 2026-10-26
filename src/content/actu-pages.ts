@@ -1,6 +1,9 @@
-import resumesAutoJson from "../../data/actu-resumes-auto.json";
+import journalResumesJson from "../../data/actu-resumes-journal.json";
+import resumesOfficielsJson from "../../data/actu-resumes-officiels.json";
 import resumesJson from "../../data/actu-resumes.json";
 import type { Sujet } from "@/lib/actu/flux";
+import type { JournalResumes, ResumeOfficiel } from "@/lib/actu/recapitulatif";
+import { raisonNonReprise } from "@/lib/actu/resume-officiel";
 import type { EntreeActu } from "./actu";
 import { titrePage } from "./actu";
 import { glossaire } from "./glossaire";
@@ -9,10 +12,11 @@ import { idees } from "./idees-recues";
 /**
  * Pages « L'actu » (/actu/<slug>/) : ce qui est automatique (chiffres clés
  * d'après le thème, liens « Pour aller plus loin », source) et ce qui est
- * rédigé (« En bref », « Ce que ça veut dire »). Les résumés sont générés par
- * IA chaque jour (data/actu-resumes-auto.json, scripts/resumer-actu.ts) et
- * publiés après les garde-fous automatiques ; ceux de data/actu-resumes.json
- * passent avant. Sans résumé, la page affiche « Résumé à venir » et aucun texte rédigé.
+ * repris ou rédigé. Le résumé officiel (chapô ou introduction rédigés par
+ * l'organisme) est repris tel quel quand la licence du site le permet
+ * (data/actu-resumes-officiels.json, scripts/reprendre-resumes.ts) ; quelques
+ * actualités ont aussi un « En bref » rédigé par le site (data/actu-resumes.json).
+ * Sans résumé, la page n'affiche aucun texte rédigé.
  */
 
 export interface Resume {
@@ -25,18 +29,30 @@ export interface Resume {
   donnees?: string[];
   /** Résumés de data/actu-resumes.json : date de la proposition. */
   propose_le?: string;
-  /** Résumés automatiques : date de génération et modèle. */
-  genere_le?: string;
-  modele?: string;
 }
 
-/** Résumés écrits avec leurs chiffres tirés de data/ ({{id}}). */
-export const resumesManuels = (resumesJson as { resumes: Record<string, Resume> }).resumes;
-/** Résumés générés automatiquement, dont chaque chiffre figure tel quel dans la publication source. */
-export const resumesAuto = (resumesAutoJson as { resumes: Record<string, Resume> }).resumes;
-export const resumes: Record<string, Resume> = { ...resumesAuto, ...resumesManuels };
+/** Résumés rédigés par le site, avec leurs chiffres tirés de data/ ({{id}}). */
+export const resumes = (resumesJson as { resumes: Record<string, Resume> }).resumes;
 
 export const resumeDe = (e: Pick<EntreeActu, "id">): Resume | undefined => resumes[e.id];
+
+/** Résumés rédigés par les organismes, repris tels quels et en entier. */
+export const resumesOfficiels = (resumesOfficielsJson as { resumes: Record<string, ResumeOfficiel> }).resumes;
+
+export const resumeOfficielDe = (e: Pick<EntreeActu, "id">): ResumeOfficiel | undefined => resumesOfficiels[e.id];
+
+const journalResumes = (journalResumesJson as JournalResumes).entrees;
+
+/**
+ * Pourquoi une actualité n'a pas de résumé officiel, quand c'est durable :
+ * licence qui ne permet pas la reprise, résumé publié en anglais, communiqué de
+ * la BCE sans version française. Undefined s'il est repris ou encore à venir.
+ */
+export function absenceDeResume(e: Pick<EntreeActu, "id" | "source">): string | undefined {
+  if (resumesOfficiels[e.id] || !e.source) return undefined;
+  const raison = journalResumes.find((j) => j.id === e.id)?.raison ?? raisonNonReprise(e.source.url);
+  return raison && /^licence|anglais|en français|introuvable/.test(raison) ? raison : undefined;
+}
 
 /** Chiffres clés automatiques, d'après le thème : cartes du tableau de bord (avec leur courbe) et données. */
 const CHIFFRES_SUJET: Record<Sujet, { indicateurs: string[]; donnees: string[] }> = {
@@ -123,9 +139,12 @@ export function deLaSource(nom: string): string {
   return `${article}${nom}`;
 }
 
-/** Mention affichée sous chaque résumé : il est publié sans relecture humaine. */
-export const mentionIA = (nomSource: string) =>
-  `Généré automatiquement par IA à partir ${deLaSource(nomSource)}. En cas d'écart, la source fait foi.`;
+/** Titre du résumé repris : « Résumé de l'Insee ». */
+export const titreResumeOfficiel = (nomSource: string) => `Résumé ${deLaSource(nomSource)}`;
+
+/** Mention des résumés rédigés par le site (« En bref »). */
+export const mentionResumeRedige = (nomSource: string) =>
+  `Résumé rédigé par EcoClair avec l'aide de l'IA, à partir de la publication ${deLaSource(nomSource)}. En cas d'écart, la source fait foi.`;
 
 /** Lien « Signaler une erreur » : ouvre un ticket prérempli sur le dépôt du site. */
 export function signalerErreurHref(e: Pick<EntreeActu, "titre" | "slug">, site: string): string {

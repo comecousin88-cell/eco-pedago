@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { actuHref, LIBELLES_TYPE, type EntreeActu } from "@/content/actu";
-import { resumeDe } from "@/content/actu-pages";
+import { resumeDe, resumeOfficielDe } from "@/content/actu-pages";
 import { EtatEcheance } from "./EtatEcheance";
 import { TexteAvecChiffres } from "./TexteAvecChiffres";
 
@@ -17,6 +17,7 @@ const COULEUR: Record<EntreeActu["type"], string> = {
  */
 export function CarteActu({ e, compacte = false }: { e: EntreeActu; compacte?: boolean }) {
   const resume = resumeDe(e);
+  const officiel = resumeOfficielDe(e);
   const href = e.slug ? actuHref(e.slug) : undefined;
   return (
     <article className="rounded-2xl border border-line bg-surface p-4 sm:p-5">
@@ -45,11 +46,9 @@ export function CarteActu({ e, compacte = false }: { e: EntreeActu; compacte?: b
           <EtatEcheance echeance={e.echeance} construitLe={new Date().toISOString().slice(0, 10)} />
         </p>
       )}
-      {resume && href && (
+      {(resume || officiel) && href && (
         <div className="mt-2 text-sm leading-relaxed text-body">
-          <p className="line-clamp-1">
-            <TexteAvecChiffres texte={resume.en_bref[0]} />
-          </p>
+          <p className="line-clamp-1">{resume ? <TexteAvecChiffres texte={resume.en_bref[0]} /> : officiel!.paragraphes[0]}</p>
           <Link href={href} className="mt-1 inline-block font-medium text-accent underline underline-offset-4">
             Lire le résumé<span className="sr-only"> : {e.titre}</span>
           </Link>

@@ -1,4 +1,277 @@
 {
-  "description": "Journal des résumés automatiques : chaque tentative, publiée ou rejetée, avec ses raisons. Écrit par scripts/resumer-actu.ts ; RECAPITULATIF.md en est tiré.",
-  "entrees": []
+  "description": "Journal de la reprise des résumés officiels : chaque publication, reprise ou non, avec la raison. Écrit par scripts/reprendre-resumes.ts ; RECAPITULATIF.md en est tiré.",
+  "entrees": [
+    {
+      "date": "2026-10-26T11:04:27.112Z",
+      "id": "bce-ef34e456",
+      "titre": "Décisions de politique monétaire",
+      "date_publication": "2026-09-10",
+      "lien": "https://www.banque-france.fr/fr/communiques-de-presse/decisions-de-politique-monetaire-27",
+      "statut": "repris"
+    },
+    {
+      "date": "2026-10-26T11:04:06.974Z",
+      "id": "bce-cda5cdf1",
+      "titre": "Statistiques relatives aux taux d’intérêt des banques de la zone euro : juillet 2026",
+      "date_publication": "2026-09-02",
+      "lien": "https://www.banque-france.fr/fr/communiques-de-presse/statistiques-relatives-aux-taux-dinteret-des-banques-de-la-zone-euro-juillet-2026",
+      "statut": "non-repris",
+      "raison": "version française du communiqué introuvable sur le site de la BCE : non repris"
+    },
+    {
+      "date": "2026-10-26T11:04:06.974Z",
+      "id": "bce-5dac6703",
+      "titre": "L’outil de suivi des salaires de la BCE s’est établi à 2,7 % au premier semestre 2027, indiquant une légère accélération de la croissance des salaires négociés",
+      "date_publication": "2026-09-16",
+      "lien": "https://www.banque-france.fr/fr/communiques-de-presse/loutil-de-suivi-des-salaires-de-la-bce-sest-etabli-27-au-premier-semestre-2027-indiquant-une-legere",
+      "statut": "non-repris",
+      "raison": "version française du communiqué introuvable sur le site de la BCE : non repris"
+    },
+    {
+      "date": "2026-10-26T11:04:06.974Z",
+      "id": "bce-74b953c3",
+      "titre": "Statistiques relatives aux taux d’intérêt des banques de la zone euro : août 2026",
+      "date_publication": "2026-10-01",
+      "lien": "https://www.banque-france.fr/fr/communiques-de-presse/statistiques-relatives-aux-taux-dinteret-des-banques-de-la-zone-euro-aout-2026",
+      "statut": "non-repris",
+      "raison": "version française du communiqué introuvable sur le site de la BCE : non repris"
+    },
+    {
+      "date": "2026-10-26T11:04:06.974Z",
+      "id": "bce-084aeb45",
+      "titre": "Compte rendu de la réunion de politique monétaire du Conseil des gouverneurs de la BCE des 9 et 10 septembre 2026",
+      "date_publication": "2026-10-08",
+      "lien": "https://www.banque-france.fr/fr/communiques-de-presse/compte-rendu-de-la-reunion-de-politique-monetaire-du-conseil-des-gouverneurs-de-la-bce-des-9-et-10-0",
+      "statut": "non-repris",
+      "raison": "communiqué de la BCE non publié en français : non repris"
+    },
+    {
+      "date": "2026-10-26T10:54:05.661Z",
+      "id": "eurostat-3c7384a3",
+      "titre": "Inflation annuelle en hausse à 3,3 % dans la zone euro",
+      "date_publication": "2026-09-01",
+      "lien": "https://ec.europa.eu/eurostat/web/products-euro-indicators/w/2-01092026-ap",
+      "statut": "non-repris",
+      "raison": "résumé publié en anglais : seul le titre traduit est affiché"
+    },
+    {
+      "date": "2026-10-26T10:54:05.661Z",
+      "id": "eurostat-2defb497",
+      "titre": "Chômage à 6,4 % dans la zone euro",
+      "date_publication": "2026-09-01",
+      "lien": "https://ec.europa.eu/eurostat/web/products-euro-indicators/w/3-01092026-bp",
+      "statut": "non-repris",
+      "raison": "résumé publié en anglais : seul le titre traduit est affiché"
+    },
+    {
+      "date": "2026-10-26T10:54:05.661Z",
+      "id": "senat-86996be6",
+      "titre": "Prélèvements obligatoires et entreprises : vers un cadre fiscal et social stable pour la croissance et l'emploi - Rapport d'information n° 942",
+      "date_publication": "2026-09-03",
+      "lien": "https://www.senat.fr/notice-rapport/2025/r25-942-notice.html",
+      "statut": "repris"
+    },
+    {
+      "date": "2026-10-26T10:54:05.661Z",
+      "id": "eurostat-2f7e1ba1",
+      "titre": "PIB en hausse de 0,6 % et emploi en hausse de 0,1 % dans la zone euro",
+      "date_publication": "2026-09-07",
+      "lien": "https://ec.europa.eu/eurostat/web/products-euro-indicators/w/2-07092026-ap",
+      "statut": "non-repris",
+      "raison": "résumé publié en anglais : seul le titre traduit est affiché"
+    },
+    {
+      "date": "2026-10-26T10:54:05.661Z",
+      "id": "insee-793475aa",
+      "titre": "Mobilités professionnelles, salaires et fin de carrière",
+      "date_publication": "2026-09-08",
+      "lien": "https://www.insee.fr/fr/statistiques/9041706",
+      "statut": "repris"
+    },
+    {
+      "date": "2026-10-26T10:54:05.661Z",
+      "id": "insee-69c89ada",
+      "titre": "Vigilance orange sur la croissance",
+      "date_publication": "2026-09-10",
+      "lien": "https://www.insee.fr/fr/statistiques/9050757",
+      "statut": "non-repris",
+      "raison": "pas de résumé reconnaissable sur la page"
+    },
+    {
+      "date": "2026-10-26T10:54:05.661Z",
+      "id": "banque-de-france-ec8093a1",
+      "titre": "Précisions sur le programme de détention de la dette publique par la Banque de France",
+      "date_publication": "2026-09-12",
+      "lien": "https://www.banque-france.fr/fr/communiques-de-presse/precisions-sur-le-programme-de-detention-de-la-dette-publique-par-la-banque-de-france",
+      "statut": "non-repris",
+      "raison": "licence : Conditions de réutilisation non vérifiables : la page des mentions légales refuse la lecture automatique."
+    },
+    {
+      "date": "2026-10-26T10:54:05.661Z",
+      "id": "insee-b5c87300",
+      "titre": "En août 2026, les prix à la consommation augmentent de 2,4 % sur un an",
+      "date_publication": "2026-09-15",
+      "lien": "https://www.insee.fr/fr/statistiques/9051406",
+      "statut": "repris"
+    },
+    {
+      "date": "2026-10-26T10:54:05.661Z",
+      "id": "insee-eef8853c",
+      "titre": "Au deuxième trimestre 2026, les salaires horaires augmentent de 2,4 % sur un an, le coût horaire du travail de 2,5 %",
+      "date_publication": "2026-09-15",
+      "lien": "https://www.insee.fr/fr/statistiques/9050412",
+      "statut": "repris"
+    },
+    {
+      "date": "2026-10-26T10:54:05.661Z",
+      "id": "eurostat-2eb6f28b",
+      "titre": "Hausse annuelle du coût de la main-d'œuvre à 3,1 % dans la zone euro",
+      "date_publication": "2026-09-16",
+      "lien": "https://ec.europa.eu/eurostat/web/products-euro-indicators/w/3-16092026-bp",
+      "statut": "non-repris",
+      "raison": "résumé publié en anglais : seul le titre traduit est affiché"
+    },
+    {
+      "date": "2026-10-26T10:54:05.661Z",
+      "id": "eurostat-c63dbd1a",
+      "titre": "Inflation annuelle en hausse à 3,2 % dans la zone euro",
+      "date_publication": "2026-09-17",
+      "lien": "https://ec.europa.eu/eurostat/web/products-euro-indicators/w/2-17092026-ap",
+      "statut": "non-repris",
+      "raison": "résumé publié en anglais : seul le titre traduit est affiché"
+    },
+    {
+      "date": "2026-10-26T10:54:05.661Z",
+      "id": "insee-fd4c9a86",
+      "titre": "Stable en septembre 2026, la confiance des ménages reste dégradée",
+      "date_publication": "2026-09-24",
+      "lien": "https://www.insee.fr/fr/statistiques/9054960",
+      "statut": "repris"
+    },
+    {
+      "date": "2026-10-26T10:54:05.661Z",
+      "id": "insee-42157c4c",
+      "titre": "En septembre 2026, le climat des affaires se replie",
+      "date_publication": "2026-09-24",
+      "lien": "https://www.insee.fr/fr/statistiques/9055046",
+      "statut": "repris"
+    },
+    {
+      "date": "2026-10-26T10:54:05.661Z",
+      "id": "insee-3d45bdca",
+      "titre": "À la fin du deuxième trimestre 2026, le ratio de dette publique s’établit à 119,0 % du PIB",
+      "date_publication": "2026-09-29",
+      "lien": "https://www.insee.fr/fr/statistiques/9053525",
+      "statut": "repris"
+    },
+    {
+      "date": "2026-10-26T10:54:05.661Z",
+      "id": "insee-a14d1f55",
+      "titre": "En septembre 2026, les prix à la consommation augmenteraient de 3,0 % sur un an",
+      "date_publication": "2026-09-30",
+      "lien": "https://www.insee.fr/fr/statistiques/9056956",
+      "statut": "repris"
+    },
+    {
+      "date": "2026-10-26T10:54:05.661Z",
+      "id": "insee-237add92",
+      "titre": "La consommation des ménages en biens se replie en août 2026 (-0,5 % après +0,4 %)",
+      "date_publication": "2026-09-30",
+      "lien": "https://www.insee.fr/fr/statistiques/9057688",
+      "statut": "repris"
+    },
+    {
+      "date": "2026-10-26T10:54:05.661Z",
+      "id": "eurostat-02e06046",
+      "titre": "Chômage à 6,4 % dans la zone euro",
+      "date_publication": "2026-10-01",
+      "lien": "https://ec.europa.eu/eurostat/web/products-euro-indicators/w/3-01102026-ap",
+      "statut": "non-repris",
+      "raison": "résumé publié en anglais : seul le titre traduit est affiché"
+    },
+    {
+      "date": "2026-10-26T10:54:05.661Z",
+      "id": "hcfp-f116364f",
+      "titre": "Avis n°2026 – 5 Lois de finances 2027",
+      "date_publication": "2026-10-01",
+      "lien": "https://www.hcfp.fr/liste-avis/avis-ndeg2026-5-lois-de-finances-2027",
+      "statut": "repris"
+    },
+    {
+      "date": "2026-10-26T10:54:05.661Z",
+      "id": "eurostat-3580fcd2",
+      "titre": "Inflation annuelle en hausse à 3,8 % dans la zone euro",
+      "date_publication": "2026-10-02",
+      "lien": "https://ec.europa.eu/eurostat/web/products-euro-indicators/w/2-02102026-ap",
+      "statut": "non-repris",
+      "raison": "résumé publié en anglais : seul le titre traduit est affiché"
+    },
+    {
+      "date": "2026-10-26T10:54:05.661Z",
+      "id": "insee-c12520f1",
+      "titre": "En septembre 2026, les prix à la consommation augmentent de 3,1 % sur un an",
+      "date_publication": "2026-10-15",
+      "lien": "https://www.insee.fr/fr/statistiques/9080209",
+      "statut": "repris"
+    },
+    {
+      "date": "2026-10-26T10:54:05.661Z",
+      "id": "senat-0eb96cb1",
+      "titre": "Avis sur le projet de décret d'avance notifié le 5 octobre 2026 - Rapport d'information n° 77",
+      "date_publication": "2026-10-15",
+      "lien": "https://www.senat.fr/notice-rapport/2026/r26-077-notice.html",
+      "statut": "repris"
+    },
+    {
+      "date": "2026-10-26T10:54:05.661Z",
+      "id": "eurostat-691a696d",
+      "titre": "Inflation annuelle en hausse à 3,8 % dans la zone euro",
+      "date_publication": "2026-10-16",
+      "lien": "https://ec.europa.eu/eurostat/web/products-euro-indicators/w/2-16102026-ap",
+      "statut": "non-repris",
+      "raison": "résumé publié en anglais : seul le titre traduit est affiché"
+    },
+    {
+      "date": "2026-10-26T10:54:05.661Z",
+      "id": "cour-des-comptes-33e2b8ba",
+      "titre": "La situation financière de la sécurité sociale : un redressement impératif en 2027",
+      "date_publication": "2026-10-20",
+      "lien": "https://www.ccomptes.fr/fr/publications/la-situation-financiere-de-la-securite-sociale-un-redressement-imperatif-en-2027",
+      "statut": "repris"
+    },
+    {
+      "date": "2026-10-26T10:54:05.661Z",
+      "id": "eurostat-6b9dce13",
+      "titre": "Déficit public à 3,0 % du PIB et dette publique à 87,7 % dans la zone euro",
+      "date_publication": "2026-10-21",
+      "lien": "https://ec.europa.eu/eurostat/web/products-euro-indicators/w/2-21102026-ap",
+      "statut": "non-repris",
+      "raison": "résumé publié en anglais : seul le titre traduit est affiché"
+    },
+    {
+      "date": "2026-10-26T10:54:05.661Z",
+      "id": "eurostat-79972858",
+      "titre": "Dette publique à 88,8 % du PIB dans la zone euro",
+      "date_publication": "2026-10-21",
+      "lien": "https://ec.europa.eu/eurostat/web/products-euro-indicators/w/2-21102026-bp",
+      "statut": "non-repris",
+      "raison": "résumé publié en anglais : seul le titre traduit est affiché"
+    },
+    {
+      "date": "2026-10-26T10:54:05.661Z",
+      "id": "insee-38370425",
+      "titre": "En octobre 2026, le climat des affaires repart légèrement à la hausse",
+      "date_publication": "2026-10-22",
+      "lien": "https://www.insee.fr/fr/statistiques/9097429",
+      "statut": "repris"
+    },
+    {
+      "date": "2026-10-26T10:54:05.661Z",
+      "id": "insee-9ef6ba84",
+      "titre": "Les salaires dans le secteur privé en 2025",
+      "date_publication": "2026-10-22",
+      "lien": "https://www.insee.fr/fr/statistiques/9087193",
+      "statut": "repris"
+    }
+  ]
 }

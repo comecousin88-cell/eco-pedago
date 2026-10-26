@@ -3,7 +3,7 @@
  * automatiques : respect du fichier robots.txt du site, aucun contournement
  * (une page refusée ou protégée par un défi anti-robot est laissée de côté),
  * et extraction du seul texte principal de la page. Fonctions pures, sans
- * import : utilisées par scripts/resumer-actu.ts et testées.
+ * import : utilisées par scripts/reprendre-resumes.ts et testées.
  */
 
 interface Regle {

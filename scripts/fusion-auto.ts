@@ -5,7 +5,7 @@
  *   npm run fusion:auto        (dans GitHub Actions : GH_TOKEN requis)
  *
  * Pour chaque demande : fusionne la branche dans une copie de main, puis lance
- * les tests (dont les garde-fous des résumés et le contrôle des données), le
+ * les tests (dont le contrôle des données), le
  * contrôle du code et la construction du site (avec la vérification des liens).
  * Si tout passe, la demande est fusionnée dans main ; sinon elle reste ouverte
  * et la raison est inscrite au journal (data/fusions-journal.json), repris dans
@@ -55,7 +55,7 @@ for (const d of demandes) {
     resultats.push({ ...entree, statut: "laissee-ouverte", raisons: ["conflit avec main : à fusionner à la main"] });
     continue;
   }
-  const raisons = [controle("tests et garde-fous", "npm test"), controle("contrôle du code", "npm run lint"), controle("construction du site et liens", "npm run build")].filter(
+  const raisons = [controle("tests", "npm test"), controle("contrôle du code", "npm run lint"), controle("construction du site et liens", "npm run build")].filter(
     (r): r is string => r !== undefined,
   );
   if (raisons.length === 0) {

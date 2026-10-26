@@ -3,7 +3,7 @@
 # aux calendriers de l'Insee et de la BCE, surveille les pages officielles, et
 # ouvre une demande de mise à jour (pull request) par changement. Cette tâche
 # ne publie rien elle-même : la tâche « Fusion automatique » fusionne chaque
-# demande si les tests, les garde-fous et la construction passent, et laisse
+# demande si les tests, le contrôle du code et la construction passent, et laisse
 # ouvertes les autres (signalées dans RECAPITULATIF.md).
 name: Veille de l'agenda
 

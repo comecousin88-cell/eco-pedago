@@ -8,7 +8,17 @@ import { FilAriane } from "@/components/modules/FilAriane";
 import { ModuleTheme } from "@/components/modules/ModuleTheme";
 import { Chiffre } from "@/components/pedago/Chiffre";
 import { actuParSlug, construireFil, LIBELLES_TYPE } from "@/content/actu";
-import { chiffresCles, liensPlusLoin, mentionIA, resumeDe, signalerErreurHref } from "@/content/actu-pages";
+import {
+  absenceDeResume,
+  chiffresCles,
+  deLaSource,
+  liensPlusLoin,
+  mentionResumeRedige,
+  resumeDe,
+  resumeOfficielDe,
+  signalerErreurHref,
+  titreResumeOfficiel,
+} from "@/content/actu-pages";
 import { site } from "@/content/site";
 import { indicateurs } from "@/content/indicateurs";
 import { rubriqueColors } from "@/content/modules";
@@ -44,6 +54,8 @@ export default async function PageActualite({ params }: PageProps<"/actu/[slug]"
   const e = actuParSlug(slug);
   if (!e) notFound();
   const resume = resumeDe(e);
+  const officiel = resumeOfficielDe(e);
+  const absence = absenceDeResume(e);
   const { indicateurs: cartes, donnees } = chiffresCles(e);
   const liens = liensPlusLoin(e);
   // Encadré déjà validé dans le fil (data/actu-explications.json), à défaut d'un résumé.
@@ -81,7 +93,25 @@ export default async function PageActualite({ params }: PageProps<"/actu/[slug]"
           )}
         </header>
 
-        {resume ? (
+        {officiel && e.source && (
+          <Section titre={titreResumeOfficiel(officiel.organisme ?? e.source.nom)}>
+            <blockquote cite={officiel.lien} className="space-y-3 border-l-4 border-accent pl-4 text-lg leading-relaxed text-body">
+              {officiel.paragraphes.map((p, i) => (
+                <p key={i}>{p}</p>
+              ))}
+            </blockquote>
+            <p className="mt-3 text-sm text-muted">
+              Texte repris tel quel et en entier de{" "}
+              <a href={officiel.lien} target="_blank" rel="noopener" className="underline underline-offset-4 hover:text-ink">
+                {officiel.organisme ? `la version française du communiqué, sur le site ${deLaSource(officiel.organisme)}` : "la publication originale"}
+                <span className="sr-only"> (nouvel onglet)</span>
+              </a>{" "}
+              ({officiel.licence}).
+            </p>
+          </Section>
+        )}
+
+        {resume && (
           <Section titre="En bref">
             <ul className="space-y-3 text-lg leading-relaxed text-body">
               {resume.en_bref.map((p, i) => (
@@ -94,12 +124,20 @@ export default async function PageActualite({ params }: PageProps<"/actu/[slug]"
               ))}
             </ul>
           </Section>
-        ) : (
+        )}
+
+        {!officiel && !resume && (
           <div className="mt-8 rounded-2xl border border-dashed border-line bg-subtle px-5 py-4">
-            <p className="font-semibold text-ink">Résumé à venir</p>
+            <p className="font-semibold text-ink">{absence ? "Résumé à lire sur le site de la source" : "Résumé à venir"}</p>
             <p className="mt-1 text-sm leading-relaxed text-muted">
-              Le résumé de cette actualité n&apos;a pas encore été rédigé et relu. En attendant, les chiffres clés, les pages qui
-              expliquent le sujet et le lien vers l&apos;original sont ci-dessous.
+              {absence?.includes("anglais")
+                ? `${e.source?.nom} publie son résumé en anglais : il n'est pas repris ici.`
+                : absence && /en français|introuvable/.test(absence)
+                  ? "La BCE ne publie pas ce communiqué en français sur son site : il n'est pas repris ici."
+                  : absence
+                  ? `Les conditions de réutilisation ${e.source ? `de ${e.source.nom}` : "de la source"} ne permettent pas de reprendre son texte ici.`
+                  : "Le résumé officiel de cette publication n'est pas encore disponible ici."}{" "}
+              Les chiffres clés, les pages qui expliquent le sujet et le lien vers l&apos;original sont ci-dessous.
             </p>
           </div>
         )}
@@ -180,7 +218,7 @@ export default async function PageActualite({ params }: PageProps<"/actu/[slug]"
             Lire l&apos;original
             <span className="sr-only"> (nouvel onglet)</span> ↗
           </a>
-          {resume && <p className="mt-6 text-sm text-muted italic">{mentionIA(e.source.nom)}</p>}
+          {resume && <p className="mt-6 text-sm text-muted italic">{mentionResumeRedige(e.source.nom)}</p>}
           </Section>
         )}
 

@@ -1,0 +1,144 @@
+{
+  "description": "Résumés rédigés par les organismes eux-mêmes (chapô ou paragraphe d'introduction), repris tels quels et en entier par scripts/reprendre-resumes.ts, seulement quand la licence du site le permet (src/lib/actu/resume-officiel.ts).",
+  "resumes": {
+    "insee-9ef6ba84": {
+      "paragraphes": [
+        "En 2025, un salarié du secteur privé gagne en moyenne 2 797 euros net par mois en équivalent temps plein (EQTP). L’inflation poursuivant sa décrue en 2025 (+0,9 %, après +2,0 % en 2024), le salaire net moyen en euros constants progresse pour la deuxième année consécutive : +1,5 %, après +0,8 % en 2024.",
+        "La moitié des salariés du secteur privé perçoit moins de 2 238 euros net par mois en EQTP. Un salarié sur dix gagne moins de 1 519 euros, tandis qu’un sur dix perçoit plus de 4 441 euros.",
+        "En 2025, les salariés les mieux rémunérés en équivalent temps plein ont bénéficié de hausses de salaires plus élevées que ceux aux rémunérations les plus faibles. Cette évolution contraste avec celles des années récentes, au cours desquelles les revalorisations du Smic avaient préservé le pouvoir d’achat des bas salaires, l’inflation érodant celui des salaires plus élevés. Après trois années de net tassement de l’échelle salariale, puis une stabilisation en 2024, les disparités salariales augmentent légèrement en 2025.",
+        "En 2025, les femmes gagnent en moyenne 12,8 % de moins que les hommes en EQTP. Cet écart diminue de 0,3 point par rapport à l’année précédente, portant la baisse à 5,2 points en dix ans."
+      ],
+      "lien": "https://www.insee.fr/fr/statistiques/9087193",
+      "licence": "Licence Ouverte / Open Licence 2.0 (Etalab)",
+      "recupere_le": "2026-10-26"
+    },
+    "insee-38370425": {
+      "paragraphes": [
+        "En octobre 2026, l’indicateur synthétique du climat des affaires, calculé à partir des réponses des chefs d’entreprise des principaux secteurs d’activité marchands, repart légèrement à la hausse. À 97, il gagne un point et se rapproche de son niveau moyen (100). L’indicateur du climat de l’emploi perd trois points."
+      ],
+      "lien": "https://www.insee.fr/fr/statistiques/9097429",
+      "licence": "Licence Ouverte / Open Licence 2.0 (Etalab)",
+      "recupere_le": "2026-10-26"
+    },
+    "cour-des-comptes-33e2b8ba": {
+      "paragraphes": [
+        "À l’occasion de l’examen parlementaire du projet de loi de financement de la sécurité sociale (PLFSS) pour 2027, et à la demande de la commission des affaires sociales de l’Assemblée nationale, la Cour a conduit une analyse sur les enjeux financiers liés à la sécurité sociale , qui actualise celle présentée en mai dernier dans son rapport annuel sur l’application des lois de financement de la sécurité sociale (RALSS). La présentation du PLFSS 2027 intervient dans un contexte de forte incertitude économique et d’augmentation des taux d’intérêt, tendance générale sur les marchés financiers mondiaux mais accentuée ces dernières semaines pour la France. Dès lors, l’impératif est de reprendre au plus vite le contrôle des finances publiques.",
+        "En 2026, l’objectif voté en loi de financement de la sécurité sociale (LFSS) ne sera pas atteint, en raison de la dégradation de la situation économique qui a fait suite au conflit au Moyen-Orient, malgré les mesures d’ajustement adoptées. Pour 2027, le PLFSS propose un effort de redressement vigoureux, de près de 10 Md€ par rapport à 2026, principalement en dépense, cet objectif étant à confirmer dans le texte qu’il revient au Parlement de voter.",
+        "Comme la Cour l’a rappelé dans ses précédents rapports, le financement de la sécurité sociale n’a pas aujourd’hui de solution durable : le portage, année après année, par l’ACOSS de déficits récurrents fait peser des risques croissants sur le financement de la sécurité sociale. Il est urgent de mettre en œuvre une solution de financement durable, désormais possible si l’effort de 2027 est confirmé. Sous la condition de définir et de documenter une trajectoire de retour à l’équilibre d’ici 2030, une opération de reprise de la dette sociale de l’ACOSS par la CADES serait nécessaire avant la fin 2027."
+      ],
+      "lien": "https://www.ccomptes.fr/fr/publications/la-situation-financiere-de-la-securite-sociale-un-redressement-imperatif-en-2027",
+      "licence": "Mentions légales de la Cour des comptes",
+      "recupere_le": "2026-10-26"
+    },
+    "senat-0eb96cb1": {
+      "paragraphes": [
+        "Le Gouvernement a notifié à la commission des finances, le 5 octobre 2026, un projet de décret portant ouverture et annulation de crédits à titre d'avance, à hauteur de 405,5 millions d'euros en autorisations d'engagement et de 415,5 millions d'euros en crédits de paiement, permettant d'assurer le financement, d'une part, de mesures de soutien au secteur agricole et, d'autre part, d'aides en faveur des actifs « grands rouleurs ».",
+        "La commission des finances, sollicitée en application de l'article 13 de la loi organique n° 2001 692 du 1er août 2001 relative aux lois de finances, a rendu un avis favorable à ce projet de décret, constatant que les conditions d'urgence et de montant prévues par la loi organique étaient respectées. Les crédits encore disponibles sur les programmes concernés sont en effet insuffisants pour financer des mesures dont la mise en oeuvre est indispensable en raison des crises auxquelles l'agriculture a dû faire face cette année et de l'augmentation des coûts de l'énergie.",
+        "La commission des finances souligne toutefois, dans le présent rapport, que les annulations de crédits ne correspondent pas à de réelles économies, mais à des crédits qui n'auraient de toute manière pas été consommés, et qu'il entraînera donc une dégradation du solde en exécution. D'une manière générale, l'exécution budgétaire est marquée par une maîtrise insuffisante des dépenses, les surgels de crédits annoncés par le Gouvernement ayant été plus que compensés par des dégels qui favorisent la dépense."
+      ],
+      "lien": "https://www.senat.fr/notice-rapport/2026/r26-077-notice.html",
+      "licence": "Mentions légales du Sénat (travaux parlementaires)",
+      "recupere_le": "2026-10-26"
+    },
+    "insee-c12520f1": {
+      "paragraphes": [
+        "En septembre 2026, l’indice des prix à la consommation (IPC) se replie de 0,3 % sur un mois, après +0,7 % en août. Cette baisse s’explique par le recul saisonnier des prix des services (‑1,4 % après ‑0,1 %), en particulier ceux des services d’hébergement (‑15,0 % après +0,9 %) et de transport (‑9,8 % après ‑4,5 %). Les prix de l’énergie augmentent pour le troisième mois consécutif (+3,9 % après +3,4 % en août et +2,3 % en juillet). Ceux des produits manufacturés ralentissent (+0,5 % après +1,6 %) comme ceux de l’alimentation (+0,1 % après +0,4 %). Les prix du tabac sont stables, comme au mois précédent."
+      ],
+      "lien": "https://www.insee.fr/fr/statistiques/9080209",
+      "licence": "Licence Ouverte / Open Licence 2.0 (Etalab)",
+      "recupere_le": "2026-10-26"
+    },
+    "hcfp-f116364f": {
+      "paragraphes": [
+        "Le Haut Conseil des finances publiques a été saisi le 18 septembre 2026 des prévisions macroéconomiques et de finances publiques inscrites dans les projets de loi de finances et de financement de la sécurité sociale pour 2027. Cet avis est rendu dans un un contexte géopolitique incertain, en raison de la persistance du conflit au Moyen-Orient et dans un environnement financier tendu suite à la remontée des taux d’intérêt et à la hausse de la prime de risque propre à la dette française."
+      ],
+      "lien": "https://www.hcfp.fr/liste-avis/avis-ndeg2026-5-lois-de-finances-2027",
+      "licence": "Mentions légales du Haut Conseil des finances publiques",
+      "recupere_le": "2026-10-26"
+    },
+    "insee-237add92": {
+      "paragraphes": [
+        "En août 2026, les dépenses de consommation des ménages en biens se replient sur un mois (-0,5 % en volume* après +0,4 % en juillet – données révisées). La consommation d'énergie repart à la baisse (-2,3 % après +0,9 %), comme la consommation alimentaire (-0,4 % après +0,2 %). La consommation de biens fabriqués, quant à elle, augmente de nouveau (+0,3 % après +0,4 %)."
+      ],
+      "lien": "https://www.insee.fr/fr/statistiques/9057688",
+      "licence": "Licence Ouverte / Open Licence 2.0 (Etalab)",
+      "recupere_le": "2026-10-26"
+    },
+    "insee-a14d1f55": {
+      "paragraphes": [
+        "Sur un an, selon l’estimation provisoire réalisée en fin de mois, les prix à la consommation augmenteraient de 3,0 % en septembre 2026, après +2,4 % en août. Les prix de l’énergie accéléreraient de nouveau, tirés par ceux des produits pétroliers et du gaz. L’inflation des services augmenterait légèrement, notamment parce que la baisse saisonnière des prix des services d’hébergement et de transport serait moins marquée qu’en septembre 2025. Les prix de l’alimentation accéléreraient également, notamment ceux des produits frais, tandis que la baisse de ceux des produits manufacturés s’atténuerait. Les prix du tabac augmenteraient sur un an au même rythme qu’au mois précédent."
+      ],
+      "lien": "https://www.insee.fr/fr/statistiques/9056956",
+      "licence": "Licence Ouverte / Open Licence 2.0 (Etalab)",
+      "recupere_le": "2026-10-26"
+    },
+    "insee-3d45bdca": {
+      "paragraphes": [
+        "À la fin du deuxième trimestre 2026, la dette publique au sens de Maastricht s’établit à 3 595,5 Md€, soit une augmentation de 59,6 Md€, après +75,8 Md€ au premier trimestre 2026. Exprimée en pourcentage du produit intérieur brut (PIB), elle s’établit à 119,0 % du PIB, après 117,5 % au premier trimestre 2026. La hausse de la dette publique s’accompagne d’une baisse de la trésorerie des administrations publiques (-6,8 Md€ après +21,3 Md€), si bien que la dette nette (+68,2 Md€) augmente plus que la dette brute (+59,6 Md€) et s’établit à 111,4 % du PIB, après 109,7 % au premier trimestre 2026."
+      ],
+      "lien": "https://www.insee.fr/fr/statistiques/9053525",
+      "licence": "Licence Ouverte / Open Licence 2.0 (Etalab)",
+      "recupere_le": "2026-10-26"
+    },
+    "insee-42157c4c": {
+      "paragraphes": [
+        "En septembre 2026, l’indicateur synthétique du climat des affaires, calculé à partir des réponses des chefs d’entreprise des principaux secteurs d’activité marchands, se replie. À 96, il perd deux points et s’éloigne de son niveau moyen (100). L’indicateur du climat de l’emploi perd un point."
+      ],
+      "lien": "https://www.insee.fr/fr/statistiques/9055046",
+      "licence": "Licence Ouverte / Open Licence 2.0 (Etalab)",
+      "recupere_le": "2026-10-26"
+    },
+    "insee-fd4c9a86": {
+      "paragraphes": [
+        "En septembre 2026, la confiance des ménages est de nouveau stable. À 86, l’indicateur qui la synthétise reste dégradé, au-dessous de sa moyenne de longue période (100 entre janvier 1987 et décembre 2025). Le climat de l'épargne se replie, de quatre points : à 121, il se maintient toutefois nettement au-dessus de sa moyenne de longue période (100)."
+      ],
+      "lien": "https://www.insee.fr/fr/statistiques/9054960",
+      "licence": "Licence Ouverte / Open Licence 2.0 (Etalab)",
+      "recupere_le": "2026-10-26"
+    },
+    "insee-eef8853c": {
+      "paragraphes": [
+        "Les salaires horaires dans les secteurs marchands non agricoles (hors services aux ménages) accélèrent au deuxième trimestre 2026 : +0,5 % en rythme trimestriel, après +0,2 % au trimestre précédent (données corrigées des variations saisonnières et des jours ouvrables). Cette accélération est portée notamment par la revalorisation du Smic en juin 2026 (+2,4 %), dans un contexte de regain d’inflation. Dans le même temps, les versements de prime de partage de la valeur (PPV) augmentent un peu, tant en rythme trimestriel que sur un an : 605 millions d’euros de PPV ont été versés aux salariés au deuxième trimestre 2026, après 492 millions d’euros au trimestre précédent et 545 millions d’euros au deuxième trimestre 2025. La contribution de la PPV à la croissance trimestrielle des salaires demeure cependant assez faible (+0,1 point de pourcentage)."
+      ],
+      "lien": "https://www.insee.fr/fr/statistiques/9050412",
+      "licence": "Licence Ouverte / Open Licence 2.0 (Etalab)",
+      "recupere_le": "2026-10-26"
+    },
+    "insee-b5c87300": {
+      "paragraphes": [
+        "En août 2026, l’indice des prix à la consommation (IPC) augmente de 0,7 % sur un mois, après +0,6 % en juillet. Cette nouvelle augmentation s’explique par le rebond saisonnier des prix des produits manufacturés (+1,6 % après ‑2,0 %), notamment de ceux de l’habillement et des chaussures (+7,3 % après ‑9,8 %) après la baisse de juillet liée aux soldes d’été. Les prix de l’énergie augmentent de nouveau (+3,4 % après +2,3 %) tirés par ceux des produits pétroliers (+5,6 % après +2,3 %). Les prix de l’alimentation sont en hausse (+0,4 % après +0,1 %) principalement en raison de l’augmentation de ceux des produits frais (+2,9 % après +0,6 %). Les prix des services sont quasi stables par rapport à juillet (‑0,1 % après +1,6 %) et ceux du tabac restent stables, comme au mois précédent."
+      ],
+      "lien": "https://www.insee.fr/fr/statistiques/9051406",
+      "licence": "Licence Ouverte / Open Licence 2.0 (Etalab)",
+      "recupere_le": "2026-10-26"
+    },
+    "insee-793475aa": {
+      "paragraphes": [
+        "Quelles sont les spécificités des travailleurs seniors en matière de transitions professionnelles ? À partir de la Base Tous Salariés, nous décomposons les transitions professionnelles selon qu’elles impliquent un changement de profession et/ou d’employeur. En France hors Mayotte, entre 2021 et 2022, 13,1% des salariés du secteur privé ont changé d’entreprise. Parmi eux, 3,9 % ont conservé la même catégorie socioprofessionnelle (PCS), tandis que 9,2 % ont changé de PCS. Ces mobilités diminuent fortement avec l’âge : 85,4 % des salariés âgés entre 55 et 59 ans sont toujours dans la même entreprise un an plus tard, contre 73,4 % des salariés âgés de 30 à 35 ans. À caractéristiques comparables, les salariés âgés de 55 à 59 ans sont 30% moins susceptibles que ceux âgés de 40 à 49 ans de changer d’employeur. Les gains salariaux généralement associés à la mobilité sont également plus faibles pour les séniors. Plus de la moitié des salariés de 55 ans ou plus qui changent d’entreprise subissent une perte en salaire horaire : celle-ci atteint en moyenne -0,6 % pour les 55-59 ans et -4,6 % pour les 60 ans ou plus. Les pertes salariales sont encore plus marquées lorsque la mobilité s’accompagne d’un changement de profession. Nos résultats montrent que, jusqu’à 59 ans, les transitions professionnelles observées chez les travailleurs seniors sont probablement moins volontaires. En outre, avec l’âge, les changements de profession deviennent plus rares : lorsqu’ils changent d’employeur, les salariés tendent davantage à conserver la même profession ou à se diriger vers des professions proches de leur emploi initial en termes de compétences requises, plutôt que vers des professions mieux rémunérées. Enfin, les travailleurs de plus de 55 ans sont plus susceptibles de passer et de rester à temps partiel : cette situation concerne 28,4 % des, 55-59 ans et 45 % des 60 ans ou plus, contre 19,1 % des salariés âgés de 30 à 54 ans."
+      ],
+      "lien": "https://www.insee.fr/fr/statistiques/9041706",
+      "licence": "Licence Ouverte / Open Licence 2.0 (Etalab)",
+      "recupere_le": "2026-10-26"
+    },
+    "senat-86996be6": {
+      "paragraphes": [
+        "L'impact des prélèvements obligatoires sur la compétitivité, l'investissement et les salaires est régulièrement évoqué dans les débats parlementaires, en particulier lors de l'examen des projets de loi de finances et de financement de la sécurité sociale.",
+        "Il manquait toutefois, à ce jour, un diagnostic d'ensemble du poids des prélèvements obligatoires sur les entreprises, intégrant à la fois les cotisations sociales, les impôts dits de production et ceux assis sur les bénéfices. C'est pour combler cette lacune, tout en intégrant une comparaison internationale, que le Sénat a constitué une mission d'information, comprenant 23 sénateurs de tous les groupes politiques.",
+        "La question n'est pas seulement celle du montant financier de ces prélèvements, mais aussi celle de leur nature : selon qu'ils pèsent sur les facteurs de production, sur les bénéfices ou sur la masse salariale, leurs conséquences ne sont pas les mêmes sur la compétitivité des entreprises par rapport aux concurrents internationaux, sur le montant et la nature des investissements, sur les salaires nets qu'elles peuvent verser aux employés.",
+        "La mission a également mis un fort accent sur la complexité et l'instabilité du système socio-fiscal, qui constituent, en elles-mêmes, des facteurs de charge et d'incertitude pour les entreprises."
+      ],
+      "lien": "https://www.senat.fr/notice-rapport/2025/r25-942-notice.html",
+      "licence": "Mentions légales du Sénat (travaux parlementaires)",
+      "recupere_le": "2026-10-26"
+    },
+    "bce-ef34e456": {
+      "paragraphes": [
+        "Le Conseil des gouverneurs a décidé, ce jour, d’augmenter les trois taux d’intérêt directeurs de la BCE de 25 points de base. Le conflit au Moyen-Orient continue de générer des tensions sur l’inflation, qui devrait rester largement supérieure à l’objectif pendant une période prolongée. La décision prise aujourd’hui souligne l’engagement du Conseil des gouverneurs à mener une politique monétaire assurant la stabilisation de l’inflation au niveau de son objectif de 2 % à moyen terme."
+      ],
+      "lien": "https://www.ecb.europa.eu/press/pr/date/2026/html/ecb.mp260910~314e508016.fr.html",
+      "organisme": "Banque centrale européenne",
+      "licence": "Conditions de reproduction de la BCE",
+      "recupere_le": "2026-10-26"
+    }
+  }
+}

@@ -3,8 +3,8 @@ import { describe, expect, it } from "vitest";
 import PageActualite, { generateStaticParams } from "@/app/actu/[slug]/page";
 import { getDonnee } from "@/lib/data";
 import { construireFil, slugifier } from "./actu";
-import { problemesDeFormat } from "@/lib/actu/garde-fous";
-import { chiffresCles, deLaSource, liensPlusLoin, morceaux, resumes, resumesAuto, resumesManuels } from "./actu-pages";
+import { raisonNonReprise } from "@/lib/actu/resume-officiel";
+import { absenceDeResume, chiffresCles, deLaSource, liensPlusLoin, morceaux, resumes, resumesOfficiels } from "./actu-pages";
 import { chiffresEnDur } from "./chiffres-en-dur";
 import { indicateurs } from "./indicateurs";
 import { moduleHref, modules } from "./modules";
@@ -52,32 +52,59 @@ describe("pages « L'actu »", () => {
     }
   });
 
-  it("sans résumé validé, la page n'affiche aucun texte rédigé, mais sa source et son lien", async () => {
-    const sans = fil.filter((e) => e.slug && !resumes[e.id] && !e.explication);
+  it("sans résumé, la page n'affiche aucun texte rédigé ni repris, mais sa source et son lien", async () => {
+    const sans = fil.filter((e) => e.slug && !resumes[e.id] && !resumesOfficiels[e.id] && !e.explication);
     expect(sans.length).toBeGreaterThan(0);
-    for (const e of sans.slice(0, 6)) {
+    for (const e of sans.slice(0, 8)) {
       const html = await rendre(e.slug!);
-      expect(html, e.id).toContain("Résumé à venir");
+      expect(html, e.id).toMatch(absenceDeResume(e) ? /Résumé à lire sur le site de la source/ : /Résumé à venir/);
       expect(html, e.id).not.toContain("En bref");
       expect(html, e.id).not.toContain("Ce que ça veut dire");
-      expect(html, e.id).not.toContain("Généré automatiquement par IA");
+      expect(html, e.id).not.toContain("Texte repris tel quel");
+      expect(html, e.id).not.toMatch(/Généré automatiquement|IA/);
       expect(html, e.id).toContain("Signaler une erreur");
       expect(html, e.id).toContain(e.source!.nom);
       expect(html, e.id).toContain("Lire l'original");
     }
   });
 
-  it("avec un résumé validé : En bref, Ce que ça veut dire, source et mention de relecture", async () => {
-    const avec = fil.filter((e) => e.slug && resumes[e.id]);
+  it("Eurostat, Banque de France : pas de résumé repris (anglais, licence), seulement titre, chiffres, modules et source", async () => {
+    const eurostat = fil.find((e) => e.source?.nom === "Eurostat" && !resumes[e.id])!;
+    expect(resumesOfficiels[eurostat.id]).toBeUndefined();
+    expect(absenceDeResume(eurostat)).toMatch(/anglais/);
+    expect(await rendre(eurostat.slug!)).toContain("Eurostat publie son résumé en anglais");
+    const bdf = fil.find((e) => e.source?.nom === "Banque de France")!;
+    expect(resumesOfficiels[bdf.id]).toBeUndefined();
+    expect(absenceDeResume(bdf)).toMatch(/^licence/);
+  });
+
+  it("avec un résumé officiel : « Résumé de [source] », texte repris tel quel et en entier, lien vers l'original", async () => {
+    const avec = fil.filter((e) => e.slug && resumesOfficiels[e.id]);
+    expect(avec.length).toBeGreaterThan(0);
     for (const e of avec) {
+      const r = resumesOfficiels[e.id];
+      // La licence de la source permet la reprise, et le texte vient bien de la page de la publication.
+      expect(raisonNonReprise(r.lien), e.id).toBeUndefined();
+      // Communiqué de la BCE relayé par la Banque de France : repris de sa version française sur le site de la BCE.
+      if (r.organisme) expect(r.lien, e.id).toMatch(/^https:\/\/www\.ecb\.europa\.eu\/.*\.fr\.html$/);
+      else expect(r.lien, e.id).toBe(e.source!.url);
+      const html = await rendre(e.slug!);
+      expect(html, e.id).toContain(`Résumé ${deLaSource(r.organisme ?? e.source!.nom)}`);
+      for (const p of r.paragraphes) expect(html.replace(/\s+/g, " "), e.id).toContain(p.replace(/\s+/g, " ").replace(/&/g, "&amp;").slice(0, 60).replace(/&amp;/g, "&"));
+      expect(html, e.id).toContain("Texte repris tel quel et en entier");
+      expect(html, e.id).not.toContain("Résumé à venir");
+      expect(html, e.id).not.toMatch(/Généré automatiquement/);
+      expect(html, e.id).toContain("Lire l'original");
+    }
+  });
+
+  it("avec un résumé rédigé par le site : En bref, Ce que ça veut dire et mention de rédaction", async () => {
+    for (const e of fil.filter((x) => x.slug && resumes[x.id])) {
       const html = await rendre(e.slug!);
       expect(html, e.id).toContain("En bref");
       expect(html, e.id).toContain("Ce que ça veut dire");
-      expect(html, e.id).toContain(`Généré automatiquement par IA à partir ${deLaSource(e.source!.nom)}. En cas d'écart, la source fait foi.`);
-      expect(html, e.id).not.toContain("relu par");
-      expect(html, e.id).toContain("Signaler une erreur");
-      expect(html, e.id).not.toContain("Résumé à venir");
-      expect(html, e.id).toContain("Lire l'original");
+      expect(html, e.id).toContain(`Résumé rédigé par EcoClair avec l'aide de l'IA, à partir de la publication ${deLaSource(e.source!.nom)}. En cas d'écart, la source fait foi.`);
+      expect(html, e.id).not.toMatch(/Généré automatiquement|relu par/);
       expect(html, e.id).not.toMatch(/\{\{|undefined|NaN/);
     }
   });
@@ -85,7 +112,7 @@ describe("pages « L'actu »", () => {
 
 describe("résumés (data/actu-resumes.json)", () => {
   const ids = new Set(fil.map((e) => e.id));
-  const entrees = Object.entries(resumesManuels);
+  const entrees = Object.entries(resumes);
   it("le fichier est bien formé", () => expect(typeof resumes).toBe("object"));
   if (entrees.length > 0) it.each(entrees)("%s", (id, r) => {
     expect(ids, "le résumé doit correspondre à une actualité du fil").toContain(id);
@@ -103,17 +130,6 @@ describe("résumés (data/actu-resumes.json)", () => {
       }
       const sansChiffres = t.replace(/\{\{[^}]+\}\}/g, "X");
       expect(chiffresEnDur(sansChiffres).map((c) => c.texte), t).toEqual([]);
-    }
-  });
-});
-
-describe("résumés automatiques (data/actu-resumes-auto.json)", () => {
-  const ids = new Set(fil.map((e) => e.id));
-  it("chaque résumé publié correspond à une actualité et respecte le format", () => {
-    for (const [id, r] of Object.entries(resumesAuto)) {
-      expect(ids, id).toContain(id);
-      expect(problemesDeFormat(r), id).toEqual([]);
-      expect(r.genere_le, id).toMatch(/^\d{4}-\d{2}-\d{2}$/);
     }
   });
 });

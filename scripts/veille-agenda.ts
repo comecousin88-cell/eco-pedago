@@ -86,8 +86,8 @@ for (const s of agenda.surveillance) {
   }
 }
 
-// Les encadrés « Ce que ça veut dire » ne sont plus proposés ici : les résumés automatiques des
-// actualités (scripts/resumer-actu.ts) les remplacent, avec leurs garde-fous.
+// Les encadrés « Ce que ça veut dire » ne sont plus proposés ici : les résumés officiels des
+// publications, repris tels quels par scripts/reprendre-resumes.ts, les remplacent.
 
 if (enLigne) {
   try {
