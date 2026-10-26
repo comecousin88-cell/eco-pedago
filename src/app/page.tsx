@@ -1,142 +1,72 @@
 import Link from "next/link";
 import { CarteActu } from "@/components/actu/FilActu";
-import { BandeauAlertes } from "@/components/indicateurs/BandeauAlertes";
+import { IndicateursCles } from "@/components/indicateurs/IndicateursCles";
 import { GrilleModules } from "@/components/modules/GrilleModules";
-import { ModuleTheme } from "@/components/modules/ModuleTheme";
-import { CarteProposition, versCarte } from "@/components/propositions/CarteProposition";
-import { rubriqueColors } from "@/content/modules";
 import { dernieresActus } from "@/content/actu";
-import { idees } from "@/content/idees-recues";
-import { propositions, propositionsPhares } from "@/content/propositions";
 
-const RACCOURCIS = [
-  { href: "/la-france-en-10-chiffres/", titre: "La France en 10 chiffres", texte: "La situation des finances publiques en un coup d'œil, chiffres sourcés et datés." },
-  { href: "/tableau-de-bord/", titre: "Tableau de bord", texte: "Taux, inflation, chômage, dette, déficit : les sept indicateurs à suivre." },
-  { href: "/idees-recues/", titre: "Idées reçues", texte: `${idees.length} affirmations qu'on entend souvent, vérifiées chiffres à l'appui.` },
-  { href: "/jouer/", titre: "Jouer", texte: "Redresser les comptes, tenir le budget pendant un mandat, et tous les simulateurs." },
+/** Ligne de liens discrets, en bas de l'accueil : le reste du site, sans doublon avec les blocs au-dessus. */
+const LIENS_ACCUEIL = [
+  { href: "/propositions/", label: "Propositions au crible" },
+  { href: "/idees-recues/", label: "Idées reçues" },
+  { href: "/la-france-en-10-chiffres/", label: "La France en 10 chiffres" },
+  { href: "/jouer/", label: "Jouer" },
+  { href: "/glossaire/", label: "Glossaire" },
+  { href: "/tableau-de-bord/", label: "Tableau de bord" },
 ];
 
-/** Les trois portes d'entrée du site. */
-const PORTES = [
-  {
-    href: "/comprendre/",
-    titre: "Comprendre les bases",
-    texte: "PIB, déficit, dette, taux : les notions de départ, dans le module 1.",
-    action: "Commencer",
-  },
-  {
-    href: "/actu/",
-    titre: "Suivre l'actualité",
-    texte: "Les indicateurs mis à jour chaque jour ouvré, les seuils franchis et les échéances à venir.",
-    action: "Voir l'actu",
-  },
-  {
-    href: "/decrypter/",
-    titre: "Me faire un avis sur une proposition",
-    texte: "Annuler la dette, taxer les plus riches, retraite à 60 ans : arguments, chiffres et verdict.",
-    action: "Décrypter",
-  },
-];
-
+/**
+ * Accueil, en quatre blocs seulement : à quoi sert le site et les quatre
+ * indicateurs clés ; les 12 modules ; les trois dernières actus ; une ligne de
+ * liens vers le reste. Tout le reste passe par le menu.
+ */
 export default function Home() {
   return (
     <div className="mx-auto max-w-5xl px-4 sm:px-6">
-      <section aria-labelledby="dernieres-actus" className="pt-6">
+      <section aria-labelledby="accueil-titre" className="pt-6 pb-8 sm:pt-12 sm:pb-10">
+        <h1 id="accueil-titre" className="max-w-3xl font-serif text-xl leading-snug font-semibold tracking-tight text-ink sm:text-3xl">
+          Comprendre la dette, le déficit, les retraites et les impôts, avec des chiffres sourcés et sans parti pris.
+        </h1>
+        <div className="mt-6">
+          <IndicateursCles />
+        </div>
+      </section>
+
+      <section aria-labelledby="modules" className="border-t border-line py-8 sm:py-12">
+        <h2 id="modules" className="mb-4 font-serif sm:mb-6 text-2xl font-semibold text-ink">
+          Les 12 modules
+        </h2>
+        <GrilleModules niveau={3} />
+      </section>
+
+      <section aria-labelledby="actu" className="border-t border-line py-12">
         <div className="flex flex-wrap items-baseline justify-between gap-2">
-          <h2 id="dernieres-actus" className="text-sm font-semibold tracking-wide text-muted uppercase">
-            Les dernières actus
+          <h2 id="actu" className="font-serif text-2xl font-semibold text-ink">
+            L&apos;actu
           </h2>
           <Link href="/actu/" className="text-sm font-medium text-accent underline underline-offset-4">
-            Tout le fil
+            Tout le fil <span aria-hidden="true">→</span>
           </Link>
         </div>
-        <ul className="mt-3 grid gap-3 md:grid-cols-3">
+        <ul className="mt-5 grid gap-3 md:grid-cols-3">
           {dernieresActus(3).map((e) => (
             <li key={e.id}>
               <CarteActu e={e} compacte />
             </li>
           ))}
         </ul>
-        <div className="mt-4">
-          <BandeauAlertes />
-        </div>
       </section>
-      <section className="py-14 sm:py-20">
-        <p className="text-sm font-semibold tracking-wide text-accent uppercase">Les finances publiques, sans le jargon</p>
-        <h1 className="mt-3 max-w-3xl font-serif text-4xl leading-tight font-semibold tracking-tight text-ink sm:text-5xl">
-          Dette, déficit, retraites : comprendre ce qui se joue vraiment
-        </h1>
-        <p className="mt-5 max-w-2xl text-lg leading-relaxed text-muted">
-          D&apos;où vient l&apos;argent public, comment l&apos;État emprunte, pourquoi la hausse des
-          taux coûte cher, qui paie les retraites. Des explications simples, des chiffres
-          sourcés et des simulateurs pour tester par vous-même. Sans parti pris : quand un
-          sujet fait débat, vous avez les arguments des deux côtés.
-        </p>
-        <ul className="mt-8 grid gap-4 sm:grid-cols-3">
-          {PORTES.map((p) => (
-            <li key={p.href}>
-              <Link
-                href={p.href}
-                className="group flex h-full flex-col rounded-2xl border border-line bg-surface p-5 transition hover:-translate-y-0.5 hover:border-line-strong hover:shadow-md"
-              >
-                <span className="font-serif text-xl font-semibold text-ink">{p.titre}</span>
-                <span className="mt-2 text-sm leading-relaxed text-muted">{p.texte}</span>
-                <span className="mt-auto pt-4 text-sm font-medium text-accent">
-                  {p.action}{" "}
-                  <span aria-hidden="true" className="inline-block transition-transform group-hover:translate-x-1">
-                    →
-                  </span>
-                </span>
+
+      <nav aria-label="Aussi sur le site" className="border-t border-line py-10">
+        <ul className="flex flex-wrap gap-x-6 gap-y-3 text-sm">
+          {LIENS_ACCUEIL.map((l) => (
+            <li key={l.href}>
+              <Link href={l.href} className="text-muted underline decoration-line-strong underline-offset-4 hover:text-ink">
+                {l.label}
               </Link>
             </li>
           ))}
         </ul>
-      </section>
-
-      <section aria-labelledby="modules" className="border-t border-line py-12">
-        <h2 id="modules" className="mb-6 font-serif text-2xl font-semibold text-ink">
-          Les 12 modules
-        </h2>
-        <GrilleModules niveau={3} />
-        <ul className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-          {RACCOURCIS.map((r) => (
-            <li key={r.href}>
-              <Link
-                href={r.href}
-                className="flex h-full flex-col rounded-2xl border border-line bg-surface p-4 transition hover:-translate-y-0.5 hover:shadow-md"
-              >
-                <span className="font-semibold text-ink">{r.titre}</span>
-                <span className="mt-1 text-sm text-muted">{r.texte}</span>
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </section>
-
-      <ModuleTheme color={rubriqueColors.propositions}>
-        <section aria-labelledby="propositions" className="border-t border-line py-12">
-          <div className="flex flex-wrap items-baseline justify-between gap-2">
-            <h2 id="propositions" className="font-serif text-2xl font-semibold text-ink">
-              Les propositions au crible
-            </h2>
-            <Link href="/propositions/" className="text-sm font-medium text-accent underline underline-offset-4">
-              Voir les {propositions.length} fiches
-            </Link>
-          </div>
-          <p className="mt-2 max-w-2xl text-muted">
-            Les idées qui reviennent dans le débat, présentées sous leur meilleur jour, chiffrées, puis jugées sur leur
-            mécanisme, jamais sur ceux qui les portent.
-          </p>
-          <ul className="mt-6 grid gap-4 sm:grid-cols-2">
-            {propositionsPhares.map((p) => (
-              <li key={p.slug}>
-                <CarteProposition fiche={versCarte(p)} />
-              </li>
-            ))}
-          </ul>
-        </section>
-      </ModuleTheme>
-
+      </nav>
     </div>
   );
 }

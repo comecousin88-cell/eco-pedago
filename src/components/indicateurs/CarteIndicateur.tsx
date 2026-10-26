@@ -31,11 +31,38 @@ function Miniature({ points, paliers }: { points: Point[]; paliers: boolean }) {
   );
 }
 
-function ecart(v: number, decimales: number, unite: string) {
+/** Écart avec la valeur de comparaison : « +0,3 point », « −12 points de base ». */
+export function ecart(v: number, decimales: number, unite: string) {
   const signe = v > 0 ? "+" : v < 0 ? "−" : "";
   const n = formatNombre(Math.abs(v), decimales);
   if (unite === "points de base") return `${signe}${n} points de base`;
   return `${signe}${n} point${Math.abs(v) >= 2 ? "s" : ""}`;
+}
+
+/**
+ * Valeur affichée d'un indicateur, sa période, et le point de comparaison
+ * (un an plus tôt, ou le dernier point de la série quand la valeur affichée
+ * est plus récente). Partagé par les cartes et le bandeau de l'accueil.
+ */
+export function lectureIndicateur(ind: Indicateur) {
+  const donnee = getSerie(ind.serie);
+  const dernier = dernierPoint(donnee.serie);
+  // Une valeur « plus récente » n'est affichée que si elle l'est vraiment (postérieure au dernier point de la série).
+  const candidate = ind.valeurRecente ? chercherValeur(ind.valeurRecente) : undefined;
+  const recente = candidate && candidate.date > dernier.x && !candidate.date.startsWith(dernier.x) ? candidate : undefined;
+  return {
+    donnee,
+    dernier,
+    recente,
+    valeur: recente ? recente.valeur : dernier.y,
+    periode: recente ? `au ${formatDateDonnee(recente.date).replace(/^au /, "")}` : periodeIndicateur(dernier.x, ind.frequence, ind.nature),
+    reference: recente ? dernier.y : valeurUnAnAvant(donnee.serie, ind.frequence),
+    libelleReference: recente
+      ? ind.frequence === "mensuelle"
+        ? `moyenne de ${libellePeriode(dernier.x, ind.frequence)}`
+        : `fin ${dernier.x}`
+      : "un an plus tôt",
+  };
 }
 
 /**
@@ -44,24 +71,9 @@ function ecart(v: number, decimales: number, unite: string) {
  * mécanisme, source datée et historique à la demande.
  */
 export function CarteIndicateur({ indicateur: ind }: { indicateur: Indicateur }) {
-  const donnee = getSerie(ind.serie);
+  const { donnee, dernier, recente, valeur, periode, reference, libelleReference } = lectureIndicateur(ind);
   const serie = donnee.serie;
-  const dernier = dernierPoint(serie);
-  // Une valeur « plus récente » n'est affichée que si elle l'est vraiment (postérieure au dernier point de la série).
-  const candidate = ind.valeurRecente ? chercherValeur(ind.valeurRecente) : undefined;
-  const recente = candidate && candidate.date > dernier.x && !candidate.date.startsWith(dernier.x) ? candidate : undefined;
-
-  const valeur = recente ? recente.valeur : dernier.y;
   const paliers = ind.frequence === "paliers";
-  const periode = recente
-    ? `au ${formatDateDonnee(recente.date).replace(/^au /, "")}`
-    : periodeIndicateur(dernier.x, ind.frequence, ind.nature);
-  const reference = recente ? dernier.y : valeurUnAnAvant(serie, ind.frequence);
-  const libelleReference = recente
-    ? ind.frequence === "mensuelle"
-      ? `moyenne de ${libellePeriode(dernier.x, ind.frequence)}`
-      : `fin ${dernier.x}`
-    : "un an plus tôt";
 
   const comparaison = ind.comparaison ? getSerie(ind.comparaison.serie) : undefined;
   const libelles = Object.fromEntries(

@@ -16,7 +16,7 @@ export interface Rubrique {
 }
 
 export const rubriques: Rubrique[] = [
-  { id: "accueil", href: "/", label: "Accueil", description: "Les portes d'entrée du site et les dernières actualités.", prefixes: [] },
+  { id: "accueil", href: "/", label: "Accueil", description: "Les indicateurs clés, les 12 modules et les dernières actualités.", prefixes: [] },
   {
     id: "comprendre",
     href: "/comprendre/",
