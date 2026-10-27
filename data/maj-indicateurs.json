@@ -1,21 +1,21 @@
 {
-  "derniere_verification": "2026-10-27T18:02:28.643Z",
+  "derniere_verification": "2026-10-27T21:26:09.471Z",
   "sources": {
     "bce": {
       "statut": "ok",
-      "derniere_reussite": "2026-10-27T18:02:28.643Z"
+      "derniere_reussite": "2026-10-27T21:26:09.471Z"
     },
     "eurostat": {
       "statut": "ok",
-      "derniere_reussite": "2026-10-27T18:02:28.643Z"
+      "derniere_reussite": "2026-10-27T21:26:09.471Z"
     },
     "insee": {
       "statut": "ok",
-      "derniere_reussite": "2026-10-27T18:02:28.643Z"
+      "derniere_reussite": "2026-10-27T21:26:09.471Z"
     },
     "banque-de-france": {
       "statut": "ok",
-      "derniere_reussite": "2026-10-27T18:02:28.643Z"
+      "derniere_reussite": "2026-10-27T21:26:09.471Z"
     }
   }
 }
