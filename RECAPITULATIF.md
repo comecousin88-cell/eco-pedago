@@ -9,11 +9,17 @@ Fichier écrit chaque jour par les tâches automatiques (`npm run resumes:offici
 
 ## Liens externes à corriger
 
-Vérifiés le 2026-10-27 : 119 liens externes.
+Vérifiés le 2026-10-27 : 120 liens externes.
 
 Aucun lien externe cassé.
 
-11 lien(s) refusent les robots ou n'ont pas répondu : à ouvrir dans un navigateur.
+18 lien(s) refusent les robots ou n'ont pas répondu : à ouvrir dans un navigateur.
+
+## 2026-10-27
+
+1 résumé(s) officiel(s) repris, 0 non repris.
+
+- ✅ [En octobre 2026, la confiance des ménages se dégrade fortement](https://eco-pedago.vercel.app/actu/2026-10-27-en-octobre-2026-la-confiance-des-menages-se-degrade-fortement/) ([source](https://www.insee.fr/fr/statistiques/9098942))
 
 ## 2026-10-26
 

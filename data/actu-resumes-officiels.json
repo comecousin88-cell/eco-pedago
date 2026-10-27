@@ -148,6 +148,14 @@
       "licence": "Informations légales de la Banque de France",
       "mis_a_jour": "12 septembre 2026",
       "recupere_le": "2026-10-26"
+    },
+    "insee-488f63d2": {
+      "paragraphes": [
+        "En octobre 2026, la confiance des ménages se dégrade fortement. À 80, l’indicateur qui la synthétise baisse de cinq points et atteint son niveau le plus bas depuis juin 2013, bien au-dessous de sa moyenne de longue période (100 entre janvier 1987 et décembre 2025). Le climat de l'épargne diminue de nouveau, de deux points : à 118, il se maintient toutefois nettement au-dessus de sa moyenne de longue période (100)."
+      ],
+      "lien": "https://www.insee.fr/fr/statistiques/9098942",
+      "licence": "Licence Ouverte / Open Licence 2.0 (Etalab)",
+      "recupere_le": "2026-10-27"
     }
   }
 }

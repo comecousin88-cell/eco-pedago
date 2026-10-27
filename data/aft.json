@@ -13,7 +13,7 @@
       },
       "statut": "verifie",
       "note": "Valeur nominale, fin de mois.",
-      "consulte_le": "2026-10-26"
+      "consulte_le": "2026-10-27"
     },
     {
       "id": "aft.dette-negociable-indexee",
@@ -27,7 +27,7 @@
       },
       "statut": "verifie",
       "note": "Valeur nominale, fin de mois.",
-      "consulte_le": "2026-10-26"
+      "consulte_le": "2026-10-27"
     },
     {
       "id": "aft.dette-court-terme",
@@ -41,7 +41,7 @@
       },
       "statut": "verifie",
       "note": "Valeur nominale, fin de mois.",
-      "consulte_le": "2026-10-26"
+      "consulte_le": "2026-10-27"
     },
     {
       "id": "aft.maturite-moyenne",
