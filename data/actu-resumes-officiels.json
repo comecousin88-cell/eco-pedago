@@ -156,6 +156,19 @@
       "lien": "https://www.insee.fr/fr/statistiques/9098942",
       "licence": "Licence Ouverte / Open Licence 2.0 (Etalab)",
       "recupere_le": "2026-10-27"
+    },
+    "senat-87bb812b": {
+      "paragraphes": [
+        "Les dépenses fiscales constituent une composante importante de la mission « Remboursements et dégrèvements ». En effet, contrairement aux remboursements liés à la mécanique de l'impôt, elles traduisent des choix de politique publique. Alors que les crédits de la mission passeraient de 148 milliards d'euros en 2025 à 145 milliards en 2026, ceux liés à des politiques publiques progresseraient de 18,5 à 19,4 milliards d'euros, notamment sous l'effet du recours accru aux crédits d'impôt.",
+        "Après une forte hausse dans les années 2000, liée notamment à leur utilisation croissante comme instruments de politique publique, le nombre et le coût des dépenses fiscales se sont stabilisés. Le PLF 2026 recense 465 dispositifs, pour un coût estimé à 88 milliards d'euros. La Cour des comptes souligne régulièrement leur ampleur, qui nuit à la lisibilité de la fiscalité ainsi que la pertinence parfois incertaine de dispositifs au regard des avantages qu'ils procurent.",
+        "Pour mieux situer la France et éclairer les choix nationaux, le rapporteur spécial a étudié les pratiques de ses partenaires européens. Il s'est notamment intéressé aux crédits d'impôt donnant lieu à restitution, largement répandus en Europe, et en particulier au crédit d'impôt recherche (CIR), première dépense fiscale française depuis 2022.",
+        "À l'issue de ses travaux, le rapporteur spécial formule huit recommandations :",
+        "- quatre de ces recommandations esquissent les contours d'une grande revue des dépenses fiscales existantes, pour lutter contre leur foisonnement en se centrant sur celles ayant démontré leur efficacité économique, sociale et environnementale. S'agissant du CIR, le rapporteur spécial a identifié plusieurs dispositifs dont la France pourrait s'inspirer pour gagner en efficacité économique et sociale ;",
+        "- les quatre autres portent sur la gestion de ces dépenses fiscales, que ce soit la définition d'une norme fiscale de référence moins restrictive et plus transparente, l'accessibilité des données et la mise en place d'un cadre rigoureux d'évaluation."
+      ],
+      "lien": "https://www.senat.fr/notice-rapport/2026/r26-080-notice.html",
+      "licence": "Mentions légales du Sénat (travaux parlementaires)",
+      "recupere_le": "2026-10-27"
     }
   }
 }

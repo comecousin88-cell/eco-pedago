@@ -2,6 +2,14 @@
   "description": "Journal de la reprise des résumés officiels : chaque publication, reprise ou non, avec la raison. Écrit par scripts/reprendre-resumes.ts ; RECAPITULATIF.md en est tiré.",
   "entrees": [
     {
+      "date": "2026-10-27T18:02:51.089Z",
+      "id": "senat-87bb812b",
+      "titre": "La pratique de la dépense fiscale : étude de cas européens - Rapport d'information n° 80",
+      "date_publication": "2026-10-25",
+      "lien": "https://www.senat.fr/notice-rapport/2026/r26-080-notice.html",
+      "statut": "repris"
+    },
+    {
       "date": "2026-10-27T13:09:52.963Z",
       "id": "insee-488f63d2",
       "titre": "En octobre 2026, la confiance des ménages se dégrade fortement",

@@ -9,16 +9,17 @@ Fichier écrit chaque jour par les tâches automatiques (`npm run resumes:offici
 
 ## Liens externes à corriger
 
-Vérifiés le 2026-10-27 : 120 liens externes.
+Vérifiés le 2026-10-27 : 121 liens externes.
 
 Aucun lien externe cassé.
 
-18 lien(s) refusent les robots ou n'ont pas répondu : à ouvrir dans un navigateur.
+12 lien(s) refusent les robots ou n'ont pas répondu : à ouvrir dans un navigateur.
 
 ## 2026-10-27
 
-1 résumé(s) officiel(s) repris, 0 non repris.
+2 résumé(s) officiel(s) repris, 0 non repris.
 
+- ✅ [La pratique de la dépense fiscale : étude de cas européens - Rapport d'information n° 80](https://eco-pedago.vercel.app/actu/2026-10-25-la-pratique-de-la-depense-fiscale-etude-de-cas-europeens-rapport-d-information/) ([source](https://www.senat.fr/notice-rapport/2026/r26-080-notice.html))
 - ✅ [En octobre 2026, la confiance des ménages se dégrade fortement](https://eco-pedago.vercel.app/actu/2026-10-27-en-octobre-2026-la-confiance-des-menages-se-degrade-fortement/) ([source](https://www.insee.fr/fr/statistiques/9098942))
 
 ## 2026-10-26
