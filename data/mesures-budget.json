@@ -27,6 +27,31 @@
       "calcul": "dépenses de retraite (environ 422 Md€) × inflation évitée : 1 % (bas), 2 % (central), 3 % (haut)"
     },
     {
+      "id": "ret-gel-2ans",
+      "categorie": "Retraites",
+      "intitule": "Ne pas revaloriser les pensions pendant deux ans",
+      "explication": "Les pensions restent au même montant en euros pendant deux ans au lieu de suivre l'inflation : leur pouvoir d'achat baisse d'autant, durablement.",
+      "rendement": {
+        "bas": 8.4,
+        "central": 16.8,
+        "haut": 25.4
+      },
+      "delai": "immediat",
+      "payeurs": [
+        "retraites"
+      ],
+      "nature": "depense",
+      "source": {
+        "nom": "Conseil d'orientation des retraites, rapport annuel (juin 2026), dépenses de retraite ; calcul EcoClair",
+        "url": "https://www.vie-publique.fr/files/rapport/pdf/303623.pdf"
+      },
+      "date": "2026",
+      "statut": "verifie",
+      "consulte_le": "2026-10-27",
+      "groupe": "indexation-pensions",
+      "calcul": "deux années de gel : environ deux fois le rendement d'une année, dépenses de retraite (environ 422 Md€) × inflation évitée : 1 % (bas), 2 % (central), 3 % (haut)"
+    },
+    {
       "id": "ret-sous-index",
       "categorie": "Retraites",
       "intitule": "Revaloriser les pensions d'un point de moins que l'inflation",
@@ -173,7 +198,8 @@
       "date": "2026",
       "statut": "verifie",
       "consulte_le": "2026-10-21",
-      "calcul": "1 % des dépenses publiques de santé (environ 261 Md€ en 2024)"
+      "calcul": "1 % des dépenses publiques de santé (environ 261 Md€ en 2024)",
+      "groupe": "assurance-maladie"
     },
     {
       "id": "sante-franchises",
@@ -525,7 +551,8 @@
         "url": "https://www.budget.gouv.fr/documentation/documents-budgetaires"
       },
       "date": "2026",
-      "statut": "a_verifier"
+      "statut": "a_verifier",
+      "groupe": "credits-etat"
     },
     {
       "id": "def-report",
@@ -601,6 +628,35 @@
       "consulte_le": "2026-10-21",
       "groupe": "csg",
       "calcul": "recettes de CSG et CRDS (162,2 Md€ en 2024) divisées par leur taux sur les salaires (9,7 %)"
+    },
+    {
+      "id": "csg-2pts",
+      "categorie": "Impôts sur les ménages",
+      "intitule": "Relever la CSG de deux points",
+      "explication": "La CSG est prélevée sur presque tous les revenus : salaires, pensions, revenus du patrimoine. Deux points de plus, c'est un prélèvement large, qui touche presque tout le monde.",
+      "rendement": {
+        "bas": 30,
+        "central": 33.4,
+        "haut": 33.4
+      },
+      "delai": "immediat",
+      "payeurs": [
+        "actifs",
+        "retraites",
+        "classes-moyennes",
+        "menages-modestes",
+        "menages-aises"
+      ],
+      "nature": "recette",
+      "source": {
+        "nom": "Insee, recettes des administrations publiques (2024) ; calcul EcoClair",
+        "url": "https://www.insee.fr/fr/statistiques/8988845"
+      },
+      "date": "2026",
+      "statut": "verifie",
+      "consulte_le": "2026-10-27",
+      "groupe": "csg",
+      "calcul": "deux fois le rendement d'un point de CSG : recettes de CSG et CRDS (162,2 Md€ en 2024) divisées par leur taux sur les salaires (9,7 %)"
     },
     {
       "id": "csg-retraites",
@@ -897,6 +953,34 @@
       "groupe": "tva"
     },
     {
+      "id": "tva-2pts",
+      "categorie": "TVA et consommation",
+      "intitule": "Relever de deux points le taux normal de TVA",
+      "explication": "Le taux normal de TVA s'applique à la plupart des achats. Deux points de plus renchérissent presque tout ce qu'on achète.",
+      "rendement": {
+        "bas": 16,
+        "central": 17.8,
+        "haut": 17.8
+      },
+      "delai": "immediat",
+      "payeurs": [
+        "menages-modestes",
+        "classes-moyennes",
+        "menages-aises",
+        "retraites"
+      ],
+      "nature": "recette",
+      "source": {
+        "nom": "Fipeco (site de François Ecalle, ancien magistrat de la Cour des comptes), fiche TVA (juin 2026), citant la DG Trésor",
+        "url": "https://www.fipeco.fr/pdf/TVA.pdf"
+      },
+      "date": "2026",
+      "statut": "verifie",
+      "consulte_le": "2026-10-27",
+      "groupe": "tva",
+      "calcul": "deux fois le rendement d'un point de taux normal : "
+    },
+    {
       "id": "tva-tous",
       "categorie": "TVA et consommation",
       "intitule": "Relever d'un point tous les taux de TVA",
@@ -1049,6 +1133,88 @@
       "consulte_le": "2026-10-21",
       "incertain": true,
       "calcul": "doubler les sommes recouvrées (680 M€ en 2024) ; jusqu'à 2 Md€ si l'essentiel des sommes détectées était recouvré"
+    },
+    {
+      "id": "sante-plan-cour",
+      "categorie": "Santé",
+      "intitule": "Appliquer le plan d'économies de la Cour des comptes sur l'assurance maladie",
+      "explication": "Quinze mesures étalées jusqu'en 2029 : moins de dépenses de médicaments et de transports, plus de contrôles, revalorisations plus lentes, remboursement de certains soins selon les revenus.",
+      "rendement": {
+        "bas": 19.4,
+        "central": 20.4,
+        "haut": 21.4
+      },
+      "delai": "long-terme",
+      "payeurs": [
+        "menages-modestes",
+        "classes-moyennes",
+        "retraites"
+      ],
+      "nature": "depense",
+      "groupe": "assurance-maladie",
+      "source": {
+        "nom": "Cour des comptes, note sur la maîtrise des dépenses d'assurance maladie (14 avril 2025), présentée par La finance pour tous",
+        "url": "https://www.lafinancepourtous.com/2025/04/22/depenses-de-sante-les-propositions-de-la-cour-des-comptes/"
+      },
+      "date": "2025",
+      "statut": "a_verifier",
+      "consulte_le": "2026-10-27",
+      "calcul": "19,4 à 21,4 Md€ d'économies par an à l'horizon 2029, selon la Cour des comptes",
+      "note": "Montants rapportés par la presse ; vérifier dans la note de la Cour des comptes."
+    },
+    {
+      "id": "aides-exceptionnelles",
+      "categorie": "Aides aux entreprises et niches",
+      "intitule": "Supprimer les aides exceptionnelles de la crise restées en place (apprentissage, énergie…)",
+      "explication": "Des aides créées entre 2020 et 2022, comme l'aide à l'embauche d'apprentis versée à toutes les entreprises, sont restées en place après la crise. La Cour des comptes propose de les supprimer ou de les recentrer.",
+      "rendement": {
+        "bas": 3,
+        "central": 3.4,
+        "haut": 5.7
+      },
+      "delai": "2-3-ans",
+      "payeurs": [
+        "entreprises",
+        "actifs"
+      ],
+      "nature": "depense",
+      "source": {
+        "nom": "Cour des comptes, « Les mesures d'aide exceptionnelles : une sortie de crise à achever » (communiqué du 9 janvier 2025)",
+        "url": "https://www.banquedesterritoires.fr/sites/default/files/2025-01/20250109CPMesuresAideExceptionnelles.pdf"
+      },
+      "date": "2025",
+      "statut": "a_verifier",
+      "consulte_le": "2026-10-27",
+      "calcul": "3,4 Md€ en 2025 et 5,7 Md€ à l'horizon 2027 selon les scénarios de la Cour des comptes",
+      "note": "Une partie des montants relève de dépenses fiscales ; vérifier le partage dans le rapport."
+    },
+    {
+      "id": "etat-operateurs",
+      "categorie": "État et défense",
+      "intitule": "Réduire de 10 Md€ les dépenses des ministères et de leurs agences",
+      "explication": "L'effort demandé aux ministères et aux opérateurs de l'État dans le projet de budget pour 2026 : moins de crédits de fonctionnement et d'intervention, des agences regroupées ou supprimées.",
+      "rendement": {
+        "bas": 7.5,
+        "central": 10,
+        "haut": 10
+      },
+      "delai": "2-3-ans",
+      "payeurs": [
+        "fonctionnaires",
+        "menages-modestes",
+        "classes-moyennes"
+      ],
+      "nature": "depense",
+      "groupe": "credits-etat",
+      "source": {
+        "nom": "Projet de loi de finances pour 2026, effort demandé aux ministères et à leurs opérateurs, présenté par la Banque des Territoires",
+        "url": "https://www.banquedesterritoires.fr/plf-une-premiere-copie-sur-la-crete-et-toujours-severe-pour-les-finances-locales"
+      },
+      "date": "2025",
+      "statut": "a_verifier",
+      "consulte_le": "2026-10-27",
+      "calcul": "objectif de 10 Md€ annoncé par le gouvernement ; hypothèse basse si les deux tiers seulement sont réalisés",
+      "note": "Objectif annoncé, pas une économie constatée."
     }
   ]
 }

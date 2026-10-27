@@ -121,7 +121,7 @@ describe("où se trouve le sélecteur Simple / Approfondi", () => {
   });
 
   it("n'apparaît sur aucune autre page", () => {
-    const pages = ["app/page.tsx", "app/comprendre/page.tsx", "app/decrypter/page.tsx", "app/actu/page.tsx", "app/jouer/page.tsx", "app/jeux/ministre-des-finances/page.tsx", "app/jeux/redresser-les-comptes/page.tsx"];
+    const pages = ["app/page.tsx", "app/comprendre/page.tsx", "app/decrypter/page.tsx", "app/actu/page.tsx", "app/jouer/page.tsx", "app/jeux/redresser-les-comptes/page.tsx"];
     for (const f of pages) expect(source(f), f).not.toContain("ModeLecture");
   });
 

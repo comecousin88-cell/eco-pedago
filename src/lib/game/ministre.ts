@@ -1,6 +1,6 @@
 /**
- * Modèle du jeu « Ministre des Finances » : un mandat de cinq ans, un budget
- * par an, des événements imprévus. Le modèle est volontairement simple et
+ * Modèle macroéconomique du jeu « Redresser les comptes » : un mandat de cinq
+ * ans, un budget par an, des événements imprévus. Le modèle est volontairement simple et
  * toutes ses hypothèses sont affichées dans le jeu (data/jeu-ministre.json).
  *
  * Chaque année :
@@ -134,56 +134,4 @@ export function aleatoire(graine: number): () => number {
     t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
     return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
   };
-}
-
-/** Tire les événements des `n` années du mandat (sans répétition tant que c'est possible). */
-export function tirerEvenements(liste: readonly Evenement[], n: number, graine: number): Evenement[] {
-  const hasard = aleatoire(graine);
-  const pioche = [...liste];
-  const tirage: Evenement[] = [];
-  for (let i = 0; i < n; i++) {
-    if (pioche.length === 0) pioche.push(...liste);
-    tirage.push(pioche.splice(Math.floor(hasard() * pioche.length), 1)[0]);
-  }
-  return tirage;
-}
-
-/** Inflation supposée, pour passer de la croissance nominale à la croissance en volume. */
-export const INFLATION_SUPPOSEE = 1.8;
-
-export interface CritereBilan {
-  libelle: string;
-  atteint: boolean;
-  detail: string;
-}
-
-/**
- * Bilan du mandat : quatre critères explicites, sans jugement sur les
- * mesures choisies. Le score est le nombre de critères atteints.
- */
-export function bilanMandat(depart: EtatMinistre, historique: readonly EtatMinistre[]): { criteres: CritereBilan[]; score: number } {
-  const fin = historique[historique.length - 1];
-  const criteres: CritereBilan[] = [
-    {
-      libelle: "La dette ne monte plus en fin de mandat",
-      atteint: historique.length >= 2 && fin.dette <= historique[historique.length - 2].dette + 0.05,
-      detail: "dette de la dernière année inférieure ou égale à celle de l'année précédente",
-    },
-    {
-      libelle: "Le déficit est revenu sous 3 % du PIB",
-      atteint: fin.soldeHorsChocs >= -3,
-      detail: "repère du traité de Maastricht, hors effets de l'imprévu de la dernière année",
-    },
-    {
-      libelle: "Vos budgets n'ont pas provoqué de récession",
-      atteint: historique.every((x) => x.croissanceHorsChocs - INFLATION_SUPPOSEE > 0),
-      detail: "hors chocs extérieurs, la croissance en volume reste positive chaque année (croissance nominale moins 1,8 % d'inflation supposée)",
-    },
-    {
-      libelle: "La confiance des marchés est préservée",
-      atteint: fin.spreadHorsChocs <= depart.spreadHorsChocs,
-      detail: "écart de taux avec l'Allemagne revenu au moins à son niveau de départ, hors chocs extérieurs (dégradation, crise politique…)",
-    },
-  ];
-  return { criteres, score: criteres.filter((c) => c.atteint).length };
 }

@@ -10,7 +10,7 @@ import { rubriqueColors } from "@/content/modules";
 export const metadata: Metadata = {
   title: "Redresser les comptes",
   description:
-    "Choisissez un objectif (le budget de l'année, stabiliser la dette, zéro déficit) et trouvez l'effort parmi plus de 40 mesures chiffrées et sourcées : qui paie, quand, avec quelle certitude.",
+    "Ministre des Finances pour cinq ans : choisissez un objectif, votez cinq budgets parmi près de cinquante mesures chiffrées et sourcées, affrontez les imprévus et gardez la confiance des Français.",
 };
 
 export default function PageRedresserLesComptes() {
@@ -21,9 +21,8 @@ export default function PageRedresserLesComptes() {
         <FilAriane etapes={[{ label: "Jouer", href: "/jouer/" }, { label: "Redresser les comptes" }]} />
         <h1 className="mt-6 font-serif text-3xl font-semibold tracking-tight text-ink sm:text-4xl">Redresser les comptes</h1>
         <p className="mt-4 max-w-3xl text-lg leading-relaxed text-muted">
-          À vous de trouver l&apos;effort. Choisissez un objectif, puis des mesures parmi plus de quarante, chiffrées et
-          sourcées : économies sur les dépenses ou recettes nouvelles. Le jeu affiche ce que rapporte chaque mesure, quand,
-          avec quelle certitude, et qui la paie. Il ne dit pas lesquelles sont bonnes : c&apos;est à vous de juger.
+          Cinq budgets pour redresser les comptes publics. Le jeu affiche ce que rapporte chaque mesure, quand, avec
+          quelle certitude, et qui la paie. Il ne dit pas lesquelles sont bonnes : c&apos;est à vous de juger.
         </p>
         <div className="mt-8">
           <RedresserLesComptes />

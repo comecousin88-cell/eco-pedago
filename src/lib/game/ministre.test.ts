@@ -1,7 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { anneeMandat, bilanMandat, tirerEvenements, type EtatMinistre, type Evenement, type HypothesesMinistre } from "./ministre";
-import { evenements } from "@/content/jeu-ministre";
-import { getSerie, getValeur } from "@/lib/data";
+import { anneeMandat, type EtatMinistre, type Evenement, type HypothesesMinistre } from "./ministre";
 
 const h: HypothesesMinistre = {
   croissanceTendance: 2.8,
@@ -72,94 +70,5 @@ describe("chocs ponctuels", () => {
     const a1 = anneeMandat(depart, { economies: 30, impots: 0, investissement: 0 }, calme, h);
     const a2 = anneeMandat(a1, rien, calme, h);
     expect(a2.soldeStructurel).toBeCloseTo(-2.9 + (30 / 2991.1) * 100, 10);
-  });
-});
-
-describe("événements et bilan", () => {
-  it("le tirage est reproductible et sans répétition sur un mandat", () => {
-    const a = tirerEvenements(evenements, 5, 42).map((e) => e.id);
-    const b = tirerEvenements(evenements, 5, 42).map((e) => e.id);
-    expect(a).toEqual(b);
-    expect(new Set(a).size).toBe(5);
-  });
-
-  it("le bilan compte des critères explicites", () => {
-    let e = depart;
-    const histo: EtatMinistre[] = [];
-    for (let i = 0; i < 5; i++) {
-      e = anneeMandat(e, rien, calme, h);
-      histo.push(e);
-    }
-    const b = bilanMandat(depart, histo);
-    expect(b.criteres).toHaveLength(4);
-    expect(b.score).toBe(b.criteres.filter((c) => c.atteint).length);
-    expect(b.criteres[1].atteint).toBe(false);
-  });
-
-  it("chaque événement a un titre et une explication", () => {
-    expect(evenements.length).toBeGreaterThanOrEqual(8);
-    for (const ev of evenements) {
-      expect(ev.titre.length, ev.id).toBeGreaterThan(5);
-      expect(ev.texte.length, ev.id).toBeGreaterThan(30);
-    }
-  });
-});
-
-describe("calibrage : exigeant, mais un plan sérieux réussit", () => {
-  const v = (id: string) => getValeur(id).valeur;
-  const hReel: HypothesesMinistre = {
-    croissanceTendance: v("ministre.croissance-tendancielle"),
-    multDepenses: v("ministre.multiplicateur-depenses"),
-    multImpots: v("ministre.multiplicateur-impots"),
-    multInvestissement: v("ministre.multiplicateur-investissement"),
-    stabilisateurs: v("ministre.stabilisateurs"),
-    reactionSpread: v("ministre.reaction-spread"),
-    tauxAllemand: v("marches.taux10-allemagne-dernier"),
-    maturite: v("aft.maturite-moyenne"),
-    decoteMaturites: v("ministre.decote-maturites"),
-  };
-  const pib = v("macro.pib");
-  const interetsPib = (v("fp.interets") / pib) * 100;
-  const soldeInitial = -v("deficit.ratio-pib");
-  const departReel: EtatMinistre = {
-    annee: 0,
-    dette: v("dette.fin-annee-pib"),
-    soldePrimaire: soldeInitial + interetsPib,
-    soldeStructurel: soldeInitial + interetsPib,
-    soldePublic: soldeInitial,
-    soldeHorsChocs: soldeInitial,
-    tauxApparent: (v("fp.interets") / getSerie("dette.historique-md").serie.find((p) => p.x === "2024")!.y) * 100,
-    spread: v("marches.spread-dernier"),
-    spreadHorsChocs: v("marches.spread-dernier"),
-    croissance: v("macro.croissance-valeur"),
-    croissanceHorsChocs: v("macro.croissance-valeur"),
-    pib,
-  };
-  const jouer = (decision: { economies: number; impots: number; investissement: number }, graine: number) => {
-    let e = departReel;
-    const histo: EtatMinistre[] = [];
-    for (const ev of tirerEvenements(evenements, 5, graine)) {
-      e = anneeMandat(e, decision, ev, hReel);
-      histo.push(e);
-    }
-    return bilanMandat(departReel, histo).score;
-  };
-  // Un plan sérieux et réaliste : 25 Md€ d'effort par an (20 d'économies, 5 de recettes), environ 0,8 point de PIB.
-  const serieux = { economies: 20, impots: 5, investissement: 0 };
-
-  it("un plan sérieux atteint au moins 3 critères sur 4 avec les imprévus par défaut", () => {
-    expect(jouer(serieux, 2026)).toBeGreaterThanOrEqual(3);
-  });
-
-  it("un plan sérieux atteint au moins 3 critères sur 4 dans au moins 85 % des tirages d'imprévus", () => {
-    const graines = Array.from({ length: 200 }, (_, i) => i + 1);
-    const reussis = graines.filter((g) => jouer(serieux, g) >= 3).length;
-    expect(reussis / graines.length).toBeGreaterThanOrEqual(0.85);
-  });
-
-  it("le jeu reste exigeant : le seul effort minimal européen (0,5 point de PIB par an) ne suffit presque jamais", () => {
-    const graines = Array.from({ length: 200 }, (_, i) => i + 1);
-    const reussis = graines.filter((g) => jouer({ economies: 10, impots: 5, investissement: 0 }, g) >= 3).length;
-    expect(reussis / graines.length).toBeLessThan(0.1);
   });
 });

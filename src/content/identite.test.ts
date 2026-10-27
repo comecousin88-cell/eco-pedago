@@ -49,7 +49,7 @@ describe("le nom du site : EcoClair", () => {
   it("aucune adresse ne change : le plan du site reprend toutes les pages publiques", () => {
     const pages = pagesDuSite();
     expect(new Set(pages).size).toBe(pages.length);
-    for (const p of ["/", "/tableau-de-bord/", "/glossaire/", "/modules/les-bases/pib/", "/propositions/retraite-a-60-ans/", "/jeux/ministre-des-finances/"]) {
+    for (const p of ["/", "/tableau-de-bord/", "/glossaire/", "/modules/les-bases/pib/", "/propositions/retraite-a-60-ans/", "/jeux/redresser-les-comptes/"]) {
       expect(pages).toContain(p);
     }
     expect(lire("src/app/robots.ts")).toContain("sitemap.xml");

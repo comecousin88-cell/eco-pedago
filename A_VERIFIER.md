@@ -2,7 +2,7 @@
 
 Fichier généré par `npm test` à partir des données marquées `"statut": "a_verifier"` dans `data/*.json`. Ne pas modifier à la main : corriger la donnée dans son fichier JSON, passer son statut à `verifie`, puis relancer `npm test`.
 
-8 chiffres en attente de vérification, et 26 mesures du jeu « Redresser les comptes ».
+8 chiffres en attente de vérification, et 29 mesures du jeu « Redresser les comptes ».
 
 ## data/aft.json
 
@@ -72,3 +72,6 @@ Fichier généré par `npm test` à partir des données marquées `"statut": "a_
 | `pat-pfu` | Relever de 30 % à 33 % le prélèvement forfaitaire sur les revenus du capital | 1 / 1.5 / 2 Md€ | [Ordre de grandeur à documenter (annexe « Voies et moyens » du PLF, rapports de la Cour des comptes et des revues de dépenses)](https://www.budget.gouv.fr/documentation/documents-budgetaires) |  |
 | `tva-reduits` | Supprimer certains taux réduits de TVA | 2 / 4 / 6 Md€ | [Ordre de grandeur à documenter (annexe « Voies et moyens » du PLF, rapports de la Cour des comptes et des revues de dépenses)](https://www.budget.gouv.fr/documentation/documents-budgetaires) |  |
 | `accise-gazole` | Aligner la taxation du gazole sur celle de l'essence | 1 / 1.8 / 2.2 Md€ | [Ordre de grandeur à documenter (annexe « Voies et moyens » du PLF, rapports de la Cour des comptes et des revues de dépenses)](https://www.budget.gouv.fr/documentation/documents-budgetaires) |  |
+| `sante-plan-cour` | Appliquer le plan d'économies de la Cour des comptes sur l'assurance maladie | 19.4 / 20.4 / 21.4 Md€ | [Cour des comptes, note sur la maîtrise des dépenses d'assurance maladie (14 avril 2025), présentée par La finance pour tous](https://www.lafinancepourtous.com/2025/04/22/depenses-de-sante-les-propositions-de-la-cour-des-comptes/) | Montants rapportés par la presse ; vérifier dans la note de la Cour des comptes. |
+| `aides-exceptionnelles` | Supprimer les aides exceptionnelles de la crise restées en place (apprentissage, énergie…) | 3 / 3.4 / 5.7 Md€ | [Cour des comptes, « Les mesures d'aide exceptionnelles : une sortie de crise à achever » (communiqué du 9 janvier 2025)](https://www.banquedesterritoires.fr/sites/default/files/2025-01/20250109CPMesuresAideExceptionnelles.pdf) | Une partie des montants relève de dépenses fiscales ; vérifier le partage dans le rapport. |
+| `etat-operateurs` | Réduire de 10 Md€ les dépenses des ministères et de leurs agences | 7.5 / 10 / 10 Md€ | [Projet de loi de finances pour 2026, effort demandé aux ministères et à leurs opérateurs, présenté par la Banque des Territoires](https://www.banquedesterritoires.fr/plf-une-premiere-copie-sur-la-crete-et-toujours-severe-pour-les-finances-locales) | Objectif annoncé, pas une économie constatée. |

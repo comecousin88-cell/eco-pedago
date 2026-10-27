@@ -1,5 +1,5 @@
 {
-  "description": "Hypothèses du jeu « Ministre des Finances ». Ce ne sont pas des données observées : elles sont affichées dans le jeu et modifiables ici.",
+  "description": "Hypothèses du jeu « Redresser les comptes ». Ce ne sont pas des données observées : elles sont affichées dans le jeu et modifiables ici.",
   "donnees": [
     {
       "id": "ministre.croissance-tendancielle",
@@ -8,7 +8,7 @@
       "unite": "%",
       "date": "2026",
       "source": {
-        "nom": "Hypothèse du jeu « Ministre des Finances », choisie par EcoClair pour rester dans les ordres de grandeur des études"
+        "nom": "Hypothèse du jeu « Redresser les comptes », choisie par EcoClair pour rester dans les ordres de grandeur des études"
       },
       "statut": "hypothese",
       "note": "Environ 1 % de croissance en volume et 1,8 % de hausse des prix par an, proche des projections usuelles à moyen terme."
@@ -20,7 +20,7 @@
       "unite": "euro de PIB par euro",
       "date": "2026",
       "source": {
-        "nom": "Hypothèse du jeu « Ministre des Finances », choisie par EcoClair pour rester dans les ordres de grandeur des études"
+        "nom": "Hypothèse du jeu « Redresser les comptes », choisie par EcoClair pour rester dans les ordres de grandeur des études"
       },
       "statut": "hypothese",
       "note": "Les estimations vont d'environ 0,3 à plus de 1 selon la conjoncture ; plus élevé en récession (voir le module sur la baisse rapide des dépenses)."
@@ -32,7 +32,7 @@
       "unite": "euro de PIB par euro",
       "date": "2026",
       "source": {
-        "nom": "Hypothèse du jeu « Ministre des Finances », choisie par EcoClair pour rester dans les ordres de grandeur des études"
+        "nom": "Hypothèse du jeu « Redresser les comptes », choisie par EcoClair pour rester dans les ordres de grandeur des études"
       },
       "statut": "hypothese",
       "note": "Généralement estimé un peu plus faible que celui des dépenses à court terme, avec de fortes incertitudes."
@@ -44,7 +44,7 @@
       "unite": "euro de PIB par euro",
       "date": "2026",
       "source": {
-        "nom": "Hypothèse du jeu « Ministre des Finances », choisie par EcoClair pour rester dans les ordres de grandeur des études"
+        "nom": "Hypothèse du jeu « Redresser les comptes », choisie par EcoClair pour rester dans les ordres de grandeur des études"
       },
       "statut": "hypothese",
       "note": "Effet de court terme ; l'effet de long terme sur la croissance potentielle n'est pas modélisé."
@@ -56,7 +56,7 @@
       "unite": "point de PIB de solde par point de croissance",
       "date": "2026",
       "source": {
-        "nom": "Hypothèse du jeu « Ministre des Finances », choisie par EcoClair pour rester dans les ordres de grandeur des études"
+        "nom": "Hypothèse du jeu « Redresser les comptes », choisie par EcoClair pour rester dans les ordres de grandeur des études"
       },
       "statut": "hypothese",
       "note": "Quand la croissance ralentit d'un point, les recettes baissent et certaines dépenses augmentent : le solde se dégrade d'environ 0,5 point de PIB."
@@ -68,7 +68,7 @@
       "unite": "points de base par an",
       "date": "2026",
       "source": {
-        "nom": "Hypothèse du jeu « Ministre des Finances », choisie par EcoClair pour rester dans les ordres de grandeur des études"
+        "nom": "Hypothèse du jeu « Redresser les comptes », choisie par EcoClair pour rester dans les ordres de grandeur des études"
       },
       "statut": "hypothese",
       "note": "+15 pb par an quand le déficit dépasse 4 % du PIB sans reculer d'au moins 0,3 point ; −10 pb quand il passe sous 3 % ou recule d'au moins 0,5 point dans l'année (redressement jugé crédible) ; sans changement sinon."
@@ -80,10 +80,22 @@
       "unite": "point",
       "date": "2026",
       "source": {
-        "nom": "Hypothèse du jeu « Ministre des Finances », choisie par EcoClair pour rester dans les ordres de grandeur des études"
+        "nom": "Hypothèse du jeu « Redresser les comptes », choisie par EcoClair pour rester dans les ordres de grandeur des études"
       },
       "statut": "hypothese",
       "note": "L'État emprunte aussi à court terme (BTF) et à moyen terme, à des taux en général plus bas que le taux à 10 ans : le taux moyen de ses emprunts nouveaux est donc inférieur au taux à 10 ans."
+    },
+    {
+      "id": "ministre.okun",
+      "label": "Hausse du taux de chômage pour un point de croissance en moins (loi d'Okun)",
+      "valeur": 0.4,
+      "unite": "point de chômage par point de croissance",
+      "date": "2026",
+      "source": {
+        "nom": "Hypothèse du jeu « Redresser les comptes », choisie par EcoClair pour rester dans les ordres de grandeur des études"
+      },
+      "statut": "hypothese",
+      "note": "Pour la France, les estimations de la loi d'Okun vont d'environ 0,3 à 0,5 point de chômage par point de croissance en moins ; l'effet réel passe en partie par la durée du travail et la productivité."
     }
   ]
 }

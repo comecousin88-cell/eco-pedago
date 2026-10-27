@@ -74,14 +74,13 @@ const PAGES: Record<string, Suggestion[]> = {
   "/comprendre/": [DIX, { href: moduleHref("les-bases"), titre: "Les bases", raison: "Commencer par le début" }, rubrique("decrypter", "Se faire un avis")],
   "/decrypter/": [CRIBLE, IDEES, rubrique("comprendre", "Revoir les mécanismes")],
   "/actu/": [TABLEAU, { href: themeHref(themes.find((t) => t.slug === "la-dette")!), titre: "Comprendre la dette", raison: "Les mécanismes derrière les chiffres" }, CRIBLE],
-  "/jouer/": [REDRESSER, { href: "/jeux/ministre-des-finances/", titre: "Ministre des Finances", raison: "Tenir un budget pendant un mandat" }, rubrique("comprendre", "Revoir les mécanismes")],
+  "/jouer/": [REDRESSER, { href: moduleHref("boule-de-neige"), titre: "L'effet boule de neige", raison: "Pourquoi le déficit compte" }, rubrique("comprendre", "Revoir les mécanismes")],
   "/glossaire/": [DIX, { href: moduleHref("les-bases"), titre: "Les bases", raison: "Les notions dans leur contexte" }, IDEES],
   "/la-france-en-10-chiffres/": [TABLEAU, { href: moduleHref("deficit-et-dette"), titre: "Déficit et dette", raison: "Comprendre ces chiffres" }, CRIBLE],
   "/propositions/": [IDEES, rubrique("comprendre", "Revoir les mécanismes"), REDRESSER],
   "/idees-recues/": [CRIBLE, DIX, GLOSSAIRE],
   "/tableau-de-bord/": [rubrique("actu", "Toute l'actualité"), DIX, { href: moduleHref("emprunt-etat", "spread-notation"), titre: "Spread, notation, courbe des taux", raison: "Lire les taux" }],
-  "/jeux/redresser-les-comptes/": [{ href: "/jeux/ministre-des-finances/", titre: "Ministre des Finances", raison: "L'autre jeu" }, { href: moduleHref("boule-de-neige"), titre: "L'effet boule de neige", raison: "Pourquoi le déficit compte" }, CRIBLE],
-  "/jeux/ministre-des-finances/": [REDRESSER, TABLEAU, { href: moduleHref("cadre-europeen", "regles"), titre: "Les règles budgétaires", raison: "Les contraintes européennes" }],
+  "/jeux/redresser-les-comptes/": [{ href: moduleHref("boule-de-neige"), titre: "L'effet boule de neige", raison: "Pourquoi le déficit compte" }, { href: moduleHref("cadre-europeen", "regles"), titre: "Les règles budgétaires", raison: "Les contraintes européennes" }, CRIBLE],
   "/sources/": [DIX, TABLEAU, GLOSSAIRE],
 };
 

@@ -19,8 +19,7 @@ const PAGES_FIXES: EntreeRecherche[] = [
   { type: "Page", titre: "Glossaire", extrait: "Tous les termes techniques du site, expliqués simplement.", href: "/glossaire/" },
   { type: "Page", titre: "Idées reçues", extrait: "Les affirmations qu'on entend souvent, vérifiées.", href: "/idees-recues/" },
   { type: "Page", titre: "Les propositions au crible", extrait: "Chaque proposition du débat public analysée, avec un verdict.", href: "/propositions/" },
-  { type: "Page", titre: "Redresser les comptes", extrait: "Choisir des mesures chiffrées pour réduire le déficit.", href: "/jeux/redresser-les-comptes/", motsCles: "jeu budget" },
-  { type: "Page", titre: "Ministre des Finances", extrait: "Tenir le budget pendant un mandat de cinq ans.", href: "/jeux/ministre-des-finances/", motsCles: "jeu budget" },
+  { type: "Page", titre: "Redresser les comptes", extrait: "Ministre des Finances pour cinq ans : cinq budgets pour réduire le déficit.", href: "/jeux/redresser-les-comptes/", motsCles: "jeu budget" },
   { type: "Page", titre: "Sources et méthode", extrait: "D'où viennent les chiffres et comment ils sont vérifiés.", href: "/sources/" },
 ];
 

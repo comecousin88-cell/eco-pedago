@@ -1,4 +1,8 @@
 {
+  "redirects": [
+    { "source": "/jeux/ministre-des-finances/", "destination": "/jeux/redresser-les-comptes/", "permanent": true },
+    { "source": "/jeux/ministre-des-finances", "destination": "/jeux/redresser-les-comptes/", "permanent": true }
+  ],
   "headers": [
     {
       "source": "/(opengraph-image|twitter-image|apple-icon)",

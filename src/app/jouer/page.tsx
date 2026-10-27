@@ -16,13 +16,7 @@ const JEUX = [
     href: "/jeux/redresser-les-comptes/",
     titre: "Redresser les comptes",
     texte:
-      "Trois objectifs, de l'effort minimal européen à la suppression du déficit, et plus de quarante mesures chiffrées. Vous voyez ce que rapporte chacune, quand, et qui paie.",
-  },
-  {
-    href: "/jeux/ministre-des-finances/",
-    titre: "Ministre des Finances",
-    texte:
-      "Cinq ans de mandat, un budget par an, des imprévus : croissance, taux, crises. Vos choix et leurs effets sur la dette, avec toutes les hypothèses affichées.",
+      "Vous êtes ministre des Finances pour cinq ans. Un objectif, cinq budgets, près de cinquante mesures chiffrées et sourcées, un imprévu par an, et la confiance des Français à garder.",
   },
 ];
 

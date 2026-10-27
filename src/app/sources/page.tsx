@@ -28,7 +28,7 @@ const THEMES: Record<string, string> = {
   grece: "La crise grecque",
   indicateurs: "Tableau de bord",
   international: "Comparaisons internationales et histoire",
-  "jeu-ministre": "Jeu « Ministre des Finances » (hypothèses)",
+  "jeu-ministre": "Jeu « Redresser les comptes » (hypothèses)",
   macro: "Économie",
   marches: "Marchés et taux d'intérêt",
   perspective: "Dette en perspective",
@@ -69,12 +69,7 @@ const SIMULATEURS: { nom: string; hypotheses: string }[] = [
   {
     nom: "Jeu « Redresser les comptes »",
     hypotheses:
-      "Rendements annuels à effet plein, toutes choses égales par ailleurs, sans effet des mesures sur la croissance ; trajectoire de dette à déficit constant en points de PIB ; chaque mesure est répartie à parts égales entre ceux qui la paient.",
-  },
-  {
-    nom: "Jeu « Ministre des Finances »",
-    hypotheses:
-      "Multiplicateurs, stabilisateurs automatiques, réaction de l'écart de taux et croissance de référence affichés dans le jeu ; taux allemand constant ; budgets votés reconduits d'une année sur l'autre, chocs ponctuels.",
+      "Mesures chiffrées avec une fourchette sourcée, qui montent en charge selon leur délai et restent actives une fois votées ; multiplicateurs, stabilisateurs automatiques, réaction de l'écart de taux, loi d'Okun et croissance de référence affichés dans le jeu ; taux allemand constant ; règle de popularité unique et simplifiée ; chaque mesure est répartie à parts égales entre ceux qui la paient.",
   },
 ];
 

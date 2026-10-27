@@ -80,7 +80,7 @@ describe("rubriques et thèmes", () => {
       ["/propositions/retraite-a-60-ans/", "decrypter"],
       ["/idees-recues/", "decrypter"],
       ["/tableau-de-bord/", "actu"],
-      ["/jeux/ministre-des-finances/", "jouer"],
+      ["/jeux/redresser-les-comptes/", "jouer"],
       ["/jouer", "jouer"],
       ["/sources/", undefined],
     ];

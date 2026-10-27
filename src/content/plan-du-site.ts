@@ -19,7 +19,6 @@ export const PAGES_FIXES = [
   "/propositions/",
   "/idees-recues/",
   "/jeux/redresser-les-comptes/",
-  "/jeux/ministre-des-finances/",
   "/sources/",
 ];
 
