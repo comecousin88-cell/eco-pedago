@@ -1,4 +1,12 @@
 {
   "description": "Journal de la fusion automatique des demandes de mise à jour créées par les tâches automatiques : fusionnées si tous les contrôles passent, sinon laissées ouvertes avec leurs raisons. Écrit par scripts/fusion-auto.ts.",
-  "entrees": []
+  "entrees": [
+    {
+      "date": "2026-10-28T22:28:24.312Z",
+      "numero": 11,
+      "titre": "Vote solennel de l'Assemblée nationale sur le budget de la Sécurité sociale pour 2027 (27 octobre 2026) : mise à jour à valider",
+      "branche": "veille/echeance-plfss-2027-vote",
+      "statut": "fusionnee"
+    }
+  ]
 }

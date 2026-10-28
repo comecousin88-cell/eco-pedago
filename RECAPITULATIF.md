@@ -13,7 +13,11 @@ Vérifiés le 2026-10-28 : 121 liens externes.
 
 Aucun lien externe cassé.
 
-21 lien(s) refusent les robots ou n'ont pas répondu : à ouvrir dans un navigateur.
+19 lien(s) refusent les robots ou n'ont pas répondu : à ouvrir dans un navigateur.
+
+## 2026-10-28
+
+- 🔀 Demande n° 11 fusionnée : Vote solennel de l'Assemblée nationale sur le budget de la Sécurité sociale pour 2027 (27 octobre 2026) : mise à jour à valider
 
 ## 2026-10-27
 
