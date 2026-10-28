@@ -577,7 +577,7 @@
         "url": "https://www.insee.fr/fr/statistiques/serie/011814632"
       },
       "statut": "verifie",
-      "consulte_le": "2026-10-27",
+      "consulte_le": "2026-10-28",
       "indicateur": "IPC Insee",
       "etat": "definitif",
       "note": "Indicateur de référence du site pour l'inflation. Résultat définitif publié vers le 15 du mois suivant ; l'estimation provisoire de fin de mois l'annonce et est remplacée automatiquement."
@@ -1158,7 +1158,7 @@
         "url": "https://ec.europa.eu/eurostat/databrowser/view/prc_hicp_minr/default/table?lang=fr"
       },
       "statut": "verifie",
-      "consulte_le": "2026-10-27",
+      "consulte_le": "2026-10-28",
       "note": "Indice des prix à la consommation harmonisé (IPCH), comparable entre pays de l'Union. Il diffère légèrement de l'indice des prix de l'Insee (IPC).",
       "indicateur": "IPCH Eurostat",
       "etat": "definitif"
@@ -1739,7 +1739,7 @@
         "url": "https://ec.europa.eu/eurostat/databrowser/view/prc_hicp_minr/default/table?lang=fr"
       },
       "statut": "verifie",
-      "consulte_le": "2026-10-27",
+      "consulte_le": "2026-10-28",
       "note": "Zone euro dans sa composition de chaque période.",
       "indicateur": "IPCH Eurostat",
       "etat": "definitif"
@@ -2180,7 +2180,7 @@
         "url": "https://www.insee.fr/fr/statistiques/serie/001688527"
       },
       "statut": "verifie",
-      "consulte_le": "2026-10-27",
+      "consulte_le": "2026-10-28",
       "note": "Données trimestrielles corrigées des variations saisonnières ; dernier trimestre : 2026 T2.",
       "indicateur": "BIT, Insee"
     }

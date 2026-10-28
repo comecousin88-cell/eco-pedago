@@ -165,7 +165,7 @@
         "url": "https://www.ecb.europa.eu/stats/policy_and_exchange_rates/key_ecb_interest_rates/html/index.en.html"
       },
       "statut": "verifie",
-      "consulte_le": "2026-10-27"
+      "consulte_le": "2026-10-28"
     },
     {
       "id": "bce.taux-depot-actuel",
@@ -178,7 +178,7 @@
         "url": "https://www.ecb.europa.eu/stats/policy_and_exchange_rates/key_ecb_interest_rates/html/index.en.html"
       },
       "statut": "verifie",
-      "consulte_le": "2026-10-27",
+      "consulte_le": "2026-10-28",
       "note": "En vigueur depuis le 16/09/2026."
     },
     {
@@ -192,7 +192,7 @@
         "url": "https://www.ecb.europa.eu/stats/policy_and_exchange_rates/key_ecb_interest_rates/html/index.en.html"
       },
       "statut": "verifie",
-      "consulte_le": "2026-10-27"
+      "consulte_le": "2026-10-28"
     },
     {
       "id": "bdf.titres-politique-monetaire",
