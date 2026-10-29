@@ -1,47 +1,17 @@
 {
-  "verifie_le": "2026-10-28T21:50:46.510Z",
-  "verifies": 121,
+  "verifie_le": "2026-10-29T14:14:21.408Z",
+  "verifies": 123,
   "casses": [],
   "a_verifier": [
-    {
-      "lien": "https://www.senat.fr/notice-rapport/2025/r25-942-notice.html",
-      "raison": "site injoignable (délai dépassé ou erreur réseau)",
-      "page": "actu/2026-09-03-prelevements-obligatoires-et-entreprises-vers-un-cadre-fiscal-et-social-stable/index.html"
-    },
-    {
-      "lien": "https://www.senat.fr/notice-rapport/2026/r26-077-notice.html",
-      "raison": "site injoignable (délai dépassé ou erreur réseau)",
-      "page": "actu/2026-10-15-avis-sur-le-projet-de-decret-d-avance-notifie-le-5-octobre-2026-rapport-d/index.html"
-    },
-    {
-      "lien": "https://www.ccomptes.fr/fr/publications/la-situation-financiere-de-la-securite-sociale-un-redressement-imperatif-en-2027",
-      "raison": "erreur du site (HTTP 503), sans doute passagère",
-      "page": "actu/2026-10-20-la-situation-financiere-de-la-securite-sociale-un-redressement-imperatif-en-2027/index.html"
-    },
     {
       "lien": "https://www.aft.gouv.fr/fr/notations-souveraines",
       "raison": "accès refusé aux robots (HTTP 403) : à vérifier dans un navigateur",
       "page": "actu/2026-10-23-revue-de-la-note-de-la-france-par-moody-s/index.html"
     },
     {
-      "lien": "https://www.senat.fr/notice-rapport/2026/r26-080-notice.html",
-      "raison": "site injoignable (délai dépassé ou erreur réseau)",
-      "page": "actu/2026-10-25-la-pratique-de-la-depense-fiscale-etude-de-cas-europeens-rapport-d-information/index.html"
-    },
-    {
       "lien": "https://www.aft.gouv.fr/files/medias-aft/7_Publications/7.2_BM/434_Bulletin%20mensuel%20juillet%202026.pdf",
       "raison": "accès refusé aux robots (HTTP 403) : à vérifier dans un navigateur",
       "page": "modules/banque-centrale/grece/index.html"
-    },
-    {
-      "lien": "https://www.senat.fr/leg/annexes/pjlf2026_credits_senat_partiel.html",
-      "raison": "site injoignable (délai dépassé ou erreur réseau)",
-      "page": "modules/boule-de-neige/cout-opportunite/index.html"
-    },
-    {
-      "lien": "https://www.senat.fr/rap/l25-139-312/l25-139-312_mono.html",
-      "raison": "site injoignable (délai dépassé ou erreur réseau)",
-      "page": "modules/boule-de-neige/cout-opportunite/index.html"
     },
     {
       "lien": "https://www.consilium.europa.eu/en/policies/excessive-deficit-procedure/",
@@ -84,24 +54,9 @@
       "page": "modules/fiche-de-paie/index.html"
     },
     {
-      "lien": "https://www.senat.fr/rap/l24-689/l24-6891.html",
-      "raison": "site injoignable (délai dépassé ou erreur réseau)",
-      "page": "modules/fiscalite/assiette-rendement/index.html"
-    },
-    {
       "lien": "https://www.economie.gouv.fr/actualites/lutte-contre-la-fraude-un-controle-fiscal-toujours-plus-efficace-en-2025",
       "raison": "accès refusé aux robots (HTTP 403) : à vérifier dans un navigateur",
       "page": "propositions/lutte-contre-la-fraude/index.html"
-    },
-    {
-      "lien": "https://www.ccomptes.fr/fr/publications/situation-financiere-et-perspectives-du-systeme-de-retraites",
-      "raison": "erreur du site (HTTP 503), sans doute passagère",
-      "page": "propositions/retraite-a-60-ans/index.html"
-    },
-    {
-      "lien": "https://www.senat.fr/rap/l11-689-1/l11-689-122.html",
-      "raison": "site injoignable (délai dépassé ou erreur réseau)",
-      "page": "propositions/tva-sociale/index.html"
     },
     {
       "lien": "https://www.aft.gouv.fr/fr/principaux-chiffres-dette",

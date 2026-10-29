@@ -169,6 +169,15 @@
       "lien": "https://www.senat.fr/notice-rapport/2026/r26-080-notice.html",
       "licence": "Mentions légales du Sénat (travaux parlementaires)",
       "recupere_le": "2026-10-27"
+    },
+    "bce-14a9c3fd": {
+      "paragraphes": [
+        "Le Conseil des gouverneurs a décidé ce jour de laisser inchangés les trois taux d’intérêt directeurs de la BCE. Les prix de l’énergie ont continué d’augmenter, faisant peser des risques à la hausse sur les perspectives d’inflation et des risques à la baisse sur les perspectives de croissance. Alors que les effets du choc énergétique ne se sont pas encore totalement matérialisés, l’inflation sous-jacente est restée globalement stable jusqu’à présent et les salaires n’ont pas encore réagi de manière significative à ce stade. L’intensification et la persistance du choc énergétique, ainsi que ses répercussions sous forme d’effets indirects et de second tour, risquent d’alimenter l’inflation et d’affaiblir la croissance. Les conditions de financement se sont durcies depuis la dernière réunion du Conseil des gouverneurs, ce qui devrait peser sur l’inflation et la croissance. Le Conseil des gouverneurs entend mener sa politique monétaire de façon à assurer la stabilisation de l’inflation au niveau de son objectif de 2 % à moyen terme."
+      ],
+      "lien": "https://www.ecb.europa.eu/press/pr/date/2026/html/ecb.mp261029~9a493adf17.fr.html",
+      "organisme": "Banque centrale européenne",
+      "licence": "Conditions de reproduction de la BCE",
+      "recupere_le": "2026-10-29"
     }
   }
 }

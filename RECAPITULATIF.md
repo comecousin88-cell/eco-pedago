@@ -9,11 +9,17 @@ Fichier écrit chaque jour par les tâches automatiques (`npm run resumes:offici
 
 ## Liens externes à corriger
 
-Vérifiés le 2026-10-28 : 121 liens externes.
+Vérifiés le 2026-10-29 : 123 liens externes.
 
 Aucun lien externe cassé.
 
-21 lien(s) refusent les robots ou n'ont pas répondu : à ouvrir dans un navigateur.
+12 lien(s) refusent les robots ou n'ont pas répondu : à ouvrir dans un navigateur.
+
+## 2026-10-29
+
+1 résumé(s) officiel(s) repris, 0 non repris.
+
+- ✅ [Monetary policy decisions](https://eco-pedago.vercel.app/actu/2026-10-29-monetary-policy-decisions/) ([source](https://www.ecb.europa.eu/press/pr/date/2026/html/ecb.mp261029~9a493adf17.en.html))
 
 ## 2026-10-28
 

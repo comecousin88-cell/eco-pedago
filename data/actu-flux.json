@@ -1,6 +1,6 @@
 {
   "description": "Publications des sources officielles (Insee, BCE, Banque de France, Eurostat, Cour des comptes, Haut Conseil des finances publiques, Assemblée nationale, Sénat) sur les thèmes du site, lues dans leurs flux RSS et leurs listes de communiqués par scripts/maj-actu.ts. Titre, date et lien vers l'original seulement ; chaque entrée renvoie aussi vers la page du site qui explique le sujet.",
-  "derniere_verification": "2026-10-28T21:49:34.740Z",
+  "derniere_verification": "2026-10-29T14:13:04.552Z",
   "sources": {
     "insee": {
       "statut": "ok"
@@ -25,11 +25,22 @@
       "statut": "ok"
     },
     "senat": {
-      "statut": "echec",
-      "message": "fetch failed"
+      "statut": "ok"
     }
   },
   "entrees": [
+    {
+      "titre": "Monetary policy decisions",
+      "lien": "https://www.ecb.europa.eu/press/pr/date/2026/html/ecb.mp261029~9a493adf17.en.html",
+      "date": "2026-10-29T13:15:00Z",
+      "resume": "",
+      "id": "bce-14a9c3fd",
+      "source": "bce",
+      "page": "/modules/banque-centrale/bce-eurosysteme/",
+      "sujet": "Taux",
+      "important": true,
+      "langue": "en"
+    },
     {
       "titre": "En octobre 2026, la confiance des ménages se dégrade fortement",
       "lien": "https://www.insee.fr/fr/statistiques/9098942",
@@ -75,11 +86,11 @@
       "important": false
     },
     {
-      "titre": "Euro area government deficit at 3.0% of GDP and government debt at 87.7%",
-      "lien": "https://ec.europa.eu/eurostat/web/products-euro-indicators/w/2-21102026-ap",
+      "titre": "Government debt at 88.8% of GDP in euro area",
+      "lien": "https://ec.europa.eu/eurostat/web/products-euro-indicators/w/2-21102026-bp",
       "date": "2026-10-21T00:00:00Z",
       "resume": "",
-      "id": "eurostat-6b9dce13",
+      "id": "eurostat-79972858",
       "source": "eurostat",
       "page": "/modules/comparaisons/dette-et-deficit/",
       "sujet": "Dette",
@@ -87,11 +98,11 @@
       "langue": "en"
     },
     {
-      "titre": "Government debt at 88.8% of GDP in euro area",
-      "lien": "https://ec.europa.eu/eurostat/web/products-euro-indicators/w/2-21102026-bp",
+      "titre": "Euro area government deficit at 3.0% of GDP and government debt at 87.7%",
+      "lien": "https://ec.europa.eu/eurostat/web/products-euro-indicators/w/2-21102026-ap",
       "date": "2026-10-21T00:00:00Z",
       "resume": "",
-      "id": "eurostat-79972858",
+      "id": "eurostat-6b9dce13",
       "source": "eurostat",
       "page": "/modules/comparaisons/dette-et-deficit/",
       "sujet": "Dette",
@@ -179,18 +190,6 @@
       "important": true
     },
     {
-      "titre": "Statistiques relatives aux taux d’intérêt des banques de la zone euro : août 2026",
-      "lien": "https://www.banque-france.fr/fr/communiques-de-presse/statistiques-relatives-aux-taux-dinteret-des-banques-de-la-zone-euro-aout-2026",
-      "date": "2026-10-01T00:00:00Z",
-      "resume": "",
-      "categorie": "Communiqué de presse BCE",
-      "id": "bce-74b953c3",
-      "source": "bce",
-      "page": "/modules/banque-centrale/bce-eurosysteme/",
-      "sujet": "Taux",
-      "important": false
-    },
-    {
       "titre": "Euro area unemployment at 6.4%",
       "lien": "https://ec.europa.eu/eurostat/web/products-euro-indicators/w/3-01102026-ap",
       "date": "2026-10-01T00:00:00Z",
@@ -203,15 +202,16 @@
       "langue": "en"
     },
     {
-      "titre": "En septembre 2026, les prix à la consommation augmenteraient de 3,0 % sur un an",
-      "lien": "https://www.insee.fr/fr/statistiques/9056956",
-      "date": "2026-09-30T06:45:00Z",
+      "titre": "Statistiques relatives aux taux d’intérêt des banques de la zone euro : août 2026",
+      "lien": "https://www.banque-france.fr/fr/communiques-de-presse/statistiques-relatives-aux-taux-dinteret-des-banques-de-la-zone-euro-aout-2026",
+      "date": "2026-10-01T00:00:00Z",
       "resume": "",
-      "id": "insee-a14d1f55",
-      "source": "insee",
-      "page": "/modules/les-bases/inflation-taux-reels/",
-      "sujet": "Inflation",
-      "important": true
+      "categorie": "Communiqué de presse BCE",
+      "id": "bce-74b953c3",
+      "source": "bce",
+      "page": "/modules/banque-centrale/bce-eurosysteme/",
+      "sujet": "Taux",
+      "important": false
     },
     {
       "titre": "La consommation des ménages en biens se replie en août 2026 (-0,5 % après +0,4 %)",
@@ -225,6 +225,17 @@
       "important": false
     },
     {
+      "titre": "En septembre 2026, les prix à la consommation augmenteraient de 3,0 % sur un an",
+      "lien": "https://www.insee.fr/fr/statistiques/9056956",
+      "date": "2026-09-30T06:45:00Z",
+      "resume": "",
+      "id": "insee-a14d1f55",
+      "source": "insee",
+      "page": "/modules/les-bases/inflation-taux-reels/",
+      "sujet": "Inflation",
+      "important": true
+    },
+    {
       "titre": "À la fin du deuxième trimestre 2026, le ratio de dette publique s’établit à 119,0 % du PIB",
       "lien": "https://www.insee.fr/fr/statistiques/9053525",
       "date": "2026-09-29T06:45:00Z",
@@ -236,22 +247,22 @@
       "important": true
     },
     {
-      "titre": "Stable en septembre 2026, la confiance des ménages reste dégradée",
-      "lien": "https://www.insee.fr/fr/statistiques/9054960",
+      "titre": "En septembre 2026, le climat des affaires se replie",
+      "lien": "https://www.insee.fr/fr/statistiques/9055046",
       "date": "2026-09-24T06:45:00Z",
-      "resume": "En septembre 2026, la confiance des ménages est de nouveau stable. À 86, l’indicateur qui la synthétise reste dégradé, au-dessous de sa moyenne de longue période (100 entre janvier 1987 et décembre 2025). Le climat de l'épargne se replie, de quatre points : à 121, il se maintient toutefois nettement au-dessus de sa moyenne de longue période (100).",
-      "id": "insee-fd4c9a86",
+      "resume": "En septembre 2026, l’indicateur synthétique du climat des affaires, calculé à partir des réponses des chefs d’entreprise des principaux secteurs d’activité marchands, se replie. À 96, il perd deux points et s’éloigne de son niveau moyen (100). L’indicateur du climat de l’emploi perd un point.",
+      "id": "insee-42157c4c",
       "source": "insee",
       "page": "/modules/les-bases/pib/",
       "sujet": "Croissance",
       "important": false
     },
     {
-      "titre": "En septembre 2026, le climat des affaires se replie",
-      "lien": "https://www.insee.fr/fr/statistiques/9055046",
+      "titre": "Stable en septembre 2026, la confiance des ménages reste dégradée",
+      "lien": "https://www.insee.fr/fr/statistiques/9054960",
       "date": "2026-09-24T06:45:00Z",
-      "resume": "En septembre 2026, l’indicateur synthétique du climat des affaires, calculé à partir des réponses des chefs d’entreprise des principaux secteurs d’activité marchands, se replie. À 96, il perd deux points et s’éloigne de son niveau moyen (100). L’indicateur du climat de l’emploi perd un point.",
-      "id": "insee-42157c4c",
+      "resume": "En septembre 2026, la confiance des ménages est de nouveau stable. À 86, l’indicateur qui la synthétise reste dégradé, au-dessous de sa moyenne de longue période (100 entre janvier 1987 et décembre 2025). Le climat de l'épargne se replie, de quatre points : à 121, il se maintient toutefois nettement au-dessus de sa moyenne de longue période (100).",
+      "id": "insee-fd4c9a86",
       "source": "insee",
       "page": "/modules/les-bases/pib/",
       "sujet": "Croissance",
@@ -270,18 +281,6 @@
       "langue": "en"
     },
     {
-      "titre": "L’outil de suivi des salaires de la BCE s’est établi à 2,7 % au premier semestre 2027, indiquant une légère accélération de la croissance des salaires négociés",
-      "lien": "https://www.banque-france.fr/fr/communiques-de-presse/loutil-de-suivi-des-salaires-de-la-bce-sest-etabli-27-au-premier-semestre-2027-indiquant-une-legere",
-      "date": "2026-09-16T00:00:00Z",
-      "resume": "",
-      "categorie": "Communiqué de presse BCE",
-      "id": "bce-5dac6703",
-      "source": "bce",
-      "page": "/modules/fiche-de-paie/",
-      "sujet": "Emploi",
-      "important": false
-    },
-    {
       "titre": "Annual increase in labour costs at 3.1% in euro area",
       "lien": "https://ec.europa.eu/eurostat/web/products-euro-indicators/w/3-16092026-bp",
       "date": "2026-09-16T00:00:00Z",
@@ -294,15 +293,16 @@
       "langue": "en"
     },
     {
-      "titre": "En août 2026, les prix à la consommation augmentent de 2,4 % sur un an",
-      "lien": "https://www.insee.fr/fr/statistiques/9051406",
-      "date": "2026-09-15T06:45:00Z",
+      "titre": "L’outil de suivi des salaires de la BCE s’est établi à 2,7 % au premier semestre 2027, indiquant une légère accélération de la croissance des salaires négociés",
+      "lien": "https://www.banque-france.fr/fr/communiques-de-presse/loutil-de-suivi-des-salaires-de-la-bce-sest-etabli-27-au-premier-semestre-2027-indiquant-une-legere",
+      "date": "2026-09-16T00:00:00Z",
       "resume": "",
-      "id": "insee-b5c87300",
-      "source": "insee",
-      "page": "/modules/les-bases/inflation-taux-reels/",
-      "sujet": "Inflation",
-      "important": true
+      "categorie": "Communiqué de presse BCE",
+      "id": "bce-5dac6703",
+      "source": "bce",
+      "page": "/modules/fiche-de-paie/",
+      "sujet": "Emploi",
+      "important": false
     },
     {
       "titre": "Au deuxième trimestre 2026, les salaires horaires augmentent de 2,4 % sur un an, le coût horaire du travail de 2,5 %",
@@ -314,6 +314,17 @@
       "page": "/modules/fiscalite/smic/",
       "sujet": "Emploi",
       "important": false
+    },
+    {
+      "titre": "En août 2026, les prix à la consommation augmentent de 2,4 % sur un an",
+      "lien": "https://www.insee.fr/fr/statistiques/9051406",
+      "date": "2026-09-15T06:45:00Z",
+      "resume": "",
+      "id": "insee-b5c87300",
+      "source": "insee",
+      "page": "/modules/les-bases/inflation-taux-reels/",
+      "sujet": "Inflation",
+      "important": true
     },
     {
       "titre": "Précisions sur le programme de détention de la dette publique par la Banque de France",
@@ -397,18 +408,6 @@
       "important": false
     },
     {
-      "titre": "Euro area annual inflation up to 3.3%",
-      "lien": "https://ec.europa.eu/eurostat/web/products-euro-indicators/w/2-01092026-ap",
-      "date": "2026-09-01T00:00:00Z",
-      "resume": "",
-      "id": "eurostat-3c7384a3",
-      "source": "eurostat",
-      "page": "/modules/les-bases/inflation-taux-reels/",
-      "sujet": "Inflation",
-      "important": false,
-      "langue": "en"
-    },
-    {
       "titre": "Euro area unemployment at 6.4%",
       "lien": "https://ec.europa.eu/eurostat/web/products-euro-indicators/w/3-01092026-bp",
       "date": "2026-09-01T00:00:00Z",
@@ -417,6 +416,18 @@
       "source": "eurostat",
       "page": "/modules/comparaisons/emploi-croissance/",
       "sujet": "Emploi",
+      "important": false,
+      "langue": "en"
+    },
+    {
+      "titre": "Euro area annual inflation up to 3.3%",
+      "lien": "https://ec.europa.eu/eurostat/web/products-euro-indicators/w/2-01092026-ap",
+      "date": "2026-09-01T00:00:00Z",
+      "resume": "",
+      "id": "eurostat-3c7384a3",
+      "source": "eurostat",
+      "page": "/modules/les-bases/inflation-taux-reels/",
+      "sujet": "Inflation",
       "important": false,
       "langue": "en"
     }
