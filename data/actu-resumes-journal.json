@@ -2,6 +2,56 @@
   "description": "Journal de la reprise des résumés officiels : chaque publication, reprise ou non, avec la raison. Écrit par scripts/reprendre-resumes.ts ; RECAPITULATIF.md en est tiré.",
   "entrees": [
     {
+      "date": "2026-10-30T14:04:34.472Z",
+      "id": "eurostat-155ed1a5",
+      "titre": "Chômage à 6,5 % dans la zone euro",
+      "date_publication": "2026-10-30",
+      "lien": "https://ec.europa.eu/eurostat/web/products-euro-indicators/w/3-30102026-bp",
+      "statut": "non-repris",
+      "raison": "résumé publié en anglais : seul le titre traduit est affiché"
+    },
+    {
+      "date": "2026-10-30T14:04:34.472Z",
+      "id": "eurostat-077e0965",
+      "titre": "PIB en hausse de 0,4 % dans la zone euro",
+      "date_publication": "2026-10-30",
+      "lien": "https://ec.europa.eu/eurostat/web/products-euro-indicators/w/2-30102026-ap",
+      "statut": "non-repris",
+      "raison": "résumé publié en anglais : seul le titre traduit est affiché"
+    },
+    {
+      "date": "2026-10-30T14:04:34.472Z",
+      "id": "insee-ef079d8e",
+      "titre": "Le PIB recule légèrement au troisième trimestre 2026 (-0,1 % après 0,0 %)",
+      "date_publication": "2026-10-30",
+      "lien": "https://www.insee.fr/fr/statistiques/9111036",
+      "statut": "repris"
+    },
+    {
+      "date": "2026-10-30T14:04:34.472Z",
+      "id": "insee-1fb08d3d",
+      "titre": "La consommation des ménages en biens diminue de nouveau en septembre 2026 (-0,5 % après -0,5 %)",
+      "date_publication": "2026-10-30",
+      "lien": "https://www.insee.fr/fr/statistiques/9109722",
+      "statut": "repris"
+    },
+    {
+      "date": "2026-10-30T14:04:34.472Z",
+      "id": "insee-2b0f72f4",
+      "titre": "Au troisième trimestre 2026, l’emploi salarié du secteur privé est quasi stable sur le trimestre (-0,1 %) et en recul sur un an (-0,3 %)",
+      "date_publication": "2026-10-30",
+      "lien": "https://www.insee.fr/fr/statistiques/9109624",
+      "statut": "repris"
+    },
+    {
+      "date": "2026-10-30T14:04:34.472Z",
+      "id": "insee-3520e970",
+      "titre": "En octobre 2026, les prix à la consommation augmenteraient de 3,4 % sur un an",
+      "date_publication": "2026-10-30",
+      "lien": "https://www.insee.fr/fr/statistiques/9107965",
+      "statut": "repris"
+    },
+    {
       "date": "2026-10-29T14:13:12.837Z",
       "id": "bce-14a9c3fd",
       "titre": "Monetary policy decisions",

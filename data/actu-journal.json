@@ -1,4 +1,17 @@
 {
   "description": "Nouvelles périodes publiées pour les indicateurs du tableau de bord, avec leur date de détection. Écrit par scripts/maj-indicateurs.ts ; lu par le fil « L'actu ».",
-  "entrees": []
+  "entrees": [
+    {
+      "id": "ind.inflation-ipc-fr-2026-10-definitif",
+      "date": "2026-10-30",
+      "donnee": "ind.inflation-ipc-fr",
+      "periode": "2026-10",
+      "valeur": 3.4,
+      "avant": {
+        "periode": "2026-09",
+        "valeur": 3.1
+      },
+      "etat": "definitif"
+    }
+  ]
 }

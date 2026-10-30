@@ -4,44 +4,44 @@
     {
       "id": "aft.dette-negociable",
       "label": "Dette négociable de l'État",
-      "valeur": 2923.8,
+      "valeur": 2896.2,
       "unite": "Md€",
-      "date": "2026-08-31",
+      "date": "2026-09-30",
       "source": {
         "nom": "Agence France Trésor, encours de la dette négociable de l'État, repris par l'Insee (série 001711531)",
         "url": "https://www.insee.fr/fr/statistiques/serie/001711531"
       },
       "statut": "verifie",
       "note": "Valeur nominale, fin de mois.",
-      "consulte_le": "2026-10-29"
+      "consulte_le": "2026-10-30"
     },
     {
       "id": "aft.dette-negociable-indexee",
       "label": "dont titres indexés sur l'inflation",
-      "valeur": 313.9,
+      "valeur": 317.4,
       "unite": "Md€",
-      "date": "2026-08-31",
+      "date": "2026-09-30",
       "source": {
         "nom": "Agence France Trésor, encours de la dette négociable de l'État, repris par l'Insee (série 001738854)",
         "url": "https://www.insee.fr/fr/statistiques/serie/001738854"
       },
       "statut": "verifie",
       "note": "Valeur nominale, fin de mois.",
-      "consulte_le": "2026-10-29"
+      "consulte_le": "2026-10-30"
     },
     {
       "id": "aft.dette-court-terme",
       "label": "dont dette à court terme (BTF)",
-      "valeur": 219.2,
+      "valeur": 217.7,
       "unite": "Md€",
-      "date": "2026-08-31",
+      "date": "2026-09-30",
       "source": {
         "nom": "Agence France Trésor, encours de la dette négociable de l'État, repris par l'Insee (série 001711532)",
         "url": "https://www.insee.fr/fr/statistiques/serie/001711532"
       },
       "statut": "verifie",
       "note": "Valeur nominale, fin de mois.",
-      "consulte_le": "2026-10-29"
+      "consulte_le": "2026-10-30"
     },
     {
       "id": "aft.maturite-moyenne",

@@ -9,11 +9,22 @@ Fichier écrit chaque jour par les tâches automatiques (`npm run resumes:offici
 
 ## Liens externes à corriger
 
-Vérifiés le 2026-10-29 : 123 liens externes.
+Vérifiés le 2026-10-30 : 129 liens externes.
 
 Aucun lien externe cassé.
 
 19 lien(s) refusent les robots ou n'ont pas répondu : à ouvrir dans un navigateur.
+
+## 2026-10-30
+
+4 résumé(s) officiel(s) repris, 2 non repris.
+
+- ✅ [Le PIB recule légèrement au troisième trimestre 2026 (-0,1 % après 0,0 %)](https://eco-pedago.vercel.app/actu/2026-10-30-le-pib-recule-legerement-au-troisieme-trimestre-2026-0-1-apres-0-0/) ([source](https://www.insee.fr/fr/statistiques/9111036))
+- ✅ [La consommation des ménages en biens diminue de nouveau en septembre 2026 (-0,5 % après -0,5 %)](https://eco-pedago.vercel.app/actu/2026-10-30-la-consommation-des-menages-en-biens-diminue-de-nouveau-en-septembre-2026-0-5/) ([source](https://www.insee.fr/fr/statistiques/9109722))
+- ✅ [Au troisième trimestre 2026, l’emploi salarié du secteur privé est quasi stable sur le trimestre (-0,1 %) et en recul sur un an (-0,3 %)](https://eco-pedago.vercel.app/actu/2026-10-30-au-troisieme-trimestre-2026-l-emploi-salarie-du-secteur-prive-est-quasi-stable/) ([source](https://www.insee.fr/fr/statistiques/9109624))
+- ✅ [En octobre 2026, les prix à la consommation augmenteraient de 3,4 % sur un an](https://eco-pedago.vercel.app/actu/2026-10-30-en-octobre-2026-les-prix-a-la-consommation-augmenteraient-de-3-4-sur-un-an/) ([source](https://www.insee.fr/fr/statistiques/9107965))
+- ➖ Chômage à 6,5 % dans la zone euro ([source](https://ec.europa.eu/eurostat/web/products-euro-indicators/w/3-30102026-bp)) : résumé publié en anglais : seul le titre traduit est affiché
+- ➖ PIB en hausse de 0,4 % dans la zone euro ([source](https://ec.europa.eu/eurostat/web/products-euro-indicators/w/2-30102026-ap)) : résumé publié en anglais : seul le titre traduit est affiché
 
 ## 2026-10-29
 

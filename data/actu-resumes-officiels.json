@@ -178,6 +178,43 @@
       "organisme": "Banque centrale européenne",
       "licence": "Conditions de reproduction de la BCE",
       "recupere_le": "2026-10-29"
+    },
+    "insee-3520e970": {
+      "paragraphes": [
+        "Sur un an, selon l’estimation provisoire réalisée en fin de mois, les prix à la consommation augmenteraient de 3,4 % en octobre 2026, après +3,1 % en septembre. Les prix de l’énergie accéléreraient pour le quatrième mois consécutif, tirés par ceux du gaz et des produits pétroliers. L’inflation dans le secteur des services augmenterait, tirée par l’accélération des prix des services d’hébergement et de transport. La baisse de ceux des produits manufacturés s’atténuerait de nouveau légèrement. Les prix de l’alimentation, quant à eux, ralentiraient un peu, en particulier ceux des produits frais. Les prix du tabac augmenteraient sur un an au même rythme qu’au mois précédent."
+      ],
+      "lien": "https://www.insee.fr/fr/statistiques/9107965",
+      "licence": "Licence Ouverte / Open Licence 2.0 (Etalab)",
+      "recupere_le": "2026-10-30"
+    },
+    "insee-2b0f72f4": {
+      "paragraphes": [
+        "Entre juin et septembre 2026, l’emploi salarié du secteur privé est quasi stable (-0,1 %, soit -25 800 emplois), comme au trimestre précédent (-0,1 %, soit -24 300 emplois). Il se situe 0,3 % sous son niveau de septembre 2025 (soit -69 800 emplois), baissant sur un an pour le septième trimestre consécutif. Par rapport au premier trimestre 2024, où l'emploi salarié privé a atteint son sommet, il a baissé de 0,7 % (soit -148 400 emplois). Il excède toutefois encore largement son niveau d’avant-crise sanitaire, fin 2019 (+4,9 %, soit +982 100 emplois).",
+        "Sur le trimestre, les contrats en alternance, très majoritairement en apprentissage, contribuent fortement à la baisse de l’emploi salarié privé."
+      ],
+      "lien": "https://www.insee.fr/fr/statistiques/9109624",
+      "licence": "Licence Ouverte / Open Licence 2.0 (Etalab)",
+      "recupere_le": "2026-10-30"
+    },
+    "insee-1fb08d3d": {
+      "paragraphes": [
+        "En septembre 2026, les dépenses de consommation des ménages en biens diminuent de nouveau sur un mois (-0,5 % en volume* après -0,5 % en août). La consommation de biens fabriqués se replie (-1,1 % après +0,8 %) et la consommation alimentaire diminue de nouveau (-0,2 % après -1,1 %). La consommation d’énergie, quant à elle, repart légèrement à la hausse (+0,2 % après -2,4 %).",
+        "Sur l'ensemble du troisième trimestre 2026, la consommation des ménages en biens augmente de nouveau (+0,4 % après +0,2 % au deuxième trimestre). Les dépenses en énergie rebondissent (+1,2 % après -2,0 %), celles en biens fabriqués ralentissent (+0,3 % après +1,4 %), tandis que la consommation alimentaire est de nouveau stable."
+      ],
+      "lien": "https://www.insee.fr/fr/statistiques/9109722",
+      "licence": "Licence Ouverte / Open Licence 2.0 (Etalab)",
+      "recupere_le": "2026-10-30"
+    },
+    "insee-ef079d8e": {
+      "paragraphes": [
+        "Le produit intérieur brut (PIB) en volume* recule légèrement au troisième trimestre 2026 (-0,1 %, après une stabilité au deuxième trimestre).",
+        "La demande intérieure finale (hors stocks) continue d’augmenter : la consommation des ménages accélère (+0,4 % après +0,2 %) et la consommation des administrations publiques continue d’augmenter (+0,3 % après +0,4 %). À l’inverse, la formation brute de capital fixe recule de nouveau (-0,6 % après -0,5 %). Au total, la demande intérieure (hors stocks) contribue à l’évolution du PIB pour +0,1 point au troisième trimestre 2026, comme au trimestre précédent.",
+        "La contribution du commerce extérieur à la croissance est négative ce trimestre (-0,6 point après +0,6 point) : les exportations se contractent (-1,7 % après +2,8 %), alors que les importations sont quasi stables (+0,1 % après +0,9 %).",
+        "En miroir, la contribution des variations de stocks à l’évolution du PIB est positive ce trimestre (+0,4 point après -0,7 point au deuxième trimestre 2026)."
+      ],
+      "lien": "https://www.insee.fr/fr/statistiques/9111036",
+      "licence": "Licence Ouverte / Open Licence 2.0 (Etalab)",
+      "recupere_le": "2026-10-30"
     }
   }
 }
