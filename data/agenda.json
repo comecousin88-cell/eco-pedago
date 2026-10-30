@@ -141,7 +141,7 @@
       "categorie": "publication",
       "date": "2026-11-10",
       "precision": "jour",
-      "statut": "a_confirmer",
+      "statut": "confirme",
       "mise_a_jour": "automatique",
       "description": "Taux de chômage au sens du Bureau international du travail, repris automatiquement par le tableau de bord.",
       "donnees": [
@@ -154,8 +154,7 @@
         "nom": "Insee, calendrier des publications",
         "url": "https://www.insee.fr/fr/information/5235017"
       },
-      "consulte_le": "2026-10-21",
-      "note": "Date relevée dans un calendrier de presse ; à confirmer sur le calendrier de l'Insee.",
+      "consulte_le": "2026-10-30",
       "calendrier_insee": [
         "chômage",
         "3e trimestre 2026"
