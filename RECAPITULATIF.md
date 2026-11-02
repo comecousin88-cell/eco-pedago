@@ -9,11 +9,20 @@ Fichier écrit chaque jour par les tâches automatiques (`npm run resumes:offici
 
 ## Liens externes à corriger
 
-Vérifiés le 2026-10-30 : 129 liens externes.
+Vérifiés le 2026-11-02 : 129 liens externes.
 
 Aucun lien externe cassé.
 
 12 lien(s) refusent les robots ou n'ont pas répondu : à ouvrir dans un navigateur.
+
+## 2026-11-02
+
+0 résumé(s) officiel(s) repris, 4 non repris.
+
+- ➖ Statistiques relatives aux taux d’intérêt des banques de la zone euro : juillet 2026 ([source](https://www.banque-france.fr/fr/communiques-de-presse/statistiques-relatives-aux-taux-dinteret-des-banques-de-la-zone-euro-juillet-2026)) : version française du communiqué introuvable sur le site de la BCE : non repris
+- ➖ Vigilance orange sur la croissance ([source](https://www.insee.fr/fr/statistiques/9050757)) : pas de résumé reconnaissable sur la page
+- ➖ L’outil de suivi des salaires de la BCE s’est établi à 2,7 % au premier semestre 2027, indiquant une légère accélération de la croissance des salaires négociés ([source](https://www.banque-france.fr/fr/communiques-de-presse/loutil-de-suivi-des-salaires-de-la-bce-sest-etabli-27-au-premier-semestre-2027-indiquant-une-legere)) : version française du communiqué introuvable sur le site de la BCE : non repris
+- ➖ Statistiques relatives aux taux d’intérêt des banques de la zone euro : août 2026 ([source](https://www.banque-france.fr/fr/communiques-de-presse/statistiques-relatives-aux-taux-dinteret-des-banques-de-la-zone-euro-aout-2026)) : version française du communiqué introuvable sur le site de la BCE : non repris
 
 ## 2026-10-30
 

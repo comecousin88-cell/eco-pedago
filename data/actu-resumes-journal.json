@@ -2,6 +2,42 @@
   "description": "Journal de la reprise des résumés officiels : chaque publication, reprise ou non, avec la raison. Écrit par scripts/reprendre-resumes.ts ; RECAPITULATIF.md en est tiré.",
   "entrees": [
     {
+      "date": "2026-11-02T17:01:19.623Z",
+      "id": "bce-cda5cdf1",
+      "titre": "Statistiques relatives aux taux d’intérêt des banques de la zone euro : juillet 2026",
+      "date_publication": "2026-09-02",
+      "lien": "https://www.banque-france.fr/fr/communiques-de-presse/statistiques-relatives-aux-taux-dinteret-des-banques-de-la-zone-euro-juillet-2026",
+      "statut": "non-repris",
+      "raison": "version française du communiqué introuvable sur le site de la BCE : non repris"
+    },
+    {
+      "date": "2026-11-02T17:01:19.623Z",
+      "id": "insee-69c89ada",
+      "titre": "Vigilance orange sur la croissance",
+      "date_publication": "2026-09-10",
+      "lien": "https://www.insee.fr/fr/statistiques/9050757",
+      "statut": "non-repris",
+      "raison": "pas de résumé reconnaissable sur la page"
+    },
+    {
+      "date": "2026-11-02T17:01:19.623Z",
+      "id": "bce-5dac6703",
+      "titre": "L’outil de suivi des salaires de la BCE s’est établi à 2,7 % au premier semestre 2027, indiquant une légère accélération de la croissance des salaires négociés",
+      "date_publication": "2026-09-16",
+      "lien": "https://www.banque-france.fr/fr/communiques-de-presse/loutil-de-suivi-des-salaires-de-la-bce-sest-etabli-27-au-premier-semestre-2027-indiquant-une-legere",
+      "statut": "non-repris",
+      "raison": "version française du communiqué introuvable sur le site de la BCE : non repris"
+    },
+    {
+      "date": "2026-11-02T17:01:19.623Z",
+      "id": "bce-74b953c3",
+      "titre": "Statistiques relatives aux taux d’intérêt des banques de la zone euro : août 2026",
+      "date_publication": "2026-10-01",
+      "lien": "https://www.banque-france.fr/fr/communiques-de-presse/statistiques-relatives-aux-taux-dinteret-des-banques-de-la-zone-euro-aout-2026",
+      "statut": "non-repris",
+      "raison": "version française du communiqué introuvable sur le site de la BCE : non repris"
+    },
+    {
       "date": "2026-10-30T14:04:34.472Z",
       "id": "eurostat-155ed1a5",
       "titre": "Chômage à 6,5 % dans la zone euro",
