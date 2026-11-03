@@ -1,5 +1,5 @@
 {
-  "verifie_le": "2026-11-02T21:45:57.720Z",
+  "verifie_le": "2026-11-03T00:01:35.498Z",
   "verifies": 129,
   "casses": [],
   "a_verifier": [
@@ -57,6 +57,11 @@
       "lien": "https://www.economie.gouv.fr/actualites/lutte-contre-la-fraude-un-controle-fiscal-toujours-plus-efficace-en-2025",
       "raison": "accès refusé aux robots (HTTP 403) : à vérifier dans un navigateur",
       "page": "propositions/lutte-contre-la-fraude/index.html"
+    },
+    {
+      "lien": "https://www.senat.fr/rap/l11-689-1/l11-689-122.html",
+      "raison": "site injoignable (délai dépassé ou erreur réseau)",
+      "page": "propositions/tva-sociale/index.html"
     },
     {
       "lien": "https://www.aft.gouv.fr/fr/principaux-chiffres-dette",
