@@ -1,8 +1,13 @@
 {
-  "verifie_le": "2026-11-03T00:01:35.498Z",
+  "verifie_le": "2026-11-03T15:06:47.917Z",
   "verifies": 129,
   "casses": [],
   "a_verifier": [
+    {
+      "lien": "https://www.cor-retraites.fr/sites/default/files/2026-06/Synth%C3%A8se_RA_2026_0.pdf",
+      "raison": "site injoignable (délai dépassé ou erreur réseau)",
+      "page": "actu/2026-09-08-mobilites-professionnelles-salaires-et-fin-de-carriere/index.html"
+    },
     {
       "lien": "https://www.aft.gouv.fr/fr/notations-souveraines",
       "raison": "accès refusé aux robots (HTTP 403) : à vérifier dans un navigateur",
@@ -34,6 +39,11 @@
       "page": "modules/fiche-de-paie/index.html"
     },
     {
+      "lien": "https://www.service-public.gouv.fr/particuliers/actualites/A18916",
+      "raison": "site injoignable (délai dépassé ou erreur réseau)",
+      "page": "modules/fiche-de-paie/index.html"
+    },
+    {
       "lien": "https://www.urssaf.fr/accueil/outils-documentation/taux-baremes/taux-cotisations-secteur-prive.html",
       "raison": "site injoignable (délai dépassé ou erreur réseau)",
       "page": "modules/fiche-de-paie/index.html"
@@ -44,8 +54,23 @@
       "page": "modules/fiche-de-paie/index.html"
     },
     {
+      "lien": "https://entreprendre.service-public.gouv.fr/vosdroits/F24542",
+      "raison": "site injoignable (délai dépassé ou erreur réseau)",
+      "page": "modules/fiche-de-paie/index.html"
+    },
+    {
+      "lien": "https://www.service-public.gouv.fr/particuliers/vosdroits/F1419",
+      "raison": "site injoignable (délai dépassé ou erreur réseau)",
+      "page": "modules/fiche-de-paie/index.html"
+    },
+    {
       "lien": "https://www.economie.gouv.fr/particuliers/impots-et-fiscalite/gerer-mon-impot-sur-le-revenu/pouvez-vous-beneficier-de-la-decote-de-limpot-sur-le-revenu",
       "raison": "accès refusé aux robots (HTTP 403) : à vérifier dans un navigateur",
+      "page": "modules/fiche-de-paie/index.html"
+    },
+    {
+      "lien": "https://entreprendre.service-public.gouv.fr/vosdroits/F23567",
+      "raison": "site injoignable (délai dépassé ou erreur réseau)",
       "page": "modules/fiche-de-paie/index.html"
     },
     {
@@ -54,14 +79,24 @@
       "page": "modules/fiche-de-paie/index.html"
     },
     {
+      "lien": "https://www.cor-retraites.fr/sites/default/files/2026-07/RA_2026_def_0.pdf",
+      "raison": "site injoignable (délai dépassé ou erreur réseau)",
+      "page": "modules/retraites/demographie/index.html"
+    },
+    {
       "lien": "https://www.economie.gouv.fr/actualites/lutte-contre-la-fraude-un-controle-fiscal-toujours-plus-efficace-en-2025",
       "raison": "accès refusé aux robots (HTTP 403) : à vérifier dans un navigateur",
       "page": "propositions/lutte-contre-la-fraude/index.html"
     },
     {
-      "lien": "https://www.senat.fr/rap/l11-689-1/l11-689-122.html",
+      "lien": "https://www.service-public.gouv.fr/particuliers/actualites/A18825",
       "raison": "site injoignable (délai dépassé ou erreur réseau)",
-      "page": "propositions/tva-sociale/index.html"
+      "page": "propositions/retraite-a-60-ans/index.html"
+    },
+    {
+      "lien": "https://entreprendre.service-public.gouv.fr/vosdroits/F23575",
+      "raison": "site injoignable (délai dépassé ou erreur réseau)",
+      "page": "sources/index.html"
     },
     {
       "lien": "https://www.aft.gouv.fr/fr/principaux-chiffres-dette",
