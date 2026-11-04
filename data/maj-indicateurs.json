@@ -1,21 +1,22 @@
 {
-  "derniere_verification": "2026-11-04T15:23:36.499Z",
+  "derniere_verification": "2026-11-04T19:47:53.725Z",
   "sources": {
     "bce": {
-      "statut": "ok",
-      "derniere_reussite": "2026-11-04T15:23:36.499Z"
+      "statut": "echec",
+      "derniere_reussite": "2026-11-04T15:23:36.499Z",
+      "message": "https://data-api.ecb.europa.eu/service/data/IRS/M.DE.L.L40.CI.0000.EUR.N.Z?format=csvdata&startPeriod=2000-01 : HTTP 504"
     },
     "eurostat": {
       "statut": "ok",
-      "derniere_reussite": "2026-11-04T15:23:36.499Z"
+      "derniere_reussite": "2026-11-04T19:47:53.725Z"
     },
     "insee": {
       "statut": "ok",
-      "derniere_reussite": "2026-11-04T15:23:36.499Z"
+      "derniere_reussite": "2026-11-04T19:47:53.725Z"
     },
     "banque-de-france": {
       "statut": "ok",
-      "derniere_reussite": "2026-11-04T15:23:36.499Z"
+      "derniere_reussite": "2026-11-04T19:47:53.725Z"
     }
   }
 }
