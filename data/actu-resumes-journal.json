@@ -2,6 +2,23 @@
   "description": "Journal de la reprise des résumés officiels : chaque publication, reprise ou non, avec la raison. Écrit par scripts/reprendre-resumes.ts ; RECAPITULATIF.md en est tiré.",
   "entrees": [
     {
+      "date": "2026-11-04T15:24:58.641Z",
+      "id": "eurostat-90cb51d1",
+      "titre": "Inflation annuelle en hausse à 4,0 % dans la zone euro",
+      "date_publication": "2026-11-04",
+      "lien": "https://ec.europa.eu/eurostat/web/products-euro-indicators/w/2-04112026-ap",
+      "statut": "non-repris",
+      "raison": "résumé publié en anglais : seul le titre traduit est affiché"
+    },
+    {
+      "date": "2026-11-04T15:24:58.641Z",
+      "id": "hcfp-c0faa41a",
+      "titre": "Avis n°2026 – 6 Loi de finances de fin de gestion 2026",
+      "date_publication": "2026-11-04",
+      "lien": "https://www.hcfp.fr/liste-avis/avis-ndeg2026-6-loi-de-finances-de-fin-de-gestion-2026",
+      "statut": "repris"
+    },
+    {
       "date": "2026-11-02T17:01:19.623Z",
       "id": "bce-cda5cdf1",
       "titre": "Statistiques relatives aux taux d’intérêt des banques de la zone euro : juillet 2026",

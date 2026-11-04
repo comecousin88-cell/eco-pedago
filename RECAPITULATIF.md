@@ -9,11 +9,18 @@ Fichier écrit chaque jour par les tâches automatiques (`npm run resumes:offici
 
 ## Liens externes à corriger
 
-Vérifiés le 2026-11-03 : 129 liens externes.
+Vérifiés le 2026-11-04 : 131 liens externes.
 
 Aucun lien externe cassé.
 
-19 lien(s) refusent les robots ou n'ont pas répondu : à ouvrir dans un navigateur.
+12 lien(s) refusent les robots ou n'ont pas répondu : à ouvrir dans un navigateur.
+
+## 2026-11-04
+
+1 résumé(s) officiel(s) repris, 1 non repris.
+
+- ✅ [Avis n°2026 – 6 Loi de finances de fin de gestion 2026](https://eco-pedago.vercel.app/actu/2026-11-04-avis-n-2026-6-loi-de-finances-de-fin-de-gestion-2026/) ([source](https://www.hcfp.fr/liste-avis/avis-ndeg2026-6-loi-de-finances-de-fin-de-gestion-2026))
+- ➖ Inflation annuelle en hausse à 4,0 % dans la zone euro ([source](https://ec.europa.eu/eurostat/web/products-euro-indicators/w/2-04112026-ap)) : résumé publié en anglais : seul le titre traduit est affiché
 
 ## 2026-11-03
 
