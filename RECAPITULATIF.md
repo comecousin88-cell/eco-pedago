@@ -9,7 +9,7 @@ Fichier écrit chaque jour par les tâches automatiques (`npm run resumes:offici
 
 ## Liens externes à corriger
 
-Vérifiés le 2026-11-05 : 131 liens externes.
+Vérifiés le 2026-11-06 : 131 liens externes.
 
 Aucun lien externe cassé.
 
