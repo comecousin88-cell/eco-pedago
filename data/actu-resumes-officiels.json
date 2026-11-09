@@ -223,6 +223,32 @@
       "lien": "https://www.hcfp.fr/liste-avis/avis-ndeg2026-6-loi-de-finances-de-fin-de-gestion-2026",
       "licence": "Mentions légales du Haut Conseil des finances publiques",
       "recupere_le": "2026-11-04"
+    },
+    "cour-des-comptes-3ab2795f": {
+      "paragraphes": [
+        "Dans le prolongement des alertes formulées dans son rapport La situation et les perspectives des finances publiques , publié en juin dernier, et alors que la dégradation des perspectives économiques renforce l'urgence du rétablissement des finances publiques, la Cour des comptes entend, à travers deux nouveaux travaux apporter une contribution concrète aux débats budgétaires pour 2027.",
+        "Dans le prolongement de l'analyse par le Conseil des prélèvements obligatoires (CPO) des mesures nouvelles en recettes des projets de lois financières , puis la publication de la Cour sur la situation financière de la sécurité sociale à l'occasion de l'examen du PLFSS, la Cour souhaite aujourd’hui mettre à disposition des pouvoirs publics des pistes de redressement des finances publiques. Ces pistes, documentées dans ses précédents travaux entendent éclairer les choix publics à partir de faits, d'analyses et de chiffrages, dans le cadre de la mission d'assistance au Parlement et au Gouvernement des juridictions financières.",
+        "Ce travail de synthèse inédit, vise à éclairer les choix des pouvoirs publics, et à donner aux citoyens des éléments concrets pour apprécier les possibilités de redressement des finances publiques à partir de faits et de propositions concrètes."
+      ],
+      "lien": "https://www.ccomptes.fr/fr/publications/contribution-au-retablissement-des-finances-publiques",
+      "licence": "Mentions légales de la Cour des comptes",
+      "recupere_le": "2026-11-09"
+    },
+    "cour-des-comptes-e7800b91": {
+      "paragraphes": [
+        "La Cour des comptes publie des synthèses thématiques par grandes politiques publiques, utiles à nourrir le débat public. Ces notes identifient à la fois les principaux défis auxquels seront confrontés les décideurs publics au cours des prochaines années, et les leviers susceptibles de les relever. Ces publications se poursuivront tout au long de l’année, abordant des sujets comme l’agriculture, l’énergie, les retraites, la santé, l’éducation, etc. Au total près d’une vingtaine de synthèses seront rendues publiques d’ici la fin de l’année 2026."
+      ],
+      "lien": "https://www.ccomptes.fr/fr/publications/note-thematique-les-depenses-fiscales",
+      "licence": "Mentions légales de la Cour des comptes",
+      "recupere_le": "2026-11-09"
+    },
+    "cour-des-comptes-bab902f0": {
+      "paragraphes": [
+        "En application de l'article 58-6° de la loi organique relative aux lois de finances (LOLF), la Cour des comptes publie un rapport qui porte sur les mouvements de crédits effectués par les décrets d’avance du 11 juin 2026 et du 14 octobre 2026."
+      ],
+      "lien": "https://www.ccomptes.fr/fr/publications/rapport-sur-les-credits-du-budget-de-letat-ouverts-par-decrets-davance",
+      "licence": "Mentions légales de la Cour des comptes",
+      "recupere_le": "2026-11-09"
     }
   }
 }

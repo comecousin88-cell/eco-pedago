@@ -2,6 +2,66 @@
   "description": "Journal de la reprise des résumés officiels : chaque publication, reprise ou non, avec la raison. Écrit par scripts/reprendre-resumes.ts ; RECAPITULATIF.md en est tiré.",
   "entrees": [
     {
+      "date": "2026-11-09T17:27:20.250Z",
+      "id": "bce-cda5cdf1",
+      "titre": "Statistiques relatives aux taux d’intérêt des banques de la zone euro : juillet 2026",
+      "date_publication": "2026-09-02",
+      "lien": "https://www.banque-france.fr/fr/communiques-de-presse/statistiques-relatives-aux-taux-dinteret-des-banques-de-la-zone-euro-juillet-2026",
+      "statut": "non-repris",
+      "raison": "version française du communiqué introuvable sur le site de la BCE : non repris"
+    },
+    {
+      "date": "2026-11-09T17:27:20.250Z",
+      "id": "insee-69c89ada",
+      "titre": "Vigilance orange sur la croissance",
+      "date_publication": "2026-09-10",
+      "lien": "https://www.insee.fr/fr/statistiques/9050757",
+      "statut": "non-repris",
+      "raison": "pas de résumé reconnaissable sur la page"
+    },
+    {
+      "date": "2026-11-09T17:27:20.250Z",
+      "id": "bce-5dac6703",
+      "titre": "L’outil de suivi des salaires de la BCE s’est établi à 2,7 % au premier semestre 2027, indiquant une légère accélération de la croissance des salaires négociés",
+      "date_publication": "2026-09-16",
+      "lien": "https://www.banque-france.fr/fr/communiques-de-presse/loutil-de-suivi-des-salaires-de-la-bce-sest-etabli-27-au-premier-semestre-2027-indiquant-une-legere",
+      "statut": "non-repris",
+      "raison": "version française du communiqué introuvable sur le site de la BCE : non repris"
+    },
+    {
+      "date": "2026-11-09T17:27:20.250Z",
+      "id": "bce-74b953c3",
+      "titre": "Statistiques relatives aux taux d’intérêt des banques de la zone euro : août 2026",
+      "date_publication": "2026-10-01",
+      "lien": "https://www.banque-france.fr/fr/communiques-de-presse/statistiques-relatives-aux-taux-dinteret-des-banques-de-la-zone-euro-aout-2026",
+      "statut": "non-repris",
+      "raison": "version française du communiqué introuvable sur le site de la BCE : non repris"
+    },
+    {
+      "date": "2026-11-09T17:27:20.250Z",
+      "id": "cour-des-comptes-bab902f0",
+      "titre": "Rapport sur les crédits du budget de l'État ouverts par décrets d'avance",
+      "date_publication": "2026-11-09",
+      "lien": "https://www.ccomptes.fr/fr/publications/rapport-sur-les-credits-du-budget-de-letat-ouverts-par-decrets-davance",
+      "statut": "repris"
+    },
+    {
+      "date": "2026-11-09T17:27:20.250Z",
+      "id": "cour-des-comptes-e7800b91",
+      "titre": "Note thématique - Les dépenses fiscales",
+      "date_publication": "2026-11-09",
+      "lien": "https://www.ccomptes.fr/fr/publications/note-thematique-les-depenses-fiscales",
+      "statut": "repris"
+    },
+    {
+      "date": "2026-11-09T17:27:20.250Z",
+      "id": "cour-des-comptes-3ab2795f",
+      "titre": "Contribution au rétablissement des finances publiques",
+      "date_publication": "2026-11-09",
+      "lien": "https://www.ccomptes.fr/fr/publications/contribution-au-retablissement-des-finances-publiques",
+      "statut": "repris"
+    },
+    {
       "date": "2026-11-04T15:24:58.641Z",
       "id": "eurostat-90cb51d1",
       "titre": "Inflation annuelle en hausse à 4,0 % dans la zone euro",
