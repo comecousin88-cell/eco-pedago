@@ -1,12 +1,147 @@
 {
-  "verifie_le": "2026-11-10T00:51:18.622Z",
-  "verifies": 134,
+  "verifie_le": "2026-11-10T15:34:38.667Z",
+  "verifies": 136,
   "casses": [],
   "a_verifier": [
+    {
+      "lien": "https://www.insee.fr/fr/statistiques/8988845",
+      "raison": "erreur du site (HTTP 500), sans doute passagère",
+      "page": "actu/2026-09-03-prelevements-obligatoires-et-entreprises-vers-un-cadre-fiscal-et-social-stable/index.html"
+    },
+    {
+      "lien": "https://www.insee.fr/fr/statistiques/8996855",
+      "raison": "erreur du site (HTTP 500), sans doute passagère",
+      "page": "actu/2026-09-07-pib-en-hausse-de-0-6-et-emploi-en-hausse-de-0-1-dans-la-zone-euro/index.html"
+    },
+    {
+      "lien": "https://www.insee.fr/fr/statistiques/9041706",
+      "raison": "erreur du site (HTTP 500), sans doute passagère",
+      "page": "actu/2026-09-08-mobilites-professionnelles-salaires-et-fin-de-carriere/index.html"
+    },
+    {
+      "lien": "https://www.insee.fr/fr/statistiques/9050757",
+      "raison": "erreur du site (HTTP 500), sans doute passagère",
+      "page": "actu/2026-09-10-vigilance-orange-sur-la-croissance/index.html"
+    },
+    {
+      "lien": "https://www.insee.fr/fr/statistiques/9050412",
+      "raison": "erreur du site (HTTP 500), sans doute passagère",
+      "page": "actu/2026-09-15-au-deuxieme-trimestre-2026-les-salaires-horaires-augmentent-de-2-4-sur-un-an-le/index.html"
+    },
+    {
+      "lien": "https://www.insee.fr/fr/statistiques/9051406",
+      "raison": "erreur du site (HTTP 500), sans doute passagère",
+      "page": "actu/2026-09-15-en-aout-2026-les-prix-a-la-consommation-augmentent-de-2-4-sur-un-an/index.html"
+    },
+    {
+      "lien": "https://www.insee.fr/fr/statistiques/9055046",
+      "raison": "erreur du site (HTTP 500), sans doute passagère",
+      "page": "actu/2026-09-24-en-septembre-2026-le-climat-des-affaires-se-replie/index.html"
+    },
+    {
+      "lien": "https://www.insee.fr/fr/statistiques/9054960",
+      "raison": "erreur du site (HTTP 500), sans doute passagère",
+      "page": "actu/2026-09-24-stable-en-septembre-2026-la-confiance-des-menages-reste-degradee/index.html"
+    },
+    {
+      "lien": "https://www.insee.fr/fr/statistiques/9053525",
+      "raison": "erreur du site (HTTP 500), sans doute passagère",
+      "page": "actu/2026-09-29-a-la-fin-du-deuxieme-trimestre-2026-le-ratio-de-dette-publique-s-etablit-a-119/index.html"
+    },
+    {
+      "lien": "https://www.insee.fr/fr/statistiques/9056956",
+      "raison": "erreur du site (HTTP 500), sans doute passagère",
+      "page": "actu/2026-09-30-en-septembre-2026-les-prix-a-la-consommation-augmenteraient-de-3-0-sur-un-an/index.html"
+    },
+    {
+      "lien": "https://www.insee.fr/fr/statistiques/9057688",
+      "raison": "erreur du site (HTTP 500), sans doute passagère",
+      "page": "actu/2026-09-30-la-consommation-des-menages-en-biens-se-replie-en-aout-2026-0-5-apres-0-4/index.html"
+    },
+    {
+      "lien": "https://www.insee.fr/fr/statistiques/serie/011814632",
+      "raison": "erreur du site (HTTP 500), sans doute passagère",
+      "page": "actu/2026-09-30-seuil-inflation-3/index.html"
+    },
+    {
+      "lien": "https://www.insee.fr/fr/statistiques/9080209",
+      "raison": "erreur du site (HTTP 500), sans doute passagère",
+      "page": "actu/2026-10-15-en-septembre-2026-les-prix-a-la-consommation-augmentent-de-3-1-sur-un-an/index.html"
+    },
+    {
+      "lien": "https://www.insee.fr/fr/statistiques/8988841",
+      "raison": "erreur du site (HTTP 500), sans doute passagère",
+      "page": "actu/2026-10-21-deficit-public-a-3-0-du-pib-et-dette-publique-a-87-7-dans-la-zone-euro/index.html"
+    },
+    {
+      "lien": "https://www.insee.fr/fr/statistiques/2830192",
+      "raison": "erreur du site (HTTP 500), sans doute passagère",
+      "page": "actu/2026-10-21-deficit-public-a-3-0-du-pib-et-dette-publique-a-87-7-dans-la-zone-euro/index.html"
+    },
+    {
+      "lien": "https://www.insee.fr/fr/statistiques/9097429",
+      "raison": "erreur du site (HTTP 500), sans doute passagère",
+      "page": "actu/2026-10-22-en-octobre-2026-le-climat-des-affaires-repart-legerement-a-la-hausse/index.html"
+    },
+    {
+      "lien": "https://www.insee.fr/fr/statistiques/9087193",
+      "raison": "erreur du site (HTTP 500), sans doute passagère",
+      "page": "actu/2026-10-22-les-salaires-dans-le-secteur-prive-en-2025/index.html"
+    },
     {
       "lien": "https://www.aft.gouv.fr/fr/notations-souveraines",
       "raison": "accès refusé aux robots (HTTP 403) : à vérifier dans un navigateur",
       "page": "actu/2026-10-23-revue-de-la-note-de-la-france-par-moody-s/index.html"
+    },
+    {
+      "lien": "https://www.insee.fr/fr/statistiques/9098942",
+      "raison": "erreur du site (HTTP 500), sans doute passagère",
+      "page": "actu/2026-10-27-en-octobre-2026-la-confiance-des-menages-se-degrade-fortement/index.html"
+    },
+    {
+      "lien": "https://www.insee.fr/fr/statistiques/9109624",
+      "raison": "erreur du site (HTTP 500), sans doute passagère",
+      "page": "actu/2026-10-30-au-troisieme-trimestre-2026-l-emploi-salarie-du-secteur-prive-est-quasi-stable/index.html"
+    },
+    {
+      "lien": "https://www.insee.fr/fr/statistiques/9107965",
+      "raison": "erreur du site (HTTP 500), sans doute passagère",
+      "page": "actu/2026-10-30-en-octobre-2026-les-prix-a-la-consommation-augmenteraient-de-3-4-sur-un-an/index.html"
+    },
+    {
+      "lien": "https://www.insee.fr/fr/information/5235017",
+      "raison": "erreur du site (HTTP 500), sans doute passagère",
+      "page": "actu/2026-10-30-insee-premiere-estimation-de-la-croissance-du-3e-trimestre-2026/index.html"
+    },
+    {
+      "lien": "https://www.insee.fr/fr/statistiques/9109722",
+      "raison": "erreur du site (HTTP 500), sans doute passagère",
+      "page": "actu/2026-10-30-la-consommation-des-menages-en-biens-diminue-de-nouveau-en-septembre-2026-0-5/index.html"
+    },
+    {
+      "lien": "https://www.insee.fr/fr/statistiques/9111036",
+      "raison": "erreur du site (HTTP 500), sans doute passagère",
+      "page": "actu/2026-10-30-le-pib-recule-legerement-au-troisieme-trimestre-2026-0-1-apres-0-0/index.html"
+    },
+    {
+      "lien": "https://www.insee.fr/fr/statistiques/9118603",
+      "raison": "erreur du site (HTTP 500), sans doute passagère",
+      "page": "actu/2026-11-10-au-troisieme-trimestre-2026-le-taux-de-chomage-s-etablit-a-8-2-en-hausse-de-0-4/index.html"
+    },
+    {
+      "lien": "https://www.insee.fr/fr/statistiques/9129350",
+      "raison": "erreur du site (HTTP 500), sans doute passagère",
+      "page": "actu/2026-11-10-les-trajectoires-de-croissance-regionale-au-travers-des-crises-depuis-2000/index.html"
+    },
+    {
+      "lien": "https://www.insee.fr/fr/statistiques/serie/010777616",
+      "raison": "erreur du site (HTTP 500), sans doute passagère",
+      "page": "atelier/index.html"
+    },
+    {
+      "lien": "https://www.insee.fr/fr/statistiques/serie/010777608",
+      "raison": "erreur du site (HTTP 500), sans doute passagère",
+      "page": "atelier/index.html"
     },
     {
       "lien": "https://www.aft.gouv.fr/files/medias-aft/7_Publications/7.2_BM/434_Bulletin%20mensuel%20juillet%202026.pdf",
@@ -24,9 +159,49 @@
       "page": "modules/cadre-europeen/deficit-excessif/index.html"
     },
     {
+      "lien": "https://www.insee.fr/fr/statistiques/2830301",
+      "raison": "erreur du site (HTTP 500), sans doute passagère",
+      "page": "modules/deficit-et-dette/composition/index.html"
+    },
+    {
+      "lien": "https://www.insee.fr/fr/statistiques/8574707",
+      "raison": "erreur du site (HTTP 500), sans doute passagère",
+      "page": "modules/deficit-et-dette/europe/index.html"
+    },
+    {
+      "lien": "https://www.insee.fr/fr/statistiques/serie/010777611",
+      "raison": "erreur du site (HTTP 500), sans doute passagère",
+      "page": "modules/deficit-et-dette/maastricht/index.html"
+    },
+    {
+      "lien": "https://www.insee.fr/fr/statistiques/8719824",
+      "raison": "erreur du site (HTTP 500), sans doute passagère",
+      "page": "modules/dette-en-perspective/par-habitant/index.html"
+    },
+    {
+      "lien": "https://www.insee.fr/fr/statistiques/8661938",
+      "raison": "erreur du site (HTTP 500), sans doute passagère",
+      "page": "modules/dette-en-perspective/patrimoine-public/index.html"
+    },
+    {
       "lien": "https://www.aft.gouv.fr/files/medias-aft/7_Publications/7.2_BM/433_Bulletin%20mensuel%20juin%202026.pdf",
       "raison": "accès refusé aux robots (HTTP 403) : à vérifier dans un navigateur",
       "page": "modules/emprunt-etat/detenteurs/index.html"
+    },
+    {
+      "lien": "https://www.insee.fr/fr/statistiques/serie/001711531",
+      "raison": "erreur du site (HTTP 500), sans doute passagère",
+      "page": "modules/emprunt-etat/oat-btf/index.html"
+    },
+    {
+      "lien": "https://www.insee.fr/fr/statistiques/serie/001711532",
+      "raison": "erreur du site (HTTP 500), sans doute passagère",
+      "page": "modules/emprunt-etat/oat-btf/index.html"
+    },
+    {
+      "lien": "https://www.insee.fr/fr/statistiques/serie/001738854",
+      "raison": "erreur du site (HTTP 500), sans doute passagère",
+      "page": "modules/emprunt-etat/oat-btf/index.html"
     },
     {
       "lien": "https://www.urssaf.fr/accueil/outils-documentation/taux-baremes/plafonds-securite-sociale.html",
@@ -54,9 +229,19 @@
       "page": "modules/fiche-de-paie/index.html"
     },
     {
+      "lien": "https://www.insee.fr/fr/statistiques/8726461",
+      "raison": "erreur du site (HTTP 500), sans doute passagère",
+      "page": "modules/fiscalite/blocage-prix/index.html"
+    },
+    {
       "lien": "https://www.economie.gouv.fr/actualites/lutte-contre-la-fraude-un-controle-fiscal-toujours-plus-efficace-en-2025",
       "raison": "accès refusé aux robots (HTTP 403) : à vérifier dans un navigateur",
       "page": "propositions/lutte-contre-la-fraude/index.html"
+    },
+    {
+      "lien": "https://www.insee.fr/fr/statistiques/serie/001688527",
+      "raison": "erreur du site (HTTP 500), sans doute passagère",
+      "page": "sources/index.html"
     },
     {
       "lien": "https://www.aft.gouv.fr/fr/principaux-chiffres-dette",

@@ -249,6 +249,23 @@
       "lien": "https://www.ccomptes.fr/fr/publications/rapport-sur-les-credits-du-budget-de-letat-ouverts-par-decrets-davance",
       "licence": "Mentions légales de la Cour des comptes",
       "recupere_le": "2026-11-09"
+    },
+    "insee-63e0842a": {
+      "paragraphes": [
+        "En 2024, le PIB de la France métropolitaine s’élève à 2 863 milliards d’euros, dont plus de 40 % sont réalisés dans les régions Île-de-France et Auvergne‑Rhône‑Alpes. Ces deux régions se placent également en tête en matière de PIB par habitant et par emploi.",
+        "Depuis 2000, la croissance des régions a été marquée par deux crises majeures, celle de 2008, puis la pandémie de Covid-19 en 2020. Leurs effets se sont révélés contrastés selon les territoires, mais ces crises n’ont pas fondamentalement changé les dynamiques relatives entre régions. Que ce soit sur les périodes 2000-2007, 2007-2019 ou 2019-2023, la croissance est restée plus faible en Normandie, Centre-Val de Loire, Bourgogne-Franche-Comté, Grand Est et Hauts‑de-France. Cette atonie s’explique notamment par le moindre dynamisme de l’industrie et des services marchands dans ces cinq régions, comparativement au reste de la France métropolitaine. À l’inverse, la Corse a connu le plus fort dynamisme économique tout au long de la période, portée notamment par une croissance démographique soutenue. L’activité en Occitanie, qui s’inscrivait dans le sillage de celle de la Corse sur 2000-2007, a ralenti depuis pour rejoindre la dynamique commune des autres régions hors les cinq plus en retrait. Enfin, la croissance de l’Île-de-France a été supérieure à la moyenne nationale de 2007 à 2019, mais ne l’est plus depuis 2019."
+      ],
+      "lien": "https://www.insee.fr/fr/statistiques/9129350",
+      "licence": "Licence Ouverte / Open Licence 2.0 (Etalab)",
+      "recupere_le": "2026-11-10"
+    },
+    "insee-6c4a3125": {
+      "paragraphes": [
+        "Au troisième trimestre 2026, le nombre de chômeurs en France au sens du Bureau international du travail (BIT) diminue de 47 000 par rapport au trimestre précédent, à 2,6 millions de personnes. Le taux de chômage est quasi stable sur le trimestre (-0,1 point) et s’établit à 8,2 % de la population active. Il est supérieur de 0,4 point à son niveau du troisième trimestre 2025 (+150 000 chômeurs), mais demeure toutefois nettement au-dessous de son pic de mi-2015 (-2,3 points)."
+      ],
+      "lien": "https://www.insee.fr/fr/statistiques/9118603",
+      "licence": "Licence Ouverte / Open Licence 2.0 (Etalab)",
+      "recupere_le": "2026-11-10"
     }
   }
 }

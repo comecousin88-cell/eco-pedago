@@ -2,6 +2,22 @@
   "description": "Journal de la reprise des résumés officiels : chaque publication, reprise ou non, avec la raison. Écrit par scripts/reprendre-resumes.ts ; RECAPITULATIF.md en est tiré.",
   "entrees": [
     {
+      "date": "2026-11-10T15:33:35.522Z",
+      "id": "insee-6c4a3125",
+      "titre": "Au troisième trimestre 2026, le taux de chômage s’établit à 8,2 %, en hausse de 0,4 point sur un an",
+      "date_publication": "2026-11-10",
+      "lien": "https://www.insee.fr/fr/statistiques/9118603",
+      "statut": "repris"
+    },
+    {
+      "date": "2026-11-10T15:33:35.522Z",
+      "id": "insee-63e0842a",
+      "titre": "Les trajectoires de croissance régionale au travers des crises depuis 2000",
+      "date_publication": "2026-11-10",
+      "lien": "https://www.insee.fr/fr/statistiques/9129350",
+      "statut": "repris"
+    },
+    {
       "date": "2026-11-09T17:27:20.250Z",
       "id": "bce-cda5cdf1",
       "titre": "Statistiques relatives aux taux d’intérêt des banques de la zone euro : juillet 2026",

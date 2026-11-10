@@ -9,11 +9,18 @@ Fichier écrit chaque jour par les tâches automatiques (`npm run resumes:offici
 
 ## Liens externes à corriger
 
-Vérifiés le 2026-11-10 : 134 liens externes.
+Vérifiés le 2026-11-10 : 136 liens externes.
 
 Aucun lien externe cassé.
 
-12 lien(s) refusent les robots ou n'ont pas répondu : à ouvrir dans un navigateur.
+49 lien(s) refusent les robots ou n'ont pas répondu : à ouvrir dans un navigateur.
+
+## 2026-11-10
+
+2 résumé(s) officiel(s) repris, 0 non repris.
+
+- ✅ [Au troisième trimestre 2026, le taux de chômage s’établit à 8,2 %, en hausse de 0,4 point sur un an](https://eco-pedago.vercel.app/actu/2026-11-10-au-troisieme-trimestre-2026-le-taux-de-chomage-s-etablit-a-8-2-en-hausse-de-0-4/) ([source](https://www.insee.fr/fr/statistiques/9118603))
+- ✅ [Les trajectoires de croissance régionale au travers des crises depuis 2000](https://eco-pedago.vercel.app/actu/2026-11-10-les-trajectoires-de-croissance-regionale-au-travers-des-crises-depuis-2000/) ([source](https://www.insee.fr/fr/statistiques/9129350))
 
 ## 2026-11-09
 
