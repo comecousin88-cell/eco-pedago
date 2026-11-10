@@ -1,5 +1,5 @@
 {
-  "verifie_le": "2026-11-10T19:50:07.530Z",
+  "verifie_le": "2026-11-10T22:30:09.411Z",
   "verifies": 136,
   "casses": [],
   "a_verifier": [
@@ -57,11 +57,6 @@
       "lien": "https://www.economie.gouv.fr/actualites/lutte-contre-la-fraude-un-controle-fiscal-toujours-plus-efficace-en-2025",
       "raison": "accès refusé aux robots (HTTP 403) : à vérifier dans un navigateur",
       "page": "propositions/lutte-contre-la-fraude/index.html"
-    },
-    {
-      "lien": "https://www.insee.fr/fr/statistiques/serie/001688527",
-      "raison": "erreur du site (HTTP 503), sans doute passagère",
-      "page": "sources/index.html"
     },
     {
       "lien": "https://www.aft.gouv.fr/fr/principaux-chiffres-dette",
