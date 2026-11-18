@@ -9,11 +9,15 @@ Fichier écrit chaque jour par les tâches automatiques (`npm run resumes:offici
 
 ## Liens externes à corriger
 
-Vérifiés le 2026-11-10 : 136 liens externes.
+Vérifiés le 2026-11-18 : 136 liens externes.
 
 Aucun lien externe cassé.
 
 12 lien(s) refusent les robots ou n'ont pas répondu : à ouvrir dans un navigateur.
+
+## 2026-11-18
+
+- 🔀 Demande n° 14 fusionnée : Vote solennel de l'Assemblée nationale sur l'ensemble du budget de l'État pour 2027 (17 novembre 2026) : mise à jour à valider
 
 ## 2026-11-10
 
